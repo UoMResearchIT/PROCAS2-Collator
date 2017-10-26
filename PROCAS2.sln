@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2", "PROCAS2\PROCAS2.csproj", "{B046A422-23FB-48CD-B773-2203A472D9B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Data", "PROCAS2.Data\PROCAS2.Data.csproj", "{7F57A06C-F6C8-440F-974B-D3C3DBE83358}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B046A422-23FB-48CD-B773-2203A472D9B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B046A422-23FB-48CD-B773-2203A472D9B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B046A422-23FB-48CD-B773-2203A472D9B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B046A422-23FB-48CD-B773-2203A472D9B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
