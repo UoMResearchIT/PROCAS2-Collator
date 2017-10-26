@@ -62,4 +62,4 @@
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
 
-Scripts/* linguist-vendored
+PROCAS2/Scripts/* linguist-vendored
