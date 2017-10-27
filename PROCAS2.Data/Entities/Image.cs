@@ -10,7 +10,7 @@ namespace PROCAS2.Data.Entities
 {
     public class Image
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(200)]
         public string OrigName { get; set; }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity;
+using System.Security.Claims;
+using Microsoft.AspNet.Identity.EntityFramework;
 
+using PROCAS2.Data.Identity;
 using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Data
@@ -15,12 +19,16 @@ namespace PROCAS2.Data
     {
         public PROCAS2Context() : base("PROCAS2Connection")
         {
-           
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<PROCAS2Context, PROCAS2.Data.Migrations.Configuration>("PROCAS2Connection"));
+
         }
 
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<AddressType> AddressTypes { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<EventType> EventTypes { get; set; }
+        public DbSet<GeneticRecord> GeneticRecords { get; set; }
+        public DbSet<GeneticRecordItem> GeneticRecordItems { get; set; }
         public DbSet<Histology> Histologies { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Participant> Participants { get; set; }
@@ -33,6 +41,20 @@ namespace PROCAS2.Data
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<ParticipantEvent>()
+                .HasRequired(c => c.Participant)
+                .WithMany(a => a.ParticipantEvents)
+                .HasForeignKey(x => x.ParticipantId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ParticipantEvent>()
+            .HasRequired(n => n.AppUser)
+            .WithMany(a => a.ParticipantEvents)
+            .HasForeignKey(n => n.AppUserId)
+            .WillCascadeOnDelete(false);
+
         }
+    
     }
 }

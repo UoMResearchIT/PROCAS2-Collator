@@ -10,7 +10,7 @@ namespace PROCAS2.Data.Entities
 {
     public class Address
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [MaxLength(200)]
         public string AddressLine1 { get; set; }
         [MaxLength(200)]
@@ -23,5 +23,12 @@ namespace PROCAS2.Data.Entities
         public string PostCode { get; set; }
         [MaxLength(200)]
         public string EmailAddress { get; set; }
+
+        public int AddressTypeId { get; set; }
+
+
+
+        public int ParticipantId { get; set; }
+        public virtual Participant Participant { get; set; }
     }
 }

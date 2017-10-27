@@ -38,12 +38,10 @@ namespace PROCAS2.Data.Entities
 
         public int BMI { get; set; }
 
-        public int AddressId { get; set; }
 
         [MaxLength(200)]
         public string GPName { get; set; }
 
-        public int GPAddressId { get; set; }
 
         public int ScreeningSiteId { get; set; }
 
@@ -69,18 +67,18 @@ namespace PROCAS2.Data.Entities
 
         [MaxLength(20)]
         public string RiskCategory { get; set; }
-
+        [ForeignKey("LastEvent")]
         public int LastEventId { get; set; }
 
+        
 
         public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
         public virtual ICollection<Image> Images { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
 
-        public virtual Address Address { get; set; }
-        [ForeignKey("GPAddressId")]
-        public virtual Address GPAddress { get; set; }
+        public virtual GeneticRecord GeneticRecord { get; set; }
         public virtual ScreeningSite ScreeningSite { get; set; }
-        [ForeignKey("LastEventId")]
+        
         public virtual ParticipantEvent LastEvent { get; set; }
     }
 }

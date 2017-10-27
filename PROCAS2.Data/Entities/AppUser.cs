@@ -10,10 +10,13 @@ namespace PROCAS2.Data.Entities
 {
     public class AppUser
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [MaxLength(200)]
         public string UserCode { get; set; }
         public bool Active { get; set; }
         public bool SuperUser { get; set; }
+
+        public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
+
     }
 }

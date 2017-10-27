@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PROCAS2.Models;
+using PROCAS2.Data.Identity;
 
 namespace PROCAS2.Controllers
 {

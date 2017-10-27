@@ -10,7 +10,7 @@ namespace PROCAS2.Data.Entities
 {
     public class Histology
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int ParticipantId { get; set; }
         public DateTime AssessmentDate { get; set; }
 

@@ -10,7 +10,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using PROCAS2.Models;
+using PROCAS2.Data.Identity;
 
 namespace PROCAS2
 {

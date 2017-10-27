@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2", "PROCAS2\PROCAS2.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Data", "PROCAS2.Data\PROCAS2.Data.csproj", "{7F57A06C-F6C8-440F-974B-D3C3DBE83358}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Models", "PROCAS2.Models\PROCAS2.Models.csproj", "{6DEF130A-C66D-4D48-BAA2-E9345DDD1DE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F57A06C-F6C8-440F-974B-D3C3DBE83358}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DEF130A-C66D-4D48-BAA2-E9345DDD1DE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DEF130A-C66D-4D48-BAA2-E9345DDD1DE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DEF130A-C66D-4D48-BAA2-E9345DDD1DE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DEF130A-C66D-4D48-BAA2-E9345DDD1DE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

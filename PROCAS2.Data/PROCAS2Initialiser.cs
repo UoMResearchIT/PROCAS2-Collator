@@ -24,6 +24,15 @@ namespace PROCAS2.Data
 
             screeningSites.ForEach(s => context.ScreeningSites.Add(s));
             context.SaveChanges();
+
+            var addressTypes = new List<AddressType>
+            {
+                new AddressType { Id = 1, Name = "Home" },
+                new AddressType { Id = 2, Name = "GP"}
+            };
+
+            addressTypes.ForEach(s => context.AddressTypes.Add(s));
+            context.SaveChanges();
         }
     }
 }

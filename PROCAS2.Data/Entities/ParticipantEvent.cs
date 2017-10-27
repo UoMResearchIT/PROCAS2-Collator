@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using PROCAS2.Data.Identity;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace PROCAS2.Data.Entities
 {
@@ -12,6 +14,7 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
+        [ForeignKey("Participant")]
         public int ParticipantId { get; set; }
 
         public DateTime EventDate { get; set; }

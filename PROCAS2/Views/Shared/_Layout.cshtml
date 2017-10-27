@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="SHORTCUT ICON" href="~/Content/icons/index.ico" />" 
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - PROCAS2 Collator</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -18,13 +18,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <p class="navbar-brand navbar-left mainBrand">PROCAS2 Collator</p>
+               
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -34,7 +34,19 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <div class="row ">
+                <div class="col-md-6">
+                    <p>
+                        <span class="footer-text" >PROCAS2 Collator - Originally developed by Research IT, University of Manchester</span>
+                    </p>
+                </div>
+
+                <div class="col-md-6 footer-image">
+                    <p>
+                        <img alt="University logo" src='@Url.Content("~/Content/images/uni.png")' class="image-responsive" />
+                    </p>
+                </div>
+            </div>
         </footer>
     </div>
 

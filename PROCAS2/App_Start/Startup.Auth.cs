@@ -5,7 +5,7 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using PROCAS2.Models;
+using PROCAS2.Data.Identity;
 
 namespace PROCAS2
 {

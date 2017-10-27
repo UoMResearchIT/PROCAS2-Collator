@@ -5,7 +5,7 @@ using Microsoft.Practices.Unity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
-using PROCAS2.Models;
+using PROCAS2.Data.Identity;
 using PROCAS2.Data;
 using PROCAS2.Controllers;
 
