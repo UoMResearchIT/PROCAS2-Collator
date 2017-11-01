@@ -63,3 +63,4 @@
 #*.RTF   diff=astextplain
 
 PROCAS2/Scripts/* linguist-vendored
+PROCAS2/Content/DataTables/* linguist-vendored

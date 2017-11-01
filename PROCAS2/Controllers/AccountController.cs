@@ -10,6 +10,9 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using PROCAS2.Models;
 using PROCAS2.Data.Identity;
+using PROCAS2.Services.Utility;
+using PROCAS2.Resources;
+using PROCAS2.Data;
 
 namespace PROCAS2.Controllers
 {
@@ -18,15 +21,19 @@ namespace PROCAS2.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IPROCAS2UserManager _procas2UserManager;
+
 
         public AccountController()
         {
+            
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPROCAS2UserManager procas2UserManager )
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _procas2UserManager = procas2UserManager;
         }
 
         public ApplicationSignInManager SignInManager
@@ -80,6 +87,17 @@ namespace PROCAS2.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+
+                    // Check for user profile table, and if not there don't allow to log in
+                    if (_procas2UserManager.CheckUserRecord(model.Email) == false)
+                    {
+                        // Couldn't create the user profile
+                        ModelState.AddModelError("", PROCASRes.USER_CONFIG_INCORRECT);
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        result = SignInStatus.Failure;
+                        return View(model);
+                    }
+
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -152,10 +170,20 @@ namespace PROCAS2.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Check for user profile table, and if not there don't allow to register
+                if (_procas2UserManager.CheckUserRecord(model.Email) == false)
+                {
+                    // Couldn't create the user profile
+                    ModelState.AddModelError("", PROCASRes.USER_CONFIG_INCORRECT);
+                    return View(model);
+                }
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                   
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

@@ -8,7 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="SHORTCUT ICON" href="~/Content/icons/index.ico" />" 
     <title>@ViewBag.Title - PROCAS2 Collator</title>
+
+   
+
+
     @Styles.Render("~/Content/css")
+
+
+    <link href="@Url.Content("~/Content/DataTables/css/datatables.bootstrap.min.css")" rel="stylesheet" type="text/css" />
+
+
+
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -40,6 +50,7 @@
                             <li>@Html.ActionLink("Edit Participant", "Index", "Home")</li>
                             <li>@Html.ActionLink("Upload Participants", "Index", "Home")</li>
                             <li>@Html.ActionLink("Edit Histology", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Upload Genetic Records", "Index", "Home")</li>
                         </ul>
                     </li>
                     
@@ -80,6 +91,10 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatables")
+
+    
+
     @RenderSection("scripts", required: false)
 </body>
 </html>

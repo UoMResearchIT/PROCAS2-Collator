@@ -85,12 +85,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PROCAS2.Models\PROCAS2.Models.csproj">
-      <Project>{6def130a-c66d-4d48-baa2-e9345ddd1de7}</Project>
-      <Name>PROCAS2.Models</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

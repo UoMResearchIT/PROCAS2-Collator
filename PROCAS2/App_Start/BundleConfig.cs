@@ -23,6 +23,12 @@ namespace PROCAS2
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
+                      "~/Scripts/DataTables/jquery.datatables.min.js",
+                      "~/Scripts/DataTables/datatables.bootstrap.min.js"
+                    ));
+
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
