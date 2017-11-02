@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="SHORTCUT ICON" href="~/Content/icons/index.ico" />" 
+    <link rel="SHORTCUT ICON" href="~/Content/icons/index.ico" />
     <title>@ViewBag.Title - PROCAS2 Collator</title>
 
    
@@ -16,10 +16,17 @@
 
 
     <link href="@Url.Content("~/Content/DataTables/css/datatables.bootstrap.min.css")" rel="stylesheet" type="text/css" />
-
-
-
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/datatables")
+
+
+
+    
+
+    
+    @RenderSection("scripts", required: false)
 
 </head>
 <body>
@@ -89,12 +96,6 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/datatables")
-
-    
-
-    @RenderSection("scripts", required: false)
+  
 </body>
 </html>

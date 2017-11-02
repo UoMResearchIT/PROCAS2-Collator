@@ -38,6 +38,7 @@ namespace PROCAS2
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
@@ -53,11 +54,12 @@ namespace PROCAS2
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
+                RequiredLength = 10,
                 RequireNonLetterOrDigit = true,
                 RequireDigit = true,
                 RequireLowercase = true,
-                RequireUppercase = true,
+                RequireUppercase = true
+                
             };
 
             // Configure user lockout defaults

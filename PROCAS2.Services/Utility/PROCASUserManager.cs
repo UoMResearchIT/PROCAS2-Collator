@@ -67,5 +67,60 @@ namespace PROCAS2.Services.Utility
         {
             return _appUserRepo.GetAll().ToList();
         }
+
+        /// <summary>
+        /// Set the 'Active' flag on the user
+        /// </summary>
+        /// <param name="userId">Id of the user to set</param>
+        /// <param name="flag">Value of the flag</param>
+        public void Suspend(int userId, bool flag)
+        {
+            AppUser appUser = _appUserRepo.GetByID(userId);
+            if (appUser != null)
+            {
+                appUser.Active = flag;
+                _appUserRepo.Update(appUser);
+                _unitOfWork.Save();
+            }
+        }
+
+        /// <summary>
+        /// Set the "SuperUser" flag on the user
+        /// </summary>
+        /// <param name="userid">ID of the user to set</param>
+        /// <param name="flag">Value of the flag</param>
+        public void SuperUser(int userId, bool flag)
+        {
+
+            AppUser appUser = _appUserRepo.GetByID(userId);
+            if (appUser != null)
+            {
+                appUser.SuperUser = flag;
+                _appUserRepo.Update(appUser);
+                _unitOfWork.Save();
+            }
+        }
+
+        /// <summary>
+        /// Is the passed user a super user?
+        /// </summary>
+        /// <param name="userName">User code</param>
+        /// <returns>true if a super user, else false</returns>
+        public bool IsSuperUser(string userName)
+        {
+            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == userName).FirstOrDefault();
+            if (appUser != null)
+            {
+                if (appUser.SuperUser == true)
+                {
+                    return true;
+                }
+            }
+
+
+            return false;
+
+        }
+
     }
 }

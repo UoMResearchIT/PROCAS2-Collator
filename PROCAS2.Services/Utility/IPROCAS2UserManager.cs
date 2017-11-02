@@ -12,5 +12,8 @@ namespace PROCAS2.Services.Utility
     {
         bool CheckUserRecord(string userName);
         List<AppUser> GetAllAppUsers();
+        void Suspend(int userId, bool flag);
+        void SuperUser(int userid, bool flag);
+        bool IsSuperUser(string userName);
     }
 }

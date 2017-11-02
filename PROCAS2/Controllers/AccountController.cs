@@ -24,17 +24,17 @@ namespace PROCAS2.Controllers
         private IPROCAS2UserManager _procas2UserManager;
 
 
-        public AccountController()
+        public AccountController(IPROCAS2UserManager procas2UserManager)
         {
-            
-        }
-
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPROCAS2UserManager procas2UserManager )
-        {
-            UserManager = userManager;
-            SignInManager = signInManager;
             _procas2UserManager = procas2UserManager;
         }
+
+        //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, )
+        //{
+        //    UserManager = userManager;
+        //    SignInManager = signInManager;
+           
+        //}
 
         public ApplicationSignInManager SignInManager
         {
@@ -185,7 +185,17 @@ namespace PROCAS2.Controllers
                    
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
+                    if (_procas2UserManager.IsSuperUser(model.Email) == true)
+                    {
+                        UserManager.AddToRole(user.Id, "Super");
+                        UserManager.AddToRole(user.Id, "General");
+                    }
+                    else
+                    {
+                        UserManager.AddToRole(user.Id, "General");
+                    }
+
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

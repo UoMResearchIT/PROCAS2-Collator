@@ -7,6 +7,8 @@ using System.Web;
 using Microsoft.AspNet.Identity;
 
 
+
+
 namespace PROCAS2.Services.Utility
 {
     public class ContextService : IContextService
@@ -15,5 +17,7 @@ namespace PROCAS2.Services.Utility
         {
             return HttpContext.Current.User.Identity.GetUserId();
         }
+
+        
     }
 }

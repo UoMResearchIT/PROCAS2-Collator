@@ -3,37 +3,73 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Services.Utility;
+using PROCAS2.Models.ViewModels;
+
 
 namespace PROCAS2.Controllers
 {
+    [Authorize]
     public class UserAdminController : Controller
     {
         
         private IPROCAS2UserManager _procas2UserManager;
+        private IContextService _contextService;
+        private IGenericRepository<AppUser> _appUserRepo;
 
-        public UserAdminController(IPROCAS2UserManager procas2UserManager)
+        public UserAdminController(IContextService contextService,
+            IPROCAS2UserManager procas2UserManager,
+            IGenericRepository<AppUser> appUserRepo)
         {
+            _contextService = contextService;
             _procas2UserManager = procas2UserManager;
+            _appUserRepo = appUserRepo;
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            
         }
 
         // GET: UserAdmin
         public ActionResult Index()
         {
+            UserAdminIndexViewModel model = new UserAdminIndexViewModel();
 
-            // TODO: Add in user listing datatable
-
-            return View();
+            model.AppUsers = _procas2UserManager.GetAllAppUsers();
+         
+            return View("Index", model);
         }
 
-        // GET: UserAdmin/Details/5
-        public ActionResult Details(int id)
+        [HttpGet]
+        public ActionResult Suspend(int userId, bool flag)
         {
-            return View();
+            _procas2UserManager.Suspend(userId, flag);
+
+            return RedirectToAction("Index", "UserAdmin");
         }
+
+        [HttpGet]
+        public ActionResult SuperUser(int userId, bool flag)
+        {
+
+            _procas2UserManager.SuperUser(userId, flag);
+
+            
+
+            return RedirectToAction("Index", "UserAdmin");
+        }
+
+        
 
         // GET: UserAdmin/Create
         public ActionResult Create()
@@ -57,48 +93,6 @@ namespace PROCAS2.Controllers
             }
         }
 
-        // GET: UserAdmin/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: UserAdmin/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: UserAdmin/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: UserAdmin/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+       
     }
 }
