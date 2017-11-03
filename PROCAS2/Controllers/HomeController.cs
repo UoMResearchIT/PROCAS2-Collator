@@ -9,7 +9,9 @@ using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Controllers
 {
-
+#if RELEASE
+    [RequireHttps]
+#endif
     [Authorize]
     public class HomeController : Controller
     {

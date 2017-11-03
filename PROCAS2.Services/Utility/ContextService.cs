@@ -13,6 +13,11 @@ namespace PROCAS2.Services.Utility
 {
     public class ContextService : IContextService
     {
+
+       
+        
+       
+
         public string CurrentUserName()
         {
             return HttpContext.Current.User.Identity.GetUserId();

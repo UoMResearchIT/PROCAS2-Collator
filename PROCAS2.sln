@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Services", "PROCAS2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Resources", "PROCAS2.Resources\PROCAS2.Resources.csproj", "{5278AA4D-7693-4D84-8D08-665360160C5F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PROCAS2.Tests", "PROCAS2.Tests\PROCAS2.Tests.csproj", "{948E81F9-1828-4ED2-951D-73A6E197AE86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{5278AA4D-7693-4D84-8D08-665360160C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5278AA4D-7693-4D84-8D08-665360160C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5278AA4D-7693-4D84-8D08-665360160C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{948E81F9-1828-4ED2-951D-73A6E197AE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{948E81F9-1828-4ED2-951D-73A6E197AE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{948E81F9-1828-4ED2-951D-73A6E197AE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{948E81F9-1828-4ED2-951D-73A6E197AE86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

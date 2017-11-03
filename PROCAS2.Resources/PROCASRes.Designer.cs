@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User name already exists..
+        /// </summary>
+        public static string USER_ALREADY_EXISTS {
+            get {
+                return ResourceManager.GetString("USER_ALREADY_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User is either marked as not active or has not been configured yet. Please contact the PROCAS2 team to check your record..
         /// </summary>
         public static string USER_CONFIG_INCORRECT {

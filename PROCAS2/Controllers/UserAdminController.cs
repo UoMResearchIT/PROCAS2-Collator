@@ -10,11 +10,17 @@ using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Services.Utility;
 using PROCAS2.Models.ViewModels;
+using PROCAS2.Resources;
+using PROCAS2.CustomAttributes;
 
 
 namespace PROCAS2.Controllers
 {
-    [Authorize]
+    
+#if RELEASE
+    [RequireHttps]
+#endif
+    [RedirectIfNotAuthorised(Roles = "Super")]
     public class UserAdminController : Controller
     {
         
@@ -31,15 +37,7 @@ namespace PROCAS2.Controllers
             _appUserRepo = appUserRepo;
         }
 
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            
-        }
-
+       
         // GET: UserAdmin
         public ActionResult Index()
         {
@@ -74,18 +72,39 @@ namespace PROCAS2.Controllers
         // GET: UserAdmin/Create
         public ActionResult Create()
         {
-            return View();
+            UserAdminCreateViewModel model = new UserAdminCreateViewModel();
+
+            model.Active = true;
+
+            return View("Create", model);
         }
 
         // POST: UserAdmin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(UserAdminCreateViewModel model)
         {
             try
             {
-                // TODO: Add insert logic here
+                if (ModelState.IsValid)
+                {
+                    AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == model.UserCode.ToLower()).FirstOrDefault();
+                    if (appUser != null) // user already exists!
+                    {
+                        ModelState.AddModelError("UserCode", PROCASRes.USER_ALREADY_EXISTS );
+                        return View("Create", model);
+                    }
+                    else
+                    {
+                        _procas2UserManager.AddUser(model.UserCode, model.SuperUser, model.Active);
+                        return RedirectToAction("Index", "UserAdmin");
+                    }
+                }
+                else
+                {
+                    return View("Create", model);
+                }
 
-                return RedirectToAction("Index");
+                
             }
             catch
             {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
+using Microsoft.AspNet.Identity;
+using PROCAS2.Data.Identity;
 
 namespace PROCAS2.Services.Utility
 {
@@ -20,10 +20,12 @@ namespace PROCAS2.Services.Utility
         private IContextService _contextService;
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<AppUser> _appUserRepo;
+        private UserManager<ApplicationUser> _userManager; // identity user manager
 
-        public PROCASUserManager(IContextService contextService, IUnitOfWork unitOfWork,
+        public PROCASUserManager(UserManager<ApplicationUser> userManager, IContextService contextService, IUnitOfWork unitOfWork,
                                 IGenericRepository<AppUser> appUserRepo)
         {
+            _userManager = userManager;
             _contextService = contextService;
             _unitOfWork = unitOfWork;
             _appUserRepo = appUserRepo;
@@ -98,6 +100,17 @@ namespace PROCAS2.Services.Utility
                 appUser.SuperUser = flag;
                 _appUserRepo.Update(appUser);
                 _unitOfWork.Save();
+
+                if (flag == true)
+                {
+                    ApplicationUser user = _userManager.FindByName(appUser.UserCode);
+                    _userManager.AddToRole(user.Id, "Super");
+                }
+                else
+                {
+                    ApplicationUser user = _userManager.FindByName(appUser.UserCode);
+                    _userManager.RemoveFromRole(user.Id, "Super");
+                }
             }
         }
 
@@ -120,6 +133,23 @@ namespace PROCAS2.Services.Utility
 
             return false;
 
+        }
+
+        /// <summary>
+        /// Add a user into the AppUser table
+        /// </summary>
+        /// <param name="userName">User code</param>
+        /// <param name="superUser">true = super user</param>
+        /// <param name="active">true = active</param>
+        public void AddUser(string userName, bool superUser, bool active)
+        {
+            AppUser appUser = new AppUser();
+            appUser.UserCode = userName;
+            appUser.Active = active;
+            appUser.SuperUser = superUser;
+
+            _appUserRepo.Insert(appUser);
+            _unitOfWork.Save();
         }
 
     }

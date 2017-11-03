@@ -43,7 +43,7 @@ namespace PROCAS2
 
 
             container.RegisterType<IAuthenticationManager>(
-        new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
+                    new InjectionFactory(c => HttpContext.Current.GetOwinContext().Authentication));
 
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(
                 new InjectionConstructor(typeof(ApplicationDbContext)));
@@ -60,18 +60,6 @@ namespace PROCAS2
             container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(
                 new HierarchicalLifetimeManager());
 
-
-            //container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
-            //container.RegisterType<UserManager<ApplicationUser>>(new HierarchicalLifetimeManager());
-            //container.RegisterType<SignInManager<ApplicationUser, string>>(new HierarchicalLifetimeManager());
-            //container.RegisterType<IAuthenticationManager>(
-            //new InjectionFactory(
-            //    o => System.Web.HttpContext.Current.GetOwinContext().Authentication
-            //)
-            //);
-            //container.RegisterType<IUserStore<ApplicationUser>, UserStore<ApplicationUser>>(new HierarchicalLifetimeManager());
-            ////container.RegisterType<AccountController>(new InjectionConstructor());
-            //container.RegisterType<ManageController>(new InjectionConstructor());
 
             container.RegisterType<PROCAS2Context>(new PerResolveLifetimeManager());
 

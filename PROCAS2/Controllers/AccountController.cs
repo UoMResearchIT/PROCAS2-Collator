@@ -16,6 +16,9 @@ using PROCAS2.Data;
 
 namespace PROCAS2.Controllers
 {
+#if RELEASE
+    [RequireHttps]
+#endif
     [Authorize]
     public class AccountController : Controller
     {
