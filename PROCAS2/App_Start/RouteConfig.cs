@@ -25,6 +25,19 @@ namespace PROCAS2
                 defaults: new { controller = "UserAdmin", action = "SuperUser", userId = "", flag = false }
             );
 
+
+            routes.MapRoute(
+                name: "ParticipantEdit",
+                url: "Participant/Edit/{participantId}",
+                defaults: new { controller = "Participant", action = "Edit", participantId = "" }
+            );
+
+            routes.MapRoute(
+               name: "ParticipantEdit",
+               url: "Participant/View/{participantId}",
+               defaults: new { controller = "Participant", action = "View", participantId = "" }
+           );
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
