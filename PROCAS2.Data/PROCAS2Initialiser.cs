@@ -33,6 +33,14 @@ namespace PROCAS2.Data
 
             addressTypes.ForEach(s => context.AddressTypes.Add(s));
             context.SaveChanges();
+
+            var eventTypes = new List<EventType>
+            {
+                new EventType { Id =1, Name="Participant Created", Code="001" }
+            };
+
+            eventTypes.ForEach(s => context.EventTypes.Add(s));
+            context.SaveChanges();
         }
     }
 }

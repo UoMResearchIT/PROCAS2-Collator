@@ -1,0 +1,50 @@
+﻿@model PROCAS2.Models.ViewModels.UploadResultsViewModel
+
+@{
+    ViewBag.Title = "Upload Results";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h3>The following problems with the upload file have been found:</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+       <p>No changes have been made to the database.</p>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+       
+            <table id="tblResults" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Issue
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Messages)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item)
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+    </div>
+</div>

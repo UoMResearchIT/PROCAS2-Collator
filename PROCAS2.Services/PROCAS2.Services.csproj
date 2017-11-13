@@ -58,9 +58,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\IParticipantService.cs" />
+    <Compile Include="App\ParticipantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\ContextService.cs" />
+    <Compile Include="Utility\HashingService.cs" />
     <Compile Include="Utility\IContextService.cs" />
+    <Compile Include="Utility\IHashingService.cs" />
     <Compile Include="Utility\IPROCAS2UserManager.cs" />
     <Compile Include="Utility\PROCASUserManager.cs" />
   </ItemGroup>
@@ -68,6 +72,14 @@
     <ProjectReference Include="..\PROCAS2.Data\PROCAS2.Data.csproj">
       <Project>{7f57a06c-f6c8-440f-974b-d3c3dbe83358}</Project>
       <Name>PROCAS2.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PROCAS2.Models\PROCAS2.Models.csproj">
+      <Project>{6def130a-c66d-4d48-baa2-e9345ddd1de7}</Project>
+      <Name>PROCAS2.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PROCAS2.Resources\PROCAS2.Resources.csproj">
+      <Project>{5278aa4d-7693-4d84-8d08-665360160c5f}</Project>
+      <Name>PROCAS2.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

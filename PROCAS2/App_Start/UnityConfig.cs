@@ -12,6 +12,7 @@ using PROCAS2.Data.Identity;
 using PROCAS2.Data;
 using PROCAS2.Controllers;
 using PROCAS2.Services.Utility;
+using PROCAS2.Services.App;
 
 namespace PROCAS2
 {
@@ -30,6 +31,8 @@ namespace PROCAS2
             container.RegisterType(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IContextService, ContextService>();
+            container.RegisterType<IHashingService, HashingService>();
+            container.RegisterType<IParticipantService, ParticipantService>();
             container.RegisterType<IPROCAS2UserManager, PROCASUserManager>();
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());

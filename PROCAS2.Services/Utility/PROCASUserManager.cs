@@ -152,5 +152,17 @@ namespace PROCAS2.Services.Utility
             _unitOfWork.Save();
         }
 
+        /// <summary>
+        /// Return the AppUser record for the current user.
+        /// </summary>
+        /// <returns>The AppUser object</returns>
+        public AppUser GetCurrentUser()
+        {
+            string currentUser = _contextService.CurrentUserName();
+
+            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == currentUser).FirstOrDefault();
+
+            return appUser;
+        }
     }
 }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.IO;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
+using PROCAS2.Services.App;
 
 namespace PROCAS2.Controllers
 {
@@ -18,10 +20,13 @@ namespace PROCAS2.Controllers
     {
 
         private IGenericRepository<Participant> _participantRepo;
+        private IParticipantService _participantService;
 
-        public ParticipantController(IGenericRepository<Participant> participantRepo)
+        public ParticipantController(IGenericRepository<Participant> participantRepo,
+                                    IParticipantService participantService)
         {
             _participantRepo = participantRepo;
+            _participantService = participantService;
         }
 
 
@@ -35,10 +40,35 @@ namespace PROCAS2.Controllers
             return View("Index", model);
         }
 
-        // GET: Participant/Details/5
-        public ActionResult Details(int id)
+        // GET: Participant/Upload
+        public ActionResult UploadNew()
         {
-            return View();
+            UploadNewParticipantsViewModel model = new UploadNewParticipantsViewModel();
+            return View("UploadNew", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadNew(UploadNewParticipantsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                MemoryStream hashFile;
+                UploadResultsViewModel outModel;
+                if (_participantService.UploadNewParticipants(model, out outModel, out hashFile) == false)
+                {
+                    // if there is a problem uploading the participants say so.
+                    return View("UploadResults", outModel);
+
+                }
+                else
+                {
+                    // If there is no problem then return a spreadsheet with the hash codes.
+
+                }
+            }
+
+            return View("UploadNew", model);
         }
 
         // GET: Participant/Create

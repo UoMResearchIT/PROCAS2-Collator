@@ -20,7 +20,7 @@ namespace PROCAS2.Services.Utility
 
         public string CurrentUserName()
         {
-            return HttpContext.Current.User.Identity.GetUserId();
+            return HttpContext.Current.User.Identity.Name;
         }
 
         

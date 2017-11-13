@@ -13,10 +13,13 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
+        [MaxLength(300)]
+        public string HashedNHSNumber { get; set; }
+
         [MaxLength(20)]
         public string ScreeningNumber { get; set; }
 
-        public DateTime DateOfBirth { get; set; }
+        public DateTime? DateOfBirth { get; set; }
 
         [MaxLength(12)]
         public string NHSNumber { get; set; }
@@ -30,20 +33,20 @@ namespace PROCAS2.Data.Entities
         [MaxLength(50)]
         public string LastName { get; set; }
 
-        public DateTime DateCreated { get; set; }
+        public DateTime? DateCreated { get; set; }
 
-        public DateTime DateFirstAppointment { get; set; }
+        public DateTime? DateFirstAppointment { get; set; }
 
-        public DateTime DateActualAppointment { get; set; }
+        public DateTime? DateActualAppointment { get; set; }
 
-        public int BMI { get; set; }
+        public int? BMI { get; set; }
 
 
         [MaxLength(200)]
         public string GPName { get; set; }
 
 
-        public int ScreeningSiteId { get; set; }
+        public int? ScreeningSiteId { get; set; }
 
         public bool Deceased { get; set; }
 
@@ -63,12 +66,12 @@ namespace PROCAS2.Data.Entities
 
         public bool MailingList { get; set; }
 
-        public double RiskScore { get; set; }
+        public double? RiskScore { get; set; }
 
         [MaxLength(20)]
         public string RiskCategory { get; set; }
         [ForeignKey("LastEvent")]
-        public int LastEventId { get; set; }
+        public int? LastEventId { get; set; }
 
         
 

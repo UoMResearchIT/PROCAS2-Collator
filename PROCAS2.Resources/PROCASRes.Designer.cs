@@ -61,6 +61,51 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 001.
+        /// </summary>
+        public static string EVENT_CREATED {
+            get {
+                return ResourceManager.GetString("EVENT_CREATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Participant created..
+        /// </summary>
+        public static string EVENT_CREATED_STR {
+            get {
+                return ResourceManager.GetString("EVENT_CREATED_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The row does not contain the required number of columns ({0})..
+        /// </summary>
+        public static string UPLOAD_INCORRECT_COLUMNS {
+            get {
+                return ResourceManager.GetString("UPLOAD_INCORRECT_COLUMNS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} is already in the database..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_IN_DB {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_IN_DB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} is too long..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_TOO_LONG {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_TOO_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to User name already exists..
         /// </summary>
         public static string USER_ALREADY_EXISTS {
