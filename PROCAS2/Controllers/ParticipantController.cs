@@ -4,11 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Configuration;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
 using PROCAS2.Services.App;
+using PROCAS2.CustomActionResults;
 
 namespace PROCAS2.Controllers
 {
@@ -55,6 +57,19 @@ namespace PROCAS2.Controllers
             {
                 MemoryStream hashFile;
                 UploadResultsViewModel outModel;
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
                 if (_participantService.UploadNewParticipants(model, out outModel, out hashFile) == false)
                 {
                     // if there is a problem uploading the participants say so.
@@ -64,7 +79,12 @@ namespace PROCAS2.Controllers
                 else
                 {
                     // If there is no problem then return a spreadsheet with the hash codes.
+                    string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Participant/UploadNew"));
+                    HttpContext.Response.AppendHeader("Refresh", headerValue);
 
+                    
+
+                    return new CSVResult(hashFile, "Hashes.csv");
                 }
             }
 
@@ -136,5 +156,34 @@ namespace PROCAS2.Controllers
                 return View();
             }
         }
+
+        public string PrependSchemeAndAuthority(string url)
+        {
+            try
+            {
+                if (Request.Url.Authority.Contains("localhost"))
+                {
+                    return Request.Url.Scheme + "://"
+                            + Request.Url.Authority + "/"
+                            + url;
+                }
+                string urlBase = ConfigurationManager.AppSettings["UrlBase"];
+                if (urlBase != null)
+                {
+                    return urlBase + "/" + url;
+                }
+                else
+                {
+                    return Request.Url.Scheme + "://"
+                        + Request.Url.Authority + "/"
+                        + url;
+                }
+            }
+            catch
+            {
+                return url;
+            }
+        }
+
     }
 }

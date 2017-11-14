@@ -13,7 +13,7 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
-        [MaxLength(300)]
+        [MaxLength(400)]
         public string HashedNHSNumber { get; set; }
 
         [MaxLength(20)]

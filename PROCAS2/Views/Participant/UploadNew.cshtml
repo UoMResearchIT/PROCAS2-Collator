@@ -5,6 +5,11 @@
     ViewBag.Title = "Upload Participants";
 }
 
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+<script src="@Url.Content("~/js/uploadNewParticipant.js")"></script>
+
 <div class="row">
     <div class="col-md-12">
 
@@ -42,7 +47,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-4 col-md-10">
-                        <input type="submit" value="Upload" class="btn btn-default" />
+                        <input id="btnUpload" type="submit" value="Upload" class="btn btn-default" />
                     </div>
                 </div>
 
@@ -50,3 +55,8 @@
         }
 
     </div>
+
+<div id="exportElement" class="spinnerElement">
+
+    <div id="exportSection" class="spinnerSection">Uploading Data</div>
+</div>

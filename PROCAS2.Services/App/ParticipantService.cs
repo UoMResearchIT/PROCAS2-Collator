@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.IO;
+using CsvHelper;
+
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
@@ -21,18 +23,21 @@ namespace PROCAS2.Services.App
         private IGenericRepository<EventType> _eventTypeRepo;
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
+        private IHashingService _hashingService;
 
         public ParticipantService(IUnitOfWork unitOfWork,
                                 IGenericRepository<Participant> participantRepo,
                                 IGenericRepository<ParticipantEvent> eventRepo,
                                 IPROCAS2UserManager userManager,
-                                IGenericRepository<EventType> eventTypeRepo)
+                                IGenericRepository<EventType> eventTypeRepo,
+                                IHashingService hashingService)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
             _eventRepo = eventRepo;
             _userManager = userManager;
             _eventTypeRepo = eventTypeRepo;
+            _hashingService = hashingService;
         }
 
         /// <summary>
@@ -69,40 +74,34 @@ namespace PROCAS2.Services.App
             // If there are no errors then add them to the database and add the hash to the output spreadsheet
             if (errors == false)
             {
+                StringWriter csvString = new StringWriter();
                 // First check the file for errors
                 reader.BaseStream.Seek(0, SeekOrigin.Begin);
                 reader.DiscardBufferedData();
-                while (reader.EndOfStream == false)
+
+                using (var csv = new CsvWriter(csvString))
                 {
-                    string line = reader.ReadLine();
-                    string[] lineBits = line.Split(',');
+                    
+                    csv.Configuration.Delimiter = ",";
 
-                    DateTime dateCreated = DateTime.Now;
-
-                    Participant participant = new Participant();
-                    participant.NHSNumber = lineBits[0];
-                    participant.DateCreated = dateCreated;
-                    _participantRepo.Insert(participant);
-
-                    _unitOfWork.Save();
-
-                    ParticipantEvent pEvent = new ParticipantEvent();
-                    pEvent.AppUser = _userManager.GetCurrentUser();
-                    pEvent.EventDate = dateCreated;
-                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == PROCASRes.EVENT_CREATED).FirstOrDefault();
-                    pEvent.Notes = PROCASRes.EVENT_CREATED_STR;
-                    pEvent.Participant = participant;
-
-                    _eventRepo.Insert(pEvent);
-                    _unitOfWork.Save();
+                    
+                    while (reader.EndOfStream == false)
+                    {
+                        string line = reader.ReadLine();
+                        string[] lineBits = line.Split(',');
 
 
-                    participant.LastEvent = pEvent;
-                    _participantRepo.Update(participant);
+                        string hash = CreateNewParticipantRecord(lineBits[0]);
 
-                    _unitOfWork.Save();
-
+                        // First put in the NHSNumber.
+                        csv.WriteField(lineBits[0]);
+                        // Then the hash
+                        csv.WriteField(hash);
+                        csv.NextRecord();
+                    }
                 }
+
+                hashFile = new MemoryStream(Encoding.UTF8.GetBytes(csvString.ToString()));
                 return true;
             }
             else
@@ -112,6 +111,44 @@ namespace PROCAS2.Services.App
 
 
             
+        }
+
+
+        /// <summary>
+        /// Create a new participant record
+        /// </summary>
+        /// <param name="NHSNumber">NHS number</param>
+        /// <returns>Hashed NHS number</returns>
+        public string CreateNewParticipantRecord(string NHSNumber)
+        {
+            DateTime dateCreated = DateTime.Now;
+
+            Participant participant = new Participant();
+            participant.NHSNumber = NHSNumber;
+            string hash = _hashingService.CreateHash(NHSNumber);
+            participant.HashedNHSNumber = hash;
+            participant.DateCreated = dateCreated;
+            _participantRepo.Insert(participant);
+
+            _unitOfWork.Save();
+
+            ParticipantEvent pEvent = new ParticipantEvent();
+            pEvent.AppUser = _userManager.GetCurrentUser();
+            pEvent.EventDate = dateCreated;
+            pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == PROCASRes.EVENT_CREATED).FirstOrDefault();
+            pEvent.Notes = PROCASRes.EVENT_CREATED_STR;
+            pEvent.Participant = participant;
+
+            _eventRepo.Insert(pEvent);
+            _unitOfWork.Save();
+
+
+            participant.LastEvent = pEvent;
+            _participantRepo.Update(participant);
+
+            _unitOfWork.Save();
+
+            return hash;
         }
 
         /// <summary>
