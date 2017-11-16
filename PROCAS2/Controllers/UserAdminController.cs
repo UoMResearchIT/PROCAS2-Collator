@@ -44,6 +44,7 @@ namespace PROCAS2.Controllers
             UserAdminIndexViewModel model = new UserAdminIndexViewModel();
 
             model.AppUsers = _procas2UserManager.GetAllAppUsers();
+            model.RegisteredUsers = _procas2UserManager.GetAllRegisteredUsers();
          
             return View("Index", model);
         }
@@ -67,7 +68,13 @@ namespace PROCAS2.Controllers
             return RedirectToAction("Index", "UserAdmin");
         }
 
-        
+        [HttpGet]
+        public ActionResult RemoveIdentity(int userId)
+        {
+            _procas2UserManager.AllowToReRegister(userId);
+
+            return RedirectToAction("Index", "UserAdmin");
+        }
 
         // GET: UserAdmin/Create
         public ActionResult Create()

@@ -19,8 +19,27 @@ $(document).ready(function () {
                 null,
                 { "orderDataType": "dom-checkbox" },
                 { "orderDataType": "dom-checkbox" },
+                null,
+                null,
                 null
                 
         ]
     });
+
+    // If any of the buttons on the table are pressed, prompt the user to make sure that they
+    // really want to do it!
+    $('.btnAdminAction').confirm({
+        title: "Are you sure?",
+        content: "You clicked to do the following action: <br/> ", 
+        onContentReady: function () {
+            
+
+            this.setContentAppend('<div>' + this.$target[0].text + '</div>');
+
+
+            }
+    });
+
+
+    
 });

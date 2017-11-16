@@ -13,10 +13,12 @@ namespace PROCAS2.Models.ViewModels
         public UserAdminIndexViewModel()
         {
             AppUsers = new List<AppUser>();
+            RegisteredUsers = new List<string>();
         }
 
 
 
         public List<AppUser> AppUsers { get; set; }
+        public List<string> RegisteredUsers { get; set; }
     }
 }

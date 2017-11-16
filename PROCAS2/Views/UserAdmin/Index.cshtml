@@ -34,6 +34,8 @@
                             Active?
                         </th>
                         <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,24 +52,30 @@
                             <td>
                                 @Html.DisplayFor(modelItem => item.Active)
                             </td>
-                            <td class="actionList">
-
+                            <td>
+                                @if (Model.RegisteredUsers.Contains(item.UserCode))
+                                {
+                                    @Html.ActionLink("Remove Password", "RemoveIdentity", new { userId = item.Id }, new { @class = "btn btn-default pull-right btnAdminAction" })
+                                }
+                            </td>
+                            <td>
                                 @if (item.Active == true)
                                 {
-                                    @Html.ActionLink("Suspend", "Suspend", new { userId = item.Id, flag = false}, new { @class="btn btn-danger pull-right" })
+                                    @Html.ActionLink("Suspend", "Suspend", new { userId = item.Id, flag = false }, new { @class = "btn btn-danger pull-right btnAdminAction" })
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Reactivate", "Suspend", new { userId = item.Id, flag = true }, new { @class = "btn btn-default pull-right" })
+                                    @Html.ActionLink("Reactivate", "Suspend", new { userId = item.Id, flag = true }, new { @class = "btn btn-default pull-right btnAdminAction" })
                                 }
-
+                            </td>
+                            <td>
                                 @if (item.SuperUser == true)
                                 {
-                                    @Html.ActionLink("Make General User", "SuperUser", new { userId = item.Id, flag=false }, new { @class = "btn btn-default pull-right" })
+                                    @Html.ActionLink("Make General User", "SuperUser", new { userId = item.Id, flag = false }, new { @class = "btn btn-default pull-right btnAdminAction" })
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Make Super User", "SuperUser", new { userId = item.Id, flag=true }, new { @class = "btn btn-danger pull-right" })
+                                    @Html.ActionLink("Make Super User", "SuperUser", new { userId = item.Id, flag = true }, new { @class = "btn btn-danger pull-right btnAdminAction" })
                                 }
 
                             </td>

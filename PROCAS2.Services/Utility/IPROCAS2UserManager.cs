@@ -17,5 +17,7 @@ namespace PROCAS2.Services.Utility
         bool IsSuperUser(string userName);
         void AddUser(string userName,bool superUser, bool active);
         AppUser GetCurrentUser();
+        void AllowToReRegister(int userId);
+        List<string> GetAllRegisteredUsers();
     }
 }

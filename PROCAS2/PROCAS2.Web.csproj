@@ -390,6 +390,7 @@
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\icons\index.ico" />
     <Content Include="Content\images\uni.png" />
+    <Content Include="Content\jquery-confirm.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -493,6 +494,7 @@
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-confirm.min.js" />
     <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
     <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="Scripts\jquery.spin.js" />

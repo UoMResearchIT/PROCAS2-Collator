@@ -71,6 +71,15 @@ namespace PROCAS2.Services.Utility
         }
 
         /// <summary>
+        /// Return all users who have actually created an ASP.NET Identity record.
+        /// </summary>
+        /// <returns>List of emails/usernames</returns>
+        public List<string> GetAllRegisteredUsers()
+        {
+            return _userManager.Users.Select(x => x.UserName).ToList();
+        }
+
+        /// <summary>
         /// Set the 'Active' flag on the user
         /// </summary>
         /// <param name="userId">Id of the user to set</param>
@@ -110,6 +119,23 @@ namespace PROCAS2.Services.Utility
                 {
                     ApplicationUser user = _userManager.FindByName(appUser.UserCode);
                     _userManager.RemoveFromRole(user.Id, "Super");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Delete the user's identity record so that they can reregister. Used when they've forgotten their password!
+        /// </summary>
+        /// <param name="userId"></param>
+        public void AllowToReRegister(int userId)
+        {
+            AppUser appUser = _appUserRepo.GetByID(userId);
+            if (appUser != null)
+            {
+                ApplicationUser user = _userManager.FindByName(appUser.UserCode);
+                if (user != null)
+                {
+                    _userManager.Delete(user);
                 }
             }
         }

@@ -119,7 +119,7 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="NHSNumber">NHS number</param>
         /// <returns>Hashed NHS number</returns>
-        public string CreateNewParticipantRecord(string NHSNumber)
+        private string CreateNewParticipantRecord(string NHSNumber)
         {
             DateTime dateCreated = DateTime.Now;
 

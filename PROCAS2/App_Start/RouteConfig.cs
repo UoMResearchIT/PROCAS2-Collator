@@ -25,6 +25,12 @@ namespace PROCAS2
                 defaults: new { controller = "UserAdmin", action = "SuperUser", userId = "", flag = false }
             );
 
+            routes.MapRoute(
+                name: "RemoveIdentity",
+                url: "UserAdmin/RemoveIdentity/{userId}",
+                defaults: new { controller = "UserAdmin", action = "RemoveIdentity", userId = ""}
+            );
+
 
             routes.MapRoute(
                 name: "ParticipantEdit",
