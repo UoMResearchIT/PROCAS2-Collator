@@ -6,6 +6,8 @@ using System.Web.Mvc;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
+using PROCAS2.Models.ViewModels;
+using PROCAS2.Services.App;
 
 namespace PROCAS2.Controllers
 {
@@ -18,13 +20,16 @@ namespace PROCAS2.Controllers
 
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<ScreeningSite> _siteRepo;
+        private IDashboardService _dashboardService;
 
 
         public HomeController(IUnitOfWork unitOfWork,
-                                IGenericRepository<ScreeningSite> siteRepo)
+                                IGenericRepository<ScreeningSite> siteRepo,
+                                IDashboardService dashboardService)
         {
             _unitOfWork = unitOfWork;
             _siteRepo = siteRepo;
+            _dashboardService = dashboardService;
         }
 
         public ActionResult Index()
@@ -33,6 +38,20 @@ namespace PROCAS2.Controllers
             return View();
         }
 
+        public ActionResult ConsentPanel()
+        {
+            DashboardConsentViewModel model = new DashboardConsentViewModel();
+
+            model.NumberConsented = _dashboardService.GetConsentedCount();
+            model.NumberParticipants = _dashboardService.GetTotalParticipantCount() ;
+            model.NumberYetToConsent = model.NumberParticipants - model.NumberConsented;
+            model.NumberConsentedNoDetails = _dashboardService.GetConsentedNoDetails();
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Consent", model);
+            else
+                return View("_Consent", model);
+        }
        
     }
 }

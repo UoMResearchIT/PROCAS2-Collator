@@ -62,6 +62,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\DashboardService.cs" />
+    <Compile Include="App\IDashboardService.cs" />
     <Compile Include="App\IParticipantService.cs" />
     <Compile Include="App\ParticipantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

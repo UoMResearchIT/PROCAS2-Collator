@@ -101,6 +101,7 @@
     <Compile Include="Identity\AccountViewModels.cs" />
     <Compile Include="Identity\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\DashboardConsentViewModel.cs" />
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UploadResultsViewModel.cs" />

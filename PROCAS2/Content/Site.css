@@ -101,3 +101,9 @@ textarea {
 	left:30%;
 	
 }
+
+.dashboardPanel{
+    border: 1px solid Black;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+}

@@ -406,6 +406,7 @@
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\participantList.js" />
     <Content Include="js\uploadNewParticipant.js" />
     <Content Include="js\userAdmin.js" />
@@ -537,6 +538,7 @@
     <Content Include="Views\Participant\Index.cshtml" />
     <Content Include="Views\Participant\UploadNew.cshtml" />
     <Content Include="Views\Participant\UploadResults.cshtml" />
+    <Content Include="Views\Home\_Consent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
