@@ -106,10 +106,45 @@ namespace PROCAS2.Services.App
             }
             else
             { // there were errors
+                outModel.DBNoUpdate = true;
                 return false;
             }
 
 
+            
+        }
+
+
+        /// <summary>
+        /// Upload the participant's full data
+        /// </summary>
+        /// <param name="model">The model containing the CSV file</param>
+        /// <param name="outModel">The results of the upload (good or bad)</param>
+        public void UploadUpdateParticipants(UploadUpdateParticipantsViewModel model, out UploadResultsViewModel outModel)
+        {
+            outModel = new UploadResultsViewModel();
+
+            StreamReader reader = new StreamReader(model.UploadedFile.InputStream);
+            int lineCount = 1;
+           
+            bool valid = true;
+
+            // First check the file for errors
+            while (reader.EndOfStream == false)
+            {
+                string line = reader.ReadLine();
+
+                valid = ValidateUpdateParticipantLine(line, lineCount, ref outModel);
+                if (valid == true)
+                {
+                    UpdateParticipantRecord(line);
+                }
+
+                lineCount++;
+            }
+
+         
+           
             
         }
 
@@ -165,7 +200,7 @@ namespace PROCAS2.Services.App
             if (lineBits.Count() != 1) // Should only be 1 column
             {
                 
-                outModel.Messages.Add("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_INCORRECT_COLUMNS, 1));
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_INCORRECT_COLUMNS, 1), PROCASRes.UPLOAD_FAIL);
                 return false;
             }
 
@@ -174,7 +209,7 @@ namespace PROCAS2.Services.App
             if (lineBits[0].Length > 12) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
             {
                
-                outModel.Messages.Add("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber));
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), PROCASRes.UPLOAD_FAIL);
                 return false;
             }
 
@@ -182,12 +217,72 @@ namespace PROCAS2.Services.App
             if (participant != null) // Participant already exists in the database
             {
                 
-                outModel.Messages.Add("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber));
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber), PROCASRes.UPLOAD_FAIL);
                 return false;
             }
 
+            
             return true;
 
         }
+
+
+        /// <summary>
+        /// Create a new participant record
+        /// </summary>
+        /// <param name="line">line from CSV file</param>
+        private void UpdateParticipantRecord(string line)
+        {
+        }
+
+        /// <summary>
+        /// Check the the passed line is valid
+        /// </summary
+        /// <param name="line">The line string</param>
+        /// <param name="lineCount">Line number</param>
+        /// <param name="outModel">View model to add result messages to</param>
+        /// <returns>true if valid, else false</returns>
+        private bool ValidateUpdateParticipantLine(string line, int lineCount, ref UploadResultsViewModel outModel)
+        {
+
+            string[] lineBits = line.Split(',');
+            if (lineBits.Count() != 1) // Should only be 1 column
+            {
+
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_INCORRECT_COLUMNS, 1), PROCASRes.UPLOAD_FAIL);
+                return false;
+            }
+
+            string NHSNumber = lineBits[0];
+
+            if (lineBits[0].Length > 12) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            {
+
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                return false;
+            }
+
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+            if (participant == null) // Participant does not exist in the database
+            {
+
+                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                return false;
+            }
+            else
+            {
+                if (participant.Consented == false)
+                {
+                    outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+
+            // We've managed to pass all the checks so it must be valid!
+            outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_SUCCESS, NHSNumber), PROCASRes.UPLOAD_CREATED);
+            return true;
+
+        }
+
     }
 }

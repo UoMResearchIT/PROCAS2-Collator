@@ -105,6 +105,7 @@
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UploadResultsViewModel.cs" />
+    <Compile Include="ViewModels\UploadUpdateParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UserAdminCreateViewModel.cs" />
     <Compile Include="ViewModels\UserAdminIndexViewModel.cs" />
   </ItemGroup>
@@ -116,6 +117,10 @@
     <ProjectReference Include="..\PROCAS2.Data\PROCAS2.Data.csproj">
       <Project>{7f57a06c-f6c8-440f-974b-d3c3dbe83358}</Project>
       <Name>PROCAS2.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PROCAS2.Resources\PROCAS2.Resources.csproj">
+      <Project>{5278aa4d-7693-4d84-8d08-665360160c5f}</Project>
+      <Name>PROCAS2.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

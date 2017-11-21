@@ -2,7 +2,7 @@
 
 <h4>Consent</h4>
 
-<p>Number participants: @Model.NumberParticipants</p>
-<p>Number consented: @Model.NumberConsented</p>
-<p>Number yet to consent: @Model.NumberYetToConsent</p>
-<p>Number consented but without full details yet: @Model.NumberConsentedNoDetails</p>
+<p>@Html.LabelFor(x => x.NumberParticipants) @Model.NumberParticipants</p>
+<p>@Html.LabelFor(x => x.NumberConsented) @Model.NumberConsented</p>
+<p>@Html.LabelFor(x => x.NumberYetToConsent) @Model.NumberYetToConsent</p>
+<p>@Html.LabelFor(x => x.NumberConsentedNoDetails) @Model.NumberConsentedNoDetails</p>

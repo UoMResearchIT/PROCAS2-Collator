@@ -13,5 +13,6 @@ namespace PROCAS2.Services.App
     public interface IParticipantService
     {
         bool UploadNewParticipants(UploadNewParticipantsViewModel model, out UploadResultsViewModel outModel, out MemoryStream hashFile);
+        void UploadUpdateParticipants(UploadUpdateParticipantsViewModel model, out UploadResultsViewModel outModel);
     }
 }

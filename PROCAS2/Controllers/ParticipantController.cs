@@ -91,6 +91,45 @@ namespace PROCAS2.Controllers
             return View("UploadNew", model);
         }
 
+        // GET: Participant/Upload
+        public ActionResult UploadUpdate()
+        {
+            UploadUpdateParticipantsViewModel model = new UploadUpdateParticipantsViewModel();
+            return View("UploadUpdate", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadUpdate(UploadUpdateParticipantsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+               
+                UploadResultsViewModel outModel;
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
+                _participantService.UploadUpdateParticipants(model, out outModel);
+                
+                return View("UploadResults", outModel);
+
+               
+               
+            }
+
+            return View("UploadUpdate", model);
+        }
+
         // GET: Participant/Create
         public ActionResult Create()
         {

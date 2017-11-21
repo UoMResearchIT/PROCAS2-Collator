@@ -79,6 +79,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATED:.
+        /// </summary>
+        public static string UPLOAD_CREATED {
+            get {
+                return ResourceManager.GetString("UPLOAD_CREATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FAIL:.
+        /// </summary>
+        public static string UPLOAD_FAIL {
+            get {
+                return ResourceManager.GetString("UPLOAD_FAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The row does not contain the required number of columns ({0})..
         /// </summary>
         public static string UPLOAD_INCORRECT_COLUMNS {
@@ -93,6 +111,33 @@ namespace PROCAS2.Resources {
         public static string UPLOAD_NHS_NUMBER_IN_DB {
             get {
                 return ResourceManager.GetString("UPLOAD_NHS_NUMBER_IN_DB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} has not yet given their consent..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_NOT_CONSENTED {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_NOT_CONSENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} is not in the database..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_NOT_IN_DB {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_NOT_IN_DB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} has been updated successfully..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_SUCCESS {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_SUCCESS", resourceCulture);
             }
         }
         
@@ -120,6 +165,87 @@ namespace PROCAS2.Resources {
         public static string USER_CONFIG_INCORRECT {
             get {
                 return ResourceManager.GetString("USER_CONFIG_INCORRECT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number consented:.
+        /// </summary>
+        public static string VM_DASHBOARD_NUM_CONSENT {
+            get {
+                return ResourceManager.GetString("VM_DASHBOARD_NUM_CONSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number consented but without full details yet:.
+        /// </summary>
+        public static string VM_DASHBOARD_NUM_CONSENT_NO_DETAILS {
+            get {
+                return ResourceManager.GetString("VM_DASHBOARD_NUM_CONSENT_NO_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of participants:.
+        /// </summary>
+        public static string VM_DASHBOARD_NUM_PARC {
+            get {
+                return ResourceManager.GetString("VM_DASHBOARD_NUM_PARC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number yet to consent:.
+        /// </summary>
+        public static string VM_DASHBOARD_NUM_YET_CONSENT {
+            get {
+                return ResourceManager.GetString("VM_DASHBOARD_NUM_YET_CONSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string VM_UPLOAD_NEW_FILE_NAME {
+            get {
+                return ResourceManager.GetString("VM_UPLOAD_NEW_FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string VM_UPLOAD_UPDATE_FILE_NAME {
+            get {
+                return ResourceManager.GetString("VM_UPLOAD_UPDATE_FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        public static string VM_USER_ADMIN_CREATE_ACTIVE {
+            get {
+                return ResourceManager.GetString("VM_USER_ADMIN_CREATE_ACTIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Super User.
+        /// </summary>
+        public static string VM_USER_ADMIN_CREATE_SUPERUSER {
+            get {
+                return ResourceManager.GetString("VM_USER_ADMIN_CREATE_SUPERUSER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Name.
+        /// </summary>
+        public static string VM_USER_ADMIN_CREATE_USERNAME {
+            get {
+                return ResourceManager.GetString("VM_USER_ADMIN_CREATE_USERNAME", resourceCulture);
             }
         }
     }

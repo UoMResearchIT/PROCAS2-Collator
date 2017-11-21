@@ -123,12 +123,30 @@
   <data name="EVENT_CREATED_STR" xml:space="preserve">
     <value>Participant created.</value>
   </data>
+  <data name="UPLOAD_CREATED" xml:space="preserve">
+    <value>CREATED:</value>
+  </data>
+  <data name="UPLOAD_FAIL" xml:space="preserve">
+    <value>FAIL:</value>
+  </data>
   <data name="UPLOAD_INCORRECT_COLUMNS" xml:space="preserve">
     <value>The row does not contain the required number of columns ({0}).</value>
     <comment>{0} = number of columns expected</comment>
   </data>
   <data name="UPLOAD_NHS_NUMBER_IN_DB" xml:space="preserve">
     <value>NHS Number {0} is already in the database.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_NOT_CONSENTED" xml:space="preserve">
+    <value>NHS Number {0} has not yet given their consent.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_NOT_IN_DB" xml:space="preserve">
+    <value>NHS Number {0} is not in the database.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_SUCCESS" xml:space="preserve">
+    <value>NHS Number {0} has been updated successfully.</value>
     <comment>{0} = NHS number</comment>
   </data>
   <data name="UPLOAD_NHS_NUMBER_TOO_LONG" xml:space="preserve">
@@ -140,5 +158,32 @@
   </data>
   <data name="USER_CONFIG_INCORRECT" xml:space="preserve">
     <value>User is either marked as not active or has not been configured yet. Please contact the PROCAS2 team to check your record.</value>
+  </data>
+  <data name="VM_DASHBOARD_NUM_CONSENT" xml:space="preserve">
+    <value>Number consented:</value>
+  </data>
+  <data name="VM_DASHBOARD_NUM_CONSENT_NO_DETAILS" xml:space="preserve">
+    <value>Number consented but without full details yet:</value>
+  </data>
+  <data name="VM_DASHBOARD_NUM_PARC" xml:space="preserve">
+    <value>Number of participants:</value>
+  </data>
+  <data name="VM_DASHBOARD_NUM_YET_CONSENT" xml:space="preserve">
+    <value>Number yet to consent:</value>
+  </data>
+  <data name="VM_UPLOAD_NEW_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
+  </data>
+  <data name="VM_UPLOAD_UPDATE_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
+  </data>
+  <data name="VM_USER_ADMIN_CREATE_ACTIVE" xml:space="preserve">
+    <value>Active</value>
+  </data>
+  <data name="VM_USER_ADMIN_CREATE_SUPERUSER" xml:space="preserve">
+    <value>Super User</value>
+  </data>
+  <data name="VM_USER_ADMIN_CREATE_USERNAME" xml:space="preserve">
+    <value>User Name</value>
   </data>
 </root>
