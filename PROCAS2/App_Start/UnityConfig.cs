@@ -31,6 +31,7 @@ namespace PROCAS2
             container.RegisterType(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             container.RegisterType<IUnitOfWork, UnitOfWork>();
             container.RegisterType<IContextService, ContextService>();
+            container.RegisterType<IConfigService, ConfigService>();
             container.RegisterType<IHashingService, HashingService>();
             container.RegisterType<IParticipantService, ParticipantService>();
             container.RegisterType<IDashboardService, DashboardService>();

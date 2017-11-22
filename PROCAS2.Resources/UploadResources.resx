@@ -117,43 +117,148 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="EVENT_CREATED" xml:space="preserve">
-    <value>001</value>
+  <data name="UPLOAD_ADDRESS_1_EMPTY" xml:space="preserve">
+    <value>Address line 1 is mandatory.</value>
   </data>
-  <data name="EVENT_CREATED_STR" xml:space="preserve">
-    <value>Participant created.</value>
+  <data name="UPLOAD_ADDRESS_1_TOO_LONG" xml:space="preserve">
+    <value>Address line 1 is too long.</value>
   </data>
-  <data name="USER_ALREADY_EXISTS" xml:space="preserve">
-    <value>User name already exists.</value>
+  <data name="UPLOAD_ADDRESS_2_TOO_LONG" xml:space="preserve">
+    <value>Address line 2 is too long.</value>
   </data>
-  <data name="USER_CONFIG_INCORRECT" xml:space="preserve">
-    <value>User is either marked as not active or has not been configured yet. Please contact the PROCAS2 team to check your record.</value>
+  <data name="UPLOAD_ADDRESS_3_TOO_LONG" xml:space="preserve">
+    <value>Address line 3 is too long.</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_CONSENT" xml:space="preserve">
-    <value>Number consented:</value>
+  <data name="UPLOAD_ADDRESS_4_TOO_LONG" xml:space="preserve">
+    <value>Address line 4 is too long.</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_CONSENT_NO_DETAILS" xml:space="preserve">
-    <value>Number consented but without full details yet:</value>
+  <data name="UPLOAD_BMI_WRONG_FORMAT" xml:space="preserve">
+    <value>BMI should be an integer (whole number)</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_PARC" xml:space="preserve">
-    <value>Number of participants:</value>
+  <data name="UPLOAD_CREATED" xml:space="preserve">
+    <value>CREATED:</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_YET_CONSENT" xml:space="preserve">
-    <value>Number yet to consent:</value>
+  <data name="UPLOAD_DOB_EMPTY" xml:space="preserve">
+    <value>Date of Birth is mandatory.</value>
   </data>
-  <data name="VM_UPLOAD_NEW_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
+  <data name="UPLOAD_DOB_OUT_OF_RANGE" xml:space="preserve">
+    <value>The date of birth does not seem to be set to a sensible value.</value>
   </data>
-  <data name="VM_UPLOAD_UPDATE_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
+  <data name="UPLOAD_DOB_WRONG_FORMAT" xml:space="preserve">
+    <value>Please enter the date of birth in dd/mm/yyyy format.</value>
   </data>
-  <data name="VM_USER_ADMIN_CREATE_ACTIVE" xml:space="preserve">
-    <value>Active</value>
+  <data name="UPLOAD_DOFA_EMPTY" xml:space="preserve">
+    <value>Date of first appointment is mandatory.</value>
   </data>
-  <data name="VM_USER_ADMIN_CREATE_SUPERUSER" xml:space="preserve">
-    <value>Super User</value>
+  <data name="UPLOAD_DOFA_OUT_OF_RANGE" xml:space="preserve">
+    <value>The date of first appointment does not seem to be set to a sensible value.</value>
   </data>
-  <data name="VM_USER_ADMIN_CREATE_USERNAME" xml:space="preserve">
-    <value>User Name</value>
+  <data name="UPLOAD_DOFA_WRONG_FORMAT" xml:space="preserve">
+    <value>Please enter the date of first appointment in dd/mm/yyyy format.</value>
+  </data>
+  <data name="UPLOAD_EMAIL_TOO_LONG" xml:space="preserve">
+    <value>Email address is too long.</value>
+  </data>
+  <data name="UPLOAD_FAIL" xml:space="preserve">
+    <value>FAIL:</value>
+  </data>
+  <data name="UPLOAD_FIRST_NAME_EMPTY" xml:space="preserve">
+    <value>First name is mandatory.</value>
+  </data>
+  <data name="UPLOAD_FIRST_NAME_TOO_LONG" xml:space="preserve">
+    <value>First name is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_ADDRESS_1_EMPTY" xml:space="preserve">
+    <value>GP Address line 1 is mandatory.</value>
+  </data>
+  <data name="UPLOAD_GP_ADDRESS_1_TOO_LONG" xml:space="preserve">
+    <value>GP Address line 1 is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_ADDRESS_2_TOO_LONG" xml:space="preserve">
+    <value>GP Address line 2 is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_ADDRESS_3_TOO_LONG" xml:space="preserve">
+    <value>GP Address line 3 is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_ADDRESS_4_TOO_LONG" xml:space="preserve">
+    <value>GP Address line 4 is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_EMAIL_TOO_LONG" xml:space="preserve">
+    <value>GP Email address is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_NAME_EMPTY" xml:space="preserve">
+    <value>GP Name is mandatory.</value>
+  </data>
+  <data name="UPLOAD_GP_NAME_TOO_LONG" xml:space="preserve">
+    <value>GP Name is too long.</value>
+  </data>
+  <data name="UPLOAD_GP_POSTCODE_EMPTY" xml:space="preserve">
+    <value>GP Postcode is mandatory.</value>
+  </data>
+  <data name="UPLOAD_GP_POSTCODE_TOO_LONG" xml:space="preserve">
+    <value>GP Postcode is too long.</value>
+  </data>
+  <data name="UPLOAD_INCORRECT_COLUMNS" xml:space="preserve">
+    <value>The row does not contain the required number of columns ({0}).</value>
+    <comment>{0} = number of columns expected</comment>
+  </data>
+  <data name="UPLOAD_LAST_NAME_EMPTY" xml:space="preserve">
+    <value>Last name is mandatory.</value>
+  </data>
+  <data name="UPLOAD_LAST_NAME_TOO_LONG" xml:space="preserve">
+    <value>Last name is too long.</value>
+  </data>
+  <data name="UPLOAD_MAILING_LIST_WRONG_FORMAT" xml:space="preserve">
+    <value>Mailing list flag should be either Y or N.</value>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_EMPTY" xml:space="preserve">
+    <value>NHS Number is mandatory</value>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_IN_DB" xml:space="preserve">
+    <value>NHS Number {0} is already in the database.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_NOT_CONSENTED" xml:space="preserve">
+    <value>NHS Number {0} has not yet given their consent.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_NOT_IN_DB" xml:space="preserve">
+    <value>NHS Number {0} is not in the database.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_SUCCESS" xml:space="preserve">
+    <value>NHS Number {0} has been updated successfully.</value>
+    <comment>{0} = NHS number</comment>
+  </data>
+  <data name="UPLOAD_NHS_NUMBER_TOO_LONG" xml:space="preserve">
+    <value>NHS Number is too long.</value>
+  </data>
+  <data name="UPLOAD_POSTCODE_EMPTY" xml:space="preserve">
+    <value>Postcode is mandatory.</value>
+  </data>
+  <data name="UPLOAD_POSTCODE_TOO_LONG" xml:space="preserve">
+    <value>Postcode is too long.</value>
+  </data>
+  <data name="UPLOAD_SCREEN_NUMBER_EMPTY" xml:space="preserve">
+    <value>Screening Number is mandatory.</value>
+  </data>
+  <data name="UPLOAD_SCREEN_NUMBER_TOO_LONG" xml:space="preserve">
+    <value>Screening Number is too long.</value>
+  </data>
+  <data name="UPLOAD_SITE_CODE_EMPTY" xml:space="preserve">
+    <value>The site code is mandatory.</value>
+  </data>
+  <data name="UPLOAD_SITE_CODE_TOO_LONG" xml:space="preserve">
+    <value>The site code is too long.</value>
+  </data>
+  <data name="UPLOAD_SITE_CODE_WRONG" xml:space="preserve">
+    <value>Site code {0} does not exist.</value>
+    <comment>{0} = Site code</comment>
+  </data>
+  <data name="UPLOAD_TITLE_TOO_LONG" xml:space="preserve">
+    <value>Title is too long.</value>
+  </data>
+  <data name="UPLOAD_UPDATED" xml:space="preserve">
+    <value>SUCCESS:</value>
   </data>
 </root>

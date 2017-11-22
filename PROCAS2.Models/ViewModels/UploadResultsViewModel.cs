@@ -11,7 +11,7 @@ namespace PROCAS2.Models.ViewModels
     {
         public string Message { get; set; }
         public string Pass { get; set; }
-
+        public int Line { get; set; }
         
     }
 
@@ -23,11 +23,12 @@ namespace PROCAS2.Models.ViewModels
             DBNoUpdate = false;
         }
 
-        public void AddMessage(string message, string pass)
+        public void AddMessage(int line, string message, string pass)
         {
             OutputMessage mess = new OutputMessage();
             mess.Message = message;
             mess.Pass = pass;
+            mess.Line = line;
             Messages.Add(mess);
         }
 

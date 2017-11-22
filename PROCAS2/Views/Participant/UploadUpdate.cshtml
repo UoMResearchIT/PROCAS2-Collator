@@ -22,7 +22,7 @@
 <div class="row">
     <div class="col-md-12">
         <p>
-            Please upload a CSV file with 31 columns in the format below.
+            Please upload a CSV file with 24 columns in the format below. Please do not include column headers.
         </p>
     </div>
 </div>
@@ -54,6 +54,55 @@
         </div>
     }
 
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Column
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Length/Type
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>A</td><td>NHS Number</td><td>Max 12 characters</td><td>Mandatory</td></tr>
+                <tr><td>B</td><td>Screening Number</td><td>Max 20 characters</td><td>Mandatory</td></tr>
+                <tr><td>C</td><td>Date Of Birth</td><td>Date in dd/mm/yyyy format</td><td>Mandatory</td></tr>
+                <tr><td>D</td><td>Date Of First Appointment</td><td>Date in dd/mm/yyyy format</td><td>Mandatory</td></tr>
+                <tr><td>E</td><td>Title</td><td>Max 50 characters</td><td>Optional</td></tr>
+                <tr><td>F</td><td>First Name</td><td>Max 50 characters</td><td>Mandatory</td></tr>
+                <tr><td>G</td><td>Last Name</td><td>Max 50 characters</td><td>Mandatory</td></tr>
+                <tr><td>H</td><td>BMI</td><td>Number</td><td>Optional</td></tr>
+                <tr><td>I</td><td>Mailing List</td><td>Y or N</td><td>Optional (defaults to N).</td></tr>
+                <tr><td>J</td><td>Address Line 1</td><td>Max 200 characters</td><td>Mandatory</td></tr>
+                <tr><td>K</td><td>Address Line 2</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>L</td><td>Address Line 3</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>M</td><td>Address Line 4</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>N</td><td>Post Code</td><td>Max 10 characters</td><td>Mandatory</td></tr>
+                <tr><td>O</td><td>Email Address</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>P</td><td>GP Name</td><td>Max 200 characters</td><td>Mandatory</td></tr>
+                <tr><td>Q</td><td>GP Address Line 1</td><td>Max 200 characters</td><td>Mandatory</td></tr>
+                <tr><td>R</td><td>GP Address Line 2</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>S</td><td>GP Address Line 3</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>T</td><td>GP Address Line 4</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>U</td><td>GP Post Code</td><td>Max 10 characters</td><td>Mandatory</td></tr>
+                <tr><td>V</td><td>GP Email Address</td><td>Max 200 characters</td><td>Optional</td></tr>
+                <tr><td>W</td><td>Screening Site</td><td>Max 10 characters, must match a Collator site code</td><td>Mandatory</td></tr>
+                <tr><td>X</td><td>End of Record</td><td>3 letter string - 'END'</td><td>Mandatory, the ensure correct number of columns per line</td></tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
 <div id="exportElement" class="spinnerElement">

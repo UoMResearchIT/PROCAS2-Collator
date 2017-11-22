@@ -31,17 +31,22 @@
                 <thead>
                     <tr>
                         <th>
-                            Report
+                            Pass/Fail
                         </th>
+                        <th>Line Number</th>
+                        <th>Report</th>
 
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.Messages.OrderByDescending(x => x.Pass))
+                    @foreach (var item in Model.Messages.OrderBy(x => x.Pass).ThenBy(x => x.Line))
                 {
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Pass)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Line)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.Message)

@@ -21,16 +21,29 @@ namespace PROCAS2.Services.App
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<ParticipantEvent> _eventRepo;
         private IGenericRepository<EventType> _eventTypeRepo;
+        private IGenericRepository<ScreeningSite> _siteRepo;
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
+        private IConfigService _configService;
+
+       
+
+        private int _UPLOADNEWCOLUMNS;
+        private int _UPLOADUPDATECOLUMNS;
+        private DateTime _EARLIESTDOB;
+        private DateTime _LATESTDOB;
+        private DateTime _EARLIESTDOFA;
+        private DateTime _LATESTDOFA;
 
         public ParticipantService(IUnitOfWork unitOfWork,
                                 IGenericRepository<Participant> participantRepo,
                                 IGenericRepository<ParticipantEvent> eventRepo,
                                 IPROCAS2UserManager userManager,
                                 IGenericRepository<EventType> eventTypeRepo,
-                                IHashingService hashingService)
+                                IHashingService hashingService,
+                                IConfigService configService,
+                                IGenericRepository<ScreeningSite> siteRepo)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -38,6 +51,17 @@ namespace PROCAS2.Services.App
             _userManager = userManager;
             _eventTypeRepo = eventTypeRepo;
             _hashingService = hashingService;
+            _configService = configService;
+            _siteRepo = siteRepo;
+
+            // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
+            // sure that you set them in the config!
+            _UPLOADNEWCOLUMNS = _configService.GetIntAppSetting("UploadNewColumns") ?? 0;
+            _UPLOADUPDATECOLUMNS = _configService.GetIntAppSetting("UploadUpdateColumns") ?? 0;
+            _EARLIESTDOB = _configService.GetDateTimeAppSetting("EarliestDOB") ?? DateTime.Now;
+            _LATESTDOB = _configService.GetDateTimeAppSetting("LatestDOB") ?? DateTime.Now;
+            _EARLIESTDOFA = _configService.GetDateTimeAppSetting("EarliestDOFA") ?? DateTime.Now;
+            _LATESTDOFA = _configService.GetDateTimeAppSetting("LatestDOFA") ?? DateTime.Now;
         }
 
         /// <summary>
@@ -197,19 +221,19 @@ namespace PROCAS2.Services.App
         {
             
             string[] lineBits = line.Split(',');
-            if (lineBits.Count() != 1) // Should only be 1 column
+            if (lineBits.Count() != _UPLOADNEWCOLUMNS) // Should only be 1 column
             {
                 
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_INCORRECT_COLUMNS, 1), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 1), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             string NHSNumber = lineBits[0];
 
-            if (lineBits[0].Length > 12) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
             {
                
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
@@ -217,7 +241,7 @@ namespace PROCAS2.Services.App
             if (participant != null) // Participant already exists in the database
             {
                 
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
@@ -246,19 +270,25 @@ namespace PROCAS2.Services.App
         {
 
             string[] lineBits = line.Split(',');
-            if (lineBits.Count() != 1) // Should only be 1 column
+            if (lineBits.Count() != _UPLOADUPDATECOLUMNS) // Should be 23 columns
             {
 
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_INCORRECT_COLUMNS, 1), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage( lineCount , string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 23), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             string NHSNumber = lineBits[0];
 
-            if (lineBits[0].Length > 12) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            if (String.IsNullOrEmpty(lineBits[0]) == true) // NHS number is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
             {
 
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
@@ -266,20 +296,266 @@ namespace PROCAS2.Services.App
             if (participant == null) // Participant does not exist in the database
             {
 
-                outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount ,string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
                 return false;
             }
             else
             {
                 if (participant.Consented == false)
                 {
-                    outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), PROCASRes.UPLOAD_FAIL);
+                    outModel.AddMessage( lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), UploadResources.UPLOAD_FAIL);
                     return false;
                 }
             }
 
+            // Screening number
+            if (String.IsNullOrEmpty(lineBits[1]) == true) // Screening number is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SCREEN_NUMBER_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[1].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.ScreeningNumber)) // should be 20 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SCREEN_NUMBER_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Date of Birth
+            if (String.IsNullOrEmpty(lineBits[2]) == true) // date of birth is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            DateTime DOB;
+            if (DateTime.TryParse(lineBits[2], out DOB) == false) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (DOB < _EARLIESTDOB || DOB > _LATESTDOB)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_OUT_OF_RANGE), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Date of first appointment
+            if (String.IsNullOrEmpty(lineBits[3]) == true) // date of first appointment is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            DateTime DOFA;
+            if (DateTime.TryParse(lineBits[3], out DOFA) == false) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (DOFA < _EARLIESTDOFA || DOFA > _LATESTDOFA)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_OUT_OF_RANGE), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Title
+            if (lineBits[4].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.Title)) // should be 50 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_TITLE_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // First name
+            if (String.IsNullOrEmpty(lineBits[5]) == true) // First name is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_FIRST_NAME_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[5].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.FirstName)) // should be 50 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_FIRST_NAME_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Last name
+            if (String.IsNullOrEmpty(lineBits[6]) == true) // Last name is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_LAST_NAME_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[6].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.LastName)) // should be 50 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_LAST_NAME_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // BMI
+            int BMI;
+            if (String.IsNullOrEmpty(lineBits[7]) == false && Int32.TryParse(lineBits[7], out BMI) == false) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_BMI_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Mailing list
+            if (String.IsNullOrEmpty(lineBits[8]) == false && (lineBits[8]!= "N" && lineBits[8] != "Y")) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_MAILING_LIST_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Address line 1
+            if (String.IsNullOrEmpty(lineBits[9]) == true) // First address line is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_1_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[9].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_1_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+
+            // Address line 2
+            if (lineBits[10].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_2_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Address line 3
+            if (lineBits[11].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_3_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Address line 4
+            if (lineBits[12].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_4_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Postcode
+            if (String.IsNullOrEmpty(lineBits[13]) == true) // Postcode is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_POSTCODE_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[13].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_POSTCODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Email address
+            if (lineBits[14].Length > AttributeHelpers.GetMaxLength<Address>(x => x.EmailAddress)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_EMAIL_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // GP Name
+            if (String.IsNullOrEmpty(lineBits[15]) == true) // GP Name is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_NAME_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[15].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.GPName)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_NAME_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+
+            // GP Address line 1
+            if (String.IsNullOrEmpty(lineBits[16]) == true) // First GP address line is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_1_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[16].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_1_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+
+            // GP Address line 2
+            if (lineBits[17].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_2_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // GP Address line 3
+            if (lineBits[18].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_3_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // GP Address line 4
+            if (lineBits[19].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_4_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // GP Postcode
+            if (String.IsNullOrEmpty(lineBits[20]) == true) // GP Postcode is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_POSTCODE_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[20].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_POSTCODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // GP Email address
+            if (lineBits[21].Length > AttributeHelpers.GetMaxLength<Address>(x => x.EmailAddress)) // should be 200 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_EMAIL_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Site code
+            if (String.IsNullOrEmpty(lineBits[22]) == true) // Site code is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SITE_CODE_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (lineBits[22].Length > AttributeHelpers.GetMaxLength<ScreeningSite>(x => x.Code)) // should be 10 chars max
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SITE_CODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            string siteCode = lineBits[22];
+            ScreeningSite site = _siteRepo.GetAll().Where(x => x.Code == siteCode ).FirstOrDefault();
+            if (site == null)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SITE_CODE_WRONG, siteCode), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
             // We've managed to pass all the checks so it must be valid!
-            outModel.AddMessage("Line " + lineCount + ": " + string.Format(PROCASRes.UPLOAD_NHS_NUMBER_SUCCESS, NHSNumber), PROCASRes.UPLOAD_CREATED);
+            outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_SUCCESS, NHSNumber), UploadResources.UPLOAD_UPDATED);
             return true;
 
         }
