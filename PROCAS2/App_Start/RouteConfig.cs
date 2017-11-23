@@ -39,9 +39,9 @@ namespace PROCAS2
             );
 
             routes.MapRoute(
-               name: "ParticipantView",
-               url: "Participant/View/{participantId}",
-               defaults: new { controller = "Participant", action = "View", participantId = "" }
+               name: "ParticipantDetails",
+               url: "Participant/Details/{participantId}",
+               defaults: new { controller = "Participant", action = "Details", participantId = "" }
            );
 
             routes.MapRoute(

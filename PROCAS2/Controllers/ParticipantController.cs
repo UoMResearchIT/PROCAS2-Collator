@@ -130,30 +130,24 @@ namespace PROCAS2.Controllers
             return View("UploadUpdate", model);
         }
 
-        // GET: Participant/Create
-        public ActionResult Create()
+        // GET: Participant/View/Id
+        public ActionResult Details(string participantId)
         {
-            return View();
+            ParticipantDetailsViewModel model = new ParticipantDetailsViewModel();
+
+            model.Participant = _participantRepo.GetAll().Where(x => x.NHSNumber == participantId).FirstOrDefault();
+            if (model.Participant != null)
+            {
+                return View("Details", model);
+            }
+
+            // Can't find the participant so just return to the index
+            return RedirectToAction("Index");
         }
 
-        // POST: Participant/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         // GET: Participant/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string participantId)
         {
             return View();
         }
@@ -174,27 +168,7 @@ namespace PROCAS2.Controllers
             }
         }
 
-        // GET: Participant/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Participant/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
 
         public string PrependSchemeAndAuthority(string url)
         {

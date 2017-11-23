@@ -104,6 +104,7 @@
     <Compile Include="ViewModels\DashboardConsentViewModel.cs" />
     <Compile Include="ViewModels\DashboardSiteViewModel.cs" />
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantDetailsViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UploadResultsViewModel.cs" />
     <Compile Include="ViewModels\UploadUpdateParticipantsViewModel.cs" />

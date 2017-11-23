@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ParticipantResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParticipantResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="PROCASRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +75,10 @@
     <EmbeddedResource Include="EventResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParticipantResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParticipantResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="PROCASRes.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
