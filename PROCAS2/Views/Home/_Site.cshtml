@@ -1,0 +1,32 @@
+﻿@model PROCAS2.Models.ViewModels.DashboardSiteViewModel
+@using PROCAS2.Resources;
+@using PROCAS2.Data.Entities;
+
+<h4>Site Listing</h4>
+
+<table class="table table-sm table-inverse">
+    <thead>
+        <tr>
+            <th>
+                @DashboardResources.SITE_CODE
+            </th>
+            <th>
+                @DashboardResources.SITE_NAME
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(ScreeningSite item in Model.Sites)
+        {
+            <tr>
+                <td>
+                    @item.Code
+                </td>
+                <td>
+                    @item.Name
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

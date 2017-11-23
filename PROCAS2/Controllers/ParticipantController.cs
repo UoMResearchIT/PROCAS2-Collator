@@ -37,7 +37,7 @@ namespace PROCAS2.Controllers
         {
             ParticipantListViewModel model = new ParticipantListViewModel();
 
-            model.Participants = _participantRepo.GetAll().Where(x => x.Consented == true).ToList();
+            model.Participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null).ToList();
 
             return View("Index", model);
         }

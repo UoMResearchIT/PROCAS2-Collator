@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+
 using System.Web.Mvc;
 
 using PROCAS2.Data;
@@ -34,7 +35,7 @@ namespace PROCAS2.Controllers
 
         public ActionResult Index()
         {
-            List<ScreeningSite> appUsers = _siteRepo.GetAll().ToList();
+           
             return View();
         }
 
@@ -52,6 +53,19 @@ namespace PROCAS2.Controllers
             else
                 return View("_Consent", model);
         }
-       
+
+        public ActionResult SitePanel()
+        {
+            DashboardSiteViewModel model = new DashboardSiteViewModel();
+
+            
+            model.Sites = _siteRepo.GetAll().OrderBy(x => x.Code).ToList();
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Site", model);
+            else
+                return View("_Site", model);
+        }
+
     }
 }
