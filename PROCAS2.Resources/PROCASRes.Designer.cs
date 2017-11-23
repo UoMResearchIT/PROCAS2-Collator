@@ -61,24 +61,6 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 001.
-        /// </summary>
-        public static string EVENT_CREATED {
-            get {
-                return ResourceManager.GetString("EVENT_CREATED", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Participant created..
-        /// </summary>
-        public static string EVENT_CREATED_STR {
-            get {
-                return ResourceManager.GetString("EVENT_CREATED_STR", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to User name already exists..
         /// </summary>
         public static string USER_ALREADY_EXISTS {

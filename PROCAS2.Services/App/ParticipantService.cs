@@ -22,6 +22,8 @@ namespace PROCAS2.Services.App
         private IGenericRepository<ParticipantEvent> _eventRepo;
         private IGenericRepository<EventType> _eventTypeRepo;
         private IGenericRepository<ScreeningSite> _siteRepo;
+        private IGenericRepository<AddressType> _addressTypeRepo;
+        private IGenericRepository<Address> _addressRepo;
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
@@ -43,7 +45,9 @@ namespace PROCAS2.Services.App
                                 IGenericRepository<EventType> eventTypeRepo,
                                 IHashingService hashingService,
                                 IConfigService configService,
-                                IGenericRepository<ScreeningSite> siteRepo)
+                                IGenericRepository<ScreeningSite> siteRepo,
+                                IGenericRepository<AddressType> addressTypeRepo,
+                                IGenericRepository<Address> addressRepo)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -53,6 +57,8 @@ namespace PROCAS2.Services.App
             _hashingService = hashingService;
             _configService = configService;
             _siteRepo = siteRepo;
+            _addressTypeRepo = addressTypeRepo;
+            _addressRepo = addressRepo;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -194,8 +200,8 @@ namespace PROCAS2.Services.App
             ParticipantEvent pEvent = new ParticipantEvent();
             pEvent.AppUser = _userManager.GetCurrentUser();
             pEvent.EventDate = dateCreated;
-            pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == PROCASRes.EVENT_CREATED).FirstOrDefault();
-            pEvent.Notes = PROCASRes.EVENT_CREATED_STR;
+            pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_CREATED).FirstOrDefault();
+            pEvent.Notes = EventResources.EVENT_CREATED_STR;
             pEvent.Participant = participant;
 
             _eventRepo.Insert(pEvent);
@@ -253,10 +259,87 @@ namespace PROCAS2.Services.App
 
         /// <summary>
         /// Create a new participant record
+        /// Note: It is assumed that most of the validation has happened beforehand!
         /// </summary>
         /// <param name="line">line from CSV file</param>
         private void UpdateParticipantRecord(string line)
         {
+            string[] lineBits = line.Split(',');
+            if (lineBits.Count() == _UPLOADUPDATECOLUMNS) // Should be 23 columns
+            {
+                string NHSNumber = lineBits[0];
+                Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+                    DateTime DOFA = Convert.ToDateTime(lineBits[3]);
+                    DateTime DOB = Convert.ToDateTime(lineBits[2]);
+
+                    participant.ScreeningNumber = lineBits[1];
+                    participant.DateFirstAppointment = DOFA;
+                    participant.DateOfBirth = DOB;
+                    participant.Title = lineBits[4];
+                    participant.FirstName = lineBits[5];
+                    participant.LastName = lineBits[6];
+                    participant.BMI = Convert.ToInt32(lineBits[7]);
+                    participant.MailingList = lineBits[8] == "Y" ? true : false;
+                    participant.GPName = lineBits[15];
+
+                    string siteCode = lineBits[22];
+                    ScreeningSite site = _siteRepo.GetAll().Where(x => x.Code == siteCode).FirstOrDefault();
+                    if (site != null)
+                    {
+                        participant.ScreeningSite = site;
+                    }
+
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                    Address homeAddress = new Address();
+                    homeAddress.AddressLine1 = lineBits[9];
+                    homeAddress.AddressLine2 = lineBits[10];
+                    homeAddress.AddressLine3 = lineBits[11];
+                    homeAddress.AddressLine4 = lineBits[12];
+                    homeAddress.PostCode = lineBits[13];
+                    homeAddress.EmailAddress = lineBits[14];
+                    homeAddress.Participant = participant;
+                    homeAddress.AddressType = _addressTypeRepo.GetAll().Where(x => x.Name == "HOME").FirstOrDefault();
+
+                    _addressRepo.Insert(homeAddress);
+                    _unitOfWork.Save();
+
+                    Address gpAddress = new Address();
+                    gpAddress.AddressLine1 = lineBits[16];
+                    gpAddress.AddressLine2 = lineBits[17];
+                    gpAddress.AddressLine3 = lineBits[18];
+                    gpAddress.AddressLine4 = lineBits[19];
+                    gpAddress.PostCode = lineBits[20];
+                    gpAddress.EmailAddress = lineBits[21];
+                    gpAddress.Participant = participant;
+                    gpAddress.AddressType = _addressTypeRepo.GetAll().Where(x => x.Name == "GP").FirstOrDefault();
+
+                    _addressRepo.Insert(gpAddress);
+                    _unitOfWork.Save();
+
+                    ParticipantEvent pEvent = new ParticipantEvent();
+                    pEvent.AppUser = _userManager.GetCurrentUser();
+                    pEvent.EventDate = DateTime.Now;
+                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_UPDATED).FirstOrDefault();
+                    pEvent.Notes = EventResources.EVENT_UPDATED_STR;
+                    pEvent.Participant = participant;
+
+                    _eventRepo.Insert(pEvent);
+                    _unitOfWork.Save();
+
+
+                    participant.LastEvent = pEvent;
+                    _participantRepo.Update(participant);
+
+                    _unitOfWork.Save();
+
+                }
+            }
+
+            
         }
 
         /// <summary>
@@ -304,6 +387,12 @@ namespace PROCAS2.Services.App
                 if (participant.Consented == false)
                 {
                     outModel.AddMessage( lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+
+                if (String.IsNullOrEmpty(participant.FirstName) == false)
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_ALREADY_UPDATED, NHSNumber), UploadResources.UPLOAD_FAIL);
                     return false;
                 }
             }

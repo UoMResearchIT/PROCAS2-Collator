@@ -16,6 +16,15 @@ namespace PROCAS2.Data
     {
         protected override void Seed(PROCAS2Context context)
         {
+
+            var appUsers = new List<AppUser>
+            {
+                new AppUser { Id = 1, UserCode = "andrew.jerrison@manchester.ac.uk", Active=true, SuperUser = true}
+            };
+
+            appUsers.ForEach(a => context.AppUsers.Add(a));
+            context.SaveChanges();
+
             var screeningSites = new List<ScreeningSite>
             {
                 new ScreeningSite { Id = 1, Code="MACC", Name="Macclesfield" },
@@ -36,7 +45,9 @@ namespace PROCAS2.Data
 
             var eventTypes = new List<EventType>
             {
-                new EventType { Id =1, Name="Participant Created", Code="001" }
+                new EventType { Id =1, Name="Participant Created", Code="001" },
+                new EventType { Id =2, Name="Consent Received", Code="002" },
+                new EventType { Id =3, Name="Full Detail Added", Code="003" }
             };
 
             eventTypes.ForEach(s => context.EventTypes.Add(s));

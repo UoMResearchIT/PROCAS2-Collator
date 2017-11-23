@@ -117,37 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="USER_ALREADY_EXISTS" xml:space="preserve">
-    <value>User name already exists.</value>
+  <data name="EVENT_CONSENT" xml:space="preserve">
+    <value>002</value>
   </data>
-  <data name="USER_CONFIG_INCORRECT" xml:space="preserve">
-    <value>User is either marked as not active or has not been configured yet. Please contact the PROCAS2 team to check your record.</value>
+  <data name="EVENT_CONSENT_STR" xml:space="preserve">
+    <value>Consent received.</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_CONSENT" xml:space="preserve">
-    <value>Number consented:</value>
+  <data name="EVENT_CREATED" xml:space="preserve">
+    <value>001</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_CONSENT_NO_DETAILS" xml:space="preserve">
-    <value>Number consented but without full details yet:</value>
+  <data name="EVENT_CREATED_STR" xml:space="preserve">
+    <value>Participant created.</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_PARC" xml:space="preserve">
-    <value>Number of participants:</value>
+  <data name="EVENT_UPDATED" xml:space="preserve">
+    <value>003</value>
   </data>
-  <data name="VM_DASHBOARD_NUM_YET_CONSENT" xml:space="preserve">
-    <value>Number yet to consent:</value>
-  </data>
-  <data name="VM_UPLOAD_NEW_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
-  </data>
-  <data name="VM_UPLOAD_UPDATE_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
-  </data>
-  <data name="VM_USER_ADMIN_CREATE_ACTIVE" xml:space="preserve">
-    <value>Active</value>
-  </data>
-  <data name="VM_USER_ADMIN_CREATE_SUPERUSER" xml:space="preserve">
-    <value>Super User</value>
-  </data>
-  <data name="VM_USER_ADMIN_CREATE_USERNAME" xml:space="preserve">
-    <value>User Name</value>
+  <data name="EVENT_UPDATED_STR" xml:space="preserve">
+    <value>Full details added.</value>
   </data>
 </root>

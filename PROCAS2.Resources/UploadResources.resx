@@ -211,6 +211,10 @@
   <data name="UPLOAD_MAILING_LIST_WRONG_FORMAT" xml:space="preserve">
     <value>Mailing list flag should be either Y or N.</value>
   </data>
+  <data name="UPLOAD_NHS_NUMBER_ALREADY_UPDATED" xml:space="preserve">
+    <value>NHS Number {0} has already been updated. Please edit manually.</value>
+    <comment>{0] = NHS Number</comment>
+  </data>
   <data name="UPLOAD_NHS_NUMBER_EMPTY" xml:space="preserve">
     <value>NHS Number is mandatory</value>
   </data>

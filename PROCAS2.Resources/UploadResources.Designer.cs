@@ -340,6 +340,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NHS Number {0} has already been updated. Please edit manually..
+        /// </summary>
+        public static string UPLOAD_NHS_NUMBER_ALREADY_UPDATED {
+            get {
+                return ResourceManager.GetString("UPLOAD_NHS_NUMBER_ALREADY_UPDATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number is mandatory.
         /// </summary>
         public static string UPLOAD_NHS_NUMBER_EMPTY {

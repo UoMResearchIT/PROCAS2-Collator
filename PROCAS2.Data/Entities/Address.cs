@@ -26,7 +26,7 @@ namespace PROCAS2.Data.Entities
 
         public int AddressTypeId { get; set; }
 
-
+        public virtual AddressType AddressType { get; set; }
 
         public int ParticipantId { get; set; }
         public virtual Participant Participant { get; set; }
