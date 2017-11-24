@@ -117,7 +117,61 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ADDRESS" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="BMI" xml:space="preserve">
+    <value>BMI</value>
+  </data>
+  <data name="CHEMO" xml:space="preserve">
+    <value>Chemo. Started?</value>
+  </data>
+  <data name="DOAA" xml:space="preserve">
+    <value>Actual Appoint.</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>Date of Birth</value>
+  </data>
+  <data name="DOFA" xml:space="preserve">
+    <value>First Appoint.</value>
+  </data>
+  <data name="EVENT_DATE" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="EVENT_NAME" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="FHC_REFERRAL" xml:space="preserve">
+    <value>FHC Referral?</value>
+  </data>
+  <data name="GP_EMAIL" xml:space="preserve">
+    <value>GP Email</value>
+  </data>
+  <data name="GP_MODAL_TITLE" xml:space="preserve">
+    <value>GP Details</value>
+  </data>
+  <data name="GP_NAME" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="HOMEEMAIL" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="PARTICIPANT_NAME" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="POSTCODE" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="POST_CODE" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="SCREENING_NUMBER" xml:space="preserve">
+    <value>Screening No.</value>
+  </data>
+  <data name="SCREENING_SITE" xml:space="preserve">
+    <value>Site</value>
+  </data>
+  <data name="SENT_RISK" xml:space="preserve">
+    <value>Risk Letter Sent?</value>
   </data>
 </root>

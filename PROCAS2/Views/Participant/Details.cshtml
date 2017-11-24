@@ -1,23 +1,332 @@
 ﻿@model PROCAS2.Models.ViewModels.ParticipantDetailsViewModel
 
+@using PROCAS2.Resources;
+@using PROCAS2.Data.Entities;
+
+
 @{
     ViewBag.Title = "Participant Details";
 }
 
-<h4>Participant Details</h4>
+<div class="row">
+    <div class="col-md-10">
+        <h4>Participant Details - @Model.NHSNumber</h4>
+    </div>
+    <div class="col-md-2">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalGP">
+            @ParticipantResources.GP_MODAL_TITLE
+        </button>
+        @Html.ActionLink("Edit", "Edit", new { participantId = Model.Participant.NHSNumber }, new { @class="btn btn-primary "}) 
+    </div>
+</div>
+
+    
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalGP" tabindex="-1" role="dialog" aria-labelledby="lblGP">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="lblGP">@ParticipantResources.GP_MODAL_TITLE</h4>
+            </div>
+            <div class="modal-body gpModal">
+                <div class="row">
+                    <div class="row">
+
+                        @Html.LabelFor(model => model.GPName, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.GPName, new { htmlAttributes = new { @class = "form-control-static" } })
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @Html.LabelFor(model => model.GPAddress1, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.GPAddress1, new { htmlAttributes = new { @class = "form-control-static" } })
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            @Html.DisplayFor(model => model.GPAddress2, new { htmlAttributes = new { @class = "form-control-static" } })
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-2">
+                            @Html.DisplayFor(model => model.GPAddress3, new { htmlAttributes = new { @class = "form-control-static" } })
+                            &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row">
+                         <div class="col-md-10 col-md-offset-2">
+                            @Html.DisplayFor(model => model.GPAddress4, new { htmlAttributes = new { @class = "form-control-static" } })
+                             &nbsp;
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @Html.LabelFor(model => model.GPPostCode, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.GPPostCode, new { htmlAttributes = new { @class = "form-control-static" } })
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @Html.LabelFor(model => model.GPEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.DisplayFor(model => model.GPEmail, new { htmlAttributes = new { @class = "form-control-static" } })
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <hr />
 
 <div class="row">
-    <div class="col-md-12">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control-static" } })
-           
+
+    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-7">
+        @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.ScreeningSite, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.ScreeningSite, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+</div>
+<div class="row">
+
+
+
+    @Html.LabelFor(model => model.HomeAddress1, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-7">
+        @Html.DisplayFor(model => model.HomeAddress1, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.ScreeningNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.ScreeningNumber, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+</div>
+<div class="row">
+
+
+
+    <div class="col-md-offset-2 col-md-7">
+        @Html.DisplayFor(model => model.HomeAddress2, new { htmlAttributes = new { @class = "form-control-static" } })
+        &nbsp;
+    </div>
+
+    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-md-offset-2  col-md-7">
+        @Html.DisplayFor(model => model.HomeAddress3, new { htmlAttributes = new { @class = "form-control-static" } })
+        &nbsp;
+    </div>
+
+    @Html.LabelFor(model => model.DOFA, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.DOFA, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+</div>
+<div class="row">
+
+    <div class="col-md-offset-2  col-md-7">
+        @Html.DisplayFor(model => model.HomeAddress4, new { htmlAttributes = new { @class = "form-control-static" } })
+        &nbsp;
+    </div>
+
+    @Html.LabelFor(model => model.DOAA, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.DOAA, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+</div>
+<div class="row">
+
+    @Html.LabelFor(model => model.HomePostCode, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-7">
+        @Html.DisplayFor(model => model.HomePostCode, new { htmlAttributes = new { @class = "form-control-static" } })
+        &nbsp;
+    </div>
+
+    @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+</div>
+<div class="row">
+
+    @Html.LabelFor(model => model.HomeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DisplayFor(model => model.HomeEmail, new { htmlAttributes = new { @class = "form-control-static" } })
+        &nbsp;
+    </div>
+</div>
+
+<div class-"row">&nbsp</div>
+
+<div class="row">
+
+    @Html.LabelFor(model => model.Participant.Consented, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Participant.Consented, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.SentRisk, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.SentRisk, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.Participant.Deceased, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Participant.Deceased, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.Participant.Withdrawn, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Participant.Withdrawn, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+</div>
+
+<div class-"row">&nbsp</div>
+
+<div class="row">
+    @Html.LabelFor(model => model.Participant.Diagnosed, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Participant.Diagnosed, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+    @Html.LabelFor(model => model.FHCReferral, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.FHCReferral, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.Chemo, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Chemo, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+
+</div>
+
+<div class-"row">&nbsp</div>
+
+<div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#pnlHistory" aria-controls="pnlHistory" role="tab" data-toggle="tab">History</a></li>
+        <li role="presentation"><a href="#pnlVolpara" aria-controls="pnlVolpara" role="tab" data-toggle="tab">Volpara</a></li>
+        <li role="presentation"><a href="#pnlQuestionnaire" aria-controls="pnlQuestionnaire" role="tab" data-toggle="tab">Questionnaire</a></li>
+        <li role="presentation"><a href="#pnlRiskLetter" aria-controls="pnlRiskLetter" role="tab" data-toggle="tab">Risk Letter</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="pnlHistory">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading">History</div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.EVENT_DATE
+                                </th>
+                                <th>
+                                    @ParticipantResources.EVENT_NAME
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ParticipantEvent pEvent in Model.Participant.ParticipantEvents.OrderByDescending(x => x.EventDate))
+                            {
+                                <tr>
+                                    <td>
+                                        @pEvent.EventDate.ToString()
+                                    </td>
+                                    <td>
+                                        @pEvent.Notes
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlVolpara">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading">Volpara</div>
+                <div class="panel-body"></div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlQuestionnaire">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading">Questionnaire</div>
+                <div class="panel-body"></div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlRiskLetter">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading">Risk Letter Content</div>
+                <div class="panel-body"></div>
+            </div>
         </div>
     </div>
 
 </div>
+
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  participantId = Model.Participant.NHSNumber }) |
+   
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -110,3 +110,11 @@ textarea {
     margin-right:10px;
 }
 
+.participantViewPanel {
+  height: 300px; 
+  overflow-y:scroll;
+}
+
+.gpModal{
+    margin: 10px 10px 10px 10px;
+}

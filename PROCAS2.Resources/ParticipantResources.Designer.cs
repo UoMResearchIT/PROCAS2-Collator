@@ -61,11 +61,173 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        public static string ADDRESS {
+            get {
+                return ResourceManager.GetString("ADDRESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BMI.
+        /// </summary>
+        public static string BMI {
+            get {
+                return ResourceManager.GetString("BMI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemo. Started?.
+        /// </summary>
+        public static string CHEMO {
+            get {
+                return ResourceManager.GetString("CHEMO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actual Appoint..
+        /// </summary>
+        public static string DOAA {
+            get {
+                return ResourceManager.GetString("DOAA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date of Birth.
+        /// </summary>
+        public static string DOB {
+            get {
+                return ResourceManager.GetString("DOB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Appoint..
+        /// </summary>
+        public static string DOFA {
+            get {
+                return ResourceManager.GetString("DOFA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        public static string EVENT_DATE {
+            get {
+                return ResourceManager.GetString("EVENT_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string EVENT_NAME {
+            get {
+                return ResourceManager.GetString("EVENT_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FHC Referral?.
+        /// </summary>
+        public static string FHC_REFERRAL {
+            get {
+                return ResourceManager.GetString("FHC_REFERRAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Email.
+        /// </summary>
+        public static string GP_EMAIL {
+            get {
+                return ResourceManager.GetString("GP_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Details.
+        /// </summary>
+        public static string GP_MODAL_TITLE {
+            get {
+                return ResourceManager.GetString("GP_MODAL_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GP_NAME {
+            get {
+                return ResourceManager.GetString("GP_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string HOMEEMAIL {
+            get {
+                return ResourceManager.GetString("HOMEEMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string PARTICIPANT_NAME {
             get {
                 return ResourceManager.GetString("PARTICIPANT_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post Code.
+        /// </summary>
+        public static string POST_CODE {
+            get {
+                return ResourceManager.GetString("POST_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post Code.
+        /// </summary>
+        public static string POSTCODE {
+            get {
+                return ResourceManager.GetString("POSTCODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening No..
+        /// </summary>
+        public static string SCREENING_NUMBER {
+            get {
+                return ResourceManager.GetString("SCREENING_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Site.
+        /// </summary>
+        public static string SCREENING_SITE {
+            get {
+                return ResourceManager.GetString("SCREENING_SITE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Letter Sent?.
+        /// </summary>
+        public static string SENT_RISK {
+            get {
+                return ResourceManager.GetString("SENT_RISK", resourceCulture);
             }
         }
     }

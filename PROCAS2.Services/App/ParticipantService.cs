@@ -276,6 +276,7 @@ namespace PROCAS2.Services.App
 
                     participant.ScreeningNumber = lineBits[1];
                     participant.DateFirstAppointment = DOFA;
+                    participant.DateActualAppointment = DOFA; // Initially the 'actual' appointment date will be the same as the first
                     participant.DateOfBirth = DOB;
                     participant.Title = lineBits[4];
                     participant.FirstName = lineBits[5];
