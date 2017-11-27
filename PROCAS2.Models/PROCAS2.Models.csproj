@@ -103,6 +103,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DashboardConsentViewModel.cs" />
     <Compile Include="ViewModels\DashboardSiteViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantEditViewModel.cs" />
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
     <Compile Include="ViewModels\ParticipantDetailsViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />

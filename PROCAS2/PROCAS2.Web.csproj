@@ -542,6 +542,7 @@
     <Content Include="Views\Participant\UploadUpdate.cshtml" />
     <Content Include="Views\Home\_Site.cshtml" />
     <Content Include="Views\Participant\Details.cshtml" />
+    <Content Include="Views\Participant\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

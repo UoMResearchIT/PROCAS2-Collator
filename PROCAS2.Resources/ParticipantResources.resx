@@ -126,6 +126,15 @@
   <data name="CHEMO" xml:space="preserve">
     <value>Chemo. Started?</value>
   </data>
+  <data name="CONSENTED" xml:space="preserve">
+    <value>Consented</value>
+  </data>
+  <data name="DECEASED" xml:space="preserve">
+    <value>Deceased</value>
+  </data>
+  <data name="DIAGNOSED" xml:space="preserve">
+    <value>Diagnosed</value>
+  </data>
   <data name="DOAA" xml:space="preserve">
     <value>Actual Appoint.</value>
   </data>
@@ -144,6 +153,9 @@
   <data name="FHC_REFERRAL" xml:space="preserve">
     <value>FHC Referral?</value>
   </data>
+  <data name="FIRST_NAME" xml:space="preserve">
+    <value>First Name</value>
+  </data>
   <data name="GP_EMAIL" xml:space="preserve">
     <value>GP Email</value>
   </data>
@@ -151,10 +163,13 @@
     <value>GP Details</value>
   </data>
   <data name="GP_NAME" xml:space="preserve">
-    <value>Name</value>
+    <value>GP Name</value>
   </data>
   <data name="HOMEEMAIL" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="LAST_NAME" xml:space="preserve">
+    <value>Last Name</value>
   </data>
   <data name="PARTICIPANT_NAME" xml:space="preserve">
     <value>Name</value>
@@ -173,5 +188,11 @@
   </data>
   <data name="SENT_RISK" xml:space="preserve">
     <value>Risk Letter Sent?</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="WITHDRAWN" xml:space="preserve">
+    <value>Withdrawn</value>
   </data>
 </root>

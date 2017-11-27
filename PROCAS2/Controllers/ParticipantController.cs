@@ -146,25 +146,39 @@ namespace PROCAS2.Controllers
         }
 
 
-        // GET: Participant/Edit/5
+        // GET: Participant/Edit/NHS123
         public ActionResult Edit(string participantId)
         {
-            return View();
+            ParticipantEditViewModel model = new ParticipantEditViewModel();
+
+            model.Participant = _participantRepo.GetAll().Where(x => x.NHSNumber == participantId).FirstOrDefault();
+            if (model.Participant != null)
+            {
+                return View("Edit", model);
+            }
+
+            // Can't find the participant so just return to the index
+            return RedirectToAction("Index");
         }
 
-        // POST: Participant/Edit/5
+        // POST: Participant/Edit/NHS123
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ParticipantEditViewModel model)
         {
             try
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
 
-                return RedirectToAction("Index");
+                }
+
+                return View("Edit", model);
+                
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index");
             }
         }
 

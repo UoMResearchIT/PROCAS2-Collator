@@ -88,6 +88,33 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consented.
+        /// </summary>
+        public static string CONSENTED {
+            get {
+                return ResourceManager.GetString("CONSENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deceased.
+        /// </summary>
+        public static string DECEASED {
+            get {
+                return ResourceManager.GetString("DECEASED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Diagnosed.
+        /// </summary>
+        public static string DIAGNOSED {
+            get {
+                return ResourceManager.GetString("DIAGNOSED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Actual Appoint..
         /// </summary>
         public static string DOAA {
@@ -142,6 +169,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        public static string FIRST_NAME {
+            get {
+                return ResourceManager.GetString("FIRST_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GP Email.
         /// </summary>
         public static string GP_EMAIL {
@@ -160,7 +196,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name.
+        ///   Looks up a localized string similar to GP Name.
         /// </summary>
         public static string GP_NAME {
             get {
@@ -174,6 +210,15 @@ namespace PROCAS2.Resources {
         public static string HOMEEMAIL {
             get {
                 return ResourceManager.GetString("HOMEEMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        public static string LAST_NAME {
+            get {
+                return ResourceManager.GetString("LAST_NAME", resourceCulture);
             }
         }
         
@@ -228,6 +273,24 @@ namespace PROCAS2.Resources {
         public static string SENT_RISK {
             get {
                 return ResourceManager.GetString("SENT_RISK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Title.
+        /// </summary>
+        public static string TITLE {
+            get {
+                return ResourceManager.GetString("TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Withdrawn.
+        /// </summary>
+        public static string WITHDRAWN {
+            get {
+                return ResourceManager.GetString("WITHDRAWN", resourceCulture);
             }
         }
     }
