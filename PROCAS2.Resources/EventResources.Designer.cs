@@ -97,6 +97,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 004.
+        /// </summary>
+        public static string EVENT_PROPERTY_UPDATED {
+            get {
+                return ResourceManager.GetString("EVENT_PROPERTY_UPDATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Field {0} updated from {{{1}}} to {{{2}}}.
+        /// </summary>
+        public static string EVENT_PROPERTY_UPDATED_STR {
+            get {
+                return ResourceManager.GetString("EVENT_PROPERTY_UPDATED_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 003.
         /// </summary>
         public static string EVENT_UPDATED {

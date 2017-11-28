@@ -178,6 +178,42 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GP Address Line 1.
+        /// </summary>
+        public static string GP_ADD_1 {
+            get {
+                return ResourceManager.GetString("GP_ADD_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Address Line 2.
+        /// </summary>
+        public static string GP_ADD_2 {
+            get {
+                return ResourceManager.GetString("GP_ADD_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Address Line 3.
+        /// </summary>
+        public static string GP_ADD_3 {
+            get {
+                return ResourceManager.GetString("GP_ADD_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Address Line 4.
+        /// </summary>
+        public static string GP_ADD_4 {
+            get {
+                return ResourceManager.GetString("GP_ADD_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GP Email.
         /// </summary>
         public static string GP_EMAIL {
@@ -205,6 +241,60 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GP Postcode.
+        /// </summary>
+        public static string GP_POSTCODE {
+            get {
+                return ResourceManager.GetString("GP_POSTCODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Address Line 1.
+        /// </summary>
+        public static string HOME_ADD_1 {
+            get {
+                return ResourceManager.GetString("HOME_ADD_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Address Line 2.
+        /// </summary>
+        public static string HOME_ADD_2 {
+            get {
+                return ResourceManager.GetString("HOME_ADD_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Address Line 3.
+        /// </summary>
+        public static string HOME_ADD_3 {
+            get {
+                return ResourceManager.GetString("HOME_ADD_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Address Line 4.
+        /// </summary>
+        public static string HOME_ADD_4 {
+            get {
+                return ResourceManager.GetString("HOME_ADD_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Home Postcode.
+        /// </summary>
+        public static string HOME_POSTCODE {
+            get {
+                return ResourceManager.GetString("HOME_POSTCODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         public static string HOMEEMAIL {
@@ -223,11 +313,29 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mailing List?.
+        /// </summary>
+        public static string MAILING_LIST {
+            get {
+                return ResourceManager.GetString("MAILING_LIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string PARTICIPANT_NAME {
             get {
                 return ResourceManager.GetString("PARTICIPANT_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Participant {0} not found..
+        /// </summary>
+        public static string PARTICIPANT_NOT_FOUND {
+            get {
+                return ResourceManager.GetString("PARTICIPANT_NOT_FOUND", resourceCulture);
             }
         }
         

@@ -18,6 +18,8 @@ namespace PROCAS2.Models.ViewModels
         public ParticipantEditViewModel()
         {
             PropertyChanged += ViewModel_PropertyChanged;
+
+            ScreeningSites = new List<ScreeningSite>();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -46,9 +48,9 @@ namespace PROCAS2.Models.ViewModels
             LastName = model.Participant.LastName;
             NHSNumber = model.Participant.NHSNumber;
             ScreeningNumber = model.Participant.ScreeningNumber;
-            DOB = model.Participant.DateOfBirth.HasValue ? model.Participant.DateOfBirth.Value.ToString("dd/MM/yyyy") : "";
-            DOFA = model.Participant.DateFirstAppointment.HasValue ? model.Participant.DateFirstAppointment.Value.ToString("dd/MM/yyyy") : "";
-            DOAA = model.Participant.DateActualAppointment.HasValue ? model.Participant.DateActualAppointment.Value.ToString("dd/MM/yyyy") : "";
+            DOB = model.Participant.DateOfBirth;
+            DOFA = model.Participant.DateFirstAppointment;
+            DOAA = model.Participant.DateActualAppointment;
             ScreeningSite = model.Participant.ScreeningSite.Name;
             BMI = model.Participant.BMI.ToString();
             SentRisk = model.Participant.SentRisk;
@@ -59,6 +61,7 @@ namespace PROCAS2.Models.ViewModels
             Deceased = model.Participant.Deceased;
             Withdrawn = model.Participant.Withdrawn;
             Diagnosed = model.Participant.Diagnosed;
+            MailingList = model.Participant.MailingList;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -180,12 +183,12 @@ namespace PROCAS2.Models.ViewModels
 
         [Required]
         [Display(Name = "DOB", ResourceType = typeof(ParticipantResources))]
-        public string DOB { get; set; }
+        public DateTime? DOB { get; set; }
 
         
         [Display(Name = "DOFA", ResourceType = typeof(ParticipantResources))]
         [Required]
-        public string DOFA { get; set; }
+        public DateTime? DOFA { get; set; }
 
         [Display(Name = "SCREENING_SITE", ResourceType = typeof(ParticipantResources))]
         [Required]
@@ -193,7 +196,7 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "DOAA", ResourceType = typeof(ParticipantResources))]
         [Required]
-        public string DOAA { get; set; }
+        public DateTime? DOAA { get; set; }
 
         [Display(Name = "BMI", ResourceType = typeof(ParticipantResources))]
         [Required]
@@ -214,6 +217,10 @@ namespace PROCAS2.Models.ViewModels
         public bool Deceased { get; set; }
         [Display(Name = "WITHDRAWN", ResourceType = typeof(ParticipantResources))]
         public bool Withdrawn { get; set; }
+        [Display(Name = "MAILING_LIST", ResourceType = typeof(ParticipantResources))]
+        public bool MailingList { get; set; }
+
+        public List<ScreeningSite> ScreeningSites { get; set; }
 
     }
 

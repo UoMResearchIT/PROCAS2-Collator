@@ -129,6 +129,13 @@
   <data name="EVENT_CREATED_STR" xml:space="preserve">
     <value>Participant created.</value>
   </data>
+  <data name="EVENT_PROPERTY_UPDATED" xml:space="preserve">
+    <value>004</value>
+  </data>
+  <data name="EVENT_PROPERTY_UPDATED_STR" xml:space="preserve">
+    <value>Field {0} updated from {{{1}}} to {{{2}}}</value>
+    <comment>{0} = field name, {1} = old value, {2} = new value</comment>
+  </data>
   <data name="EVENT_UPDATED" xml:space="preserve">
     <value>003</value>
   </data>

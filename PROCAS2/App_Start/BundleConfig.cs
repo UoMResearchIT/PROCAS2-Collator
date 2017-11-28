@@ -24,7 +24,8 @@ namespace PROCAS2
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/bootstrap-datepicker.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
                       "~/Scripts/DataTables/jquery.datatables.min.js",
@@ -35,7 +36,8 @@ namespace PROCAS2
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/jquery-confirm.min.css",
-                      "~/Content/site.css"));
+                      "~/Content/bootstrap-datepicker3.min.css",
+                      "~/Content/SiteCSS/site.css"));
         }
     }
 }

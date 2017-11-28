@@ -54,6 +54,7 @@ namespace PROCAS2.Models.ViewModels
             FHCReferral = model.Participant.FHCReferral;
             Chemo = model.Participant.Chemoprevention;
             GPName = model.Participant.GPName;
+            MailingList = model.Participant.MailingList;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -143,6 +144,8 @@ namespace PROCAS2.Models.ViewModels
         public bool SentRisk { get; set; }
         [Display(Name = "FHC_REFERRAL", ResourceType = typeof(ParticipantResources))]
         public bool FHCReferral { get; set; }
+        [Display(Name = "MAILING_LIST", ResourceType = typeof(ParticipantResources))]
+        public bool MailingList { get; set; }
 
     }
 }

@@ -650,5 +650,187 @@ namespace PROCAS2.Services.App
 
         }
 
+        /// <summary>
+        /// Update the participant record using the view model from the Edit screen
+        /// </summary>
+        /// <param name="model">View model containing the information</param>
+        /// <returns>List of errors</returns>
+        public List<string> UpdateParticipantFromUI(ParticipantEditViewModel model)
+        {
+            List<string> errors = new List<string>();
+
+            try
+            {
+                // Double check the participant exists!
+                Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+                    participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, (int)participant.BMI, Convert.ToInt32(model.BMI));
+                    participant.Chemoprevention = ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo);
+                    participant.Consented = ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented);
+                    participant.DateActualAppointment = ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA);
+                    participant.DateFirstAppointment = ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA);
+                    participant.DateOfBirth = ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB);
+                    participant.Deceased = ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased);
+                    participant.Diagnosed = ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed);
+                    participant.FHCReferral = ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral);
+                    participant.FirstName = ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName);
+                    participant.GPName = ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName);
+                    participant.LastName = ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName);
+                    participant.ScreeningNumber = ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber);
+                    participant.ScreeningSite = _siteRepo.GetAll().Where(x => x.Code == model.ScreeningSite).FirstOrDefault();
+                    participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk);
+                    participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title);
+                    participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn);
+                    participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList);
+
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                    Address homeAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "HOME").FirstOrDefault();
+                    if (homeAdd != null)
+                    {
+                        homeAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.HOME_ADD_1, homeAdd.AddressLine1, model.HomeAddress1);
+                        homeAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.HOME_ADD_2, homeAdd.AddressLine2, model.HomeAddress2);
+                        homeAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.HOME_ADD_3, homeAdd.AddressLine3, model.HomeAddress3);
+                        homeAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.HOME_ADD_4, homeAdd.AddressLine4, model.HomeAddress4);
+                        homeAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.HOMEEMAIL, homeAdd.EmailAddress, model.HomeEmail);
+                        homeAdd.PostCode = ChangeEventString(participant, ParticipantResources.HOME_POSTCODE, homeAdd.PostCode, model.HomePostCode);
+                        _addressRepo.Update(homeAdd);
+                        _unitOfWork.Save();
+                    }
+
+                    Address gpAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "GP").FirstOrDefault();
+                    if (gpAdd != null)
+                    {
+                        gpAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.GP_ADD_1, gpAdd.AddressLine1, model.GPAddress1);
+                        gpAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.GP_ADD_2, gpAdd.AddressLine2, model.GPAddress2);
+                        gpAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.GP_ADD_3, gpAdd.AddressLine3, model.GPAddress3);
+                        gpAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.GP_ADD_4, gpAdd.AddressLine4, model.GPAddress4);
+                        gpAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.GP_EMAIL, gpAdd.EmailAddress, model.GPEmail);
+                        gpAdd.PostCode = ChangeEventString(participant, ParticipantResources.GP_POSTCODE, gpAdd.PostCode, model.GPPostCode);
+                        _addressRepo.Update(gpAdd);
+                        _unitOfWork.Save();
+                    }
+
+                }
+                else // participant does not exist
+                {
+                    errors.Add(String.Format(ParticipantResources.PARTICIPANT_NOT_FOUND, model.NHSNumber));
+                }
+            }
+            catch(Exception ex)
+            {
+                errors.Add(ex.Message);
+            }
+
+            return errors;
+        }
+
+
+        /// <summary>
+        /// Create a audit trail event if the value is changed. For boolean properties
+        /// </summary>
+        /// <param name="propertyName">Property name</param>
+        /// <param name="participant">Participant object</param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newValue">New value</param>
+        /// <returns></returns>
+        private bool ChangeEventBool (Participant participant, string propertyName, bool oldValue, bool newValue)
+        {
+            if (oldValue != newValue)
+            {
+                ParticipantEvent pEvent = new ParticipantEvent();
+                
+                pEvent.AppUser = _userManager.GetCurrentUser();
+                pEvent.EventDate = DateTime.Now;
+                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
+                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
+                pEvent.Participant = participant;
+                _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+            }
+
+            return newValue;
+        }
+
+        /// <summary>
+        /// Create a audit trail event if the value is changed. For string properties
+        /// </summary>
+        /// <param name="propertyName">Property name</param>
+        /// <param name="participant">Participant object</param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newValue">New value</param>
+        /// <returns></returns>
+        private string ChangeEventString(Participant participant, string propertyName, string oldValue, string newValue)
+        {
+            if (oldValue != newValue)
+            {
+                ParticipantEvent pEvent = new ParticipantEvent();
+
+                pEvent.AppUser = _userManager.GetCurrentUser();
+                pEvent.EventDate = DateTime.Now;
+                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
+                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue, newValue);
+                pEvent.Participant = participant;
+                _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+            }
+
+            return newValue;
+        }
+
+        /// <summary>
+        /// Create a audit trail event if the value is changed. For date properties
+        /// </summary>
+        /// <param name="propertyName">Property name</param>
+        /// <param name="participant">Participant object</param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newValue">New value</param>
+        /// <returns></returns>
+        private DateTime ChangeEventDate(Participant participant, string propertyName, DateTime oldValue, DateTime newValue)
+        {
+            if (oldValue != newValue)
+            {
+                ParticipantEvent pEvent = new ParticipantEvent();
+
+                pEvent.AppUser = _userManager.GetCurrentUser();
+                pEvent.EventDate = DateTime.Now;
+                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
+                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString("dd/MM/yyyy"), newValue.ToString("dd/MM/yyyy"));
+                pEvent.Participant = participant;
+                _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+            }
+
+            return newValue;
+        }
+
+        /// <summary>
+        /// Create a audit trail event if the value is changed. For integer properties
+        /// </summary>
+        /// <param name="propertyName">Property name</param>
+        /// <param name="participant">Participant object</param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newValue">New value</param>
+        /// <returns></returns>
+        private int ChangeEventInt(Participant participant, string propertyName, int oldValue, int newValue)
+        {
+            if (oldValue != newValue)
+            {
+                ParticipantEvent pEvent = new ParticipantEvent();
+
+                pEvent.AppUser = _userManager.GetCurrentUser();
+                pEvent.EventDate = DateTime.Now;
+                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
+                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
+                pEvent.Participant = participant;
+                _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+            }
+
+            return newValue;
+        }
+
     }
 }

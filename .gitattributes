@@ -64,3 +64,4 @@
 
 PROCAS2/Scripts/* linguist-vendored
 PROCAS2/Content/DataTables/* linguist-vendored
+PROCAS2/Content/*.css linguist-vendored

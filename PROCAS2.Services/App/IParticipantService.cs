@@ -14,5 +14,6 @@ namespace PROCAS2.Services.App
     {
         bool UploadNewParticipants(UploadNewParticipantsViewModel model, out UploadResultsViewModel outModel, out MemoryStream hashFile);
         void UploadUpdateParticipants(UploadUpdateParticipantsViewModel model, out UploadResultsViewModel outModel);
+        List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
     }
 }

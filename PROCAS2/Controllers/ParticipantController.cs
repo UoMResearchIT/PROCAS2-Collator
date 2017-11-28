@@ -22,13 +22,16 @@ namespace PROCAS2.Controllers
     {
 
         private IGenericRepository<Participant> _participantRepo;
+        private IGenericRepository<ScreeningSite> _screeningSiteRepo;
         private IParticipantService _participantService;
 
         public ParticipantController(IGenericRepository<Participant> participantRepo,
-                                    IParticipantService participantService)
+                                    IParticipantService participantService,
+                                    IGenericRepository<ScreeningSite> screeningSiteRepo)
         {
             _participantRepo = participantRepo;
             _participantService = participantService;
+            _screeningSiteRepo = screeningSiteRepo;
         }
 
 
@@ -154,6 +157,7 @@ namespace PROCAS2.Controllers
             model.Participant = _participantRepo.GetAll().Where(x => x.NHSNumber == participantId).FirstOrDefault();
             if (model.Participant != null)
             {
+                model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x=>x.Name).ToList();
                 return View("Edit", model);
             }
 
@@ -170,9 +174,26 @@ namespace PROCAS2.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    List<string> errors;
+                    errors = _participantService.UpdateParticipantFromUI(model);
 
+                    if (errors.Count == 0) // no errors from updating
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else // some errors from updating
+                    {
+                        foreach (string error in errors)
+                        {
+                            ModelState.AddModelError("", error);
+                        }
+
+                        model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+                        return View("Edit", model);
+                    }
                 }
 
+                model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
                 return View("Edit", model);
                 
             }

@@ -250,7 +250,11 @@
 
     </div>
 
+    @Html.LabelFor(model => model.MailingList, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.MailingList, new { htmlAttributes = new { @class = "form-control-static" } })
 
+    </div>
 
 </div>
 

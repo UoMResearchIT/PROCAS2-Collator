@@ -156,6 +156,18 @@
   <data name="FIRST_NAME" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="GP_ADD_1" xml:space="preserve">
+    <value>GP Address Line 1</value>
+  </data>
+  <data name="GP_ADD_2" xml:space="preserve">
+    <value>GP Address Line 2</value>
+  </data>
+  <data name="GP_ADD_3" xml:space="preserve">
+    <value>GP Address Line 3</value>
+  </data>
+  <data name="GP_ADD_4" xml:space="preserve">
+    <value>GP Address Line 4</value>
+  </data>
   <data name="GP_EMAIL" xml:space="preserve">
     <value>GP Email</value>
   </data>
@@ -165,14 +177,39 @@
   <data name="GP_NAME" xml:space="preserve">
     <value>GP Name</value>
   </data>
+  <data name="GP_POSTCODE" xml:space="preserve">
+    <value>GP Postcode</value>
+  </data>
   <data name="HOMEEMAIL" xml:space="preserve">
     <value>Email</value>
+  </data>
+  <data name="HOME_ADD_1" xml:space="preserve">
+    <value>Home Address Line 1</value>
+  </data>
+  <data name="HOME_ADD_2" xml:space="preserve">
+    <value>Home Address Line 2</value>
+  </data>
+  <data name="HOME_ADD_3" xml:space="preserve">
+    <value>Home Address Line 3</value>
+  </data>
+  <data name="HOME_ADD_4" xml:space="preserve">
+    <value>Home Address Line 4</value>
+  </data>
+  <data name="HOME_POSTCODE" xml:space="preserve">
+    <value>Home Postcode</value>
   </data>
   <data name="LAST_NAME" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="MAILING_LIST" xml:space="preserve">
+    <value>Mailing List?</value>
+  </data>
   <data name="PARTICIPANT_NAME" xml:space="preserve">
     <value>Name</value>
+  </data>
+  <data name="PARTICIPANT_NOT_FOUND" xml:space="preserve">
+    <value>Participant {0} not found.</value>
+    <comment>{0} = NHS number</comment>
   </data>
   <data name="POSTCODE" xml:space="preserve">
     <value>Post Code</value>

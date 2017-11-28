@@ -11,7 +11,7 @@ $(document).ready(function () {
         return this.api().column(col, { order: 'index' }).nodes().map(function (td, i) {
             return $('input', td).prop('checked') ? '1' : '0';
         });
-    }
+    };
 
     $('#tblUsers').DataTable({
         stateSave: true,
