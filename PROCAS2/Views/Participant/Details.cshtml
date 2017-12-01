@@ -285,6 +285,9 @@
                                 <th>
                                     @ParticipantResources.EVENT_NAME
                                 </th>
+                                <th>
+                                    @ParticipantResources.EVENT_USER
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -296,6 +299,9 @@
                                     </td>
                                     <td>
                                         @pEvent.Notes
+                                    </td>
+                                    <td>
+                                        @pEvent.AppUser.UserCode
                                     </td>
                                 </tr>
                             }

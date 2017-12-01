@@ -150,6 +150,9 @@
   <data name="EVENT_NAME" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="EVENT_USER" xml:space="preserve">
+    <value>User</value>
+  </data>
   <data name="FHC_REFERRAL" xml:space="preserve">
     <value>FHC Referral?</value>
   </data>

@@ -124,6 +124,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of actual appointment does not seem to set to a sensible value..
+        /// </summary>
+        public static string UPLOAD_DOAA_OUT_OF_RANGE {
+            get {
+                return ResourceManager.GetString("UPLOAD_DOAA_OUT_OF_RANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Date of Birth is mandatory..
         /// </summary>
         public static string UPLOAD_DOB_EMPTY {

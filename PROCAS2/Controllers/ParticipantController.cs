@@ -158,6 +158,7 @@ namespace PROCAS2.Controllers
             if (model.Participant != null)
             {
                 model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x=>x.Name).ToList();
+                model.ScreeningSite = model.Participant.ScreeningSite.Code;
                 return View("Edit", model);
             }
 

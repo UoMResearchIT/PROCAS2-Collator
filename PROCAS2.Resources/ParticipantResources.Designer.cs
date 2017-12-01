@@ -160,6 +160,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string EVENT_USER {
+            get {
+                return ResourceManager.GetString("EVENT_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FHC Referral?.
         /// </summary>
         public static string FHC_REFERRAL {

@@ -1,0 +1,28 @@
+﻿@model PROCAS2.Models.ViewModels.ExportResultsViewModel
+
+@using PROCAS2.Models.ViewModels;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Export Results</title>
+</head>
+<body>
+
+    @foreach (Letter letter in Model.Letters)
+    {
+        <div>
+            <strong>@letter.Name</strong>
+            @letter.Name
+            <b>@letter.Name</b>
+        </div>
+    }
+   
+</body>
+</html>

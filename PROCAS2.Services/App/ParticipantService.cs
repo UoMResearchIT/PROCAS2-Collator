@@ -651,6 +651,36 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Validate the view model prior to saving
+        /// </summary>
+        /// <param name="model">View model</param>
+        /// <returns>List of errors</returns>
+        private List<string> ValidateParticipantViewModel(ParticipantEditViewModel model)
+        {
+            List<string> errors = new List<string>();
+
+            // Date of birth
+            if (model.DOB < _EARLIESTDOB || model.DOB > _LATESTDOB)
+            {
+                errors.Add(UploadResources.UPLOAD_DOB_OUT_OF_RANGE);
+            }
+
+            // First appointment
+            if (model.DOFA < _EARLIESTDOFA || model.DOFA > _LATESTDOFA)
+            {
+                errors.Add(UploadResources.UPLOAD_DOFA_OUT_OF_RANGE);
+            }
+
+            // Actual appointment
+            if (model.DOAA < _EARLIESTDOFA || model.DOAA > _LATESTDOFA) // Range should be the same as the first appointment!
+            {
+                errors.Add(UploadResources.UPLOAD_DOAA_OUT_OF_RANGE);
+            }
+
+            return errors;
+        }
+
+        /// <summary>
         /// Update the participant record using the view model from the Edit screen
         /// </summary>
         /// <param name="model">View model containing the information</param>
@@ -658,6 +688,13 @@ namespace PROCAS2.Services.App
         public List<string> UpdateParticipantFromUI(ParticipantEditViewModel model)
         {
             List<string> errors = new List<string>();
+
+            errors = ValidateParticipantViewModel(model);
+
+            if (errors.Count > 0)
+            {
+                return errors;
+            }
 
             try
             {
@@ -678,7 +715,11 @@ namespace PROCAS2.Services.App
                     participant.GPName = ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName);
                     participant.LastName = ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName);
                     participant.ScreeningNumber = ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber);
-                    participant.ScreeningSite = _siteRepo.GetAll().Where(x => x.Code == model.ScreeningSite).FirstOrDefault();
+
+                    ScreeningSite newSite = _siteRepo.GetAll().Where(x => x.Code == model.ScreeningSite).FirstOrDefault();
+                    ChangeEventString(participant, ParticipantResources.SCREENING_SITE, participant.ScreeningSite.Code, newSite.Code);
+                    participant.ScreeningSite = newSite;
+                    
                     participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk);
                     participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title);
                     participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn);

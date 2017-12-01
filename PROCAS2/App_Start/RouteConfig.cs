@@ -57,6 +57,12 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+             name: "ExportLetters",
+             url: "Export/",
+             defaults: new { controller = "Export", action = "Export" }
+         );
+
+            routes.MapRoute(
               name: "ConsentPanel",
               url: "Home/ConsentPanel/",
               defaults: new { controller = "Home", action = "ConsentPanel" }

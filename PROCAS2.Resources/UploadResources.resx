@@ -138,6 +138,9 @@
   <data name="UPLOAD_CREATED" xml:space="preserve">
     <value>CREATED:</value>
   </data>
+  <data name="UPLOAD_DOAA_OUT_OF_RANGE" xml:space="preserve">
+    <value>Date of actual appointment does not seem to set to a sensible value.</value>
+  </data>
   <data name="UPLOAD_DOB_EMPTY" xml:space="preserve">
     <value>Date of Birth is mandatory.</value>
   </data>

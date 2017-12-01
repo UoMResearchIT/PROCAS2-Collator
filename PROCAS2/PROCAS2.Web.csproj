@@ -213,12 +213,14 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\CsvResult.cs" />
+    <Compile Include="CustomActionResults\WordResult.cs" />
     <Compile Include="CustomAttributes\RedirectIfNotAuthorisedAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -628,6 +630,8 @@
     <Content Include="Views\Home\_Site.cshtml" />
     <Content Include="Views\Participant\Details.cshtml" />
     <Content Include="Views\Participant\Edit.cshtml" />
+    <Content Include="Views\Export\Export.cshtml" />
+    <Content Include="Views\Export\ExportResults.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
