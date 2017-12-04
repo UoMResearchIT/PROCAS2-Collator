@@ -401,6 +401,8 @@
     <Content Include="Content\icons\index.ico" />
     <Content Include="Content\images\uni.png" />
     <Content Include="Content\jquery-confirm.min.css" />
+    <Content Include="Content\TemplateLetters\logo-blackwhite.jpg" />
+    <Content Include="Content\TemplateLetters\logo-colour.jpg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\SiteCSS\Site.css" />
@@ -423,6 +425,7 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
+    <Content Include="Content\TemplateLetters\RiskLetterTemplate.docx" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\participantEdit.js" />
