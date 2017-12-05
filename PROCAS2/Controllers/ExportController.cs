@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.IO;
+using System.Configuration;
 
 using PROCAS2.Models.ViewModels;
 using PROCAS2.Services.App;
@@ -42,14 +43,75 @@ namespace PROCAS2.Controllers
 
             if (ModelState.IsValid == true)
             {
+                string errString;
+
+                if (model.AllReady == false)
+                {
+                    if (_exportService.ValidateNHSNumberForExport(model.NHSNumber, out errString) == false)
+                    {
+                        // error on validating NHS number
+                        ModelState.AddModelError("NHSNumber", errString);
+                        return View("Export", model);
+                    }
+                }
+
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
                 ExportResultsViewModel results = _exportService.GenerateLetters(model);
                 string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
                 MemoryStream mStream = _exportService.GenerateWordDoc(html);
+
+                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Export"));
+                HttpContext.Response.AppendHeader("Refresh", headerValue);
+
+                //TODO: set the sent risk flag
+
                 return new WordResult(mStream, "Letters");
+
+
             }
             else
                 return View("Export", model);
 
+        }
+
+        public string PrependSchemeAndAuthority(string url)
+        {
+            try
+            {
+                if (Request.Url.Authority.Contains("localhost"))
+                {
+                    return Request.Url.Scheme + "://"
+                            + Request.Url.Authority + "/"
+                            + url;
+                }
+                string urlBase = ConfigurationManager.AppSettings["UrlBase"];
+                if (urlBase != null)
+                {
+                    return urlBase + "/" + url;
+                }
+                else
+                {
+                    return Request.Url.Scheme + "://"
+                        + Request.Url.Authority + "/"
+                        + url;
+                }
+            }
+            catch
+            {
+                return url;
+            }
         }
     }
 }

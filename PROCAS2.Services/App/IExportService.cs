@@ -15,5 +15,6 @@ namespace PROCAS2.Services.App
         ExportResultsViewModel GenerateLetters(ExportLettersViewModel model);
         string RenderRazorViewToString(ControllerContext context, object model, string viewName);
         MemoryStream GenerateWordDoc(string html);
+        bool ValidateNHSNumberForExport(string NHSNumber, out string errString);
     }
 }

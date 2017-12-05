@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ExportResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExportResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ParticipantResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -75,6 +80,10 @@
     <EmbeddedResource Include="EventResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EventResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ExportResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ParticipantResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
