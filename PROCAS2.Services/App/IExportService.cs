@@ -13,6 +13,8 @@ namespace PROCAS2.Services.App
     public interface IExportService
     {
         ExportResultsViewModel GenerateLetters(ExportLettersViewModel model);
+        ExportResultsViewModel GenerateLetters(string letterId);
+
         string RenderRazorViewToString(ControllerContext context, object model, string viewName);
         MemoryStream GenerateWordDoc(string html);
         bool ValidateNHSNumberForExport(string NHSNumber, out string errString);

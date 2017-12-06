@@ -10,7 +10,9 @@ namespace PROCAS2.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            //AutomaticMigrationDataLossAllowed = true;
+#if DEBUG
+            AutomaticMigrationDataLossAllowed = true;
+#endif
         }
 
         protected override void Seed(PROCAS2.Data.PROCAS2Context context)

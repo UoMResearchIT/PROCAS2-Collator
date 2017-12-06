@@ -61,6 +61,60 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number consented:.
+        /// </summary>
+        public static string NUM_CONSENT {
+            get {
+                return ResourceManager.GetString("NUM_CONSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number consented but without full details yet:.
+        /// </summary>
+        public static string NUM_CONSENT_NO_DETAILS {
+            get {
+                return ResourceManager.GetString("NUM_CONSENT_NO_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of participants:.
+        /// </summary>
+        public static string NUM_PARC {
+            get {
+                return ResourceManager.GetString("NUM_PARC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Letter content received but not sent:.
+        /// </summary>
+        public static string NUM_RISK_NOT_SENT {
+            get {
+                return ResourceManager.GetString("NUM_RISK_NOT_SENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number waiting for risk letter from CRA:.
+        /// </summary>
+        public static string NUM_RISK_WAITING {
+            get {
+                return ResourceManager.GetString("NUM_RISK_WAITING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number yet to consent:.
+        /// </summary>
+        public static string NUM_YET_CONSENT {
+            get {
+                return ResourceManager.GetString("NUM_YET_CONSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string SITE_CODE {

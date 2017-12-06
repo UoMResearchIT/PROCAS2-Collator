@@ -63,10 +63,23 @@ namespace PROCAS2
          );
 
             routes.MapRoute(
+              name: "ViewLetter",
+              url: "Export/ViewLetter/{letterId}",
+              defaults: new { controller = "Export", action = "ViewLetter", letterId = "" }
+          );
+
+            routes.MapRoute(
               name: "ConsentPanel",
               url: "Home/ConsentPanel/",
               defaults: new { controller = "Home", action = "ConsentPanel" }
           );
+
+            routes.MapRoute(
+             name: "RiskPanel",
+             url: "Home/RiskPanel/",
+             defaults: new { controller = "Home", action = "RiskPanel" }
+         );
+
 
             routes.MapRoute(
                 name: "Default",

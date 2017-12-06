@@ -633,6 +633,7 @@
     <Content Include="Views\Participant\Edit.cshtml" />
     <Content Include="Views\Export\Export.cshtml" />
     <Content Include="Views\Export\ExportResults.cshtml" />
+    <Content Include="Views\Home\_RiskLetter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

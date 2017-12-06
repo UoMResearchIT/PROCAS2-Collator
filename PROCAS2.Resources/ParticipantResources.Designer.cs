@@ -322,6 +322,42 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Received Date.
+        /// </summary>
+        public static string LETTER_RECEIVED {
+            get {
+                return ResourceManager.GetString("LETTER_RECEIVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Category.
+        /// </summary>
+        public static string LETTER_RISK_CAT {
+            get {
+                return ResourceManager.GetString("LETTER_RISK_CAT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Score.
+        /// </summary>
+        public static string LETTER_RISK_SCORE {
+            get {
+                return ResourceManager.GetString("LETTER_RISK_SCORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sent Date.
+        /// </summary>
+        public static string LETTER_SENTDATE {
+            get {
+                return ResourceManager.GetString("LETTER_SENTDATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mailing List?.
         /// </summary>
         public static string MAILING_LIST {

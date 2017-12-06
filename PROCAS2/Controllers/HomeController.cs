@@ -54,6 +54,20 @@ namespace PROCAS2.Controllers
                 return View("_Consent", model);
         }
 
+        public ActionResult RiskPanel()
+        {
+            DashboardRiskViewModel model = new DashboardRiskViewModel();
+
+            model.NumberLetterNotSent = _dashboardService.GetLetterNotSent();
+            model.NumberWaitingForLetter = _dashboardService.GetWaitingForLetter();
+     
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_RiskLetter", model);
+            else
+                return View("_RiskLetter", model);
+        }
+
         public ActionResult SitePanel()
         {
             DashboardSiteViewModel model = new DashboardSiteViewModel();

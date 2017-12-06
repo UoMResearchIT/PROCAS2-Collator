@@ -86,6 +86,24 @@ namespace PROCAS2.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult ViewLetter(string letterId)
+        {
+            ExportResultsViewModel results = _exportService.GenerateLetters(letterId);
+
+            if (results.Letters.Count == 0)
+            {
+                return null;
+            }
+
+            string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
+            MemoryStream mStream = _exportService.GenerateWordDoc(html);
+
+        
+
+            return new WordResult(mStream, "Letter");
+        }
+
         public string PrependSchemeAndAuthority(string url)
         {
             try

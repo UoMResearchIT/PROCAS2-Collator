@@ -54,7 +54,7 @@ namespace PROCAS2.Data.Entities
 
         public bool SentRisk { get; set; }
 
-        public string RiskLetterContent { get; set; }
+        
 
         public bool FHCReferral { get; set; }
 
@@ -66,15 +66,12 @@ namespace PROCAS2.Data.Entities
 
         public bool MailingList { get; set; }
 
-        public double? RiskScore { get; set; }
-
-        [MaxLength(20)]
-        public string RiskCategory { get; set; }
+        
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }
 
-        
 
+        public virtual ICollection<RiskLetter> RiskLetters { get; set; }
         public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }

@@ -329,7 +329,53 @@
         <div role="tabpanel" class="tab-pane" id="pnlRiskLetter">
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading">Risk Letter Content</div>
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.LETTER_RECEIVED
+                                </th>
+                                <th>
+                                    @ParticipantResources.LETTER_RISK_SCORE
+                                </th>
+                                <th>
+                                    @ParticipantResources.LETTER_RISK_CAT
+                                </th>
+                                <th>
+                                    @ParticipantResources.LETTER_SENTDATE
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (RiskLetter letter in Model.Participant.RiskLetters.OrderByDescending(x => x.DateReceived))
+                            {
+                                <tr>
+                                    <td>
+                                        @letter.DateReceived.ToShortDateString()
+                                    </td>
+                                    <td>
+                                        @letter.RiskScore
+                                    </td>
+                                    <td>
+                                        @letter.RiskCategory
+                                    </td>
+                                    <td>
+                                        @letter.DateSent
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("View", "ViewLetter", "Export", new { letterId = letter.Id.ToString() }, new { @class = "btn btn-default pull-right" })
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

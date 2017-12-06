@@ -36,6 +36,7 @@ namespace PROCAS2.Data
         public DbSet<Question> Questions { get; set; }
         public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
         public DbSet<Response> Responses { get; set; }
+        public DbSet<RiskLetter> RiskLetters { get; set; }
         public DbSet<ScreeningSite> ScreeningSites { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

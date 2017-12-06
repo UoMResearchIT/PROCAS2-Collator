@@ -120,6 +120,9 @@
   <data name="ALL_READY" xml:space="preserve">
     <value>Generate all that are ready</value>
   </data>
+  <data name="BLANK_LINE" xml:space="preserve">
+    <value>&amp;nbsp;</value>
+  </data>
   <data name="EXPORT_OR" xml:space="preserve">
     <value>Or</value>
   </data>
@@ -133,7 +136,7 @@
     <value>Manchester</value>
   </data>
   <data name="FROM_ADDRESS_4" xml:space="preserve">
-    <value />
+    <value>&amp;nbsp;</value>
   </data>
   <data name="FROM_ORG" xml:space="preserve">
     <value>PROCAS2</value>

@@ -11,5 +11,7 @@ namespace PROCAS2.Services.App
         int GetTotalParticipantCount();
         int GetConsentedCount();
         int GetConsentedNoDetails();
+        int GetLetterNotSent();
+        int GetWaitingForLetter();
     }
 }

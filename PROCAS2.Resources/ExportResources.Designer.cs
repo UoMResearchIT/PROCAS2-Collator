@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;nbsp;.
+        /// </summary>
+        public static string BLANK_LINE {
+            get {
+                return ResourceManager.GetString("BLANK_LINE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Or.
         /// </summary>
         public static string EXPORT_OR {
@@ -106,7 +115,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to &amp;nbsp;.
         /// </summary>
         public static string FROM_ADDRESS_4 {
             get {

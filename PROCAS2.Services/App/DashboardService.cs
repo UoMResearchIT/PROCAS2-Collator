@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Data.Entity;
+
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 
@@ -43,7 +45,27 @@ namespace PROCAS2.Services.App
         /// <returns></returns>
         public int GetConsentedNoDetails()
         {
-            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName != "");
+            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName != null);
+        }
+
+        /// <summary>
+        /// Return the number of participants who have got a risk letter but it has been sent
+        /// </summary>
+        /// <returns>The count</returns>
+        public int GetLetterNotSent()
+        {
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count > 0);
+        }
+
+
+        /// <summary>
+        /// Return the number of participants waiting for a letter to be received from CRA
+        /// </summary>
+        /// <returns>The count</returns>
+        public int GetWaitingForLetter()
+        {
+            //List<Participant> parts = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count == 0).ToList();
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count == 0);
         }
     }
 }

@@ -36,4 +36,23 @@
         .fail(function (error) {
             $("#pnlSite").html("<p>Error: Site Panel information cannot be found.</p>");
         });
+
+
+    // Risk letter info panel
+    // Fetch data to show risk letter information
+    $.ajax({
+        url: "/Home/RiskPanel",
+        beforeSend: function () {
+
+            $("#pnlRisk").html("<h4>Risk Letters</h4><p>Loading...</p>");
+        }
+    })
+        .done(function (data) {
+
+            $("#pnlRisk").html(data);
+
+        })
+        .fail(function (error) {
+            $("#pnlRisk").html("<p>Error: Risk Letter information cannot be found.</p>");
+        });
 });

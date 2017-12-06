@@ -70,6 +70,7 @@
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\QuestionAnswer.cs" />
     <Compile Include="Entities\Response.cs" />
+    <Compile Include="Entities\RiskLetter.cs" />
     <Compile Include="Entities\ScreeningSite.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Identity\IdentityModels.cs" />

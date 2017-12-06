@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NUM_CONSENT" xml:space="preserve">
+    <value>Number consented:</value>
+  </data>
+  <data name="NUM_CONSENT_NO_DETAILS" xml:space="preserve">
+    <value>Number consented but without full details yet:</value>
+  </data>
+  <data name="NUM_PARC" xml:space="preserve">
+    <value>Number of participants:</value>
+  </data>
+  <data name="NUM_RISK_NOT_SENT" xml:space="preserve">
+    <value>Letter content received but not sent:</value>
+  </data>
+  <data name="NUM_RISK_WAITING" xml:space="preserve">
+    <value>Number waiting for risk letter from CRA:</value>
+  </data>
+  <data name="NUM_YET_CONSENT" xml:space="preserve">
+    <value>Number yet to consent:</value>
+  </data>
   <data name="SITE_CODE" xml:space="preserve">
     <value>Code</value>
   </data>

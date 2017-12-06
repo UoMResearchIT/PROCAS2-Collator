@@ -204,6 +204,18 @@
   <data name="LAST_NAME" xml:space="preserve">
     <value>Last Name</value>
   </data>
+  <data name="LETTER_RECEIVED" xml:space="preserve">
+    <value>Received Date</value>
+  </data>
+  <data name="LETTER_RISK_CAT" xml:space="preserve">
+    <value>Risk Category</value>
+  </data>
+  <data name="LETTER_RISK_SCORE" xml:space="preserve">
+    <value>Risk Score</value>
+  </data>
+  <data name="LETTER_SENTDATE" xml:space="preserve">
+    <value>Sent Date</value>
+  </data>
   <data name="MAILING_LIST" xml:space="preserve">
     <value>Mailing List?</value>
   </data>

@@ -22,11 +22,14 @@ namespace PROCAS2.Services.App
     {
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<Participant> _participantRepo;
+        private IGenericRepository<RiskLetter> _riskLetterRepo;
 
         public ExportService(IGenericRepository<Participant> participantRepo,
+                            IGenericRepository<RiskLetter> riskLetterRepo,
                             IUnitOfWork unitOfWork)
         {
             _participantRepo = participantRepo;
+            _riskLetterRepo = riskLetterRepo;
             _unitOfWork = unitOfWork;
         }
 
@@ -49,7 +52,7 @@ namespace PROCAS2.Services.App
                     return false;
                 }
 
-                if (String.IsNullOrEmpty(participant.RiskLetterContent) == true)
+                if (participant.RiskLetters.Count == 0)
                 {
                     errString = ExportResources.NO_LETTER_YET;
                     return false;
@@ -73,6 +76,44 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        ///  Generate the letters for viewing
+        /// </summary>
+        /// <param name="letterId">Id of letter</param>
+        /// <returns>Results view model</returns>
+        public ExportResultsViewModel GenerateLetters(string letterId)
+        {
+            ExportResultsViewModel retModel = new ExportResultsViewModel();
+
+            int id;
+            if (Int32.TryParse(letterId, out id) == false)
+            {
+                return retModel;
+            }
+
+            RiskLetter letter = _riskLetterRepo.GetAll().Where(x => x.Id == id).FirstOrDefault();
+            if (letter == null)
+            {
+                return retModel;
+            }
+
+            Address homeAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
+            retModel.Letters.Add(new Letter()
+            {
+                LetterText = letter.RiskLetterContent,
+                Name = letter.Participant.Title + " " + letter.Participant.FirstName + " " + letter.Participant.LastName,
+                AddressLine1 = homeAddress.AddressLine1,
+                AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
+                AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
+                AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
+                PostCode = homeAddress.PostCode,
+                SentDate = DateTime.Now.ToShortDateString()
+
+            });
+
+            return retModel;
+        }
+
+        /// <summary>
         /// Generate the letters for export
         /// </summary>
         /// <param name="model">Export criteria</param>
@@ -86,25 +127,26 @@ namespace PROCAS2.Services.App
             // Check if they want all those that are ready for export or just one NHS number
             if (model.AllReady == true)
             {
-                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetterContent != null).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetters.Count > 0).ToList();
             }
             else
             {
-                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null  && x.RiskLetterContent != null).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null  && x.RiskLetters.Count > 0).ToList();
             }
 
             
             foreach (Participant participant in participants)
             {
                 Address homeAddress = participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
+                RiskLetter riskLetter = participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault();
                 retModel.Letters.Add(new Letter()
                 {
-                    LetterText = participant.RiskLetterContent,
+                    LetterText = riskLetter.RiskLetterContent,
                     Name = participant.Title + " " + participant.FirstName + " " + participant.LastName,
                     AddressLine1 = homeAddress.AddressLine1,
-                    AddressLine2 = homeAddress.AddressLine2,
-                    AddressLine3 = homeAddress.AddressLine3,
-                    AddressLine4 = homeAddress.AddressLine4,
+                    AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2)==true? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
+                    AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
+                    AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                     PostCode = homeAddress.PostCode,
                     SentDate = DateTime.Now.ToShortDateString()
 
