@@ -1,0 +1,766 @@
+﻿@model PROCAS2.Models.ViewModels.ScreenV1_5_2DetailsViewModel
+@{
+    ViewBag.Title = "Volpara Record";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewScreenV1_5_2</title>
+</head>
+<body>
+    <div>
+        <h4>ScreeningRecordV1_5_2</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DataDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DataDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.Version)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.Version)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.Detector)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.Detector)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.XRaySystem)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.XRaySystem)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ManufacturerModelName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ManufacturerModelName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.StudyDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.StudyDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.AccessionDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.AccessionDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ContentDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ContentDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PatientAge)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PatientAge)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.AccessionNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.AccessionNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.StudyInstanceUID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.StudyInstanceUID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.SeriesInstanceUID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.SeriesInstanceUID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.InstanceNumber)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.InstanceNumber)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.BreastSide)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.BreastSide)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MammoView)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MammoView)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ChestPosition)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ChestPosition)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ExposureMas)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ExposureMas)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ExposureTimeMs)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ExposureTimeMs)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.TubeVoltageKvp)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.TubeVoltageKvp)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.XRayTubeCurrent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.XRayTubeCurrent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DetectorTemperature)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DetectorTemperature)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.TargetMaterial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.TargetMaterial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.FilterMaterial)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.FilterMaterial)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.FilterThicknessMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.FilterThicknessMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.HVLMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.HVLMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.CompressionForceN)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.CompressionForceN)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.RecordedBreastThicknessMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.RecordedBreastThicknessMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.BreastVolumeCm3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.BreastVolumeCm3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.HintVolumeCm3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.HintVolumeCm3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.VolumetricBreastDensity)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.VolumetricBreastDensity)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.CompressionPressureKPa)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.CompressionPressureKPa)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ContactAreasMm2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ContactAreasMm2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DenseAreaPercent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DenseAreaPercent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.AreaGreaterThan10mmDenseMm2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.AreaGreaterThan10mmDenseMm2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ComputedSlantAngle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ComputedSlantAngle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ComputerSlantMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ComputerSlantMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ComputedBreastThickness)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ComputedBreastThickness)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PectoralAngleDegrees)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PectoralAngleDegrees)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PositionerPrimaryAngle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PositionerPrimaryAngle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DetectorPrimaryAngle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DetectorPrimaryAngle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DetectorSecondaryAngle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DetectorSecondaryAngle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.EntranceDoseInMgy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.EntranceDoseInMgy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.OrganDoseInMgy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.OrganDoseInMgy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.GlandularityPercent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.GlandularityPercent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.VolparaMeanGlandularDoseInMgy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.VolparaMeanGlandularDoseInMgy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.OperatorName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.OperatorName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.RequestedProcedure)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.RequestedProcedure)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ReferringPhysicianName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ReferringPhysicianName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.VolparaError)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.VolparaError)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.Warning)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.Warning)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.Special)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.Special)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MammoImageType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MammoImageType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ImageQualityDiagnostics)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ImageQualityDiagnostics)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleInProfile)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleInProfile)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleAreaInMm2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleAreaInMm2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PercentNippleAreaAnteriorToSkinBoundary)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PercentNippleAreaAnteriorToSkinBoundary)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleCenterLocationRelativeToSkinLine)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleCenterLocationRelativeToSkinLine)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleToInferiorPectoralMuscleVerticalLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleToInferiorPectoralMuscleVerticalLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PNLToInferiorPectoralMuscleVerticalLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PNLToInferiorPectoralMuscleVerticalLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MLOPosterierNippleLineLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MLOPosterierNippleLineLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleLineLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleLineLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.InframammaryFoldVisible)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.InframammaryFoldVisible)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.InframammaryFoldAreaInMm2)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.InframammaryFoldAreaInMm2)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.InframammaryFoldDistanceFromPosteriorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.InframammaryFoldDistanceFromPosteriorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.InframammaryFoldDistanceFromSuperiorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.InframammaryFoldDistanceFromSuperiorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.SuperiorPectoralWidthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.SuperiorPectoralWidthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PosteriorPectoralLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PosteriorPectoralLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.PectoralShape)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.PectoralShape)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleDistanceFromSuperiorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleDistanceFromSuperiorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleDistanceFromPosteriorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleDistanceFromPosteriorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.CCPosteriorNippleLineLengthInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.CCPosteriorNippleLineLengthInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleMedialLateralDistanceInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleMedialLateralDistanceInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleMedialLateralAngleInDegrees)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleMedialLateralAngleInDegrees)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.BreastCenterToImageCenterDistanceInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.BreastCenterToImageCenterDistanceInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.NippleDistanceFromMedialEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.NippleDistanceFromMedialEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.BreastEdgeDistanceToPosteriorMedialCornerInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.BreastEdgeDistanceToPosteriorMedialCornerInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.BreastEdgeDistanceToPosteriorLateralCornerInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.BreastEdgeDistanceToPosteriorLateralCornerInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ShoulderDetected)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ShoulderDetected)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.CleavageDetected)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.CleavageDetected)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MeanDenseThicknessInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MeanDenseThicknessInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumDenseThicknessInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumDenseThicknessInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.SDDenseThicknessInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.SDDenseThicknessInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumPercentDensityIn1Cm2Area)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumPercentDensityIn1Cm2Area)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumDenseVolumeIn1Cm2AreaInCm3)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumDenseVolumeIn1Cm2AreaInCm3)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DoseCalibrationError)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DoseCalibrationError)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MeasuredHVLInMmAl)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MeasuredHVLInMmAl)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.MeasuredEntranceDoseInMgy)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.MeasuredEntranceDoseInMgy)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DoseCalibrationUsedDateTime)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DoseCalibrationUsedDateTime)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.DoseCalculationBasis)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.DoseCalculationBasis)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ScreeningRecord.ParticipantId)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ScreeningRecord.ParticipantId)
+            </dd>
+    
+        </dl>
+    </div>
+    
+</body>
+</html>

@@ -79,6 +79,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image Position.
+        /// </summary>
+        public static string BREAST_SIDE {
+            get {
+                return ResourceManager.GetString("BREAST_SIDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Chemo. Started?.
         /// </summary>
         public static string CHEMO {
@@ -93,6 +102,15 @@ namespace PROCAS2.Resources {
         public static string CONSENTED {
             get {
                 return ResourceManager.GetString("CONSENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Data Received.
+        /// </summary>
+        public static string DATA_RECEIVED {
+            get {
+                return ResourceManager.GetString("DATA_RECEIVED", resourceCulture);
             }
         }
         
@@ -430,11 +448,38 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date of Image.
+        /// </summary>
+        public static string STUDY_DATE {
+            get {
+                return ResourceManager.GetString("STUDY_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Title.
         /// </summary>
         public static string TITLE {
             get {
                 return ResourceManager.GetString("TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unknown.
+        /// </summary>
+        public static string UNKNOWN {
+            get {
+                return ResourceManager.GetString("UNKNOWN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volpara Version.
+        /// </summary>
+        public static string VOLPARA_VERSION {
+            get {
+                return ResourceManager.GetString("VOLPARA_VERSION", resourceCulture);
             }
         }
         

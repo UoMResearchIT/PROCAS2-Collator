@@ -217,6 +217,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\ScreeningController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\CsvResult.cs" />
@@ -634,6 +635,7 @@
     <Content Include="Views\Export\Export.cshtml" />
     <Content Include="Views\Export\ExportResults.cshtml" />
     <Content Include="Views\Home\_RiskLetter.cshtml" />
+    <Content Include="Views\Screening\ViewScreenV1_5_2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

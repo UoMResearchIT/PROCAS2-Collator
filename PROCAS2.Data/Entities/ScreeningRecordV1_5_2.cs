@@ -12,7 +12,7 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
-        public int DataDate { get; set; }
+        public DateTime DataDate { get; set; }
 
         [MaxLength(30)]
         public string Version { get; set; }

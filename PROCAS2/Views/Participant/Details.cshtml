@@ -267,6 +267,7 @@
         <li role="presentation" class="active"><a href="#pnlHistory" aria-controls="pnlHistory" role="tab" data-toggle="tab">History</a></li>
         <li role="presentation"><a href="#pnlVolpara" aria-controls="pnlVolpara" role="tab" data-toggle="tab">Volpara</a></li>
         <li role="presentation"><a href="#pnlQuestionnaire" aria-controls="pnlQuestionnaire" role="tab" data-toggle="tab">Questionnaire</a></li>
+        <li role="presentation"><a href="#pnlImages" aria-controls="pnlImages" role="tab" data-toggle="tab">Images</a></li>
         <li role="presentation"><a href="#pnlRiskLetter" aria-controls="pnlRiskLetter" role="tab" data-toggle="tab">Risk Letter</a></li>
     </ul>
 
@@ -315,13 +316,69 @@
         <div role="tabpanel" class="tab-pane" id="pnlVolpara">
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading">Volpara</div>
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.DATA_RECEIVED
+                                </th>
+                                <th>
+                                    @ParticipantResources.BREAST_SIDE
+                                </th>
+                                <th>
+                                    @ParticipantResources.STUDY_DATE
+                                </th>
+                                <th>
+                                    @ParticipantResources.VOLPARA_VERSION
+                                </th>
+                                <th>
+
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ScreeningRecordV1_5_2 screen in Model.Participant.ScreeningRecordV1_5_2s.OrderByDescending(x => x.DataDate))
+                            {
+                                <tr>
+                                    <td>
+                                        @String.Join(" ", new string[] { screen.DataDate.ToShortDateString(), " ", @screen.DataDate.ToShortTimeString() })
+                                    </td>
+                                    <td>
+                                        @screen.BreastSide
+                                    </td>
+                                    <td>
+                                        @if (screen.StudyDate.HasValue == true) {
+                                            @screen.StudyDate.Value.ToShortDateString() 
+                                        } else {
+                                            @ParticipantResources.UNKNOWN }
+                                    </td>
+                                    <td>
+                                        @screen.Version
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("View", "ViewScreenV1_5_2", "Screening", new { screenId = screen.Id.ToString() }, new { @class = "btn btn-default pull-right" })
+
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 
         <div role="tabpanel" class="tab-pane" id="pnlQuestionnaire">
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading">Questionnaire</div>
+                <div class="panel-body"></div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlQuestionnaire">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading">Images</div>
                 <div class="panel-body"></div>
             </div>
         </div>
