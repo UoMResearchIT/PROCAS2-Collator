@@ -21,5 +21,10 @@ namespace PROCAS2.Data.Entities
         public int ParticipantID { get; set; }
 
         public virtual Participant Participant { get; set; }
+
+
+        public int? ScreeningRecordV1_5_2Id { get; set; }
+
+        public virtual ScreeningRecordV1_5_2 ScreeningRecordV1_5_2 { get; set; }
     }
 }

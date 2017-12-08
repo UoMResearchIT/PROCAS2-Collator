@@ -71,6 +71,7 @@
     <Compile Include="Entities\QuestionAnswer.cs" />
     <Compile Include="Entities\Response.cs" />
     <Compile Include="Entities\RiskLetter.cs" />
+    <Compile Include="Entities\ScreeningRecordV1_5_2.cs" />
     <Compile Include="Entities\ScreeningSite.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
