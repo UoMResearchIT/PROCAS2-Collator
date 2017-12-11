@@ -32,6 +32,16 @@ namespace PROCAS2.Models.ViewModels
         public string AddressLine4 { get; set; }
         public string PostCode { get; set; }
         public string SentDate { get; set; }
+
+        public string FromAddressLine1 { get; set; }
+        public string FromAddressLine2 { get; set; }
+        public string FromAddressLine3 { get; set; }
+        public string FromAddressLine4 { get; set; }
+        public string FromPostCode { get; set; }
+
+        public string FromName { get; set; }
+        public string LogoFile { get; set; }
+        public string SigFile { get; set; }
     }
 
 }

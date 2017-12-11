@@ -79,6 +79,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ms..
+        /// </summary>
+        public static string DEFAULT_TITLE {
+            get {
+                return ResourceManager.GetString("DEFAULT_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Or.
         /// </summary>
         public static string EXPORT_OR {
@@ -124,7 +133,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to PROCAS2.
+        ///   Looks up a localized string similar to BC-Predict.
         /// </summary>
         public static string FROM_ORG {
             get {

@@ -146,6 +146,8 @@ namespace PROCAS2.Models.ViewModels
         public bool FHCReferral { get; set; }
         [Display(Name = "MAILING_LIST", ResourceType = typeof(ParticipantResources))]
         public bool MailingList { get; set; }
+        [Display(Name = "ATTENDED_SCREENING", ResourceType = typeof(ParticipantResources))]
+        public bool AttendedScreening { get; set; }
 
     }
 }

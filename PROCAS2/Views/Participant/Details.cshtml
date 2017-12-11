@@ -260,15 +260,56 @@
 
 <div class-"row">&nbsp</div>
 
+<div class="row">
+    @Html.LabelFor(model => model.Participant.AttendedScreening, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-10">
+        @Html.DisplayFor(model => model.Participant.AttendedScreening, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+   
+
+</div>
+
+<div class-"row">&nbsp</div>
+
 <div>
 
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#pnlHistory" aria-controls="pnlHistory" role="tab" data-toggle="tab">History</a></li>
-        <li role="presentation"><a href="#pnlVolpara" aria-controls="pnlVolpara" role="tab" data-toggle="tab">Volpara</a></li>
-        <li role="presentation"><a href="#pnlQuestionnaire" aria-controls="pnlQuestionnaire" role="tab" data-toggle="tab">Questionnaire</a></li>
-        <li role="presentation"><a href="#pnlImages" aria-controls="pnlImages" role="tab" data-toggle="tab">Images</a></li>
-        <li role="presentation"><a href="#pnlRiskLetter" aria-controls="pnlRiskLetter" role="tab" data-toggle="tab">Risk Letter</a></li>
+        <li role="presentation"><a href="#pnlVolpara" aria-controls="pnlVolpara" role="tab" data-toggle="tab">
+    Volpara
+           
+    <span class="glyphicon glyphicon-th-list">
+@if (@Model.Participant.ScreeningRecordV1_5_2s.Count > 0)
+{
+        <span class="rw-number-notification">@Model.Participant.ScreeningRecordV1_5_2s.Count</span>
+}
+    </span>
+            
+</a></li>
+        <li role="presentation"><a href="#pnlQuestionnaire" aria-controls="pnlQuestionnaire" role="tab" data-toggle="tab">Questionnaire
+                                    <span class="glyphicon glyphicon-question-sign">
+                                        </span></a></li>
+        <li role="presentation"><a href="#pnlImages" aria-controls="pnlImages" role="tab" data-toggle="tab">Images
+                                   
+                                        <span class="glyphicon glyphicon-picture">
+@if (@Model.Participant.Images.Count > 0)
+{
+                                            <span class="rw-number-notification">@Model.Participant.Images.Count</span>
+}
+                                        </span>
+                                    </a></li>
+        <li role="presentation"><a href="#pnlRiskLetter" aria-controls="pnlRiskLetter" role="tab" data-toggle="tab">Risk Letter
+                                    <span class="glyphicon glyphicon-envelope">
+                                        @if (@Model.Participant.RiskLetters.Count > 0)
+            {
+                                            <span class="rw-number-notification">@Model.Participant.RiskLetters.Count</span>
+                                        }
+                                        </span>
+</a></li>
     </ul>
 
     <!-- Tab panes -->
@@ -315,7 +356,9 @@
 
         <div role="tabpanel" class="tab-pane" id="pnlVolpara">
             <div class="panel panel-primary participantViewPanel">
-                <div class="panel-heading">Volpara</div>
+                <div class="panel-heading">Volpara
+                    
+                </div>
                 <div class="panel-body">
                     <table class="table table-sm">
                         <thead>

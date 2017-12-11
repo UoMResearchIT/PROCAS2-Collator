@@ -96,11 +96,23 @@ namespace PROCAS2.Services.App
                 return retModel;
             }
 
+            string title = String.IsNullOrEmpty(letter.Participant.Title) == true ? ExportResources.DEFAULT_TITLE : letter.Participant.Title;
+
             Address homeAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
             retModel.Letters.Add(new Letter()
             {
                 LetterText = letter.RiskLetterContent,
-                Name = letter.Participant.Title + " " + letter.Participant.FirstName + " " + letter.Participant.LastName,
+
+                FromAddressLine1 = letter.Participant.ScreeningSite.AddressLine1,
+                FromAddressLine2 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine2,
+                FromAddressLine3 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine3,
+                FromAddressLine4 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine4,
+                FromPostCode = letter.Participant.ScreeningSite.PostCode,
+                FromName = letter.Participant.ScreeningSite.LetterFrom,
+                LogoFile = letter.Participant.ScreeningSite.LogoFileName,
+                SigFile = letter.Participant.ScreeningSite.SigFileName,
+
+                Name = title + " "  + letter.Participant.LastName,
                 AddressLine1 = homeAddress.AddressLine1,
                 AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
                 AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
@@ -139,10 +151,22 @@ namespace PROCAS2.Services.App
             {
                 Address homeAddress = participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
                 RiskLetter riskLetter = participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault();
+                string title = String.IsNullOrEmpty(participant.Title) == true ? ExportResources.DEFAULT_TITLE : participant.Title;
+
                 retModel.Letters.Add(new Letter()
                 {
                     LetterText = riskLetter.RiskLetterContent,
-                    Name = participant.Title + " " + participant.FirstName + " " + participant.LastName,
+                    FromAddressLine1 = participant.ScreeningSite.AddressLine1,
+                    FromAddressLine2 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine2,
+                    FromAddressLine3 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine3,
+                    FromAddressLine4 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine4,
+                    FromPostCode = participant.ScreeningSite.PostCode,
+                    FromName = participant.ScreeningSite.LetterFrom,
+                    LogoFile = participant.ScreeningSite.LogoFileName,
+                    SigFile = participant.ScreeningSite.SigFileName,
+
+
+                    Name =  title + " " + participant.LastName,
                     AddressLine1 = homeAddress.AddressLine1,
                     AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2)==true? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
                     AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,

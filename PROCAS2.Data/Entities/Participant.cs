@@ -54,7 +54,7 @@ namespace PROCAS2.Data.Entities
 
         public bool SentRisk { get; set; }
 
-        
+        public bool AttendedScreening { get; set; } // attended screening within 6 weeks
 
         public bool FHCReferral { get; set; }
 

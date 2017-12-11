@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attended Screening Within 6 Weeks?.
+        /// </summary>
+        public static string ATTENDED_SCREENING {
+            get {
+                return ResourceManager.GetString("ATTENDED_SCREENING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BMI.
         /// </summary>
         public static string BMI {
@@ -367,7 +376,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sent Date.
+        ///   Looks up a localized string similar to Generated Date.
         /// </summary>
         public static string LETTER_SENTDATE {
             get {
@@ -439,7 +448,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Risk Letter Sent?.
+        ///   Looks up a localized string similar to Risk Letter Generated?.
         /// </summary>
         public static string SENT_RISK {
             get {

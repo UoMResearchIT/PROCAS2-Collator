@@ -124,7 +124,7 @@
     <value>Number consented but without full details yet:</value>
   </data>
   <data name="NUM_PARC" xml:space="preserve">
-    <value>Number of participants:</value>
+    <value>Number of invitees:</value>
   </data>
   <data name="NUM_RISK_NOT_SENT" xml:space="preserve">
     <value>Letter content received but not sent:</value>

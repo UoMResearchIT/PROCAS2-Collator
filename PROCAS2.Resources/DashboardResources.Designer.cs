@@ -79,7 +79,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of participants:.
+        ///   Looks up a localized string similar to Number of invitees:.
         /// </summary>
         public static string NUM_PARC {
             get {

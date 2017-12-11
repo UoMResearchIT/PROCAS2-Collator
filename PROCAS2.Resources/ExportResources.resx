@@ -123,6 +123,9 @@
   <data name="BLANK_LINE" xml:space="preserve">
     <value>&amp;nbsp;</value>
   </data>
+  <data name="DEFAULT_TITLE" xml:space="preserve">
+    <value>Ms.</value>
+  </data>
   <data name="EXPORT_OR" xml:space="preserve">
     <value>Or</value>
   </data>
@@ -139,7 +142,7 @@
     <value>&amp;nbsp;</value>
   </data>
   <data name="FROM_ORG" xml:space="preserve">
-    <value>PROCAS2</value>
+    <value>BC-Predict</value>
   </data>
   <data name="FROM_POSTCODE" xml:space="preserve">
     <value>M13 9PL</value>

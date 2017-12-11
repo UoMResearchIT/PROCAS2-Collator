@@ -721,6 +721,7 @@ namespace PROCAS2.Services.App
                     participant.ScreeningSite = newSite;
                     
                     participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk);
+                    participant.AttendedScreening = ChangeEventBool(participant, ParticipantResources.ATTENDED_SCREENING, participant.AttendedScreening, model.AttendedScreening);
                     participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title);
                     participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn);
                     participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList);

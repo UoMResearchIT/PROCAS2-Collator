@@ -120,6 +120,9 @@
   <data name="ADDRESS" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="ATTENDED_SCREENING" xml:space="preserve">
+    <value>Attended Screening Within 6 Weeks?</value>
+  </data>
   <data name="BMI" xml:space="preserve">
     <value>BMI</value>
   </data>
@@ -220,7 +223,7 @@
     <value>Risk Score</value>
   </data>
   <data name="LETTER_SENTDATE" xml:space="preserve">
-    <value>Sent Date</value>
+    <value>Generated Date</value>
   </data>
   <data name="MAILING_LIST" xml:space="preserve">
     <value>Mailing List?</value>
@@ -245,7 +248,7 @@
     <value>Site</value>
   </data>
   <data name="SENT_RISK" xml:space="preserve">
-    <value>Risk Letter Sent?</value>
+    <value>Risk Letter Generated?</value>
   </data>
   <data name="STUDY_DATE" xml:space="preserve">
     <value>Date of Image</value>
