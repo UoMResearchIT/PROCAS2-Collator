@@ -356,8 +356,14 @@
 
         <div role="tabpanel" class="tab-pane" id="pnlVolpara">
             <div class="panel panel-primary participantViewPanel">
-                <div class="panel-heading">Volpara
+                <div class="panel-heading clearfix">
+                   Volpara
+                        @Html.ActionLink("View Full Details", "ViewScreenV1_5_2", "Screening", new { id = Model.NHSNumber }, new { @class = "btn btn-default pull-right" })
+
+
                     
+
+
                 </div>
                 <div class="panel-body">
                     <table class="table table-sm">
@@ -375,9 +381,7 @@
                                 <th>
                                     @ParticipantResources.VOLPARA_VERSION
                                 </th>
-                                <th>
-
-                                </th>
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -399,11 +403,7 @@
                                     <td>
                                         @screen.Version
                                     </td>
-                                    <td>
-                                        @Html.ActionLink("View", "ViewScreenV1_5_2", "Screening", new { screenId = screen.Id.ToString() }, new { @class = "btn btn-default pull-right" })
-
-
-                                    </td>
+                                    
                                 </tr>
                             }
                         </tbody>

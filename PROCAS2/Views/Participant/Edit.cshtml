@@ -214,12 +214,14 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.AttendedScreening, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-1">
                 @Html.EditorFor(model => model.AttendedScreening, new { htmlAttributes = new { @class = "form-control" } })
 
             </div>
 
-
+            <div class="col-md-9">
+                &nbsp;
+            </div>
            
 
         </div>

@@ -17,26 +17,29 @@ namespace PROCAS2.Controllers
     public class ScreeningController : Controller
     {
         private IGenericRepository<ScreeningRecordV1_5_2> _screeningV1_5_2Repo;
+        private IGenericRepository<Participant> _participantRepo;
 
 
-        public ScreeningController(IGenericRepository<ScreeningRecordV1_5_2> screeningV1_5_2Repo)
+        public ScreeningController(IGenericRepository<ScreeningRecordV1_5_2> screeningV1_5_2Repo,
+                                    IGenericRepository<Participant> participantRepo)
         {
             _screeningV1_5_2Repo = screeningV1_5_2Repo;
+            _participantRepo = participantRepo;
         }
 
         // GET: Screening
-        public ActionResult ViewScreenV1_5_2(string screenId)
+        public ActionResult ViewScreenV1_5_2(string id)
         {
             ScreenV1_5_2DetailsViewModel model = new ScreenV1_5_2DetailsViewModel();
 
-            int scrId;
+            model.NHSNumber = id;
 
-            if (Int32.TryParse(screenId, out scrId) == false)
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == id).FirstOrDefault();
+            if (participant != null)
             {
-                return null;
-            }
 
-            model.ScreeningRecord = _screeningV1_5_2Repo.GetAll().Where(x => x.Id == scrId).FirstOrDefault();
+                model.ScreeningRecords = _screeningV1_5_2Repo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+            }
 
             return View("ViewScreenV1_5_2", model);
         }

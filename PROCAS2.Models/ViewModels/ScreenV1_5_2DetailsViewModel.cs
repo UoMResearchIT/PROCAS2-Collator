@@ -10,6 +10,12 @@ namespace PROCAS2.Models.ViewModels
 {
     public class ScreenV1_5_2DetailsViewModel
     {
-        public ScreeningRecordV1_5_2 ScreeningRecord { get; set; }
+        public ScreenV1_5_2DetailsViewModel()
+        {
+            ScreeningRecords = new List<ScreeningRecordV1_5_2>();
+        } 
+
+        public string NHSNumber { get; set; }
+        public List<ScreeningRecordV1_5_2> ScreeningRecords { get; set; }
     }
 }

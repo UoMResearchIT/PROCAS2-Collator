@@ -228,6 +228,9 @@
   <data name="MAILING_LIST" xml:space="preserve">
     <value>Mailing List?</value>
   </data>
+  <data name="NO_VOLPARA_RECORDS" xml:space="preserve">
+    <value>There are no Volpara records to display.</value>
+  </data>
   <data name="PARTICIPANT_NAME" xml:space="preserve">
     <value>Name</value>
   </data>

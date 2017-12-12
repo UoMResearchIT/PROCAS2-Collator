@@ -70,8 +70,8 @@ namespace PROCAS2
 
             routes.MapRoute(
             name: "ViewScreenV1_5_2",
-            url: "Screening/ViewScreenV1_5_2/{screenId}",
-            defaults: new { controller = "Screening", action = "ViewScreenV1_5_2", screenId = "" }
+            url: "Screening/ViewScreenV1_5_2/{id}",
+            defaults: new { controller = "Screening", action = "ViewScreenV1_5_2", id = "" }
         );
 
             routes.MapRoute(

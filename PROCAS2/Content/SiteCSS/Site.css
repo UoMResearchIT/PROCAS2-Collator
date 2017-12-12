@@ -14,6 +14,17 @@
 */
 .dl-horizontal dt {
     white-space: normal;
+    width:300px;
+    font-size: x-small;
+    border-bottom:1px dashed Black;
+}
+
+.dl-horizontal dd {
+    white-space: normal;
+    width:300px;
+    font-size: x-small;
+    border-bottom:1px dashed Black;
+    margin-left: 3px;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */

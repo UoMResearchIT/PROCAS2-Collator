@@ -394,6 +394,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no Volpara records to display..
+        /// </summary>
+        public static string NO_VOLPARA_RECORDS {
+            get {
+                return ResourceManager.GetString("NO_VOLPARA_RECORDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string PARTICIPANT_NAME {

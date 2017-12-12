@@ -29,7 +29,8 @@ namespace PROCAS2
 
             bundles.Add(new ScriptBundle("~/bundles/datatables").Include(
                       "~/Scripts/DataTables/jquery.datatables.min.js",
-                      "~/Scripts/DataTables/datatables.bootstrap.min.js"
+                      "~/Scripts/DataTables/datatables.bootstrap.min.js",
+                      "~/Scripts/DataTables/dataTables.fixedColumns.min.js"
                     ));
 
 
