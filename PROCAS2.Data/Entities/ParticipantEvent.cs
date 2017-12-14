@@ -24,7 +24,10 @@ namespace PROCAS2.Data.Entities
         [MaxLength(200)]
         public string Notes { get; set; }
 
+        public string Reason { get; set; }
+
         public int AppUserId { get; set; }
+
 
 
         public virtual Participant Participant { get; set; }

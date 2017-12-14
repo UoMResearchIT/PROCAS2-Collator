@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PROCAS2.Data.Entities
 {
-    public class ScreeningRecordV1_5_2
+    public class ScreeningRecordV1_5_4
     {
         public int Id { get; set; }
 

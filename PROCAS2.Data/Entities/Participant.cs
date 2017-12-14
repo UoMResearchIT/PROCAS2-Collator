@@ -75,7 +75,7 @@ namespace PROCAS2.Data.Entities
         public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
-        public virtual ICollection<ScreeningRecordV1_5_2> ScreeningRecordV1_5_2s { get; set; }
+        public virtual ICollection<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
 
         public virtual GeneticRecord GeneticRecord { get; set; }
         public virtual ScreeningSite ScreeningSite { get; set; }

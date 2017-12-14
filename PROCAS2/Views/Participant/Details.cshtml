@@ -283,9 +283,9 @@
     Volpara
            
     <span class="glyphicon glyphicon-th-list">
-@if (@Model.Participant.ScreeningRecordV1_5_2s.Count > 0)
+@if (@Model.Participant.ScreeningRecordV1_5_4s.Count > 0)
 {
-        <span class="rw-number-notification">@Model.Participant.ScreeningRecordV1_5_2s.Count</span>
+        <span class="rw-number-notification">@Model.Participant.ScreeningRecordV1_5_4s.Count</span>
 }
     </span>
             
@@ -358,7 +358,7 @@
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading clearfix">
                    Volpara
-                        @Html.ActionLink("View Full Details", "ViewScreenV1_5_2", "Screening", new { id = Model.NHSNumber }, new { @class = "btn btn-default pull-right" })
+                        @Html.ActionLink("View Full Details", "ViewScreenV1_5_4", "Screening", new { id = Model.NHSNumber }, new { @class = "btn btn-default pull-right" })
 
 
                     
@@ -385,7 +385,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (ScreeningRecordV1_5_2 screen in Model.Participant.ScreeningRecordV1_5_2s.OrderByDescending(x => x.DataDate))
+                            @foreach (ScreeningRecordV1_5_4 screen in Model.Participant.ScreeningRecordV1_5_4s.OrderByDescending(x => x.DataDate))
                             {
                                 <tr>
                                     <td>

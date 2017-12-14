@@ -16,21 +16,21 @@ namespace PROCAS2.Controllers
     [Authorize]
     public class ScreeningController : Controller
     {
-        private IGenericRepository<ScreeningRecordV1_5_2> _screeningV1_5_2Repo;
+        private IGenericRepository<ScreeningRecordV1_5_4> _screeningV1_5_4Repo;
         private IGenericRepository<Participant> _participantRepo;
 
 
-        public ScreeningController(IGenericRepository<ScreeningRecordV1_5_2> screeningV1_5_2Repo,
+        public ScreeningController(IGenericRepository<ScreeningRecordV1_5_4> screeningV1_5_4Repo,
                                     IGenericRepository<Participant> participantRepo)
         {
-            _screeningV1_5_2Repo = screeningV1_5_2Repo;
+            _screeningV1_5_4Repo = screeningV1_5_4Repo;
             _participantRepo = participantRepo;
         }
 
         // GET: Screening
-        public ActionResult ViewScreenV1_5_2(string id)
+        public ActionResult ViewScreenV1_5_4(string id)
         {
-            ScreenV1_5_2DetailsViewModel model = new ScreenV1_5_2DetailsViewModel();
+            ScreenV1_5_4DetailsViewModel model = new ScreenV1_5_4DetailsViewModel();
 
             model.NHSNumber = id;
 
@@ -38,10 +38,10 @@ namespace PROCAS2.Controllers
             if (participant != null)
             {
 
-                model.ScreeningRecords = _screeningV1_5_2Repo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                model.ScreeningRecords = _screeningV1_5_4Repo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
             }
 
-            return View("ViewScreenV1_5_2", model);
+            return View("ViewScreenV1_5_4", model);
         }
     }
 }

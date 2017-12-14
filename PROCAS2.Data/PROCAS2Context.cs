@@ -38,7 +38,7 @@ namespace PROCAS2.Data
         public DbSet<Response> Responses { get; set; }
         public DbSet<RiskLetter> RiskLetters { get; set; }
         public DbSet<ScreeningSite> ScreeningSites { get; set; }
-        public DbSet<ScreeningRecordV1_5_2> ScreeningRecordV1_5_2s { get; set; }
+        public DbSet<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -57,7 +57,7 @@ namespace PROCAS2.Data
             .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Image>()
-            .HasOptional(p => p.ScreeningRecordV1_5_2)
+            .HasOptional(p => p.ScreeningRecordV1_5_4)
             .WithOptionalPrincipal(o => o.Image)
             .Map(x => x.MapKey("ImageId"));
 

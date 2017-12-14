@@ -702,29 +702,29 @@ namespace PROCAS2.Services.App
                 Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
-                    participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, (int)participant.BMI, Convert.ToInt32(model.BMI));
-                    participant.Chemoprevention = ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo);
-                    participant.Consented = ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented);
-                    participant.DateActualAppointment = ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA);
-                    participant.DateFirstAppointment = ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA);
-                    participant.DateOfBirth = ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB);
-                    participant.Deceased = ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased);
-                    participant.Diagnosed = ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed);
-                    participant.FHCReferral = ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral);
-                    participant.FirstName = ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName);
-                    participant.GPName = ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName);
-                    participant.LastName = ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName);
-                    participant.ScreeningNumber = ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber);
+                    participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, (int)participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
+                    participant.Chemoprevention = ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
+                    participant.Consented = ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
+                    participant.DateActualAppointment = ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
+                    participant.DateFirstAppointment = ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA, model.Reason);
+                    participant.DateOfBirth = ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB, model.Reason);
+                    participant.Deceased = ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased, model.Reason);
+                    participant.Diagnosed = ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed, model.Reason);
+                    participant.FHCReferral = ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral, model.Reason);
+                    participant.FirstName = ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName, model.Reason);
+                    participant.GPName = ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName, model.Reason);
+                    participant.LastName = ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName, model.Reason);
+                    participant.ScreeningNumber = ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber, model.Reason);
 
                     ScreeningSite newSite = _siteRepo.GetAll().Where(x => x.Code == model.ScreeningSite).FirstOrDefault();
-                    ChangeEventString(participant, ParticipantResources.SCREENING_SITE, participant.ScreeningSite.Code, newSite.Code);
+                    ChangeEventString(participant, ParticipantResources.SCREENING_SITE, participant.ScreeningSite.Code, newSite.Code, model.Reason);
                     participant.ScreeningSite = newSite;
                     
-                    participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk);
-                    participant.AttendedScreening = ChangeEventBool(participant, ParticipantResources.ATTENDED_SCREENING, participant.AttendedScreening, model.AttendedScreening);
-                    participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title);
-                    participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn);
-                    participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList);
+                    participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk, model.Reason);
+                    participant.AttendedScreening = ChangeEventBool(participant, ParticipantResources.ATTENDED_SCREENING, participant.AttendedScreening, model.AttendedScreening, model.Reason);
+                    participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title, model.Reason);
+                    participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
+                    participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
 
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
@@ -732,12 +732,12 @@ namespace PROCAS2.Services.App
                     Address homeAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "HOME").FirstOrDefault();
                     if (homeAdd != null)
                     {
-                        homeAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.HOME_ADD_1, homeAdd.AddressLine1, model.HomeAddress1);
-                        homeAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.HOME_ADD_2, homeAdd.AddressLine2, model.HomeAddress2);
-                        homeAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.HOME_ADD_3, homeAdd.AddressLine3, model.HomeAddress3);
-                        homeAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.HOME_ADD_4, homeAdd.AddressLine4, model.HomeAddress4);
-                        homeAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.HOMEEMAIL, homeAdd.EmailAddress, model.HomeEmail);
-                        homeAdd.PostCode = ChangeEventString(participant, ParticipantResources.HOME_POSTCODE, homeAdd.PostCode, model.HomePostCode);
+                        homeAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.HOME_ADD_1, homeAdd.AddressLine1, model.HomeAddress1, model.Reason);
+                        homeAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.HOME_ADD_2, homeAdd.AddressLine2, model.HomeAddress2, model.Reason);
+                        homeAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.HOME_ADD_3, homeAdd.AddressLine3, model.HomeAddress3, model.Reason);
+                        homeAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.HOME_ADD_4, homeAdd.AddressLine4, model.HomeAddress4, model.Reason);
+                        homeAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.HOMEEMAIL, homeAdd.EmailAddress, model.HomeEmail, model.Reason);
+                        homeAdd.PostCode = ChangeEventString(participant, ParticipantResources.HOME_POSTCODE, homeAdd.PostCode, model.HomePostCode, model.Reason);
                         _addressRepo.Update(homeAdd);
                         _unitOfWork.Save();
                     }
@@ -745,12 +745,12 @@ namespace PROCAS2.Services.App
                     Address gpAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "GP").FirstOrDefault();
                     if (gpAdd != null)
                     {
-                        gpAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.GP_ADD_1, gpAdd.AddressLine1, model.GPAddress1);
-                        gpAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.GP_ADD_2, gpAdd.AddressLine2, model.GPAddress2);
-                        gpAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.GP_ADD_3, gpAdd.AddressLine3, model.GPAddress3);
-                        gpAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.GP_ADD_4, gpAdd.AddressLine4, model.GPAddress4);
-                        gpAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.GP_EMAIL, gpAdd.EmailAddress, model.GPEmail);
-                        gpAdd.PostCode = ChangeEventString(participant, ParticipantResources.GP_POSTCODE, gpAdd.PostCode, model.GPPostCode);
+                        gpAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.GP_ADD_1, gpAdd.AddressLine1, model.GPAddress1, model.Reason);
+                        gpAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.GP_ADD_2, gpAdd.AddressLine2, model.GPAddress2, model.Reason);
+                        gpAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.GP_ADD_3, gpAdd.AddressLine3, model.GPAddress3, model.Reason);
+                        gpAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.GP_ADD_4, gpAdd.AddressLine4, model.GPAddress4, model.Reason);
+                        gpAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.GP_EMAIL, gpAdd.EmailAddress, model.GPEmail, model.Reason);
+                        gpAdd.PostCode = ChangeEventString(participant, ParticipantResources.GP_POSTCODE, gpAdd.PostCode, model.GPPostCode, model.Reason);
                         _addressRepo.Update(gpAdd);
                         _unitOfWork.Save();
                     }
@@ -778,7 +778,7 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        private bool ChangeEventBool (Participant participant, string propertyName, bool oldValue, bool newValue)
+        private bool ChangeEventBool (Participant participant, string propertyName, bool oldValue, bool newValue, string reason)
         {
             if (oldValue != newValue)
             {
@@ -788,6 +788,7 @@ namespace PROCAS2.Services.App
                 pEvent.EventDate = DateTime.Now;
                 pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
                 pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
+                pEvent.Reason = reason;
                 pEvent.Participant = participant;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
@@ -804,7 +805,7 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        private string ChangeEventString(Participant participant, string propertyName, string oldValue, string newValue)
+        private string ChangeEventString(Participant participant, string propertyName, string oldValue, string newValue, string reason)
         {
             if (oldValue != newValue)
             {
@@ -815,6 +816,7 @@ namespace PROCAS2.Services.App
                 pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
                 pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue, newValue);
                 pEvent.Participant = participant;
+                pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
             }
@@ -830,7 +832,7 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        private DateTime ChangeEventDate(Participant participant, string propertyName, DateTime oldValue, DateTime newValue)
+        private DateTime ChangeEventDate(Participant participant, string propertyName, DateTime oldValue, DateTime newValue, string reason)
         {
             if (oldValue != newValue)
             {
@@ -841,6 +843,7 @@ namespace PROCAS2.Services.App
                 pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
                 pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString("dd/MM/yyyy"), newValue.ToString("dd/MM/yyyy"));
                 pEvent.Participant = participant;
+                pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
             }
@@ -856,7 +859,7 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        private int ChangeEventInt(Participant participant, string propertyName, int oldValue, int newValue)
+        private int ChangeEventInt(Participant participant, string propertyName, int oldValue, int newValue, string reason)
         {
             if (oldValue != newValue)
             {
@@ -867,6 +870,7 @@ namespace PROCAS2.Services.App
                 pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
                 pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
                 pEvent.Participant = participant;
+                pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
             }

@@ -24,10 +24,11 @@
 
 <hr />
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Participant", FormMethod.Post, new { id="frmEdit" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.NHSNumber)
+    @Html.HiddenFor(model => model.Reason)
     @Html.ValidationSummary()
     <div class="form-horizontal">
         <div class="form-group">
@@ -286,7 +287,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input value="Save" id="btnSave" class="btn btn-primary" />
             </div>
         </div>
 </div>

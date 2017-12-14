@@ -222,6 +222,8 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "ATTENDED_SCREENING", ResourceType = typeof(ParticipantResources))]
         public bool AttendedScreening { get; set; }
 
+        public string Reason { get; set; }
+
         public List<ScreeningSite> ScreeningSites { get; set; }
 
     }
