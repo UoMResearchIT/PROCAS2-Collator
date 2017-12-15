@@ -129,6 +129,12 @@
   <data name="EVENT_CREATED_STR" xml:space="preserve">
     <value>Participant created.</value>
   </data>
+  <data name="EVENT_DELETED" xml:space="preserve">
+    <value>005</value>
+  </data>
+  <data name="EVENT_DELETED_STR" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
   <data name="EVENT_PROPERTY_UPDATED" xml:space="preserve">
     <value>004</value>
   </data>

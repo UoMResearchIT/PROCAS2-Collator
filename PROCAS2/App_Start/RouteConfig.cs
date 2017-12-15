@@ -45,6 +45,12 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+              name: "ParticipantDelete",
+              url: "Participant/Delete/{id}",
+              defaults: new { controller = "Participant", action = "Delete", id = "" }
+          );
+
+            routes.MapRoute(
                name: "ParticipantUploadNew",
                url: "Participant/UploadNew/",
                defaults: new { controller = "Participant", action = "UploadNew"}

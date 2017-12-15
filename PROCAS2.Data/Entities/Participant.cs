@@ -66,6 +66,8 @@ namespace PROCAS2.Data.Entities
 
         public bool MailingList { get; set; }
 
+        public bool Deleted { get; set; }
+
         
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }

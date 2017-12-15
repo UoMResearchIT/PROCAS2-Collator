@@ -24,6 +24,9 @@ namespace PROCAS2.Services.App
         private IGenericRepository<ScreeningSite> _siteRepo;
         private IGenericRepository<AddressType> _addressTypeRepo;
         private IGenericRepository<Address> _addressRepo;
+        private IGenericRepository<RiskLetter> _riskLetterRepo;
+        private IGenericRepository<ScreeningRecordV1_5_4> _screeningRepo;
+        private IGenericRepository<Image> _imageRepo;
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
@@ -47,7 +50,10 @@ namespace PROCAS2.Services.App
                                 IConfigService configService,
                                 IGenericRepository<ScreeningSite> siteRepo,
                                 IGenericRepository<AddressType> addressTypeRepo,
-                                IGenericRepository<Address> addressRepo)
+                                IGenericRepository<Address> addressRepo,
+                                IGenericRepository<RiskLetter> riskLetterRepo,
+                                IGenericRepository<ScreeningRecordV1_5_4> screeningRepo,
+                                IGenericRepository<Image> imageRepo)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -59,6 +65,9 @@ namespace PROCAS2.Services.App
             _siteRepo = siteRepo;
             _addressTypeRepo = addressTypeRepo;
             _addressRepo = addressRepo;
+            _riskLetterRepo = riskLetterRepo;
+            _screeningRepo = screeningRepo;
+            _imageRepo = imageRepo;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -769,6 +778,95 @@ namespace PROCAS2.Services.App
             return errors;
         }
 
+        /// <summary>
+        /// Blank out the participant details and leave their record as simply an NHS number and deleted flag
+        /// </summary>
+        /// <param name="id">NHS number</param>
+        /// <returns>true if successfully deleted, else false</returns>
+        public bool DeleteParticipant(string id)
+        {
+            try
+            {
+                Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == id).FirstOrDefault();
+                if (participant != null)
+                {
+                    // blank everything!
+                    participant.AttendedScreening = false;
+                    participant.BMI = 0;
+                    participant.Chemoprevention = false;
+                    participant.Consented = false;
+                    participant.DateActualAppointment = null;
+                    participant.DateFirstAppointment = null;
+                    participant.DateOfBirth = null;
+                    participant.Deceased = false;
+                    participant.Deleted = true;
+                    participant.Diagnosed = false;
+                    participant.FHCReferral = false;
+                    participant.FirstName = null;
+                    participant.GPName = null;
+                    participant.LastName = null;
+                    participant.MailingList = false;
+                    participant.ScreeningNumber = null;
+                    participant.ScreeningSite = null;
+                    participant.SentRisk = false;
+                    participant.Title = null;
+                    participant.Withdrawn = false;
+
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                    ParticipantEvent pEvent = new ParticipantEvent();
+                    pEvent.AppUser = _userManager.GetCurrentUser();
+                    pEvent.EventDate = DateTime.Now;
+                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_DELETED).FirstOrDefault();
+                    pEvent.Notes = EventResources.EVENT_DELETED_STR;
+                    pEvent.Participant = participant;
+                    _eventRepo.Insert(pEvent);
+                    _unitOfWork.Save();
+
+                    List<Address> addresses = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach (Address address in addresses)
+                    {
+                        _addressRepo.Delete(address);
+                        _unitOfWork.Save();
+                    }
+
+                    List<RiskLetter> riskLetters = _riskLetterRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach(RiskLetter letter in riskLetters)
+                    {
+                        _riskLetterRepo.Delete(letter);
+                        _unitOfWork.Save();
+                    }
+
+                    List<ScreeningRecordV1_5_4> screenings = _screeningRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach(ScreeningRecordV1_5_4 screening in screenings)
+                    {
+                        _screeningRepo.Delete(screening);
+                        _unitOfWork.Save();
+                    }
+
+                    List<Image> images = _imageRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach(Image image in images)
+                    {
+                        _imageRepo.Delete(image);
+                        _unitOfWork.Save();
+                    }
+
+                    participant.LastEvent = pEvent;
+                    _participantRepo.Update(participant);
+
+                    _unitOfWork.Save();
+
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
 
         /// <summary>
         /// Create a audit trail event if the value is changed. For boolean properties
@@ -791,6 +889,11 @@ namespace PROCAS2.Services.App
                 pEvent.Reason = reason;
                 pEvent.Participant = participant;
                 _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+
+                participant.LastEvent = pEvent;
+                _participantRepo.Update(participant);
+
                 _unitOfWork.Save();
             }
 
@@ -819,6 +922,11 @@ namespace PROCAS2.Services.App
                 pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
+
+                participant.LastEvent = pEvent;
+                _participantRepo.Update(participant);
+
+                _unitOfWork.Save();
             }
 
             return newValue;
@@ -846,6 +954,11 @@ namespace PROCAS2.Services.App
                 pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
                 _unitOfWork.Save();
+
+                participant.LastEvent = pEvent;
+                _participantRepo.Update(participant);
+
+                _unitOfWork.Save();
             }
 
             return newValue;
@@ -872,6 +985,11 @@ namespace PROCAS2.Services.App
                 pEvent.Participant = participant;
                 pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+
+                participant.LastEvent = pEvent;
+                _participantRepo.Update(participant);
+
                 _unitOfWork.Save();
             }
 

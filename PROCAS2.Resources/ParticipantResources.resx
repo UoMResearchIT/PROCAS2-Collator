@@ -141,6 +141,15 @@
   <data name="DECEASED" xml:space="preserve">
     <value>Deceased</value>
   </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="DELETED" xml:space="preserve">
+    <value>Deleted</value>
+  </data>
+  <data name="DETAILS" xml:space="preserve">
+    <value>Participant Details</value>
+  </data>
   <data name="DIAGNOSED" xml:space="preserve">
     <value>Diagnosed</value>
   </data>

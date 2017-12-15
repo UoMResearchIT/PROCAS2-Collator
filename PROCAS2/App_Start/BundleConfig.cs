@@ -14,6 +14,10 @@ namespace PROCAS2
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/unob").Include(
+                        "~/Scripts/jquery.unobtrusive*"));
+
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryconfirm").Include(
                         "~/Scripts/jquery-confirm.min.js"));
 

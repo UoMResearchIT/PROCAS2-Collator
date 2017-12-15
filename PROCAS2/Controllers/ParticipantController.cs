@@ -205,7 +205,22 @@ namespace PROCAS2.Controllers
             }
         }
 
-        
+        // POST: Participant/Delete/NHS123
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string id)
+        {
+            bool del = false;
+            if (String.IsNullOrEmpty(id) == false)
+            {
+                if (_participantService.DeleteParticipant(id) == true)
+                {
+                    del = true;
+                }
+            }
+
+            return Json(new { deleted = del });
+        }
 
         public string PrependSchemeAndAuthority(string url)
         {

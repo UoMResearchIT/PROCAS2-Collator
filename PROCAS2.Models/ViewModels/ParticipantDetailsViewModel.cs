@@ -55,6 +55,7 @@ namespace PROCAS2.Models.ViewModels
             Chemo = model.Participant.Chemoprevention;
             GPName = model.Participant.GPName;
             MailingList = model.Participant.MailingList;
+            Deleted = model.Participant.Deleted;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -148,6 +149,8 @@ namespace PROCAS2.Models.ViewModels
         public bool MailingList { get; set; }
         [Display(Name = "ATTENDED_SCREENING", ResourceType = typeof(ParticipantResources))]
         public bool AttendedScreening { get; set; }
+        [Display(Name = "DELETED", ResourceType = typeof(ParticipantResources))]
+        public bool Deleted { get; set; }
 
     }
 }

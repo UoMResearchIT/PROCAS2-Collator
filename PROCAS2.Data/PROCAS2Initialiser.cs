@@ -48,7 +48,8 @@ namespace PROCAS2.Data
                 new EventType { Id =1, Name="Participant Created", Code="001" },
                 new EventType { Id =2, Name="Consent Received", Code="002" },
                 new EventType { Id =3, Name="Full Detail Added", Code="003" },
-                new EventType { Id =4, Name="Field Updated", Code="004" }
+                new EventType { Id =4, Name="Field Updated", Code="004" },
+                new EventType { Id =5, Name="Deleted", Code="005" }
             };
 
             eventTypes.ForEach(s => context.EventTypes.Add(s));

@@ -4,6 +4,9 @@
         format: "dd/mm/yyyy"
     });
 
+
+    // When saving the participant record prompt for a reason for the change. This reason will get
+    // added to the audit trail information.
     $("#btnSave").on("click", function () {
 
         var self = this;
@@ -48,4 +51,39 @@
         });
     });
 
+
+    // Delete will remove all the information entirely, so make sure they mean it!
+    $("#btnDelete").on("click", function () {
+        $.confirm({
+            title: 'Delete participant',
+            content: "This will remove all the participant's data from BC-PREDICT. Are you sure you want to do that? This action cannot be undone.",
+            buttons: {
+                confirm: function () {
+                    $("#frmDelete").submit();
+                },
+                cancel: function () {
+                    
+                }                
+            }
+            
+        });
+    });
+
 });
+
+
+// Handle the returned delete message (true or false)
+function onDeleteSuccess(result) {
+
+    if (result.deleted === true) {
+        // Redirect to list
+        window.location.href = "/Participant/Index";
+    }
+    else {
+        $.alert({
+            title: 'Not Deleted',
+            content: 'There was a problem and the participant has not been deleted.',
+        });
+    }
+
+}
