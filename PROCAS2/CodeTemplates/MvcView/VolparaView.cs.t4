@@ -1,0 +1,128 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+<#@ assembly name="C:\Work\VS\Projects\PROCAS2\PROCAS2\bin\PROCAS2.Data.dll" #>
+<#@ import namespace="PROCAS2.Data.Entities" #>
+
+model <#= ViewDataTypeName #>
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<h2><#= ViewName#></h2>
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+
+<script src="~/js/volparaResultsView.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-9">
+
+        <h3>Volpara Results - @Model.NHSNumber</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.ScreeningRecords.Count == 0)
+        {
+<span>@ParticipantResources.NO_VOLPARA_RECORDS</span>
+
+        }
+        else
+        {
+        <table id="tblVolpara" class="table nowrap compact">
+            <thead>
+                <tr>
+                    <th>
+                        Field Name
+                    </th>
+                    @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                    {
+                    <th></th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+<#
+foreach (PropertyMetadata property  in ModelMetadata.Properties) {
+    if (!property.IsPrimaryKey && property.Scaffold) {
+#>
+
+ <#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#> 
+
+	 <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.ScreeningRecords[0].<#= GetValueExpression(property) #>)
+                    </td>
+@for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+{
+                    <td>
+                        @Html.DisplayFor(model => model.ScreeningRecords[index].<#= GetValueExpression(property) #>)
+                    </td>
+}
+                </tr>
+
+
+<#
+    }
+}
+#>
+            </tbody>
+        </table>
+        }
+ </div>
+</div>
+
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+<#
+}
+#>
+
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

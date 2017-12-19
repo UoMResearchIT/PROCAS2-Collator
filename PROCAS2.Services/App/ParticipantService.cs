@@ -852,6 +852,8 @@ namespace PROCAS2.Services.App
                         _unitOfWork.Save();
                     }
 
+                    // TODO: delete other records too!
+
                     participant.LastEvent = pEvent;
                     _participantRepo.Update(participant);
 
