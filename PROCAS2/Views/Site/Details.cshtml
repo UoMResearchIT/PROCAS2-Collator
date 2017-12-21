@@ -1,0 +1,100 @@
+﻿@model PROCAS2.Models.ViewModels.SiteEditViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Site Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Code)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Code)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+       
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressLine4)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressLine4)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogoFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogoFileName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LetterFrom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LetterFrom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SigFileName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SigFileName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

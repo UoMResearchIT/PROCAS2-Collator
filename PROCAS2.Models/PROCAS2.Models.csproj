@@ -110,6 +110,8 @@
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
     <Compile Include="ViewModels\ParticipantDetailsViewModel.cs" />
     <Compile Include="ViewModels\ScreenV1_5_4DetailsViewModel.cs" />
+    <Compile Include="ViewModels\SiteEditViewModel.cs" />
+    <Compile Include="ViewModels\SiteListViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UploadResultsViewModel.cs" />
     <Compile Include="ViewModels\UploadUpdateParticipantsViewModel.cs" />

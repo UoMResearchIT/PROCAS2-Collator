@@ -219,6 +219,7 @@
     <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Controllers\ScreeningController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\CsvResult.cs" />
     <Compile Include="CustomActionResults\WordResult.cs" />
@@ -432,6 +433,7 @@
     <Content Include="js\exportLetters.js" />
     <Content Include="js\participantEdit.js" />
     <Content Include="js\participantList.js" />
+    <Content Include="js\siteList.js" />
     <Content Include="js\uploadNewParticipant.js" />
     <Content Include="js\userAdmin.js" />
     <Content Include="js\volparaResultsView.js" />
@@ -643,6 +645,10 @@
     <Content Include="Views\Home\_RiskLetter.cshtml" />
     <Content Include="Views\Screening\ViewScreenV1_5_2.cshtml" />
     <Content Include="Views\Screening\ViewScreenV1_5_4.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="Views\Site\Edit.cshtml" />
+    <Content Include="Views\Site\Create.cshtml" />
+    <Content Include="Views\Site\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

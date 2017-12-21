@@ -140,7 +140,9 @@
     <Compile Include="App\IDashboardService.cs" />
     <Compile Include="App\IExportService.cs" />
     <Compile Include="App\IParticipantService.cs" />
+    <Compile Include="App\ISiteService.cs" />
     <Compile Include="App\ParticipantService.cs" />
+    <Compile Include="App\SiteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\AttributeHelpers.cs" />
     <Compile Include="Utility\ConfigService.cs" />

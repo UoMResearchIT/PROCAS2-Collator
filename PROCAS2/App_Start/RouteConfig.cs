@@ -63,6 +63,18 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+               name: "SiteEdit",
+               url: "Site/Edit/{code}",
+               defaults: new { controller = "Site", action = "Edit", code = "" }
+           );
+
+            routes.MapRoute(
+               name: "SiteDetails",
+               url: "Site/Details/{code}",
+               defaults: new { controller = "Site", action = "Details", code = "" }
+           );
+
+            routes.MapRoute(
              name: "ExportLetters",
              url: "Export/",
              defaults: new { controller = "Export", action = "Export" }

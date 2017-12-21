@@ -1,0 +1,82 @@
+﻿@model PROCAS2.Models.ViewModels.SiteListViewModel
+
+@{
+    ViewBag.Title = "Sites";
+}
+
+<script src="~/js/siteList.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-9">
+
+        <h3>Sites</h3>
+
+    </div>
+
+    
+    <div class="col-md-3">
+        @Html.ActionLink("Add", "Create", new { }, new { @class = "btn btn-default pull-right" })
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.ScreeningSites.Count > 0)
+        {
+            <table id="tblSites" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            Code
+                        </th>
+
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Number of participants
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ScreeningSites)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Code)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Model.SiteNumbers.Where(x => x.SiteCode == item.Code).Select(x => x.NumberOfParticipants).FirstOrDefault()
+                            </td>
+                            <td class="actionList">
+
+                                @if (Model.SiteNumbers.Where(x => x.SiteCode == item.Code).Select(x => x.NumberOfParticipants).FirstOrDefault() == 0)
+                                {
+                                    @Html.ActionLink("Delete", "Delete", new { code = item.Code }, new { @class = "btn btn-danger  pull-right" })
+
+                                }
+                                @Html.ActionLink("View", "Details", new { code = item.Code }, new { @class = "btn btn-default pull-right" })
+
+                                @Html.ActionLink("Edit", "Edit", new { code = item.Code }, new { @class = "btn btn-default pull-right" })
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <span>There are currently no sites.</span>
+        }
+    </div>
+</div>
+
