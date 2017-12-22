@@ -1,5 +1,7 @@
 ﻿@model PROCAS2.Models.ViewModels.SiteListViewModel
 
+@using PROCAS2.Resources
+
 @{
     ViewBag.Title = "Sites";
 }
@@ -9,7 +11,7 @@
 <div class="row">
     <div class="col-md-9">
 
-        <h3>Sites</h3>
+        <h3>@SiteResources.SITE_TITLE</h3>
 
     </div>
 
@@ -28,14 +30,14 @@
                 <thead>
                     <tr>
                         <th>
-                            Code
+                            @SiteResources.SITE_CODE
                         </th>
 
                         <th>
-                            Name
+                            @SiteResources.SITE_NAME
                         </th>
                         <th>
-                            Number of participants
+                            @SiteResources.NUM_OF_PARTICIPANTS
                         </th>
                         <th></th>
                     </tr>
@@ -58,7 +60,14 @@
 
                                 @if (Model.SiteNumbers.Where(x => x.SiteCode == item.Code).Select(x => x.NumberOfParticipants).FirstOrDefault() == 0)
                                 {
-                                    @Html.ActionLink("Delete", "Delete", new { code = item.Code }, new { @class = "btn btn-danger  pull-right" })
+                                    using (Ajax.BeginForm("Delete", "Site", new { code = item.Code }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onDeleteSuccess" }, new { id = String.Concat("frmDelete", item.Code) }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button type="button" class="btn btn-danger pull-right site-delete">
+                                            @SiteResources.DELETE
+                                        </button>
+
+                                    }
 
                                 }
                                 @Html.ActionLink("View", "Details", new { code = item.Code }, new { @class = "btn btn-default pull-right" })

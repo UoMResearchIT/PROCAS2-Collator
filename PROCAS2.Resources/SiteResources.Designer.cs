@@ -61,6 +61,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Participants.
+        /// </summary>
+        public static string NUM_OF_PARTICIPANTS {
+            get {
+                return ResourceManager.GetString("NUM_OF_PARTICIPANTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         public static string SITE_ADDRESS {
@@ -115,11 +133,20 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to FIle Name of the Person&apos;s Signature.
+        ///   Looks up a localized string similar to File Name of the Person&apos;s Signature.
         /// </summary>
         public static string SITE_SIGFILENAME {
             get {
                 return ResourceManager.GetString("SITE_SIGFILENAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sites.
+        /// </summary>
+        public static string SITE_TITLE {
+            get {
+                return ResourceManager.GetString("SITE_TITLE", resourceCulture);
             }
         }
     }

@@ -13,5 +13,6 @@ namespace PROCAS2.Services.App
         List<SiteNumber> ReturnAllSiteNumbers();
         SiteEditViewModel FillEditViewModel(string code);
         void SaveSiteRecord(SiteEditViewModel model);
+        bool DeleteSite(string code);
     }
 }

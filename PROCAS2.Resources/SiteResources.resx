@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DELETE" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="NUM_OF_PARTICIPANTS" xml:space="preserve">
+    <value>Number of Participants</value>
+  </data>
   <data name="SITE_ADDRESS" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -136,6 +142,9 @@
     <value>Post Code</value>
   </data>
   <data name="SITE_SIGFILENAME" xml:space="preserve">
-    <value>FIle Name of the Person's Signature</value>
+    <value>File Name of the Person's Signature</value>
+  </data>
+  <data name="SITE_TITLE" xml:space="preserve">
+    <value>Sites</value>
   </data>
 </root>

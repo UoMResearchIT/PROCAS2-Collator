@@ -75,6 +75,12 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+              name: "SiteDelete",
+              url: "Site/Delete/{code}",
+              defaults: new { controller = "Site", action = "Delete", code = "" }
+          );
+
+            routes.MapRoute(
              name: "ExportLetters",
              url: "Export/",
              defaults: new { controller = "Export", action = "Export" }

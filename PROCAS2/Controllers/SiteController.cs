@@ -116,26 +116,22 @@ namespace PROCAS2.Controllers
             }
         }
 
-        // GET: Site/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
+        
         // POST: Site/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string code)
         {
-            try
+            bool del = false;
+            if (String.IsNullOrEmpty(code) == false)
             {
-                // TODO: Add delete logic here
+                if (_siteService.DeleteSite(code) == true)
+                {
+                    del = true;
+                }
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return Json(new { deleted = del, code = code });
         }
     }
 }

@@ -118,5 +118,22 @@ namespace PROCAS2.Services.App
             _unitOfWork.Save();
         }
 
+        /// <summary>
+        /// Delete the site with the passed code
+        /// </summary>
+        public bool DeleteSite(string code)
+        {
+            ScreeningSite site = _siteRepo.GetAll().Where(x => x.Code == code).FirstOrDefault();
+            if (site != null)
+            {
+                _siteRepo.Delete(site);
+                _unitOfWork.Save();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

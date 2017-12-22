@@ -35,7 +35,7 @@ namespace PROCAS2.Data.Entities
         [MaxLength(8)]
         public string InstalledUICulture { get; set; }
 
-        [MaxLength(3)] // TODO: Could be different type
+        [MaxLength(3)] 
         public string WriteOutDisplayImage { get; set; }
 
         [MaxLength(30)]
@@ -60,49 +60,49 @@ namespace PROCAS2.Data.Entities
         [MaxLength(3)]
         public string PartialView { get; set; }
 
-        // TODO: Could be different type
+        
         public double? CompressionPlateSlant { get; set; }
 
-        [MaxLength(30)]  // TODO: Could be different type
+        [MaxLength(30)] 
         public string DetectorType { get; set; }
 
-        [MaxLength(3)] // TODO: Could be different type
+        [MaxLength(3)] 
         public string DoFlatFieldCorrection { get; set; }
 
-        // TODO: Could be different type
+        
         public double? DoFatFieldCorrection { get; set; }
 
-        // TODO: Could be different type
+       
         public double? Gain { get; set; }
 
-        // TODO: Could be different type
+        
         public double? NativePixelSize { get; set; }
 
-        // TODO: Could be different type
+        
         public double? Offset { get; set; }
 
-        // TODO: Could be different type
+        
         public double? SourceToDetector { get; set; }
 
-        // TODO: Could be different type
+        
         public double? SupportToDetector { get; set; }
 
-        [MaxLength(20)]  // TODO: Could be different type
+        [MaxLength(20)] 
         public string TubeType { get; set; }
 
-        [MaxLength(3)] // TODO: Could be different type
+        [MaxLength(3)] 
         public string UseFatWedge { get; set; }
 
-        [MaxLength(5)]  // TODO: Could be different type
+        [MaxLength(5)] 
         public string UseNewSlantAlgorithm { get; set; }
 
-        [MaxLength(3)]  // TODO: Could be different type
+        [MaxLength(3)] 
         public string ValidToString { get; set; }
 
-        // TODO: Could be different type
+      
         public double? WAgDefaultFilterThickness { get; set; }
 
-        // TODO: Could be different type
+      
         public double? WRhDefaultFilterThickness { get; set; }
 
         [MaxLength(5)]
