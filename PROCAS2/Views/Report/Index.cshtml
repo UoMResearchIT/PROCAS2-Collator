@@ -1,0 +1,26 @@
+﻿
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Reports Index";
+}
+
+<div class="row">
+    <div class="col-md-9">
+
+        <h3>@ReportResources.INDEX_TITLE</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-4 reportPanel">
+        @Html.ActionLink( "Patient Details", "PatientDetails", "Report", new {  }, new { @class = "btn btn-default " })
+        
+    </div>
+    <div class="col-md-4 reportPanel">
+    </div>
+    <div class="col-md-4 reportPanel">
+    </div>
+</div>

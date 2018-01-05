@@ -109,6 +109,7 @@
     <Compile Include="ViewModels\ParticipantEditViewModel.cs" />
     <Compile Include="ViewModels\ParticipantListViewModel.cs" />
     <Compile Include="ViewModels\ParticipantDetailsViewModel.cs" />
+    <Compile Include="ViewModels\Reports\PatientDetailsViewModel.cs" />
     <Compile Include="ViewModels\ScreenV1_5_4DetailsViewModel.cs" />
     <Compile Include="ViewModels\SiteEditViewModel.cs" />
     <Compile Include="ViewModels\SiteListViewModel.cs" />

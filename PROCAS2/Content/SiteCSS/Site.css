@@ -9,7 +9,21 @@
     padding-right: 15px;
 }
 
-/
+.dl-horizontal dt {
+    white-space: normal;
+    width:200px;
+    
+   padding-right:3px;
+}
+
+.dl-horizontal dd {
+   white-space: normal;
+    width:400px;
+    
+    margin-left: 3px;
+    padding-left:3px;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -125,4 +139,13 @@ textarea {
     font-size: 10px;
     border-radius: 4px;
     box-shadow: 1px 1px 1px silver;
+}
+
+.reportPanel{
+    border-radius: 3px;
+    border: 1px solid AliceBlue;
+    
+    text-align:center;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
