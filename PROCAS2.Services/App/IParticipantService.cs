@@ -16,5 +16,6 @@ namespace PROCAS2.Services.App
         void UploadUpdateParticipants(UploadUpdateParticipantsViewModel model, out UploadResultsViewModel outModel);
         List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
         bool DeleteParticipant(string id);
+        bool DoesNHSNumberExist(string NHSNumber);
     }
 }

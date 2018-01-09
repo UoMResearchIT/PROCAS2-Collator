@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Generating Report.
+        /// </summary>
+        public static string GENERATING_REPORT {
+            get {
+                return ResourceManager.GetString("GENERATING_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string INDEX_TITLE {
@@ -75,6 +84,15 @@ namespace PROCAS2.Resources {
         public static string NHS_NUMBER {
             get {
                 return ResourceManager.GetString("NHS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This NHS Number does not exist in the database..
+        /// </summary>
+        public static string NHS_NUMBER_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("NHS_NUMBER_NOT_EXIST", resourceCulture);
             }
         }
         

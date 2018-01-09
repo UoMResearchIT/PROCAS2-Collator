@@ -998,5 +998,23 @@ namespace PROCAS2.Services.App
             return newValue;
         }
 
+        /// <summary>
+        /// Does the passed NHS number match a participant in the database?
+        /// </summary>
+        /// <param name="NHSNumber">NHS number</param>
+        /// <returns>true if exists, else false</returns>
+        public bool DoesNHSNumberExist(string NHSNumber)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).First();
+            if (participant == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
     }
 }

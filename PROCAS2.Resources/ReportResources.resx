@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="GENERATING_REPORT" xml:space="preserve">
+    <value>Generating Report</value>
+  </data>
   <data name="INDEX_TITLE" xml:space="preserve">
     <value>Reports</value>
   </data>
   <data name="NHS_NUMBER" xml:space="preserve">
     <value>NHS Number</value>
+  </data>
+  <data name="NHS_NUMBER_NOT_EXIST" xml:space="preserve">
+    <value>This NHS Number does not exist in the database.</value>
   </data>
   <data name="PATIENT_DETAILS" xml:space="preserve">
     <value>Patient Details</value>

@@ -12,6 +12,7 @@ namespace PROCAS2.Models.ViewModels.Reports
     public class PatientDetailsViewModel
     {
         [Display(Name="NHS_NUMBER", ResourceType = typeof(ReportResources))]
+        [Required]
         public string NHSNumber { get; set; }
     }
 }

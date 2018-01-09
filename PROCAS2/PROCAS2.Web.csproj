@@ -223,6 +223,7 @@
     <Compile Include="Controllers\SiteController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\CsvResult.cs" />
+    <Compile Include="CustomActionResults\SpreadsheetResult.cs" />
     <Compile Include="CustomActionResults\WordResult.cs" />
     <Compile Include="CustomAttributes\RedirectIfNotAuthorisedAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -434,6 +435,7 @@
     <Content Include="js\exportLetters.js" />
     <Content Include="js\participantEdit.js" />
     <Content Include="js\participantList.js" />
+    <Content Include="js\reports.js" />
     <Content Include="js\siteList.js" />
     <Content Include="js\uploadNewParticipant.js" />
     <Content Include="js\userAdmin.js" />
@@ -652,6 +654,7 @@
     <Content Include="Views\Site\Details.cshtml" />
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\PatientDetails.cshtml" />
+    <Content Include="Views\Report\_ReportSpinner.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
