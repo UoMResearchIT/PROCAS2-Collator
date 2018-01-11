@@ -12,15 +12,15 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
         public int QuestionId { get; set; }
-        public int ParticipantId { get; set; }
+        public int QuestionnaireId { get; set; }
         public int AnswerId { get; set; }
-        public DateTime ResponseDate { get; set; }
+       
         [MaxLength(200)]
-        public string OtherText { get; set; }
+        public string ResponseText { get; set; }
 
 
         public virtual Question Question { get; set; }
         public virtual QuestionAnswer QuestionAnswer { get; set; }
-        public virtual Response Reponse { get; set; }
+        public virtual Questionnaire Questionnaire { get; set; }
     }
 }
