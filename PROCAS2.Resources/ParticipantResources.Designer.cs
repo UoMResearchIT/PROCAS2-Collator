@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask For Risk Letter?.
+        /// </summary>
+        public static string ASKFORRISK {
+            get {
+                return ResourceManager.GetString("ASKFORRISK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Attended Screening Within 6 Weeks?.
         /// </summary>
         public static string ATTENDED_SCREENING {

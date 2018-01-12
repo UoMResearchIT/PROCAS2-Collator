@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="EVENT_ASK_RISK" xml:space="preserve">
+    <value>006</value>
+  </data>
+  <data name="EVENT_ASK_RISK_STR" xml:space="preserve">
+    <value>Risk letter asked for (set by upload)</value>
+  </data>
   <data name="EVENT_CONSENT" xml:space="preserve">
     <value>002</value>
   </data>

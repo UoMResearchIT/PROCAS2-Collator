@@ -438,6 +438,7 @@
     <Content Include="js\participantList.js" />
     <Content Include="js\reports.js" />
     <Content Include="js\siteList.js" />
+    <Content Include="js\uploadAskRisk.js" />
     <Content Include="js\uploadNewParticipant.js" />
     <Content Include="js\uploadUpdateParticipant.js" />
     <Content Include="js\userAdmin.js" />
@@ -657,6 +658,7 @@
     <Content Include="Views\Report\Index.cshtml" />
     <Content Include="Views\Report\PatientDetails.cshtml" />
     <Content Include="Views\Report\_ReportSpinner.cshtml" />
+    <Content Include="Views\Participant\UploadAskRisk.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

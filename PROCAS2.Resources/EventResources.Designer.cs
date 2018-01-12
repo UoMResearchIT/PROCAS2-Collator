@@ -61,6 +61,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 006.
+        /// </summary>
+        public static string EVENT_ASK_RISK {
+            get {
+                return ResourceManager.GetString("EVENT_ASK_RISK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk letter asked for (set by upload).
+        /// </summary>
+        public static string EVENT_ASK_RISK_STR {
+            get {
+                return ResourceManager.GetString("EVENT_ASK_RISK_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 002.
         /// </summary>
         public static string EVENT_CONSENT {

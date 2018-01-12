@@ -68,6 +68,8 @@ namespace PROCAS2.Data.Entities
 
         public bool Deleted { get; set; }
 
+        public bool AskForRiskLetter { get; set; }
+
         
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }

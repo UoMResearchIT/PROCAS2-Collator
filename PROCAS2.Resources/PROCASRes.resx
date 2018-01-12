@@ -123,12 +123,6 @@
   <data name="USER_CONFIG_INCORRECT" xml:space="preserve">
     <value>User is either marked as not active or has not been configured yet. Please contact the PROCAS2 team to check your record.</value>
   </data>
-  <data name="VM_UPLOAD_NEW_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
-  </data>
-  <data name="VM_UPLOAD_UPDATE_FILE_NAME" xml:space="preserve">
-    <value>Please enter a file name</value>
-  </data>
   <data name="VM_USER_ADMIN_CREATE_ACTIVE" xml:space="preserve">
     <value>Active</value>
   </data>

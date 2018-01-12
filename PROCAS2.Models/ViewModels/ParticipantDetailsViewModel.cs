@@ -56,6 +56,8 @@ namespace PROCAS2.Models.ViewModels
             GPName = model.Participant.GPName;
             MailingList = model.Participant.MailingList;
             Deleted = model.Participant.Deleted;
+            AttendedScreening = model.Participant.AttendedScreening;
+            AskForRiskLetter = model.Participant.AskForRiskLetter;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -151,6 +153,9 @@ namespace PROCAS2.Models.ViewModels
         public bool AttendedScreening { get; set; }
         [Display(Name = "DELETED", ResourceType = typeof(ParticipantResources))]
         public bool Deleted { get; set; }
+
+        [Display(Name="ASKFORRISK", ResourceType = typeof(ParticipantResources))]
+        public bool AskForRiskLetter { get; set; }
 
     }
 }

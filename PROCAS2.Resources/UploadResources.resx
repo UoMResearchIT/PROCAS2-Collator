@@ -132,6 +132,16 @@
   <data name="UPLOAD_ADDRESS_4_TOO_LONG" xml:space="preserve">
     <value>Address line 4 is too long.</value>
   </data>
+  <data name="UPLOAD_ASKRISK" xml:space="preserve">
+    <value>SUCCESS:</value>
+  </data>
+  <data name="UPLOAD_ASK_RISK_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
+  </data>
+  <data name="UPLOAD_ASK_RISK_SUCCESS" xml:space="preserve">
+    <value>The 'Ask Risk' flag for {0} has been updated successfully. </value>
+    <comment>{0} = NHS Number</comment>
+  </data>
   <data name="UPLOAD_BMI_WRONG_FORMAT" xml:space="preserve">
     <value>BMI should be an integer (whole number)</value>
   </data>
@@ -214,6 +224,12 @@
   <data name="UPLOAD_MAILING_LIST_WRONG_FORMAT" xml:space="preserve">
     <value>Mailing list flag should be either Y or N.</value>
   </data>
+  <data name="UPLOAD_MUST_BE_YES" xml:space="preserve">
+    <value>Column 2 must be set to 'yes'.</value>
+  </data>
+  <data name="UPLOAD_NEW_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
+  </data>
   <data name="UPLOAD_NHS_NUMBER_ALREADY_UPDATED" xml:space="preserve">
     <value>NHS Number {0} has already been updated. Please edit manually.</value>
     <comment>{0] = NHS Number</comment>
@@ -267,5 +283,8 @@
   </data>
   <data name="UPLOAD_UPDATED" xml:space="preserve">
     <value>SUCCESS:</value>
+  </data>
+  <data name="UPLOAD_UPDATE_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
   </data>
 </root>

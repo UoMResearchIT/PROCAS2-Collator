@@ -10,11 +10,10 @@ using PROCAS2.Resources;
 
 namespace PROCAS2.Models.ViewModels
 {
-    public class UploadNewParticipantsViewModel
+    public class UploadAskRiskViewModel
     {
-        
-        [Display(Name = "UPLOAD_NEW_FILE_NAME", ResourceType = typeof(UploadResources))]
-        [Required(ErrorMessageResourceName = "UPLOAD_NEW_FILE_NAME", ErrorMessageResourceType = typeof(UploadResources))]
+        [Display(Name = "UPLOAD_ASK_RISK_FILE_NAME", ResourceType = typeof(UploadResources))]
+        [Required(ErrorMessageResourceName = "UPLOAD_ASK_RISK_FILE_NAME", ErrorMessageResourceType = typeof(UploadResources))]
         public HttpPostedFileBase UploadedFile { get; set; }
     }
 }

@@ -79,24 +79,6 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter a file name.
-        /// </summary>
-        public static string VM_UPLOAD_NEW_FILE_NAME {
-            get {
-                return ResourceManager.GetString("VM_UPLOAD_NEW_FILE_NAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Please enter a file name.
-        /// </summary>
-        public static string VM_UPLOAD_UPDATE_FILE_NAME {
-            get {
-                return ResourceManager.GetString("VM_UPLOAD_UPDATE_FILE_NAME", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Active.
         /// </summary>
         public static string VM_USER_ADMIN_CREATE_ACTIVE {

@@ -120,6 +120,9 @@
   <data name="ADDRESS" xml:space="preserve">
     <value>Address</value>
   </data>
+  <data name="ASKFORRISK" xml:space="preserve">
+    <value>Ask For Risk Letter?</value>
+  </data>
   <data name="ATTENDED_SCREENING" xml:space="preserve">
     <value>Attended Screening Within 6 Weeks?</value>
   </data>

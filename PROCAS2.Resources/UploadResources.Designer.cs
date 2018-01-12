@@ -106,6 +106,33 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string UPLOAD_ASK_RISK_FILE_NAME {
+            get {
+                return ResourceManager.GetString("UPLOAD_ASK_RISK_FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The &apos;Ask Risk&apos; flag for {0} has been updated successfully. .
+        /// </summary>
+        public static string UPLOAD_ASK_RISK_SUCCESS {
+            get {
+                return ResourceManager.GetString("UPLOAD_ASK_RISK_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SUCCESS:.
+        /// </summary>
+        public static string UPLOAD_ASKRISK {
+            get {
+                return ResourceManager.GetString("UPLOAD_ASKRISK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to BMI should be an integer (whole number).
         /// </summary>
         public static string UPLOAD_BMI_WRONG_FORMAT {
@@ -349,6 +376,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Column 2 must be set to &apos;yes&apos;..
+        /// </summary>
+        public static string UPLOAD_MUST_BE_YES {
+            get {
+                return ResourceManager.GetString("UPLOAD_MUST_BE_YES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string UPLOAD_NEW_FILE_NAME {
+            get {
+                return ResourceManager.GetString("UPLOAD_NEW_FILE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number {0} has already been updated. Please edit manually..
         /// </summary>
         public static string UPLOAD_NHS_NUMBER_ALREADY_UPDATED {
@@ -480,6 +525,15 @@ namespace PROCAS2.Resources {
         public static string UPLOAD_TITLE_TOO_LONG {
             get {
                 return ResourceManager.GetString("UPLOAD_TITLE_TOO_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string UPLOAD_UPDATE_FILE_NAME {
+            get {
+                return ResourceManager.GetString("UPLOAD_UPDATE_FILE_NAME", resourceCulture);
             }
         }
         

@@ -62,6 +62,8 @@ namespace PROCAS2.Models.ViewModels
             Withdrawn = model.Participant.Withdrawn;
             Diagnosed = model.Participant.Diagnosed;
             MailingList = model.Participant.MailingList;
+            AttendedScreening = model.Participant.AttendedScreening;
+            AskForRiskLetter = model.Participant.AskForRiskLetter;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -199,7 +201,6 @@ namespace PROCAS2.Models.ViewModels
         public DateTime? DOAA { get; set; }
 
         [Display(Name = "BMI", ResourceType = typeof(ParticipantResources))]
-        [Required]
         [Range(0, 40)]
         public string BMI { get; set; }
 
@@ -221,6 +222,9 @@ namespace PROCAS2.Models.ViewModels
         public bool MailingList { get; set; }
         [Display(Name = "ATTENDED_SCREENING", ResourceType = typeof(ParticipantResources))]
         public bool AttendedScreening { get; set; }
+
+        [Display(Name = "ASKFORRISK", ResourceType = typeof(ParticipantResources))]
+        public bool AskForRiskLetter { get; set; }
 
         public string Reason { get; set; }
 

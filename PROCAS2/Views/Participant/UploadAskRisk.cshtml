@@ -1,0 +1,62 @@
+﻿@model PROCAS2.Models.ViewModels.UploadAskRiskViewModel
+@using Humanities.Web.HtmlHelpers
+
+@{
+    ViewBag.Title = "Ask For Risk Letters";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+<script src="@Url.Content("~/js/uploadAskRisk.js")"></script>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h3>Ask For Risk Letters</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            Please upload a CSV file with 2 columns containing the NHS Number in column A and the word 'YES' in column B. Please do not include column headers.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+
+
+    @using (Html.BeginForm("UploadAskRisk", "Participant", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UploadedFile, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.FileUpload("UploadedFile")
+
+                    @Html.ValidationMessageFor(model => model.UploadedFile, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-10">
+                    <input id="btnUpload" type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<div id="exportElement" class="spinnerElement">
+
+    <div id="exportSection" class="spinnerSection">Uploading Data</div>
+</div>

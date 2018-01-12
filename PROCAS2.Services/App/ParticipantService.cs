@@ -36,6 +36,7 @@ namespace PROCAS2.Services.App
 
         private int _UPLOADNEWCOLUMNS;
         private int _UPLOADUPDATECOLUMNS;
+        private int _UPLOADASKRISKCOLUMNS;
         private DateTime _EARLIESTDOB;
         private DateTime _LATESTDOB;
         private DateTime _EARLIESTDOFA;
@@ -73,6 +74,7 @@ namespace PROCAS2.Services.App
             // sure that you set them in the config!
             _UPLOADNEWCOLUMNS = _configService.GetIntAppSetting("UploadNewColumns") ?? 0;
             _UPLOADUPDATECOLUMNS = _configService.GetIntAppSetting("UploadUpdateColumns") ?? 0;
+            _UPLOADASKRISKCOLUMNS = _configService.GetIntAppSetting("UploadAskRiskColumns") ?? 0;
             _EARLIESTDOB = _configService.GetDateTimeAppSetting("EarliestDOB") ?? DateTime.Now;
             _LATESTDOB = _configService.GetDateTimeAppSetting("LatestDOB") ?? DateTime.Now;
             _EARLIESTDOFA = _configService.GetDateTimeAppSetting("EarliestDOFA") ?? DateTime.Now;
@@ -189,6 +191,121 @@ namespace PROCAS2.Services.App
 
 
         /// <summary>
+        /// Update the participant's 'ask for risk lette' flag
+        /// </summary>
+        /// <param name="model">The model containing the CSV file</param>
+        /// <param name="outModel">The results of the upload (good or bad)</param>
+        public void UploadAskRisk(UploadAskRiskViewModel model, out UploadResultsViewModel outModel)
+        {
+            outModel = new UploadResultsViewModel();
+
+            StreamReader reader = new StreamReader(model.UploadedFile.InputStream);
+            int lineCount = 1;
+
+            bool valid = true;
+
+            // First check the file for errors
+            while (reader.EndOfStream == false)
+            {
+                string line = reader.ReadLine();
+
+                valid = ValidateAskRiskLine(line, lineCount, ref outModel);
+                if (valid == true)
+                {
+                    string[] lineBits = line.Split(',');
+                    string NHSNumber = lineBits[0];
+                    Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+                    if (participant != null)
+                    {
+                        participant.AskForRiskLetter = true;
+                        _participantRepo.Update(participant);
+                        _unitOfWork.Save();
+
+                        
+                        ParticipantEvent pEvent = new ParticipantEvent();
+                        pEvent.AppUser = _userManager.GetCurrentUser();
+                        pEvent.EventDate = DateTime.Now;
+                        pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_ASK_RISK).FirstOrDefault();
+                        pEvent.Notes = EventResources.EVENT_ASK_RISK_STR;
+                        pEvent.Participant = participant;
+
+                        _eventRepo.Insert(pEvent);
+                        _unitOfWork.Save();
+
+
+                        participant.LastEvent = pEvent;
+                        _participantRepo.Update(participant);
+
+                        _unitOfWork.Save();
+
+                    }
+                }
+
+                lineCount++;
+            }
+
+
+
+
+        }
+
+        /// <summary>
+        /// Check the the passed line is valid
+        /// </summary
+        /// <param name="line">The line string</param>
+        /// <param name="lineCount">Line number</param>
+        /// <param name="outModel">View model to add result messages to</param>
+        /// <returns>true if valid, else false</returns>
+        private bool ValidateAskRiskLine(string line, int lineCount, ref UploadResultsViewModel outModel)
+        {
+
+            string[] lineBits = line.Split(',');
+            if (lineBits.Count() != _UPLOADASKRISKCOLUMNS) // Should only be 2 columns
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, _UPLOADASKRISKCOLUMNS), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            string NHSNumber = lineBits[0];
+
+            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+            if (participant == null) // Participant does not exist in the database
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+            else
+            {
+                if (participant.Consented == false)
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+
+            // <ust say YES!
+            if (lineBits[1].ToUpper() != "YES")
+            {
+                outModel.AddMessage(lineCount, UploadResources.UPLOAD_MUST_BE_YES, UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ASK_RISK_SUCCESS, NHSNumber), UploadResources.UPLOAD_ASKRISK);
+            return true;
+
+        }
+
+
+        /// <summary>
         /// Create a new participant record
         /// </summary>
         /// <param name="NHSNumber">NHS number</param>
@@ -287,7 +404,7 @@ namespace PROCAS2.Services.App
                     participant.DateFirstAppointment = DOFA;
                     participant.DateActualAppointment = DOFA; // Initially the 'actual' appointment date will be the same as the first
                     participant.DateOfBirth = DOB;
-                    participant.Title = lineBits[4];
+                    participant.Title = String.IsNullOrEmpty(lineBits[4])? null: lineBits[4];
                     participant.FirstName = lineBits[5];
                     participant.LastName = lineBits[6];
                     
@@ -305,9 +422,9 @@ namespace PROCAS2.Services.App
 
                     Address homeAddress = new Address();
                     homeAddress.AddressLine1 = lineBits[7];
-                    homeAddress.AddressLine2 = lineBits[8];
-                    homeAddress.AddressLine3 = lineBits[9];
-                    homeAddress.AddressLine4 = lineBits[10];
+                    homeAddress.AddressLine2 = String.IsNullOrEmpty(lineBits[8]) ? null : lineBits[8]; ;
+                    homeAddress.AddressLine3 = String.IsNullOrEmpty(lineBits[9]) ? null : lineBits[9]; ;
+                    homeAddress.AddressLine4 = String.IsNullOrEmpty(lineBits[10]) ? null : lineBits[10]; ;
                     homeAddress.PostCode = lineBits[11];
                     
                     homeAddress.Participant = participant;
@@ -318,11 +435,11 @@ namespace PROCAS2.Services.App
 
                     Address gpAddress = new Address();
                     gpAddress.AddressLine1 = lineBits[13];
-                    gpAddress.AddressLine2 = lineBits[14];
-                    gpAddress.AddressLine3 = lineBits[15];
-                    gpAddress.AddressLine4 = lineBits[16];
+                    gpAddress.AddressLine2 = String.IsNullOrEmpty(lineBits[14]) ? null : lineBits[14]; ;
+                    gpAddress.AddressLine3 = String.IsNullOrEmpty(lineBits[15]) ? null : lineBits[15]; ;
+                    gpAddress.AddressLine4 = String.IsNullOrEmpty(lineBits[16]) ? null : lineBits[16]; ;
                     gpAddress.PostCode = lineBits[17];
-                    gpAddress.EmailAddress = lineBits[18];
+                    gpAddress.EmailAddress = String.IsNullOrEmpty(lineBits[18]) ? null : lineBits[18]; ;
                     gpAddress.Participant = participant;
                     gpAddress.AddressType = _addressTypeRepo.GetAll().Where(x => x.Name == "GP").FirstOrDefault();
 
@@ -691,7 +808,15 @@ namespace PROCAS2.Services.App
                 Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
-                    participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, (int)participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
+                    if (!String.IsNullOrEmpty(model.BMI))
+                    {
+                        participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
+                    }
+                    else
+                    {
+                        participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, null, model.Reason);
+
+                    }
                     participant.Chemoprevention = ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
                     participant.Consented = ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
                     participant.DateActualAppointment = ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
@@ -714,6 +839,8 @@ namespace PROCAS2.Services.App
                     participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title, model.Reason);
                     participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
                     participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
+                    participant.AskForRiskLetter = ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
+
 
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
@@ -791,6 +918,7 @@ namespace PROCAS2.Services.App
                     participant.SentRisk = false;
                     participant.Title = null;
                     participant.Withdrawn = false;
+                    participant.AskForRiskLetter = false;
 
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
@@ -954,7 +1082,7 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        private int ChangeEventInt(Participant participant, string propertyName, int oldValue, int newValue, string reason)
+        private int? ChangeEventInt(Participant participant, string propertyName, int? oldValue, int? newValue, string reason)
         {
             if (oldValue != newValue)
             {
@@ -963,7 +1091,7 @@ namespace PROCAS2.Services.App
                 pEvent.AppUser = _userManager.GetCurrentUser();
                 pEvent.EventDate = DateTime.Now;
                 pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
-                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
+                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.HasValue?oldValue.ToString(): "NULL", newValue.HasValue?newValue.ToString():"NULL");
                 pEvent.Participant = participant;
                 pEvent.Reason = reason;
                 _eventRepo.Insert(pEvent);
