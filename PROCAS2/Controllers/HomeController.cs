@@ -21,15 +21,18 @@ namespace PROCAS2.Controllers
 
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<ScreeningSite> _siteRepo;
+        private IGenericRepository<AppNewsItem> _appNewsItemsRepo;
         private IDashboardService _dashboardService;
 
 
         public HomeController(IUnitOfWork unitOfWork,
                                 IGenericRepository<ScreeningSite> siteRepo,
+                                IGenericRepository<AppNewsItem> appNewsItemsRepo,
                                 IDashboardService dashboardService)
         {
             _unitOfWork = unitOfWork;
             _siteRepo = siteRepo;
+            _appNewsItemsRepo = appNewsItemsRepo;
             _dashboardService = dashboardService;
         }
 
@@ -79,6 +82,19 @@ namespace PROCAS2.Controllers
                 return PartialView("_Site", model);
             else
                 return View("_Site", model);
+        }
+
+        public ActionResult AppNewsPanel()
+        {
+            DashboardAppNewsViewModel model = new DashboardAppNewsViewModel();
+
+
+            model.NewsItems = _appNewsItemsRepo.GetAll().OrderByDescending(x => x.DatePosted).ToList();
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_AppNews", model);
+            else
+                return View("_AppNews", model);
         }
 
     }

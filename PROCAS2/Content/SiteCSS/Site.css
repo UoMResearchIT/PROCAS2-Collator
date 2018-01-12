@@ -116,6 +116,8 @@ textarea {
     padding: 5px 5px 5px 5px;
     margin-bottom:10px;
     margin-right:10px;
+    height: 200px;
+    overflow-y:scroll;
 }
 
 .participantViewPanel {
@@ -148,4 +150,8 @@ textarea {
     text-align:center;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.newsItemHighlight{
+    color: red;
 }

@@ -1,0 +1,56 @@
+﻿@model PROCAS2.Models.ViewModels.DashboardAppNewsViewModel
+@using PROCAS2.Resources;
+@using PROCAS2.Data.Entities;
+
+
+<div class="col-md-12">
+    <h4>@DashboardResources.APPNEWS_TITLE</h4>
+</div>
+
+@if (Model.NewsItems.Count == 0)
+{
+    <span>@DashboardResources.APPNEWS_NO_MESSAGES</span>
+}
+else
+{
+<table class="table table-sm table-inverse">
+    <thead>
+        <tr>
+            <th>
+                @DashboardResources.APPNEWS_POSTED
+            </th>
+            <th>
+                @DashboardResources.APPNEWS_MESSAGE
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (AppNewsItem item in Model.NewsItems)
+        {
+            <tr>
+                <td>
+                    @if (DateTime.Now > item.HighlightUntil)
+                    {
+                        <span>@item.DatePosted.ToString("dd/MM/yyyy")</span>
+                    }
+                    else
+                    {
+                        <span class="newsItemHighlight">@item.DatePosted.ToString("dd/MM/yyyy")</span>
+                    }
+                </td>
+                <td>
+                    @if (DateTime.Now > item.HighlightUntil)
+                    {
+                        <span>@item.Message</span>
+                    }
+                    else
+                    {
+                        <span class="newsItemHighlight">@item.Message</span>
+                    }
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+}

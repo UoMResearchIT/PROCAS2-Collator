@@ -55,4 +55,23 @@
         .fail(function (error) {
             $("#pnlRisk").html("<p>Error: Risk Letter information cannot be found.</p>");
         });
+
+
+    // App News items info panel
+    // Fetch data to show applicaiton news information
+    $.ajax({
+        url: "/Home/AppNewsPanel",
+        beforeSend: function () {
+
+            $("#pnlAppNews").html("<h4>Application News</h4><p>Loading...</p>");
+        }
+    })
+        .done(function (data) {
+
+            $("#pnlAppNews").html(data);
+
+        })
+        .fail(function (error) {
+            $("#pnlAppNews").html("<p>Error: Application news cannot be found.</p>");
+        });
 });

@@ -659,6 +659,7 @@
     <Content Include="Views\Report\PatientDetails.cshtml" />
     <Content Include="Views\Report\_ReportSpinner.cshtml" />
     <Content Include="Views\Participant\UploadAskRisk.cshtml" />
+    <Content Include="Views\Home\_AppNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

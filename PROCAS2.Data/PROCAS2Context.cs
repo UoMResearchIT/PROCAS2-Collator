@@ -40,6 +40,7 @@ namespace PROCAS2.Data
         public DbSet<ScreeningSite> ScreeningSites { get; set; }
         public DbSet<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
         public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<AppNewsItem> AppNewsItems { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

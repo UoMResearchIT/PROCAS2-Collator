@@ -61,6 +61,42 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        public static string APPNEWS_MESSAGE {
+            get {
+                return ResourceManager.GetString("APPNEWS_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No messages at present.
+        /// </summary>
+        public static string APPNEWS_NO_MESSAGES {
+            get {
+                return ResourceManager.GetString("APPNEWS_NO_MESSAGES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Posted.
+        /// </summary>
+        public static string APPNEWS_POSTED {
+            get {
+                return ResourceManager.GetString("APPNEWS_POSTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application News.
+        /// </summary>
+        public static string APPNEWS_TITLE {
+            get {
+                return ResourceManager.GetString("APPNEWS_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number consented:.
         /// </summary>
         public static string NUM_CONSENT {

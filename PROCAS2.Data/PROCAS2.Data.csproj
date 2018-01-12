@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\AddressType.cs" />
+    <Compile Include="Entities\AppNewsItem.cs" />
     <Compile Include="Entities\AppUser.cs" />
     <Compile Include="Entities\EventType.cs" />
     <Compile Include="Entities\GeneticRecord.cs" />
