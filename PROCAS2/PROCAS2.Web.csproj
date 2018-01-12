@@ -439,6 +439,7 @@
     <Content Include="js\reports.js" />
     <Content Include="js\siteList.js" />
     <Content Include="js\uploadNewParticipant.js" />
+    <Content Include="js\uploadUpdateParticipant.js" />
     <Content Include="js\userAdmin.js" />
     <Content Include="js\volparaResultsView.js" />
     <Content Include="Scripts\bootstrap-datepicker.js" />

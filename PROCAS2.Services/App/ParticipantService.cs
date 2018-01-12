@@ -274,7 +274,7 @@ namespace PROCAS2.Services.App
         private void UpdateParticipantRecord(string line)
         {
             string[] lineBits = line.Split(',');
-            if (lineBits.Count() == _UPLOADUPDATECOLUMNS) // Should be 23 columns
+            if (lineBits.Count() == _UPLOADUPDATECOLUMNS) // Should be 21 columns
             {
                 string NHSNumber = lineBits[0];
                 Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
@@ -290,11 +290,10 @@ namespace PROCAS2.Services.App
                     participant.Title = lineBits[4];
                     participant.FirstName = lineBits[5];
                     participant.LastName = lineBits[6];
-                    participant.BMI = Convert.ToInt32(lineBits[7]);
-                    participant.MailingList = lineBits[8] == "Y" ? true : false;
-                    participant.GPName = lineBits[15];
+                    
+                    participant.GPName = lineBits[12];
 
-                    string siteCode = lineBits[22];
+                    string siteCode = lineBits[19];
                     ScreeningSite site = _siteRepo.GetAll().Where(x => x.Code == siteCode).FirstOrDefault();
                     if (site != null)
                     {
@@ -305,12 +304,12 @@ namespace PROCAS2.Services.App
                     _unitOfWork.Save();
 
                     Address homeAddress = new Address();
-                    homeAddress.AddressLine1 = lineBits[9];
-                    homeAddress.AddressLine2 = lineBits[10];
-                    homeAddress.AddressLine3 = lineBits[11];
-                    homeAddress.AddressLine4 = lineBits[12];
-                    homeAddress.PostCode = lineBits[13];
-                    homeAddress.EmailAddress = lineBits[14];
+                    homeAddress.AddressLine1 = lineBits[7];
+                    homeAddress.AddressLine2 = lineBits[8];
+                    homeAddress.AddressLine3 = lineBits[9];
+                    homeAddress.AddressLine4 = lineBits[10];
+                    homeAddress.PostCode = lineBits[11];
+                    
                     homeAddress.Participant = participant;
                     homeAddress.AddressType = _addressTypeRepo.GetAll().Where(x => x.Name == "HOME").FirstOrDefault();
 
@@ -318,12 +317,12 @@ namespace PROCAS2.Services.App
                     _unitOfWork.Save();
 
                     Address gpAddress = new Address();
-                    gpAddress.AddressLine1 = lineBits[16];
-                    gpAddress.AddressLine2 = lineBits[17];
-                    gpAddress.AddressLine3 = lineBits[18];
-                    gpAddress.AddressLine4 = lineBits[19];
-                    gpAddress.PostCode = lineBits[20];
-                    gpAddress.EmailAddress = lineBits[21];
+                    gpAddress.AddressLine1 = lineBits[13];
+                    gpAddress.AddressLine2 = lineBits[14];
+                    gpAddress.AddressLine3 = lineBits[15];
+                    gpAddress.AddressLine4 = lineBits[16];
+                    gpAddress.PostCode = lineBits[17];
+                    gpAddress.EmailAddress = lineBits[18];
                     gpAddress.Participant = participant;
                     gpAddress.AddressType = _addressTypeRepo.GetAll().Where(x => x.Name == "GP").FirstOrDefault();
 
@@ -493,29 +492,15 @@ namespace PROCAS2.Services.App
                 return false;
             }
 
-            // BMI
-            int BMI;
-            if (String.IsNullOrEmpty(lineBits[7]) == false && Int32.TryParse(lineBits[7], out BMI) == false) // check out the format
-            {
-                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_BMI_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
-                return false;
-            }
-
-            // Mailing list
-            if (String.IsNullOrEmpty(lineBits[8]) == false && (lineBits[8]!= "N" && lineBits[8] != "Y")) // check out the format
-            {
-                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_MAILING_LIST_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
-                return false;
-            }
-
+           
             // Address line 1
-            if (String.IsNullOrEmpty(lineBits[9]) == true) // First address line is mandatory
+            if (String.IsNullOrEmpty(lineBits[7]) == true) // First address line is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_1_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[9].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
+            if (lineBits[7].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_1_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
@@ -523,54 +508,49 @@ namespace PROCAS2.Services.App
 
 
             // Address line 2
-            if (lineBits[10].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
+            if (lineBits[8].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_2_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // Address line 3
-            if (lineBits[11].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
+            if (lineBits[9].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_3_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // Address line 4
-            if (lineBits[12].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
+            if (lineBits[10].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_ADDRESS_4_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // Postcode
-            if (String.IsNullOrEmpty(lineBits[13]) == true) // Postcode is mandatory
+            if (String.IsNullOrEmpty(lineBits[11]) == true) // Postcode is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_POSTCODE_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[13].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
+            if (lineBits[11].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_POSTCODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            // Email address
-            if (lineBits[14].Length > AttributeHelpers.GetMaxLength<Address>(x => x.EmailAddress)) // should be 200 chars max
-            {
-                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_EMAIL_TOO_LONG), UploadResources.UPLOAD_FAIL);
-                return false;
-            }
+          
 
             // GP Name
-            if (String.IsNullOrEmpty(lineBits[15]) == true) // GP Name is mandatory
+            if (String.IsNullOrEmpty(lineBits[12]) == true) // GP Name is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_NAME_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[15].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.GPName)) // should be 200 chars max
+            if (lineBits[12].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.GPName)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_NAME_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
@@ -578,13 +558,13 @@ namespace PROCAS2.Services.App
 
 
             // GP Address line 1
-            if (String.IsNullOrEmpty(lineBits[16]) == true) // First GP address line is mandatory
+            if (String.IsNullOrEmpty(lineBits[13]) == true) // First GP address line is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_1_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[16].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
+            if (lineBits[13].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine1)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_1_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
@@ -592,60 +572,60 @@ namespace PROCAS2.Services.App
 
 
             // GP Address line 2
-            if (lineBits[17].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
+            if (lineBits[14].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine2)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_2_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // GP Address line 3
-            if (lineBits[18].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
+            if (lineBits[15].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine3)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_3_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // GP Address line 4
-            if (lineBits[19].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
+            if (lineBits[16].Length > AttributeHelpers.GetMaxLength<Address>(x => x.AddressLine4)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_ADDRESS_4_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // GP Postcode
-            if (String.IsNullOrEmpty(lineBits[20]) == true) // GP Postcode is mandatory
+            if (String.IsNullOrEmpty(lineBits[17]) == true) // GP Postcode is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_POSTCODE_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[20].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
+            if (lineBits[17].Length > AttributeHelpers.GetMaxLength<Address>(x => x.PostCode)) // should be 10 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_POSTCODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // GP Email address
-            if (lineBits[21].Length > AttributeHelpers.GetMaxLength<Address>(x => x.EmailAddress)) // should be 200 chars max
+            if (lineBits[18].Length > AttributeHelpers.GetMaxLength<Address>(x => x.EmailAddress)) // should be 200 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_GP_EMAIL_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
             // Site code
-            if (String.IsNullOrEmpty(lineBits[22]) == true) // Site code is mandatory
+            if (String.IsNullOrEmpty(lineBits[19]) == true) // Site code is mandatory
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SITE_CODE_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            if (lineBits[22].Length > AttributeHelpers.GetMaxLength<ScreeningSite>(x => x.Code)) // should be 10 chars max
+            if (lineBits[19].Length > AttributeHelpers.GetMaxLength<ScreeningSite>(x => x.Code)) // should be 10 chars max
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SITE_CODE_TOO_LONG), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
-            string siteCode = lineBits[22];
+            string siteCode = lineBits[19];
             ScreeningSite site = _siteRepo.GetAll().Where(x => x.Code == siteCode ).FirstOrDefault();
             if (site == null)
             {
