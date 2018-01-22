@@ -55,6 +55,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExportResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="HL7Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HL7Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="ParticipantResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,6 +99,10 @@
     <EmbeddedResource Include="ExportResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ExportResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HL7Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HL7Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ParticipantResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

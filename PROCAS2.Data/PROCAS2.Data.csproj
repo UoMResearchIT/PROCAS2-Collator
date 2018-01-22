@@ -70,8 +70,8 @@
     <Compile Include="Entities\ParticipantEvent.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\QuestionAnswer.cs" />
-    <Compile Include="Entities\Questionnaire.cs" />
-    <Compile Include="Entities\Response.cs" />
+    <Compile Include="Entities\QuestionnaireResponse.cs" />
+    <Compile Include="Entities\QuestionnaireResponseItem.cs" />
     <Compile Include="Entities\RiskLetter.cs" />
     <Compile Include="Entities\ScreeningRecordV1_5_2.cs" />
     <Compile Include="Entities\ScreeningRecordV1_5_4.cs" />

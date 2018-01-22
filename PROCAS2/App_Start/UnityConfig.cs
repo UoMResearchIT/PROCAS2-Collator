@@ -38,6 +38,8 @@ namespace PROCAS2
             container.RegisterType<IExportService, ExportService>();
             container.RegisterType<ISiteService, SiteService>();
             container.RegisterType<IReportService, ReportService>();
+            container.RegisterType<IResponseService, ResponseService>();
+            container.RegisterType<IHL7Service, HL7Service>();
             container.RegisterType<IPROCAS2UserManager, PROCASUserManager>();
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());

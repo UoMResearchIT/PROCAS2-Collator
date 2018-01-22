@@ -1113,7 +1113,25 @@ namespace PROCAS2.Services.App
         /// <returns>true if exists, else false</returns>
         public bool DoesNHSNumberExist(string NHSNumber)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).First();
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+            if (participant == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
+        /// Does the passed hash match a participant in the database?
+        /// </summary>
+        /// <param name="hash">Hashed NHS Number</param>
+        /// <returns>true if exists, else false</returns>
+        public bool DoesHashedNHSNumberExist(string hash)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
             if (participant == null)
             {
                 return false;

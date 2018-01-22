@@ -11,10 +11,13 @@ namespace PROCAS2.Data.Entities
     public class Question
     {
         public int Id { get; set; }
+
+        [MaxLength(20)]
+        public string Code { get; set; }
         [MaxLength(200)]
         public string Text { get; set; }
 
 
-        public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
+        //public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
     }
 }

@@ -18,5 +18,6 @@ namespace PROCAS2.Services.App
         List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
         bool DeleteParticipant(string id);
         bool DoesNHSNumberExist(string NHSNumber);
+        bool DoesHashedNHSNumberExist(string hash);
     }
 }
