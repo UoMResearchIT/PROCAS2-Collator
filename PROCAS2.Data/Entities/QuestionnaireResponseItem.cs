@@ -13,14 +13,14 @@ namespace PROCAS2.Data.Entities
         public int Id { get; set; }
         public int QuestionId { get; set; }
         public int QuestionnaireResponseId { get; set; }
-       
-       
+
+
         [MaxLength(200)]
         public string ResponseText { get; set; }
 
 
         public virtual Question Question { get; set; }
-        
+
         public virtual QuestionnaireResponse QuestionnaireResponse { get; set; }
     }
 }

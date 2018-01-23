@@ -22,9 +22,9 @@ namespace PROCAS2
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             UnityConfig.RegisterComponents();
-#if DEBUG
+
             Database.SetInitializer<PROCAS2Context>(new PROCAS2Initialiser());
-#endif
+
         }
     }
 }

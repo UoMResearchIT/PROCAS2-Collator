@@ -9,7 +9,8 @@ namespace PROCAS2.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+           AutomaticMigrationsEnabled = true;
+
 #if DEBUG
             AutomaticMigrationDataLossAllowed = true;
 #endif

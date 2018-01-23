@@ -61,7 +61,7 @@ namespace PROCAS2.Services.Utility
                 return returnMessages;
             }
 
-            ORU_R01 ORUR01 = m as ORU_R01;
+            ORU_R01 ORUR01 = m as ORU_R01; // If you are wondering why this is necessary, so am I. Try taking it out to find out why it is here. Go on, I dare you.
 
             // Get and validate the patient ID.
             string patientID = terse.Get("/.^PATIENT$/PID-3");
@@ -85,9 +85,10 @@ namespace PROCAS2.Services.Utility
 
             // Cycle through the observation records, pulling out the ones of interest
             bool stop = false;
-            int idxOBX = 0;
+            int idxOBX = -1;
             do
             {
+                idxOBX++;
                 // Get the type of each OBX record
                 string observationType = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-3-1");
                 if (String.IsNullOrEmpty(observationType))
@@ -97,7 +98,7 @@ namespace PROCAS2.Services.Utility
                 }
                 else
                 {
-                    idxOBX++;
+                    
 
                     // Is this observation a risk letter?
                     if (observationType == _configService.GetAppSetting("HL7RiskLetterCode"))

@@ -16,7 +16,7 @@ namespace PROCAS2.Data.Entities
         public int ParticipantId { get; set; }
         public virtual Participant Participant { get; set; }
 
-        
-        public virtual ICollection<QuestionnaireResponseItem> Responses { get; set; }
+
+        public virtual ICollection<QuestionnaireResponseItem> QuestionnaireResponseItems { get; set; }
     }
 }
