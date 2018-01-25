@@ -1,0 +1,41 @@
+﻿@model PROCAS2.Models.ViewModels.QuestionnaireDetailsViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Questionnaire Response";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h3>@ParticipantResources.QUESTIONNAIRE_RESPONSE - @Model.NHSNumber</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        @Html.LabelFor(model => model.QuestionnaireStart, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-7">
+            @Html.DisplayFor(model => model.QuestionnaireStart, new { htmlAttributes = new { @class = "form-control-static" } })
+
+        </div>
+
+        @Html.LabelFor(model => model.QuestionnaireEnd, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-1">
+            @Html.DisplayFor(model => model.QuestionnaireEnd, new { htmlAttributes = new { @class = "form-control-static" } })
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="row">
+
+</div>

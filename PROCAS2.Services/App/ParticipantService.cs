@@ -1142,5 +1142,102 @@ namespace PROCAS2.Services.App
             }
         }
 
+        /// <summary>
+        /// Set the patient's consented flag to true
+        /// </summary>
+        /// <param name="hashedNHSNumber">Hashed NHS Number</param>
+        /// <returns>true if set OK, else false</returns>
+        public bool SetConsentFlag(string hashedNHSNumber)
+        {
+            try
+            {
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+                    participant.Consented = true;
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                    ParticipantEvent pEvent = new ParticipantEvent();
+                    pEvent.Participant = participant;
+                    pEvent.EventDate = DateTime.Now;
+                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_CONSENT).FirstOrDefault();
+                    pEvent.Notes = EventResources.EVENT_CONSENT_STR;
+                    pEvent.AppUser = _userManager.GetSystemUser(EventResources.CRA_AUTO_USER);
+                    _eventRepo.Insert(pEvent);
+                    _unitOfWork.Save();
+
+                    participant.LastEvent = pEvent;
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Create the patient's risk letter based on the passed content
+        /// </summary>
+        /// <param name="hashedNHSNumber">Hashed NHS Number</param>
+        /// <param name="letterParts">List of paragraphs fofr the letter</param>
+        /// <returns>true if successfully created, else false</returns>
+        public bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, List<string> letterParts)
+        {
+            try
+            {
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+
+                    RiskLetter letter = new RiskLetter();
+                    letter.DateReceived = DateTime.Now;
+                    StringBuilder builder = new StringBuilder();
+                    for (int i = 0; i < letterParts.Count; i++)
+                    {
+                        builder.AppendLine("<p>" + letterParts[i] + "</p><p>&nbsp;</p>");
+                    }
+                    letter.RiskLetterContent = builder.ToString();                    
+                    letter.RiskCategory = riskCategory;
+                    letter.RiskScore = Convert.ToDouble(riskScore);
+                    letter.Participant = participant;
+                    _riskLetterRepo.Insert(letter);
+                    _unitOfWork.Save();
+
+                    ParticipantEvent pEvent = new ParticipantEvent();
+                    pEvent.Participant = participant;
+                    pEvent.EventDate = DateTime.Now;
+                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_RISKLETTER).FirstOrDefault();
+                    pEvent.Notes = EventResources.EVENT_RISKLETTER_STR;
+                    pEvent.AppUser = _userManager.GetSystemUser(EventResources.CRA_AUTO_USER);
+                    _eventRepo.Insert(pEvent);
+                    _unitOfWork.Save();
+
+                    participant.LastEvent = pEvent;
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

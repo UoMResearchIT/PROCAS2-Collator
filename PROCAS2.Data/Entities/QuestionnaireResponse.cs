@@ -10,6 +10,7 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
+        public DateTime DateReceived { get; set; }
         public DateTime? QuestionnaireStart { get; set; }
         public DateTime? QuestionnaireEnd { get; set; }
 

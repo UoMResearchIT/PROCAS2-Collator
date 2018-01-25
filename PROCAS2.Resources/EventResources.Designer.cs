@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CRA_Automatic.
+        /// </summary>
+        public static string CRA_AUTO_USER {
+            get {
+                return ResourceManager.GetString("CRA_AUTO_USER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 006.
         /// </summary>
         public static string EVENT_ASK_RISK {
@@ -147,6 +156,24 @@ namespace PROCAS2.Resources {
         public static string EVENT_PROPERTY_UPDATED_STR {
             get {
                 return ResourceManager.GetString("EVENT_PROPERTY_UPDATED_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 007.
+        /// </summary>
+        public static string EVENT_RISKLETTER {
+            get {
+                return ResourceManager.GetString("EVENT_RISKLETTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk letter received..
+        /// </summary>
+        public static string EVENT_RISKLETTER_STR {
+            get {
+                return ResourceManager.GetString("EVENT_RISKLETTER_STR", resourceCulture);
             }
         }
         

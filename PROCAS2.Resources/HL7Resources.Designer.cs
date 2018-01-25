@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error setting consent flag for patient {0}..
+        /// </summary>
+        public static string CONSENT_NOT_SET {
+            get {
+                return ResourceManager.GetString("CONSENT_NOT_SET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There has been a problem creating the response header..
         /// </summary>
         public static string HEADER_CREATION_ERROR {
@@ -93,6 +102,15 @@ namespace PROCAS2.Resources {
         public static string PATIENT_NOT_EXISTS {
             get {
                 return ResourceManager.GetString("PATIENT_NOT_EXISTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error creating the risk letter for patient {0}..
+        /// </summary>
+        public static string RISK_LETTER_NOT_CREATED {
+            get {
+                return ResourceManager.GetString("RISK_LETTER_NOT_CREATED", resourceCulture);
             }
         }
     }

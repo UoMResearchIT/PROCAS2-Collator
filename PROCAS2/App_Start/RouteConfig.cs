@@ -93,6 +93,12 @@ namespace PROCAS2
           );
 
             routes.MapRoute(
+           name: "ViewQuestionnaire",
+           url: "Questionnaire/Details/{responseId}",
+           defaults: new { controller = "Questionnaire", action = "Details", responseId = "" }
+       );
+
+            routes.MapRoute(
             name: "ViewScreenV1_5_4",
             url: "Screening/ViewScreenV1_5_4/{id}",
             defaults: new { controller = "Screening", action = "ViewScreenV1_5_4", id = "" }

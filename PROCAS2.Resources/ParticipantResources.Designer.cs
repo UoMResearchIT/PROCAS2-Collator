@@ -430,6 +430,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to NHS Number.
+        /// </summary>
+        public static string NHS_NUMBER {
+            get {
+                return ResourceManager.GetString("NHS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There are no Volpara records to display..
         /// </summary>
         public static string NO_VOLPARA_RECORDS {
@@ -471,6 +480,33 @@ namespace PROCAS2.Resources {
         public static string POSTCODE {
             get {
                 return ResourceManager.GetString("POSTCODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Finished.
+        /// </summary>
+        public static string QUESTIONNAIRE_END {
+            get {
+                return ResourceManager.GetString("QUESTIONNAIRE_END", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Questionnaire Response.
+        /// </summary>
+        public static string QUESTIONNAIRE_RESPONSE {
+            get {
+                return ResourceManager.GetString("QUESTIONNAIRE_RESPONSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Started.
+        /// </summary>
+        public static string QUESTIONNAIRE_START {
+            get {
+                return ResourceManager.GetString("QUESTIONNAIRE_START", resourceCulture);
             }
         }
         

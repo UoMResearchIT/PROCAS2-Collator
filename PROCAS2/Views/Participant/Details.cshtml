@@ -296,6 +296,12 @@
 </a></li>
         <li role="presentation"><a href="#pnlQuestionnaire" aria-controls="pnlQuestionnaire" role="tab" data-toggle="tab">Questionnaire
                                     <span class="glyphicon glyphicon-question-sign">
+
+                                        @if (@Model.Participant.QuestionnaireResponses.Count > 0)
+                                        {
+                                            <span class="rw-number-notification">@Model.Participant.QuestionnaireResponses.Count</span>
+                                        }
+
                                         </span></a></li>
         <li role="presentation"><a href="#pnlImages" aria-controls="pnlImages" role="tab" data-toggle="tab">Images
                                    
@@ -418,8 +424,62 @@
 
         <div role="tabpanel" class="tab-pane" id="pnlQuestionnaire">
             <div class="panel panel-primary participantViewPanel">
-                <div class="panel-heading">Questionnaire</div>
-                <div class="panel-body"></div>
+                <div class="panel-heading">Questionnaires</div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.DATA_RECEIVED
+                                </th>
+                                <th>
+                                    @ParticipantResources.QUESTIONNAIRE_START
+                                </th>
+                                <th>
+                                    @ParticipantResources.QUESTIONNAIRE_END
+                                </th>
+                                <th>
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (QuestionnaireResponse response in Model.Participant.QuestionnaireResponses.OrderByDescending(x => x.DateReceived))
+                            {
+                                <tr>
+                                    <td>
+                                        @String.Join(" ", new string[] { response.DateReceived.ToShortDateString(), " ", @response.DateReceived.ToShortTimeString() })
+                                    </td>
+                                    <td>
+                                        @if (response.QuestionnaireStart.HasValue == true)
+                                        {
+                                            @String.Join(" ", new string[] { response.QuestionnaireStart.Value.ToShortDateString(), " ", @response.QuestionnaireStart.Value.ToShortTimeString() })
+                                        }
+                                        else
+                                        {
+                                            @ParticipantResources.UNKNOWN }
+                                    </td>
+                                    <td>
+                                        @if (response.QuestionnaireEnd.HasValue == true)
+                                        {
+                                            @String.Join(" ", new string[] { response.QuestionnaireEnd.Value.ToShortDateString(), " ", @response.QuestionnaireEnd.Value.ToShortTimeString() })
+                                        }
+                                        else
+                                        {
+                                            @ParticipantResources.UNKNOWN }
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("View", "Details", "Questionnaire", new { responseId = response.Id.ToString() }, new { @class = "btn btn-default pull-right" })
+
+
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
         </div>
 

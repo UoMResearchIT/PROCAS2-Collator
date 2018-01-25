@@ -218,6 +218,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\QuestionnaireController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ScreeningController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
@@ -661,6 +662,7 @@
     <Content Include="Views\Report\_ReportSpinner.cshtml" />
     <Content Include="Views\Participant\UploadAskRisk.cshtml" />
     <Content Include="Views\Home\_AppNews.cshtml" />
+    <Content Include="Views\Questionnaire\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

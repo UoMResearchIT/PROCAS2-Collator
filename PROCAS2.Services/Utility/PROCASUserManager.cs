@@ -67,7 +67,8 @@ namespace PROCAS2.Services.Utility
         /// <returns>The list of app users</returns>
         public List<AppUser> GetAllAppUsers()
         {
-            return _appUserRepo.GetAll().ToList();
+            // Don't show the system users on screen
+            return _appUserRepo.GetAll().Where(x => x.SystemUser == false).ToList();
         }
 
         /// <summary>
@@ -187,6 +188,18 @@ namespace PROCAS2.Services.Utility
             string currentUser = _contextService.CurrentUserName();
 
             AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == currentUser).FirstOrDefault();
+
+            return appUser;
+        }
+
+        /// <summary>
+        /// Return the AppUser for the requested system user
+        /// </summary>
+        /// <param name="userId">User Id</param>
+        /// <returns>AppUser object</returns>
+        public AppUser GetSystemUser(string userId)
+        {
+            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == userId && x.SystemUser == true).FirstOrDefault();
 
             return appUser;
         }

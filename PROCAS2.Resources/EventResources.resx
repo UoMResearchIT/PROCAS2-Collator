@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CRA_AUTO_USER" xml:space="preserve">
+    <value>CRA_Automatic</value>
+  </data>
   <data name="EVENT_ASK_RISK" xml:space="preserve">
     <value>006</value>
   </data>
@@ -147,6 +150,12 @@
   <data name="EVENT_PROPERTY_UPDATED_STR" xml:space="preserve">
     <value>Field {0} updated from {{{1}}} to {{{2}}}</value>
     <comment>{0} = field name, {1} = old value, {2} = new value</comment>
+  </data>
+  <data name="EVENT_RISKLETTER" xml:space="preserve">
+    <value>007</value>
+  </data>
+  <data name="EVENT_RISKLETTER_STR" xml:space="preserve">
+    <value>Risk letter received.</value>
   </data>
   <data name="EVENT_UPDATED" xml:space="preserve">
     <value>003</value>

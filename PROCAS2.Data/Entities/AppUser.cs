@@ -15,6 +15,7 @@ namespace PROCAS2.Data.Entities
         public string UserCode { get; set; }
         public bool Active { get; set; }
         public bool SuperUser { get; set; }
+        public bool SystemUser { get; set; }
 
         public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
 

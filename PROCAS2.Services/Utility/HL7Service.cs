@@ -83,6 +83,10 @@ namespace PROCAS2.Services.Utility
                 return returnMessages;
             }
 
+            List<string> letterParts = new List<string>();
+            string riskCategory = "";
+            string riskScore = "";
+
             // Cycle through the observation records, pulling out the ones of interest
             bool stop = false;
             int idxOBX = -1;
@@ -103,12 +107,64 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk letter?
                     if (observationType == _configService.GetAppSetting("HL7RiskLetterCode"))
                     {
+                        int idxLetter = 0;
+                        bool letterStop = false;
+                        bool firstNull = true;
+                        // iterate through the letter and store each paragraph
+                        do
+                        {
+                            string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxLetter + ")");
+                            if (answerText == null)
+                            {
+                                if (firstNull == false) // Stop on second blank line in a row.
+                                {
+                                    letterStop = true;
+                                }
+                                else
+                                {
+                                    letterParts.Add("");
+                                    firstNull = false;
+                                    idxLetter++;
+                                }
+                            }
+                            else
+                            {
+                                firstNull = true;
+                                letterParts.Add(answerText);
+                                idxLetter++;
+                            }
+                        } while (letterStop == false);
+
+
+                        continue;
+                    }
+
+                    // Is this observation a risk score?
+                    if (observationType == _configService.GetAppSetting("HL7RiskScoreCode"))
+                    {
+                        riskScore = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                        continue;
+                    }
+
+                    // Is this observation a risk category?
+                    if (observationType == _configService.GetAppSetting("HL7RiskCategoryCode"))
+                    {
+                        riskCategory = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
 
                     // Is the observation a consent type?
                     if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
                     {
+                        string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                        if (answerText.ToLower() == "yes")
+                        {
+                            if(_participantService.SetConsentFlag(patientID) == false)
+                            {
+                                returnMessages.Add(String.Format(HL7Resources.CONSENT_NOT_SET, patientID));
+                            }
+                        }
+
                         continue;
                     }
 
@@ -130,6 +186,16 @@ namespace PROCAS2.Services.Utility
                 }
                 
             } while (stop == false);
+
+
+            // If there are any paragraphs in the letter then create a risk letter for the participant
+            if (letterParts.Count > 0)
+            {
+                if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, letterParts) == false)
+                {
+                    returnMessages.Add(String.Format(HL7Resources.RISK_LETTER_NOT_CREATED, patientID));
+                }
+            }
 
             //ORU_R01 ORUR01 = m as ORU_R01;
 
