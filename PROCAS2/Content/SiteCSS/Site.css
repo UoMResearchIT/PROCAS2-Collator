@@ -125,6 +125,12 @@ textarea {
   overflow-y:scroll;
 }
 
+.questionnaireViewPanel {
+  height: 500px; 
+  overflow-y:scroll;
+}
+
+
 .gpModal{
     margin: 10px 10px 10px 10px;
 }

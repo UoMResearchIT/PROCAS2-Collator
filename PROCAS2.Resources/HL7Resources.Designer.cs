@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error creating a family history record for patient {0}.
+        /// </summary>
+        public static string FAMILY_HISTORY_ERROR {
+            get {
+                return ResourceManager.GetString("FAMILY_HISTORY_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There has been a problem creating the response header..
         /// </summary>
         public static string HEADER_CREATION_ERROR {

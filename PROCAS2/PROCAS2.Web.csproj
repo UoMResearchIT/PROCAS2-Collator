@@ -434,6 +434,7 @@
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="js\craResultsView.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\exportLetters.js" />
     <Content Include="js\participantEdit.js" />

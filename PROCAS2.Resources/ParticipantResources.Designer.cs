@@ -232,6 +232,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Family History.
+        /// </summary>
+        public static string FAMILY_HISTORY {
+            get {
+                return ResourceManager.GetString("FAMILY_HISTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FHC Referral?.
         /// </summary>
         public static string FHC_REFERRAL {
@@ -484,6 +493,33 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Answer.
+        /// </summary>
+        public static string QUESTION_ANSWER {
+            get {
+                return ResourceManager.GetString("QUESTION_ANSWER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string QUESTION_CODE {
+            get {
+                return ResourceManager.GetString("QUESTION_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Question.
+        /// </summary>
+        public static string QUESTION_QUESTION {
+            get {
+                return ResourceManager.GetString("QUESTION_QUESTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finished.
         /// </summary>
         public static string QUESTIONNAIRE_END {
@@ -507,6 +543,60 @@ namespace PROCAS2.Resources {
         public static string QUESTIONNAIRE_START {
             get {
                 return ResourceManager.GetString("QUESTIONNAIRE_START", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age (or age at death).
+        /// </summary>
+        public static string RELATIONSHIP_AGE {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_AGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age of Diagnosis.
+        /// </summary>
+        public static string RELATIONSHIP_AGEOFDIAGNOSIS {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_AGEOFDIAGNOSIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code.
+        /// </summary>
+        public static string RELATIONSHIP_CODE {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        public static string RELATIONSHIP_DESCRIPTION {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_DESCRIPTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disease.
+        /// </summary>
+        public static string RELATIONSHIP_DISEASE {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_DISEASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gender.
+        /// </summary>
+        public static string RELATIONSHIP_GENDER {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_GENDER", resourceCulture);
             }
         }
         

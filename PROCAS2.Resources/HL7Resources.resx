@@ -121,6 +121,10 @@
     <value>Error setting consent flag for patient {0}.</value>
     <comment>{0} = hashed NHS number</comment>
   </data>
+  <data name="FAMILY_HISTORY_ERROR" xml:space="preserve">
+    <value>Error creating a family history record for patient {0}</value>
+    <comment>{0} = hashed NHS number</comment>
+  </data>
   <data name="HEADER_CREATION_ERROR" xml:space="preserve">
     <value>There has been a problem creating the response header.</value>
   </data>

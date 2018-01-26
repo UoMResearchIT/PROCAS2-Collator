@@ -84,6 +84,7 @@ namespace PROCAS2.Services.Utility
             }
 
             List<string> letterParts = new List<string>();
+            List<string> historyParts = new List<string>();
             string riskCategory = "";
             string riskScore = "";
 
@@ -153,6 +154,64 @@ namespace PROCAS2.Services.Utility
                         continue;
                     }
 
+                    // Is the observation a family history type?
+                    if (observationType == _configService.GetAppSetting("HL7FamilyHistoryCode"))
+                    {
+                        int idxHistory = 0;
+                        bool historyStop = false;
+                       
+                        // iterate through the family history and store each record
+                        do
+                        {
+                            string historyCode = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")");
+                            if (historyCode == null)
+                            {
+                                
+                                    historyStop = true;
+                               
+                            }
+                            else
+                            {
+                                // Pick out the family history record.
+                               
+                                historyParts.Add(historyCode);
+                                FamilyHistoryItem historyItem = new FamilyHistoryItem();
+                                historyItem.RelationshipCode = historyCode;
+                                historyItem.RelationshipDescription = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-2");
+                                historyItem.Gender = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-3");
+                                string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-4");
+                                if (String.IsNullOrEmpty(age))
+                                {
+                                    historyItem.Age = null;
+                                }
+                                else
+                                {
+                                    historyItem.Age = Convert.ToInt32(age);
+                                }
+
+                                historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5-2");
+
+                                string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6");
+                                if (String.IsNullOrEmpty(ageOfDiagnosis))
+                                {
+                                    historyItem.AgeOfDiagnosis = null;
+                                }
+                                else
+                                {
+                                    historyItem.AgeOfDiagnosis = Convert.ToInt32(ageOfDiagnosis);
+                                }
+
+                                // Create the record in the DB
+                                if (_responseService.CreateFamilyHistoryItem(response, historyItem) == false)
+                                {
+                                    returnMessages.Add(String.Format(HL7Resources.FAMILY_HISTORY_ERROR, patientID));
+                                }
+
+                                idxHistory++;
+                            }
+                        } while (historyStop == false);
+                    }
+
                     // Is the observation a consent type?
                     if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
                     {
@@ -197,21 +256,7 @@ namespace PROCAS2.Services.Utility
                 }
             }
 
-            //ORU_R01 ORUR01 = m as ORU_R01;
-
-            //var top = ORUR01.GetAll("OBX");
-            //foreach (ORU_R01_RESPONSE response in ORUR01.RESPONSEs)
-            //{
-            //    //var resp = response.GetAll("OBX");
-            //    foreach(ORU_R01_ORDER_OBSERVATION obsv in response.ORDER_OBSERVATIONs)
-            //    {
-            //        ORU_R01_OBSERVATION ob = obsv.GetOBSERVATION(1);
-            //        ORU_R01_OBSERVATION ob2 = obsv.GetOBSERVATION(2);
-            //        ORU_R01_OBSERVATION ob3 = obsv.GetOBSERVATION(3);
-
-            //        Varies[] observations = ob.OBX.GetObservationValue();
-            //    }
-            //}
+            
 
             return returnMessages;
         }

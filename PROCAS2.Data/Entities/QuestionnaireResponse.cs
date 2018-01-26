@@ -19,5 +19,6 @@ namespace PROCAS2.Data.Entities
 
 
         public virtual ICollection<QuestionnaireResponseItem> QuestionnaireResponseItems { get; set; }
+        public virtual ICollection<FamilyHistoryItem> FamilyHistoryItems { get; set; }
     }
 }

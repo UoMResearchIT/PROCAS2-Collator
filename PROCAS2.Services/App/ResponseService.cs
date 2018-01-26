@@ -18,18 +18,21 @@ namespace PROCAS2.Services.App
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<Question> _questionRepo;
         private IGenericRepository<QuestionnaireResponseItem> _responseItemRepo;
+        private IGenericRepository<FamilyHistoryItem> _familyRepo;
         private IUnitOfWork _unitOfWork;
 
         public ResponseService(IGenericRepository<QuestionnaireResponse> responseRepo,
                                 IGenericRepository<Participant> participantRepo,
                                 IGenericRepository<Question> questionRepo,
                                 IGenericRepository<QuestionnaireResponseItem> responseItemRepo,
+                                IGenericRepository<FamilyHistoryItem> familyRepo,
                                 IUnitOfWork unitOfWork)
         {
             _responseRepo = responseRepo;
             _participantRepo = participantRepo;
             _responseItemRepo = responseItemRepo;
             _questionRepo = questionRepo;
+            _familyRepo = familyRepo;
             _unitOfWork = unitOfWork;
         }
 
@@ -46,6 +49,7 @@ namespace PROCAS2.Services.App
             try
             {
                 response = new QuestionnaireResponse();
+                response.DateReceived = DateTime.Now;
                 string formatString = "yyyyMMddHHmmss";
                 if (String.IsNullOrEmpty(dateStarted) == false)
                 {
@@ -90,6 +94,37 @@ namespace PROCAS2.Services.App
 
                 _responseItemRepo.Insert(item);
                 _unitOfWork.Save();
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Create a family history item in the database
+        /// </summary>
+        /// <param name="response">The questionnaire response this is associated with</param>
+        /// <param name="familyHistoryItem">The family history item</param>
+        /// <returns>true if created successfully, else false</returns>
+        public bool CreateFamilyHistoryItem(QuestionnaireResponse response, FamilyHistoryItem familyHistoryItem)
+        {
+            try
+            {
+                if (familyHistoryItem != null && response != null)
+                {
+                    familyHistoryItem.QuestionnaireResponse = response;
+
+                    _familyRepo.Insert(familyHistoryItem);
+                    _unitOfWork.Save();
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch(Exception ex)
             {

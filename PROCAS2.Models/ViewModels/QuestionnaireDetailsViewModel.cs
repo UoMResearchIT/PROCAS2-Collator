@@ -23,6 +23,7 @@ namespace PROCAS2.Models.ViewModels
         public DateTime? QuestionnaireEnd { get; set; }
 
         public List<QuestionnaireResponseItem> ResponseItems { get; set; }
+        public List<FamilyHistoryItem> HistoryItems { get; set; }
 
     }
 }

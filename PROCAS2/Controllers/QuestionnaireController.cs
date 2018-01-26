@@ -39,7 +39,8 @@ namespace PROCAS2.Controllers
                     model.NHSNumber = response.Participant.NHSNumber;
                     model.QuestionnaireEnd = response.QuestionnaireEnd;
                     model.QuestionnaireStart = response.QuestionnaireStart;
-                    model.ResponseItems = response.QuestionnaireResponseItems.ToList();
+                    model.ResponseItems = response.QuestionnaireResponseItems.OrderBy(x =>x.Question.Code).ToList();
+                    model.HistoryItems = response.FamilyHistoryItems.ToList();
                 }
             }
 

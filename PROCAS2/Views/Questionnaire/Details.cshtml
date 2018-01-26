@@ -6,6 +6,7 @@
     ViewBag.Title = "Questionnaire Response";
 }
 
+<script src="~/js/craResultsView.js" type="text/javascript"></script>
 
 <div class="row">
     <div class="col-md-12">
@@ -17,17 +18,21 @@
 </div>
 
 <div class="row">
+    &nbsp;
+</div>
+
+<div class="row">
     <div class="col-md-12">
 
 
         @Html.LabelFor(model => model.QuestionnaireStart, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-7">
+        <div class="col-md-4">
             @Html.DisplayFor(model => model.QuestionnaireStart, new { htmlAttributes = new { @class = "form-control-static" } })
 
         </div>
 
         @Html.LabelFor(model => model.QuestionnaireEnd, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-1">
+        <div class="col-md-4">
             @Html.DisplayFor(model => model.QuestionnaireEnd, new { htmlAttributes = new { @class = "form-control-static" } })
 
         </div>
@@ -37,5 +42,117 @@
 </div>
 
 <div class="row">
-
+    &nbsp;
 </div>
+
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#pnlHistory" aria-controls="pnlHistory" role="tab" data-toggle="tab">@ParticipantResources.FAMILY_HISTORY</a></li>
+        <li role="presentation"><a href="#pnlResponses" aria-controls="pnlResponses" role="tab" data-toggle="tab">@ParticipantResources.QUESTIONNAIRE_RESPONSE</a></li>
+
+    </ul>
+
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="pnlHistory">
+            <div class="panel panel-primary questionnaireViewPanel">
+                <div class="panel-heading">@ParticipantResources.FAMILY_HISTORY</div>
+                <div class="panel-body">
+                    <table id="tblFamily" class="table nowrap compact">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_CODE
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_DESCRIPTION
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_GENDER
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_AGE
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_DISEASE
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_AGEOFDIAGNOSIS
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int index = 0; index < Model.HistoryItems.Count; index++)
+            {
+                                <tr>
+                                    <td>
+                                        @Model.HistoryItems[index].RelationshipCode
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].RelationshipDescription
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].Gender
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].Age
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].Disease
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].AgeOfDiagnosis
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlResponses">
+
+            <div class="panel panel-primary  questionnaireViewPanel">
+                <div class="panel-heading">@ParticipantResources.QUESTIONNAIRE_RESPONSE</div>
+                <div class="panel-body">
+                    <table id="tblResponses" class="table nowrap compact">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.QUESTION_CODE
+                                </th>
+                                <th>
+                                    @ParticipantResources.QUESTION_QUESTION
+                                </th>
+                                <th>
+                                    @ParticipantResources.QUESTION_ANSWER
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (int index = 0; index < Model.ResponseItems.Count; index++)
+            {
+                                <tr>
+                                    <td>
+                                        @Model.ResponseItems[index].Question.Code
+                                    </td>
+                                    <td>
+                                        @Model.ResponseItems[index].Question.Text
+                                    </td>
+                                    <td>
+                                        @Model.ResponseItems[index].ResponseText
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
