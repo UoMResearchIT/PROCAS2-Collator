@@ -11,4 +11,4 @@ ASP.NET MVC/WebApi
 Azure integration
 
 Azure SQL database (production), LocalDB for dev.
-Azure Table, Blob and Queue services.
+Azure ServiceBus and Blob services.
