@@ -17,8 +17,8 @@ namespace PROCAS2.Controllers
     /// </summary>
     public class CRAController : Controller
     {
-        private IHL7Service _hl7Service;
-        public CRAController(IHL7Service hl7Service)
+        private ICRAService _hl7Service;
+        public CRAController(ICRAService hl7Service)
         {
             _hl7Service = hl7Service;
         }
@@ -113,5 +113,19 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         {
             _hl7Service.ProcessQuestionnaire(_exampleMessage);
         }
+
+
+        public void PostServiceBus()
+        {
+            _hl7Service.PostServiceBusMessage(_exampleMessage);
+        }
+
+
+        public void GetServiceBus()
+        {
+            string message = _hl7Service.GetServiceBusMessage();
+            _hl7Service.ProcessQuestionnaire(message);
+        }
+    
     }
 }

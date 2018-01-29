@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.ServiceBus;
+using Microsoft.ServiceBus.Messaging;
 
 using NHapi.Base;
 using NHapi.Base.Parser;
@@ -20,14 +22,14 @@ using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Services.Utility
 {
-    public class HL7Service:IHL7Service
+    public class CRAService:ICRAService
     {
 
         private IParticipantService _participantService;
         private IResponseService _responseService;
         private IConfigService _configService;
 
-        public HL7Service(IParticipantService participantService,
+        public CRAService(IParticipantService participantService,
                             IResponseService responseService,
                             IConfigService configService)
         {
@@ -259,6 +261,85 @@ namespace PROCAS2.Services.Utility
             
 
             return returnMessages;
+        }
+
+
+        /// <summary>
+        /// Post a message to the CRA servicebus. Used for testing mainly!
+        /// </summary>
+        /// <param name="message">The message</param>
+        /// <returns>true if successfully posted, else false</returns>
+        public bool PostServiceBusMessage(string message)
+        {
+            try
+            {
+                string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
+                string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
+
+                TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
+
+                // Create a URI for the serivce bus.
+                Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
+                    ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
+
+                // Create a message factory for the service bus URI using the
+                // credentials
+                MessagingFactory factory = MessagingFactory.Create(serviceBusUri, credentials);
+
+                // Create a queue client 
+                QueueClient queueClient =
+                    factory.CreateQueueClient(_configService.GetAppSetting("CRAQueue"));
+
+                BrokeredMessage hl7Message = new BrokeredMessage(message);
+
+                // Send the message to the queue.
+                queueClient.Send(hl7Message);
+
+                factory.Close();
+
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
+
+
+        public string GetServiceBusMessage()
+        {
+            string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
+            string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
+
+            TokenProvider credentials =
+               TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
+
+            // Create a URI for the serivce bus.
+
+            Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
+                ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
+
+            // Create a message factory for the service bus URI using the
+            // credentials
+            MessagingFactory factory = MessagingFactory.Create(serviceBusUri, credentials);
+
+            // Create a queue client
+            QueueClient queueClient =
+                factory.CreateQueueClient(_configService.GetAppSetting("CRAQueue"));
+
+            BrokeredMessage orderOutMsg = queueClient.Receive();
+
+            string message = "";
+
+            if (orderOutMsg != null)
+            {
+                message =  orderOutMsg.GetBody<string>();
+                orderOutMsg.Complete();
+            }
+
+            factory.Close();
+            return message;
+
         }
 
     }

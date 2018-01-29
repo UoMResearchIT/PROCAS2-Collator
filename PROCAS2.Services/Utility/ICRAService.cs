@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace PROCAS2.Services.Utility
 {
-    public interface IHL7Service
+    public interface ICRAService
     {
         List<string> ProcessQuestionnaire(string hl7Message);
+
+        bool PostServiceBusMessage(string message);
+        string GetServiceBusMessage();
     }
 }
