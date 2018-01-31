@@ -168,7 +168,19 @@
   <data name="SALUTATION" xml:space="preserve">
     <value>Dear</value>
   </data>
+  <data name="SENT_DATE" xml:space="preserve">
+    <value>Date:</value>
+  </data>
   <data name="SIGN_OFF" xml:space="preserve">
-    <value>Yours sincerely,</value>
+    <value>Signed,</value>
+  </data>
+  <data name="TELEPHONE" xml:space="preserve">
+    <value>Tel:</value>
+  </data>
+  <data name="URL_DEV" xml:space="preserve">
+    <value>http://localhost:53074</value>
+  </data>
+  <data name="URL_PROD" xml:space="preserve">
+    <value>https://procas2-collator.azurewebsites.net</value>
   </data>
 </root>

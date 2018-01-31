@@ -110,7 +110,13 @@ namespace PROCAS2.Services.App
                 FromPostCode = letter.Participant.ScreeningSite.PostCode,
                 FromName = letter.Participant.ScreeningSite.LetterFrom,
                 LogoFile = letter.Participant.ScreeningSite.LogoFileName,
+                LogoHeight = letter.Participant.ScreeningSite.LogoHeight,
+                LogoFooterLeft = letter.Participant.ScreeningSite.LogoFooterLeft,
+                LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
+                LogoFooterRight = letter.Participant.ScreeningSite.LogoFooterRight,
+                LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
                 SigFile = letter.Participant.ScreeningSite.SigFileName,
+                Telephone = letter.Participant.ScreeningSite.Telephone,
 
                 Name = title + " "  + letter.Participant.LastName,
                 AddressLine1 = homeAddress.AddressLine1,
@@ -163,7 +169,14 @@ namespace PROCAS2.Services.App
                     FromPostCode = participant.ScreeningSite.PostCode,
                     FromName = participant.ScreeningSite.LetterFrom,
                     LogoFile = participant.ScreeningSite.LogoFileName,
+                    LogoHeight = participant.ScreeningSite.LogoHeight,
+                    LogoFooterLeft = participant.ScreeningSite.LogoFooterLeft,
+                    LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
+                    LogoFooterRight = participant.ScreeningSite.LogoFooterRight,
+                    LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
+
                     SigFile = participant.ScreeningSite.SigFileName,
+                    Telephone = participant.ScreeningSite.Telephone,
 
 
                     Name =  title + " " + participant.LastName,
@@ -230,22 +243,183 @@ namespace PROCAS2.Services.App
                     part = AddStylesPartToPackage(package);
                 }
 
+                
 
                 // Created 2 styles for PROCAS2 letters
-                CreateAndAddParagraphStyle(part, "PROCAS2", "PROCAS2_Style", "Normal", "24", "240");
-                CreateAndAddParagraphStyle(part, "PROCAS2Head", "PROCAS2_Head_Style", "Normal", "48", "480");
+                CreateAndAddParagraphStyle(part, "PROCAS2", "PROCAS2_Style", "Normal", "22", "220");
+                CreateAndAddParagraphStyle(part, "PROCAS2Head", "PROCAS2_Head_Style", "Normal", "44", "440");
 
                 Body body = mainPart.Document.Body;
                 HtmlConverter converter = new HtmlConverter(mainPart);
                 converter.HtmlStyles.DefaultStyle = converter.HtmlStyles.GetStyle("PROCAS2_Style");
+#if DEBUG
+                converter.BaseImageUrl = new Uri(ExportResources.URL_DEV);
+#else
+                converter.BaseImageUrl = new Uri(ExportResources.URL_PROD);
+#endif
                 converter.ParseHtml(html);
 
+                SectionProperties sectionProperties1 = mainPart.Document.Body.Descendants<SectionProperties>().FirstOrDefault();
+                if (sectionProperties1 == null)
+                {
+                    sectionProperties1 = new SectionProperties() { };
+                    mainPart.Document.Body.Append(sectionProperties1);
+                }
+                HeaderReference headerReference1 = new HeaderReference() { Type = HeaderFooterValues.Default, Id = "rId2" };
+                FooterReference footerReference1 = new FooterReference() { Type = HeaderFooterValues.Default, Id = "rId3" };
+
+                sectionProperties1.InsertAt(headerReference1, 0);
+                sectionProperties1.InsertAt(footerReference1, 1);
+
+
+
                 mainPart.Document.Save();
+
+
+
+
+               var documentSettingsPart =
+            mainPart.AddNewPart
+            <DocumentSettingsPart>("rId1");
+
+               GenerateDocumentSettingsPart().Save(documentSettingsPart);
+
+                var firstPageHeaderPart =
+                    mainPart.AddNewPart<HeaderPart>("rId2");
+
+                GeneratePageHeaderPart(
+                    "First page header").Save(firstPageHeaderPart);
+
+                var firstPageFooterPart =
+                    mainPart.AddNewPart<FooterPart>("rId3");
+
+                GeneratePageFooterPart(
+                    "First page footer").Save(firstPageFooterPart);
+
+                
+
+
             }
 
 
             return generatedDocument;
 
+        }
+
+        private Footer GeneratePageFooterPart(string FooterText)
+        {
+            var element =
+                new Footer(
+                    new Paragraph(
+                        new ParagraphProperties(
+                            new ParagraphStyleId() { Val = "Footer" }),
+                        new Run(
+                            new Text(FooterText))
+                    ));
+
+            return element;
+        }
+
+        private  Header GeneratePageHeaderPart(string HeaderText)
+        {
+            var element =
+                new Header(
+                    new Paragraph(
+                        new ParagraphProperties(
+                            new ParagraphStyleId() { Val = "Header" }),
+                        new Run(
+                            new Text(HeaderText))
+                    ));
+
+            return element;
+        }
+
+        private Settings GenerateDocumentSettingsPart()
+        {
+            var element =
+                new Settings();
+
+            return element;
+        }
+
+        void GenerateFooterPartContent(FooterPart part)
+        {
+            Footer footer1 = new Footer() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 wp14" } };
+            footer1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
+            footer1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
+            footer1.AddNamespaceDeclaration("o", "urn:schemas-microsoft-com:office:office");
+            footer1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            footer1.AddNamespaceDeclaration("m", "http://schemas.openxmlformats.org/officeDocument/2006/math");
+            footer1.AddNamespaceDeclaration("v", "urn:schemas-microsoft-com:vml");
+            footer1.AddNamespaceDeclaration("wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing");
+            footer1.AddNamespaceDeclaration("wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing");
+            footer1.AddNamespaceDeclaration("w10", "urn:schemas-microsoft-com:office:word");
+            footer1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+            footer1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
+            footer1.AddNamespaceDeclaration("wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup");
+            footer1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
+            footer1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
+            footer1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
+
+            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "00164C17", RsidRunAdditionDefault = "00164C17" };
+
+            ParagraphProperties paragraphProperties1 = new ParagraphProperties();
+            ParagraphStyleId paragraphStyleId1 = new ParagraphStyleId() { Val = "Footer" };
+
+            paragraphProperties1.Append(paragraphStyleId1);
+
+            Run run1 = new Run();
+            Text text1 = new Text();
+            text1.Text = "Footer";
+
+            run1.Append(text1);
+
+            paragraph1.Append(paragraphProperties1);
+            paragraph1.Append(run1);
+
+            footer1.Append(paragraph1);
+
+            part.Footer = footer1;
+        }
+
+        void GenerateHeaderPartContent(HeaderPart part)
+        {
+            Header header1 = new Header() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 wp14" } };
+            header1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
+            header1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
+            header1.AddNamespaceDeclaration("o", "urn:schemas-microsoft-com:office:office");
+            header1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
+            header1.AddNamespaceDeclaration("m", "http://schemas.openxmlformats.org/officeDocument/2006/math");
+            header1.AddNamespaceDeclaration("v", "urn:schemas-microsoft-com:vml");
+            header1.AddNamespaceDeclaration("wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing");
+            header1.AddNamespaceDeclaration("wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing");
+            header1.AddNamespaceDeclaration("w10", "urn:schemas-microsoft-com:office:word");
+            header1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
+            header1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
+            header1.AddNamespaceDeclaration("wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup");
+            header1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
+            header1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
+            header1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
+
+            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "00164C17", RsidRunAdditionDefault = "00164C17" };
+
+            ParagraphProperties paragraphProperties1 = new ParagraphProperties();
+            ParagraphStyleId paragraphStyleId1 = new ParagraphStyleId() { Val = "Header" };
+
+            paragraphProperties1.Append(paragraphStyleId1);
+
+            Run run1 = new Run();
+            Text text1 = new Text();
+            text1.Text = "Header";
+
+            run1.Append(text1);
+
+            paragraph1.Append(paragraphProperties1);
+            paragraph1.Append(run1);
+
+            header1.Append(paragraph1);
+
+            part.Header = header1;
         }
 
         // Create a new paragraph style with the specified style ID, primary style name, and aliases and 
@@ -289,6 +463,7 @@ namespace PROCAS2.Services.App
             NextParagraphStyle nextParagraphStyle1 = new NextParagraphStyle() { Val = "Normal" };
             UIPriority uipriority1 = new UIPriority() { Val = 1 };
             UnhideWhenUsed unhidewhenused1 = new UnhideWhenUsed() { Val = OnOffOnlyValues.On };
+            Justification justification = new Justification() { Val = JustificationValues.Both };
            
             style.Append(autoredefine1);
             style.Append(basedon1);
@@ -301,6 +476,7 @@ namespace PROCAS2.Services.App
             style.Append(nextParagraphStyle1);
             style.Append(uipriority1);
             style.Append(unhidewhenused1);
+            style.Append(justification);
 
             // Create the StyleRunProperties object and specify some of the run properties.
             StyleRunProperties styleRunProperties1 = new StyleRunProperties();

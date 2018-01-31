@@ -405,6 +405,11 @@
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
     <Content Include="Content\icons\index.ico" />
+    <Content Include="Content\images\East-Lancs-SPE.png" />
+    <Content Include="Content\images\East-Lancs.jpg" />
+    <Content Include="Content\images\MUFT-Disability.png" />
+    <Content Include="Content\images\MUFT-Incorporating.png" />
+    <Content Include="Content\images\MUFT.png" />
     <Content Include="Content\images\uni.png" />
     <Content Include="Content\jquery-confirm.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

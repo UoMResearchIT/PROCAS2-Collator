@@ -30,6 +30,9 @@ namespace PROCAS2.Data.Entities
         [MaxLength(200)]
         public string AddressLine4 { get; set; }
 
+        [MaxLength(30)]
+        public string Telephone { get; set; }
+
         [MaxLength(10)]
         public string PostCode { get; set; }
 
@@ -38,6 +41,18 @@ namespace PROCAS2.Data.Entities
 
         [MaxLength(200)]
         public string LogoFileName { get; set; }
+
+        public int LogoHeight { get; set; }
+
+        [MaxLength(200)]
+        public string LogoFooterLeft { get; set; }
+
+        public int LogoFooterLeftHeight { get; set; }
+
+        [MaxLength(200)]
+        public string LogoFooterRight { get; set; }
+
+        public int LogoFooterRightHeight { get; set; }
 
         [MaxLength(200)]
         public string SigFileName { get; set; }

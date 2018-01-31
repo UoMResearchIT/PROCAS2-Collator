@@ -214,11 +214,47 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Yours sincerely,.
+        ///   Looks up a localized string similar to Date:.
+        /// </summary>
+        public static string SENT_DATE {
+            get {
+                return ResourceManager.GetString("SENT_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signed,.
         /// </summary>
         public static string SIGN_OFF {
             get {
                 return ResourceManager.GetString("SIGN_OFF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tel:.
+        /// </summary>
+        public static string TELEPHONE {
+            get {
+                return ResourceManager.GetString("TELEPHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://localhost:53074.
+        /// </summary>
+        public static string URL_DEV {
+            get {
+                return ResourceManager.GetString("URL_DEV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to https://procas2-collator.azurewebsites.net.
+        /// </summary>
+        public static string URL_PROD {
+            get {
+                return ResourceManager.GetString("URL_PROD", resourceCulture);
             }
         }
     }
