@@ -70,7 +70,7 @@ namespace PROCAS2.Controllers
 
                 ExportResultsViewModel results = _exportService.GenerateLetters(model);
                 string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
-                MemoryStream mStream = _exportService.GenerateWordDoc(html);
+                MemoryStream mStream = _exportService.GenerateWordDoc(html, results);
 
                 string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Export"));
                 HttpContext.Response.AppendHeader("Refresh", headerValue);
@@ -97,7 +97,7 @@ namespace PROCAS2.Controllers
             }
 
             string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
-            MemoryStream mStream = _exportService.GenerateWordDoc(html);
+            MemoryStream mStream = _exportService.GenerateWordDoc(html, results);
 
         
 

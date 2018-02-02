@@ -42,10 +42,7 @@ namespace PROCAS2.Models.ViewModels
 
        
 
-        [MaxLength(200)]
-        [Required]
-        [Display(Name = "SITE_LOGOFILENAME", ResourceType = typeof(SiteResources))]
-        public string LogoFileName { get; set; }
+        
 
         [MaxLength(200)]
         [Required]

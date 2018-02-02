@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.Net.Http;
+using System.Web.Hosting;
 using System.Web.Mvc;
 using System.IO;
 
 using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using A = DocumentFormat.OpenXml.Drawing;
+using DW = DocumentFormat.OpenXml.Drawing.Wordprocessing;
+using PIC = DocumentFormat.OpenXml.Drawing.Pictures;
+
 using NotesFor.HtmlToOpenXml;
 
 using PROCAS2.Models.ViewModels;
@@ -109,12 +116,15 @@ namespace PROCAS2.Services.App
                 FromAddressLine4 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine4,
                 FromPostCode = letter.Participant.ScreeningSite.PostCode,
                 FromName = letter.Participant.ScreeningSite.LetterFrom,
-                LogoFile = letter.Participant.ScreeningSite.LogoFileName,
-                LogoHeight = letter.Participant.ScreeningSite.LogoHeight,
+                LogoHeaderRight = letter.Participant.ScreeningSite.LogoHeaderRight,
+                LogoHeaderRightHeight = letter.Participant.ScreeningSite.LogoHeaderRightHeight,
+                LogoHeaderRightWidth = letter.Participant.ScreeningSite.LogoHeaderRightWidth,
                 LogoFooterLeft = letter.Participant.ScreeningSite.LogoFooterLeft,
-                LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
+               LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
+                LogoFooterLeftWidth = letter.Participant.ScreeningSite.LogoFooterLeftWidth,
                 LogoFooterRight = letter.Participant.ScreeningSite.LogoFooterRight,
-                LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
+               LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
+                LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
                 SigFile = letter.Participant.ScreeningSite.SigFileName,
                 Telephone = letter.Participant.ScreeningSite.Telephone,
 
@@ -168,12 +178,15 @@ namespace PROCAS2.Services.App
                     FromAddressLine4 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine4,
                     FromPostCode = participant.ScreeningSite.PostCode,
                     FromName = participant.ScreeningSite.LetterFrom,
-                    LogoFile = participant.ScreeningSite.LogoFileName,
-                    LogoHeight = participant.ScreeningSite.LogoHeight,
+                    LogoHeaderRight = participant.ScreeningSite.LogoHeaderRight,
+                    LogoHeaderRightHeight = participant.ScreeningSite.LogoHeaderRightHeight,
+                    LogoHeaderRightWidth = participant.ScreeningSite.LogoHeaderRightWidth,
                     LogoFooterLeft = participant.ScreeningSite.LogoFooterLeft,
-                    LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
+                   LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
+                    LogoFooterLeftWidth = participant.ScreeningSite.LogoFooterLeftWidth,
                     LogoFooterRight = participant.ScreeningSite.LogoFooterRight,
-                    LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
+                   LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
+                    LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
 
                     SigFile = participant.ScreeningSite.SigFileName,
                     Telephone = participant.ScreeningSite.Telephone,
@@ -220,7 +233,7 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="html"></param>
         /// <returns></returns>
-        public MemoryStream GenerateWordDoc(string html)
+        public MemoryStream GenerateWordDoc(string html, ExportResultsViewModel model)
         {
             MemoryStream generatedDocument = new MemoryStream();
 
@@ -271,11 +284,14 @@ namespace PROCAS2.Services.App
                 sectionProperties1.InsertAt(headerReference1, 0);
                 sectionProperties1.InsertAt(footerReference1, 1);
 
-
+                 //ImagePart imgPartHeaderRight = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
+                //ImagePart imgPartFooterLeft = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
+                //ImagePart imgPartFooterRight = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
 
                 mainPart.Document.Save();
 
 
+                Letter viewLetter = model.Letters[0];
 
 
                var documentSettingsPart =
@@ -287,51 +303,355 @@ namespace PROCAS2.Services.App
                 var firstPageHeaderPart =
                     mainPart.AddNewPart<HeaderPart>("rId2");
 
-                GeneratePageHeaderPart(
-                    "First page header").Save(firstPageHeaderPart);
+                Header header= new Header();
+                header.Save(firstPageHeaderPart);
+
+                ImagePart imgPartHeaderLeft = AddHeaderImagePart(firstPageHeaderPart, ExportResources.ResourceManager.GetString("UNI_LOGO"));
+                ImagePart imgPartHeaderRight = AddHeaderImagePart(firstPageHeaderPart, ExportResources.ResourceManager.GetString(viewLetter.LogoHeaderRight));
+                
+
+                GeneratePageHeaderPart(firstPageHeaderPart, imgPartHeaderLeft, imgPartHeaderRight,
+                    ExportResources.ResourceManager.GetString("PROCAS2_LOGO_HEIGHT_CM"), ExportResources.ResourceManager.GetString("PROCAS2_LOGO_WIDTH_CM"),
+                   viewLetter.LogoHeaderRightHeight, viewLetter.LogoHeaderRightWidth).Save(firstPageHeaderPart);
 
                 var firstPageFooterPart =
                     mainPart.AddNewPart<FooterPart>("rId3");
 
+                Footer footer = new Footer();
+                footer.Save(firstPageFooterPart);
+
+                ImagePart imgPartFooterLeft = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterLeft));
+                ImagePart imgPartFooterRight = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterRight));
+
                 GeneratePageFooterPart(
-                    "First page footer").Save(firstPageFooterPart);
+                    firstPageFooterPart, imgPartFooterLeft, imgPartFooterRight,
+                    viewLetter.LogoFooterLeftHeight, viewLetter.LogoFooterLeftWidth,
+                    viewLetter.LogoFooterRightHeight, viewLetter.LogoFooterRightWidth).Save(firstPageFooterPart);
 
-                
 
+                mainPart.Document.Save();
 
             }
 
-
+            
             return generatedDocument;
 
         }
 
-        private Footer GeneratePageFooterPart(string FooterText)
+        private ImagePart AddHeaderImagePart(HeaderPart headerPart, string imageString)
         {
-            var element =
-                new Footer(
-                    new Paragraph(
-                        new ParagraphProperties(
-                            new ParagraphStyleId() { Val = "Footer" }),
-                        new Run(
-                            new Text(FooterText))
-                    ));
+            
+            ImagePart imagePart = headerPart.AddImagePart(ImagePartType.Png);
+
+           
+            var bytes = Convert.FromBase64String(imageString);
+            var contents = new MemoryStream(bytes);
+            imagePart.FeedData(contents);
+            contents.Close();
+
+            return imagePart;
+        }
+
+        private ImagePart AddFooterImagePart(FooterPart footerPart, string imageString)
+        {
+
+            ImagePart imagePart = footerPart.AddImagePart(ImagePartType.Png);
+
+
+            var bytes = Convert.FromBase64String(imageString);
+            var contents = new MemoryStream(bytes);
+            imagePart.FeedData(contents);
+            contents.Close();
+
+            return imagePart;
+        }
+
+        private Footer GeneratePageFooterPart(FooterPart footerPart, ImagePart imgPartFooterLeft, ImagePart imgPartFooterRight,
+                string footerLeftHeight, string footerLeftWidth, string footerRightHeight, string footerRightWidth)
+        {
+            Footer element = footerPart.Footer;
+
+            Table table = new Table(
+                new TableProperties(new TableWidth() { Width = "5000", Type = TableWidthUnitValues.Pct })
+                );
+
+
+
+
+            var tr = new TableRow();
+
+            var tcLeft = new TableCell();
+            tcLeft.Append(new Paragraph(new Run(CreateDrawingInFooter(footerPart, imgPartFooterLeft, footerLeftHeight, footerLeftWidth))));
+
+            // Assume you want columns that are automatically sized.
+            tcLeft.Append(new TableCellProperties(
+                new TableCellWidth { Type = TableWidthUnitValues.Auto }));
+
+            tr.Append(tcLeft);
+
+
+
+
+
+            var tcRight = new TableCell();
+            tcRight.Append(new Paragraph(
+                new ParagraphProperties(new Justification() { Val = JustificationValues.Right }),
+                new Run(CreateDrawingInFooter(footerPart, imgPartFooterRight, footerRightHeight, footerRightWidth))));
+
+            // Assume you want columns that are automatically sized.
+            tcLeft.Append(new TableCellProperties(
+                new TableCellWidth { Type = TableWidthUnitValues.Auto }));
+
+            tr.Append(tcRight);
+
+            table.Append(tr);
+
+            element.Append(table);
+
+
+
 
             return element;
         }
 
-        private  Header GeneratePageHeaderPart(string HeaderText)
+        private  Header GeneratePageHeaderPart(HeaderPart headerPart, ImagePart imgPartHeaderLeft, ImagePart imgPartHeaderRight,
+            string headerLeftHeight, string headerLeftWidth, string headerRightHeight, string headerRightWidth)
         {
-            var element =
-                new Header(
-                    new Paragraph(
-                        new ParagraphProperties(
-                            new ParagraphStyleId() { Val = "Header" }),
+
+            Header element = headerPart.Header;
+
+            Table table = new Table(
+                new TableProperties(new TableWidth() { Width="5000", Type=TableWidthUnitValues.Pct  })
+                );
+
+ 
+
+            
+                var tr = new TableRow();
+                
+                    var tcLeft = new TableCell();
+                    tcLeft.Append(new Paragraph(
                         new Run(
-                            new Text(HeaderText))
-                    ));
+                            CreateDrawingInHeader(headerPart, imgPartHeaderLeft, headerLeftHeight, headerLeftWidth)
+                            )
+                        ));
+
+                    // Assume you want columns that are automatically sized.
+                    tcLeft.Append(new TableCellProperties(
+                        new TableCellWidth { Type = TableWidthUnitValues.Auto }));
+
+                    tr.Append(tcLeft);
+                
+             
+
+          
+
+            var tcRight = new TableCell();
+            tcRight.Append(new Paragraph(
+                new ParagraphProperties(new Justification(){ Val = JustificationValues.Right }),
+                new Run(
+                            CreateDrawingInHeader(headerPart, imgPartHeaderRight, headerRightHeight, headerRightWidth)
+                            )
+                            ));
+
+            // Assume you want columns that are automatically sized.
+            tcLeft.Append(new TableCellProperties(
+                new TableCellWidth { Type = TableWidthUnitValues.Auto }));
+
+            tr.Append(tcRight);
+
+            table.Append(tr);
+
+            element.Append(table);
+            
+
+ 
 
             return element;
+        }
+
+
+        private Drawing CreateDrawingInHeader(HeaderPart headerPart, ImagePart imgPart,
+            string headerImageHeight, string headerImageWidth)
+        {
+            UInt32Value drawingObjId;
+            UInt32Value imageObjId;
+
+            drawingObjId = 1; // 1 is the minimum ID set by MS Office.
+            imageObjId = 1;
+            foreach (var d in headerPart.Header.Descendants<Drawing>())
+            {
+                if (d.Inline == null) continue; 
+                if (d.Inline.DocProperties.Id > drawingObjId) drawingObjId = d.Inline.DocProperties.Id;
+
+                var pic = d.Inline.Graphic.GraphicData.GetFirstChild<PIC.Picture>();
+                if (pic != null)
+                {
+                    var nvPr = pic.GetFirstChild<PIC.NonVisualPictureProperties>();
+                    if (nvPr != null && nvPr.NonVisualDrawingProperties.Id > imageObjId)
+                        imageObjId = nvPr.NonVisualDrawingProperties.Id;
+                }
+            }
+            if (drawingObjId > 1) drawingObjId++;
+            if (imageObjId > 1) imageObjId++;
+
+            long heightInEmus = new Unit(UnitMetric.Centimeter, Convert.ToDouble(headerImageHeight)).ValueInEmus;
+            long widthInEmus = new Unit(UnitMetric.Centimeter, Convert.ToDouble(headerImageWidth)).ValueInEmus;
+
+            return new Drawing(
+             new DW.Inline(
+                 new DW.Extent() { Cx = widthInEmus, Cy = heightInEmus },
+                 new DW.EffectExtent()
+                 {
+                     LeftEdge = 0L,
+                     TopEdge = 0L,
+                     RightEdge = 0L,
+                     BottomEdge = 0L
+                 },
+                 new DW.DocProperties()
+                 {
+                     Id = (UInt32Value)drawingObjId,
+                     Name = imgPart.Uri.ToString()
+                     
+                 },
+                 new DW.NonVisualGraphicFrameDrawingProperties(
+                     new A.GraphicFrameLocks() { NoChangeAspect = true }),
+                 new A.Graphic(
+                     new A.GraphicData(
+                         new PIC.Picture(
+                             new PIC.NonVisualPictureProperties(
+                                 new PIC.NonVisualDrawingProperties()
+                                 {
+                                     Id = (UInt32Value)imageObjId,
+                                     Name = imgPart.Uri.ToString()
+                                 }, 
+                             new PIC.NonVisualPictureDrawingProperties(
+                                    new A.PictureLocks() { NoChangeAspect = true, NoChangeArrowheads = true })
+                             ),
+                                 
+                             new PIC.BlipFill(
+                                 new A.Blip()
+                                 {
+                                     Embed = headerPart.GetIdOfPart(imgPart)
+                                     
+                                 },
+                                 new A.Stretch(
+                                     new A.FillRectangle())),
+                             new PIC.ShapeProperties(
+                                 new A.Transform2D(
+                                     new A.Offset() { X = 0L, Y = 0L },
+                                     new A.Extents() { Cx = widthInEmus, Cy = heightInEmus }),
+                                 new A.PresetGeometry(
+                                     new A.AdjustValueList()
+                                 )
+                                    { Preset = A.ShapeTypeValues.Rectangle }
+                                 )
+                             { BlackWhiteMode = A.BlackWhiteModeValues.Auto }
+                             )
+
+
+                     )
+                     { Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture" })
+             )
+             {
+                 DistanceFromTop = (UInt32Value)0U,
+                 DistanceFromBottom = (UInt32Value)0U,
+                 DistanceFromLeft = (UInt32Value)0U,
+                 DistanceFromRight = (UInt32Value)0U
+                 
+             });
+        }
+
+
+        private Drawing CreateDrawingInFooter(FooterPart footerPart, ImagePart imgPart,
+            string footerImageHeight, string footerImageWidth)
+        {
+            UInt32Value drawingObjId;
+            UInt32Value imageObjId;
+
+            drawingObjId = 1; // 1 is the minimum ID set by MS Office.
+            imageObjId = 1;
+            foreach (var d in footerPart.Footer.Descendants<Drawing>())
+            {
+                if (d.Inline == null) continue;
+                if (d.Inline.DocProperties.Id > drawingObjId) drawingObjId = d.Inline.DocProperties.Id;
+
+                var pic = d.Inline.Graphic.GraphicData.GetFirstChild<PIC.Picture>();
+                if (pic != null)
+                {
+                    var nvPr = pic.GetFirstChild<PIC.NonVisualPictureProperties>();
+                    if (nvPr != null && nvPr.NonVisualDrawingProperties.Id > imageObjId)
+                        imageObjId = nvPr.NonVisualDrawingProperties.Id;
+                }
+            }
+            if (drawingObjId > 1) drawingObjId++;
+            if (imageObjId > 1) imageObjId++;
+
+            long heightInEmus = new Unit(UnitMetric.Centimeter, Convert.ToDouble(footerImageHeight)).ValueInEmus;
+            long widthInEmus = new Unit(UnitMetric.Centimeter, Convert.ToDouble(footerImageWidth)).ValueInEmus;
+
+            return new Drawing(
+             new DW.Inline(
+                 new DW.Extent() { Cx = widthInEmus, Cy = heightInEmus },
+                 new DW.EffectExtent()
+                 {
+                     LeftEdge = 0L,
+                     TopEdge = 0L,
+                     RightEdge = 0L,
+                     BottomEdge = 0L
+                 },
+                 new DW.DocProperties()
+                 {
+                     Id = (UInt32Value)drawingObjId,
+                     Name = imgPart.Uri.ToString()
+
+                 },
+                 new DW.NonVisualGraphicFrameDrawingProperties(
+                     new A.GraphicFrameLocks() { NoChangeAspect = true }),
+                 new A.Graphic(
+                     new A.GraphicData(
+                         new PIC.Picture(
+                             new PIC.NonVisualPictureProperties(
+                                 new PIC.NonVisualDrawingProperties()
+                                 {
+                                     Id = (UInt32Value)imageObjId,
+                                     Name = imgPart.Uri.ToString()
+                                 },
+                             new PIC.NonVisualPictureDrawingProperties(
+                                    new A.PictureLocks() { NoChangeAspect = true, NoChangeArrowheads = true })
+                             ),
+
+                             new PIC.BlipFill(
+                                 new A.Blip()
+                                 {
+                                     Embed = footerPart.GetIdOfPart(imgPart)
+
+                                 },
+                                 new A.Stretch(
+                                     new A.FillRectangle())),
+                             new PIC.ShapeProperties(
+                                 new A.Transform2D(
+                                     new A.Offset() { X = 0L, Y = 0L },
+                                     new A.Extents() { Cx = widthInEmus, Cy = heightInEmus }),
+                                 new A.PresetGeometry(
+                                     new A.AdjustValueList()
+                                 )
+                                 { Preset = A.ShapeTypeValues.Rectangle }
+                                 )
+                             { BlackWhiteMode = A.BlackWhiteModeValues.Auto }
+                             )
+
+
+                     )
+                     { Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture" })
+             )
+             {
+                 DistanceFromTop = (UInt32Value)0U,
+                 DistanceFromBottom = (UInt32Value)0U,
+                 DistanceFromLeft = (UInt32Value)0U,
+                 DistanceFromRight = (UInt32Value)0U
+
+             });
         }
 
         private Settings GenerateDocumentSettingsPart()
@@ -342,85 +662,7 @@ namespace PROCAS2.Services.App
             return element;
         }
 
-        void GenerateFooterPartContent(FooterPart part)
-        {
-            Footer footer1 = new Footer() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 wp14" } };
-            footer1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
-            footer1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
-            footer1.AddNamespaceDeclaration("o", "urn:schemas-microsoft-com:office:office");
-            footer1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
-            footer1.AddNamespaceDeclaration("m", "http://schemas.openxmlformats.org/officeDocument/2006/math");
-            footer1.AddNamespaceDeclaration("v", "urn:schemas-microsoft-com:vml");
-            footer1.AddNamespaceDeclaration("wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing");
-            footer1.AddNamespaceDeclaration("wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing");
-            footer1.AddNamespaceDeclaration("w10", "urn:schemas-microsoft-com:office:word");
-            footer1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
-            footer1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
-            footer1.AddNamespaceDeclaration("wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup");
-            footer1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
-            footer1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
-            footer1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
-
-            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "00164C17", RsidRunAdditionDefault = "00164C17" };
-
-            ParagraphProperties paragraphProperties1 = new ParagraphProperties();
-            ParagraphStyleId paragraphStyleId1 = new ParagraphStyleId() { Val = "Footer" };
-
-            paragraphProperties1.Append(paragraphStyleId1);
-
-            Run run1 = new Run();
-            Text text1 = new Text();
-            text1.Text = "Footer";
-
-            run1.Append(text1);
-
-            paragraph1.Append(paragraphProperties1);
-            paragraph1.Append(run1);
-
-            footer1.Append(paragraph1);
-
-            part.Footer = footer1;
-        }
-
-        void GenerateHeaderPartContent(HeaderPart part)
-        {
-            Header header1 = new Header() { MCAttributes = new MarkupCompatibilityAttributes() { Ignorable = "w14 wp14" } };
-            header1.AddNamespaceDeclaration("wpc", "http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas");
-            header1.AddNamespaceDeclaration("mc", "http://schemas.openxmlformats.org/markup-compatibility/2006");
-            header1.AddNamespaceDeclaration("o", "urn:schemas-microsoft-com:office:office");
-            header1.AddNamespaceDeclaration("r", "http://schemas.openxmlformats.org/officeDocument/2006/relationships");
-            header1.AddNamespaceDeclaration("m", "http://schemas.openxmlformats.org/officeDocument/2006/math");
-            header1.AddNamespaceDeclaration("v", "urn:schemas-microsoft-com:vml");
-            header1.AddNamespaceDeclaration("wp14", "http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing");
-            header1.AddNamespaceDeclaration("wp", "http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing");
-            header1.AddNamespaceDeclaration("w10", "urn:schemas-microsoft-com:office:word");
-            header1.AddNamespaceDeclaration("w", "http://schemas.openxmlformats.org/wordprocessingml/2006/main");
-            header1.AddNamespaceDeclaration("w14", "http://schemas.microsoft.com/office/word/2010/wordml");
-            header1.AddNamespaceDeclaration("wpg", "http://schemas.microsoft.com/office/word/2010/wordprocessingGroup");
-            header1.AddNamespaceDeclaration("wpi", "http://schemas.microsoft.com/office/word/2010/wordprocessingInk");
-            header1.AddNamespaceDeclaration("wne", "http://schemas.microsoft.com/office/word/2006/wordml");
-            header1.AddNamespaceDeclaration("wps", "http://schemas.microsoft.com/office/word/2010/wordprocessingShape");
-
-            Paragraph paragraph1 = new Paragraph() { RsidParagraphAddition = "00164C17", RsidRunAdditionDefault = "00164C17" };
-
-            ParagraphProperties paragraphProperties1 = new ParagraphProperties();
-            ParagraphStyleId paragraphStyleId1 = new ParagraphStyleId() { Val = "Header" };
-
-            paragraphProperties1.Append(paragraphStyleId1);
-
-            Run run1 = new Run();
-            Text text1 = new Text();
-            text1.Text = "Header";
-
-            run1.Append(text1);
-
-            paragraph1.Append(paragraphProperties1);
-            paragraph1.Append(run1);
-
-            header1.Append(paragraph1);
-
-            part.Header = header1;
-        }
+       
 
         // Create a new paragraph style with the specified style ID, primary style name, and aliases and 
         // add it to the specified style definitions part.

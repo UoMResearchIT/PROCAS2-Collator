@@ -160,6 +160,51 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAkQAAACkCAIAAAD5WaamAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAAJcEhZcwAACxIAAAsSAdLdfvwAADmUaVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNrZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/Pgo8eDp4bXBtZXRhIHhtbG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA1LjYtYzEzOCA3OS4xNTk4MjQsIDIwMTYvMDkvMTQtMDE6MDk6MDEgICAgICAgICI+CiAgIDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+CiAgICAgIDxyZGY6RGVzY3JpcHRpb24g [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MFT_DISABILITY {
+            get {
+                return ResourceManager.GetString("MFT_DISABILITY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAqEAAABaCAMAAAC/tn+fAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMAUExURYCAgICAl4CXl5eAgJeAl5eXgJeXl4CArYCXrZeArZeXrZetra2AgK2Al62XgK2Xl62Ara2tgK2tl62trYCXwpeXwoCtwoCt1pet1q2Xwq2t1pfCwpfC1pfC663Cwq3W1q3C663W663W/8KXgMKXl8KXrcKtgNatgNatl8KtwsLCl9bCl8LCrdbWrevCl+vWrf/WrcLWwsLr1tbrwtb/1sLr68Lr/9b/69b//+vrwuv/1v/rwv//1uv/6+v/////6////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MFT_INCORPORATING {
+            get {
+                return ResourceManager.GetString("MFT_INCORPORATING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAicAAACrCAYAAAC9vTxXAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAEAtSURBVHhe7Z0J3D7V+P//LVRKyPJX0i+UNUWE0CI/tBCiEEaWiLRYIjsRibIVqZCU7GsMZd8TkSXZd7Lzs28/v8/nmWue58yZ65w5Z2ae+76f6Xq/Xp/X9/vMuc41c88998w1Z7nO/zMMwzAmQFG+FPqPyTQJGYZhGBPAghPTlGQYhmFMAAtOTFOSYRiGMQEsODFNSYZhGMYEsODENCUZhmEYE8CCE9OUZBiGYUwAC05M4+kn0LnQidDh0H7QrtB20NaedoBuAd0BujN0APRo6BjoddBHoMsgbT9hGYZhGBNgvODkZpD/AOqrPSFtH0PEh6C2ry7tAmn+LoA0+1SdCWl++2hnSNtHihhAaD5T9DPo1RADi2vJFTUuRbkZxOvhORDP+f9C2rFUMgzDMCbAOMHJpeJtHIpyHYgPPm1f [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MFT_LOGO {
+            get {
+                return ResourceManager.GetString("MFT_LOGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 1.71.
+        /// </summary>
+        public static string MFT_LOGO_HEIGHT {
+            get {
+                return ResourceManager.GetString("MFT_LOGO_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5.5.
+        /// </summary>
+        public static string MFT_LOGO_WIDTH {
+            get {
+                return ResourceManager.GetString("MFT_LOGO_WIDTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number.
         /// </summary>
         public static string NHS_NUMBER {
@@ -205,6 +250,33 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Content/images/uni.png.
+        /// </summary>
+        public static string PROCAS2_IMAGE {
+            get {
+                return ResourceManager.GetString("PROCAS2_IMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 2.5.
+        /// </summary>
+        public static string PROCAS2_LOGO_HEIGHT_CM {
+            get {
+                return ResourceManager.GetString("PROCAS2_LOGO_HEIGHT_CM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 5.5.
+        /// </summary>
+        public static string PROCAS2_LOGO_WIDTH_CM {
+            get {
+                return ResourceManager.GetString("PROCAS2_LOGO_WIDTH_CM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dear.
         /// </summary>
         public static string SALUTATION {
@@ -237,6 +309,15 @@ namespace PROCAS2.Resources {
         public static string TELEPHONE {
             get {
                 return ResourceManager.GetString("TELEPHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAKkAAABICAYAAACNzdUIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAEpRAABKUQB8xayBAAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAEEFwclZXeJztWguUVOV9v7uzD+cycHcvZPcOO3NhdrnDXVigdU1FU/MgHnNMWo9aMEF5CMiCsETER4TwEHnOzM5jl11wFVwggAESRE2CGo0b0yatjjYmbRK1tcdkc3LS5uRx2tNWa/r19/++/8zcGXkt5Awnp3t3fvO9v//7/3134OX//dZvtNXaZwQ9WSE0+spmRbZdZDWqoiGRzfZns+1ZdPYLqvb3Z/s7sv3t2Y5stqMj29FOfeiV6O/v6O9vp3GUHR39GG3HXPR1UAsPBlHXsh1af4fW0Y5xLduu4btjmdgZul30zFgluttW5pFp6/TUJYYy+fFOhWmdItF8h9h//Sbx9uAPRXryMrFl7Fzxvb6v [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string UNI_LOGO {
+            get {
+                return ResourceManager.GetString("UNI_LOGO", resourceCulture);
             }
         }
         

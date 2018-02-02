@@ -41,12 +41,15 @@ namespace PROCAS2.Models.ViewModels
         public string Telephone { get; set; }
 
         public string FromName { get; set; }
-        public string LogoFile { get; set; }
-        public int LogoHeight { get; set; }
+        public string LogoHeaderRight { get; set; }
+        public string LogoHeaderRightHeight { get; set; }
+        public string LogoHeaderRightWidth { get; set; }
         public string LogoFooterLeft { get; set; }
-        public int LogoFooterLeftHeight { get; set; }
+        public string LogoFooterLeftHeight { get; set; }
+        public string LogoFooterLeftWidth { get; set; }
         public string LogoFooterRight { get; set; }
-        public int LogoFooterRightHeight { get; set; }
+        public string LogoFooterRightHeight { get; set; }
+        public string LogoFooterRightWidth { get; set; }
         public string SigFile { get; set; }
     }
 

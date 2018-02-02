@@ -39,20 +39,32 @@ namespace PROCAS2.Data.Entities
         [MaxLength(200)]
         public string LetterFrom { get; set; }
 
-        [MaxLength(200)]
-        public string LogoFileName { get; set; }
+        [MaxLength(30)]
+        public string LogoHeaderRight { get; set; }
 
-        public int LogoHeight { get; set; }
+        [MaxLength(30)]
+        public string LogoHeaderRightHeight { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(30)]
+        public string LogoHeaderRightWidth { get; set; }
+
+        [MaxLength(30)]
         public string LogoFooterLeft { get; set; }
 
-        public int LogoFooterLeftHeight { get; set; }
+        [MaxLength(30)]
+        public string LogoFooterLeftHeight { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(30)]
+        public string LogoFooterLeftWidth { get; set; }
+
+        [MaxLength(30)]
         public string LogoFooterRight { get; set; }
 
-        public int LogoFooterRightHeight { get; set; }
+        [MaxLength(30)]
+        public string LogoFooterRightHeight { get; set; }
+
+        [MaxLength(30)]
+        public string LogoFooterRightWidth { get; set; }
 
         [MaxLength(200)]
         public string SigFileName { get; set; }

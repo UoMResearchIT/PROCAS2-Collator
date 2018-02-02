@@ -66,7 +66,7 @@ namespace PROCAS2.Services.App
                 model.AddressLine3 = site.AddressLine3;
                 model.AddressLine4 = site.AddressLine4;
                 model.LetterFrom = site.LetterFrom;
-                model.LogoFileName = site.LogoFileName;
+                
                 model.Name = site.Name;
                 model.PostCode = site.PostCode;
                 model.SigFileName = site.SigFileName;
@@ -101,7 +101,7 @@ namespace PROCAS2.Services.App
             site.AddressLine3 = model.AddressLine3;
             site.AddressLine4 = model.AddressLine4;
             site.LetterFrom = model.LetterFrom;
-            site.LogoFileName = model.LogoFileName;
+            
             site.Name = model.Name;
             site.PostCode = model.PostCode;
             site.SigFileName = model.SigFileName;
