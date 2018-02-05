@@ -134,7 +134,7 @@ namespace PROCAS2.Services.App
                 AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
                 AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                 PostCode = homeAddress.PostCode,
-                SentDate = DateTime.Now.ToShortDateString()
+                SentDate = DateTime.Now.ToLongDateString()
 
             });
 
@@ -198,7 +198,7 @@ namespace PROCAS2.Services.App
                     AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
                     AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                     PostCode = homeAddress.PostCode,
-                    SentDate = DateTime.Now.ToShortDateString()
+                    SentDate = DateTime.Now.ToLongDateString()
 
                 });
             }
@@ -284,10 +284,19 @@ namespace PROCAS2.Services.App
                 sectionProperties1.InsertAt(headerReference1, 0);
                 sectionProperties1.InsertAt(footerReference1, 1);
 
-                 //ImagePart imgPartHeaderRight = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
-                //ImagePart imgPartFooterLeft = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
-                //ImagePart imgPartFooterRight = AddImagePart(mainPart, ExportResources.PROCAS2_IMAGE);
+                PageMargin margin = new PageMargin()
+                {
+                    Right = (UInt32)new Unit(UnitMetric.Centimeter, 0.83).ValueInDxa,
+                    Left = (UInt32)new Unit(UnitMetric.Centimeter, 1.27).ValueInDxa,
+                    Top = (Int32)new Unit(UnitMetric.Centimeter, 1.27).ValueInDxa,
+                    Bottom = (Int32)new Unit(UnitMetric.Centimeter, 1.27).ValueInDxa,
+                    Footer = 0,
+                    Header = 720,
+                    Gutter = 0
+                };
+                sectionProperties1.InsertAt(margin, 2);
 
+  
                 mainPart.Document.Save();
 
 
@@ -320,14 +329,26 @@ namespace PROCAS2.Services.App
                 Footer footer = new Footer();
                 footer.Save(firstPageFooterPart);
 
-                ImagePart imgPartFooterLeft = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterLeft));
-                ImagePart imgPartFooterRight = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterRight));
+                ImagePart imgPartFooterLeft = null;
+
+                if (viewLetter.LogoFooterLeft != null)
+                {
+                    imgPartFooterLeft =AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterLeft));
+                }
+
+                ImagePart imgPartFooterRight = null;
+
+                if (viewLetter.LogoFooterRight != null)
+                {
+                    imgPartFooterRight = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterRight));
+                }
 
                 GeneratePageFooterPart(
                     firstPageFooterPart, imgPartFooterLeft, imgPartFooterRight,
                     viewLetter.LogoFooterLeftHeight, viewLetter.LogoFooterLeftWidth,
                     viewLetter.LogoFooterRightHeight, viewLetter.LogoFooterRightWidth).Save(firstPageFooterPart);
 
+                
 
                 mainPart.Document.Save();
 
@@ -343,12 +364,14 @@ namespace PROCAS2.Services.App
             
             ImagePart imagePart = headerPart.AddImagePart(ImagePartType.Png);
 
-           
-            var bytes = Convert.FromBase64String(imageString);
-            var contents = new MemoryStream(bytes);
-            imagePart.FeedData(contents);
-            contents.Close();
 
+            if (String.IsNullOrEmpty(imageString) == false)
+            {
+                var bytes = Convert.FromBase64String(imageString);
+                var contents = new MemoryStream(bytes);
+                imagePart.FeedData(contents);
+                contents.Close();
+            }
             return imagePart;
         }
 
@@ -357,11 +380,13 @@ namespace PROCAS2.Services.App
 
             ImagePart imagePart = footerPart.AddImagePart(ImagePartType.Png);
 
-
-            var bytes = Convert.FromBase64String(imageString);
-            var contents = new MemoryStream(bytes);
-            imagePart.FeedData(contents);
-            contents.Close();
+            if (String.IsNullOrEmpty(imageString) == false)
+            {
+                var bytes = Convert.FromBase64String(imageString);
+                var contents = new MemoryStream(bytes);
+                imagePart.FeedData(contents);
+                contents.Close();
+            }
 
             return imagePart;
         }
@@ -381,8 +406,17 @@ namespace PROCAS2.Services.App
             var tr = new TableRow();
 
             var tcLeft = new TableCell();
-            tcLeft.Append(new Paragraph(new Run(CreateDrawingInFooter(footerPart, imgPartFooterLeft, footerLeftHeight, footerLeftWidth))));
+            tcLeft.Append(
+                new TableCellProperties(new TableCellVerticalAlignment { Val = TableVerticalAlignmentValues.Bottom }));
 
+            if (imgPartFooterLeft != null)
+            {
+                tcLeft.Append(new Paragraph(new Run(CreateDrawingInFooter(footerPart, imgPartFooterLeft, footerLeftHeight, footerLeftWidth))));
+            }
+            else
+            {
+                tcLeft.Append(new Paragraph());
+            }
             // Assume you want columns that are automatically sized.
             tcLeft.Append(new TableCellProperties(
                 new TableCellWidth { Type = TableWidthUnitValues.Auto }));
@@ -394,9 +428,23 @@ namespace PROCAS2.Services.App
 
 
             var tcRight = new TableCell();
-            tcRight.Append(new Paragraph(
+            tcRight.Append(
+                new TableCellProperties(new TableCellVerticalAlignment { Val = TableVerticalAlignmentValues.Bottom }));
+
+            if (imgPartFooterRight != null)
+            {
+                tcRight.Append(
+                new Paragraph(
                 new ParagraphProperties(new Justification() { Val = JustificationValues.Right }),
                 new Run(CreateDrawingInFooter(footerPart, imgPartFooterRight, footerRightHeight, footerRightWidth))));
+            }
+            else
+            {
+                tcRight.Append(
+                new Paragraph(
+                new ParagraphProperties(new Justification() { Val = JustificationValues.Right })
+                ));
+            }
 
             // Assume you want columns that are automatically sized.
             tcLeft.Append(new TableCellProperties(

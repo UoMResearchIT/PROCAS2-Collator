@@ -88,6 +88,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAA7oAAAEcCAIAAABmvF/gAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAACtH0lEQVR4Xu29268f1ZXvu/+Axr1Pq+lInaSfOp3z0uTyErYSkR1aSqQQeCAPXFa2OjHRBm8JAw8b7IedNBBMEx0cHSIlaxF8Ak4wdIM5GBwJusG0GmPAdr9gIi7Sxl7Ey+TlhCTQ5KH9+3HGbY455qUuv/rVWvYPhvRRrVmz5hxzzDFnVX2rVv2q/tP7708dx3Ecx1k8ppOY0LTjOKNgdiuXy47jOI7zgWByOs9xHGcwrJVp6XLZcRzHcRYWc0Z3HGd8YOeaTlwuO47jOM5iElTyyq5D//Uby47jjM/SMuxiLpcdx3EcZ7G5+57n8nO84zgjAbuYy2XHcRzHWWxcLjvO+gG7 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EAST_LANCS_LOGO {
+            get {
+                return ResourceManager.GetString("EAST_LANCS_LOGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAACyAAAAEsCAIAAAAOjKEoAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAALh8AAC4fAXjugV8AAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMTM0A1t6AADTHklEQVR4Xuy9B3hc1Zn//w+k7aZuSXaTbDa7m/x2N9swBLAB0wlOKAm2MWA62MY2NtiAAeOCwYAxGMu9SJbcu2zLtrqs3nvvvffeR1P8v4kOjnhlazQz55x779zv5/k8eYgs3fe9RzN3Rvd855z/7zIAAAAAAAAAAAAAAAAAAAAAAAAAAJgQBCwAAAC4LT0mc9ugaax9Ixb2bwAAAAAAAAAABKD82UX+EFP+NGP/BgAAAAAAAAA6BwELAAAAbsuFslaPtOqxRtV2sH8DAAAAAAAAACAA5c8u8oeY8qcZ+zcAAAAAAAAA0DkIWAAAAHBbELAAAAAAAAAAAMkgYAEAAAAAAABw [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EAST_LANCS_SPE {
+            get {
+                return ResourceManager.GetString("EAST_LANCS_SPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Or.
         /// </summary>
         public static string EXPORT_OR {
@@ -187,24 +205,6 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.71.
-        /// </summary>
-        public static string MFT_LOGO_HEIGHT {
-            get {
-                return ResourceManager.GetString("MFT_LOGO_HEIGHT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to 5.5.
-        /// </summary>
-        public static string MFT_LOGO_WIDTH {
-            get {
-                return ResourceManager.GetString("MFT_LOGO_WIDTH", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to NHS Number.
         /// </summary>
         public static string NHS_NUMBER {
@@ -259,7 +259,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 2.5.
+        ///   Looks up a localized string similar to 1.5.
         /// </summary>
         public static string PROCAS2_LOGO_HEIGHT_CM {
             get {
@@ -268,11 +268,20 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.5.
+        ///   Looks up a localized string similar to 5.
         /// </summary>
         public static string PROCAS2_LOGO_WIDTH_CM {
             get {
                 return ResourceManager.GetString("PROCAS2_LOGO_WIDTH_CM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ref:.
+        /// </summary>
+        public static string REF {
+            get {
+                return ResourceManager.GetString("REF", resourceCulture);
             }
         }
         
@@ -313,7 +322,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAKkAAABICAYAAACNzdUIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAEpRAABKUQB8xayBAAAABh0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzT7MfTgAAEEFwclZXeJztWguUVOV9v7uzD+cycHcvZPcOO3NhdrnDXVigdU1FU/MgHnNMWo9aMEF5CMiCsETER4TwEHnOzM5jl11wFVwggAESRE2CGo0b0yatjjYmbRK1tcdkc3LS5uRx2tNWa/r19/++/8zcGXkt5Awnp3t3fvO9v//7/3134OX//dZvtNXaZwQ9WSE0+spmRbZdZDWqoiGRzfZns+1ZdPYLqvb3Z/s7sv3t2Y5stqMj29FOfeiV6O/v6O9vp3GUHR39GG3HXPR1UAsPBlHXsh1af4fW0Y5xLduu4btjmdgZul30zFgluttW5pFp6/TUJYYy+fFOhWmdItF8h9h//Sbx9uAPRXryMrFl7Fzxvb6v [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAMgAAABBCAYAAACU5+uOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAT30lEQVR4Xu2dLbAdRRbHRyAQCAQCsVVL1ZKQ2kIgEAiqFoFAIBAIBAKBiEAgEBEIqhCICAQCgUAgEAgEAoFAIBAIBAKBiIhAIBARiIi75/f+97z+OjPTM3NDhXdH/JOZnp7u6e7z3afvGw6Hw44dO0YQFu7YsUMIC3fs2CGEhTt27BDCwh07/ukY/nt4bLh2eM7whuGD4frhc8MnhncNrwz/OzwSvVcjLFyNYXjd8NZCvGZ46Ygnw3Ydw/C0IWpjDt7+84bHwraXQO3Q7geGTw2fH/GhgfKnwvfWgDkZhjcN9PWxwfsCtw3M3+Phu0swDI8Y8jmr8Vz4Xi+G4VHDDcOrhncN [rest of string was truncated]&quot;;.
         /// </summary>
         public static string UNI_LOGO {
             get {
