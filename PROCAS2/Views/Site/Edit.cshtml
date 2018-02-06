@@ -78,19 +78,73 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LogoFileName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LogoFileName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LogoFileName, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.LogoHeaderRight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoHeaderRight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoHeaderRight, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LogoHeaderRightHeight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoHeaderRightHeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoHeaderRightHeight, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LogoHeaderRightWidth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoHeaderRightWidth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoHeaderRightWidth, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SigFileName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.SigFileName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.SigFileName, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.LogoFooterLeft, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterLeft, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterLeft, "", new { @class = "text-danger" })
             </div>
+
+            @Html.LabelFor(model => model.LogoFooterLeftHeight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterLeftHeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterLeftHeight, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LogoFooterLeftWidth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterLeftWidth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterLeftWidth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LogoFooterRight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterRight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterRight, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LogoFooterRightHeight, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterRightHeight, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterRightHeight, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.LogoFooterRightWidth, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.LogoFooterRightWidth, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LogoFooterRightWidth, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Signature, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Signature, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Signature, "", new { @class = "text-danger" })
+            </div>
+
+
         </div>
 
         <div class="form-group">

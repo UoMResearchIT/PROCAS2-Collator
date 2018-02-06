@@ -69,7 +69,20 @@ namespace PROCAS2.Services.App
                 
                 model.Name = site.Name;
                 model.PostCode = site.PostCode;
-                model.SigFileName = site.SigFileName;
+                model.Signature = site.Signature;
+
+                model.LogoFooterLeft = site.LogoFooterLeft;
+                model.LogoFooterLeftHeight = String.IsNullOrEmpty(site.LogoFooterLeftHeight)?0:Convert.ToDouble(site.LogoFooterLeftHeight);
+                model.LogoFooterLeftWidth = String.IsNullOrEmpty(site.LogoFooterLeftWidth) ? 0 : Convert.ToDouble(site.LogoFooterLeftWidth);
+
+                model.LogoFooterRight = site.LogoFooterRight;
+                model.LogoFooterRightHeight = String.IsNullOrEmpty(site.LogoFooterRightHeight) ? 0 : Convert.ToDouble(site.LogoFooterRightHeight);
+                model.LogoFooterRightWidth = String.IsNullOrEmpty(site.LogoFooterRightWidth) ? 0 : Convert.ToDouble(site.LogoFooterRightWidth);
+
+                model.LogoHeaderRight = site.LogoHeaderRight;
+                model.LogoHeaderRightHeight = String.IsNullOrEmpty(site.LogoHeaderRightHeight) ? 0 : Convert.ToDouble(site.LogoHeaderRightHeight);
+                model.LogoHeaderRightWidth = String.IsNullOrEmpty(site.LogoHeaderRightWidth) ? 0 : Convert.ToDouble(site.LogoHeaderRightWidth);
+
 
                 return model;
             }
@@ -104,7 +117,16 @@ namespace PROCAS2.Services.App
             
             site.Name = model.Name;
             site.PostCode = model.PostCode;
-            site.SigFileName = model.SigFileName;
+            site.Signature = model.Signature;
+            site.LogoFooterLeft = model.LogoFooterLeft;
+            site.LogoFooterRight = model.LogoFooterRight;
+            site.LogoHeaderRight = model.LogoHeaderRight;
+            site.LogoFooterLeftHeight = model.LogoFooterLeftHeight.ToString();
+            site.LogoFooterLeftWidth = model.LogoFooterLeftWidth.ToString();
+            site.LogoFooterRightHeight = model.LogoFooterRightHeight.ToString();
+            site.LogoFooterRightHeight = model.LogoFooterRightWidth.ToString();
+            site.LogoHeaderRightHeight = model.LogoHeaderRightHeight.ToString();
+            site.LogoHeaderRightWidth = model.LogoHeaderRightWidth.ToString();
 
             if (create == true)
             {

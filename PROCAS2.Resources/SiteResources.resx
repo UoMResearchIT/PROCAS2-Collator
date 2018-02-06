@@ -129,8 +129,32 @@
   <data name="SITE_CODE" xml:space="preserve">
     <value>Code</value>
   </data>
-  <data name="SITE_LOGOFILENAME" xml:space="preserve">
-    <value>File Name of the Site's Logo</value>
+  <data name="SITE_IMAGEFOOTERLEFT" xml:space="preserve">
+    <value>Footer Left Image Resource Name</value>
+  </data>
+  <data name="SITE_IMAGEFOOTERLEFT_HEIGHT" xml:space="preserve">
+    <value>Footer Left Image Height in cm</value>
+  </data>
+  <data name="SITE_IMAGEFOOTERLEFT_WIDTH" xml:space="preserve">
+    <value>Footer Left Image Width in cm</value>
+  </data>
+  <data name="SITE_IMAGEFOOTERRIGHT" xml:space="preserve">
+    <value>Footer Right Image Resource Name</value>
+  </data>
+  <data name="SITE_IMAGEFOOTERRIGHT_HEIGHT" xml:space="preserve">
+    <value>Footer Right Image Height in cm</value>
+  </data>
+  <data name="SITE_IMAGEFOOTERRIGHT_WIDTH" xml:space="preserve">
+    <value>Footer Right Image Width in cm</value>
+  </data>
+  <data name="SITE_IMAGEHEADERRIGHT" xml:space="preserve">
+    <value>Header Right Image Resource Name</value>
+  </data>
+  <data name="SITE_IMAGEHEADERRIGHT_HEIGHT" xml:space="preserve">
+    <value>Header Right Image Height in cm</value>
+  </data>
+  <data name="SITE_IMAGEHEADERRIGHT_WIDTH" xml:space="preserve">
+    <value>Header Right Image Width in cm</value>
   </data>
   <data name="SITE_NAME" xml:space="preserve">
     <value>Name</value>
@@ -141,8 +165,8 @@
   <data name="SITE_POSTCODE" xml:space="preserve">
     <value>Post Code</value>
   </data>
-  <data name="SITE_SIGFILENAME" xml:space="preserve">
-    <value>File Name of the Person's Signature</value>
+  <data name="SITE_SIGNATURE" xml:space="preserve">
+    <value>Signature Resource Name</value>
   </data>
   <data name="SITE_TITLE" xml:space="preserve">
     <value>Sites</value>

@@ -97,11 +97,83 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File Name of the Site&apos;s Logo.
+        ///   Looks up a localized string similar to Footer Left Image Resource Name.
         /// </summary>
-        public static string SITE_LOGOFILENAME {
+        public static string SITE_IMAGEFOOTERLEFT {
             get {
-                return ResourceManager.GetString("SITE_LOGOFILENAME", resourceCulture);
+                return ResourceManager.GetString("SITE_IMAGEFOOTERLEFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Left Image Height in cm.
+        /// </summary>
+        public static string SITE_IMAGEFOOTERLEFT_HEIGHT {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEFOOTERLEFT_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Left Image Width in cm.
+        /// </summary>
+        public static string SITE_IMAGEFOOTERLEFT_WIDTH {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEFOOTERLEFT_WIDTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Right Image Resource Name.
+        /// </summary>
+        public static string SITE_IMAGEFOOTERRIGHT {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEFOOTERRIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Right Image Height in cm.
+        /// </summary>
+        public static string SITE_IMAGEFOOTERRIGHT_HEIGHT {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEFOOTERRIGHT_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Footer Right Image Width in cm.
+        /// </summary>
+        public static string SITE_IMAGEFOOTERRIGHT_WIDTH {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEFOOTERRIGHT_WIDTH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header Right Image Resource Name.
+        /// </summary>
+        public static string SITE_IMAGEHEADERRIGHT {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEHEADERRIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header Right Image Height in cm.
+        /// </summary>
+        public static string SITE_IMAGEHEADERRIGHT_HEIGHT {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEHEADERRIGHT_HEIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Header Right Image Width in cm.
+        /// </summary>
+        public static string SITE_IMAGEHEADERRIGHT_WIDTH {
+            get {
+                return ResourceManager.GetString("SITE_IMAGEHEADERRIGHT_WIDTH", resourceCulture);
             }
         }
         
@@ -133,11 +205,11 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File Name of the Person&apos;s Signature.
+        ///   Looks up a localized string similar to Signature Resource Name.
         /// </summary>
-        public static string SITE_SIGFILENAME {
+        public static string SITE_SIGNATURE {
             get {
-                return ResourceManager.GetString("SITE_SIGFILENAME", resourceCulture);
+                return ResourceManager.GetString("SITE_SIGNATURE", resourceCulture);
             }
         }
         

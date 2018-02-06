@@ -66,8 +66,10 @@ namespace PROCAS2.Data.Entities
         [MaxLength(30)]
         public string LogoFooterRightWidth { get; set; }
 
-        [MaxLength(200)]
-        public string SigFileName { get; set; }
+        [MaxLength(30)]
+        public string Signature { get; set; }
+
+        
 
     }
 }

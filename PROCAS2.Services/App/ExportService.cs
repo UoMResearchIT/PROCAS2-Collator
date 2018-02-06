@@ -125,7 +125,7 @@ namespace PROCAS2.Services.App
                 LogoFooterRight = letter.Participant.ScreeningSite.LogoFooterRight,
                LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
                 LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
-                SigFile = letter.Participant.ScreeningSite.SigFileName,
+                Signature = letter.Participant.ScreeningSite.Signature,
                 Telephone = letter.Participant.ScreeningSite.Telephone,
 
                 Name = title + " "  + letter.Participant.LastName,
@@ -188,7 +188,7 @@ namespace PROCAS2.Services.App
                    LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
                     LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
 
-                    SigFile = participant.ScreeningSite.SigFileName,
+                    Signature= participant.ScreeningSite.Signature,
                     Telephone = participant.ScreeningSite.Telephone,
 
 

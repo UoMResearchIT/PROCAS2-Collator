@@ -49,10 +49,49 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "SITE_NAMEFROM", ResourceType = typeof(SiteResources))]
         public string LetterFrom { get; set; }
 
-        [MaxLength(200)]
+        [MaxLength(30)]
         [Required]
-        [Display(Name = "SITE_SIGFILENAME", ResourceType = typeof(SiteResources))]
-        public string SigFileName { get; set; }
+        [Display(Name = "SITE_SIGNATURE", ResourceType = typeof(SiteResources))]
+        public string Signature { get; set; }
+
+
+        [MaxLength(30)]
+        [Required]
+        [Display(Name = "SITE_IMAGEHEADERRIGHT", ResourceType = typeof(SiteResources))]
+        public string LogoHeaderRight { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEHEADERRIGHT_HEIGHT", ResourceType = typeof(SiteResources))]
+        public double LogoHeaderRightHeight { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEHEADERRIGHT_WIDTH", ResourceType = typeof(SiteResources))]
+        public double LogoHeaderRightWidth { get; set; }
+
+
+        [MaxLength(30)]
+        [Display(Name = "SITE_IMAGEFOOTERRIGHT", ResourceType = typeof(SiteResources))]
+        public string LogoFooterRight { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEFOOTERRIGHT_HEIGHT", ResourceType = typeof(SiteResources))]
+        public double LogoFooterRightHeight { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEFOOTERRIGHT_WIDTH", ResourceType = typeof(SiteResources))]
+        public double LogoFooterRightWidth { get; set; }
+
+        [MaxLength(30)]
+        [Display(Name = "SITE_IMAGEFOOTERLEFT", ResourceType = typeof(SiteResources))]
+        public string LogoFooterLeft { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEFOOTERLEFT_HEIGHT", ResourceType = typeof(SiteResources))]
+        public double LogoFooterLeftHeight { get; set; }
+
+        [Required]
+        [Display(Name = "SITE_IMAGEFOOTERLEFT_WIDTH", ResourceType = typeof(SiteResources))]
+        public double LogoFooterLeftWidth { get; set; }
 
     }
 }

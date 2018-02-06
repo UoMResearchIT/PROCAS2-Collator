@@ -50,7 +50,7 @@ namespace PROCAS2.Models.ViewModels
         public string LogoFooterRight { get; set; }
         public string LogoFooterRightHeight { get; set; }
         public string LogoFooterRightWidth { get; set; }
-        public string SigFile { get; set; }
+        public string Signature { get; set; }
     }
 
 }
