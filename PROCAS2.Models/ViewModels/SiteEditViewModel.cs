@@ -54,6 +54,10 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "SITE_SIGNATURE", ResourceType = typeof(SiteResources))]
         public string Signature { get; set; }
 
+        [MaxLength(20)]
+        [Required]
+        [Display(Name="SITE_TRUSTCODE", ResourceType= typeof(SiteResources))]
+        public string TrustCode { get; set; }
 
         [MaxLength(30)]
         [Required]

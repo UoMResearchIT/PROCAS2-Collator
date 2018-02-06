@@ -69,7 +69,8 @@ namespace PROCAS2.Data.Entities
         [MaxLength(30)]
         public string Signature { get; set; }
 
-        
+        [MaxLength(20)]
+        public string TrustCode { get; set; }
 
     }
 }

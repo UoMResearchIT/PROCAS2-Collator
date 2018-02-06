@@ -313,11 +313,47 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Trust To Export?.
+        /// </summary>
+        public static string SITE_TO_PROCESS {
+            get {
+                return ResourceManager.GetString("SITE_TO_PROCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tel:.
         /// </summary>
         public static string TELEPHONE {
             get {
                 return ResourceManager.GetString("TELEPHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to East Cheshire NHS Trust.
+        /// </summary>
+        public static string TRUST_EASTCHESHIRE {
+            get {
+                return ResourceManager.GetString("TRUST_EASTCHESHIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to East Lancashire Hospitals NHS Trust.
+        /// </summary>
+        public static string TRUST_EASTLANCS {
+            get {
+                return ResourceManager.GetString("TRUST_EASTLANCS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manchester University NHS Trust.
+        /// </summary>
+        public static string TRUST_MFT {
+            get {
+                return ResourceManager.GetString("TRUST_MFT", resourceCulture);
             }
         }
         

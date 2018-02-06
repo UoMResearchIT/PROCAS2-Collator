@@ -30,17 +30,31 @@
     $("#AllReady").on("change", function (e) {
         if ($('#AllReady').is(":checked")) {
             $("#NHSNumber").prop('disabled', true);
+
+            $.each($(".siteToProcess"), function (i, val) {
+                $(val).prop('disabled', false);
+            })
+            
         }
         else {
             $("#NHSNumber").prop('disabled', false);
+            $.each($(".siteToProcess"), function (i, val) {
+                $(val).prop('disabled', true);
+            })
         }
     });
 
     if ($('#AllReady').is(":checked")) {
         $("#NHSNumber").prop('disabled', true);
+        $.each($(".siteToProcess"), function (i, val) {
+            $(val).prop('disabled', false);
+        })
     }
     else {
         $("#NHSNumber").prop('disabled', false);
+        $.each($(".siteToProcess"), function (i, val) {
+            $(val).prop('disabled', true);
+        })
     }
 })
 

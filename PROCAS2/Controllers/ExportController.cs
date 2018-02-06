@@ -32,6 +32,7 @@ namespace PROCAS2.Controllers
             ExportLettersViewModel model = new ExportLettersViewModel();
 
             model.AllReady = true; // default to true
+            model.SiteToProcess = "MFT";
 
             return View("Export", model);
         }
@@ -69,15 +70,23 @@ namespace PROCAS2.Controllers
                 Response.Buffer = true;
 
                 ExportResultsViewModel results = _exportService.GenerateLetters(model);
-                string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
-                MemoryStream mStream = _exportService.GenerateWordDoc(html, results);
 
-                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Export"));
-                HttpContext.Response.AppendHeader("Refresh", headerValue);
+                if (results.Letters.Count > 0)
+                {
+                    string html = _exportService.RenderRazorViewToString(ControllerContext, results, "ExportResults");
+                    MemoryStream mStream = _exportService.GenerateWordDoc(html, results);
 
-                //TODO: set the sent risk flag
+                    string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Export"));
+                    HttpContext.Response.AppendHeader("Refresh", headerValue);
 
-                return new WordResult(mStream, "Letters");
+                    //TODO: set the sent risk flag
+
+                    return new WordResult(mStream, "Letters");
+                }
+                else
+                {
+                    return View("Export", model);
+                }
 
 
             }

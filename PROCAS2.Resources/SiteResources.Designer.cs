@@ -221,5 +221,14 @@ namespace PROCAS2.Resources {
                 return ResourceManager.GetString("SITE_TITLE", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trust Code.
+        /// </summary>
+        public static string SITE_TRUSTCODE {
+            get {
+                return ResourceManager.GetString("SITE_TRUSTCODE", resourceCulture);
+            }
+        }
     }
 }

@@ -171,4 +171,7 @@
   <data name="SITE_TITLE" xml:space="preserve">
     <value>Sites</value>
   </data>
+  <data name="SITE_TRUSTCODE" xml:space="preserve">
+    <value>Trust Code</value>
+  </data>
 </root>

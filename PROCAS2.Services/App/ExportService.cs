@@ -120,15 +120,15 @@ namespace PROCAS2.Services.App
                 LogoHeaderRightHeight = letter.Participant.ScreeningSite.LogoHeaderRightHeight,
                 LogoHeaderRightWidth = letter.Participant.ScreeningSite.LogoHeaderRightWidth,
                 LogoFooterLeft = letter.Participant.ScreeningSite.LogoFooterLeft,
-               LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
+                LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
                 LogoFooterLeftWidth = letter.Participant.ScreeningSite.LogoFooterLeftWidth,
                 LogoFooterRight = letter.Participant.ScreeningSite.LogoFooterRight,
-               LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
+                LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
                 LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
                 Signature = letter.Participant.ScreeningSite.Signature,
                 Telephone = letter.Participant.ScreeningSite.Telephone,
 
-                Name = title + " "  + letter.Participant.LastName,
+                Name = title + " " + letter.Participant.LastName,
                 AddressLine1 = homeAddress.AddressLine1,
                 AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
                 AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
@@ -155,14 +155,14 @@ namespace PROCAS2.Services.App
             // Check if they want all those that are ready for export or just one NHS number
             if (model.AllReady == true)
             {
-                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetters.Count > 0).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetters.Count > 0 && x.ScreeningSite.TrustCode == model.SiteToProcess).ToList();
             }
             else
             {
-                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null  && x.RiskLetters.Count > 0).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null && x.RiskLetters.Count > 0).ToList();
             }
 
-            
+
             foreach (Participant participant in participants)
             {
                 Address homeAddress = participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -182,19 +182,19 @@ namespace PROCAS2.Services.App
                     LogoHeaderRightHeight = participant.ScreeningSite.LogoHeaderRightHeight,
                     LogoHeaderRightWidth = participant.ScreeningSite.LogoHeaderRightWidth,
                     LogoFooterLeft = participant.ScreeningSite.LogoFooterLeft,
-                   LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
+                    LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
                     LogoFooterLeftWidth = participant.ScreeningSite.LogoFooterLeftWidth,
                     LogoFooterRight = participant.ScreeningSite.LogoFooterRight,
-                   LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
+                    LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
                     LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
 
-                    Signature= participant.ScreeningSite.Signature,
+                    Signature = participant.ScreeningSite.Signature,
                     Telephone = participant.ScreeningSite.Telephone,
 
 
-                    Name =  title + " " + participant.LastName,
+                    Name = title + " " + participant.LastName,
                     AddressLine1 = homeAddress.AddressLine1,
-                    AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2)==true? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
+                    AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine2,
                     AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
                     AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                     PostCode = homeAddress.PostCode,
@@ -256,12 +256,13 @@ namespace PROCAS2.Services.App
                     part = AddStylesPartToPackage(package);
                 }
 
-                
+
 
                 // Created 2 styles for PROCAS2 letters
                 CreateAndAddParagraphStyle(part, "PROCAS2", "PROCAS2_Style", "Normal", "22", "220");
                 CreateAndAddParagraphStyle(part, "PROCAS2Head", "PROCAS2_Head_Style", "Normal", "44", "440");
 
+                // convert the html doc into openxml
                 Body body = mainPart.Document.Body;
                 HtmlConverter converter = new HtmlConverter(mainPart);
                 converter.HtmlStyles.DefaultStyle = converter.HtmlStyles.GetStyle("PROCAS2_Style");
@@ -278,12 +279,16 @@ namespace PROCAS2.Services.App
                     sectionProperties1 = new SectionProperties() { };
                     mainPart.Document.Body.Append(sectionProperties1);
                 }
+
+                // header and footer needs to be added
                 HeaderReference headerReference1 = new HeaderReference() { Type = HeaderFooterValues.Default, Id = "rId2" };
                 FooterReference footerReference1 = new FooterReference() { Type = HeaderFooterValues.Default, Id = "rId3" };
 
                 sectionProperties1.InsertAt(headerReference1, 0);
                 sectionProperties1.InsertAt(footerReference1, 1);
 
+
+                // Need a margin different from the default - this is based on MU NHS Trust template
                 PageMargin margin = new PageMargin()
                 {
                     Right = (UInt32)new Unit(UnitMetric.Centimeter, 0.83).ValueInDxa,
@@ -296,44 +301,49 @@ namespace PROCAS2.Services.App
                 };
                 sectionProperties1.InsertAt(margin, 2);
 
-  
+
                 mainPart.Document.Save();
 
 
                 Letter viewLetter = model.Letters[0];
 
+                // Add document settings part
+                var documentSettingsPart =
+             mainPart.AddNewPart
+             <DocumentSettingsPart>("rId1");
 
-               var documentSettingsPart =
-            mainPart.AddNewPart
-            <DocumentSettingsPart>("rId1");
+                GenerateDocumentSettingsPart().Save(documentSettingsPart);
 
-               GenerateDocumentSettingsPart().Save(documentSettingsPart);
-
+                // Add header part
                 var firstPageHeaderPart =
                     mainPart.AddNewPart<HeaderPart>("rId2");
 
-                Header header= new Header();
+                Header header = new Header();
                 header.Save(firstPageHeaderPart);
 
+                // Add logo image parts to header
                 ImagePart imgPartHeaderLeft = AddHeaderImagePart(firstPageHeaderPart, ExportResources.ResourceManager.GetString("UNI_LOGO"));
                 ImagePart imgPartHeaderRight = AddHeaderImagePart(firstPageHeaderPart, ExportResources.ResourceManager.GetString(viewLetter.LogoHeaderRight));
-                
 
+                // Generate and save the header
                 GeneratePageHeaderPart(firstPageHeaderPart, imgPartHeaderLeft, imgPartHeaderRight,
                     ExportResources.ResourceManager.GetString("PROCAS2_LOGO_HEIGHT_CM"), ExportResources.ResourceManager.GetString("PROCAS2_LOGO_WIDTH_CM"),
                    viewLetter.LogoHeaderRightHeight, viewLetter.LogoHeaderRightWidth).Save(firstPageHeaderPart);
 
+
+                // Add footer part
                 var firstPageFooterPart =
                     mainPart.AddNewPart<FooterPart>("rId3");
 
                 Footer footer = new Footer();
                 footer.Save(firstPageFooterPart);
 
+                // Add logo image parts to footer
                 ImagePart imgPartFooterLeft = null;
 
                 if (viewLetter.LogoFooterLeft != null)
                 {
-                    imgPartFooterLeft =AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterLeft));
+                    imgPartFooterLeft = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterLeft));
                 }
 
                 ImagePart imgPartFooterRight = null;
@@ -343,25 +353,32 @@ namespace PROCAS2.Services.App
                     imgPartFooterRight = AddFooterImagePart(firstPageFooterPart, ExportResources.ResourceManager.GetString(viewLetter.LogoFooterRight));
                 }
 
+                // Generate and save the footer
                 GeneratePageFooterPart(
                     firstPageFooterPart, imgPartFooterLeft, imgPartFooterRight,
                     viewLetter.LogoFooterLeftHeight, viewLetter.LogoFooterLeftWidth,
                     viewLetter.LogoFooterRightHeight, viewLetter.LogoFooterRightWidth).Save(firstPageFooterPart);
 
-                
+
 
                 mainPart.Document.Save();
 
             }
 
-            
+
             return generatedDocument;
 
         }
 
+        /// <summary>
+        /// Add image part to the header
+        /// </summary>
+        /// <param name="headerPart">Header part</param>
+        /// <param name="imageString">Base 64 string containing the image</param>
+        /// <returns></returns>
         private ImagePart AddHeaderImagePart(HeaderPart headerPart, string imageString)
         {
-            
+
             ImagePart imagePart = headerPart.AddImagePart(ImagePartType.Png);
 
 
@@ -375,6 +392,12 @@ namespace PROCAS2.Services.App
             return imagePart;
         }
 
+        /// <summary>
+        /// Add image part to the footer
+        /// </summary>
+        /// <param name="footerPart">footer part</param>
+        /// <param name="imageString">Base64 string to add to image</param>
+        /// <returns></returns>
         private ImagePart AddFooterImagePart(FooterPart footerPart, string imageString)
         {
 
@@ -391,20 +414,32 @@ namespace PROCAS2.Services.App
             return imagePart;
         }
 
+        /// <summary>
+        /// Generate the footer 
+        /// </summary>
+        /// <param name="footerPart">Footer part</param>
+        /// <param name="imgPartFooterLeft">Image part of the left logo</param>
+        /// <param name="imgPartFooterRight">Image part of the right logo</param>
+        /// <param name="footerLeftHeight">height of left logo</param>
+        /// <param name="footerLeftWidth">width of left logo</param>
+        /// <param name="footerRightHeight">height of right logo</param>
+        /// <param name="footerRightWidth">width of right logo</param>
+        /// <returns></returns>
         private Footer GeneratePageFooterPart(FooterPart footerPart, ImagePart imgPartFooterLeft, ImagePart imgPartFooterRight,
                 string footerLeftHeight, string footerLeftWidth, string footerRightHeight, string footerRightWidth)
         {
             Footer element = footerPart.Footer;
 
+
+            // Style it by using tables
             Table table = new Table(
                 new TableProperties(new TableWidth() { Width = "5000", Type = TableWidthUnitValues.Pct })
                 );
 
-
-
-
+            // table row
             var tr = new TableRow();
 
+            // left cell
             var tcLeft = new TableCell();
             tcLeft.Append(
                 new TableCellProperties(new TableCellVerticalAlignment { Val = TableVerticalAlignmentValues.Bottom }));
@@ -423,10 +458,7 @@ namespace PROCAS2.Services.App
 
             tr.Append(tcLeft);
 
-
-
-
-
+            // right cell
             var tcRight = new TableCell();
             tcRight.Append(
                 new TableCellProperties(new TableCellVerticalAlignment { Val = TableVerticalAlignmentValues.Bottom }));
@@ -456,47 +488,53 @@ namespace PROCAS2.Services.App
 
             element.Append(table);
 
-
-
-
             return element;
         }
 
-        private  Header GeneratePageHeaderPart(HeaderPart headerPart, ImagePart imgPartHeaderLeft, ImagePart imgPartHeaderRight,
+        /// <summary>
+        /// Generate the header
+        /// </summary>
+        /// <param name="headerPart">header part</param>
+        /// <param name="imgPartHeaderLeft">image part for the left logo</param>
+        /// <param name="imgPartHeaderRight">image part for the right logo</param>
+        /// <param name="headerLeftHeight">height of left logo</param>
+        /// <param name="headerLeftWidth">width of left logo</param>
+        /// <param name="headerRightHeight">height of right logo</param>
+        /// <param name="headerRightWidth">width of right logo</param>
+        /// <returns></returns>
+        private Header GeneratePageHeaderPart(HeaderPart headerPart, ImagePart imgPartHeaderLeft, ImagePart imgPartHeaderRight,
             string headerLeftHeight, string headerLeftWidth, string headerRightHeight, string headerRightWidth)
         {
 
             Header element = headerPart.Header;
 
+            // Style by using tables
             Table table = new Table(
-                new TableProperties(new TableWidth() { Width="5000", Type=TableWidthUnitValues.Pct  })
+                new TableProperties(new TableWidth() { Width = "5000", Type = TableWidthUnitValues.Pct })
                 );
 
- 
+            // table row
+            var tr = new TableRow();
 
-            
-                var tr = new TableRow();
-                
-                    var tcLeft = new TableCell();
-                    tcLeft.Append(new Paragraph(
-                        new Run(
-                            CreateDrawingInHeader(headerPart, imgPartHeaderLeft, headerLeftHeight, headerLeftWidth)
-                            )
-                        ));
+            // left cell
+            var tcLeft = new TableCell();
+            tcLeft.Append(new Paragraph(
+                new Run(
+                    CreateDrawingInHeader(headerPart, imgPartHeaderLeft, headerLeftHeight, headerLeftWidth)
+                    )
+                ));
 
-                    // Assume you want columns that are automatically sized.
-                    tcLeft.Append(new TableCellProperties(
-                        new TableCellWidth { Type = TableWidthUnitValues.Auto }));
+            // Assume you want columns that are automatically sized.
+            tcLeft.Append(new TableCellProperties(
+                new TableCellWidth { Type = TableWidthUnitValues.Auto }));
 
-                    tr.Append(tcLeft);
-                
-             
+            tr.Append(tcLeft);
 
-          
 
+            // right cell
             var tcRight = new TableCell();
             tcRight.Append(new Paragraph(
-                new ParagraphProperties(new Justification(){ Val = JustificationValues.Right }),
+                new ParagraphProperties(new Justification() { Val = JustificationValues.Right }),
                 new Run(
                             CreateDrawingInHeader(headerPart, imgPartHeaderRight, headerRightHeight, headerRightWidth)
                             )
@@ -511,14 +549,18 @@ namespace PROCAS2.Services.App
             table.Append(tr);
 
             element.Append(table);
-            
-
- 
 
             return element;
         }
 
-
+        /// <summary>
+        /// Create the logo drawing in header
+        /// </summary>
+        /// <param name="headerPart">header part</param>
+        /// <param name="imgPart">image part</param>
+        /// <param name="headerImageHeight">image height</param>
+        /// <param name="headerImageWidth">image width</param>
+        /// <returns></returns>
         private Drawing CreateDrawingInHeader(HeaderPart headerPart, ImagePart imgPart,
             string headerImageHeight, string headerImageWidth)
         {
@@ -529,7 +571,7 @@ namespace PROCAS2.Services.App
             imageObjId = 1;
             foreach (var d in headerPart.Header.Descendants<Drawing>())
             {
-                if (d.Inline == null) continue; 
+                if (d.Inline == null) continue;
                 if (d.Inline.DocProperties.Id > drawingObjId) drawingObjId = d.Inline.DocProperties.Id;
 
                 var pic = d.Inline.Graphic.GraphicData.GetFirstChild<PIC.Picture>();
@@ -560,7 +602,7 @@ namespace PROCAS2.Services.App
                  {
                      Id = (UInt32Value)drawingObjId,
                      Name = imgPart.Uri.ToString()
-                     
+
                  },
                  new DW.NonVisualGraphicFrameDrawingProperties(
                      new A.GraphicFrameLocks() { NoChangeAspect = true }),
@@ -572,16 +614,16 @@ namespace PROCAS2.Services.App
                                  {
                                      Id = (UInt32Value)imageObjId,
                                      Name = imgPart.Uri.ToString()
-                                 }, 
+                                 },
                              new PIC.NonVisualPictureDrawingProperties(
                                     new A.PictureLocks() { NoChangeAspect = true, NoChangeArrowheads = true })
                              ),
-                                 
+
                              new PIC.BlipFill(
                                  new A.Blip()
                                  {
                                      Embed = headerPart.GetIdOfPart(imgPart)
-                                     
+
                                  },
                                  new A.Stretch(
                                      new A.FillRectangle())),
@@ -592,7 +634,7 @@ namespace PROCAS2.Services.App
                                  new A.PresetGeometry(
                                      new A.AdjustValueList()
                                  )
-                                    { Preset = A.ShapeTypeValues.Rectangle }
+                                 { Preset = A.ShapeTypeValues.Rectangle }
                                  )
                              { BlackWhiteMode = A.BlackWhiteModeValues.Auto }
                              )
@@ -606,11 +648,18 @@ namespace PROCAS2.Services.App
                  DistanceFromBottom = (UInt32Value)0U,
                  DistanceFromLeft = (UInt32Value)0U,
                  DistanceFromRight = (UInt32Value)0U
-                 
+
              });
         }
 
-
+        /// <summary>
+        /// Create the logo drawing in footer
+        /// </summary>
+        /// <param name="headerPart">footer part</param>
+        /// <param name="imgPart">image part</param>
+        /// <param name="headerImageHeight">image height</param>
+        /// <param name="headerImageWidth">image width</param>
+        /// <returns></returns>
         private Drawing CreateDrawingInFooter(FooterPart footerPart, ImagePart imgPart,
             string footerImageHeight, string footerImageWidth)
         {
@@ -710,12 +759,12 @@ namespace PROCAS2.Services.App
             return element;
         }
 
-       
+
 
         // Create a new paragraph style with the specified style ID, primary style name, and aliases and 
         // add it to the specified style definitions part.
         private void CreateAndAddParagraphStyle(StyleDefinitionsPart styleDefinitionsPart,
-            string styleid, string stylename, string basedOn, string fontSize, string lineSize )
+            string styleid, string stylename, string basedOn, string fontSize, string lineSize)
         {
             // Access the root element of the styles part.
             Styles styles = styleDefinitionsPart.Styles;
@@ -732,7 +781,7 @@ namespace PROCAS2.Services.App
                 StyleId = styleid,
                 CustomStyle = true,
                 Default = false,
-                StyleName = new StyleName() { Val=stylename },
+                StyleName = new StyleName() { Val = stylename },
                 StyleParagraphProperties =
                 new StyleParagraphProperties(
 
@@ -754,7 +803,7 @@ namespace PROCAS2.Services.App
             UIPriority uipriority1 = new UIPriority() { Val = 1 };
             UnhideWhenUsed unhidewhenused1 = new UnhideWhenUsed() { Val = OnOffOnlyValues.On };
             Justification justification = new Justification() { Val = JustificationValues.Both };
-           
+
             style.Append(autoredefine1);
             style.Append(basedon1);
             style.Append(linkedStyle1);

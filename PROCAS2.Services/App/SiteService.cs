@@ -66,6 +66,7 @@ namespace PROCAS2.Services.App
                 model.AddressLine3 = site.AddressLine3;
                 model.AddressLine4 = site.AddressLine4;
                 model.LetterFrom = site.LetterFrom;
+                model.TrustCode = site.TrustCode;
                 
                 model.Name = site.Name;
                 model.PostCode = site.PostCode;
@@ -114,6 +115,7 @@ namespace PROCAS2.Services.App
             site.AddressLine3 = model.AddressLine3;
             site.AddressLine4 = model.AddressLine4;
             site.LetterFrom = model.LetterFrom;
+            site.TrustCode = model.TrustCode;
             
             site.Name = model.Name;
             site.PostCode = model.PostCode;

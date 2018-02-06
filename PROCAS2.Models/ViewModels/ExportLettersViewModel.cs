@@ -19,5 +19,8 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "ALL_READY", ResourceType = typeof(ExportResources))]
         public bool AllReady { get; set; }
+
+        [Display(Name ="SITE_TO_PROCESS", ResourceType =typeof(ExportResources))]
+        public string SiteToProcess { get; set; }
     }
 }
