@@ -18,8 +18,7 @@ namespace PROCAS2.Services.App
         List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
         bool DeleteParticipant(string id);
         bool DoesNHSNumberExist(string NHSNumber);
-        bool DoesHashedNHSNumberExist(string hash);
-        bool SetConsentFlag(string hashedNHSNumber);
-        bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, List<string> letterParts);
+        
+       
     }
 }

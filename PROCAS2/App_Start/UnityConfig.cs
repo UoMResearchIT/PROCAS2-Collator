@@ -34,6 +34,7 @@ namespace PROCAS2
             container.RegisterType<IConfigService, ConfigService>();
             container.RegisterType<IHashingService, HashingService>();
             container.RegisterType<IParticipantService, ParticipantService>();
+            container.RegisterType<IWebJobParticipantService, WebJobParticipantService>();
             container.RegisterType<IDashboardService, DashboardService>();
             container.RegisterType<IExportService, ExportService>();
             container.RegisterType<ISiteService, SiteService>();

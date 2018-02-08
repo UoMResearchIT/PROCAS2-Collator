@@ -12,12 +12,12 @@ namespace PROCAS2.Webjob.GetCRAMessages
 {
     public class Functions
     {
-        private IConfigService _configService;
+       
         private ICRAService _craService;
 
-        public Functions(IConfigService configService, ICRAService craService)
+        public Functions(ICRAService craService)
         {
-            _configService = configService;
+           
             _craService = craService;
         }
 
@@ -26,6 +26,7 @@ namespace PROCAS2.Webjob.GetCRAMessages
         public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TextWriter log)
         {
             //log.WriteLine(message);
+            _craService._logFile = log;
             List<string> messages = _craService.ProcessQuestionnaire(message);
             
             foreach(string mess in messages)

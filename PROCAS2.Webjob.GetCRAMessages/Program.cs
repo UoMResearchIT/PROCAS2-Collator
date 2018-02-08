@@ -9,9 +9,13 @@ using Microsoft.Practices.Unity;
 using Unity;
 using Unity.Lifetime;
 
+
+
+
 using PROCAS2.Services.Utility;
 using PROCAS2.Services.App;
 using PROCAS2.Data;
+
 
 namespace PROCAS2.Webjob.GetCRAMessages
 {
@@ -34,7 +38,9 @@ namespace PROCAS2.Webjob.GetCRAMessages
             container.RegisterType<ICRAService, CRAService>();
             container.RegisterType<IPROCAS2UserManager, PROCASUserManager>();
             container.RegisterType<PROCAS2Context>(new PerResolveLifetimeManager());
+            container.RegisterType<IWebJobParticipantService, WebJobParticipantService>();
             
+
             container.RegisterType<Functions>(); //Need to register WebJob class
 
             var config = new JobHostConfiguration()

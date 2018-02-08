@@ -40,9 +40,12 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "SITE_POSTCODE", ResourceType = typeof(SiteResources))]
         public string PostCode { get; set; }
 
-       
+        [MaxLength(20)]
+        [Required]
+        [Display(Name = "SITE_TELEPHONE", ResourceType = typeof(SiteResources))]
+        public string Telephone { get; set; }
 
-        
+
 
         [MaxLength(200)]
         [Required]

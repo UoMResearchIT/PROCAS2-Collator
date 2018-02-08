@@ -206,6 +206,7 @@
     <Compile Include="App\ReportService.cs" />
     <Compile Include="App\ResponseService.cs" />
     <Compile Include="App\SiteService.cs" />
+    <Compile Include="App\WebJobParticipantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\AttributeHelpers.cs" />
     <Compile Include="Utility\ConfigService.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Utility\IHashingService.cs" />
     <Compile Include="Utility\ICRAService.cs" />
     <Compile Include="Utility\IPROCAS2UserManager.cs" />
+    <Compile Include="App\IWebJobParticipantService.cs" />
     <Compile Include="Utility\PROCASUserManager.cs" />
   </ItemGroup>
   <ItemGroup>

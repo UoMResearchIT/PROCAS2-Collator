@@ -168,6 +168,9 @@
   <data name="SITE_SIGNATURE" xml:space="preserve">
     <value>Signature Resource Name</value>
   </data>
+  <data name="SITE_TELEPHONE" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
   <data name="SITE_TITLE" xml:space="preserve">
     <value>Sites</value>
   </data>

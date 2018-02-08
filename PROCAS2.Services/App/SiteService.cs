@@ -67,6 +67,7 @@ namespace PROCAS2.Services.App
                 model.AddressLine4 = site.AddressLine4;
                 model.LetterFrom = site.LetterFrom;
                 model.TrustCode = site.TrustCode;
+                model.Telephone = site.Telephone;
                 
                 model.Name = site.Name;
                 model.PostCode = site.PostCode;
@@ -116,6 +117,7 @@ namespace PROCAS2.Services.App
             site.AddressLine4 = model.AddressLine4;
             site.LetterFrom = model.LetterFrom;
             site.TrustCode = model.TrustCode;
+            site.Telephone = model.Telephone;
             
             site.Name = model.Name;
             site.PostCode = model.PostCode;
@@ -126,7 +128,7 @@ namespace PROCAS2.Services.App
             site.LogoFooterLeftHeight = model.LogoFooterLeftHeight.ToString();
             site.LogoFooterLeftWidth = model.LogoFooterLeftWidth.ToString();
             site.LogoFooterRightHeight = model.LogoFooterRightHeight.ToString();
-            site.LogoFooterRightHeight = model.LogoFooterRightWidth.ToString();
+            site.LogoFooterRightWidth = model.LogoFooterRightWidth.ToString();
             site.LogoHeaderRightHeight = model.LogoHeaderRightHeight.ToString();
             site.LogoHeaderRightWidth = model.LogoHeaderRightWidth.ToString();
 

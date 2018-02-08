@@ -214,6 +214,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        public static string SITE_TELEPHONE {
+            get {
+                return ResourceManager.GetString("SITE_TELEPHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sites.
         /// </summary>
         public static string SITE_TITLE {

@@ -19,6 +19,6 @@ namespace PROCAS2.Services.Utility
         AppUser GetCurrentUser();
         void AllowToReRegister(int userId);
         List<string> GetAllRegisteredUsers();
-        AppUser GetSystemUser(string userId);
+        
     }
 }

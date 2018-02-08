@@ -192,16 +192,6 @@ namespace PROCAS2.Services.Utility
             return appUser;
         }
 
-        /// <summary>
-        /// Return the AppUser for the requested system user
-        /// </summary>
-        /// <param name="userId">User Id</param>
-        /// <returns>AppUser object</returns>
-        public AppUser GetSystemUser(string userId)
-        {
-            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == userId && x.SystemUser == true).FirstOrDefault();
-
-            return appUser;
-        }
+       
     }
 }

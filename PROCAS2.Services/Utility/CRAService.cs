@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 
@@ -25,17 +26,27 @@ namespace PROCAS2.Services.Utility
     public class CRAService:ICRAService
     {
 
-        private IParticipantService _participantService;
+        private IWebJobParticipantService _participantService;
         private IResponseService _responseService;
         private IConfigService _configService;
 
-        public CRAService(IParticipantService participantService,
+        public TextWriter _logFile { get; set; }
+
+        public CRAService(IWebJobParticipantService participantService,
                             IResponseService responseService,
                             IConfigService configService)
         {
             _participantService = participantService;
             _responseService = responseService;
             _configService = configService;
+        }
+
+        private void Logger(string message)
+        {
+            if (_logFile != null)
+            {
+                _logFile.WriteLine(message);
+            }
         }
 
         /// <summary>
@@ -45,28 +56,35 @@ namespace PROCAS2.Services.Utility
         /// <returns>List of errors (empty if no errors!)</returns>
         public List<string> ProcessQuestionnaire(string hl7Message)
         {
-
+            Logger("*** PROCESS QUESTIONNAIRE *** ");
+           
             List<string> returnMessages = new List<string>();
 
             PipeParser parser = new PipeParser();
            
             IMessage m = parser.Parse(hl7Message);
+
+            Logger("Parsed message");
             Terser terse = new Terser(m);
 
             string messageTypePart1 = terse.Get("MSH-9-1");
+            
             string messageTypePart2 = terse.Get("MSH-9-2");
-
+            
             // Must be an ORU^R01 message
             if (messageTypePart1 != "ORU" || messageTypePart2 != "R01")
             {
                 returnMessages.Add(HL7Resources.NOT_ORUR01);
+                
                 return returnMessages;
             }
 
             ORU_R01 ORUR01 = m as ORU_R01; // If you are wondering why this is necessary, so am I. Try taking it out to find out why it is here. Go on, I dare you.
-
+            
+            
             // Get and validate the patient ID.
             string patientID = terse.Get("/.^PATIENT$/PID-3");
+            Logger("Got patient ID ");
             if (String.IsNullOrEmpty(patientID) || _participantService.DoesHashedNHSNumberExist(patientID) == false)
             {
                 returnMessages.Add(String.Format(HL7Resources.PATIENT_NOT_EXISTS, patientID));
@@ -75,7 +93,9 @@ namespace PROCAS2.Services.Utility
 
             // Get the questionnaire start and end date
             string dateStarted = terse.Get("/.^ORDER_OBSERVATION$(0)/OBR-7");
+           
             string dateFinished = terse.Get("/.^ORDER_OBSERVATION$(0)/OBR-8");
+            
 
             // Create the questionnaire response header
             QuestionnaireResponse response;
@@ -90,6 +110,7 @@ namespace PROCAS2.Services.Utility
             string riskCategory = "";
             string riskScore = "";
 
+            Logger("Processing the observation records");
             // Cycle through the observation records, pulling out the ones of interest
             bool stop = false;
             int idxOBX = -1;
@@ -98,6 +119,7 @@ namespace PROCAS2.Services.Utility
                 idxOBX++;
                 // Get the type of each OBX record
                 string observationType = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-3-1");
+                
                 if (String.IsNullOrEmpty(observationType))
                 {
                     // No more OBX records
@@ -110,6 +132,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk letter?
                     if (observationType == _configService.GetAppSetting("HL7RiskLetterCode"))
                     {
+                        Logger("Risk Letter");
                         int idxLetter = 0;
                         bool letterStop = false;
                         bool firstNull = true;
@@ -117,6 +140,7 @@ namespace PROCAS2.Services.Utility
                         do
                         {
                             string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxLetter + ")");
+                           
                             if (answerText == null)
                             {
                                 if (firstNull == false) // Stop on second blank line in a row.
@@ -145,6 +169,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk score?
                     if (observationType == _configService.GetAppSetting("HL7RiskScoreCode"))
                     {
+                       Logger("Risk Score");
                         riskScore = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
@@ -152,6 +177,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk category?
                     if (observationType == _configService.GetAppSetting("HL7RiskCategoryCode"))
                     {
+                        Logger("Risk Category");
                         riskCategory = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
@@ -161,11 +187,12 @@ namespace PROCAS2.Services.Utility
                     {
                         int idxHistory = 0;
                         bool historyStop = false;
-                       
+                        Logger("Family History");
                         // iterate through the family history and store each record
                         do
                         {
                             string historyCode = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")");
+                            
                             if (historyCode == null)
                             {
                                 
@@ -180,8 +207,11 @@ namespace PROCAS2.Services.Utility
                                 FamilyHistoryItem historyItem = new FamilyHistoryItem();
                                 historyItem.RelationshipCode = historyCode;
                                 historyItem.RelationshipDescription = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-2");
+                                
                                 historyItem.Gender = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-3");
+                                
                                 string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-4");
+                                
                                 if (String.IsNullOrEmpty(age))
                                 {
                                     historyItem.Age = null;
@@ -192,8 +222,10 @@ namespace PROCAS2.Services.Utility
                                 }
 
                                 historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5-2");
+                                
 
                                 string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6");
+                                
                                 if (String.IsNullOrEmpty(ageOfDiagnosis))
                                 {
                                     historyItem.AgeOfDiagnosis = null;
@@ -217,7 +249,9 @@ namespace PROCAS2.Services.Utility
                     // Is the observation a consent type?
                     if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
                     {
+                        Logger("Consent");
                         string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                        
                         if (answerText.ToLower() == "yes")
                         {
                             if(_participantService.SetConsentFlag(patientID) == false)
@@ -232,9 +266,10 @@ namespace PROCAS2.Services.Utility
                     // Is the observation a survey question type?
                     if (observationType.StartsWith(_configService.GetAppSetting("HL7SurveyQuestionCode")))
                     {
+                        Logger("Survey Question");
                         string[] splitType = observationType.Split('.'); // the type is of format: <typeCode>.<questionCode>
                         string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
-
+                        
                         if (_responseService.CreateResponseItem(response, splitType[1], answerText) == false)
                         {
                             returnMessages.Add(String.Format(HL7Resources.OBX_ERROR, observationType));
