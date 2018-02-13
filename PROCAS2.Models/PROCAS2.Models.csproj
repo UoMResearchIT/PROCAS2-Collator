@@ -102,6 +102,7 @@
     <Compile Include="Identity\AccountViewModels.cs" />
     <Compile Include="Identity\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceBusMessages\ConsentMessage.cs" />
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
     <Compile Include="ViewModels\UploadAskRiskViewModel.cs" />

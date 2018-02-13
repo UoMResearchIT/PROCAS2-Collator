@@ -138,6 +138,27 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
         }
 
+        public void PostConsent()
+        {
+            string message = @"{ 'messageType' : 'consent', 'messageTimestamp' : '2018 - 01 - 15T14: 33:23', 'patientId' : '" + _patientID + "' }";
+
+            _hl7Service.PostServiceBusMessage(message);
+        }
+
+
+        public void GetConsent()
+        {
+            string message = _hl7Service.GetServiceBusMessage();
+
+            if (_hl7Service.IsConsentMessage(message) == true)
+            {
+                _hl7Service.ProcessConsent(message);
+            }
+            else
+            {
+                _hl7Service.ProcessQuestionnaire(message);
+            }
+        }
 
         public void GetServiceBus()
         {

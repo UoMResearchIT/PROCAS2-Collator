@@ -25,13 +25,28 @@ namespace PROCAS2.Webjob.GetCRAMessages
         // on an Azure ServiceBus queue called cra-incoming.
         public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TextWriter log)
         {
-            //log.WriteLine(message);
             _craService._logFile = log;
-            List<string> messages = _craService.ProcessQuestionnaire(message);
-            
-            foreach(string mess in messages)
+            // There are two types of message on this queue. If this message is not a consent message then
+            // assume that it is an HL7 message
+            if (_craService.IsConsentMessage(message) == false)
             {
-                log.WriteLine(mess);
+                List<string> messages = _craService.ProcessQuestionnaire(message);
+
+                foreach (string mess in messages)
+                {
+                    log.WriteLine(mess);
+                }
+            }
+            else
+            {
+                // This is a consent message
+
+                List<string> messages = _craService.ProcessConsent(message);
+
+                foreach (string mess in messages)
+                {
+                    log.WriteLine(mess);
+                }
             }
         }
     }

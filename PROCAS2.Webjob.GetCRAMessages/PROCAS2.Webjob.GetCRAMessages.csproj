@@ -101,8 +101,8 @@
       <HintPath>..\packages\WindowsAzure.Storage.7.2.1\lib\net40\Microsoft.WindowsAzure.Storage.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NHapi.Base, Version=2.5.0.6, Culture=neutral, PublicKeyToken=d0d8ea960a3440eb, processorArchitecture=MSIL">
@@ -236,6 +236,10 @@
     <ProjectReference Include="..\PROCAS2.Data\PROCAS2.Data.csproj">
       <Project>{7f57a06c-f6c8-440f-974b-d3c3dbe83358}</Project>
       <Name>PROCAS2.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PROCAS2.Models\PROCAS2.Models.csproj">
+      <Project>{6def130a-c66d-4d48-baa2-e9345ddd1de7}</Project>
+      <Name>PROCAS2.Models</Name>
     </ProjectReference>
     <ProjectReference Include="..\PROCAS2.Resources\PROCAS2.Resources.csproj">
       <Project>{5278aa4d-7693-4d84-8d08-665360160c5f}</Project>

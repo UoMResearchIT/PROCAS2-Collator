@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Consent message is invalid format..
+        /// </summary>
+        public static string CONSENT_MESSAGE_FORMAT_INVALID {
+            get {
+                return ResourceManager.GetString("CONSENT_MESSAGE_FORMAT_INVALID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error setting consent flag for patient {0}..
         /// </summary>
         public static string CONSENT_NOT_SET {

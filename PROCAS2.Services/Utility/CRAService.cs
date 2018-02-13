@@ -17,9 +17,12 @@ using NHapi.Model.V23.Group;
 using NHapi.Model.V23.Segment;
 using NHapi.Model.V23.Message;
 
+using Newtonsoft.Json;
+
 using PROCAS2.Resources;
 using PROCAS2.Services.App;
 using PROCAS2.Data.Entities;
+using PROCAS2.Models.ServiceBusMessages;
 
 namespace PROCAS2.Services.Utility
 {
@@ -45,8 +48,50 @@ namespace PROCAS2.Services.Utility
         {
             if (_logFile != null)
             {
-                _logFile.WriteLine(message);
+
+                if (_configService.GetAppSetting("CRALogger") == "ON")
+                {
+                    _logFile.WriteLine(message);
+                }
             }
+        }
+
+        /// <summary>
+        /// Process and create the consent from the incoming HL7 consent message.
+        /// </summary>
+        /// <param name="consentMessage">The message</param>
+        /// <returns>List of errors (empty if no errors!)</returns>
+        public List<string> ProcessConsent(string consentMessage)
+        {
+            Logger("*** PROCESS CONSENT *** ");
+
+            List<string> returnMessages = new List<string>();
+
+            try
+            {
+                // Get the consent message
+                ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
+                if (consentObj != null && consentObj.MessageType == "consent")
+                {
+                    // Patient has to exist!
+                    if (String.IsNullOrEmpty(consentObj.PatientId) || _participantService.DoesHashedNHSNumberExist(consentObj.PatientId) == false)
+                    {
+                        returnMessages.Add(String.Format(HL7Resources.PATIENT_NOT_EXISTS, consentObj.PatientId));
+                        return returnMessages;
+                    }
+
+                    if (_participantService.SetConsentFlag(consentObj.PatientId) == false)
+                    {
+                        returnMessages.Add(String.Format(HL7Resources.CONSENT_NOT_SET, consentObj.PatientId));
+                    }
+                }
+            }
+            catch
+            {
+                returnMessages.Add(HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID); ;
+            }
+
+            return returnMessages;
         }
 
         /// <summary>
@@ -296,6 +341,27 @@ namespace PROCAS2.Services.Utility
             
 
             return returnMessages;
+        }
+
+
+        /// <summary>
+        /// Is the passed message a consent message? If not, it is an HL7 message.
+        /// </summary>
+        /// <param name="message">the message</param>
+        /// <returns>true if a consent message, else false</returns>
+        public bool IsConsentMessage(string message)
+        {
+            try
+            {
+                ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(message);
+            }
+            catch
+            {
+                return false;
+            }
+
+            
+            return true;
         }
 
 

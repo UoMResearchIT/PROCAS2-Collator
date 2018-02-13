@@ -10,6 +10,9 @@ namespace PROCAS2.Services.Utility
     public interface ICRAService
     {
         List<string> ProcessQuestionnaire(string hl7Message);
+        List<string> ProcessConsent(string consentMessage);
+
+        bool IsConsentMessage(string message);
 
         bool PostServiceBusMessage(string message);
         string GetServiceBusMessage();
