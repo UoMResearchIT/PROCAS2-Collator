@@ -243,10 +243,29 @@ namespace PROCAS2.Services.App
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(riskSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(RiskLetter), 1, beforeCols: new List<string>() { "NHSNumber" });
 
+                // Add Survey header
+                string surveySheetId = AddSheet(wbPart, "SurveyHeader", 5);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponse), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
+                // Add Survey item header
+                string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 6);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponseItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" },
+                                                                                            afterCols: new List<string>() { "QuestionText"});
+
+                // Add family history header
+                string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 7);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
                 int parIndex = 2;
                 int addressIndex = 2;
                 int volparaIndex = 2;
                 int riskIndex = 2;
+                int surveyIndex = 2;
+                int surveyItemIndex = 2;
+                int familyHistoryIndex = 2;
 
                 
                 foreach (string NHSNumber in NHSNumbers.OrderBy(x => x)) 
@@ -284,6 +303,37 @@ namespace PROCAS2.Services.App
                         riskIndex++;
                     }
 
+
+                    // Add survey header details
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                    foreach (QuestionnaireResponse response in participant.QuestionnaireResponses)
+                    {
+                        AddLineFromProperties(workingSheet, response, typeof(QuestionnaireResponse), surveyIndex,
+                                            beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() });
+                        surveyIndex++;
+                    }
+
+                    // Add survey item and famnily history details
+                    
+                    foreach (QuestionnaireResponse response in participant.QuestionnaireResponses)
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                        foreach (QuestionnaireResponseItem item in response.QuestionnaireResponseItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(QuestionnaireResponseItem), surveyItemIndex,
+                                                beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() },
+                                                afterCols: new List<string>() { item.Question.Text});
+                            surveyItemIndex++;
+                        }
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                        foreach (FamilyHistoryItem item in response.FamilyHistoryItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(FamilyHistoryItem), familyHistoryIndex,
+                                                beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() });
+                            familyHistoryIndex++;
+                        }
+                    }
 
 
                     parIndex++;
