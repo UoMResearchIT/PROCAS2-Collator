@@ -1,8 +1,6 @@
-﻿// JS functions for the Particpant List pages
+﻿$(document).ready(function () {
 
-$(document).ready(function () {
-
-    $('#tblSites').DataTable({
+    $('#tblTxErrors').DataTable({
         stateSave: true,
         columns: [
                 null,
@@ -13,14 +11,13 @@ $(document).ready(function () {
         ]
     });
 
-
-    // Delete will remove all the information entirely, so make sure they mean it!
-    $(".site-delete").on("click", function () {
+    // Make sure they mean it!
+    $(".error-review").on("click", function () {
         var form = $(this).parent();
         //alert(form.prop("id"));
 
         $.confirm({
-            title: 'Delete site',
+            title: 'Mark as Reviewed',
             content: "Are you sure you want to do that? This action cannot be undone.",
             buttons: {
                 confirm: function () {
@@ -34,21 +31,19 @@ $(document).ready(function () {
 
         });
     });
-
 });
 
-
 // Handle the returned delete message (true or false)
-function onDeleteSuccess(result) {
+function onReviewSuccess(result) {
 
-    if (result.deleted === true) {
+    if (result.reviewed === true) {
         // Redirect to list
-        window.location.href = "/Site/Index";
+        window.location.href = "/TxErrors/Index";
     }
     else {
         $.alert({
-            title: 'Not Deleted',
-            content: 'There was a problem and the site has not been deleted.',
+            title: 'Not marked',
+            content: 'There was a problem and the error has not been marked as reviewed.',
         });
     }
 

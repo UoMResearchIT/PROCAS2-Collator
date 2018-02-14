@@ -223,6 +223,7 @@
     <Compile Include="Controllers\ScreeningController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\TxErrorsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\CsvResult.cs" />
     <Compile Include="CustomActionResults\SpreadsheetResult.cs" />
@@ -438,6 +439,7 @@
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
+    <Content Include="js\txErrorsList.js" />
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="js\craResultsView.js" />
@@ -670,6 +672,8 @@
     <Content Include="Views\Participant\UploadAskRisk.cshtml" />
     <Content Include="Views\Home\_AppNews.cshtml" />
     <Content Include="Views\Questionnaire\Details.cshtml" />
+    <Content Include="Views\Home\_TxErrors.cshtml" />
+    <Content Include="Views\TxErrors\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

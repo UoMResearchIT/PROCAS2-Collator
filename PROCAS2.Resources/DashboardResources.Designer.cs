@@ -97,6 +97,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CRA Consent:.
+        /// </summary>
+        public static string CRA_CONSENT_ERRORS {
+            get {
+                return ResourceManager.GetString("CRA_CONSENT_ERRORS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRA Survey:.
+        /// </summary>
+        public static string CRA_SURVEY_ERRORS {
+            get {
+                return ResourceManager.GetString("CRA_SURVEY_ERRORS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number consented:.
         /// </summary>
         public static string NUM_CONSENT {

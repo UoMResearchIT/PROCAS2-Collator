@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
 
 using PROCAS2.Services.Utility;
 
@@ -23,9 +24,10 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
         // This function will get triggered/executed when a new message is written 
         // on an Azure ServiceBus queue called cra-incoming.
-        public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TextWriter log)
+        public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TraceWriter log)
         {
-            _craService._logFile = log;
+            
+            _craService._logFile = null;
             // There are two types of message on this queue. If this message is not a consent message then
             // assume that it is an HL7 message
             if (_craService.IsConsentMessage(message) == false)
@@ -34,7 +36,7 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
                 foreach (string mess in messages)
                 {
-                    log.WriteLine(mess);
+                    log.Trace(new TraceEvent(System.Diagnostics.TraceLevel.Warning, mess));
                 }
             }
             else
@@ -45,9 +47,13 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
                 foreach (string mess in messages)
                 {
-                    log.WriteLine(mess);
+                    log.Warning(mess);
                 }
             }
+
+           
         }
+
+       
     }
 }

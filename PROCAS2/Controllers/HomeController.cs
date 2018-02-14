@@ -9,6 +9,7 @@ using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
 using PROCAS2.Services.App;
+using PROCAS2.Services.Utility;
 
 namespace PROCAS2.Controllers
 {
@@ -23,17 +24,20 @@ namespace PROCAS2.Controllers
         private IGenericRepository<ScreeningSite> _siteRepo;
         private IGenericRepository<AppNewsItem> _appNewsItemsRepo;
         private IDashboardService _dashboardService;
+        private IWebJobLogger _logger;
 
 
         public HomeController(IUnitOfWork unitOfWork,
                                 IGenericRepository<ScreeningSite> siteRepo,
                                 IGenericRepository<AppNewsItem> appNewsItemsRepo,
-                                IDashboardService dashboardService)
+                                IDashboardService dashboardService,
+                                IWebJobLogger logger)
         {
             _unitOfWork = unitOfWork;
             _siteRepo = siteRepo;
             _appNewsItemsRepo = appNewsItemsRepo;
             _dashboardService = dashboardService;
+            _logger = logger;
         }
 
         public ActionResult Index()
@@ -96,6 +100,22 @@ namespace PROCAS2.Controllers
             else
                 return View("_AppNews", model);
         }
+
+
+        public ActionResult TxErrorsPanel()
+        {
+            DashboardTxErrorsViewModel model = new DashboardTxErrorsViewModel();
+
+            model.CRAConsentErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning);
+            model.CRASurveyErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning);
+           
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_TxErrors", model);
+            else
+                return View("_TxErrors", model);
+        }
+
 
     }
 }

@@ -42,6 +42,7 @@ namespace PROCAS2.Data
         public DbSet<QuestionnaireResponse> QuestionnaireResponses { get; set; }
         public DbSet<FamilyHistoryItem> FamilyHistoryItems { get; set; }
         public DbSet<AppNewsItem> AppNewsItems { get; set; }
+        public DbSet<WebJobLog> WebJobLogs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

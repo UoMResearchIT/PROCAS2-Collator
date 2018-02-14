@@ -5,10 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
+
 namespace PROCAS2.Services.Utility
 {
     public interface ICRAService
     {
+
+        
         List<string> ProcessQuestionnaire(string hl7Message);
         List<string> ProcessConsent(string consentMessage);
 

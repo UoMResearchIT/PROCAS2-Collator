@@ -82,6 +82,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SiteResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="TxErrorsResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TxErrorsResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UploadResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -120,6 +125,10 @@
     <EmbeddedResource Include="SiteResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>SiteResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TxErrorsResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>TxErrorsResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1,0 +1,88 @@
+﻿@model PROCAS2.Models.ViewModels.TxErrorsListViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/js/txErrorsList.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h3>@TxErrorsResources.TXERRORS_TITLE</h3>
+
+    </div>
+
+
+   
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.TxErrors.Count > 0)
+        {
+            <table id="tblTxErrors" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            @TxErrorsResources.LOG_DATE
+                        </th>
+
+                        <th>
+                            @TxErrorsResources.LOG_TYPE
+                        </th>
+                        <th>
+                            @TxErrorsResources.LOG_MESSAGE
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.TxErrors)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LogDate)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MessageType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Message)
+                            </td>
+                            <td class="actionList">
+
+                               
+                                    @using (Ajax.BeginForm("Review", "TxErrors", new { id = item.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onReviewSuccess" }, new { id = String.Concat("frmReview", item.Id) }))
+                                    {
+                                        @Html.AntiForgeryToken()
+                                        <button type="button" class="btn btn-danger pull-right error-review">
+                                            @TxErrorsResources.MARK_AS_REVIEWED
+                                        </button>
+
+                                    }
+
+                               
+                                @Html.ActionLink("View", "Details", new { id = item.Id }, new { @class = "btn btn-default pull-right" })
+
+                             
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <span>@TxErrorsResources.NO_ERRORS</span>
+        }
+    </div>
+</div>
+
+

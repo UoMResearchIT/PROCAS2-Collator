@@ -39,7 +39,8 @@ namespace PROCAS2.Webjob.GetCRAMessages
             container.RegisterType<IPROCAS2UserManager, PROCASUserManager>();
             container.RegisterType<PROCAS2Context>(new PerResolveLifetimeManager());
             container.RegisterType<IWebJobParticipantService, WebJobParticipantService>();
-            
+            container.RegisterType<IWebJobLogger, WebJobLogger>();
+
 
             container.RegisterType<Functions>(); //Need to register WebJob class
 
@@ -49,6 +50,7 @@ namespace PROCAS2.Webjob.GetCRAMessages
             };
 
             config.UseServiceBus();
+            
 
             if (config.IsDevelopment)
             {

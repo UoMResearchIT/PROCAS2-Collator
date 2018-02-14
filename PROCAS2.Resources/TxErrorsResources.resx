@@ -117,46 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="APPNEWS_MESSAGE" xml:space="preserve">
+  <data name="LOG_DATE" xml:space="preserve">
+    <value>Logged Date/Time</value>
+  </data>
+  <data name="LOG_LEVEL" xml:space="preserve">
+    <value>Log Level</value>
+  </data>
+  <data name="LOG_MESSAGE" xml:space="preserve">
     <value>Message</value>
   </data>
-  <data name="APPNEWS_NO_MESSAGES" xml:space="preserve">
-    <value>No messages at present</value>
+  <data name="LOG_TYPE" xml:space="preserve">
+    <value>Message Type</value>
   </data>
-  <data name="APPNEWS_POSTED" xml:space="preserve">
-    <value>Date Posted</value>
+  <data name="MARK_AS_REVIEWED" xml:space="preserve">
+    <value>Mark As Reviewed</value>
   </data>
-  <data name="APPNEWS_TITLE" xml:space="preserve">
-    <value>Application News</value>
+  <data name="NO_ERRORS" xml:space="preserve">
+    <value>There are currently no errors.</value>
   </data>
-  <data name="CRA_CONSENT_ERRORS" xml:space="preserve">
-    <value>CRA Consent:</value>
-  </data>
-  <data name="CRA_SURVEY_ERRORS" xml:space="preserve">
-    <value>CRA Survey:</value>
-  </data>
-  <data name="NUM_CONSENT" xml:space="preserve">
-    <value>Number consented:</value>
-  </data>
-  <data name="NUM_CONSENT_NO_DETAILS" xml:space="preserve">
-    <value>Number consented but without full details yet:</value>
-  </data>
-  <data name="NUM_PARC" xml:space="preserve">
-    <value>Number of invitees:</value>
-  </data>
-  <data name="NUM_RISK_NOT_SENT" xml:space="preserve">
-    <value>Letter content received but not sent:</value>
-  </data>
-  <data name="NUM_RISK_WAITING" xml:space="preserve">
-    <value>Number waiting for risk letter from CRA:</value>
-  </data>
-  <data name="NUM_YET_CONSENT" xml:space="preserve">
-    <value>Number yet to consent:</value>
-  </data>
-  <data name="SITE_CODE" xml:space="preserve">
-    <value>Code</value>
-  </data>
-  <data name="SITE_NAME" xml:space="preserve">
-    <value>Name</value>
+  <data name="TXERRORS_TITLE" xml:space="preserve">
+    <value>Transmission Errors</value>
   </data>
 </root>

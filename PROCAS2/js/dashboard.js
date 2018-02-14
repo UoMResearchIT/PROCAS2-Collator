@@ -74,4 +74,24 @@
         .fail(function (error) {
             $("#pnlAppNews").html("<p>Error: Application news cannot be found.</p>");
         });
+
+
+    // Tx errors info panel
+    // Fetch data to show tranmission errors
+    $.ajax({
+        url: "/Home/TxErrorsPanel",
+        beforeSend: function () {
+
+            $("#pnlTxErrors").html("<h4>Transmission Errors</h4><p>Loading...</p>");
+        }
+    })
+        .done(function (data) {
+
+            $("#pnlTxErrors").html(data);
+
+        })
+        .fail(function (error) {
+            $("#pnlTxErrors").html("<p>Error: Transmission Errors cannot be found.</p>");
+        });
+
 });
