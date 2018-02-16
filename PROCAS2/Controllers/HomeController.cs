@@ -107,7 +107,7 @@ namespace PROCAS2.Controllers
             DashboardTxErrorsViewModel model = new DashboardTxErrorsViewModel();
 
             model.CRAConsentErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning);
-            model.CRASurveyErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning);
+            model.CRASurveyErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning);
            
 
             if (Request.IsAjaxRequest())

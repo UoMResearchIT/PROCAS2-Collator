@@ -32,5 +32,31 @@ namespace PROCAS2.Controllers
 
             return View("Index", model);
         }
+
+        // POST: TxErrors/Review/{id}
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Review(int id)
+        {
+            bool rev = false;
+            if (id != 0)
+            {
+                if (_logger.Review(id) == true)
+                {
+                    rev = true;
+                }
+            }
+
+            return Json(new { reviewed = rev });
+        }
+
+        public ActionResult Details(int id)
+        {
+            TxErrorsDetailsViewModel model = new TxErrorsDetailsViewModel();
+
+            model = _logger.FillDetailsViewModel(id);
+
+            return View("Details", model);
+        }
     }
 }

@@ -106,6 +106,7 @@
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\DashboardTxErrorsViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
+    <Compile Include="ViewModels\TxErrorsDetailsViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsListViewModel.cs" />
     <Compile Include="ViewModels\UploadAskRiskViewModel.cs" />
     <Compile Include="ViewModels\DashboardConsentViewModel.cs" />

@@ -674,6 +674,7 @@
     <Content Include="Views\Questionnaire\Details.cshtml" />
     <Content Include="Views\Home\_TxErrors.cshtml" />
     <Content Include="Views\TxErrors\Index.cshtml" />
+    <Content Include="Views\TxErrors\Details.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

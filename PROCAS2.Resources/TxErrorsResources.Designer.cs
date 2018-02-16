@@ -61,6 +61,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Transmission Error Details.
+        /// </summary>
+        public static string DETAILS {
+            get {
+                return ResourceManager.GetString("DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message Body.
+        /// </summary>
+        public static string LOG_BODY {
+            get {
+                return ResourceManager.GetString("LOG_BODY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Logged Date/Time.
         /// </summary>
         public static string LOG_DATE {
@@ -84,6 +102,24 @@ namespace PROCAS2.Resources {
         public static string LOG_MESSAGE {
             get {
                 return ResourceManager.GetString("LOG_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reviewed.
+        /// </summary>
+        public static string LOG_REVIEWED {
+            get {
+                return ResourceManager.GetString("LOG_REVIEWED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stacktrace.
+        /// </summary>
+        public static string LOG_STACKTRACE {
+            get {
+                return ResourceManager.GetString("LOG_STACKTRACE", resourceCulture);
             }
         }
         

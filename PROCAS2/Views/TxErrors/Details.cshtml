@@ -1,0 +1,75 @@
+﻿@model PROCAS2.Models.ViewModels.TxErrorsDetailsViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@TxErrorsResources.DETAILS</h2>
+
+<div>
+   
+   
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LogDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageTypeString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageTypeString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LogLevelString)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogLevelString)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StackTrace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StackTrace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MessageBody)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MessageBody)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reviewed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reviewed)
+        </dd>
+
+    </dl>
+</div>
+<p>
+      @Html.ActionLink("Back to List", "Index")
+</p>

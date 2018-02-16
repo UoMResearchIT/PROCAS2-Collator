@@ -75,6 +75,18 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+              name: "TxErrorDetails",
+              url: "TxErrors/Details/{id}",
+              defaults: new { controller = "TxErrors", action = "Details",id =0 }
+          );
+
+            routes.MapRoute(
+             name: "TxErrorReview",
+             url: "TxErrors/Review/{id}",
+             defaults: new { controller = "TxErrors", action = "Review", id = 0 }
+         );
+
+            routes.MapRoute(
               name: "SiteDelete",
               url: "Site/Delete/{code}",
               defaults: new { controller = "Site", action = "Delete", code = "" }

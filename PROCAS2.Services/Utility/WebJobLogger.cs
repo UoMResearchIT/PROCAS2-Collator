@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
+using PROCAS2.Models.ViewModels;
 
 namespace PROCAS2.Services.Utility
 {
@@ -91,6 +92,55 @@ namespace PROCAS2.Services.Utility
         public List<WebJobLog> GetAllCurrentErrors()
         {
             return _logRepo.GetAll().Where(x => x.Reviewed == false).OrderBy(x => x.LogDate).ToList();
+        }
+
+        /// <summary>
+        /// Marked the log record with the passed Id as reviewed
+        /// </summary>
+        /// <param name="id">ID</param>
+        /// <returns>true if successful, else false</returns>
+        public bool Review(int id)
+        {
+            try
+            {
+                WebJobLog log = _logRepo.GetAll().Where(x => x.Id == id).FirstOrDefault();
+                if (log != null)
+                {
+                    log.Reviewed = true;
+                    _logRepo.Update(log);
+                    _unitOfWork.Save();
+                }
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Hydrate the TxErrors details for display
+        /// </summary>
+        /// <param name="id">ID of log record</param>
+        /// <returns>View Model</returns>
+        public TxErrorsDetailsViewModel FillDetailsViewModel(int id)
+        {
+            TxErrorsDetailsViewModel model = new TxErrorsDetailsViewModel();
+
+            WebJobLog log = _logRepo.GetAll().Where(x => x.Id == id).FirstOrDefault();
+            if (log != null)
+            {
+                model.LogDate = log.LogDate;
+                model.LogLevel = log.LogLevel;
+                model.Message = log.Message;
+                model.MessageBody = log.MessageBody;
+                model.MessageType = log.MessageType;
+                model.Reviewed = log.Reviewed;
+                model.StackTrace = log.StackTrace;
+            }
+
+            return model;
         }
     }
 }
