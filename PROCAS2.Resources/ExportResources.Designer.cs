@@ -88,6 +88,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAiYAAAD/CAIAAABKAorfAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAACxYUlEQVR4XuxdBXxUx9eFuuPa0kJxd3d3Jy4kEAiBEIJrILi7u7vHNu7u7u7ubt935s1mm2xsN6S06X/O73a7bObN3LF77p03b16z/2NgYGBgYPgsYJTDwMDAwPCZwCiHgYGBgeEzgVEOAwMDA8NnAqMcBgYGBobPBEY5DAwMDAyfCYxyGBgYGBg+ExjlMDA0GZSVlReXlBUWl+UXlVIpYMLk3yoYn3mF5EtJaTkFxjCjHAaGJoPC4tKU7KLolPyQhNzA+JzguJyQ+FwmTP6dEhyfExCbE56Ym5lbTFkHY5hRDgNDk0FKVqG5X+odi+gjH0MPvAk++Db44LsQJkz+pfI2eP+L [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string EAST_CHESHIRE_LOGO {
+            get {
+                return ResourceManager.GetString("EAST_CHESHIRE_LOGO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAA7oAAAEcCAIAAABmvF/gAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAACtH0lEQVR4Xu29268f1ZXvu/+Axr1Pq+lInaSfOp3z0uTyErYSkR1aSqQQeCAPXFa2OjHRBm8JAw8b7IedNBBMEx0cHSIlaxF8Ak4wdIM5GBwJusG0GmPAdr9gIi7Sxl7Ey+TlhCTQ5KH9+3HGbY455qUuv/rVWvYPhvRRrVmz5hxzzDFnVX2rVv2q/tP7708dx3Ecx1k8ppOY0LTjOKNgdiuXy47jOI7zgWByOs9xHGcwrJVp6XLZcRzHcRYWc0Z3HGd8YOeaTlwuO47jOM5iElTyyq5D//Uby47jjM/SMuxiLpcdx3EcZ7G5+57n8nO84zgjAbuYy2XHcRzHWWxcLjvO+gG7 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string EAST_LANCS_LOGO {
