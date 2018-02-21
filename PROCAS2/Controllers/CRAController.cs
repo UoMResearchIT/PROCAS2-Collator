@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 
 using PROCAS2.Services.Utility;
+using PROCAS2.Services.App;
 
 namespace PROCAS2.Controllers
 {
@@ -18,9 +19,13 @@ namespace PROCAS2.Controllers
     public class CRAController : Controller
     {
         private ICRAService _hl7Service;
-        public CRAController(ICRAService hl7Service)
+        private IHashingService _hashingService;
+        private IParticipantService _participantService;
+        public CRAController(ICRAService hl7Service, IHashingService hashingService, IParticipantService participantService)
         {
             _hl7Service = hl7Service;
+            _hashingService = hashingService;
+            _participantService = participantService;
         }
 
 
@@ -86,6 +91,16 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
             _hl7Service.ProcessQuestionnaire(_otherMessage);
         }
 
+        public void ValidateNHS()
+        {
+            string NHSNumber = "1234567890";
+
+            string hash = _hashingService.CreateNHSHash(NHSNumber);
+
+            bool ret = _hashingService.ValidateNHSNumber(NHSNumber, hash);
+
+            bool ret2 = _participantService.DoesHashedNHSNumberExist(hash);
+        }
 
         public void PostServiceBus()
         {

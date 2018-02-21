@@ -316,7 +316,7 @@ namespace PROCAS2.Services.App
 
             Participant participant = new Participant();
             participant.NHSNumber = NHSNumber;
-            string hash = _hashingService.CreateHash(NHSNumber);
+            string hash = _hashingService.CreateNHSHash(NHSNumber);
             participant.HashedNHSNumber = hash;
             participant.DateCreated = dateCreated;
             _participantRepo.Insert(participant);
@@ -1124,7 +1124,25 @@ namespace PROCAS2.Services.App
             }
         }
 
-        
+        /// <summary>
+        /// Does the passed hash match a participant in the database?
+        /// </summary>
+        /// <param name="hash">Hashed NHS Number</param>
+        /// <returns>true if exists, else false</returns>
+        public bool DoesHashedNHSNumberExist(string hash)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
+            if (participant == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+
 
     }
 }

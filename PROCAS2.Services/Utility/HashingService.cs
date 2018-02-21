@@ -21,6 +21,14 @@ namespace PROCAS2.Services.Utility
         private const int SALT_INDEX = 1;
         private const int PBKDF2_INDEX = 2;
 
+        private IConfigService _configService;
+
+        public HashingService(IConfigService configService)
+        {
+            _configService = configService;
+        }
+
+
         /// <summary>
         /// Creates a salted PBKDF2 hash of the password.
         /// </summary>
@@ -38,6 +46,41 @@ namespace PROCAS2.Services.Utility
             return PBKDF2_ITERATIONS + ":" +
                 Convert.ToBase64String(salt) + ":" +
                 Convert.ToBase64String(hash);
+        }
+
+        /// <summary>
+        /// Creates a salted PBKDF2 hash of the NHS number using the secret salt
+        /// </summary>
+        /// <param name="NHSNumber">NHS number</param>
+        /// <returns>The hash (not including the salt)</returns>
+        public string CreateNHSHash(string NHSNumber)
+        {
+            int iterations = Convert.ToInt32(_configService.GetAppSetting("NHSHashingIterations"));
+            string saltString = _configService.GetAppSetting("NHSHashingSalt");
+            byte[] salt = Convert.FromBase64String(saltString);
+            byte[] hash = PBKDF2(NHSNumber, salt, iterations, HASH_BYTES);
+            return Convert.ToBase64String(hash);
+        }
+
+        /// <summary>
+        /// Validates an NHS number given a hash of the correct one.
+        /// </summary>
+        /// <param name="NHSNumber">The NHS number to check</param>
+        /// <param name="goodHash">A hash of the correct NHS number</param>
+        /// <returns>True if NHS number correct, else false</returns>
+        public bool ValidateNHSNumber(string NHSNumber, string goodHash)
+        {
+            if (String.IsNullOrEmpty(goodHash))
+                return false;
+
+            
+            int iterations = Convert.ToInt32(_configService.GetAppSetting("NHSHashingIterations"));
+            string saltString = _configService.GetAppSetting("NHSHashingSalt");
+            byte[] salt = Convert.FromBase64String(saltString);
+            byte[] hash = Convert.FromBase64String(goodHash);
+
+            byte[] testHash = PBKDF2(NHSNumber, salt, iterations, hash.Length);
+            return SlowEquals(hash, testHash);
         }
 
         /// <summary>

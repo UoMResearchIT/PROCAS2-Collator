@@ -10,5 +10,8 @@ namespace PROCAS2.Services.Utility
     {
         string CreateHash(string password);
         bool ValidatePassword(string password, string goodHash);
+
+        string CreateNHSHash(string NHSNumber);
+        bool ValidateNHSNumber(string NHSNumber, string goodHash);
     }
 }
