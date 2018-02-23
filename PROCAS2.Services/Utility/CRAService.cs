@@ -28,6 +28,22 @@ using PROCAS2.Models.ServiceBusMessages;
 
 namespace PROCAS2.Services.Utility
 {
+    public static class CRAList
+    {
+        /// <summary>
+        /// Add a string to a list if it is not null
+        /// </summary>
+        /// <param name="list">list of string</param>
+        /// <param name="item">item to add</param>
+        public static void AddIfNotNull(this List<string> list, string item)
+        {
+            if (!String.IsNullOrEmpty(item))
+            {
+                list.Add(item);
+            }
+        }
+    }
+
     public class CRAService:ICRAService
     {
 
@@ -36,7 +52,7 @@ namespace PROCAS2.Services.Utility
         private IConfigService _configService;
         private IWebJobLogger _logger;
 
-        public TextWriter _logFile { get; set; }
+       
 
         public CRAService(IWebJobParticipantService participantService,
                             IResponseService responseService,
@@ -49,9 +65,9 @@ namespace PROCAS2.Services.Utility
             _logger = logger;
         }
 
-       
 
-       
+
+        
 
 
         /// <summary>
@@ -61,32 +77,37 @@ namespace PROCAS2.Services.Utility
         /// <returns>List of errors (empty if no errors!)</returns>
         public List<string> ProcessConsent(string consentMessage)
         {
-            _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "*** PROCESS CONSENT *** ");
-
             List<string> retMessages = new List<string>();
+            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "*** PROCESS CONSENT *** "));
+
+            
 
             try
             {
                 // Get the consent message
                 ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
-                if (consentObj != null && consentObj.MessageType == "consent")
+                if (consentObj != null && consentObj.IsValid)
                 {
                     // Patient has to exist!
-                    if (String.IsNullOrEmpty(consentObj.PatientId) || _participantService.DoesHashedNHSNumberExist(consentObj.PatientId) == false)
+                    if (_participantService.DoesHashedNHSNumberExist(consentObj.PatientId) == false)
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.PATIENT_NOT_EXISTS, consentObj.PatientId), messageBody: consentMessage);
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.PATIENT_NOT_EXISTS, consentObj.PatientId), messageBody: consentMessage));
                         return retMessages;
                     }
 
                     if (_participantService.SetConsentFlag(consentObj.PatientId) == false)
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, consentObj.PatientId), messageBody: consentMessage);
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, consentObj.PatientId), messageBody: consentMessage));
                     }
+                }
+                else
+                {
+                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
                 }
             }
             catch
             {
-                _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage); ;
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
             }
 
             return retMessages;
@@ -99,15 +120,26 @@ namespace PROCAS2.Services.Utility
         /// <returns>List of errors (empty if no errors!)</returns>
         public List<string> ProcessQuestionnaire(string hl7Message)
         {
-            _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "*** PROCESS QUESTIONNAIRE *** ");
-           
             List<string> retMessages = new List<string>();
 
-            PipeParser parser = new PipeParser();
+            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "*** PROCESS QUESTIONNAIRE *** "));
            
-            IMessage m = parser.Parse(hl7Message);
+           
 
-            _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Parsed message");
+            PipeParser parser = new PipeParser();
+            IMessage m;
+            try
+            {
+                m = parser.Parse(hl7Message);
+            }
+            catch
+            {
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, HL7Resources.NOT_ORUR01, messageBody: hl7Message));
+                return retMessages;
+            }
+            
+
+            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Parsed message"));
             Terser terse = new Terser(m);
 
             string messageTypePart1 = terse.Get("MSH-9-1");
@@ -117,7 +149,7 @@ namespace PROCAS2.Services.Utility
             // Must be an ORU^R01 message
             if (messageTypePart1 != "ORU" || messageTypePart2 != "R01")
             {
-                _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, HL7Resources.NOT_ORUR01, messageBody: hl7Message);
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, HL7Resources.NOT_ORUR01, messageBody: hl7Message));
                 
                 return retMessages;
             }
@@ -127,10 +159,10 @@ namespace PROCAS2.Services.Utility
             
             // Get and validate the patient ID.
             string patientID = terse.Get("/.^PATIENT$/PID-3");
-            _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Got patient ID ");
+            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Got patient ID "));
             if (String.IsNullOrEmpty(patientID) || _participantService.DoesHashedNHSNumberExist(patientID) == false)
             {
-                _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.PATIENT_NOT_EXISTS, patientID), messageBody: hl7Message);
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.PATIENT_NOT_EXISTS, patientID), messageBody: hl7Message));
                 return retMessages;
             }
 
@@ -144,7 +176,7 @@ namespace PROCAS2.Services.Utility
             QuestionnaireResponse response;
             if (_responseService.CreateQuestionnaireHeader(patientID, dateStarted, dateFinished, out response) == false)
             {
-                _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.HEADER_CREATION_ERROR, messageBody: hl7Message);
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, HL7Resources.HEADER_CREATION_ERROR, messageBody: hl7Message));
                 return retMessages;
             }
 
@@ -153,7 +185,7 @@ namespace PROCAS2.Services.Utility
             string riskCategory = "";
             string riskScore = "";
 
-            _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Processing the observation records");
+            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Processing the observation records"));
             // Cycle through the observation records, pulling out the ones of interest
             bool stop = false;
             int idxOBX = -1;
@@ -175,7 +207,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk letter?
                     if (observationType == _configService.GetAppSetting("HL7RiskLetterCode"))
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Letter");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Letter"));
                         int idxLetter = 0;
                         bool letterStop = false;
                         bool firstNull = true;
@@ -212,7 +244,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk score?
                     if (observationType == _configService.GetAppSetting("HL7RiskScoreCode"))
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Score");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Score"));
                         riskScore = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
@@ -220,7 +252,7 @@ namespace PROCAS2.Services.Utility
                     // Is this observation a risk category?
                     if (observationType == _configService.GetAppSetting("HL7RiskCategoryCode"))
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Category");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Category"));
                         riskCategory = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
@@ -230,7 +262,7 @@ namespace PROCAS2.Services.Utility
                     {
                         int idxHistory = 0;
                         bool historyStop = false;
-                        _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Family History");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Family History"));
                         // iterate through the family history and store each record
                         do
                         {
@@ -281,7 +313,7 @@ namespace PROCAS2.Services.Utility
                                 // Create the record in the DB
                                 if (_responseService.CreateFamilyHistoryItem(response, historyItem) == false)
                                 {
-                                    _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.FAMILY_HISTORY_ERROR, patientID), messageBody: hl7Message);
+                                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.FAMILY_HISTORY_ERROR, patientID), messageBody: hl7Message));
                                 }
 
                                 idxHistory++;
@@ -292,14 +324,14 @@ namespace PROCAS2.Services.Utility
                     // Is the observation a consent type?
                     if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Consent");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Consent"));
                         string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         
                         if (answerText.ToLower() == "yes")
                         {
                             if(_participantService.SetConsentFlag(patientID) == false)
                             {
-                                _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, patientID), messageBody: hl7Message);
+                                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, patientID), messageBody: hl7Message));
                             }
                         }
 
@@ -309,13 +341,13 @@ namespace PROCAS2.Services.Utility
                     // Is the observation a survey question type?
                     if (observationType.StartsWith(_configService.GetAppSetting("HL7SurveyQuestionCode")))
                     {
-                        _logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Survey Question");
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Survey Question"));
                         string[] splitType = observationType.Split('.'); // the type is of format: <typeCode>.<questionCode>
                         string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         
                         if (_responseService.CreateResponseItem(response, splitType[1], answerText) == false)
                         {
-                            _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.OBX_ERROR, observationType), messageBody: hl7Message);
+                            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.OBX_ERROR, observationType), messageBody: hl7Message));
                         }
 
                         continue;
@@ -332,7 +364,7 @@ namespace PROCAS2.Services.Utility
             {
                 if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, letterParts) == false)
                 {
-                    _logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.RISK_LETTER_NOT_CREATED, patientID), messageBody: hl7Message);
+                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.RISK_LETTER_NOT_CREATED, patientID), messageBody: hl7Message));
                 }
             }
 
@@ -352,14 +384,14 @@ namespace PROCAS2.Services.Utility
             try
             {
                 ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(message);
+
+                return consentObj.IsValid;
             }
             catch
             {
                 return false;
             }
 
-            
-            return true;
         }
 
 

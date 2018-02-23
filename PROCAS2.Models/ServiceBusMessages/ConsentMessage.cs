@@ -17,5 +17,15 @@ namespace PROCAS2.Models.ServiceBusMessages
 
         public string PatientId { get; set; }
 
+        public bool IsValid { get
+            {
+                return !String.IsNullOrEmpty(MessageType) && 
+                        !String.IsNullOrEmpty(MessageTimeStamp) && 
+                        !String.IsNullOrEmpty(PatientId) &&
+                        MessageType == "consent";
+            }
+
+        }
+
     }
 }

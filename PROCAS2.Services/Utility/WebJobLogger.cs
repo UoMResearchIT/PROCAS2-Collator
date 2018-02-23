@@ -48,7 +48,7 @@ namespace PROCAS2.Services.Utility
         /// <param name="message">The error/info message</param>
         /// <param name="stackTrace">optional stacktrace</param>
         /// <param name="messageBody">optional servicebus message body</param>
-        public void Log(WebJobLogMessageType messageType, WebJobLogLevel logLevel, string message, string stackTrace = null, string messageBody = null)
+        public string  Log(WebJobLogMessageType messageType, WebJobLogLevel logLevel, string message, string stackTrace = null, string messageBody = null)
         {
 
             int minimumLogLevel;
@@ -68,8 +68,10 @@ namespace PROCAS2.Services.Utility
 
                 _logRepo.Insert(log);
                 _unitOfWork.Save();
+                return message;
             }
-
+            else
+                return null;
         }
 
         /// <summary>

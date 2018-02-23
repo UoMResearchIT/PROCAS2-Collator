@@ -20,6 +20,6 @@ namespace PROCAS2.Services.Utility
         bool PostServiceBusMessage(string message);
         string GetServiceBusMessage();
 
-        TextWriter _logFile { get; set; }
+  
     }
 }

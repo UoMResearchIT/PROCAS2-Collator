@@ -27,17 +27,17 @@ namespace PROCAS2.Webjob.GetCRAMessages
         public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TraceWriter log)
         {
             
-            _craService._logFile = null;
+           
             // There are two types of message on this queue. If this message is not a consent message then
             // assume that it is an HL7 message
             if (_craService.IsConsentMessage(message) == false)
             {
                 List<string> messages = _craService.ProcessQuestionnaire(message);
 
-                foreach (string mess in messages)
-                {
-                    log.Trace(new TraceEvent(System.Diagnostics.TraceLevel.Warning, mess));
-                }
+                //foreach (string mess in messages)
+                //{
+                //    log.Trace(new TraceEvent(System.Diagnostics.TraceLevel.Warning, mess));
+                //}
             }
             else
             {
@@ -45,10 +45,10 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
                 List<string> messages = _craService.ProcessConsent(message);
 
-                foreach (string mess in messages)
-                {
-                    log.Warning(mess);
-                }
+                //foreach (string mess in messages)
+                //{
+                //    log.Warning(mess);
+                //}
             }
 
            

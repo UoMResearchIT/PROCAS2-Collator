@@ -11,7 +11,7 @@ namespace PROCAS2.Services.Utility
 {
     public interface IWebJobLogger
     {
-        void Log(WebJobLogMessageType messageType, WebJobLogLevel logLevel, string message, string stackTrace = null, string messageBody = null);
+        string Log(WebJobLogMessageType messageType, WebJobLogLevel logLevel, string message, string stackTrace = null, string messageBody = null);
         List<WebJobLog> GetAllCurrentErrors();
         int GetLogCount(WebJobLogMessageType messageType, WebJobLogLevel logLevel);
         bool Review(int id);
