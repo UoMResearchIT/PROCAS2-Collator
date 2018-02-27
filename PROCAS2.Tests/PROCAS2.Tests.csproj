@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceTests\BaseServiceTest.cs" />
     <Compile Include="ServiceTests\CRAServiceTests.cs" />
+    <Compile Include="ServiceTests\WebJobParticipantServiceTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

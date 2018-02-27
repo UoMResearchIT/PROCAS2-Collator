@@ -46,7 +46,7 @@ namespace PROCAS2.Services.App
         /// <returns>AppUser object</returns>
         public AppUser GetSystemUser(string userId)
         {
-            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == userId && x.SystemUser == true).FirstOrDefault();
+            AppUser appUser = _appUserRepo.GetAll().Where(x => x.UserCode == userId && x.SystemUser == true && x.Active == true).FirstOrDefault();
 
             return appUser;
         }
