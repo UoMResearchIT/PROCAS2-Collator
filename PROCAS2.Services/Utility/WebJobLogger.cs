@@ -112,6 +112,10 @@ namespace PROCAS2.Services.Utility
                     _logRepo.Update(log);
                     _unitOfWork.Save();
                 }
+                else
+                {
+                    return false;
+                }
             }
             catch(Exception ex)
             {

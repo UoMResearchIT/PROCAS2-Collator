@@ -29,6 +29,7 @@ namespace PROCAS2.Tests.ServiceTests
         protected IGenericRepository<ParticipantEvent> _eventRepo;
         protected IGenericRepository<EventType> _eventTypeRepo;
         protected IGenericRepository<RiskLetter> _riskLetterRepo;
+        protected IGenericRepository<WebJobLog> _logRepo;
 
         protected void SetUpMocks()
         {
@@ -46,6 +47,7 @@ namespace PROCAS2.Tests.ServiceTests
             _eventRepo = MockRepository.GenerateMock<IGenericRepository<ParticipantEvent>>();
             _eventTypeRepo = MockRepository.GenerateMock<IGenericRepository<EventType>>();
             _riskLetterRepo = MockRepository.GenerateMock<IGenericRepository<RiskLetter>>();
+            _logRepo = MockRepository.GenerateMock<IGenericRepository<WebJobLog>>();
         }
 
         protected void SetUpStubs()
@@ -100,6 +102,20 @@ namespace PROCAS2.Tests.ServiceTests
             _eventTypeRepo.Stub(x => x.GetAll()).Return(eventTypeList.AsQueryable());
         }
 
+        protected List<WebJobLog> webJobLogList;
+        protected void FillWebJobLogRepo()
+        {
+            webJobLogList = new List<WebJobLog>()
+            {
+                new WebJobLog() { Id=1, LogLevel=1, Reviewed=false, MessageType=1, Message="message1" },
+                new WebJobLog() { Id=1, LogLevel=2, Reviewed=false, MessageType=1, Message="message4" },
+                new WebJobLog() { Id=2, LogLevel=2, Reviewed=false, MessageType=2, Message="message2" },
+                new WebJobLog() { Id=3, LogLevel=2, Reviewed=true, MessageType=2, Message="message3" },
+            };
+
+            _logRepo.Stub(x => x.GetAll()).Return(webJobLogList.AsQueryable());
+        }
+
         protected void CompleteSetup()
         {
 
@@ -120,6 +136,7 @@ namespace PROCAS2.Tests.ServiceTests
             _eventRepo = null;
             _eventTypeRepo = null;
             _riskLetterRepo = null;
+            _logRepo = null;
         }
     }
 }
