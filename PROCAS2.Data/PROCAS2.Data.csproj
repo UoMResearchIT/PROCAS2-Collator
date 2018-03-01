@@ -67,6 +67,8 @@
     <Compile Include="Entities\GeneticRecord.cs" />
     <Compile Include="Entities\GeneticRecordItem.cs" />
     <Compile Include="Entities\Histology.cs" />
+    <Compile Include="Entities\HistologyFocus.cs" />
+    <Compile Include="Entities\HistologyLookup.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Participant.cs" />
     <Compile Include="Entities\ParticipantEvent.cs" />

@@ -30,6 +30,8 @@ namespace PROCAS2.Data
         public DbSet<GeneticRecord> GeneticRecords { get; set; }
         public DbSet<GeneticRecordItem> GeneticRecordItems { get; set; }
         public DbSet<Histology> Histologies { get; set; }
+        public DbSet<HistologyLookup> HistologyLookups { get; set; }
+        public DbSet<HistologyFocus> HistologyFoci { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<ParticipantEvent> ParticipantEvents { get; set; }
