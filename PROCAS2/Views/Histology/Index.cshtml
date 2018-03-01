@@ -1,0 +1,77 @@
+﻿@model PROCAS2.Models.ViewModels.HistologyListViewModel
+
+@{
+    ViewBag.Title = "Histology";
+}
+
+<script src="~/js/histologyList.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-9">
+
+        <h3>Histology</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @if (Model.Participants.Count > 0)
+        {
+            <table id="tblParticipants" class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            First Name
+                        </th>
+
+                        <th>
+                            Last Name
+                        </th>
+                        <th>
+                            NHS Number
+                        </th>
+                        <th>Date First Appointment</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Participants)
+                {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NHSNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateFirstAppointment)
+                            </td>
+                            <td class="actionList">
+
+
+                               
+
+                                @Html.ActionLink( "Edit Histology", "Edit", new { participantId = item.NHSNumber }, new { @class = "btn btn-danger pull-right" })
+
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        }
+        else
+        {
+            <span>There are currently no consented participants.</span>
+        }
+    </div>
+</div>
+

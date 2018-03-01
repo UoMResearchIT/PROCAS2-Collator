@@ -215,6 +215,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CRAController.cs" />
     <Compile Include="Controllers\ExportController.cs" />
+    <Compile Include="Controllers\HistologyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
@@ -441,6 +442,7 @@
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
+    <Content Include="js\histologyList.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
@@ -677,6 +679,7 @@
     <Content Include="Views\Home\_TxErrors.cshtml" />
     <Content Include="Views\TxErrors\Index.cshtml" />
     <Content Include="Views\TxErrors\Details.cshtml" />
+    <Content Include="Views\Histology\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

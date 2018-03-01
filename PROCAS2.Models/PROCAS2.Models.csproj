@@ -105,6 +105,7 @@
     <Compile Include="ServiceBusMessages\ConsentMessage.cs" />
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\DashboardTxErrorsViewModel.cs" />
+    <Compile Include="ViewModels\HistologyListViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsDetailsViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsListViewModel.cs" />
