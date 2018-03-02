@@ -56,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ExportResources.resx</DependentUpon>
     </Compile>
+    <Compile Include="HistologyResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistologyResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="HL7Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,6 +110,10 @@
     <EmbeddedResource Include="ExportResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ExportResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HistologyResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>HistologyResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="HL7Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -442,6 +442,7 @@
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
+    <Content Include="js\histologyEdit.js" />
     <Content Include="js\histologyList.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="Properties\webjobs-list.json" />
@@ -680,6 +681,7 @@
     <Content Include="Views\TxErrors\Index.cshtml" />
     <Content Include="Views\TxErrors\Details.cshtml" />
     <Content Include="Views\Histology\Index.cshtml" />
+    <Content Include="Views\Histology\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

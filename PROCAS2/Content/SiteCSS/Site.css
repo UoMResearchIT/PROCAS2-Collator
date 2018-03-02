@@ -26,8 +26,8 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
-select,
-textarea {
+select
+{
     max-width: 280px;
 }
 
@@ -160,4 +160,9 @@ textarea {
 
 .newsItemHighlight{
     color: red;
+}
+
+.histologyComment{
+    width:300px;
+    height:200px;
 }

@@ -43,6 +43,7 @@ namespace PROCAS2
             container.RegisterType<ICRAService, CRAService>();
             container.RegisterType<IPROCAS2UserManager, PROCASUserManager>();
             container.RegisterType<IWebJobLogger, WebJobLogger>();
+            container.RegisterType<IHistologyService, HistologyService>();
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
             

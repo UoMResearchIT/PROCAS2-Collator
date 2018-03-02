@@ -1,0 +1,102 @@
+﻿@model PROCAS2.Models.ViewModels.HistologyEditViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<script src="~/js/histologyEdit.js" type="text/javascript"></script>
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>@HistologyResources.DETAILS - @Model.NHSNumber</h4>
+
+    </div>
+
+   
+
+</div>
+<hr />
+
+@if (Model.fromSave == true)
+{
+    <div id="divSaveChangeAlert" class="alert alert-success">
+        Your header changes have been saved.
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        @Html.HiddenFor(model => model.NHSNumber)
+        
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiagnosisTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DiagnosisTypeId, new SelectList(Model.DiagnosisTypes, "Id", "LookupDescription"), new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiagnosisDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.DiagnosisDate, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                        @Html.ValidationMessageFor(model => model.DiagnosisDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiagnosisSideId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+
+                        @Html.DropDownListFor(model => model.DiagnosisSideId, new SelectList(Model.DiagnosisSides, "Id", "LookupDescription"), new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DiagnosisMultiFocal, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.DiagnosisMultiFocal)
+                            @Html.ValidationMessageFor(model => model.DiagnosisMultiFocal, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Comments, new { @class = "histologyComment" })
+                        @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save Header" class="btn btn-primary" name="btnSave"/>
+            
+                <input type="submit" value="Save Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
