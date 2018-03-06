@@ -1,6 +1,7 @@
 ﻿@model PROCAS2.Models.ViewModels.HistologyEditViewModel
 
 @using PROCAS2.Resources
+@using PROCAS2.Data.Entities
 
 @{
     ViewBag.Title = "Edit";
@@ -22,7 +23,7 @@
 @if (Model.fromSave == true)
 {
     <div id="divSaveChangeAlert" class="alert alert-success">
-        Your header changes have been saved.
+        @HistologyResources.HEADER_SAVED
     </div>
 }
 
@@ -33,6 +34,7 @@
     <div class="form-horizontal">
         
         @Html.HiddenFor(model => model.NHSNumber)
+        @Html.HiddenFor(model => model.HeaderId)
         
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="row">
@@ -89,14 +91,346 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save Header" class="btn btn-primary" name="btnSave"/>
+                <input type="submit" value="Update Header" class="btn btn-primary" name="btnSave"/>
             
-                <input type="submit" value="Save Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
+                <input type="submit" value="Update Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#pnlFirst" aria-controls="pnlFirst" role="tab" data-toggle="tab">@HistologyResources.FIRST_PRIMARY</a></li>
+       
+        <li role="presentation">
+            <a href="#pnlSecond" aria-controls="pnlSecond" role="tab" data-toggle="tab">
+                @HistologyResources.SECOND_PRIMARY
+                
+            </a>
+        </li>
+        
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="pnlFirst">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading  clearfix">
+                @HistologyResources.FIRST_PRIMARY
+                
+                    @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 1, focusId = 0 }, new { @class = "btn btn-default pull-right" })</div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @HistologyResources.FOCUS_NUMBER
+                                </th>
+                                <th>
+                                    @HistologyResources.PATHOLOGY
+                                </th>
+                                <th>
+                                    @HistologyResources.INVASIVE_CIS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.INVASIVE_TUMOUR_SIZE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.WHOLE_TUMOUR_SIZE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.INVASIVE_GRADE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.DCIS_GRADE  
+                                </th>
+
+                                <th>
+                                    @HistologyResources.LYMPH_NODES
+                                </th>
+
+                                <th>
+                                   @HistologyResources.LN2
+                                </th>
+
+                                <th>
+                                    @HistologyResources.VASCULAR_INVASION
+                                </th>
+
+                                <th>
+                                    @HistologyResources.ER_STATUS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.ER_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.PR_STATUS
+                                </th>
+
+                                <th>
+                                   @HistologyResources.PR_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.HER2_STATUS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.HER2_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.KI_67
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (HistologyFocus focus in Model.HistologyFoci.Where(x => x.PrimaryNumber == 1).OrderBy(x => x.FocusNumber))
+                            {
+                                <tr>
+                                    <td>
+                                        @focus.FocusNumber
+                                    </td>
+                                    <td>
+                                        @focus.Pathology.LookupDescription
+                                    </td>
+                                    <td>
+                                        @focus.Invasive.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.InvasiveTumourSize
+                                    </td>
+
+                                    <td>
+                                        @focus.WholeTumourSize
+                                    </td>
+
+                                    <td>
+                                        @focus.InvasiveGrade
+                                    </td>
+
+                                    <td>
+                                        @focus.DCISGrade.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.LymphNodes
+                                    </td>
+
+                                    <td>
+                                        @focus.LN2
+                                    </td>
+
+                                    <td>
+                                        @focus.VascularInvasion.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.ERStatus
+                                    </td>
+
+                                    <td>
+                                        @focus.ERScore
+                                    </td>
+
+                                    <td>
+                                        @focus.PRStatus
+                                    </td>
+
+                                    <td>
+                                        @focus.PRScore
+                                    </td>
+
+                                    <td>
+                                        @focus.HER2Status
+                                    </td>
+
+                                    <td>
+                                        @focus.HER2Score
+                                    </td>
+
+                                    <td>
+                                        @focus.KISixtySeven
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+        <div role="tabpanel" class="tab-pane" id="pnlSecond">
+            <div class="panel panel-primary participantViewPanel">
+                <div class="panel-heading clearfix">
+                    @HistologyResources.SECOND_PRIMARY
+                    @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 2, focusId = 0 }, new { @class = "btn btn-default pull-right" })
+                </div>
+
+
+
+
+
+             
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @HistologyResources.FOCUS_NUMBER
+                                </th>
+                                <th>
+                                    @HistologyResources.PATHOLOGY
+                                </th>
+                                <th>
+                                    @HistologyResources.INVASIVE_CIS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.INVASIVE_TUMOUR_SIZE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.WHOLE_TUMOUR_SIZE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.INVASIVE_GRADE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.DCIS_GRADE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.LYMPH_NODES
+                                </th>
+
+                                <th>
+                                    @HistologyResources.LN2
+                                </th>
+
+                                <th>
+                                    @HistologyResources.VASCULAR_INVASION
+                                </th>
+
+                                <th>
+                                    @HistologyResources.ER_STATUS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.ER_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.PR_STATUS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.PR_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.HER2_STATUS
+                                </th>
+
+                                <th>
+                                    @HistologyResources.HER2_SCORE
+                                </th>
+
+                                <th>
+                                    @HistologyResources.KI_67
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (HistologyFocus focus in Model.HistologyFoci.Where(x => x.PrimaryNumber == 2).OrderBy(x => x.FocusNumber))
+                            {
+                                <tr>
+                                    <td>
+                                        @focus.FocusNumber
+                                    </td>
+                                    <td>
+                                        @focus.Pathology.LookupDescription
+                                    </td>
+                                    <td>
+                                        @focus.Invasive.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.InvasiveTumourSize
+                                    </td>
+
+                                    <td>
+                                        @focus.WholeTumourSize
+                                    </td>
+
+                                    <td>
+                                        @focus.InvasiveGrade
+                                    </td>
+
+                                    <td>
+                                        @focus.DCISGrade.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.LymphNodes
+                                    </td>
+
+                                    <td>
+                                        @focus.LN2
+                                    </td>
+
+                                    <td>
+                                        @focus.VascularInvasion.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.ERStatus
+                                    </td>
+
+                                    <td>
+                                        @focus.ERScore
+                                    </td>
+
+                                    <td>
+                                        @focus.PRStatus
+                                    </td>
+
+                                    <td>
+                                        @focus.PRScore
+                                    </td>
+
+                                    <td>
+                                        @focus.HER2Status
+                                    </td>
+
+                                    <td>
+                                        @focus.HER2Score
+                                    </td>
+
+                                    <td>
+                                        @focus.KISixtySeven
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

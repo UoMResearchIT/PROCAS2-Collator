@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to DCIS Only Grade.
+        /// </summary>
+        public static string DCIS_GRADE {
+            get {
+                return ResourceManager.GetString("DCIS_GRADE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Histology Details.
         /// </summary>
         public static string DETAILS {
@@ -111,6 +120,186 @@ namespace PROCAS2.Resources {
         public static string DIAGNOSIS_TYPE {
             get {
                 return ResourceManager.GetString("DIAGNOSIS_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ER Score.
+        /// </summary>
+        public static string ER_SCORE {
+            get {
+                return ResourceManager.GetString("ER_SCORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ER Status.
+        /// </summary>
+        public static string ER_STATUS {
+            get {
+                return ResourceManager.GetString("ER_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Primary Breast Cancer Histology.
+        /// </summary>
+        public static string FIRST_PRIMARY {
+            get {
+                return ResourceManager.GetString("FIRST_PRIMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Edit.
+        /// </summary>
+        public static string FOCUS {
+            get {
+                return ResourceManager.GetString("FOCUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Focus Number.
+        /// </summary>
+        public static string FOCUS_NUMBER {
+            get {
+                return ResourceManager.GetString("FOCUS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The changes to the header have been saved..
+        /// </summary>
+        public static string HEADER_SAVED {
+            get {
+                return ResourceManager.GetString("HEADER_SAVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HER2 Score.
+        /// </summary>
+        public static string HER2_SCORE {
+            get {
+                return ResourceManager.GetString("HER2_SCORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HER2 Status.
+        /// </summary>
+        public static string HER2_STATUS {
+            get {
+                return ResourceManager.GetString("HER2_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invasive or CIS.
+        /// </summary>
+        public static string INVASIVE_CIS {
+            get {
+                return ResourceManager.GetString("INVASIVE_CIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invasive Only Grade.
+        /// </summary>
+        public static string INVASIVE_GRADE {
+            get {
+                return ResourceManager.GetString("INVASIVE_GRADE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invasive Tumour Size.
+        /// </summary>
+        public static string INVASIVE_TUMOUR_SIZE {
+            get {
+                return ResourceManager.GetString("INVASIVE_TUMOUR_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ki67%.
+        /// </summary>
+        public static string KI_67 {
+            get {
+                return ResourceManager.GetString("KI_67", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LN-2.
+        /// </summary>
+        public static string LN2 {
+            get {
+                return ResourceManager.GetString("LN2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lymph Nodes.
+        /// </summary>
+        public static string LYMPH_NODES {
+            get {
+                return ResourceManager.GetString("LYMPH_NODES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pathology.
+        /// </summary>
+        public static string PATHOLOGY {
+            get {
+                return ResourceManager.GetString("PATHOLOGY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PR Score.
+        /// </summary>
+        public static string PR_SCORE {
+            get {
+                return ResourceManager.GetString("PR_SCORE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PR Status.
+        /// </summary>
+        public static string PR_STATUS {
+            get {
+                return ResourceManager.GetString("PR_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Second Primary Breast Cancer Histology.
+        /// </summary>
+        public static string SECOND_PRIMARY {
+            get {
+                return ResourceManager.GetString("SECOND_PRIMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vascular Invasion.
+        /// </summary>
+        public static string VASCULAR_INVASION {
+            get {
+                return ResourceManager.GetString("VASCULAR_INVASION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whole Tumour Size.
+        /// </summary>
+        public static string WHOLE_TUMOUR_SIZE {
+            get {
+                return ResourceManager.GetString("WHOLE_TUMOUR_SIZE", resourceCulture);
             }
         }
     }

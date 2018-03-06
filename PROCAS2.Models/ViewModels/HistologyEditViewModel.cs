@@ -17,6 +17,7 @@ namespace PROCAS2.Models.ViewModels
         {
             HeaderId = 0;
             fromSave = false;
+            HistologyFoci = new List<HistologyFocus>();
         }
 
         public string NHSNumber { get; set; }
@@ -38,6 +39,7 @@ namespace PROCAS2.Models.ViewModels
 
         public List<HistologyLookup> DiagnosisTypes { get; set; }
         public List<HistologyLookup> DiagnosisSides { get; set; } 
+        public List<HistologyFocus> HistologyFoci { get; set; }
 
         public bool fromSave { get; set; }
         public int HeaderId { get; set; }

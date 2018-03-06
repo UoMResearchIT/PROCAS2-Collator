@@ -94,5 +94,51 @@ namespace PROCAS2.Controllers
                 return View("Edit", model);
             }
         }
+
+
+        [HttpGet]
+        public ActionResult EditFocus(string nhsnumber, int headerId, int primary, int focusId)
+        {
+            if (!String.IsNullOrEmpty(nhsnumber))
+            {
+                HistologyFocusViewModel model = new HistologyFocusViewModel();
+
+                model = _histologyService.FillEditFocusViewModel(nhsnumber, headerId, primary, focusId);
+
+                return View("EditFocus", model);
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFocus(HistologyFocusViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                int focusId = _histologyService.SaveFocus(model);
+                if (focusId == 0)
+                {
+                    model.DCISGrades = _histologyService.GetLookups("DCIS");
+                    model.Invasives = _histologyService.GetLookups("INVASIVE");
+                    model.Pathologies = _histologyService.GetLookups("PATH");
+                    model.VascularInvasions = _histologyService.GetLookups("VASCULAR");
+                    return View("EditFocus", model);
+                }
+
+                return RedirectToAction("Edit", new { participantId=model.NHSNumber });
+            }            
+            else
+            {
+                model.DCISGrades = _histologyService.GetLookups("DCIS");
+                model.Invasives = _histologyService.GetLookups("INVASIVE");
+                model.Pathologies = _histologyService.GetLookups("PATH");
+                model.VascularInvasions = _histologyService.GetLookups("VASCULAR");
+                return View("EditFocus", model);
+            }
+        }
     }
 }

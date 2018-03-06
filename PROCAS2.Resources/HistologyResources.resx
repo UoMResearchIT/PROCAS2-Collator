@@ -120,6 +120,9 @@
   <data name="COMMENTS" xml:space="preserve">
     <value>Comments</value>
   </data>
+  <data name="DCIS_GRADE" xml:space="preserve">
+    <value>DCIS Only Grade</value>
+  </data>
   <data name="DETAILS" xml:space="preserve">
     <value>Histology Details</value>
   </data>
@@ -134,5 +137,65 @@
   </data>
   <data name="DIAGNOSIS_TYPE" xml:space="preserve">
     <value>Diagnosis Type</value>
+  </data>
+  <data name="ER_SCORE" xml:space="preserve">
+    <value>ER Score</value>
+  </data>
+  <data name="ER_STATUS" xml:space="preserve">
+    <value>ER Status</value>
+  </data>
+  <data name="FIRST_PRIMARY" xml:space="preserve">
+    <value>First Primary Breast Cancer Histology</value>
+  </data>
+  <data name="FOCUS" xml:space="preserve">
+    <value>Focus Edit</value>
+  </data>
+  <data name="FOCUS_NUMBER" xml:space="preserve">
+    <value>Focus Number</value>
+  </data>
+  <data name="HEADER_SAVED" xml:space="preserve">
+    <value>The changes to the header have been saved.</value>
+  </data>
+  <data name="HER2_SCORE" xml:space="preserve">
+    <value>HER2 Score</value>
+  </data>
+  <data name="HER2_STATUS" xml:space="preserve">
+    <value>HER2 Status</value>
+  </data>
+  <data name="INVASIVE_CIS" xml:space="preserve">
+    <value>Invasive or CIS</value>
+  </data>
+  <data name="INVASIVE_GRADE" xml:space="preserve">
+    <value>Invasive Only Grade</value>
+  </data>
+  <data name="INVASIVE_TUMOUR_SIZE" xml:space="preserve">
+    <value>Invasive Tumour Size</value>
+  </data>
+  <data name="KI_67" xml:space="preserve">
+    <value>Ki67%</value>
+  </data>
+  <data name="LN2" xml:space="preserve">
+    <value>LN-2</value>
+  </data>
+  <data name="LYMPH_NODES" xml:space="preserve">
+    <value>Lymph Nodes</value>
+  </data>
+  <data name="PATHOLOGY" xml:space="preserve">
+    <value>Pathology</value>
+  </data>
+  <data name="PR_SCORE" xml:space="preserve">
+    <value>PR Score</value>
+  </data>
+  <data name="PR_STATUS" xml:space="preserve">
+    <value>PR Status</value>
+  </data>
+  <data name="SECOND_PRIMARY" xml:space="preserve">
+    <value>Second Primary Breast Cancer Histology</value>
+  </data>
+  <data name="VASCULAR_INVASION" xml:space="preserve">
+    <value>Vascular Invasion</value>
+  </data>
+  <data name="WHOLE_TUMOUR_SIZE" xml:space="preserve">
+    <value>Whole Tumour Size</value>
   </data>
 </root>

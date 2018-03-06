@@ -682,6 +682,7 @@
     <Content Include="Views\TxErrors\Details.cshtml" />
     <Content Include="Views\Histology\Index.cshtml" />
     <Content Include="Views\Histology\Edit.cshtml" />
+    <Content Include="Views\Histology\EditFocus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
