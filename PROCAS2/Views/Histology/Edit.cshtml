@@ -10,12 +10,22 @@
 <script src="~/js/histologyEdit.js" type="text/javascript"></script>
 
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <h4>@HistologyResources.DETAILS - @Model.NHSNumber</h4>
 
     </div>
 
-   
+    <div class="col-md-2">
+        @using (Ajax.BeginForm("Delete", "Histology", new { NHSNumber = Model.NHSNumber }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onDeleteSuccess" }, new { id = "frmDelete" }))
+        {
+            @Html.AntiForgeryToken()
+            <button type="button" id="btnDelete" class="btn btn-danger pull-right">
+                @HistologyResources.DELETE
+            </button>
+
+        }
+
+    </div>
 
 </div>
 <hr />
@@ -90,17 +100,25 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Update Header" class="btn btn-primary" name="btnSave"/>
-            
-                <input type="submit" value="Update Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
+            <div class="col-md-10">
+                @if (Model.HeaderId != 0)
+                {
+                    <input type="submit" value="Update Header" class="btn btn-primary" name="btnSave"/>
+                    <input type="submit" value="Update Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
+                }
+                else
+                {
+                    <input type="submit" value="Create Header" class="btn btn-primary" name="btnSave" />
+                    <input type="submit" value="Create Header And Return" name="btnSaveAndReturn" class="btn btn-primary" />
+                }
             </div>
         </div>
     </div>
 }
 
-<div>
 
+@if (Model.HeaderId != 0)
+{
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#pnlFirst" aria-controls="pnlFirst" role="tab" data-toggle="tab">@HistologyResources.FIRST_PRIMARY</a></li>
@@ -121,11 +139,18 @@
                 <div class="panel-heading  clearfix">
                 @HistologyResources.FIRST_PRIMARY
                 
-                    @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 1, focusId = 0 }, new { @class = "btn btn-default pull-right" })</div>
+               
+                    @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 1, focusId = 0 }, new { @class = "btn btn-default pull-right" })
+                
+               
+                </div>
                 <div class="panel-body">
                     <table class="table table-sm">
                         <thead>
                             <tr>
+                                <th>
+
+                                </th>
                                 <th>
                                     @HistologyResources.FOCUS_NUMBER
                                 </th>
@@ -191,12 +216,18 @@
                                 <th>
                                     @HistologyResources.KI_67
                                 </th>
+                               
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (HistologyFocus focus in Model.HistologyFoci.Where(x => x.PrimaryNumber == 1).OrderBy(x => x.FocusNumber))
                             {
                                 <tr>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 1, focusId = focus.Id }, new { @class = "btn btn-default pull-right" })
+
+
+                                    </td>
                                     <td>
                                         @focus.FocusNumber
                                     </td>
@@ -262,6 +293,7 @@
                                     <td>
                                         @focus.KISixtySeven
                                     </td>
+                                  
                                 </tr>
                             }
                         </tbody>
@@ -275,7 +307,10 @@
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading clearfix">
                     @HistologyResources.SECOND_PRIMARY
-                    @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 2, focusId = 0 }, new { @class = "btn btn-default pull-right" })
+
+                 
+                        @Html.ActionLink("Add", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 2, focusId = 0 }, new { @class = "btn btn-default pull-right" })
+                   
                 </div>
 
 
@@ -287,6 +322,9 @@
                     <table class="table table-sm">
                         <thead>
                             <tr>
+                                <th>
+
+                                </th>
                                 <th>
                                     @HistologyResources.FOCUS_NUMBER
                                 </th>
@@ -352,12 +390,18 @@
                                 <th>
                                     @HistologyResources.KI_67
                                 </th>
+                               
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (HistologyFocus focus in Model.HistologyFoci.Where(x => x.PrimaryNumber == 2).OrderBy(x => x.FocusNumber))
                             {
                                 <tr>
+                                    <td>
+                                        @Html.ActionLink("Edit", "EditFocus", "Histology", new { nhsnumber = Model.NHSNumber, headerId = Model.HeaderId, primary = 1, focusId = focus.Id }, new { @class = "btn btn-default pull-right" })
+
+
+                                    </td>
                                     <td>
                                         @focus.FocusNumber
                                     </td>
@@ -423,6 +467,7 @@
                                     <td>
                                         @focus.KISixtySeven
                                     </td>
+                                    
                                 </tr>
                             }
                         </tbody>
@@ -430,6 +475,14 @@
                 </div>
             </div>
         </div>
+     </div>
+}
+else
+{
+    <div class="alert alert-info">
+        @HistologyResources.CREATE_HEADER_PLEASE
+    </div>
+}
 
         <div>
             @Html.ActionLink("Back to List", "Index")

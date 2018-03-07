@@ -20,6 +20,7 @@ namespace PROCAS2.Models.ViewModels
         public int PrimaryNumber { get; set; }
 
         [Display(Name = "FOCUS_NUMBER", ResourceType = typeof(HistologyResources))]
+        [Range(1, 5)]
         public int FocusNumber { get; set; }
 
         [Display(Name = "PATHOLOGY", ResourceType = typeof(HistologyResources))]

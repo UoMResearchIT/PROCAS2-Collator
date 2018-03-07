@@ -27,11 +27,13 @@ namespace PROCAS2.Services.App
         private IGenericRepository<RiskLetter> _riskLetterRepo;
         private IGenericRepository<ScreeningRecordV1_5_4> _screeningRepo;
         private IGenericRepository<Image> _imageRepo;
+        
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
         private IConfigService _configService;
 
+        private IHistologyService _histologyService;
        
 
         private int _UPLOADNEWCOLUMNS;
@@ -54,7 +56,8 @@ namespace PROCAS2.Services.App
                                 IGenericRepository<Address> addressRepo,
                                 IGenericRepository<RiskLetter> riskLetterRepo,
                                 IGenericRepository<ScreeningRecordV1_5_4> screeningRepo,
-                                IGenericRepository<Image> imageRepo)
+                                IGenericRepository<Image> imageRepo,
+                                IHistologyService histologyService)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -69,6 +72,7 @@ namespace PROCAS2.Services.App
             _riskLetterRepo = riskLetterRepo;
             _screeningRepo = screeningRepo;
             _imageRepo = imageRepo;
+            _histologyService = histologyService;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -960,6 +964,7 @@ namespace PROCAS2.Services.App
                         _unitOfWork.Save();
                     }
 
+                    _histologyService.DeleteHistology(id);
                     // TODO: delete other records too!
 
                     participant.LastEvent = pEvent;

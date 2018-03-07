@@ -68,9 +68,11 @@ namespace PROCAS2.Controllers
                 {
                     if (String.IsNullOrEmpty(btnSaveAndReturn))
                     {
-                        model.HeaderId = headerId;
-                        model.DiagnosisSides = _histologyService.GetLookups("SIDE");
-                        model.DiagnosisTypes = _histologyService.GetLookups("TYPE");
+                        model = _histologyService.FillEditViewModel(model.NHSNumber);
+                        //model.HeaderId = headerId;
+                        
+                        //model.DiagnosisSides = _histologyService.GetLookups("SIDE");
+                        //model.DiagnosisTypes = _histologyService.GetLookups("TYPE");
                         model.fromSave = true;
                         return View("Edit", model);
                     }
@@ -139,6 +141,23 @@ namespace PROCAS2.Controllers
                 model.VascularInvasions = _histologyService.GetLookups("VASCULAR");
                 return View("EditFocus", model);
             }
+        }
+
+        // POST: Histology/Delete/NHS123
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(string NHSNumber)
+        {
+            bool del = false;
+            if (String.IsNullOrEmpty(NHSNumber) == false)
+            {
+                if (_histologyService.DeleteHistology(NHSNumber) == true)
+                {
+                    del = true;
+                }
+            }
+
+            return Json(new { deleted = del });
         }
     }
 }

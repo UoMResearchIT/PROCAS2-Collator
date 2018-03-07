@@ -55,7 +55,10 @@ namespace PROCAS2.Services.App
                 model.DiagnosisTypeId = hist.DiagnosisTypeId;
                 model.HeaderId = hist.Id;
 
-                model.HistologyFoci = hist.HistologyFoci.ToList();
+                if (hist.HistologyFoci != null)
+                {
+                    model.HistologyFoci = hist.HistologyFoci.ToList();
+                }
             }
 
             model.DiagnosisSides = GetLookups("SIDE");
@@ -225,6 +228,38 @@ namespace PROCAS2.Services.App
             {
                 return 0;
             }
+        }
+
+        /// <summary>
+        /// Delete the histology records for the passed patient
+        /// </summary>
+        /// <param name="NHSNumber">NHS number of patient</param>
+        /// <returns>true if successful, else false</returns>
+        public bool DeleteHistology(string NHSNumber)
+        {
+            try
+            {
+                Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == NHSNumber).FirstOrDefault();
+
+                if (hist != null)
+                {
+                    List<HistologyFocus> foci = _histologyFocusRepo.GetAll().Where(x => x.Histology.Id == hist.Id).ToList();
+                    foreach(HistologyFocus focus in foci)
+                    {
+                        _histologyFocusRepo.Delete(focus);
+                        _unitOfWork.Save();
+                    }
+
+                    _histologyRepo.Delete(hist);
+                    _unitOfWork.Save();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

@@ -16,5 +16,7 @@ namespace PROCAS2.Services.App
         int SaveHeader(HistologyEditViewModel model);
         HistologyFocusViewModel FillEditFocusViewModel(string NHSnumber, int headerId, int primary, int focusId);
         int SaveFocus(HistologyFocusViewModel model);
+
+        bool DeleteHistology(string NHSNumber);
     }
 }

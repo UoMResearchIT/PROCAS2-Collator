@@ -7,7 +7,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h4>@HistologyResources.FOCUS - @(Model.PrimaryNumber==1?@HistologyResources.FIRST_PRIMARY:@HistologyResources.SECOND_PRIMARY)</h4>
+        <h4>@HistologyResources.FOCUS - @(Model.PrimaryNumber == 1 ? @HistologyResources.FIRST_PRIMARY : @HistologyResources.SECOND_PRIMARY)</h4>
 
     </div>
 
@@ -18,107 +18,111 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-       
-       
+
+
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Id)
         @Html.HiddenFor(model => model.HistologyId)
         @Html.HiddenFor(model => model.PrimaryNumber)
         @Html.HiddenFor(model => model.NHSNumber)
 
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FocusNumber, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.FocusNumber, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FocusNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FocusNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FocusNumber, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FocusNumber, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PathologyId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.PathologyId, new SelectList(Model.Pathologies, "Id", "LookupDescription"), new { @class = "form-control" })
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvasiveId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.InvasiveId, new SelectList(Model.Invasives, "Id", "LookupDescription"), new { @class = "form-control" })
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvasiveTumourSize, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.InvasiveTumourSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvasiveTumourSize, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WholeTumourSize, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.WholeTumourSize, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WholeTumourSize, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InvasiveGrade, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.InvasiveGrade, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.InvasiveGrade, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DCISGradeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.DCISGradeId, new SelectList(Model.DCISGrades, "Id", "LookupDescription"), new { @class = "form-control" })
+
+
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LymphNodes, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.LymphNodes, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LymphNodes, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LN2, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.LN2, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LN2, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.PathologyId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.PathologyId, new SelectList(Model.Pathologies, "Id", "LookupDescription"), new { @class = "form-control" })
-
-
-               
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvasiveId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.InvasiveId, new SelectList(Model.Invasives, "Id", "LookupDescription"), new { @class = "form-control" })
+            <div class="col-md-6">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.VascularInvasionId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.VascularInvasionId, new SelectList(Model.VascularInvasions, "Id", "LookupDescription"), new { @class = "form-control" })
 
 
- 
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvasiveTumourSize, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvasiveTumourSize, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvasiveTumourSize, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.WholeTumourSize, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.WholeTumourSize, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.WholeTumourSize, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.InvasiveGrade, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.InvasiveGrade, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.InvasiveGrade, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DCISGradeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DCISGradeId, new SelectList(Model.DCISGrades, "Id", "LookupDescription"), new { @class = "form-control" })
-
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LymphNodes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LymphNodes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LymphNodes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LN2, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LN2, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LN2, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.VascularInvasionId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.VascularInvasionId, new SelectList(Model.VascularInvasions, "Id", "LookupDescription"), new { @class = "form-control" })
-
-
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ERStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(m => m.ERStatus, new SelectList(new[]
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ERStatus, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(m => m.ERStatus, new SelectList(new[]
                 {
                     new SelectListItem { Value = null, Text = "Unknown" },
                     new SelectListItem { Value = "false", Text = "Negative" },
@@ -128,21 +132,21 @@
                 "Text"
                 ),
          new { @class = "form-control" })
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ERScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ERScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ERScore, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ERScore, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.ERScore, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ERScore, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PRStatus, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.DropDownListFor(m => m.PRStatus, new SelectList(new[]
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PRStatus, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(m => m.PRStatus, new SelectList(new[]
                 {
                     new SelectListItem { Value = null, Text = "Unknown" },
                     new SelectListItem { Value = "false", Text = "Negative" },
@@ -152,21 +156,21 @@
                 "Text"
                 ),
          new { @class = "form-control" })
-            </div>
-        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.PRScore, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.PRScore, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PRScore, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PRScore, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.PRScore, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PRScore, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HER2Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-               @Html.DropDownListFor(m => m.HER2Status, new SelectList(new[]
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HER2Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(m => m.HER2Status, new SelectList(new[]
                 {
                     new SelectListItem { Value = null, Text = "Unknown" },
                     new SelectListItem { Value = "false", Text = "Negative" },
@@ -176,30 +180,37 @@
                 "Text"
                 ),
          new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HER2Score, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.HER2Score, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HER2Score, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KISixtySeven, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KISixtySeven, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KISixtySeven, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.HER2Score, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.HER2Score, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.HER2Score, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.KISixtySeven, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.KISixtySeven, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.KISixtySeven, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
 }
 

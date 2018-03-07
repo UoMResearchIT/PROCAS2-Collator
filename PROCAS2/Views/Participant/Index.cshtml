@@ -51,7 +51,14 @@
                                 @Html.DisplayFor(modelItem => item.NHSNumber)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.DateFirstAppointment)
+                                @if (item.DateFirstAppointment.HasValue == true)
+                                {
+                                    <span>@item.DateFirstAppointment.Value.ToString("dd/MM/yyyy")</span>
+                                }
+                                else
+                                {
+                                    <span>Unknown</span>
+                                }
                             </td>
                             <td class="actionList">
 

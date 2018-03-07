@@ -70,11 +70,29 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please create the Histology record header before entering focus records..
+        /// </summary>
+        public static string CREATE_HEADER_PLEASE {
+            get {
+                return ResourceManager.GetString("CREATE_HEADER_PLEASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DCIS Only Grade.
         /// </summary>
         public static string DCIS_GRADE {
             get {
                 return ResourceManager.GetString("DCIS_GRADE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        public static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
             }
         }
         
