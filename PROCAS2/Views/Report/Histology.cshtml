@@ -1,0 +1,38 @@
+﻿@model PROCAS2.Models.ViewModels.Reports.HistologyViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Histology";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+<script src="@Url.Content("~/js/reports.js")"></script>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@ReportResources.HISTOLOGY</h4>
+        <hr />
+        <p>@ReportResources.HISTOLOGY_SUMMARY </p>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Submit" id="btnSubmit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@Html.Partial("_ReportSpinner")

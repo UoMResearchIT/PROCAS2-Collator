@@ -17,14 +17,17 @@ using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Services.App
 {
-    public class ReportService:IReportService
+    public class ReportService : IReportService
     {
 
         private IGenericRepository<Participant> _participantRepo;
+        private IGenericRepository<Histology> _histologyRepo;
 
-        public ReportService(IGenericRepository<Participant> participantRepo)
+        public ReportService(IGenericRepository<Participant> participantRepo,
+                IGenericRepository<Histology> histologyRepo)
         {
             _participantRepo = participantRepo;
+            _histologyRepo = histologyRepo;
         }
 
 
@@ -59,7 +62,7 @@ namespace PROCAS2.Services.App
         /// <param name="sheetName">Title of the sheet</param>
         /// <param name="sheetId">External ID of sheet</param>
         /// <returns>ID of the sheet</returns>
-        private string AddSheet (WorkbookPart wbPart, string sheetName, uint sheetId)
+        private string AddSheet(WorkbookPart wbPart, string sheetName, uint sheetId)
         {
             WorksheetPart worksheetPart = null;
             worksheetPart = wbPart.AddNewPart<WorksheetPart>();
@@ -108,8 +111,8 @@ namespace PROCAS2.Services.App
         /// <param name="beforeCols">Column headers to add before main list of properties (e.g. an ID etc)</param>
         /// <param name="afterCols">Column headers to add after main list of properties</param>
         /// <param name="onlyCols">Columns to include (will only have these columns if not null)</param>
-        private void AddHeaderFromProperties(Worksheet activeWorksheet, System.Type type, int rowindex, 
-                                            List<string> beforeCols = null, 
+        private void AddHeaderFromProperties(Worksheet activeWorksheet, System.Type type, int rowindex,
+                                            List<string> beforeCols = null,
                                             List<string> afterCols = null,
                                             List<string> onlyCols = null)
         {
@@ -140,7 +143,7 @@ namespace PROCAS2.Services.App
                 }
             }
 
-            if(afterCols != null)
+            if (afterCols != null)
             {
                 foreach (string col in afterCols)
                 {
@@ -161,8 +164,8 @@ namespace PROCAS2.Services.App
         /// <param name="beforeCols">Column data to add before main list of properties (e.g. an ID etc)</param>
         /// <param name="afterCols">Column data to add after main list of properties</param>
         /// <param name="onlyCols">Columns to include (will only have these columns if not null)</param>
-        private void AddLineFromProperties(Worksheet activeWorksheet, object data, System.Type type, int rowindex, 
-                                            List<string> beforeCols = null, 
+        private void AddLineFromProperties(Worksheet activeWorksheet, object data, System.Type type, int rowindex,
+                                            List<string> beforeCols = null,
                                             List<string> afterCols = null,
                                             List<string> onlyCols = null)
         {
@@ -171,7 +174,7 @@ namespace PROCAS2.Services.App
 
             if (beforeCols != null)
             {
-                foreach(string col in beforeCols)
+                foreach (string col in beforeCols)
                 {
                     lineRow.AppendChild(AddCellWithText(col));
                 }
@@ -224,14 +227,14 @@ namespace PROCAS2.Services.App
                 // Add participant header
                 string mainSheetId = AddSheet(wbPart, "Main", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols:new List<string>() { "Site" });
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols: new List<string>() { "Site" });
 
                 // Add address header
                 string addressSheetId = AddSheet(wbPart, "Addresses", 2);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Address), 1, 
-                                            beforeCols:new List<string>() {"NHSNumber" }, 
-                                            afterCols:new List<string>() { "Type" });
+                AddHeaderFromProperties(workingSheet, typeof(Address), 1,
+                                            beforeCols: new List<string>() { "NHSNumber" },
+                                            afterCols: new List<string>() { "Type" });
 
                 // Add Volpara header
                 string volparaSheetId = AddSheet(wbPart, "Volpara", 3);
@@ -252,12 +255,24 @@ namespace PROCAS2.Services.App
                 string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 6);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponseItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" },
-                                                                                            afterCols: new List<string>() { "QuestionText"});
+                                                                                            afterCols: new List<string>() { "QuestionText" });
 
                 // Add family history header
                 string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 7);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
+                // Add Histology header
+                string histologySheetId = AddSheet(wbPart, "Histology", 8);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore" },
+                                                                            afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
+
+                // Add Histology focus header
+                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 9);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
+                                                                            afterCols: new List<string>() { "Pathology", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStage" });
 
                 int parIndex = 2;
                 int addressIndex = 2;
@@ -266,9 +281,11 @@ namespace PROCAS2.Services.App
                 int surveyIndex = 2;
                 int surveyItemIndex = 2;
                 int familyHistoryIndex = 2;
+                int histIndex = 2;
+                int histFocusIndex = 2;
 
-                
-                foreach (string NHSNumber in NHSNumbers.OrderBy(x => x)) 
+
+                foreach (string NHSNumber in NHSNumbers.OrderBy(x => x))
                 {
                     // Add participant details
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
@@ -279,9 +296,9 @@ namespace PROCAS2.Services.App
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
                     foreach (Address address in participant.Addresses)
                     {
-                        AddLineFromProperties(workingSheet, address, typeof(Address), addressIndex, 
+                        AddLineFromProperties(workingSheet, address, typeof(Address), addressIndex,
                                             beforeCols: new List<string>() { participant.NHSNumber },
-                                            afterCols: new List<string>() { address.AddressType.Name});
+                                            afterCols: new List<string>() { address.AddressType.Name });
                         addressIndex++;
                     }
 
@@ -314,7 +331,7 @@ namespace PROCAS2.Services.App
                     }
 
                     // Add survey item and famnily history details
-                    
+
                     foreach (QuestionnaireResponse response in participant.QuestionnaireResponses)
                     {
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
@@ -322,7 +339,7 @@ namespace PROCAS2.Services.App
                         {
                             AddLineFromProperties(workingSheet, item, typeof(QuestionnaireResponseItem), surveyItemIndex,
                                                 beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() },
-                                                afterCols: new List<string>() { item.Question.Text});
+                                                afterCols: new List<string>() { item.Question.Text });
                             surveyItemIndex++;
                         }
 
@@ -335,10 +352,31 @@ namespace PROCAS2.Services.App
                         }
                     }
 
+                    // Add histology details
+
+                    foreach (Histology hist in participant.Histologies)
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                        AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
+                                            beforeCols: new List<string>() { participant.NHSNumber, participant.DateOfBirth.ToString(), participant.BMI.ToString(), participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString() },
+                                            afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
+                        histIndex++;
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                        foreach (HistologyFocus item in hist.HistologyFoci)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
+                                                beforeCols: new List<string>() { participant.NHSNumber, hist.Id.ToString() },
+                                                afterCols: new List<string>() { item.Pathology.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStage.LookupDescription });
+                            histFocusIndex++;
+                        }
+
+                    }
+
 
                     parIndex++;
                 }
-               
+
 
                 wbPart.Workbook.Save();
             }
@@ -348,6 +386,60 @@ namespace PROCAS2.Services.App
 
         }
 
-    
+        /// <summary>
+        /// Produce the histology report
+        /// </summary>
+        /// <returns>A stream containing the report</returns>
+        public MemoryStream Histology()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add Histology header
+                string histologySheetId = AddSheet(wbPart, "Histology", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore" },
+                                                                            afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
+
+                // Add Histology focus header
+                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus",2);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
+                                                                            afterCols: new List<string>() { "Pathology", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStage" });
+
+                int histIndex = 2;
+                int histFocusIndex = 2;
+
+                // Add histology details
+                List<Histology> hists = _histologyRepo.GetAll().ToList();
+                foreach (Histology hist in hists)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
+                                        beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Participant.DateOfBirth.ToString(), hist.Participant.BMI.ToString(), hist.Participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString() },
+                                        afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
+                    histIndex++;
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                    foreach (HistologyFocus item in hist.HistologyFoci)
+                    {
+                        AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
+                                            beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Id.ToString() },
+                                            afterCols: new List<string>() { item.Pathology.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStage.LookupDescription });
+                        histFocusIndex++;
+                    }
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
     }
 }

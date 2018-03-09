@@ -120,6 +120,12 @@
   <data name="GENERATING_REPORT" xml:space="preserve">
     <value>Generating Report</value>
   </data>
+  <data name="HISTOLOGY" xml:space="preserve">
+    <value>Histology</value>
+  </data>
+  <data name="HISTOLOGY_SUMMARY" xml:space="preserve">
+    <value>This report will show all histology records in the database.</value>
+  </data>
   <data name="INDEX_TITLE" xml:space="preserve">
     <value>Reports</value>
   </data>

@@ -70,6 +70,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Histology.
+        /// </summary>
+        public static string HISTOLOGY {
+            get {
+                return ResourceManager.GetString("HISTOLOGY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show all histology records in the database..
+        /// </summary>
+        public static string HISTOLOGY_SUMMARY {
+            get {
+                return ResourceManager.GetString("HISTOLOGY_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
         public static string INDEX_TITLE {

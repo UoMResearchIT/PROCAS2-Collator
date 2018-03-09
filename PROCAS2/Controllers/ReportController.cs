@@ -76,7 +76,7 @@ namespace PROCAS2.Controllers
                 string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/PatientDetails"));
                 HttpContext.Response.AppendHeader("Refresh", headerValue);
 
-                //TODO: set the sent risk flag
+               
 
                 return new SpreadsheetResult(mStream, "PatientDetails");
 
@@ -88,6 +88,56 @@ namespace PROCAS2.Controllers
 
 
         }
+
+
+        [HttpGet]
+        public ActionResult Histology()
+        {
+            HistologyViewModel model = new HistologyViewModel();
+
+            return View("Histology", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Histology(HistologyViewModel model)
+        {
+            if (ModelState.IsValid == true)
+            {
+
+               
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
+
+                MemoryStream mStream = _reportService.Histology();
+
+                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/Histology"));
+                HttpContext.Response.AppendHeader("Refresh", headerValue);
+
+
+
+                return new SpreadsheetResult(mStream, "Histology");
+
+
+            }
+            else
+                return View("PatientDetails", model);
+
+
+
+        }
+
 
         public string PrependSchemeAndAuthority(string url)
         {

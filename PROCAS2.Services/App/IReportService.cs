@@ -11,5 +11,6 @@ namespace PROCAS2.Services.App
     public interface IReportService
     {
         MemoryStream PatientReport(List<string> NHSNumber);
+        MemoryStream Histology();
     }
 }
