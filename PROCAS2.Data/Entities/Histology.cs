@@ -13,14 +13,16 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
         public int ParticipantId { get; set; }
-       
 
-        
+
+        public int PrimaryNumber { get; set; }
 
         [ForeignKey("DiagnosisType")]
         public int? DiagnosisTypeId { get; set; }
 
         public DateTime? DiagnosisDate { get; set; }
+
+        public DateTime? MammogramDate { get; set; }
 
         [ForeignKey("DiagnosisSide")]
         public int? DiagnosisSideId { get; set; }

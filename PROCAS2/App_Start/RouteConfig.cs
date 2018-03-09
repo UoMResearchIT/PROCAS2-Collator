@@ -34,9 +34,21 @@ namespace PROCAS2
 
             routes.MapRoute(
                name: "HistologyEdit",
-               url: "Histology/Edit/{participantId}",
-               defaults: new { controller = "Histology", action = "Edit", participantId = "" }
+               url: "Histology/Edit/{participantId}/{primary}",
+               defaults: new { controller = "Histology", action = "Edit", participantId = "", primary = 0 }
            );
+
+            routes.MapRoute(
+              name: "HistologyDelete",
+              url: "Histology/Delete/{NHSNumber}/{primary}",
+              defaults: new { controller = "Histology", action = "Delete", NHSNumber = "", primary = 0 }
+          );
+
+            routes.MapRoute(
+              name: "HistologyFocusDelete",
+              url: "Histology/DeleteFocus/{focusId}",
+              defaults: new { controller = "Histology", action = "DeleteFocus", focusId = 0 }
+          );
 
             routes.MapRoute(
              name: "HistologyFocusEdit",

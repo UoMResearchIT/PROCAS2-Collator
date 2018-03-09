@@ -130,6 +130,17 @@ select
   overflow-y:scroll;
 }
 
+.histViewPanel {
+  height: 400px; 
+  overflow-y:scroll;
+  overflow-x:scroll;
+  border-radius:5px;
+}
+
+.histViewPanelHeader{
+    padding: 5px 5px 5px 5px;
+}
+
 
 .gpModal{
     margin: 10px 10px 10px 10px;

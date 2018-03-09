@@ -11,12 +11,13 @@ namespace PROCAS2.Services.App
 {
     public interface IHistologyService
     {
-        HistologyEditViewModel FillEditViewModel(string NHSnumber);
+        HistologyEditViewModel FillEditViewModel(string NHSnumber, int primary);
         List<HistologyLookup> GetLookups(string lookupType);
         int SaveHeader(HistologyEditViewModel model);
         HistologyFocusViewModel FillEditFocusViewModel(string NHSnumber, int headerId, int primary, int focusId);
         int SaveFocus(HistologyFocusViewModel model);
 
-        bool DeleteHistology(string NHSNumber);
+        bool DeleteHistology(string NHSNumber, int primary);
+        bool DeleteHistologyFocus(int focusId);
     }
 }

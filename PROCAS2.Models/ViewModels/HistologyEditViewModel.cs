@@ -21,12 +21,16 @@ namespace PROCAS2.Models.ViewModels
         }
 
         public string NHSNumber { get; set; }
+        public int PrimaryNumber { get; set; }
 
         [Display(Name ="DIAGNOSIS_TYPE", ResourceType =typeof(HistologyResources))]
         public int? DiagnosisTypeId { get; set; }
 
         [Display(Name = "DIAGNOSIS_DATE", ResourceType = typeof(HistologyResources))]
         public DateTime? DiagnosisDate { get; set; }
+
+        [Display(Name = "MAMMOGRAM_DATE", ResourceType = typeof(HistologyResources))]
+        public DateTime? MammogramDate { get; set; }
 
         [Display(Name = "DIAGNOSIS_SIDE", ResourceType = typeof(HistologyResources))]
         public int? DiagnosisSideId { get; set; }

@@ -38,18 +38,21 @@ namespace PROCAS2.Services.App
         /// Find any histology record associated with this patient and return it in the view model for editing
         /// </summary>
         /// <param name="NHSnumber">NHS number of patient</param>
+        /// <param name="primary">1 = First Primary, 2 = Second Primary</param>
         /// <returns>Viewmodel (blank fields if no info found)</returns>
-        public HistologyEditViewModel FillEditViewModel(string NHSnumber)
+        public HistologyEditViewModel FillEditViewModel(string NHSnumber, int primary)
         {
             HistologyEditViewModel model = new HistologyEditViewModel();
 
             model.NHSNumber = NHSnumber;
+            model.PrimaryNumber = primary;
 
-            Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == NHSnumber).FirstOrDefault();
+            Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == NHSnumber && x.PrimaryNumber == primary).FirstOrDefault();
             if (hist != null)
             {
                 model.Comments = hist.Comments;
                 model.DiagnosisDate = hist.DiagnosisDate;
+                model.MammogramDate = hist.MammogramDate;
                 model.DiagnosisMultiFocal = hist.DiagnosisMultiFocal;
                 model.DiagnosisSideId = hist.DiagnosisSideId;
                 model.DiagnosisTypeId = hist.DiagnosisTypeId;
@@ -87,15 +90,17 @@ namespace PROCAS2.Services.App
             try
             {
                 bool newRecord = false;
-                Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber).FirstOrDefault();
+                Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.PrimaryNumber == model.PrimaryNumber).FirstOrDefault();
                 if (hist == null)
                 {
                     hist = new Histology();
                     newRecord = true;
                 }
 
+                hist.PrimaryNumber = model.PrimaryNumber;
                 hist.Comments = model.Comments;
                 hist.DiagnosisDate = model.DiagnosisDate;
+                hist.MammogramDate = model.MammogramDate;
                 hist.DiagnosisMultiFocal = model.DiagnosisMultiFocal;
                 hist.DiagnosisSide = _histologyLookupRepo.GetAll().Where(x => x.Id == model.DiagnosisSideId).FirstOrDefault();
                 hist.DiagnosisType = _histologyLookupRepo.GetAll().Where(x => x.Id == model.DiagnosisTypeId).FirstOrDefault();
@@ -126,7 +131,6 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="NHSnumber">NHSnumber of participant</param>
         /// <param name="headerId">Histology header ID</param>
-        /// <param name="primary">1 = First Primary, 2 = Second Primary</param>
         /// <param name="focusId">ID of focus record (0 if new)</param>
         /// <returns>The view model</returns>
         public HistologyFocusViewModel FillEditFocusViewModel(string NHSnumber, int headerId, int primary, int focusId)
@@ -143,21 +147,20 @@ namespace PROCAS2.Services.App
             {
                 model.DCISGradeId = focus.DCISGradeId;
                 model.ERScore = focus.ERScore;
-                model.ERStatus = focus.ERStatus;
+                
                 model.FocusNumber = focus.FocusNumber;
-                model.HER2Score = focus.HER2Score;
-                model.HER2Status = focus.HER2Status;
+                model.HER2ScoreId = focus.HER2ScoreId;
                 model.InvasiveGrade = focus.InvasiveGrade;
                 model.InvasiveId = focus.InvasiveId;
                 model.InvasiveTumourSize = focus.InvasiveTumourSize;
                 model.KISixtySeven = focus.KISixtySeven;
-                model.LN2 = focus.LN2;
-                model.LymphNodes = focus.LymphNodes;
+                model.LymphNodesPositive = focus.LymphNodesPositive;
+                model.LymphNodesRemoved = focus.LymphNodesRemoved;
                 model.PathologyId = focus.PathologyId;
                 model.PRScore = focus.PRScore;
-                model.PRStatus = focus.PRStatus;
                 model.VascularInvasionId = focus.VascularInvasionId;
                 model.WholeTumourSize = focus.WholeTumourSize;
+                model.TNMStageId = focus.TNMStageId;
             }
 
 
@@ -165,6 +168,8 @@ namespace PROCAS2.Services.App
             model.Invasives = GetLookups("INVASIVE");
             model.Pathologies = GetLookups("PATH");
             model.VascularInvasions = GetLookups("VASCULAR");
+            model.HER2Scores = GetLookups("HER2");
+            model.TNMStages = GetLookups("TNM");
 
 
             return model;
@@ -192,20 +197,20 @@ namespace PROCAS2.Services.App
                 focus.Histology = _histologyRepo.GetAll().Where(x => x.Id == model.HistologyId).FirstOrDefault();
                 focus.DCISGrade = _histologyLookupRepo.GetAll().Where(x => x.Id == model.DCISGradeId).FirstOrDefault();
                 focus.ERScore = model.ERScore;
-                focus.ERStatus = model.ERStatus;
+                
                 focus.FocusNumber = model.FocusNumber;
-                focus.HER2Score = model.HER2Score;
-                focus.HER2Status = model.HER2Status;
+                focus.HER2Score = _histologyLookupRepo.GetAll().Where(x => x.Id == model.HER2ScoreId).FirstOrDefault(); ;
+               
                 focus.Invasive = _histologyLookupRepo.GetAll().Where(x => x.Id == model.InvasiveId).FirstOrDefault();
                 focus.InvasiveGrade = model.InvasiveGrade;
                 focus.InvasiveTumourSize = model.InvasiveTumourSize;
                 focus.KISixtySeven = model.KISixtySeven;
-                focus.LN2 = model.LN2;
-                focus.LymphNodes = model.LymphNodes;
+                focus.LymphNodesPositive = model.LymphNodesPositive;
+                focus.LymphNodesRemoved = model.LymphNodesRemoved;
                 focus.Pathology = _histologyLookupRepo.GetAll().Where(x => x.Id == model.PathologyId).FirstOrDefault();
-                focus.PrimaryNumber = model.PrimaryNumber;
+                
                 focus.PRScore = model.PRScore;
-                focus.PRStatus = model.PRStatus;
+                focus.TNMStage = _histologyLookupRepo.GetAll().Where(x => x.Id == model.TNMStageId).FirstOrDefault();
                 focus.VascularInvasion = _histologyLookupRepo.GetAll().Where(x => x.Id == model.VascularInvasionId).FirstOrDefault();
                 focus.WholeTumourSize = model.WholeTumourSize;
 
@@ -235,11 +240,11 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="NHSNumber">NHS number of patient</param>
         /// <returns>true if successful, else false</returns>
-        public bool DeleteHistology(string NHSNumber)
+        public bool DeleteHistology(string NHSNumber, int primary)
         {
             try
             {
-                Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == NHSNumber).FirstOrDefault();
+                Histology hist = _histologyRepo.GetAll().Where(x => x.Participant.NHSNumber == NHSNumber && x.PrimaryNumber == primary).FirstOrDefault();
 
                 if (hist != null)
                 {
@@ -251,6 +256,31 @@ namespace PROCAS2.Services.App
                     }
 
                     _histologyRepo.Delete(hist);
+                    _unitOfWork.Save();
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
+        /// Delete the focus record of the passed ID.
+        /// </summary>
+        /// <param name="focusId"></param>
+        /// <returns>true if deleted, else false</returns>
+        public bool DeleteHistologyFocus(int focusId)
+        {
+            try
+            {
+                HistologyFocus focus = _histologyFocusRepo.GetAll().Where(x => x.Id == focusId).FirstOrDefault();
+                if (focus != null)
+                {
+                    _histologyFocusRepo.Delete(focus);
                     _unitOfWork.Save();
                 }
             }

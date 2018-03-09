@@ -186,6 +186,15 @@
   <data name="LYMPH_NODES" xml:space="preserve">
     <value>Lymph Nodes</value>
   </data>
+  <data name="LYMPH_NODES_POSITIVE" xml:space="preserve">
+    <value>Lymph Nodes Positive</value>
+  </data>
+  <data name="LYMPH_NODES_REMOVED" xml:space="preserve">
+    <value>Lymph Nodes Removed</value>
+  </data>
+  <data name="MAMMOGRAM_DATE" xml:space="preserve">
+    <value>Mammogram Date</value>
+  </data>
   <data name="PATHOLOGY" xml:space="preserve">
     <value>Pathology</value>
   </data>
@@ -197,6 +206,9 @@
   </data>
   <data name="SECOND_PRIMARY" xml:space="preserve">
     <value>Second Primary Breast Cancer Histology</value>
+  </data>
+  <data name="TNM_STAGE" xml:space="preserve">
+    <value>TNM Stage</value>
   </data>
   <data name="VASCULAR_INVASION" xml:space="preserve">
     <value>Vascular Invasion</value>

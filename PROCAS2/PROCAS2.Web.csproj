@@ -443,6 +443,7 @@
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
     <Content Include="js\histologyEdit.js" />
+    <Content Include="js\histologyFocusEdit.js" />
     <Content Include="js\histologyList.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="Properties\webjobs-list.json" />

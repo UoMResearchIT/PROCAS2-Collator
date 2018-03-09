@@ -964,7 +964,8 @@ namespace PROCAS2.Services.App
                         _unitOfWork.Save();
                     }
 
-                    _histologyService.DeleteHistology(id);
+                    _histologyService.DeleteHistology(id, 1);
+                    _histologyService.DeleteHistology(id, 2);
                     // TODO: delete other records too!
 
                     participant.LastEvent = pEvent;

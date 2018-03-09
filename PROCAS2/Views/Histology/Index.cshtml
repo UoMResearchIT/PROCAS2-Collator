@@ -65,7 +65,9 @@
 
                                
 
-                                @Html.ActionLink( "Edit Histology", "Edit", new { participantId = item.NHSNumber }, new { @class = "btn btn-danger pull-right" })
+                                @Html.ActionLink("Second Primary", "Edit", new { participantId = item.NHSNumber, primary = 2 }, new { @class = "btn btn-danger pull-right" })
+
+                                @Html.ActionLink("First Primary", "Edit", new { participantId = item.NHSNumber, primary = 1 }, new { @class = "btn btn-danger pull-right" })
 
 
                             </td>

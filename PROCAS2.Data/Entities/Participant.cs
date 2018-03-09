@@ -64,6 +64,8 @@ namespace PROCAS2.Data.Entities
 
         public bool Consented { get; set; }
 
+        public DateTime? DateConsented { get; set; }
+
         public bool MailingList { get; set; }
 
         public bool Deleted { get; set; }

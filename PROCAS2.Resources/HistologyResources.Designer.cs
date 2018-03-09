@@ -268,6 +268,33 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lymph Nodes Positive.
+        /// </summary>
+        public static string LYMPH_NODES_POSITIVE {
+            get {
+                return ResourceManager.GetString("LYMPH_NODES_POSITIVE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lymph Nodes Removed.
+        /// </summary>
+        public static string LYMPH_NODES_REMOVED {
+            get {
+                return ResourceManager.GetString("LYMPH_NODES_REMOVED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mammogram Date.
+        /// </summary>
+        public static string MAMMOGRAM_DATE {
+            get {
+                return ResourceManager.GetString("MAMMOGRAM_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pathology.
         /// </summary>
         public static string PATHOLOGY {
@@ -300,6 +327,15 @@ namespace PROCAS2.Resources {
         public static string SECOND_PRIMARY {
             get {
                 return ResourceManager.GetString("SECOND_PRIMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TNM Stage.
+        /// </summary>
+        public static string TNM_STAGE {
+            get {
+                return ResourceManager.GetString("TNM_STAGE", resourceCulture);
             }
         }
         

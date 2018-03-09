@@ -5,13 +5,25 @@
     ViewBag.Title = "Focus";
 }
 
+<script src="~/js/histologyFocusEdit.js" type="text/javascript"></script>
+
 <div class="row">
-    <div class="col-md-12">
-        <h4>@HistologyResources.FOCUS - @(Model.PrimaryNumber == 1 ? @HistologyResources.FIRST_PRIMARY : @HistologyResources.SECOND_PRIMARY)</h4>
+    <div class="col-md-10">
+        <h4>@HistologyResources.FOCUS </h4>
 
     </div>
 
+    <div class="col-md-2">
+        @using (Ajax.BeginForm("DeleteFocus", "Histology", new { focusId = Model.Id }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "onDeleteSuccess" }, new { id = "frmDelete" }))
+        {
+            @Html.AntiForgeryToken()
+            <button type="button" id="btnDelete" class="btn btn-danger pull-right">
+                @HistologyResources.DELETE
+            </button>
 
+        }
+
+    </div>
 
 </div>
 <hr />
@@ -94,18 +106,18 @@
 
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LymphNodes, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.LymphNodesRemoved, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.LymphNodes, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LymphNodes, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.LymphNodesRemoved, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LymphNodesRemoved, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.LN2, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.LymphNodesPositive, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.LN2, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LN2, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.LymphNodesPositive, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LymphNodesPositive, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
@@ -119,21 +131,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ERStatus, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.DropDownListFor(m => m.ERStatus, new SelectList(new[]
-                {
-                    new SelectListItem { Value = null, Text = "Unknown" },
-                    new SelectListItem { Value = "false", Text = "Negative" },
-                    new SelectListItem { Value = "true", Text = "Positive" },
-                },
-                "Value",
-                "Text"
-                ),
-         new { @class = "form-control" })
-                    </div>
-                </div>
+               
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.ERScore, htmlAttributes: new { @class = "control-label col-md-4" })
@@ -143,21 +141,7 @@
                     </div>
                 </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.PRStatus, htmlAttributes: new { @class = "control-label col-md-4" })
-                    <div class="col-md-8">
-                        @Html.DropDownListFor(m => m.PRStatus, new SelectList(new[]
-                {
-                    new SelectListItem { Value = null, Text = "Unknown" },
-                    new SelectListItem { Value = "false", Text = "Negative" },
-                    new SelectListItem { Value = "true", Text = "Positive" },
-                },
-                "Value",
-                "Text"
-                ),
-         new { @class = "form-control" })
-                    </div>
-                </div>
+                
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.PRScore, htmlAttributes: new { @class = "control-label col-md-4" })
@@ -167,27 +151,19 @@
                     </div>
                 </div>
 
+               
+
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HER2Status, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.HER2ScoreId, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownListFor(m => m.HER2Status, new SelectList(new[]
-                {
-                    new SelectListItem { Value = null, Text = "Unknown" },
-                    new SelectListItem { Value = "false", Text = "Negative" },
-                    new SelectListItem { Value = "true", Text = "Positive" },
-                },
-                "Value",
-                "Text"
-                ),
-         new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.HER2ScoreId, new SelectList(Model.HER2Scores, "Id", "LookupDescription"), new { @class = "form-control" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.HER2Score, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.TNMStageId, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.EditorFor(model => model.HER2Score, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.HER2Score, "", new { @class = "text-danger" })
+                        @Html.DropDownListFor(model => model.TNMStageId, new SelectList(Model.TNMStages, "Id", "LookupDescription"), new { @class = "form-control" })
                     </div>
                 </div>
 
