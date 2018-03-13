@@ -265,7 +265,7 @@ namespace PROCAS2.Services.App
                 // Add Histology header
                 string histologySheetId = AddSheet(wbPart, "Histology", 8);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore" },
+                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
                                                                             afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
 
                 // Add Histology focus header
@@ -358,7 +358,7 @@ namespace PROCAS2.Services.App
                     {
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
                         AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
-                                            beforeCols: new List<string>() { participant.NHSNumber, participant.DateOfBirth.ToString(), participant.BMI.ToString(), participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString() },
+                                            beforeCols: new List<string>() { participant.NHSNumber, participant.DateOfBirth.ToString(), participant.BMI.ToString(), participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString(), hist.Id.ToString() },
                                             afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
                         histIndex++;
 
@@ -403,7 +403,7 @@ namespace PROCAS2.Services.App
                 // Add Histology header
                 string histologySheetId = AddSheet(wbPart, "Histology", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore" },
+                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
                                                                             afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
 
                 // Add Histology focus header
@@ -421,7 +421,7 @@ namespace PROCAS2.Services.App
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
                     AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
-                                        beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Participant.DateOfBirth.ToString(), hist.Participant.BMI.ToString(), hist.Participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString() },
+                                        beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Participant.DateOfBirth.ToString(), hist.Participant.BMI.ToString(), hist.Participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString(), hist.Id.ToString() },
                                         afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
                     histIndex++;
 

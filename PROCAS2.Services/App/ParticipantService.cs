@@ -136,10 +136,17 @@ namespace PROCAS2.Services.App
                         string[] lineBits = line.Split(',');
 
 
-                        string hash = CreateNewParticipantRecord(lineBits[0]);
+                        string hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]));
 
                         // First put in the NHSNumber.
                         csv.WriteField(lineBits[0]);
+
+                        // Then DOB
+                        csv.WriteField(lineBits[1]);
+
+                        // Then date of first appointment
+                        csv.WriteField(lineBits[2]);
+
                         // Then the hash
                         csv.WriteField(hash);
                         csv.NextRecord();
@@ -314,7 +321,7 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="NHSNumber">NHS number</param>
         /// <returns>Hashed NHS number</returns>
-        private string CreateNewParticipantRecord(string NHSNumber)
+        private string CreateNewParticipantRecord(string NHSNumber, DateTime DOB, DateTime DOFA)
         {
             DateTime dateCreated = DateTime.Now;
 
@@ -323,6 +330,8 @@ namespace PROCAS2.Services.App
             string hash = _hashingService.CreateNHSHash(NHSNumber);
             participant.HashedNHSNumber = hash;
             participant.DateCreated = dateCreated;
+            participant.DateOfBirth = DOB;
+            participant.DateFirstAppointment = DOFA;
             _participantRepo.Insert(participant);
 
             _unitOfWork.Save();
@@ -357,10 +366,10 @@ namespace PROCAS2.Services.App
         {
             
             string[] lineBits = line.Split(',');
-            if (lineBits.Count() != _UPLOADNEWCOLUMNS) // Should only be 1 column
+            if (lineBits.Count() != _UPLOADNEWCOLUMNS) // Should only be 3 columns
             {
                 
-                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 1), UploadResources.UPLOAD_FAIL);
+                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 3), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
@@ -370,6 +379,46 @@ namespace PROCAS2.Services.App
             {
                
                 outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Date of Birth
+            if (String.IsNullOrEmpty(lineBits[1]) == true) // date of birth is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            DateTime DOB;
+            if (DateTime.TryParse(lineBits[1], out DOB) == false) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (DOB < _EARLIESTDOB || DOB > _LATESTDOB)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOB_OUT_OF_RANGE), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Date of first appointment
+            if (String.IsNullOrEmpty(lineBits[2]) == true) // date of first appointment is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_EMPTY), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            DateTime DOFA;
+            if (DateTime.TryParse(lineBits[2], out DOFA) == false) // check out the format
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_WRONG_FORMAT), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            if (DOFA < _EARLIESTDOFA || DOFA > _LATESTDOFA)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_OUT_OF_RANGE), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 
