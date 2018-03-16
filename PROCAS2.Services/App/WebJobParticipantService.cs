@@ -22,6 +22,7 @@ namespace PROCAS2.Services.App
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<AppUser> _appUserRepo;
         private IGenericRepository<RiskLetter> _riskLetterRepo;
+        private IAuditService _auditService;
 
 
         public WebJobParticipantService(IGenericRepository<Participant> participantRepo,
@@ -29,7 +30,8 @@ namespace PROCAS2.Services.App
                                         IGenericRepository<EventType> eventTypeRepo,
                                         IUnitOfWork unitOfWork,
                                         IGenericRepository<AppUser> appUserRepo,
-                                        IGenericRepository<RiskLetter> riskLetterRepo)
+                                        IGenericRepository<RiskLetter> riskLetterRepo,
+                                        IAuditService auditService)
         {
             _participantRepo = participantRepo;
             _eventRepo = eventRepo;
@@ -37,6 +39,7 @@ namespace PROCAS2.Services.App
             _unitOfWork = unitOfWork;
             _appUserRepo = appUserRepo;
             _riskLetterRepo = riskLetterRepo;
+            _auditService = auditService;
         }
 
         /// <summary>
@@ -81,22 +84,14 @@ namespace PROCAS2.Services.App
                 Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
+                    DateTime consentedDate = DateTime.Now;
                     participant.Consented = true;
+                    participant.DateConsented = consentedDate;
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
 
-                    ParticipantEvent pEvent = new ParticipantEvent();
-                    pEvent.Participant = participant;
-                    pEvent.EventDate = DateTime.Now;
-                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_CONSENT).FirstOrDefault();
-                    pEvent.Notes = EventResources.EVENT_CONSENT_STR;
-                    pEvent.AppUser = GetSystemUser(EventResources.CRA_AUTO_USER);
-                    _eventRepo.Insert(pEvent);
-                    _unitOfWork.Save();
+                    _auditService.AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), consentedDate, EventResources.EVENT_CONSENT, EventResources.EVENT_CONSENT_STR);
 
-                    participant.LastEvent = pEvent;
-                    _participantRepo.Update(participant);
-                    _unitOfWork.Save();
 
                 }
                 else
@@ -140,18 +135,8 @@ namespace PROCAS2.Services.App
                     _riskLetterRepo.Insert(letter);
                     _unitOfWork.Save();
 
-                    ParticipantEvent pEvent = new ParticipantEvent();
-                    pEvent.Participant = participant;
-                    pEvent.EventDate = DateTime.Now;
-                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_RISKLETTER).FirstOrDefault();
-                    pEvent.Notes = EventResources.EVENT_RISKLETTER_STR;
-                    pEvent.AppUser = GetSystemUser(EventResources.CRA_AUTO_USER);
-                    _eventRepo.Insert(pEvent);
-                    _unitOfWork.Save();
-
-                    participant.LastEvent = pEvent;
-                    _participantRepo.Update(participant);
-                    _unitOfWork.Save();
+                    _auditService.AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), DateTime.Now, EventResources.EVENT_RISKLETTER, EventResources.EVENT_RISKLETTER_STR);
+ 
                 }
                 else
                 {

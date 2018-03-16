@@ -32,6 +32,7 @@ namespace PROCAS2.Services.App
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
         private IConfigService _configService;
+        private IAuditService _auditService;
 
         private IHistologyService _histologyService;
        
@@ -57,7 +58,8 @@ namespace PROCAS2.Services.App
                                 IGenericRepository<RiskLetter> riskLetterRepo,
                                 IGenericRepository<ScreeningRecordV1_5_4> screeningRepo,
                                 IGenericRepository<Image> imageRepo,
-                                IHistologyService histologyService)
+                                IHistologyService histologyService,
+                                IAuditService auditService)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -73,6 +75,7 @@ namespace PROCAS2.Services.App
             _screeningRepo = screeningRepo;
             _imageRepo = imageRepo;
             _histologyService = histologyService;
+            _auditService = auditService;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -232,22 +235,9 @@ namespace PROCAS2.Services.App
                         _participantRepo.Update(participant);
                         _unitOfWork.Save();
 
+                        _auditService.AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_ASK_RISK, EventResources.EVENT_ASK_RISK_STR);
                         
-                        ParticipantEvent pEvent = new ParticipantEvent();
-                        pEvent.AppUser = _userManager.GetCurrentUser();
-                        pEvent.EventDate = DateTime.Now;
-                        pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_ASK_RISK).FirstOrDefault();
-                        pEvent.Notes = EventResources.EVENT_ASK_RISK_STR;
-                        pEvent.Participant = participant;
-
-                        _eventRepo.Insert(pEvent);
-                        _unitOfWork.Save();
-
-
-                        participant.LastEvent = pEvent;
-                        _participantRepo.Update(participant);
-
-                        _unitOfWork.Save();
+                        
 
                     }
                 }
@@ -336,21 +326,8 @@ namespace PROCAS2.Services.App
 
             _unitOfWork.Save();
 
-            ParticipantEvent pEvent = new ParticipantEvent();
-            pEvent.AppUser = _userManager.GetCurrentUser();
-            pEvent.EventDate = dateCreated;
-            pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_CREATED).FirstOrDefault();
-            pEvent.Notes = EventResources.EVENT_CREATED_STR;
-            pEvent.Participant = participant;
+            _auditService.AddEvent(participant, _userManager.GetCurrentUser(), dateCreated, EventResources.EVENT_CREATED, EventResources.EVENT_CREATED_STR);
 
-            _eventRepo.Insert(pEvent);
-            _unitOfWork.Save();
-
-
-            participant.LastEvent = pEvent;
-            _participantRepo.Update(participant);
-
-            _unitOfWork.Save();
 
             return hash;
         }
@@ -499,21 +476,7 @@ namespace PROCAS2.Services.App
                     _addressRepo.Insert(gpAddress);
                     _unitOfWork.Save();
 
-                    ParticipantEvent pEvent = new ParticipantEvent();
-                    pEvent.AppUser = _userManager.GetCurrentUser();
-                    pEvent.EventDate = DateTime.Now;
-                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_UPDATED).FirstOrDefault();
-                    pEvent.Notes = EventResources.EVENT_UPDATED_STR;
-                    pEvent.Participant = participant;
-
-                    _eventRepo.Insert(pEvent);
-                    _unitOfWork.Save();
-
-
-                    participant.LastEvent = pEvent;
-                    _participantRepo.Update(participant);
-
-                    _unitOfWork.Save();
+                    _auditService.AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_UPDATED, EventResources.EVENT_UPDATED_STR);
 
                 }
             }
@@ -863,36 +826,36 @@ namespace PROCAS2.Services.App
                 {
                     if (!String.IsNullOrEmpty(model.BMI))
                     {
-                        participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
+                        participant.BMI = _auditService.ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
                     }
                     else
                     {
-                        participant.BMI = ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, null, model.Reason);
+                        participant.BMI = _auditService.ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, null, model.Reason);
 
                     }
-                    participant.Chemoprevention = ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
-                    participant.Consented = ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
-                    participant.DateActualAppointment = ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
-                    participant.DateFirstAppointment = ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA, model.Reason);
-                    participant.DateOfBirth = ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB, model.Reason);
-                    participant.Deceased = ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased, model.Reason);
-                    participant.Diagnosed = ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed, model.Reason);
-                    participant.FHCReferral = ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral, model.Reason);
-                    participant.FirstName = ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName, model.Reason);
-                    participant.GPName = ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName, model.Reason);
-                    participant.LastName = ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName, model.Reason);
-                    participant.ScreeningNumber = ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber, model.Reason);
+                    participant.Chemoprevention = _auditService.ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
+                    participant.Consented = _auditService.ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
+                    participant.DateActualAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
+                    participant.DateFirstAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA, model.Reason);
+                    participant.DateOfBirth = _auditService.ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB, model.Reason);
+                    participant.Deceased = _auditService.ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased, model.Reason);
+                    participant.Diagnosed = _auditService.ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed, model.Reason);
+                    participant.FHCReferral = _auditService.ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral, model.Reason);
+                    participant.FirstName = _auditService.ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName, model.Reason);
+                    participant.GPName = _auditService.ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName, model.Reason);
+                    participant.LastName = _auditService.ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName, model.Reason);
+                    participant.ScreeningNumber = _auditService.ChangeEventString(participant, ParticipantResources.SCREENING_NUMBER, participant.ScreeningNumber, model.ScreeningNumber, model.Reason);
 
                     ScreeningSite newSite = _siteRepo.GetAll().Where(x => x.Code == model.ScreeningSite).FirstOrDefault();
-                    ChangeEventString(participant, ParticipantResources.SCREENING_SITE, participant.ScreeningSite.Code, newSite.Code, model.Reason);
+                    _auditService.ChangeEventString(participant, ParticipantResources.SCREENING_SITE, participant.ScreeningSite.Code, newSite.Code, model.Reason);
                     participant.ScreeningSite = newSite;
                     
-                    participant.SentRisk = ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk, model.Reason);
-                    participant.AttendedScreening = ChangeEventBool(participant, ParticipantResources.ATTENDED_SCREENING, participant.AttendedScreening, model.AttendedScreening, model.Reason);
-                    participant.Title = ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title, model.Reason);
-                    participant.Withdrawn = ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
-                    participant.MailingList = ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
-                    participant.AskForRiskLetter = ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
+                    participant.SentRisk = _auditService.ChangeEventBool(participant, ParticipantResources.SENT_RISK, participant.SentRisk, model.SentRisk, model.Reason);
+                    participant.AttendedScreening = _auditService.ChangeEventBool(participant, ParticipantResources.ATTENDED_SCREENING, participant.AttendedScreening, model.AttendedScreening, model.Reason);
+                    participant.Title = _auditService.ChangeEventString(participant, ParticipantResources.TITLE, participant.Title, model.Title, model.Reason);
+                    participant.Withdrawn = _auditService.ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
+                    participant.MailingList = _auditService.ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
+                    participant.AskForRiskLetter = _auditService.ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
 
 
                     _participantRepo.Update(participant);
@@ -901,12 +864,12 @@ namespace PROCAS2.Services.App
                     Address homeAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "HOME").FirstOrDefault();
                     if (homeAdd != null)
                     {
-                        homeAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.HOME_ADD_1, homeAdd.AddressLine1, model.HomeAddress1, model.Reason);
-                        homeAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.HOME_ADD_2, homeAdd.AddressLine2, model.HomeAddress2, model.Reason);
-                        homeAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.HOME_ADD_3, homeAdd.AddressLine3, model.HomeAddress3, model.Reason);
-                        homeAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.HOME_ADD_4, homeAdd.AddressLine4, model.HomeAddress4, model.Reason);
-                        homeAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.HOMEEMAIL, homeAdd.EmailAddress, model.HomeEmail, model.Reason);
-                        homeAdd.PostCode = ChangeEventString(participant, ParticipantResources.HOME_POSTCODE, homeAdd.PostCode, model.HomePostCode, model.Reason);
+                        homeAdd.AddressLine1 = _auditService.ChangeEventString(participant, ParticipantResources.HOME_ADD_1, homeAdd.AddressLine1, model.HomeAddress1, model.Reason);
+                        homeAdd.AddressLine2 = _auditService.ChangeEventString(participant, ParticipantResources.HOME_ADD_2, homeAdd.AddressLine2, model.HomeAddress2, model.Reason);
+                        homeAdd.AddressLine3 = _auditService.ChangeEventString(participant, ParticipantResources.HOME_ADD_3, homeAdd.AddressLine3, model.HomeAddress3, model.Reason);
+                        homeAdd.AddressLine4 = _auditService.ChangeEventString(participant, ParticipantResources.HOME_ADD_4, homeAdd.AddressLine4, model.HomeAddress4, model.Reason);
+                        homeAdd.EmailAddress = _auditService.ChangeEventString(participant, ParticipantResources.HOMEEMAIL, homeAdd.EmailAddress, model.HomeEmail, model.Reason);
+                        homeAdd.PostCode = _auditService.ChangeEventString(participant, ParticipantResources.HOME_POSTCODE, homeAdd.PostCode, model.HomePostCode, model.Reason);
                         _addressRepo.Update(homeAdd);
                         _unitOfWork.Save();
                     }
@@ -914,12 +877,12 @@ namespace PROCAS2.Services.App
                     Address gpAdd = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == model.NHSNumber && x.AddressType.Name == "GP").FirstOrDefault();
                     if (gpAdd != null)
                     {
-                        gpAdd.AddressLine1 = ChangeEventString(participant, ParticipantResources.GP_ADD_1, gpAdd.AddressLine1, model.GPAddress1, model.Reason);
-                        gpAdd.AddressLine2 = ChangeEventString(participant, ParticipantResources.GP_ADD_2, gpAdd.AddressLine2, model.GPAddress2, model.Reason);
-                        gpAdd.AddressLine3 = ChangeEventString(participant, ParticipantResources.GP_ADD_3, gpAdd.AddressLine3, model.GPAddress3, model.Reason);
-                        gpAdd.AddressLine4 = ChangeEventString(participant, ParticipantResources.GP_ADD_4, gpAdd.AddressLine4, model.GPAddress4, model.Reason);
-                        gpAdd.EmailAddress = ChangeEventString(participant, ParticipantResources.GP_EMAIL, gpAdd.EmailAddress, model.GPEmail, model.Reason);
-                        gpAdd.PostCode = ChangeEventString(participant, ParticipantResources.GP_POSTCODE, gpAdd.PostCode, model.GPPostCode, model.Reason);
+                        gpAdd.AddressLine1 = _auditService.ChangeEventString(participant, ParticipantResources.GP_ADD_1, gpAdd.AddressLine1, model.GPAddress1, model.Reason);
+                        gpAdd.AddressLine2 = _auditService.ChangeEventString(participant, ParticipantResources.GP_ADD_2, gpAdd.AddressLine2, model.GPAddress2, model.Reason);
+                        gpAdd.AddressLine3 = _auditService.ChangeEventString(participant, ParticipantResources.GP_ADD_3, gpAdd.AddressLine3, model.GPAddress3, model.Reason);
+                        gpAdd.AddressLine4 = _auditService.ChangeEventString(participant, ParticipantResources.GP_ADD_4, gpAdd.AddressLine4, model.GPAddress4, model.Reason);
+                        gpAdd.EmailAddress = _auditService.ChangeEventString(participant, ParticipantResources.GP_EMAIL, gpAdd.EmailAddress, model.GPEmail, model.Reason);
+                        gpAdd.PostCode = _auditService.ChangeEventString(participant, ParticipantResources.GP_POSTCODE, gpAdd.PostCode, model.GPPostCode, model.Reason);
                         _addressRepo.Update(gpAdd);
                         _unitOfWork.Save();
                     }
@@ -976,14 +939,8 @@ namespace PROCAS2.Services.App
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
 
-                    ParticipantEvent pEvent = new ParticipantEvent();
-                    pEvent.AppUser = _userManager.GetCurrentUser();
-                    pEvent.EventDate = DateTime.Now;
-                    pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_DELETED).FirstOrDefault();
-                    pEvent.Notes = EventResources.EVENT_DELETED_STR;
-                    pEvent.Participant = participant;
-                    _eventRepo.Insert(pEvent);
-                    _unitOfWork.Save();
+                    _auditService.AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_DELETED, EventResources.EVENT_DELETED_STR);
+               
 
                     List<Address> addresses = _addressRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
                     foreach (Address address in addresses)
@@ -1017,11 +974,7 @@ namespace PROCAS2.Services.App
                     _histologyService.DeleteHistology(id, 2);
                     // TODO: delete other records too!
 
-                    participant.LastEvent = pEvent;
-                    _participantRepo.Update(participant);
-
-                    _unitOfWork.Save();
-
+  
                 }
             }
             catch(Exception ex)
@@ -1033,133 +986,7 @@ namespace PROCAS2.Services.App
         }
 
 
-        /// <summary>
-        /// Create a audit trail event if the value is changed. For boolean properties
-        /// </summary>
-        /// <param name="propertyName">Property name</param>
-        /// <param name="participant">Participant object</param>
-        /// <param name="oldValue">Old value</param>
-        /// <param name="newValue">New value</param>
-        /// <returns></returns>
-        private bool ChangeEventBool (Participant participant, string propertyName, bool oldValue, bool newValue, string reason)
-        {
-            if (oldValue != newValue)
-            {
-                ParticipantEvent pEvent = new ParticipantEvent();
-                
-                pEvent.AppUser = _userManager.GetCurrentUser();
-                pEvent.EventDate = DateTime.Now;
-                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
-                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString(), newValue.ToString());
-                pEvent.Reason = reason;
-                pEvent.Participant = participant;
-                _eventRepo.Insert(pEvent);
-                _unitOfWork.Save();
-
-                participant.LastEvent = pEvent;
-                _participantRepo.Update(participant);
-
-                _unitOfWork.Save();
-            }
-
-            return newValue;
-        }
-
-        /// <summary>
-        /// Create a audit trail event if the value is changed. For string properties
-        /// </summary>
-        /// <param name="propertyName">Property name</param>
-        /// <param name="participant">Participant object</param>
-        /// <param name="oldValue">Old value</param>
-        /// <param name="newValue">New value</param>
-        /// <returns></returns>
-        private string ChangeEventString(Participant participant, string propertyName, string oldValue, string newValue, string reason)
-        {
-            if (oldValue != newValue)
-            {
-                ParticipantEvent pEvent = new ParticipantEvent();
-
-                pEvent.AppUser = _userManager.GetCurrentUser();
-                pEvent.EventDate = DateTime.Now;
-                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
-                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue, newValue);
-                pEvent.Participant = participant;
-                pEvent.Reason = reason;
-                _eventRepo.Insert(pEvent);
-                _unitOfWork.Save();
-
-                participant.LastEvent = pEvent;
-                _participantRepo.Update(participant);
-
-                _unitOfWork.Save();
-            }
-
-            return newValue;
-        }
-
-        /// <summary>
-        /// Create a audit trail event if the value is changed. For date properties
-        /// </summary>
-        /// <param name="propertyName">Property name</param>
-        /// <param name="participant">Participant object</param>
-        /// <param name="oldValue">Old value</param>
-        /// <param name="newValue">New value</param>
-        /// <returns></returns>
-        private DateTime ChangeEventDate(Participant participant, string propertyName, DateTime oldValue, DateTime newValue, string reason)
-        {
-            if (oldValue != newValue)
-            {
-                ParticipantEvent pEvent = new ParticipantEvent();
-
-                pEvent.AppUser = _userManager.GetCurrentUser();
-                pEvent.EventDate = DateTime.Now;
-                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
-                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString("dd/MM/yyyy"), newValue.ToString("dd/MM/yyyy"));
-                pEvent.Participant = participant;
-                pEvent.Reason = reason;
-                _eventRepo.Insert(pEvent);
-                _unitOfWork.Save();
-
-                participant.LastEvent = pEvent;
-                _participantRepo.Update(participant);
-
-                _unitOfWork.Save();
-            }
-
-            return newValue;
-        }
-
-        /// <summary>
-        /// Create a audit trail event if the value is changed. For integer properties
-        /// </summary>
-        /// <param name="propertyName">Property name</param>
-        /// <param name="participant">Participant object</param>
-        /// <param name="oldValue">Old value</param>
-        /// <param name="newValue">New value</param>
-        /// <returns></returns>
-        private int? ChangeEventInt(Participant participant, string propertyName, int? oldValue, int? newValue, string reason)
-        {
-            if (oldValue != newValue)
-            {
-                ParticipantEvent pEvent = new ParticipantEvent();
-
-                pEvent.AppUser = _userManager.GetCurrentUser();
-                pEvent.EventDate = DateTime.Now;
-                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == EventResources.EVENT_PROPERTY_UPDATED).FirstOrDefault();
-                pEvent.Notes = String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.HasValue?oldValue.ToString(): "NULL", newValue.HasValue?newValue.ToString():"NULL");
-                pEvent.Participant = participant;
-                pEvent.Reason = reason;
-                _eventRepo.Insert(pEvent);
-                _unitOfWork.Save();
-
-                participant.LastEvent = pEvent;
-                _participantRepo.Update(participant);
-
-                _unitOfWork.Save();
-            }
-
-            return newValue;
-        }
+       
 
         /// <summary>
         /// Does the passed NHS number match a participant in the database?

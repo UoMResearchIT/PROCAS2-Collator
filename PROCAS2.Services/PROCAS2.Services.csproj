@@ -205,7 +205,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\AuditService.cs" />
     <Compile Include="App\HistologyService.cs" />
+    <Compile Include="App\IAuditService.cs" />
     <Compile Include="App\IHistologyService.cs" />
     <Compile Include="App\DashboardService.cs" />
     <Compile Include="App\ExportService.cs" />

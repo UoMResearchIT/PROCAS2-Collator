@@ -144,6 +144,32 @@
   <data name="EVENT_DELETED_STR" xml:space="preserve">
     <value>Deleted</value>
   </data>
+  <data name="EVENT_HISTCREATED" xml:space="preserve">
+    <value>008</value>
+  </data>
+  <data name="EVENT_HISTCREATED_STR" xml:space="preserve">
+    <value>Histology header created.</value>
+  </data>
+  <data name="EVENT_HISTDELETED" xml:space="preserve">
+    <value>010</value>
+  </data>
+  <data name="EVENT_HISTDELETED_STR" xml:space="preserve">
+    <value>Histology header deleted.</value>
+  </data>
+  <data name="EVENT_HISTFOCUSCREATED" xml:space="preserve">
+    <value>009</value>
+  </data>
+  <data name="EVENT_HISTFOCUSCREATED_STR" xml:space="preserve">
+    <value>Histology focus {0} created.</value>
+    <comment>{0} = focus number</comment>
+  </data>
+  <data name="EVENT_HISTFOCUSDELETED" xml:space="preserve">
+    <value>011</value>
+  </data>
+  <data name="EVENT_HISTFOCUSDELETED_STR" xml:space="preserve">
+    <value>Histology focus {0} deleted.</value>
+    <comment>{0} = focus number</comment>
+  </data>
   <data name="EVENT_PROPERTY_UPDATED" xml:space="preserve">
     <value>004</value>
   </data>
