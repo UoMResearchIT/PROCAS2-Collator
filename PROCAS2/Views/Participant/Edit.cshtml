@@ -136,22 +136,26 @@
                 @Html.ValidationMessageFor(model => model.HomeAddress4, "", new { @class = "text-danger" })
             </div>
 
-            @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DateConsented, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.EditorFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
-                @Html.ValidationMessageFor(model => model.BMI, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.DateConsented, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.DateConsented, "", new { @class = "text-danger" })
             </div>
 
         </div>
         <div class="form-group">
 
             @Html.LabelFor(model => model.HomePostCode, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-6">
                 @Html.EditorFor(model => model.HomePostCode, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.HomePostCode, "", new { @class = "text-danger" })
             </div>
 
-
+            @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control", @type = "number" } })
+                @Html.ValidationMessageFor(model => model.BMI, "", new { @class = "text-danger" })
+            </div>
 
         </div>
         <div class="form-group">

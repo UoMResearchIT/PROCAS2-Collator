@@ -133,6 +133,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date Consented.
+        /// </summary>
+        public static string DATE_CONSENTED {
+            get {
+                return ResourceManager.GetString("DATE_CONSENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deceased.
         /// </summary>
         public static string DECEASED {

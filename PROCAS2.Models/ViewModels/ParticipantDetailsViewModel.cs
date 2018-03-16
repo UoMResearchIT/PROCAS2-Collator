@@ -58,6 +58,7 @@ namespace PROCAS2.Models.ViewModels
             Deleted = model.Participant.Deleted;
             AttendedScreening = model.Participant.AttendedScreening;
             AskForRiskLetter = model.Participant.AskForRiskLetter;
+            DateConsented = model.Participant.DateConsented.HasValue ? model.Participant.DateConsented.Value.ToString("dd/MM/yyyy") : "";
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -156,6 +157,9 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name="ASKFORRISK", ResourceType = typeof(ParticipantResources))]
         public bool AskForRiskLetter { get; set; }
+
+        [Display(Name = "DATE_CONSENTED", ResourceType = typeof(ParticipantResources))]
+        public string DateConsented { get; set; }
 
     }
 }

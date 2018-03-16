@@ -141,6 +141,9 @@
   <data name="DATA_RECEIVED" xml:space="preserve">
     <value>Date Data Received</value>
   </data>
+  <data name="DATE_CONSENTED" xml:space="preserve">
+    <value>Date Consented</value>
+  </data>
   <data name="DECEASED" xml:space="preserve">
     <value>Deceased</value>
   </data>

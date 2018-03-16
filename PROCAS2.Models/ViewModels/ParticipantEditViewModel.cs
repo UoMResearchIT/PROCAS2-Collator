@@ -51,6 +51,7 @@ namespace PROCAS2.Models.ViewModels
             DOB = model.Participant.DateOfBirth;
             DOFA = model.Participant.DateFirstAppointment;
             DOAA = model.Participant.DateActualAppointment;
+            DateConsented = model.Participant.DateConsented;
             ScreeningSite = model.Participant.ScreeningSite.Name;
             BMI = model.Participant.BMI.ToString();
             SentRisk = model.Participant.SentRisk;
@@ -225,6 +226,10 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "ASKFORRISK", ResourceType = typeof(ParticipantResources))]
         public bool AskForRiskLetter { get; set; }
+
+        [Display(Name = "DATE_CONSENTED", ResourceType = typeof(ParticipantResources))]
+        [Required]
+        public DateTime? DateConsented { get; set; }
 
         public string Reason { get; set; }
 

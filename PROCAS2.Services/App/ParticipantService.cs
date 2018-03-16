@@ -856,6 +856,7 @@ namespace PROCAS2.Services.App
                     participant.Withdrawn = _auditService.ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
                     participant.MailingList = _auditService.ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
                     participant.AskForRiskLetter = _auditService.ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
+                    participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, (DateTime)participant.DateConsented, (DateTime)model.DateConsented, model.Reason);
 
 
                     _participantRepo.Update(participant);

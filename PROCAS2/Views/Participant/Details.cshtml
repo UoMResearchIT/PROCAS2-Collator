@@ -183,9 +183,9 @@
         &nbsp;
     </div>
 
-    @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.DateConsented, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-1">
-        @Html.DisplayFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control-static" } })
+        @Html.DisplayFor(model => model.DateConsented, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
@@ -193,9 +193,15 @@
 <div class="row">
 
     @Html.LabelFor(model => model.HomeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-10">
+    <div class="col-md-7">
         @Html.DisplayFor(model => model.HomeEmail, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
+    </div>
+
+    @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control-static" } })
+
     </div>
 </div>
 
