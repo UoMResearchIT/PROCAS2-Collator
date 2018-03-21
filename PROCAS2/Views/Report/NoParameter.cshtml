@@ -1,9 +1,9 @@
-﻿@model PROCAS2.Models.ViewModels.Reports.HistologyViewModel
+﻿@model PROCAS2.Models.ViewModels.Reports.NoParameterViewModel
 
 @using PROCAS2.Resources
 
 @{
-    ViewBag.Title = "Histology";
+    ViewBag.Title = Model.Title;
 }
 
 <script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")"></script>
@@ -14,21 +14,21 @@
 
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm(Model.ActionName, "Report", FormMethod.Post ))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>@ReportResources.HISTOLOGY</h4>
+        <h4>@Model.Title</h4>
+       
+        <p>@Model.Summary </p>
+
+
         <hr />
-        <p>@ReportResources.HISTOLOGY_SUMMARY </p>
-
-
-
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Submit" id="btnSubmit" class="btn btn-default" />
+            <div class="col-md-12">
+                <input type="submit" value="Run Report" id="btnSubmit" class="btn btn-primary" />
             </div>
         </div>
     </div>

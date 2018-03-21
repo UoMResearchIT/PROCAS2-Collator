@@ -1,0 +1,9 @@
+﻿@model PROCAS2.Models.ViewModels.DashboardVolparaViewModel
+
+<h4>Volpara</h4>
+
+<p>@Html.LabelFor(x => x.NumberWaitingForVolpara) @Html.ActionLink(@Model.NumberWaitingForVolpara.ToString(), "WaitingForVolpara", "Report")</p>
+
+
+<p>@Html.LabelFor(x => x.NumberLetterNotAskedFor) @Html.ActionLink(@Model.NumberLetterNotAskedFor.ToString(), "YetToAskForRisk", "Report")</p>
+

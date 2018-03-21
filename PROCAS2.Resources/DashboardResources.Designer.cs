@@ -133,11 +133,29 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of consented who have not received any Volpara data:.
+        /// </summary>
+        public static string NUM_CONSENTED_NO_VOLPARA {
+            get {
+                return ResourceManager.GetString("NUM_CONSENTED_NO_VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of invitees:.
         /// </summary>
         public static string NUM_PARC {
             get {
                 return ResourceManager.GetString("NUM_PARC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number who have received Volpara data but a risk letter has not been asked for:.
+        /// </summary>
+        public static string NUM_RISK_NOT_ASKED_FOR {
+            get {
+                return ResourceManager.GetString("NUM_RISK_NOT_ASKED_FOR", resourceCulture);
             }
         }
         

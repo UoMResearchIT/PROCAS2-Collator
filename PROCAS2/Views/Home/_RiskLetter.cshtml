@@ -2,6 +2,7 @@
 
 <h4>Risk Letters</h4>
 
-<p>@Html.LabelFor(x => x.NumberWaitingForLetter) @Model.NumberWaitingForLetter</p>
-<p>@Html.LabelFor(x => x.NumberLetterNotSent) @Model.NumberLetterNotSent</p>
+<p>@Html.LabelFor(x => x.NumberLetterNotAskedFor) @Html.ActionLink(@Model.NumberLetterNotAskedFor.ToString(), "YetToAskForRisk", "Report")</p>
+<p>@Html.LabelFor(x => x.NumberWaitingForLetter) @Html.ActionLink(@Model.NumberWaitingForLetter.ToString(), "YetToReceiveLetter", "Report")</p>
+<p>@Html.LabelFor(x => x.NumberLetterNotSent) @Html.ActionLink(@Model.NumberLetterNotSent.ToString(), "YetToSendLetter", "Report")</p>
 

@@ -4,5 +4,5 @@
 
 <p>@Html.LabelFor(x => x.NumberParticipants) @Model.NumberParticipants</p>
 <p>@Html.LabelFor(x => x.NumberConsented) @Model.NumberConsented</p>
-<p>@Html.LabelFor(x => x.NumberYetToConsent) @Model.NumberYetToConsent</p>
-<p>@Html.LabelFor(x => x.NumberConsentedNoDetails) @Model.NumberConsentedNoDetails</p>
+<p>@Html.LabelFor(x => x.NumberYetToConsent) @Html.ActionLink(@Model.NumberYetToConsent.ToString(), "YetToConsent", "Report")</p>
+<p>@Html.LabelFor(x => x.NumberConsentedNoDetails) @Html.ActionLink(@Model.NumberConsentedNoDetails.ToString(), "YetToGetFull", "Report")</p>

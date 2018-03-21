@@ -12,5 +12,11 @@ namespace PROCAS2.Services.App
     {
         MemoryStream PatientReport(List<string> NHSNumber);
         MemoryStream Histology();
+        MemoryStream YetToConsent();
+        MemoryStream YetToGetFull();
+        MemoryStream YetToAskForRisk();
+        MemoryStream YetToReceiveLetter();
+        MemoryStream YetToSendLetter();
+        MemoryStream WaitingForVolpara();
     }
 }

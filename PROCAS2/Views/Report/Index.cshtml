@@ -6,7 +6,7 @@
 }
 
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
 
         <h3>@ReportResources.INDEX_TITLE</h3>
 
@@ -14,13 +14,55 @@
 
 </div>
 
-<div class="row">
+<div class="row reportGroup">
+    <div class="col-md-12">
+
+        <h4>@ReportResources.STATUS_REPORTS</h4>
+
+    </div>
+
     <div class="col-md-4 reportPanel">
-        @Html.ActionLink( "Patient Details", "PatientDetails", "Report", new {  }, new { @class = "btn btn-default " })
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.INVITED_YET_TO_CONSENT, "YetToConsent", "Report")
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.CONSENTED_YET_TO_GET_FULL, "YetToGetFull", "Report")
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.GOT_VOLPARA_NOT_ASKED, "YetToAskForRisk", "Report")
+
+    </div>
+
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.ASKED_FOR_LETTER_NOT_REC, "YetToReceiveLetter", "Report")
+
+    </div>
+
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.GOT_LETTER_NOT_SENT, "YetToSendLetter", "Report")
+
+    </div>
+
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.WAITING_FOR_VOLPARA, "WaitingForVolpara", "Report")
+
+    </div>
+
+</div>
+
+<div class="row reportGroup">
+    <div class="col-md-12">
+
+        <h4>@ReportResources.DETAILED_REPORTS</h4>
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span> @Html.ActionLink( "Patient Details", "PatientDetails", "Report", new {  }, new {  })
         
     </div>
     <div class="col-md-4 reportPanel">
-        @Html.ActionLink("Histology", "Histology", "Report", new { }, new { @class = "btn btn-default " })
+        <span class="glyphicon glyphicon-arrow-right"></span> @Html.ActionLink("Histology", "Histology", "Report", new { }, new {  })
     </div>
     <div class="col-md-4 reportPanel">
     </div>

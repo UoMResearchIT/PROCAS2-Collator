@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace PROCAS2.Models.ViewModels.Reports
 {
-    public class HistologyViewModel
+    public class NoParameterViewModel
     {
-        // Actually empty at the moment, but you never know, we might need one in the future...
+        public string Title { get; set; }
+        public string Summary { get; set; }
+        public string ActionName { get; set; }
     }
 }

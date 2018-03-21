@@ -13,5 +13,7 @@ namespace PROCAS2.Services.App
         int GetConsentedNoDetails();
         int GetLetterNotSent();
         int GetWaitingForLetter();
+        int GetRiskLetterNotAskedFor();
+        int GetWaitingForVolpara();
     }
 }

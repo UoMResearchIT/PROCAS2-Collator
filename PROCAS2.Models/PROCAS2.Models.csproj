@@ -105,11 +105,12 @@
     <Compile Include="ServiceBusMessages\ConsentMessage.cs" />
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\DashboardTxErrorsViewModel.cs" />
+    <Compile Include="ViewModels\DashboardVolparaViewModel.cs" />
     <Compile Include="ViewModels\HistologyEditViewModel.cs" />
     <Compile Include="ViewModels\HistologyFocusViewModel.cs" />
     <Compile Include="ViewModels\HistologyListViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
-    <Compile Include="ViewModels\Reports\HistologyViewModel.cs" />
+    <Compile Include="ViewModels\Reports\NoParameterViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsDetailsViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsListViewModel.cs" />
     <Compile Include="ViewModels\UploadAskRiskViewModel.cs" />

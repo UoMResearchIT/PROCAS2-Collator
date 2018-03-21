@@ -94,4 +94,22 @@
             $("#pnlTxErrors").html("<p>Error: Transmission Errors cannot be found.</p>");
         });
 
+    // Volpara info panel
+    // Fetch data to show Volpara info
+    $.ajax({
+        url: "/Home/VolparaPanel",
+        beforeSend: function () {
+
+            $("#pnlVolpara").html("<h4>Volpara</h4><p>Loading...</p>");
+        }
+    })
+        .done(function (data) {
+
+            $("#pnlVolpara").html(data);
+
+        })
+        .fail(function (error) {
+            $("#pnlVolpara").html("<p>Error: Volpara information cannot be found.</p>");
+        });
+
 });

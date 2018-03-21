@@ -93,19 +93,162 @@ namespace PROCAS2.Controllers
         [HttpGet]
         public ActionResult Histology()
         {
-            HistologyViewModel model = new HistologyViewModel();
+            NoParameterViewModel model = new NoParameterViewModel();
 
-            return View("Histology", model);
+            model.Title = ReportResources.HISTOLOGY;
+            model.Summary = ReportResources.HISTOLOGY_SUMMARY;
+            model.ActionName = "Histology";
+
+            return View("NoParameter", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Histology(HistologyViewModel model)
+        public ActionResult Histology(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.Histology(), "Histology", model);
+
+           
+
+        }
+
+        [HttpGet]
+        public ActionResult YetToConsent()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.INVITED_YET_TO_CONSENT;
+            model.Summary = ReportResources.INVITED_YET_TO_CONSENT_SUMMARY;
+            model.ActionName = "YetToConsent";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YetToConsent(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.YetToConsent(), "YetToConsent", model);
+           
+        }
+
+        [HttpGet]
+        public ActionResult YetToGetFull()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.CONSENTED_YET_TO_GET_FULL;
+            model.Summary = ReportResources.CONSENTED_YET_TO_GET_FULL_SUMMARY;
+            model.ActionName = "YetToGetFull";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YetToGetFull(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.YetToGetFull(), "YetToGetFull", model);
+
+            
+        }
+
+
+        [HttpGet]
+        public ActionResult YetToAskForRisk()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.GOT_VOLPARA_NOT_ASKED;
+            model.Summary = ReportResources.GOT_VOLPARA_NOT_ASKED_SUMMARY;
+            model.ActionName = "YetToAskForRisk";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YetToAskForRisk(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.YetToAskForRisk(), "YetToAskForRisk", model);
+
+        }
+
+
+        [HttpGet]
+        public ActionResult YetToReceiveLetter()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.ASKED_FOR_LETTER_NOT_REC;
+            model.Summary = ReportResources.ASKED_FOR_LETTER_NOT_REC_SUMMARY;
+            model.ActionName = "YetToReceiveLetter";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YetToReceiveLetter(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.YetToReceiveLetter(), "YetToReceiveLetter", model);
+
+        }
+
+        [HttpGet]
+        public ActionResult YetToSendLetter()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.GOT_LETTER_NOT_SENT;
+            model.Summary = ReportResources.GOT_LETTER_NOT_SENT_SUMMARY;
+            model.ActionName = "YetToSendLetter";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult YetToSendLetter(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.YetToSendLetter(), "YetToSendLetter", model);
+
+        }
+
+        [HttpGet]
+        public ActionResult WaitingForVolpara()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.WAITING_FOR_VOLPARA;
+            model.Summary = ReportResources.WAITING_FOR_VOLPARA_SUMMARY;
+            model.ActionName = "WaitingForVolpara";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult WaitingForVolpara(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.WaitingForVolpara(), "WaitingForVolpara", model);
+
+        }
+
+
+        private ActionResult NoParameterReport(Func<MemoryStream> reportFunction, string reportName, NoParameterViewModel model)
         {
             if (ModelState.IsValid == true)
             {
 
-               
+
 
                 Response.Clear();
 
@@ -120,21 +263,19 @@ namespace PROCAS2.Controllers
                 Response.Buffer = true;
 
 
-                MemoryStream mStream = _reportService.Histology();
+                MemoryStream mStream = reportFunction();
 
-                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/Histology"));
+                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/" + reportName));
                 HttpContext.Response.AppendHeader("Refresh", headerValue);
 
 
 
-                return new SpreadsheetResult(mStream, "Histology");
+                return new SpreadsheetResult(mStream, reportName);
 
 
             }
             else
-                return View("PatientDetails", model);
-
-
+                return View("NoParameter", model);
 
         }
 

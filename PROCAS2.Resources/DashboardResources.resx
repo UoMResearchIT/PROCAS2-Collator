@@ -138,11 +138,17 @@
   <data name="NUM_CONSENT" xml:space="preserve">
     <value>Number consented:</value>
   </data>
+  <data name="NUM_CONSENTED_NO_VOLPARA" xml:space="preserve">
+    <value>Number of consented who have not received any Volpara data:</value>
+  </data>
   <data name="NUM_CONSENT_NO_DETAILS" xml:space="preserve">
     <value>Number consented but without full details yet:</value>
   </data>
   <data name="NUM_PARC" xml:space="preserve">
     <value>Number of invitees:</value>
+  </data>
+  <data name="NUM_RISK_NOT_ASKED_FOR" xml:space="preserve">
+    <value>Number who have received Volpara data but a risk letter has not been asked for:</value>
   </data>
   <data name="NUM_RISK_NOT_SENT" xml:space="preserve">
     <value>Letter content received but not sent:</value>

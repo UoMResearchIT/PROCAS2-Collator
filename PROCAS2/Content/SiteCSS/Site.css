@@ -161,12 +161,19 @@ select
 }
 
 .reportPanel{
-    border-radius: 3px;
-    border: 1px solid AliceBlue;
     
-    text-align:center;
+    text-align:left;
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left:10px;
+}
+
+.reportGroup{
+    border-radius: 3px;
+    border-width: 1px;
+    border-style:solid;
+    border-color:gainsboro;
+    margin-bottom:5px;
 }
 
 .newsItemHighlight{

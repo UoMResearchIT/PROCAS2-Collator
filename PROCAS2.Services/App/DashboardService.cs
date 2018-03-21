@@ -45,16 +45,34 @@ namespace PROCAS2.Services.App
         /// <returns></returns>
         public int GetConsentedNoDetails()
         {
-            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName != null);
+            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName == null);
         }
 
         /// <summary>
-        /// Return the number of participants who have got a risk letter but it has been sent
+        /// Return the number of participants who have received Volpara data but risk letter has not yet been asked for
+        /// </summary>
+        /// <returns>The count</returns>
+        public int GetRiskLetterNotAskedFor()
+        {
+            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count > 0);
+        }
+
+        /// <summary>
+        /// Return the number of participants who have not received Volpara data but have consented
+        /// </summary>
+        /// <returns>The count</returns>
+        public int GetWaitingForVolpara()
+        {
+            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0);
+        }
+
+        /// <summary>
+        /// Return the number of participants who have got a risk letter but it has not been sent
         /// </summary>
         /// <returns>The count</returns>
         public int GetLetterNotSent()
         {
-            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count > 0);
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null &&  x.SentRisk == false && x.RiskLetters.Count > 0);
         }
 
 
@@ -65,7 +83,7 @@ namespace PROCAS2.Services.App
         public int GetWaitingForLetter()
         {
             //List<Participant> parts = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count == 0).ToList();
-            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count == 0);
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == true && x.SentRisk == false && x.RiskLetters.Count == 0);
         }
     }
 }

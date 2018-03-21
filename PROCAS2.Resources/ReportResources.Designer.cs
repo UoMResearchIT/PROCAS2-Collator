@@ -61,11 +61,92 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients for who a risk letter has been asked for but not received..
+        /// </summary>
+        public static string ASKED_FOR_LETTER_NOT_REC {
+            get {
+                return ResourceManager.GetString("ASKED_FOR_LETTER_NOT_REC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented of those for who we have asked for a risk letter but have not yet received one..
+        /// </summary>
+        public static string ASKED_FOR_LETTER_NOT_REC_SUMMARY {
+            get {
+                return ResourceManager.GetString("ASKED_FOR_LETTER_NOT_REC_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients consented but without full details yet.
+        /// </summary>
+        public static string CONSENTED_YET_TO_GET_FULL {
+            get {
+                return ResourceManager.GetString("CONSENTED_YET_TO_GET_FULL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented of those who have consented to the study, but not had the full patient details uploaded into Collator yet..
+        /// </summary>
+        public static string CONSENTED_YET_TO_GET_FULL_SUMMARY {
+            get {
+                return ResourceManager.GetString("CONSENTED_YET_TO_GET_FULL_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Detail Reports.
+        /// </summary>
+        public static string DETAILED_REPORTS {
+            get {
+                return ResourceManager.GetString("DETAILED_REPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Generating Report.
         /// </summary>
         public static string GENERATING_REPORT {
             get {
                 return ResourceManager.GetString("GENERATING_REPORT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients for who we have a risk letter but it has not been sent..
+        /// </summary>
+        public static string GOT_LETTER_NOT_SENT {
+            get {
+                return ResourceManager.GetString("GOT_LETTER_NOT_SENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented for those who we have received a risk letter from CRA but not sent it yet..
+        /// </summary>
+        public static string GOT_LETTER_NOT_SENT_SUMMARY {
+            get {
+                return ResourceManager.GetString("GOT_LETTER_NOT_SENT_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients for who Volpara data has been received but no risk letter has been asked for yet.
+        /// </summary>
+        public static string GOT_VOLPARA_NOT_ASKED {
+            get {
+                return ResourceManager.GetString("GOT_VOLPARA_NOT_ASKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented of those who have received Volpara data but no risk letter has been asked for yet..
+        /// </summary>
+        public static string GOT_VOLPARA_NOT_ASKED_SUMMARY {
+            get {
+                return ResourceManager.GetString("GOT_VOLPARA_NOT_ASKED_SUMMARY", resourceCulture);
             }
         }
         
@@ -97,6 +178,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients invited but yet to consent.
+        /// </summary>
+        public static string INVITED_YET_TO_CONSENT {
+            get {
+                return ResourceManager.GetString("INVITED_YET_TO_CONSENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB and date of first appointment of every person invited but who has not yet consented. .
+        /// </summary>
+        public static string INVITED_YET_TO_CONSENT_SUMMARY {
+            get {
+                return ResourceManager.GetString("INVITED_YET_TO_CONSENT_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number.
         /// </summary>
         public static string NHS_NUMBER {
@@ -120,6 +219,33 @@ namespace PROCAS2.Resources {
         public static string PATIENT_DETAILS {
             get {
                 return ResourceManager.GetString("PATIENT_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collator Status Reports.
+        /// </summary>
+        public static string STATUS_REPORTS {
+            get {
+                return ResourceManager.GetString("STATUS_REPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients who have consented but we&apos;ve not received Volpara data yet..
+        /// </summary>
+        public static string WAITING_FOR_VOLPARA {
+            get {
+                return ResourceManager.GetString("WAITING_FOR_VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data..
+        /// </summary>
+        public static string WAITING_FOR_VOLPARA_SUMMARY {
+            get {
+                return ResourceManager.GetString("WAITING_FOR_VOLPARA_SUMMARY", resourceCulture);
             }
         }
     }

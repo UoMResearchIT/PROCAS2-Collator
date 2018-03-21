@@ -117,8 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ASKED_FOR_LETTER_NOT_REC" xml:space="preserve">
+    <value>Patients for who a risk letter has been asked for but not received.</value>
+  </data>
+  <data name="ASKED_FOR_LETTER_NOT_REC_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented of those for who we have asked for a risk letter but have not yet received one.</value>
+  </data>
+  <data name="CONSENTED_YET_TO_GET_FULL" xml:space="preserve">
+    <value>Patients consented but without full details yet</value>
+  </data>
+  <data name="CONSENTED_YET_TO_GET_FULL_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented of those who have consented to the study, but not had the full patient details uploaded into Collator yet.</value>
+  </data>
+  <data name="DETAILED_REPORTS" xml:space="preserve">
+    <value>Full Detail Reports</value>
+  </data>
   <data name="GENERATING_REPORT" xml:space="preserve">
     <value>Generating Report</value>
+  </data>
+  <data name="GOT_LETTER_NOT_SENT" xml:space="preserve">
+    <value>Patients for who we have a risk letter but it has not been sent.</value>
+  </data>
+  <data name="GOT_LETTER_NOT_SENT_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented for those who we have received a risk letter from CRA but not sent it yet.</value>
+  </data>
+  <data name="GOT_VOLPARA_NOT_ASKED" xml:space="preserve">
+    <value>Patients for who Volpara data has been received but no risk letter has been asked for yet</value>
+  </data>
+  <data name="GOT_VOLPARA_NOT_ASKED_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented of those who have received Volpara data but no risk letter has been asked for yet.</value>
   </data>
   <data name="HISTOLOGY" xml:space="preserve">
     <value>Histology</value>
@@ -129,6 +156,12 @@
   <data name="INDEX_TITLE" xml:space="preserve">
     <value>Reports</value>
   </data>
+  <data name="INVITED_YET_TO_CONSENT" xml:space="preserve">
+    <value>Patients invited but yet to consent</value>
+  </data>
+  <data name="INVITED_YET_TO_CONSENT_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB and date of first appointment of every person invited but who has not yet consented. </value>
+  </data>
   <data name="NHS_NUMBER" xml:space="preserve">
     <value>NHS Number</value>
   </data>
@@ -137,5 +170,14 @@
   </data>
   <data name="PATIENT_DETAILS" xml:space="preserve">
     <value>Patient Details</value>
+  </data>
+  <data name="STATUS_REPORTS" xml:space="preserve">
+    <value>Collator Status Reports</value>
+  </data>
+  <data name="WAITING_FOR_VOLPARA" xml:space="preserve">
+    <value>Patients who have consented but we've not received Volpara data yet.</value>
+  </data>
+  <data name="WAITING_FOR_VOLPARA_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data.</value>
   </data>
 </root>

@@ -67,6 +67,7 @@ namespace PROCAS2.Controllers
 
             model.NumberLetterNotSent = _dashboardService.GetLetterNotSent();
             model.NumberWaitingForLetter = _dashboardService.GetWaitingForLetter();
+            model.NumberLetterNotAskedFor = _dashboardService.GetRiskLetterNotAskedFor();
      
 
             if (Request.IsAjaxRequest())
@@ -114,6 +115,20 @@ namespace PROCAS2.Controllers
                 return PartialView("_TxErrors", model);
             else
                 return View("_TxErrors", model);
+        }
+
+        public ActionResult VolparaPanel()
+        {
+            DashboardVolparaViewModel model = new DashboardVolparaViewModel();
+
+
+            model.NumberLetterNotAskedFor = _dashboardService.GetRiskLetterNotAskedFor();
+            model.NumberWaitingForVolpara = _dashboardService.GetWaitingForVolpara();
+
+            if (Request.IsAjaxRequest())
+                return PartialView("_Volpara", model);
+            else
+                return View("_Volpara", model);
         }
 
 

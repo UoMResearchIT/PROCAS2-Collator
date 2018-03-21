@@ -684,7 +684,8 @@
     <Content Include="Views\Histology\Index.cshtml" />
     <Content Include="Views\Histology\Edit.cshtml" />
     <Content Include="Views\Histology\EditFocus.cshtml" />
-    <Content Include="Views\Report\Histology.cshtml" />
+    <Content Include="Views\Report\NoParameter.cshtml" />
+    <Content Include="Views\Home\_Volpara.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
