@@ -7,18 +7,18 @@ using System.Web.Mvc;
 
 namespace PROCAS2.CustomActionResults
 {
-    public class CSVResult : ActionResult
+    public class TextResult : ActionResult
     {
         private MemoryStream _spreadStream;
         private string _fileName;
 
-        public CSVResult(MemoryStream spreadsheetStream, string fileName)
+        public TextResult(MemoryStream spreadsheetStream, string fileName)
         {
 
             _spreadStream = spreadsheetStream;
 
             if (String.IsNullOrEmpty(fileName) == true)
-                _fileName = "Default.xlsx";
+                _fileName = "Default.txt";
             else
                 _fileName = fileName;
         }

@@ -130,7 +130,7 @@ namespace PROCAS2.Services.App
                 using (var csv = new CsvWriter(csvString))
                 {
                     
-                    csv.Configuration.Delimiter = ",";
+                    csv.Configuration.Delimiter = "|";
 
                     
                     while (reader.EndOfStream == false)
@@ -142,13 +142,13 @@ namespace PROCAS2.Services.App
                         string hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]));
 
                         // First put in the NHSNumber.
-                        csv.WriteField(lineBits[0]);
+                        //csv.WriteField(lineBits[0]);
 
                         // Then DOB
-                        csv.WriteField(lineBits[1]);
+                        csv.WriteField(Convert.ToDateTime(lineBits[1]).ToString("yyyyMMdd"));
 
                         // Then date of first appointment
-                        csv.WriteField(lineBits[2]);
+                        csv.WriteField(Convert.ToDateTime(lineBits[2]).ToString("yyyyMMdd"));
 
                         // Then the hash
                         csv.WriteField(hash);

@@ -87,7 +87,7 @@ namespace PROCAS2.Controllers
 
                     
 
-                    return new CSVResult(hashFile, "Hashes.csv");
+                    return new TextResult(hashFile, "Hashes.txt");
                 }
             }
 
