@@ -184,3 +184,15 @@ select
     width:300px;
     height:200px;
 }
+
+.editSection{
+    border: 1px dashed Black;
+    border-radius:5px;
+    padding: 5px 5px 5px 5px;
+}
+
+.editSectionHeader{
+    
+    color: #337ab7;
+
+}

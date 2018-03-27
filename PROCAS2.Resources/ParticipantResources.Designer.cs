@@ -115,6 +115,42 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention Agreed In Clinic?.
+        /// </summary>
+        public static string CHEMO_AGREED {
+            get {
+                return ResourceManager.GetString("CHEMO_AGREED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention Details.
+        /// </summary>
+        public static string CHEMO_DETAILS {
+            get {
+                return ResourceManager.GetString("CHEMO_DETAILS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention Details.
+        /// </summary>
+        public static string CHEMOPREVENTION {
+            get {
+                return ResourceManager.GetString("CHEMOPREVENTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collator Status.
+        /// </summary>
+        public static string COLLATOR_STATUS {
+            get {
+                return ResourceManager.GetString("COLLATOR_STATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consented.
         /// </summary>
         public static string CONSENTED {
@@ -259,6 +295,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Final Recall for Assessment Outcome.
+        /// </summary>
+        public static string FINAL_ASSESSMENT {
+            get {
+                return ResourceManager.GetString("FINAL_ASSESSMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Final Technical Recall Outcome.
+        /// </summary>
+        public static string FINAL_TECHNICAL {
+            get {
+                return ResourceManager.GetString("FINAL_TECHNICAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         public static string FIRST_NAME {
@@ -300,6 +354,15 @@ namespace PROCAS2.Resources {
         public static string GP_ADD_4 {
             get {
                 return ResourceManager.GetString("GP_ADD_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GP Details.
+        /// </summary>
+        public static string GP_DETAILS {
+            get {
+                return ResourceManager.GetString("GP_DETAILS", resourceCulture);
             }
         }
         
@@ -394,6 +457,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Initial Screening Outcome.
+        /// </summary>
+        public static string INITIAL_SCREENING {
+            get {
+                return ResourceManager.GetString("INITIAL_SCREENING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LAST_NAME {
@@ -448,6 +520,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to More Frequent Screening?.
+        /// </summary>
+        public static string MORE_FREQUENT {
+            get {
+                return ResourceManager.GetString("MORE_FREQUENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number.
         /// </summary>
         public static string NHS_NUMBER {
@@ -489,6 +570,15 @@ namespace PROCAS2.Resources {
         public static string POST_CODE {
             get {
                 return ResourceManager.GetString("POST_CODE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Post Study Information.
+        /// </summary>
+        public static string POST_STUDY {
+            get {
+                return ResourceManager.GetString("POST_STUDY", resourceCulture);
             }
         }
         
@@ -619,6 +709,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Screening Outcomes.
+        /// </summary>
+        public static string SCREENING_OUTCOMES {
+            get {
+                return ResourceManager.GetString("SCREENING_OUTCOMES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Site.
         /// </summary>
         public static string SCREENING_SITE {
@@ -642,6 +741,15 @@ namespace PROCAS2.Resources {
         public static string STUDY_DATE {
             get {
                 return ResourceManager.GetString("STUDY_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Study Status.
+        /// </summary>
+        public static string STUDY_STATUS {
+            get {
+                return ResourceManager.GetString("STUDY_STATUS", resourceCulture);
             }
         }
         

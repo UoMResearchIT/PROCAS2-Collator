@@ -196,8 +196,7 @@ namespace PROCAS2.Controllers
             model.Participant = _participantRepo.GetAll().Where(x => x.NHSNumber == participantId).FirstOrDefault();
             if (model.Participant != null)
             {
-                model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x=>x.Name).ToList();
-                model.ScreeningSite = model.Participant.ScreeningSite.Code;
+                FillEditLookups(ref model);
                 model.Reason = "";
                 return View("Edit", model);
             }
@@ -229,12 +228,12 @@ namespace PROCAS2.Controllers
                             ModelState.AddModelError("", error);
                         }
 
-                        model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+                        FillEditLookups(ref model);
                         return View("Edit", model);
                     }
                 }
 
-                model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+                FillEditLookups(ref model);
                 return View("Edit", model);
                 
             }
@@ -242,6 +241,24 @@ namespace PROCAS2.Controllers
             {
                 return RedirectToAction("Index");
             }
+        }
+
+        /// <summary>
+        /// Fill all the drop down boxes on the edit screen
+        /// </summary>
+        /// <param name="model">The edit view model</param>
+        private void FillEditLookups(ref ParticipantEditViewModel model)
+        {
+            model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+            model.ScreeningSite = model.Participant.ScreeningSite.Code;
+            model.ChemoPreventionDetails = _participantService.GetLookups("CHEMO");
+            model.ChemoPreventionDetailsId = model.Participant.ChemoPreventionDetailsId;
+            model.InitialScreeningOutcome = _participantService.GetLookups("INITIAL");
+            model.InitialScreeningOutcomeId = model.Participant.InitialScreeningOutcomeId;
+            model.FinalAssessmentScreeningOutcome = _participantService.GetLookups("RECALL");
+            model.FinalAssessmentOutcomeId = model.Participant.FinalAssessmentOutcomeId;
+            model.FinalTechnicalScreeningOutcome = _participantService.GetLookups("TECH");
+            model.FinalTechnicalOutcomeId = model.Participant.FinalTechnicalOutcomeId;
         }
 
         // POST: Participant/Delete/NHS123

@@ -58,7 +58,12 @@ namespace PROCAS2.Data.Entities
 
         public bool FHCReferral { get; set; }
 
+        public bool MoreFrequentScreening { get; set; }
+
         public bool Chemoprevention { get; set; }
+        public bool ChemoAgreedInClinic { get; set; }
+        [ForeignKey("ChemoPreventionDetails")]
+        public int? ChemoPreventionDetailsId { get; set; }
 
         public bool Diagnosed { get; set; }
 
@@ -72,7 +77,15 @@ namespace PROCAS2.Data.Entities
 
         public bool AskForRiskLetter { get; set; }
 
-        
+        [ForeignKey("InitialScreeningOutcome")]
+        public int? InitialScreeningOutcomeId { get; set; }
+
+        [ForeignKey("FinalTechnicalOutcome")]
+        public int? FinalTechnicalOutcomeId { get; set; }
+
+        [ForeignKey("FinalAssessmentOutcome")]
+        public int? FinalAssessmentOutcomeId { get; set; }
+
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }
 
@@ -84,6 +97,11 @@ namespace PROCAS2.Data.Entities
         public virtual ICollection<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
         public virtual ICollection<QuestionnaireResponse> QuestionnaireResponses { get; set; }
         public virtual ICollection<Histology> Histologies { get; set; }
+
+        public virtual ParticipantLookup InitialScreeningOutcome { get; set; }
+        public virtual ParticipantLookup FinalTechnicalOutcome { get; set; }
+        public virtual ParticipantLookup FinalAssessmentOutcome { get; set; }
+        public virtual ParticipantLookup ChemoPreventionDetails { get; set; }
 
         public virtual GeneticRecord GeneticRecord { get; set; }
         public virtual ScreeningSite ScreeningSite { get; set; }

@@ -72,6 +72,7 @@
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Participant.cs" />
     <Compile Include="Entities\ParticipantEvent.cs" />
+    <Compile Include="Entities\ParticipantLookup.cs" />
     <Compile Include="Entities\Question.cs" />
     <Compile Include="Entities\QuestionAnswer.cs" />
     <Compile Include="Entities\QuestionnaireResponse.cs" />

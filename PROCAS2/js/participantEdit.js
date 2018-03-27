@@ -69,8 +69,57 @@
         });
     });
 
+    // If the Chemo Agreed flag changes then toggle the drop-down box
+    $("#ChemoAgreedInClinic").on("change", function () {
+        setChemoBox();
+    });
+
+    // If the Initial screening outcome flag changes then toggle the drop-down box
+    $("#InitialScreeningOutcomeId").on("change", function () {
+        setScreeningOutcome();
+    });
+
+    setChemoBox();
+    setScreeningOutcome();
+
 });
 
+// Check the Chemo Agreed In Clinic flag and enable or disable the Chemo details dropdown appropriately
+function setChemoBox()
+{
+    var checked = $("#ChemoAgreedInClinic").prop("checked");
+    if (checked === true){
+        $("#ChemoPreventionDetailsId").prop("disabled", false);
+    }
+    else {
+        $("#ChemoPreventionDetailsId").prop("disabled", true);
+        $("#ChemoPreventionDetailsId").val(null);
+    }
+}
+
+// Check the initial screening outcome box and enable or disable the appropriate final screening outcome boxes
+function setScreeningOutcome()
+{
+    var initial = $("#InitialScreeningOutcomeId > option:selected").text();
+
+    if (initial.substr(0, 1) == "1") {
+        $("#FinalTechnicalOutcomeId").prop("disabled", false);
+        $("#FinalAssessmentOutcomeId").prop("disabled", true);
+        $("#FinalAssessmentOutcomeId").val(null);
+    }
+    else if (initial.substr(0, 1) == "2") {
+        $("#FinalTechnicalOutcomeId").prop("disabled", true);
+        $("#FinalTechnicalOutcomeId").val(null);
+        $("#FinalAssessmentOutcomeId").prop("disabled", false);
+    }
+    else {
+        $("#FinalTechnicalOutcomeId").prop("disabled", true);
+        $("#FinalTechnicalOutcomeId").val(null);
+        $("#FinalAssessmentOutcomeId").prop("disabled", true);
+        $("#FinalAssessmentOutcomeId").val(null);
+    }
+
+}
 
 // Handle the returned delete message (true or false)
 function onDeleteSuccess(result) {

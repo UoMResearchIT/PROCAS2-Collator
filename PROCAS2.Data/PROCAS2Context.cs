@@ -35,6 +35,7 @@ namespace PROCAS2.Data
         public DbSet<Image> Images { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<ParticipantEvent> ParticipantEvents { get; set; }
+        public DbSet<ParticipantLookup> ParticipantLookups { get; set; }
        public DbSet<Question> Questions { get; set; }
        public DbSet<QuestionAnswer> QuestionAnswers { get; set; }
        public DbSet<QuestionnaireResponseItem> QuestionnaireResponseItems { get; set; }

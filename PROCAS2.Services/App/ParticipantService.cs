@@ -27,6 +27,7 @@ namespace PROCAS2.Services.App
         private IGenericRepository<RiskLetter> _riskLetterRepo;
         private IGenericRepository<ScreeningRecordV1_5_4> _screeningRepo;
         private IGenericRepository<Image> _imageRepo;
+        private IGenericRepository<ParticipantLookup> _lookupRepo;
         
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
@@ -59,7 +60,8 @@ namespace PROCAS2.Services.App
                                 IGenericRepository<ScreeningRecordV1_5_4> screeningRepo,
                                 IGenericRepository<Image> imageRepo,
                                 IHistologyService histologyService,
-                                IAuditService auditService)
+                                IAuditService auditService,
+                                IGenericRepository<ParticipantLookup> lookupRepo)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -76,6 +78,7 @@ namespace PROCAS2.Services.App
             _imageRepo = imageRepo;
             _histologyService = histologyService;
             _auditService = auditService;
+            _lookupRepo = lookupRepo;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -834,6 +837,8 @@ namespace PROCAS2.Services.App
 
                     }
                     participant.Chemoprevention = _auditService.ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
+                    participant.ChemoAgreedInClinic = _auditService.ChangeEventBool(participant, ParticipantResources.CHEMO_AGREED, participant.ChemoAgreedInClinic, model.ChemoAgreedInClinic, model.Reason);
+
                     participant.Consented = _auditService.ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
                     participant.DateActualAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
                     participant.DateFirstAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA, model.Reason);
@@ -841,6 +846,7 @@ namespace PROCAS2.Services.App
                     participant.Deceased = _auditService.ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased, model.Reason);
                     participant.Diagnosed = _auditService.ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed, model.Reason);
                     participant.FHCReferral = _auditService.ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral, model.Reason);
+                    participant.MoreFrequentScreening = _auditService.ChangeEventBool(participant, ParticipantResources.MORE_FREQUENT, participant.MoreFrequentScreening, model.MoreFrequentScreening, model.Reason);
                     participant.FirstName = _auditService.ChangeEventString(participant, ParticipantResources.FIRST_NAME, participant.FirstName, model.FirstName, model.Reason);
                     participant.GPName = _auditService.ChangeEventString(participant, ParticipantResources.GP_NAME, participant.GPName, model.GPName, model.Reason);
                     participant.LastName = _auditService.ChangeEventString(participant, ParticipantResources.LAST_NAME, participant.LastName, model.LastName, model.Reason);
@@ -858,6 +864,77 @@ namespace PROCAS2.Services.App
                     participant.AskForRiskLetter = _auditService.ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
                     participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, (DateTime)participant.DateConsented, (DateTime)model.DateConsented, model.Reason);
 
+                    if (participant.ChemoPreventionDetails != null && model.ChemoPreventionDetailsId == null)
+                    {
+                        _auditService.ChangeEventString(participant, ParticipantResources.CHEMO_DETAILS, participant.ChemoPreventionDetails.LookupDescription, "", model.Reason);
+                        participant.ChemoPreventionDetails = null;
+                    }
+                    else if (participant.ChemoPreventionDetails != null && model.ChemoPreventionDetailsId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.ChemoPreventionDetailsId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.CHEMO_DETAILS, participant.ChemoPreventionDetails.LookupDescription, lookup.LookupDescription, model.Reason);
+                        participant.ChemoPreventionDetails = lookup;
+                    }
+                    else if (participant.ChemoPreventionDetails == null && model.ChemoPreventionDetailsId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.ChemoPreventionDetailsId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.CHEMO_DETAILS, "", lookup.LookupDescription, model.Reason);
+                        participant.ChemoPreventionDetails = lookup;
+                    }
+
+                    if (participant.InitialScreeningOutcome != null && model.InitialScreeningOutcomeId == null)
+                    {
+                        _auditService.ChangeEventString(participant, ParticipantResources.INITIAL_SCREENING, participant.InitialScreeningOutcome.LookupDescription, "", model.Reason);
+                        participant.InitialScreeningOutcome = null;
+                    }
+                    else if (participant.InitialScreeningOutcome != null && model.InitialScreeningOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.InitialScreeningOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.INITIAL_SCREENING, participant.InitialScreeningOutcome.LookupDescription, lookup.LookupDescription, model.Reason);
+                        participant.InitialScreeningOutcome = lookup;
+                    }
+                    else if (participant.InitialScreeningOutcome == null && model.InitialScreeningOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.InitialScreeningOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.INITIAL_SCREENING, "", lookup.LookupDescription, model.Reason);
+                        participant.InitialScreeningOutcome = lookup;
+                    }
+
+                    if (participant.FinalTechnicalOutcome != null && model.FinalTechnicalOutcomeId == null)
+                    {
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_TECHNICAL, participant.FinalTechnicalOutcome.LookupDescription, "", model.Reason);
+                        participant.FinalTechnicalOutcome = null;
+                    }
+                    else if (participant.FinalTechnicalOutcome != null && model.FinalTechnicalOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.FinalTechnicalOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_TECHNICAL, participant.FinalTechnicalOutcome.LookupDescription, lookup.LookupDescription, model.Reason);
+                        participant.FinalTechnicalOutcome = lookup;
+                    }
+                    else if (participant.FinalTechnicalOutcome == null && model.FinalTechnicalOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.FinalTechnicalOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_TECHNICAL, "", lookup.LookupDescription, model.Reason);
+                        participant.FinalTechnicalOutcome = lookup;
+                    }
+
+                    if (participant.FinalAssessmentOutcome != null && model.FinalAssessmentOutcomeId == null)
+                    {
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_ASSESSMENT, participant.FinalAssessmentOutcome.LookupDescription, "", model.Reason);
+                        participant.FinalAssessmentOutcome = null;
+                    }
+                    else if (participant.FinalAssessmentOutcome != null && model.FinalAssessmentOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.FinalAssessmentOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_ASSESSMENT, participant.FinalAssessmentOutcome.LookupDescription, lookup.LookupDescription, model.Reason);
+                        participant.FinalAssessmentOutcome = lookup;
+                    }
+                    else if (participant.FinalAssessmentOutcome == null && model.FinalAssessmentOutcomeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.FinalAssessmentOutcomeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.FINAL_ASSESSMENT, "", lookup.LookupDescription, model.Reason);
+                        participant.FinalAssessmentOutcome = lookup;
+                    }
 
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
@@ -918,14 +995,21 @@ namespace PROCAS2.Services.App
                     participant.AttendedScreening = false;
                     participant.BMI = 0;
                     participant.Chemoprevention = false;
+                    participant.ChemoPreventionDetails = null;
+                    participant.InitialScreeningOutcome = null;
+                    participant.FinalTechnicalOutcome = null;
+                    participant.FinalAssessmentOutcome = null;
+                    participant.ChemoAgreedInClinic = false;
                     participant.Consented = false;
                     participant.DateActualAppointment = null;
                     participant.DateFirstAppointment = null;
+                    participant.DateConsented = null;
                     participant.DateOfBirth = null;
                     participant.Deceased = false;
                     participant.Deleted = true;
                     participant.Diagnosed = false;
                     participant.FHCReferral = false;
+                    participant.MoreFrequentScreening = false;
                     participant.FirstName = null;
                     participant.GPName = null;
                     participant.LastName = null;
@@ -1025,7 +1109,19 @@ namespace PROCAS2.Services.App
             }
         }
 
+        /// <summary>
+        /// Return a list of lookups of the type passed.
+        /// </summary>
+        /// <param name="lookupType">type of lookup</param>
+        /// <returns>list of lookups</returns>
+        public List<ParticipantLookup> GetLookups(string lookupType)
+        {
+            List<ParticipantLookup> list = new List<ParticipantLookup>();
 
+            list = _lookupRepo.GetAll().Where(x => x.LookupType == lookupType).ToList();
+
+            return list;
+        }
 
     }
 }

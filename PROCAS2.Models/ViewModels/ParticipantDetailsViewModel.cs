@@ -52,6 +52,7 @@ namespace PROCAS2.Models.ViewModels
             BMI = model.Participant.BMI.ToString();
             SentRisk = model.Participant.SentRisk;
             FHCReferral = model.Participant.FHCReferral;
+            MoreFrequentScreening = model.Participant.MoreFrequentScreening;
             Chemo = model.Participant.Chemoprevention;
             GPName = model.Participant.GPName;
             MailingList = model.Participant.MailingList;
@@ -59,6 +60,27 @@ namespace PROCAS2.Models.ViewModels
             AttendedScreening = model.Participant.AttendedScreening;
             AskForRiskLetter = model.Participant.AskForRiskLetter;
             DateConsented = model.Participant.DateConsented.HasValue ? model.Participant.DateConsented.Value.ToString("dd/MM/yyyy") : "";
+            ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
+
+            if (model.Participant.ChemoPreventionDetails == null)
+                ChemoPreventionDetails = null;
+            else
+                ChemoPreventionDetails = model.Participant.ChemoPreventionDetails.LookupDescription;
+
+            if (model.Participant.InitialScreeningOutcome == null)
+                InitialScreeningOutcome = null;
+            else
+                InitialScreeningOutcome = model.Participant.InitialScreeningOutcome.LookupDescription;
+
+            if (model.Participant.FinalTechnicalOutcome == null)
+                FinalTechnicalOutcome = null;
+            else
+                FinalTechnicalOutcome = model.Participant.FinalTechnicalOutcome.LookupDescription;
+
+            if (model.Participant.FinalAssessmentOutcome == null)
+                FinalAssessmentOutcome = null;
+            else
+                FinalAssessmentOutcome = model.Participant.FinalAssessmentOutcome.LookupDescription;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -144,10 +166,30 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "CHEMO", ResourceType = typeof(ParticipantResources))]
         public bool Chemo { get; set; }
+
+        [Display(Name = "CHEMO_AGREED", ResourceType = typeof(ParticipantResources))]
+        public bool ChemoAgreedInClinic { get; set; }
+
+        [Display(Name = "CHEMO_DETAILS", ResourceType = typeof(ParticipantResources))]
+        public string ChemoPreventionDetails { get; set; }
+
+        [Display(Name = "INITIAL_SCREENING", ResourceType = typeof(ParticipantResources))]
+        public string InitialScreeningOutcome { get; set; }
+
+        [Display(Name = "FINAL_TECHNICAL", ResourceType = typeof(ParticipantResources))]
+        public string FinalTechnicalOutcome { get; set; }
+
+        [Display(Name = "FINAL_ASSESSMENT", ResourceType = typeof(ParticipantResources))]
+        public string FinalAssessmentOutcome { get; set; }
+
         [Display(Name = "SENT_RISK", ResourceType = typeof(ParticipantResources))]
         public bool SentRisk { get; set; }
         [Display(Name = "FHC_REFERRAL", ResourceType = typeof(ParticipantResources))]
         public bool FHCReferral { get; set; }
+
+        [Display(Name = "MORE_FREQUENT", ResourceType = typeof(ParticipantResources))]
+        public bool MoreFrequentScreening { get; set; }
+
         [Display(Name = "MAILING_LIST", ResourceType = typeof(ParticipantResources))]
         public bool MailingList { get; set; }
         [Display(Name = "ATTENDED_SCREENING", ResourceType = typeof(ParticipantResources))]
@@ -160,6 +202,8 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "DATE_CONSENTED", ResourceType = typeof(ParticipantResources))]
         public string DateConsented { get; set; }
+
+   
 
     }
 }

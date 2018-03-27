@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using System.IO;
 
+using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
 
 namespace PROCAS2.Services.App
@@ -19,5 +20,7 @@ namespace PROCAS2.Services.App
         bool DeleteParticipant(string id);
         bool DoesNHSNumberExist(string NHSNumber);
         bool DoesHashedNHSNumberExist(string hash);
+
+        List<ParticipantLookup> GetLookups(string lookupType);
     }
 }

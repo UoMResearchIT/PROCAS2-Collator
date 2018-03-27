@@ -103,13 +103,13 @@
 <div class="row">
 
     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-7">
+    <div class="col-md-6">
         @Html.DisplayFor(model => model.Name, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
     @Html.LabelFor(model => model.ScreeningSite, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.ScreeningSite, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -119,13 +119,13 @@
 
 
     @Html.LabelFor(model => model.HomeAddress1, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-7">
+    <div class="col-md-6">
         @Html.DisplayFor(model => model.HomeAddress1, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
     @Html.LabelFor(model => model.ScreeningNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.ScreeningNumber, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -135,13 +135,13 @@
 
 
 
-    <div class="col-md-offset-2 col-md-7">
+    <div class="col-md-offset-2 col-md-6">
         @Html.DisplayFor(model => model.HomeAddress2, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
     </div>
 
     @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -149,13 +149,13 @@
 </div>
 <div class="row">
 
-    <div class="col-md-offset-2  col-md-7">
+    <div class="col-md-offset-2  col-md-6">
         @Html.DisplayFor(model => model.HomeAddress3, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
     </div>
 
     @Html.LabelFor(model => model.DOFA, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.DOFA, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -163,13 +163,13 @@
 </div>
 <div class="row">
 
-    <div class="col-md-offset-2  col-md-7">
+    <div class="col-md-offset-2  col-md-6">
         @Html.DisplayFor(model => model.HomeAddress4, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
     </div>
 
     @Html.LabelFor(model => model.DOAA, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.DOAA, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -178,13 +178,13 @@
 <div class="row">
 
     @Html.LabelFor(model => model.HomePostCode, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-7">
+    <div class="col-md-6">
         @Html.DisplayFor(model => model.HomePostCode, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
     </div>
 
     @Html.LabelFor(model => model.DateConsented, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.DateConsented, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
@@ -193,21 +193,48 @@
 <div class="row">
 
     @Html.LabelFor(model => model.HomeEmail, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-7">
+    <div class="col-md-6">
         @Html.DisplayFor(model => model.HomeEmail, new { htmlAttributes = new { @class = "form-control-static" } })
         &nbsp;
     </div>
 
     @Html.LabelFor(model => model.BMI, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.BMI, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 </div>
 
-<div class-"row">&nbsp</div>
 
-<div class="row">
+<div class="row editSection">
+
+    <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.COLLATOR_STATUS</span></div>
+
+    @Html.LabelFor(model => model.AskForRiskLetter, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.AskForRiskLetter, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.SentRisk, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.SentRisk, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.MailingList, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.MailingList, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+   
+</div>
+
+
+<div class="row editSection">
+
+    <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.STUDY_STATUS</span></div>
 
     @Html.LabelFor(model => model.Participant.Consented, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-1">
@@ -215,15 +242,9 @@
 
     </div>
 
-    @Html.LabelFor(model => model.SentRisk, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.LabelFor(model => model.AttendedScreening, htmlAttributes: new { @class = "control-label col-md-2" })
     <div class="col-md-1">
-        @Html.DisplayFor(model => model.SentRisk, new { htmlAttributes = new { @class = "form-control-static" } })
-
-    </div>
-
-    @Html.LabelFor(model => model.Participant.Deceased, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
-        @Html.DisplayFor(model => model.Participant.Deceased, new { htmlAttributes = new { @class = "form-control-static" } })
+        @Html.DisplayFor(model => model.AttendedScreening, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
@@ -232,53 +253,93 @@
         @Html.DisplayFor(model => model.Participant.Withdrawn, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
+
+
+    @Html.LabelFor(model => model.Participant.Deceased, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-1">
+        @Html.DisplayFor(model => model.Participant.Deceased, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+   
 </div>
 
-<div class-"row">&nbsp</div>
 
-<div class="row">
+<div class="row editSection">
+    <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.SCREENING_OUTCOMES</span></div>
+
+    @Html.LabelFor(model => model.InitialScreeningOutcome, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.InitialScreeningOutcome, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+    @Html.LabelFor(model => model.FinalTechnicalOutcome, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.FinalTechnicalOutcome, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.FinalAssessmentOutcome, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.FinalAssessmentOutcome, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+</div>
+
+<div class="row editSection">
+    <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.CHEMOPREVENTION</span></div>
+
+    @Html.LabelFor(model => model.ChemoAgreedInClinic, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.ChemoAgreedInClinic, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+    @Html.LabelFor(model => model.ChemoPreventionDetails, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.ChemoPreventionDetails, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+    @Html.LabelFor(model => model.Chemo, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.Chemo, new { htmlAttributes = new { @class = "form-control-static" } })
+
+    </div>
+
+
+</div>
+
+
+
+<div class="row editSection">
+    <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.POST_STUDY</span></div>
+   
     @Html.LabelFor(model => model.Participant.Diagnosed, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.Participant.Diagnosed, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
 
     @Html.LabelFor(model => model.FHCReferral, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
+    <div class="col-md-2">
         @Html.DisplayFor(model => model.FHCReferral, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
-    @Html.LabelFor(model => model.Chemo, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
-        @Html.DisplayFor(model => model.Chemo, new { htmlAttributes = new { @class = "form-control-static" } })
+    @Html.LabelFor(model => model.MoreFrequentScreening, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-2">
+        @Html.DisplayFor(model => model.MoreFrequentScreening, new { htmlAttributes = new { @class = "form-control-static" } })
 
     </div>
 
-    @Html.LabelFor(model => model.MailingList, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
-        @Html.DisplayFor(model => model.MailingList, new { htmlAttributes = new { @class = "form-control-static" } })
-
-    </div>
-
-</div>
-
-<div class-"row">&nbsp</div>
-
-<div class="row">
-    @Html.LabelFor(model => model.AttendedScreening, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-1">
-        @Html.DisplayFor(model => model.AttendedScreening, new { htmlAttributes = new { @class = "form-control-static" } })
-
-    </div>
-
-    @Html.LabelFor(model => model.AskForRiskLetter, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-7">
-        @Html.DisplayFor(model => model.AskForRiskLetter, new { htmlAttributes = new { @class = "form-control-static" } })
-
-    </div>
-   
+  
 
 </div>
 
