@@ -186,7 +186,7 @@ select
 }
 
 .editSection{
-    border: 1px dashed Black;
+    border: 1px dashed lightgrey;
     border-radius:5px;
     padding: 5px 5px 5px 5px;
 }

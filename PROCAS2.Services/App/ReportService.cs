@@ -605,6 +605,47 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Produce a report containing those participants who have been flagged as requiring a risk letter but haven't receivied one yet
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream AskForRiskLetters()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "HashedNHSNumber"});
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == true && x.SentRisk == false && x.RiskLetters.Count == 0).ToList();
+                foreach (Participant patient in patients)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "HashedNHSNumber" });
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+
+
+        /// <summary>
         /// Produce a report of those who have asked for a letter but not received it yet.
         /// </summary>
         /// <returns>The report!</returns>

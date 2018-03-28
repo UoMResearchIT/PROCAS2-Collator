@@ -18,5 +18,6 @@ namespace PROCAS2.Services.App
         MemoryStream YetToReceiveLetter();
         MemoryStream YetToSendLetter();
         MemoryStream WaitingForVolpara();
+        MemoryStream AskForRiskLetters();
     }
 }

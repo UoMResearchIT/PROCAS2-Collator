@@ -201,6 +201,27 @@ namespace PROCAS2.Controllers
         }
 
         [HttpGet]
+        public ActionResult AskForRiskLetters()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.ASK_FOR_RISK_LETTER;
+            model.Summary = ReportResources.ASK_FOR_RISK_LETTER_SUMMARY;
+            model.ActionName = "AskForRiskLetters";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AskForRiskLetters(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.AskForRiskLetters(), "AskForRiskLetters", model);
+
+        }
+
+        [HttpGet]
         public ActionResult YetToSendLetter()
         {
             NoParameterViewModel model = new NoParameterViewModel();

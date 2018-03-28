@@ -61,6 +61,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ask For Outstanding Risk Letters.
+        /// </summary>
+        public static string ASK_FOR_RISK_LETTER {
+            get {
+                return ResourceManager.GetString("ASK_FOR_RISK_LETTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Produces a list of hashed NHS numbers of all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA..
+        /// </summary>
+        public static string ASK_FOR_RISK_LETTER_SUMMARY {
+            get {
+                return ResourceManager.GetString("ASK_FOR_RISK_LETTER_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients for who a risk letter has been asked for but not received..
         /// </summary>
         public static string ASKED_FOR_LETTER_NOT_REC {

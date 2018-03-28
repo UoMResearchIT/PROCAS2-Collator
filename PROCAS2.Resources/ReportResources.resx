@@ -123,6 +123,12 @@
   <data name="ASKED_FOR_LETTER_NOT_REC_SUMMARY" xml:space="preserve">
     <value>This report will show the NHS Number, DOB, date of first appointment and date consented of those for who we have asked for a risk letter but have not yet received one.</value>
   </data>
+  <data name="ASK_FOR_RISK_LETTER" xml:space="preserve">
+    <value>Ask For Outstanding Risk Letters</value>
+  </data>
+  <data name="ASK_FOR_RISK_LETTER_SUMMARY" xml:space="preserve">
+    <value>Produces a list of hashed NHS numbers of all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA.</value>
+  </data>
   <data name="CONSENTED_YET_TO_GET_FULL" xml:space="preserve">
     <value>Patients consented but without full details yet</value>
   </data>

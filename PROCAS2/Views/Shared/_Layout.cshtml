@@ -9,7 +9,7 @@
     <link rel="SHORTCUT ICON" href="~/Content/icons/index.ico" />
     <title>@ViewBag.Title - PROCAS2 Collator</title>
 
-   
+
 
 
     @Styles.Render("~/Content/css")
@@ -26,9 +26,9 @@
 
 
 
-    
 
-    
+
+
     @RenderSection("scripts", required: false)
 
 </head>
@@ -42,39 +42,48 @@
                     <span class="icon-bar"></span>
                 </button>
                 <p class="navbar-brand navbar-left mainBrand">PROCAS2 Collator</p>
-               
+
             </div>
             <div class="navbar-collapse collapse">
 
                 @if (Request.IsAuthenticated)
                 {
-                <ul class="nav navbar-nav">
-                    
-                    <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            Participant
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("View/Edit Participant", "Index", "Participant")</li>
-                            <li>@Html.ActionLink("Upload New Participants", "UploadNew", "Participant")</li>
-                            <li>@Html.ActionLink("Update Participants", "UploadUpdate", "Participant")</li>
-                            <li>@Html.ActionLink("Ask For Risk Letters", "UploadAskRisk", "Participant")</li>
-                            <li>@Html.ActionLink("Edit Histology", "Index", "Histology")</li>
-                            <li>@Html.ActionLink("Upload Genetic Records", "Index", "Home")</li>
-                        </ul>
-                    </li>
-                    
-                    <li>@Html.ActionLink("Export Letters", "Export", "Export")</li>
-                    
-                    <li>@Html.ActionLink("Reports", "Index", "Report")</li>
-                    
-                </ul>
-               
+                    <ul class="nav navbar-nav">
+
+                        <li>@Html.ActionLink("Dashboard", "Index", "Home")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Participant
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("View/Edit Participant", "Index", "Participant")</li>
+                                <li>@Html.ActionLink("Upload New Participants", "UploadNew", "Participant")</li>
+                                <li>@Html.ActionLink("Update Participants", "UploadUpdate", "Participant")</li>
+                                <li>@Html.ActionLink("Mark Participants to Ask For Risk Letters", "UploadAskRisk", "Participant")</li>
+                                <li>@Html.ActionLink("Edit Histology", "Index", "Histology")</li>
+                                <li>@Html.ActionLink("Upload Genetic Records", "Index", "Home")</li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Letters
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Ask For Risk Letters", "AskForRiskLetters", "Report")</li>
+                                <li>@Html.ActionLink("Export Letters", "Export", "Export")</li>
+                            </ul>
+                        </li>
+
+                        <li>@Html.ActionLink("Reports", "Index", "Report")</li>
+
+                    </ul>
+
                 }
                 @Html.Partial("_LoginPartial")
-                
+
             </div>
         </div>
     </div>
@@ -85,11 +94,11 @@
             <div class="row ">
                 <div class="col-md-6">
                     <p>
-                        
-                    </p>
-                   
 
-                   
+                    </p>
+
+
+
                 </div>
 
                 <div class="col-md-6 footer-image">
@@ -101,6 +110,6 @@
         </footer>
     </div>
 
-  
+
 </body>
 </html>
