@@ -231,7 +231,7 @@ namespace PROCAS2.Services.App
                 // Add participant header
                 string mainSheetId = AddSheet(wbPart, "Main", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols: new List<string>() { "Site" });
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols: new List<string>() { "Site", "ChemoDetails", "InitialScreeningOutcome", "FinalAssessmentOutcome", "FinalTechnicalOutcome" });
 
                 // Add address header
                 string addressSheetId = AddSheet(wbPart, "Addresses", 2);
@@ -294,7 +294,12 @@ namespace PROCAS2.Services.App
                     // Add participant details
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
                     Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).First();
-                    AddLineFromProperties(workingSheet, participant, typeof(Participant), parIndex, afterCols: new List<string>() { participant.ScreeningSite.Name });
+                    AddLineFromProperties(workingSheet, participant, typeof(Participant), parIndex, afterCols: new List<string>() { participant.ScreeningSite.Name,
+                                                                                                                    participant.ChemoPreventionDetails==null?null:participant.ChemoPreventionDetails.LookupDescription,
+                                                                                                                    participant.InitialScreeningOutcome==null?null:participant.InitialScreeningOutcome.LookupDescription,
+                                                                                                                    participant.FinalAssessmentOutcome==null?null:participant.FinalAssessmentOutcome.LookupDescription,
+                                                                                                                    participant.FinalTechnicalOutcome == null?null:participant.FinalTechnicalOutcome.LookupDescription                                                    
+                    });
 
                     // Add address details
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
