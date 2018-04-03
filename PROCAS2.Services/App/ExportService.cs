@@ -201,6 +201,10 @@ namespace PROCAS2.Services.App
                     SentDate = DateTime.Now.ToLongDateString()
 
                 });
+
+                participant.SentRisk = true;
+                _participantRepo.Update(participant);
+                _unitOfWork.Save();
             }
 
             return retModel;

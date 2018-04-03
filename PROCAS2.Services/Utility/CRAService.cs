@@ -464,7 +464,8 @@ namespace PROCAS2.Services.Utility
 
             if (orderOutMsg != null)
             {
-                message =  orderOutMsg.GetBody<string>();
+                string type = orderOutMsg.ContentType;
+                message = System.Text.Encoding.UTF8.GetString(orderOutMsg.GetBody<byte[]>());
                 orderOutMsg.Complete();
             }
 

@@ -201,6 +201,9 @@
   <data name="SENT_DATE" xml:space="preserve">
     <value>Date:</value>
   </data>
+  <data name="SIGNATURE" xml:space="preserve">
+    <value>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAAAdCAYAAAB8D1TlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVHhe7dJBbsUgDATQ3P/Srf4CaeQ/xgbcJoR50iwSGwKEK+kniMgXdlG8iKQvRbZPDjBzGUb75WVWLsDKWNlYxY+vmEM2U/XDdXEOo4sj02Z/ehsX5Q3YvjBvFO7RLRA40UxWsTm9ZLBxVXkStr7RfHELACfANPa5wV6vx8PG3hkP68VUYXP/Z6heEQeznl4NZXoanNMmg43z8hfYd+5OhI1pcdkGHGRrKKojrw/nsNkd29NKKrH5WbrYAAzCZ1b3eHN5kTrsfFmmRJPYmn2OYL+NzGPnmc2yzGTYg8liYz+Rcewco5Qb+Ui2T2rZc7e5BX48WkirR32SZ880m1uxRXgLw/dej+S08xvJo7BF9d6196xH+vAMbbbSWzRuCoPYu9Pg2YxmS9EGsO71ee/fCs9iNtuLNpLZbFTfGe4/ylHYAfTC9Gq7wb32cjx2KDYf7L3Njtg+bGQRO1TM07E1s8jh2KVgkYOwC5CJHI5dChYpdV2/iIi4ZOBM7xIAAAAASUVORK5CYII=</value>
+  </data>
   <data name="SIGN_OFF" xml:space="preserve">
     <value>Signed,</value>
   </data>

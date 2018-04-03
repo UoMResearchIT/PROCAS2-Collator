@@ -322,6 +322,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAI4AAAAdCAYAAAB8D1TlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF3SURBVHhe7dJBbsUgDATQ3P/Srf4CaeQ/xgbcJoR50iwSGwKEK+kniMgXdlG8iKQvRbZPDjBzGUb75WVWLsDKWNlYxY+vmEM2U/XDdXEOo4sj02Z/ehsX5Q3YvjBvFO7RLRA40UxWsTm9ZLBxVXkStr7RfHELACfANPa5wV6vx8PG3hkP68VUYXP/Z6heEQeznl4NZXoanNMmg43z8hfYd+5OhI1pcdkGHGRrKKojrw/nsNkd29NKKrH5WbrYAAzCZ1b3eHN5kTrsfFmmRJPYmn2OYL+NzGPnmc2yzGTYg8liYz+Rcewco5Qb+Ui2T2rZc7e5BX48WkirR32SZ880m1uxRXgLw/dej+S08xvJo7BF9d6196xH+v [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string SIGNATURE {
+            get {
+                return ResourceManager.GetString("SIGNATURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Trust To Export?.
         /// </summary>
         public static string SITE_TO_PROCESS {

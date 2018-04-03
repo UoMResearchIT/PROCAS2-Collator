@@ -79,8 +79,6 @@ namespace PROCAS2.Controllers
                     string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Export"));
                     HttpContext.Response.AppendHeader("Refresh", headerValue);
 
-                    //TODO: set the sent risk flag
-
                     return new WordResult(mStream, "Letters");
                 }
                 else
