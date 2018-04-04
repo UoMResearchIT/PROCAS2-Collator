@@ -263,6 +263,48 @@ namespace PROCAS2.Controllers
 
         }
 
+        [HttpGet]
+        public ActionResult ScreeningFirstOffered()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.SCREENING_FIRST_OFFERED;
+            model.Summary = ReportResources.SCREENING_FIRST_OFFERED_SUMMARY;
+            model.ActionName = "ScreeningFirstOffered";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ScreeningFirstOffered(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.ScreeningFirstOffered(), "ScreeningFirstOffered", model);
+
+        }
+
+        [HttpGet]
+        public ActionResult ScreeningWithin180Days()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.SCREENING_WITHIN_180_DAYS;
+            model.Summary = ReportResources.SCREENING_WITHIN_180_DAYS_SUMMARY;
+            model.ActionName = "ScreeningWithin180Days";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ScreeningWithin180Days(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.ScreeningWithin180Days(), "ScreeningWithin180Days", model);
+
+        }
+
 
         private ActionResult NoParameterReport(Func<MemoryStream> reportFunction, string reportName, NoParameterViewModel model)
         {

@@ -728,5 +728,115 @@ namespace PROCAS2.Services.App
             return generatedDocument;
         }
 
+
+        /// <summary>
+        /// Produce a report of those who attended screening on the day of the first offered appointment.
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ScreeningFirstOffered()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 &&  x.DateActualAppointment == x.DateFirstAppointment).ToList();
+                foreach (Participant patient in patients)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who attended screening within 180 days of the first offered appointment.
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ScreeningWithin180Days()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.DateActualAppointment >= x.DateFirstAppointment ).ToList();
+                foreach (Participant patient in patients)
+                {
+                    // check within certain number of days.
+                    if ((patient.DateActualAppointment.Value - patient.DateFirstAppointment.Value).TotalDays <= 180)
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                        AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                            onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                            afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                        repIndex++;
+                    }
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Calculate the number of whole years between 2 dates
+        /// </summary>
+        /// <param name="laterDate">later date</param>
+        /// <param name="earlierDate">earlier date</param>
+        /// <returns>number of years</returns>
+        private string WholeYearsDiff(DateTime laterDate, DateTime earlierDate)
+        {
+            if(laterDate.DayOfYear >= earlierDate.DayOfYear)
+            {
+                return (laterDate.Year - earlierDate.Year).ToString();
+            }
+            else
+            {
+                return (laterDate.Year - earlierDate.Year - 1 ).ToString();
+            }
+        }
+
     }
 }

@@ -241,6 +241,51 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patient Reports.
+        /// </summary>
+        public static string PATIENT_REPORTS {
+            get {
+                return ResourceManager.GetString("PATIENT_REPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening attendance at first offered screening episode.
+        /// </summary>
+        public static string SCREENING_FIRST_OFFERED {
+            get {
+                return ResourceManager.GetString("SCREENING_FIRST_OFFERED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended screening on the first offered appointment..
+        /// </summary>
+        public static string SCREENING_FIRST_OFFERED_SUMMARY {
+            get {
+                return ResourceManager.GetString("SCREENING_FIRST_OFFERED_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening attendance within 180 days of episode opening.
+        /// </summary>
+        public static string SCREENING_WITHIN_180_DAYS {
+            get {
+                return ResourceManager.GetString("SCREENING_WITHIN_180_DAYS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended screening within 180 days of the first offered appointment..
+        /// </summary>
+        public static string SCREENING_WITHIN_180_DAYS_SUMMARY {
+            get {
+                return ResourceManager.GetString("SCREENING_WITHIN_180_DAYS_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Collator Status Reports.
         /// </summary>
         public static string STATUS_REPORTS {

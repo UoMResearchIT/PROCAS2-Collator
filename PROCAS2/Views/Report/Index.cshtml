@@ -67,3 +67,21 @@
     <div class="col-md-4 reportPanel">
     </div>
 </div>
+
+<div class="row reportGroup">
+    <div class="col-md-12">
+
+        <h4>@ReportResources.PATIENT_REPORTS</h4>
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span> @Html.ActionLink(ReportResources.SCREENING_FIRST_OFFERED, "ScreeningFirstOffered", "Report", new { }, new { })
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span> @Html.ActionLink(ReportResources.SCREENING_WITHIN_180_DAYS, "ScreeningWithin180Days", "Report", new { }, new { })
+    </div>
+    <div class="col-md-4 reportPanel">
+    </div>
+</div>
+

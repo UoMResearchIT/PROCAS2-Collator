@@ -177,6 +177,21 @@
   <data name="PATIENT_DETAILS" xml:space="preserve">
     <value>Patient Details</value>
   </data>
+  <data name="PATIENT_REPORTS" xml:space="preserve">
+    <value>Patient Reports</value>
+  </data>
+  <data name="SCREENING_FIRST_OFFERED" xml:space="preserve">
+    <value>Screening attendance at first offered screening episode</value>
+  </data>
+  <data name="SCREENING_FIRST_OFFERED_SUMMARY" xml:space="preserve">
+    <value>This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended screening on the first offered appointment.</value>
+  </data>
+  <data name="SCREENING_WITHIN_180_DAYS" xml:space="preserve">
+    <value>Screening attendance within 180 days of episode opening</value>
+  </data>
+  <data name="SCREENING_WITHIN_180_DAYS_SUMMARY" xml:space="preserve">
+    <value>This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended screening within 180 days of the first offered appointment.</value>
+  </data>
   <data name="STATUS_REPORTS" xml:space="preserve">
     <value>Collator Status Reports</value>
   </data>
