@@ -127,6 +127,7 @@ namespace PROCAS2.Services.App
                 LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
                 Signature = letter.Participant.ScreeningSite.Signature,
                 Telephone = letter.Participant.ScreeningSite.Telephone,
+                NHSNumber = letter.Participant.NHSNumber,
 
                 Name = title + " " + letter.Participant.LastName,
                 AddressLine1 = homeAddress.AddressLine1,
@@ -190,7 +191,7 @@ namespace PROCAS2.Services.App
 
                     Signature = participant.ScreeningSite.Signature,
                     Telephone = participant.ScreeningSite.Telephone,
-
+                    NHSNumber = participant.NHSNumber,
 
                     Name = title + " " + participant.LastName,
                     AddressLine1 = homeAddress.AddressLine1,
