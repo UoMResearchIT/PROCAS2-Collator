@@ -16,5 +16,8 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "UPLOAD_NEW_FILE_NAME", ResourceType = typeof(UploadResources))]
         [Required(ErrorMessageResourceName = "UPLOAD_NEW_FILE_NAME", ErrorMessageResourceType = typeof(UploadResources))]
         public HttpPostedFileBase UploadedFile { get; set; }
+
+        [Display(Name = "UPLOAD_NEW_REGENERATE", ResourceType = typeof(UploadResources))]
+        public bool Regenerate { get; set; }
     }
 }

@@ -230,6 +230,9 @@
   <data name="UPLOAD_NEW_FILE_NAME" xml:space="preserve">
     <value>Please enter a file name</value>
   </data>
+  <data name="UPLOAD_NEW_REGENERATE" xml:space="preserve">
+    <value>Regenerate hashes for existing numbers?</value>
+  </data>
   <data name="UPLOAD_NHS_NUMBER_ALREADY_UPDATED" xml:space="preserve">
     <value>NHS Number {0} has already been updated. Please edit manually.</value>
     <comment>{0] = NHS Number</comment>

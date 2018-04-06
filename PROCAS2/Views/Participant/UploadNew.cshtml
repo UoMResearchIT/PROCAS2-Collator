@@ -25,6 +25,10 @@
             Please upload a CSV file with 3 columns per row; column A containing the NHS Number, column B the date of birth and column C the date of first appointment. 
             Please do not include column headers. If no errors are found then a CSV file with the hashed numbers will be returned.
         </p>
+        <p>
+            Clicking the <strong>Regenerate</strong> button will result in the file with hashes being generated, but the records will not be added to the database. 
+            This option is included in case the file is lost after the initial upload.
+        </p>
     </div>
 </div>
 
@@ -41,6 +45,15 @@
                     @Html.LabelFor(model => model.UploadedFile, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
                         @Html.FileUpload("UploadedFile")
+
+                        @Html.ValidationMessageFor(model => model.UploadedFile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Regenerate, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Regenerate)
 
                         @Html.ValidationMessageFor(model => model.UploadedFile, "", new { @class = "text-danger" })
                     </div>

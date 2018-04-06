@@ -112,7 +112,7 @@ namespace PROCAS2.Services.App
             {
                 string line = reader.ReadLine();
 
-                valid = ValidateNewParticipantLine(line, lineCount, ref outModel);
+                valid = ValidateNewParticipantLine(model.Regenerate, line, lineCount, ref outModel);
                 if (valid == false)
                 {
                     errors = true;
@@ -141,8 +141,16 @@ namespace PROCAS2.Services.App
                         string line = reader.ReadLine();
                         string[] lineBits = line.Split(',');
 
+                        string hash = "";
 
-                        string hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]));
+                        if (model.Regenerate == false)
+                        {
+                            hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]));
+                        }
+                        else
+                        {
+                            hash = _hashingService.CreateNHSHash(lineBits[0]);
+                        }
 
                         // First put in the NHSNumber.
                         //csv.WriteField(lineBits[0]);
@@ -338,11 +346,12 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Check the the passed line is valid
         /// </summary
+        /// <param name="regenerate">True = regenerating the hash file, false = initial upload</param>
         /// <param name="line">The line string</param>
         /// <param name="lineCount">Line number</param>
         /// <param name="outModel">View model to add result messages to</param>
         /// <returns>true if valid, else false</returns>
-        private bool ValidateNewParticipantLine(string line, int lineCount, ref UploadResultsViewModel outModel)
+        private bool ValidateNewParticipantLine(bool regenerate, string line, int lineCount, ref UploadResultsViewModel outModel)
         {
             
             string[] lineBits = line.Split(',');
@@ -405,9 +414,12 @@ namespace PROCAS2.Services.App
             Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
             if (participant != null) // Participant already exists in the database
             {
-                
-                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
-                return false;
+
+                if (regenerate == false) // Only care about this error if it is the initial upload, not when regenerating the hash file
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
             }
 
             

@@ -394,6 +394,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Regenerate hashes for existing numbers?.
+        /// </summary>
+        public static string UPLOAD_NEW_REGENERATE {
+            get {
+                return ResourceManager.GetString("UPLOAD_NEW_REGENERATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to NHS Number {0} has already been updated. Please edit manually..
         /// </summary>
         public static string UPLOAD_NHS_NUMBER_ALREADY_UPDATED {
