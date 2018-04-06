@@ -1,0 +1,124 @@
+﻿@model PROCAS2.Models.ViewModels.UploadScreeningOutcomesViewModel
+@using Humanities.Web.HtmlHelpers
+
+@{
+    ViewBag.Title = "Upload Screening Outcomes";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+<script src="@Url.Content("~/js/uploadScreeningOutcomes.js")"></script>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <h3>Upload Screening Outcomes</h3>
+
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <p>
+            Please upload a CSV file with 5 columns in the format below. Please do not include column headers.
+        </p>
+    </div>
+</div>
+
+<div class="row">
+
+
+    @using (Html.BeginForm("UploadScreeningOutcomes", "Participant", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken();
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.UploadedFile, htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-8">
+                    @Html.FileUpload("UploadedFile")
+
+                    @Html.ValidationMessageFor(model => model.UploadedFile, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-10">
+                    <input id="btnUpload" type="submit" value="Upload" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+    }
+
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        Column
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Length/Type
+                    </th>
+                    <th>
+                        Comment
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>A</td><td>NHS Number</td><td>Max 12 characters</td><td>Mandatory</td></tr>
+                <tr><td>B</td><td>Initial Screening Outcome</td><td>Coded string</td>
+                    <td>Mandatory - choose from:
+                    <ul>
+                        <li>INI_TECH - Technical recall</li>
+                        <li>INI_ASSESS - Recall for assessment</li>
+                        <li>INI_ROUTINE - Routine recall</li>
+                    </ul>
+                    </td>
+                </tr>
+
+                <tr><td>C</td><td>Final Technical Outcome</td><td>Coded string</td>
+                    <td>Mandatory if INI_TECH chosen in column B, else ignored
+                    <ul>
+                        <li>TECH_ROUTINE - Routine recall</li>
+                        <li>TECH_DNA - DNA appointment</li>
+                        <li>TECH_REC_ROUTINE - Recall for assessment - routine recall</li>
+                        <li>TECH_REC_CANCER - Recall for assessment - breast cancer</li>
+                        <li>TECH_REC_SURV - Recall for assessment - enhanced surveillance</li>
+                    </ul>
+                    </td>
+                </tr>
+
+                <tr><td>D</td><td>Final Assessment Outcome</td><td>Max 20 characters</td>
+                    <td>Mandatory if INI_ASSESS chosen in field B, else ignored
+                    <ul>
+                        <li>RECALL_ROUTINE - Routine recall</li>
+                        <li>RECALL_DNA - DNA appointment</li>
+                        <li>RECALL_CANCER - Breast cancer</li>
+                        <li>RECALL_SURV - Enhanced surveillance</li>
+                    </ul>
+                    </td>
+                </tr>
+
+                <tr><td>E</td><td>End of Record</td><td>3 letter string - 'END'</td><td>Mandatory, the ensure correct number of columns per line</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="exportElement" class="spinnerElement">
+
+    <div id="exportSection" class="spinnerSection">Uploading Data</div>
+</div>
+
+

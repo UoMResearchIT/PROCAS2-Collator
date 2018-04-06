@@ -16,6 +16,7 @@ namespace PROCAS2.Services.App
         bool UploadNewParticipants(UploadNewParticipantsViewModel model, out UploadResultsViewModel outModel, out MemoryStream hashFile);
         void UploadUpdateParticipants(UploadUpdateParticipantsViewModel model, out UploadResultsViewModel outModel);
         void UploadAskRisk(UploadAskRiskViewModel model, out UploadResultsViewModel outModel);
+        void UploadScreeningOutcomes(UploadScreeningOutcomesViewModel model, out UploadResultsViewModel outModel);
         List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
         bool DeleteParticipant(string id);
         bool DoesNHSNumberExist(string NHSNumber);

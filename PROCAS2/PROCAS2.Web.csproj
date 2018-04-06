@@ -446,6 +446,7 @@
     <Content Include="js\histologyFocusEdit.js" />
     <Content Include="js\histologyList.js" />
     <Content Include="js\txErrorsList.js" />
+    <Content Include="js\uploadScreeningOutcomes.js" />
     <Content Include="Properties\webjobs-list.json" />
     <None Include="Scripts\jquery-3.2.1.intellisense.js" />
     <Content Include="js\craResultsView.js" />
@@ -686,6 +687,7 @@
     <Content Include="Views\Histology\EditFocus.cshtml" />
     <Content Include="Views\Report\NoParameter.cshtml" />
     <Content Include="Views\Home\_Volpara.cshtml" />
+    <Content Include="Views\Participant\UploadScreeningOutcomes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

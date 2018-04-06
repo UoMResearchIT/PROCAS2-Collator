@@ -250,6 +250,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 012.
+        /// </summary>
+        public static string EVENT_SCREENING_OUTCOME {
+            get {
+                return ResourceManager.GetString("EVENT_SCREENING_OUTCOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening Outcomes Uploaded.
+        /// </summary>
+        public static string EVENT_SCREENING_OUTCOME_STR {
+            get {
+                return ResourceManager.GetString("EVENT_SCREENING_OUTCOME_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 003.
         /// </summary>
         public static string EVENT_UPDATED {

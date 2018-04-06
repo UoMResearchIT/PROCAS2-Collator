@@ -61,6 +61,69 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The outcome {0} does not exist in the database.
+        /// </summary>
+        public static string ASSESSMENT_OUTCOME_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("ASSESSMENT_OUTCOME_NOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only one of the technical or assessment final outcomes should be entered..
+        /// </summary>
+        public static string BOTH_FINAL_OUTCOME_FILLED_IN {
+            get {
+                return ResourceManager.GetString("BOTH_FINAL_OUTCOME_FILLED_IN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The outcome {0} does not exist in the database.
+        /// </summary>
+        public static string INITIAL_OUTCOME_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("INITIAL_OUTCOME_NOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no technical outcome given.
+        /// </summary>
+        public static string NO_ASSESSMENT_OUTCOME {
+            get {
+                return ResourceManager.GetString("NO_ASSESSMENT_OUTCOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no initial outcome given..
+        /// </summary>
+        public static string NO_INITIAL_OUTCOME {
+            get {
+                return ResourceManager.GetString("NO_INITIAL_OUTCOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no technical outcome given.
+        /// </summary>
+        public static string NO_TECHNICAL_OUTCOME {
+            get {
+                return ResourceManager.GetString("NO_TECHNICAL_OUTCOME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The outcome {0} does not exist in the database.
+        /// </summary>
+        public static string TECHNICAL_OUTCOME_NOT_EXIST {
+            get {
+                return ResourceManager.GetString("TECHNICAL_OUTCOME_NOT_EXIST", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address line 1 is mandatory..
         /// </summary>
         public static string UPLOAD_ADDRESS_1_EMPTY {
@@ -462,6 +525,24 @@ namespace PROCAS2.Resources {
         public static string UPLOAD_NHS_NUMBER_TOO_LONG {
             get {
                 return ResourceManager.GetString("UPLOAD_NHS_NUMBER_TOO_LONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The outcomes for {0} have been updated successfully.
+        /// </summary>
+        public static string UPLOAD_OUTCOME_SUCCESS {
+            get {
+                return ResourceManager.GetString("UPLOAD_OUTCOME_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter a file name.
+        /// </summary>
+        public static string UPLOAD_OUTCOMES_FILE_NAME {
+            get {
+                return ResourceManager.GetString("UPLOAD_OUTCOMES_FILE_NAME", resourceCulture);
             }
         }
         

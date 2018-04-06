@@ -41,6 +41,7 @@ namespace PROCAS2.Services.App
         private int _UPLOADNEWCOLUMNS;
         private int _UPLOADUPDATECOLUMNS;
         private int _UPLOADASKRISKCOLUMNS;
+        private int _UPLOADOUTCOMECOLUMNS;
         private DateTime _EARLIESTDOB;
         private DateTime _LATESTDOB;
         private DateTime _EARLIESTDOFA;
@@ -85,6 +86,7 @@ namespace PROCAS2.Services.App
             _UPLOADNEWCOLUMNS = _configService.GetIntAppSetting("UploadNewColumns") ?? 0;
             _UPLOADUPDATECOLUMNS = _configService.GetIntAppSetting("UploadUpdateColumns") ?? 0;
             _UPLOADASKRISKCOLUMNS = _configService.GetIntAppSetting("UploadAskRiskColumns") ?? 0;
+            _UPLOADOUTCOMECOLUMNS = _configService.GetIntAppSetting("UploadOutcomeColumns") ?? 0;
             _EARLIESTDOB = _configService.GetDateTimeAppSetting("EarliestDOB") ?? DateTime.Now;
             _LATESTDOB = _configService.GetDateTimeAppSetting("LatestDOB") ?? DateTime.Now;
             _EARLIESTDOFA = _configService.GetDateTimeAppSetting("EarliestDOFA") ?? DateTime.Now;
@@ -213,6 +215,187 @@ namespace PROCAS2.Services.App
            
             
         }
+
+        /// <summary>
+        /// Upload the screening outcome and update the participant
+        /// </summary>
+        /// <param name="model">The model containing the CSV file</param>
+        /// <param name="outModel">The results of the upload (good or bad)</param>
+        public void UploadScreeningOutcomes(UploadScreeningOutcomesViewModel model, out UploadResultsViewModel outModel)
+        {
+            outModel = new UploadResultsViewModel();
+            StreamReader reader = new StreamReader(model.UploadedFile.InputStream);
+            int lineCount = 1;
+
+            bool valid = true;
+
+            // First check the file for errors
+            while (reader.EndOfStream == false)
+            {
+                string line = reader.ReadLine();
+
+                // validate the line
+                valid = ValidateScreeningOutcomeLine(line, lineCount, ref outModel);
+                if (valid == true)
+                {
+                    string[] lineBits = line.Split(',');
+                    string NHSNumber = lineBits[0];
+                    // fetch the participant to update
+                    Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+                    if (participant != null)
+                    {
+                        // set the initial outcome
+                        string initial = lineBits[1];
+                        participant.InitialScreeningOutcome = _lookupRepo.GetAll().Where(x => x.LookupCode == initial).FirstOrDefault();
+
+                        string technical = lineBits[2];
+                        string assess = lineBits[3];
+                        if (String.IsNullOrEmpty(technical) == false && String.IsNullOrEmpty(assess) == true) // set the final technical outcome
+                        {
+                            participant.FinalTechnicalOutcome= _lookupRepo.GetAll().Where(x => x.LookupCode == technical).FirstOrDefault();
+                            participant.FinalAssessmentOutcome = null;
+                        }
+
+                       
+                        if (String.IsNullOrEmpty(assess) == false && String.IsNullOrEmpty(technical) == true) // Set the final assessment outcome
+                        {
+                            participant.FinalAssessmentOutcome = _lookupRepo.GetAll().Where(x => x.LookupCode == assess).FirstOrDefault();
+                            participant.FinalTechnicalOutcome = null;
+                        }
+
+                        // If the initial outcome is routine then there are no final outcomes
+                        if (String.IsNullOrEmpty(technical) && String.IsNullOrEmpty(assess))
+                        {
+                            participant.FinalTechnicalOutcome = null;
+                            participant.FinalAssessmentOutcome = null;
+                        }
+
+                        _participantRepo.Update(participant);
+                        _unitOfWork.Save();
+
+                        _auditService.AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_SCREENING_OUTCOME, EventResources.EVENT_SCREENING_OUTCOME_STR);
+
+
+
+                    }
+                }
+
+                lineCount++;
+            }
+        }
+
+
+        /// <summary>
+        /// Check the the passed line is valid
+        /// </summary
+        /// <param name="line">The line string</param>
+        /// <param name="lineCount">Line number</param>
+        /// <param name="outModel">View model to add result messages to</param>
+        /// <returns>true if valid, else false</returns>
+        private bool ValidateScreeningOutcomeLine(string line, int lineCount, ref UploadResultsViewModel outModel)
+        {
+
+            string[] lineBits = line.Split(',');
+            if (lineBits.Count() != _UPLOADOUTCOMECOLUMNS) // Should only be 5 columns
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, _UPLOADOUTCOMECOLUMNS), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            string NHSNumber = lineBits[0];
+
+            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+            if (participant == null) // Participant does not exist in the database
+            {
+
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+            else
+            {
+                if (participant.Consented == false)
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_CONSENTED, NHSNumber), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+
+            // initial outcome is mandatory
+            if (String.IsNullOrEmpty(lineBits[1]))
+            {
+                outModel.AddMessage(lineCount, UploadResources.NO_INITIAL_OUTCOME, UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // initial code must exist
+            string code = lineBits[1];
+            ParticipantLookup initial = _lookupRepo.GetAll().Where(x => x.LookupCode == code).FirstOrDefault();
+            if (initial == null)
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.INITIAL_OUTCOME_NOT_EXIST, lineBits[1]), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Both types of final outcome cannot be filled in!
+            if (String.IsNullOrEmpty(lineBits[2]) == false && String.IsNullOrEmpty(lineBits[3]) == false)
+            {
+                outModel.AddMessage(lineCount, UploadResources.BOTH_FINAL_OUTCOME_FILLED_IN, UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // if the initial outcome is technical then check validity of column 3
+            if (lineBits[1] == "INI_TECH")
+            {
+                // technical outcome is mandatory
+                if (String.IsNullOrEmpty(lineBits[2]))
+                {
+                    outModel.AddMessage(lineCount, UploadResources.NO_TECHNICAL_OUTCOME, UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+
+                // technical code must exist
+                code = lineBits[2];
+                ParticipantLookup technical = _lookupRepo.GetAll().Where(x => x.LookupCode == code).FirstOrDefault();
+                if (technical == null)
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.TECHNICAL_OUTCOME_NOT_EXIST, lineBits[2]), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+
+            // if the initial outcome is assessment then check validity of column 4
+            if (lineBits[1] == "INI_ASSESS")
+            {
+                // assessment outcome is mandatory
+                if (String.IsNullOrEmpty(lineBits[3]))
+                {
+                    outModel.AddMessage(lineCount, UploadResources.NO_ASSESSMENT_OUTCOME, UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+
+                // assessment code must exist
+                code = lineBits[3];
+                ParticipantLookup assessment = _lookupRepo.GetAll().Where(x => x.LookupCode == code).FirstOrDefault();
+                if (assessment == null)
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.ASSESSMENT_OUTCOME_NOT_EXIST, lineBits[3]), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+
+            outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_OUTCOME_SUCCESS, NHSNumber), UploadResources.UPLOAD_ASKRISK);
+            return true;
+
+        }
+
 
 
         /// <summary>

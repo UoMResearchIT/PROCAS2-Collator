@@ -14,6 +14,9 @@ namespace PROCAS2.Data.Entities
         [MaxLength(10)]
         public string LookupType { get; set; }
 
+        [MaxLength(20)]
+        public string LookupCode { get; set; }
+
         [MaxLength(50)]
         public string LookupDescription { get; set; }
     }

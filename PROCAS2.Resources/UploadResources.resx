@@ -117,6 +117,28 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ASSESSMENT_OUTCOME_NOT_EXIST" xml:space="preserve">
+    <value>The outcome {0} does not exist in the database</value>
+  </data>
+  <data name="BOTH_FINAL_OUTCOME_FILLED_IN" xml:space="preserve">
+    <value>Only one of the technical or assessment final outcomes should be entered.</value>
+  </data>
+  <data name="INITIAL_OUTCOME_NOT_EXIST" xml:space="preserve">
+    <value>The outcome {0} does not exist in the database</value>
+    <comment>{0} = outcome code</comment>
+  </data>
+  <data name="NO_ASSESSMENT_OUTCOME" xml:space="preserve">
+    <value>There is no technical outcome given</value>
+  </data>
+  <data name="NO_INITIAL_OUTCOME" xml:space="preserve">
+    <value>There is no initial outcome given.</value>
+  </data>
+  <data name="NO_TECHNICAL_OUTCOME" xml:space="preserve">
+    <value>There is no technical outcome given</value>
+  </data>
+  <data name="TECHNICAL_OUTCOME_NOT_EXIST" xml:space="preserve">
+    <value>The outcome {0} does not exist in the database</value>
+  </data>
   <data name="UPLOAD_ADDRESS_1_EMPTY" xml:space="preserve">
     <value>Address line 1 is mandatory.</value>
   </data>
@@ -258,6 +280,13 @@
   </data>
   <data name="UPLOAD_NHS_NUMBER_TOO_LONG" xml:space="preserve">
     <value>NHS Number is too long.</value>
+  </data>
+  <data name="UPLOAD_OUTCOMES_FILE_NAME" xml:space="preserve">
+    <value>Please enter a file name</value>
+  </data>
+  <data name="UPLOAD_OUTCOME_SUCCESS" xml:space="preserve">
+    <value>The outcomes for {0} have been updated successfully</value>
+    <comment>{0} = NHS number</comment>
   </data>
   <data name="UPLOAD_POSTCODE_EMPTY" xml:space="preserve">
     <value>Postcode is mandatory.</value>

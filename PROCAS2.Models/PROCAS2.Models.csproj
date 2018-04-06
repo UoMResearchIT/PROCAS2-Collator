@@ -128,6 +128,7 @@
     <Compile Include="ViewModels\SiteListViewModel.cs" />
     <Compile Include="ViewModels\UploadNewParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UploadResultsViewModel.cs" />
+    <Compile Include="ViewModels\UploadScreeningOutcomesViewModel.cs" />
     <Compile Include="ViewModels\UploadUpdateParticipantsViewModel.cs" />
     <Compile Include="ViewModels\UserAdminCreateViewModel.cs" />
     <Compile Include="ViewModels\UserAdminIndexViewModel.cs" />

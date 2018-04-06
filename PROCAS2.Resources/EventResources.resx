@@ -183,6 +183,12 @@
   <data name="EVENT_RISKLETTER_STR" xml:space="preserve">
     <value>Risk letter received.</value>
   </data>
+  <data name="EVENT_SCREENING_OUTCOME" xml:space="preserve">
+    <value>012</value>
+  </data>
+  <data name="EVENT_SCREENING_OUTCOME_STR" xml:space="preserve">
+    <value>Screening Outcomes Uploaded</value>
+  </data>
   <data name="EVENT_UPDATED" xml:space="preserve">
     <value>003</value>
   </data>

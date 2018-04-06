@@ -87,6 +87,12 @@ namespace PROCAS2
            );
 
             routes.MapRoute(
+             name: "ParticipantUploadOutcomes",
+             url: "Participant/UploadScreeningOutcomes/",
+             defaults: new { controller = "Participant", action = "UploadScreeningOutcomes" }
+         );
+
+            routes.MapRoute(
                name: "SiteEdit",
                url: "Site/Edit/{code}",
                defaults: new { controller = "Site", action = "Edit", code = "" }

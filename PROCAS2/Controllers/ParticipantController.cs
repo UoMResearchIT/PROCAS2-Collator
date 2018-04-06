@@ -172,6 +172,46 @@ namespace PROCAS2.Controllers
         }
 
 
+        // GET: Participant/Upload
+        public ActionResult UploadScreeningOutcomes()
+        {
+            UploadScreeningOutcomesViewModel model = new UploadScreeningOutcomesViewModel();
+            return View("UploadScreeningOutcomes", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadScreeningOutcomes(UploadScreeningOutcomesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                UploadResultsViewModel outModel;
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
+                _participantService.UploadScreeningOutcomes(model, out outModel);
+
+                return View("UploadResults", outModel);
+
+
+
+            }
+
+            return View("UploadScreeningOutcomes", model);
+        }
+
+
         // GET: Participant/View/Id
         public ActionResult Details(string participantId)
         {
