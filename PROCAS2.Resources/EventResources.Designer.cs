@@ -151,7 +151,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Histology header created..
+        ///   Looks up a localized string similar to Histology header primary  {0} created..
         /// </summary>
         public static string EVENT_HISTCREATED_STR {
             get {
@@ -169,7 +169,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Histology header deleted..
+        ///   Looks up a localized string similar to Histology header primary {0} deleted..
         /// </summary>
         public static string EVENT_HISTDELETED_STR {
             get {
@@ -187,7 +187,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Histology focus {0} created..
+        ///   Looks up a localized string similar to Histology focus {0} primary {1} created..
         /// </summary>
         public static string EVENT_HISTFOCUSCREATED_STR {
             get {
@@ -205,11 +205,47 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Histology focus {0} deleted..
+        ///   Looks up a localized string similar to Histology focus {0} primary {1} deleted..
         /// </summary>
         public static string EVENT_HISTFOCUSDELETED_STR {
             get {
                 return ResourceManager.GetString("EVENT_HISTFOCUSDELETED_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 013.
+        /// </summary>
+        public static string EVENT_HISTFOCUSUPDATED {
+            get {
+                return ResourceManager.GetString("EVENT_HISTFOCUSUPDATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Histology focus {0}  primary {1} updated.
+        /// </summary>
+        public static string EVENT_HISTFOCUSUPDATED_STR {
+            get {
+                return ResourceManager.GetString("EVENT_HISTFOCUSUPDATED_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 014.
+        /// </summary>
+        public static string EVENT_HISTUPDATED {
+            get {
+                return ResourceManager.GetString("EVENT_HISTUPDATED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Histology header primary {0} updated.
+        /// </summary>
+        public static string EVENT_HISTUPDATED_STR {
+            get {
+                return ResourceManager.GetString("EVENT_HISTUPDATED_STR", resourceCulture);
             }
         }
         

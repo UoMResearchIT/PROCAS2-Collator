@@ -116,12 +116,14 @@ namespace PROCAS2.Services.App
 
                 if (newRecord == true)
                 {
-                    _auditService.AddEvent(hist.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTCREATED, EventResources.EVENT_HISTCREATED_STR);
+                    _auditService.AddEvent(hist.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTCREATED, string.Format(EventResources.EVENT_HISTCREATED_STR, hist.PrimaryNumber));
 
                     _histologyRepo.Insert(hist);
                 }
                 else
                 {
+                    _auditService.AddEvent(hist.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTUPDATED, string.Format(EventResources.EVENT_HISTUPDATED_STR, hist.PrimaryNumber));
+
                     _histologyRepo.Update(hist);
                 }
 
@@ -227,12 +229,14 @@ namespace PROCAS2.Services.App
 
                 if (newRecord == true)
                 {
-                    _auditService.AddEvent(focus.Histology.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTFOCUSCREATED, String.Format(EventResources.EVENT_HISTFOCUSCREATED_STR, focus.FocusNumber));
+                    _auditService.AddEvent(focus.Histology.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTFOCUSCREATED, String.Format(EventResources.EVENT_HISTFOCUSCREATED_STR, focus.FocusNumber, focus.Histology.PrimaryNumber));
 
                     _histologyFocusRepo.Insert(focus);
                 }
                 else
                 {
+                    _auditService.AddEvent(focus.Histology.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTFOCUSUPDATED, String.Format(EventResources.EVENT_HISTFOCUSUPDATED_STR, focus.FocusNumber, focus.Histology.PrimaryNumber));
+
                     _histologyFocusRepo.Update(focus);
                 }
 
@@ -270,7 +274,7 @@ namespace PROCAS2.Services.App
                     _histologyRepo.Delete(hist);
                     _unitOfWork.Save();
 
-                    _auditService.AddEvent(hist.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTDELETED, EventResources.EVENT_HISTDELETED_STR );
+                    _auditService.AddEvent(hist.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTDELETED, string.Format(EventResources.EVENT_HISTDELETED_STR, primary) );
 
                 }
             }
@@ -297,7 +301,7 @@ namespace PROCAS2.Services.App
                 {
                     _histologyFocusRepo.Delete(focus);
                     _unitOfWork.Save();
-                    _auditService.AddEvent(focus.Histology.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTDELETED, String.Format(EventResources.EVENT_HISTDELETED_STR, focus.FocusNumber));
+                    _auditService.AddEvent(focus.Histology.Participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_HISTDELETED, String.Format(EventResources.EVENT_HISTDELETED_STR, focus.FocusNumber, focus.Histology.PrimaryNumber));
 
                 }
             }

@@ -148,27 +148,43 @@
     <value>008</value>
   </data>
   <data name="EVENT_HISTCREATED_STR" xml:space="preserve">
-    <value>Histology header created.</value>
+    <value>Histology header primary  {0} created.</value>
+    <comment>{0} = primary number</comment>
   </data>
   <data name="EVENT_HISTDELETED" xml:space="preserve">
     <value>010</value>
   </data>
   <data name="EVENT_HISTDELETED_STR" xml:space="preserve">
-    <value>Histology header deleted.</value>
+    <value>Histology header primary {0} deleted.</value>
+    <comment>{0} = primary number</comment>
   </data>
   <data name="EVENT_HISTFOCUSCREATED" xml:space="preserve">
     <value>009</value>
   </data>
   <data name="EVENT_HISTFOCUSCREATED_STR" xml:space="preserve">
-    <value>Histology focus {0} created.</value>
-    <comment>{0} = focus number</comment>
+    <value>Histology focus {0} primary {1} created.</value>
+    <comment>{0} = focus number {1} = primary number</comment>
   </data>
   <data name="EVENT_HISTFOCUSDELETED" xml:space="preserve">
     <value>011</value>
   </data>
   <data name="EVENT_HISTFOCUSDELETED_STR" xml:space="preserve">
-    <value>Histology focus {0} deleted.</value>
-    <comment>{0} = focus number</comment>
+    <value>Histology focus {0} primary {1} deleted.</value>
+    <comment>{0} = focus number {1} = primary number</comment>
+  </data>
+  <data name="EVENT_HISTFOCUSUPDATED" xml:space="preserve">
+    <value>013</value>
+  </data>
+  <data name="EVENT_HISTFOCUSUPDATED_STR" xml:space="preserve">
+    <value>Histology focus {0}  primary {1} updated</value>
+    <comment>{0} = focus number {1} = primary number</comment>
+  </data>
+  <data name="EVENT_HISTUPDATED" xml:space="preserve">
+    <value>014</value>
+  </data>
+  <data name="EVENT_HISTUPDATED_STR" xml:space="preserve">
+    <value>Histology header primary {0} updated</value>
+    <comment>{0} = primary number</comment>
   </data>
   <data name="EVENT_PROPERTY_UPDATED" xml:space="preserve">
     <value>004</value>
