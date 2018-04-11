@@ -21,6 +21,7 @@ namespace PROCAS2.Services.App
         bool DeleteParticipant(string id);
         bool DoesNHSNumberExist(string NHSNumber);
         bool DoesHashedNHSNumberExist(string hash);
+        int CreateNextStudyNumber();
 
         List<ParticipantLookup> GetLookups(string lookupType);
     }

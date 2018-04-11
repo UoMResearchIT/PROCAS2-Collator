@@ -61,6 +61,7 @@ namespace PROCAS2.Models.ViewModels
             AskForRiskLetter = model.Participant.AskForRiskLetter;
             DateConsented = model.Participant.DateConsented.HasValue ? model.Participant.DateConsented.Value.ToString("dd/MM/yyyy") : "";
             ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
+            StudyNumber = model.Participant.StudyNumber;
 
             if (model.Participant.ChemoPreventionDetails == null)
                 ChemoPreventionDetails = null;
@@ -203,7 +204,9 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "DATE_CONSENTED", ResourceType = typeof(ParticipantResources))]
         public string DateConsented { get; set; }
 
-   
+        [Display(Name = "STUDY_NUMBER", ResourceType = typeof(ParticipantResources))]
+        public int StudyNumber { get; set; }
+
 
     }
 }

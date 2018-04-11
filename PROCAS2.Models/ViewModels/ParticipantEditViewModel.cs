@@ -67,6 +67,7 @@ namespace PROCAS2.Models.ViewModels
             AttendedScreening = model.Participant.AttendedScreening;
             AskForRiskLetter = model.Participant.AskForRiskLetter;
             ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
+            StudyNumber = model.Participant.StudyNumber;
 
             if (model.Participant.ChemoPreventionDetails == null)
                 ChemoPreventionDetailsId = null;
@@ -272,6 +273,8 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "FINAL_ASSESSMENT", ResourceType = typeof(ParticipantResources))]
         public int? FinalAssessmentOutcomeId { get; set; }
 
+        [Display(Name = "STUDY_NUMBER", ResourceType = typeof(ParticipantResources))]
+        public int StudyNumber { get; set; }
 
         public string Reason { get; set; }
 

@@ -77,6 +77,9 @@ namespace PROCAS2.Data.Entities
 
         public bool AskForRiskLetter { get; set; }
 
+      
+        public int StudyNumber { get; set; } // Used for searching in CRA Health
+
         [ForeignKey("InitialScreeningOutcome")]
         public int? InitialScreeningOutcomeId { get; set; }
 

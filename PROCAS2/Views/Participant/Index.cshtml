@@ -32,6 +32,9 @@
                         <th>
                             NHS Number
                         </th>
+                        <th>
+                            Study Number
+                        </th>
                         <th>Date First Appointment</th>
                         <th></th>
                     </tr>
@@ -49,6 +52,9 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.NHSNumber)
+                            </td>
+                            <td>
+                               @item.StudyNumber.ToString().PadLeft(5, '0')
                             </td>
                             <td>
                                 @if (item.DateFirstAppointment.HasValue == true)

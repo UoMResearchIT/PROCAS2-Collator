@@ -144,14 +144,16 @@ namespace PROCAS2.Services.App
                         string[] lineBits = line.Split(',');
 
                         string hash = "";
+                        int studyNumber;
 
                         if (model.Regenerate == false)
                         {
-                            hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]));
+                            hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]), out studyNumber);
                         }
                         else
                         {
                             hash = _hashingService.CreateNHSHash(lineBits[0]);
+                            studyNumber = GetStudyNumber(hash);
                         }
 
                         // First put in the NHSNumber.
@@ -165,6 +167,10 @@ namespace PROCAS2.Services.App
 
                         // Then the hash
                         csv.WriteField(hash);
+
+                        // Then the study number
+                        csv.WriteField(studyNumber.ToString().PadLeft(5, '0'));
+
                         csv.NextRecord();
                     }
                 }
@@ -501,11 +507,32 @@ namespace PROCAS2.Services.App
 
 
         /// <summary>
+        /// Get the study number for the passed hashed NHS number
+        /// </summary>
+        /// <param name="hash">Hashed NHS number</param>
+        /// <returns>study number</returns>
+        public int GetStudyNumber(string hash)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
+            if (participant != null)
+            {
+                return participant.StudyNumber;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
+        /// <summary>
         /// Create a new participant record
         /// </summary>
         /// <param name="NHSNumber">NHS number</param>
+        /// <param name="DOB">Date of birth</param>
+        /// <param name="DOFA">Date of first appointment</param>
+        /// <param name="studyNumber">study number returned</param>
         /// <returns>Hashed NHS number</returns>
-        private string CreateNewParticipantRecord(string NHSNumber, DateTime DOB, DateTime DOFA)
+        private string CreateNewParticipantRecord(string NHSNumber, DateTime DOB, DateTime DOFA, out int studyNumber)
         {
             DateTime dateCreated = DateTime.Now;
 
@@ -516,6 +543,8 @@ namespace PROCAS2.Services.App
             participant.DateCreated = dateCreated;
             participant.DateOfBirth = DOB;
             participant.DateFirstAppointment = DOFA;
+            studyNumber = CreateNextStudyNumber();
+            participant.StudyNumber = studyNumber;
             _participantRepo.Insert(participant);
 
             _unitOfWork.Save();
@@ -1316,6 +1345,27 @@ namespace PROCAS2.Services.App
             list = _lookupRepo.GetAll().Where(x => x.LookupType == lookupType).ToList();
 
             return list;
+        }
+
+
+        /// <summary>
+        /// Create and return the next study number 
+        /// </summary>
+        /// <returns>The zero-padded study number</returns>
+        public int CreateNextStudyNumber()
+        {
+            int currentHighest = _participantRepo.GetAll().Max(x => x.StudyNumber);
+
+            // At time of initial development MaxStudyNumber is 99999. Unlikely to have more than 100000 participants!
+            // The fewer the number of digits the better, as they need to use this number for searching in CRA Health
+            if (currentHighest == Convert.ToInt32(_configService.GetAppSetting("MaxStudyNumber")))
+            {
+                return 0; 
+            }
+            else
+            {
+                return currentHighest + 1;
+            }
         }
 
     }

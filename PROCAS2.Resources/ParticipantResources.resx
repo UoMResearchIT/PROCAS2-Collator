@@ -346,6 +346,9 @@
   <data name="STUDY_DATE" xml:space="preserve">
     <value>Date of Image</value>
   </data>
+  <data name="STUDY_NUMBER" xml:space="preserve">
+    <value>Study Number</value>
+  </data>
   <data name="STUDY_STATUS" xml:space="preserve">
     <value>Study Status</value>
   </data>

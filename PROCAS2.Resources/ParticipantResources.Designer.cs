@@ -745,6 +745,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Study Number.
+        /// </summary>
+        public static string STUDY_NUMBER {
+            get {
+                return ResourceManager.GetString("STUDY_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Study Status.
         /// </summary>
         public static string STUDY_STATUS {
