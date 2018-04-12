@@ -276,7 +276,7 @@ namespace PROCAS2.Services.App
                 string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 9);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
-                                                                            afterCols: new List<string>() { "Pathology", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStage" });
+                                                                            afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
 
                 int parIndex = 2;
                 int addressIndex = 2;
@@ -376,7 +376,7 @@ namespace PROCAS2.Services.App
                         {
                             AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
                                                 beforeCols: new List<string>() { participant.NHSNumber, hist.Id.ToString() },
-                                                afterCols: new List<string>() { item.Pathology.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStage.LookupDescription });
+                                                afterCols: new List<string>() { item.InvasiveTumourType.LookupDescription, item.InSituTumourType.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStageT.LookupDescription, item.TNMStageN.LookupDescription });
                             histFocusIndex++;
                         }
 
@@ -419,7 +419,7 @@ namespace PROCAS2.Services.App
                 string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus",2);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
-                                                                            afterCols: new List<string>() { "Pathology", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStage" });
+                                                                            afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
 
                 int histIndex = 2;
                 int histFocusIndex = 2;
@@ -439,7 +439,7 @@ namespace PROCAS2.Services.App
                     {
                         AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
                                             beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Id.ToString() },
-                                            afterCols: new List<string>() { item.Pathology.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStage.LookupDescription });
+                                            afterCols: new List<string>() { item.InvasiveTumourType.LookupDescription, item.InSituTumourType.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStageT.LookupDescription, item.TNMStageN.LookupDescription });
                         histFocusIndex++;
                     }
 

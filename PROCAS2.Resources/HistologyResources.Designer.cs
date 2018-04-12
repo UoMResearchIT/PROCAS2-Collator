@@ -214,6 +214,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to In Situ Tumour Type.
+        /// </summary>
+        public static string INSITU_TUMOUR_TYPE {
+            get {
+                return ResourceManager.GetString("INSITU_TUMOUR_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invasive or CIS.
         /// </summary>
         public static string INVASIVE_CIS {
@@ -237,6 +246,15 @@ namespace PROCAS2.Resources {
         public static string INVASIVE_TUMOUR_SIZE {
             get {
                 return ResourceManager.GetString("INVASIVE_TUMOUR_SIZE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invasive Tumour Type.
+        /// </summary>
+        public static string INVASIVE_TUMOUR_TYPE {
+            get {
+                return ResourceManager.GetString("INVASIVE_TUMOUR_TYPE", resourceCulture);
             }
         }
         
@@ -336,6 +354,24 @@ namespace PROCAS2.Resources {
         public static string TNM_STAGE {
             get {
                 return ResourceManager.GetString("TNM_STAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TNM Stage - N.
+        /// </summary>
+        public static string TNM_STAGE_N {
+            get {
+                return ResourceManager.GetString("TNM_STAGE_N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TNM Stage - T.
+        /// </summary>
+        public static string TNM_STAGE_T {
+            get {
+                return ResourceManager.GetString("TNM_STAGE_T", resourceCulture);
             }
         }
         

@@ -23,8 +23,12 @@ namespace PROCAS2.Models.ViewModels
         [Range(1, 5)]
         public int FocusNumber { get; set; }
 
-        [Display(Name = "PATHOLOGY", ResourceType = typeof(HistologyResources))]
-        public int? PathologyId { get; set; }
+        [Display(Name = "INVASIVE_TUMOUR_TYPE", ResourceType = typeof(HistologyResources))]
+        public int? InvasiveTumourTypeId { get; set; }
+
+        [Display(Name = "INSITU_TUMOUR_TYPE", ResourceType = typeof(HistologyResources))]
+        public int? InSituTumourTypeId { get; set; }
+
 
         [Display(Name = "INVASIVE_CIS", ResourceType = typeof(HistologyResources))]
         public int? InvasiveId { get; set; }
@@ -66,14 +70,19 @@ namespace PROCAS2.Models.ViewModels
         public double? KISixtySeven { get; set; }
 
       
-        [Display(Name = "TNM_STAGE", ResourceType = typeof(HistologyResources))]
-        public int? TNMStageId { get; set; }
+        [Display(Name = "TNM_STAGE_T", ResourceType = typeof(HistologyResources))]
+        public int? TNMStageTId { get; set; }
+
+        [Display(Name = "TNM_STAGE_N", ResourceType = typeof(HistologyResources))]
+        public int? TNMStageNId { get; set; }
 
         public List<HistologyLookup> VascularInvasions { get; set; }
         public List<HistologyLookup> DCISGrades { get; set; }
         public List<HistologyLookup> Invasives { get; set; }
-        public List<HistologyLookup> Pathologies { get; set; }
+        public List<HistologyLookup> InvasiveTumourTypes { get; set; }
+        public List<HistologyLookup> InSituTumourTypes { get; set; }
         public List<HistologyLookup> HER2Scores { get; set; }
-        public List<HistologyLookup> TNMStages { get; set; }
+        public List<HistologyLookup> TNMStageTs { get; set; }
+        public List<HistologyLookup> TNMStageNs { get; set; }
     }
 }

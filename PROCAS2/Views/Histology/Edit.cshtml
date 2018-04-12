@@ -152,7 +152,10 @@
                                     @HistologyResources.FOCUS_NUMBER
                                 </th>
                                 <th>
-                                    @HistologyResources.PATHOLOGY
+                                    @HistologyResources.INVASIVE_TUMOUR_TYPE
+                                </th>
+                                <th>
+                                    @HistologyResources.INSITU_TUMOUR_TYPE
                                 </th>
                                 <th>
                                     @HistologyResources.INVASIVE_CIS
@@ -203,7 +206,11 @@
                                 </th>
 
                                 <th>
-                                    @HistologyResources.TNM_STAGE
+                                    @HistologyResources.TNM_STAGE_T
+                                </th>
+
+                                <th>
+                                    @HistologyResources.TNM_STAGE_N
                                 </th>
 
                                 <th>
@@ -225,8 +232,13 @@
                                         @focus.FocusNumber
                                     </td>
                                     <td>
-                                        @focus.Pathology.LookupDescription
+                                        @focus.InvasiveTumourType.LookupDescription
                                     </td>
+
+                                    <td>
+                                        @focus.InSituTumourType.LookupDescription
+                                    </td>
+
                                     <td>
                                         @focus.Invasive.LookupDescription
                                     </td>
@@ -278,7 +290,11 @@
                                     </td>
 
                                     <td>
-                                        @focus.TNMStage.LookupDescription
+                                        @focus.TNMStageT.LookupDescription
+                                    </td>
+
+                                    <td>
+                                        @focus.TNMStageN.LookupDescription
                                     </td>
 
                                     <td>

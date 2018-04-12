@@ -168,6 +168,9 @@
   <data name="HER2_STATUS" xml:space="preserve">
     <value>HER2 Status</value>
   </data>
+  <data name="INSITU_TUMOUR_TYPE" xml:space="preserve">
+    <value>In Situ Tumour Type</value>
+  </data>
   <data name="INVASIVE_CIS" xml:space="preserve">
     <value>Invasive or CIS</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="INVASIVE_TUMOUR_SIZE" xml:space="preserve">
     <value>Invasive Tumour Size</value>
+  </data>
+  <data name="INVASIVE_TUMOUR_TYPE" xml:space="preserve">
+    <value>Invasive Tumour Type</value>
   </data>
   <data name="KI_67" xml:space="preserve">
     <value>Ki67%</value>
@@ -209,6 +215,12 @@
   </data>
   <data name="TNM_STAGE" xml:space="preserve">
     <value>TNM Stage</value>
+  </data>
+  <data name="TNM_STAGE_N" xml:space="preserve">
+    <value>TNM Stage - N</value>
+  </data>
+  <data name="TNM_STAGE_T" xml:space="preserve">
+    <value>TNM Stage - T</value>
   </data>
   <data name="VASCULAR_INVASION" xml:space="preserve">
     <value>Vascular Invasion</value>

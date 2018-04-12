@@ -168,21 +168,24 @@ namespace PROCAS2.Services.App
                 model.KISixtySeven = focus.KISixtySeven;
                 model.LymphNodesPositive = focus.LymphNodesPositive;
                 model.LymphNodesRemoved = focus.LymphNodesRemoved;
-                model.PathologyId = focus.PathologyId;
+                model.InvasiveTumourTypeId = focus.InvasiveTumourTypeId;
+                model.InSituTumourTypeId = focus.InSituTumourTypeId;
                 model.PRScore = focus.PRScore;
                 model.VascularInvasionId = focus.VascularInvasionId;
                 model.WholeTumourSize = focus.WholeTumourSize;
-                model.TNMStageId = focus.TNMStageId;
+                model.TNMStageTId = focus.TNMStageTId;
+                model.TNMStageNId = focus.TNMStageNId;
             }
 
 
             model.DCISGrades = GetLookups("DCIS");
             model.Invasives = GetLookups("INVASIVE");
-            model.Pathologies = GetLookups("PATH");
+            model.InvasiveTumourTypes = GetLookups("INVTUMTYP");
+            model.InSituTumourTypes = GetLookups("INSITUTYP");
             model.VascularInvasions = GetLookups("VASCULAR");
             model.HER2Scores = GetLookups("HER2");
-            model.TNMStages = GetLookups("TNM");
-
+            model.TNMStageTs = GetLookups("TNM-T");
+            model.TNMStageNs = GetLookups("TNM-N");
 
             return model;
         }
@@ -219,10 +222,12 @@ namespace PROCAS2.Services.App
                 focus.KISixtySeven = model.KISixtySeven;
                 focus.LymphNodesPositive = model.LymphNodesPositive;
                 focus.LymphNodesRemoved = model.LymphNodesRemoved;
-                focus.Pathology = _histologyLookupRepo.GetAll().Where(x => x.Id == model.PathologyId).FirstOrDefault();
-                
+                focus.InvasiveTumourType = _histologyLookupRepo.GetAll().Where(x => x.Id == model.InvasiveTumourTypeId).FirstOrDefault();
+                focus.InSituTumourType = _histologyLookupRepo.GetAll().Where(x => x.Id == model.InSituTumourTypeId).FirstOrDefault();
+
                 focus.PRScore = model.PRScore;
-                focus.TNMStage = _histologyLookupRepo.GetAll().Where(x => x.Id == model.TNMStageId).FirstOrDefault();
+                focus.TNMStageT = _histologyLookupRepo.GetAll().Where(x => x.Id == model.TNMStageTId).FirstOrDefault();
+                focus.TNMStageN = _histologyLookupRepo.GetAll().Where(x => x.Id == model.TNMStageNId).FirstOrDefault();
                 focus.VascularInvasion = _histologyLookupRepo.GetAll().Where(x => x.Id == model.VascularInvasionId).FirstOrDefault();
                 focus.WholeTumourSize = model.WholeTumourSize;
 

@@ -123,10 +123,12 @@ namespace PROCAS2.Controllers
                 {
                     model.DCISGrades = _histologyService.GetLookups("DCIS");
                     model.Invasives = _histologyService.GetLookups("INVASIVE");
-                    model.Pathologies = _histologyService.GetLookups("PATH");
+                    model.InvasiveTumourTypes = _histologyService.GetLookups("INVTUMTYP");
+                    model.InSituTumourTypes = _histologyService.GetLookups("INSITUTYP");
                     model.VascularInvasions = _histologyService.GetLookups("VASCULAR");
                     model.HER2Scores = _histologyService.GetLookups("HER2");
-                    model.TNMStages = _histologyService.GetLookups("TNM");
+                    model.TNMStageTs = _histologyService.GetLookups("TNM-T");
+                    model.TNMStageNs = _histologyService.GetLookups("TNM-N");
                     return View("EditFocus", model);
                 }
 
@@ -136,10 +138,12 @@ namespace PROCAS2.Controllers
             {
                 model.DCISGrades = _histologyService.GetLookups("DCIS");
                 model.Invasives = _histologyService.GetLookups("INVASIVE");
-                model.Pathologies = _histologyService.GetLookups("PATH");
+                model.InvasiveTumourTypes = _histologyService.GetLookups("INVTUMTYP");
+                model.InSituTumourTypes = _histologyService.GetLookups("INSITUTYP");
                 model.VascularInvasions = _histologyService.GetLookups("VASCULAR");
                 model.HER2Scores = _histologyService.GetLookups("HER2");
-                model.TNMStages = _histologyService.GetLookups("TNM");
+                model.TNMStageTs = _histologyService.GetLookups("TNM-T");
+                model.TNMStageNs = _histologyService.GetLookups("TNM-N");
                 return View("EditFocus", model);
             }
         }

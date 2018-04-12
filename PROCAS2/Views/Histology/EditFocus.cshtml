@@ -51,9 +51,19 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PathologyId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.InvasiveTumourTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownListFor(model => model.PathologyId, new SelectList(Model.Pathologies, "Id", "LookupDescription"), new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.InvasiveTumourTypeId, new SelectList(Model.InvasiveTumourTypes, "Id", "LookupDescription"), new { @class = "form-control" })
+
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.InSituTumourTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.InSituTumourTypeId, new SelectList(Model.InSituTumourTypes, "Id", "LookupDescription"), new { @class = "form-control" })
 
 
 
@@ -161,9 +171,16 @@
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.TNMStageId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    @Html.LabelFor(model => model.TNMStageTId, htmlAttributes: new { @class = "control-label col-md-4" })
                     <div class="col-md-8">
-                        @Html.DropDownListFor(model => model.TNMStageId, new SelectList(Model.TNMStages, "Id", "LookupDescription"), new { @class = "form-control" })
+                        @Html.DropDownListFor(model => model.TNMStageTId, new SelectList(Model.TNMStageTs, "Id", "LookupDescription"), new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TNMStageNId, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(model => model.TNMStageNId, new SelectList(Model.TNMStageNs, "Id", "LookupDescription"), new { @class = "form-control" })
                     </div>
                 </div>
 

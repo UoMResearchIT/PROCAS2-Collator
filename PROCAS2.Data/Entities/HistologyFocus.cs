@@ -18,8 +18,11 @@ namespace PROCAS2.Data.Entities
   
         public int FocusNumber { get; set; }
 
-        [ForeignKey("Pathology")]
-        public int? PathologyId { get; set; }
+        [ForeignKey("InvasiveTumourType")]
+        public int? InvasiveTumourTypeId { get; set; }
+
+        [ForeignKey("InSituTumourType")]
+        public int? InSituTumourTypeId { get; set; }
 
         [ForeignKey("Invasive")]
         public int? InvasiveId { get; set; }
@@ -50,15 +53,20 @@ namespace PROCAS2.Data.Entities
 
         public double? KISixtySeven { get; set; }
 
-        [ForeignKey("TNMStage")]
-        public int? TNMStageId { get; set; }
+        [ForeignKey("TNMStageT")]
+        public int? TNMStageTId { get; set; }
 
-        public virtual HistologyLookup Pathology { get; set; }
+        [ForeignKey("TNMStageN")]
+        public int? TNMStageNId { get; set; }
+
+        public virtual HistologyLookup InvasiveTumourType { get; set; }
+        public virtual HistologyLookup InSituTumourType { get; set; }
         public virtual HistologyLookup Invasive { get; set; }
         public virtual HistologyLookup DCISGrade { get; set; }
         public virtual HistologyLookup VascularInvasion { get; set; }
         public virtual HistologyLookup HER2Score { get; set; }
-        public virtual HistologyLookup TNMStage { get; set; }
+        public virtual HistologyLookup TNMStageT { get; set; }
+        public virtual HistologyLookup TNMStageN { get; set; }
 
         public virtual Histology Histology { get; set; }
     }
