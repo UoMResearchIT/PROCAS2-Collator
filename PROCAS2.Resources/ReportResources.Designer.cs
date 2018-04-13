@@ -97,6 +97,78 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Breast Cancer Diagnoses.
+        /// </summary>
+        public static string BC_DIAGNOSES {
+            get {
+                return ResourceManager.GetString("BC_DIAGNOSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code, Volpara score, survey answers and risk score of every patient who has been diagnosed with breast cancer.
+        /// </summary>
+        public static string BC_DIAGNOSES_SUMMARY {
+            get {
+                return ResourceManager.GetString("BC_DIAGNOSES_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention agreed in clinic, appropriate and prescription filled in.
+        /// </summary>
+        public static string CHEMO_AGREE_FILLED {
+            get {
+                return ResourceManager.GetString("CHEMO_AGREE_FILLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention agreed in clinic but not appropriate.
+        /// </summary>
+        public static string CHEMO_AGREE_NOT_APP {
+            get {
+                return ResourceManager.GetString("CHEMO_AGREE_NOT_APP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention agreed in clinic, appropriate, but prescription not filled in.
+        /// </summary>
+        public static string CHEMO_AGREE_NOT_FILLED {
+            get {
+                return ResourceManager.GetString("CHEMO_AGREE_NOT_FILLED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention not agreed in clinic.
+        /// </summary>
+        public static string CHEMO_DISAGREED {
+            get {
+                return ResourceManager.GetString("CHEMO_DISAGREED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Chemoprevention.
+        /// </summary>
+        public static string CHEMOPREVENTION {
+            get {
+                return ResourceManager.GetString("CHEMOPREVENTION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who had a chemoprevention appointment in clinic, with the outcomes selected below..
+        /// </summary>
+        public static string CHEMOPREVENTION_SUMMARY {
+            get {
+                return ResourceManager.GetString("CHEMOPREVENTION_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients consented but without full details yet.
         /// </summary>
         public static string CONSENTED_YET_TO_GET_FULL {
@@ -232,6 +304,51 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of assessment recalls.
+        /// </summary>
+        public static string NUMBER_ASSESS_RECALLS {
+            get {
+                return ResourceManager.GetString("NUMBER_ASSESS_RECALLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of recalls.
+        /// </summary>
+        public static string NUMBER_RECALLS {
+            get {
+                return ResourceManager.GetString("NUMBER_RECALLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who had a recall of the type selected below..
+        /// </summary>
+        public static string NUMBER_RECALLS_SUMMARY {
+            get {
+                return ResourceManager.GetString("NUMBER_RECALLS_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of routine recalls.
+        /// </summary>
+        public static string NUMBER_ROUTINE_RECALLS {
+            get {
+                return ResourceManager.GetString("NUMBER_ROUTINE_RECALLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of technical recalls.
+        /// </summary>
+        public static string NUMBER_TECHNICAL_RECALLS {
+            get {
+                return ResourceManager.GetString("NUMBER_TECHNICAL_RECALLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patient Details.
         /// </summary>
         public static string PATIENT_DETAILS {
@@ -246,6 +363,24 @@ namespace PROCAS2.Resources {
         public static string PATIENT_REPORTS {
             get {
                 return ResourceManager.GetString("PATIENT_REPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening attendance.
+        /// </summary>
+        public static string SCREENING_ATTENDANCE {
+            get {
+                return ResourceManager.GetString("SCREENING_ATTENDANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended screening within the chosen date below..
+        /// </summary>
+        public static string SCREENING_ATTENDANCE_SUMMARY {
+            get {
+                return ResourceManager.GetString("SCREENING_ATTENDANCE_SUMMARY", resourceCulture);
             }
         }
         
@@ -291,6 +426,42 @@ namespace PROCAS2.Resources {
         public static string STATUS_REPORTS {
             get {
                 return ResourceManager.GetString("STATUS_REPORTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subsequent consultations.
+        /// </summary>
+        public static string SUBSEQUENT_CONSULTATION {
+            get {
+                return ResourceManager.GetString("SUBSEQUENT_CONSULTATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who attended subsequent consultations of the type below..
+        /// </summary>
+        public static string SUBSEQUENT_CONSULTATION_SUMMARY {
+            get {
+                return ResourceManager.GetString("SUBSEQUENT_CONSULTATION_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Family History Services.
+        /// </summary>
+        public static string SUBSEQUENT_FAMILY_HISTORY {
+            get {
+                return ResourceManager.GetString("SUBSEQUENT_FAMILY_HISTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to More Frequent Screening.
+        /// </summary>
+        public static string SUBSEQUENT_MORE_FREQUENT {
+            get {
+                return ResourceManager.GetString("SUBSEQUENT_MORE_FREQUENT", resourceCulture);
             }
         }
         

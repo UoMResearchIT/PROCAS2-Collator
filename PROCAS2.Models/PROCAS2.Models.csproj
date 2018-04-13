@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\HistologyListViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
     <Compile Include="ViewModels\Reports\NoParameterViewModel.cs" />
+    <Compile Include="ViewModels\Reports\NoParameterTypeChoiceViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsDetailsViewModel.cs" />
     <Compile Include="ViewModels\TxErrorsListViewModel.cs" />
     <Compile Include="ViewModels\UploadAskRiskViewModel.cs" />

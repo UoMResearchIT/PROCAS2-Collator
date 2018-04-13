@@ -293,7 +293,7 @@ namespace PROCAS2.Services.App
                 {
                     // Add participant details
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
-                    Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).First();
+                    Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber  && x.Consented == true).First();
                     AddLineFromProperties(workingSheet, participant, typeof(Participant), parIndex, afterCols: new List<string>() { participant.ScreeningSite.Name,
                                                                                                                     participant.ChemoPreventionDetails==null?null:participant.ChemoPreventionDetails.LookupDescription,
                                                                                                                     participant.InitialScreeningOutcome==null?null:participant.InitialScreeningOutcome.LookupDescription,
@@ -756,6 +756,7 @@ namespace PROCAS2.Services.App
                 foreach (Participant patient in patients)
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
@@ -803,6 +804,7 @@ namespace PROCAS2.Services.App
                     if ((patient.DateActualAppointment.Value - patient.DateFirstAppointment.Value).TotalDays <= 180)
                     {
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                        // TODO: Ethnicity
                         AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                             onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                             afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
@@ -819,6 +821,524 @@ namespace PROCAS2.Services.App
 
             return generatedDocument;
         }
+
+        /// <summary>
+        /// Produce a report of those who had technical recalls
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream NumberTechnicalRecalls()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.InitialScreeningOutcome != null && x.InitialScreeningOutcome.LookupCode == "INI_TECH").ToList();
+                foreach (Participant patient in patients)
+                {
+                   
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                        // TODO: Ethnicity
+                        AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                            onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                            afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                        repIndex++;
+                   
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who had assessment recalls
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream NumberAssessmentRecalls()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.InitialScreeningOutcome != null && x.InitialScreeningOutcome.LookupCode == "INI_ASSESS").ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who had routine recalls
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream NumberRoutineRecalls()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.InitialScreeningOutcome != null && x.InitialScreeningOutcome.LookupCode == "INI_ROUTINE").ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+
+        /// <summary>
+        /// Produce a report of those who had chemo appointment but treatment was disagreed in clinic 
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ChemoDisagreed()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true  && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == false ).ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+
+        /// <summary>
+        /// Produce a report of those who had chemo appointment but treatment was agreed in clinic but not considered appropriate 
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ChemoNotApp()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMONA").ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who had chemo appointment but treatment was agreed in clinic but the prescription not filled in 
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ChemoNotFilled()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPNOT").ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+
+        /// <summary>
+        /// Produce a report of those who had chemo appointment but treatment was agreed in clinic and the prescription filled in 
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream ChemoFilled()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPFILL").ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who have subsequently attended family history services
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream SubsequentFamilyHistory()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.FHCReferral == true).ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who have subsequently attended more frequent screening
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream SubsequentMoreFrequent()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+
+                int repIndex = 2;
+ 
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.MoreFrequentScreening == true).ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+
+        /// <summary>
+        /// Produce a report of those who have been diagnosed with breast cancer
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream BreastCancerDiagnoses()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment", "BMI" },
+                                                                                afterCols: new List<string>() { "AgeAtConsent", "Ethnicity", "PostCode", "Risk" });
+
+                // Add Survey header
+                string surveySheetId = AddSheet(wbPart, "SurveyHeader", 5);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponse), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
+                // Add Survey item header
+                string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 6);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponseItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" },
+                                                                                            afterCols: new List<string>() { "QuestionText" });
+
+                // Add family history header
+                string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 7);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
+
+                int repIndex = 2;
+                int surveyIndex = 2;
+                int surveyItemIndex = 2;
+                int familyHistoryIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.Diagnosed == true).ToList();
+                foreach (Participant patient in patients)
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    // TODO: Ethnicity, Volpara score, SNPs
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment", "BMI" },
+                                        afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
+                                                                        "Not Implemented Yet",
+                                                                        patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
+                                                                        patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
+                    
+                    // Add survey header details
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                    foreach (QuestionnaireResponse response in patient.QuestionnaireResponses)
+                    {
+                        AddLineFromProperties(workingSheet, response, typeof(QuestionnaireResponse), surveyIndex,
+                                            beforeCols: new List<string>() { patient.NHSNumber, response.Id.ToString() });
+                        surveyIndex++;
+                    }
+
+                    // Add survey item and famnily history details
+
+                    foreach (QuestionnaireResponse response in patient.QuestionnaireResponses)
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                        foreach (QuestionnaireResponseItem item in response.QuestionnaireResponseItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(QuestionnaireResponseItem), surveyItemIndex,
+                                                beforeCols: new List<string>() { patient.NHSNumber, response.Id.ToString() },
+                                                afterCols: new List<string>() { item.Question.Text });
+                            surveyItemIndex++;
+                        }
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                        foreach (FamilyHistoryItem item in response.FamilyHistoryItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(FamilyHistoryItem), familyHistoryIndex,
+                                                beforeCols: new List<string>() { patient.NHSNumber, response.Id.ToString() });
+                            familyHistoryIndex++;
+                        }
+                    }
+
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
 
         /// <summary>
         /// Calculate the number of whole years between 2 dates

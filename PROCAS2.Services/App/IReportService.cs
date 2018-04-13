@@ -21,5 +21,15 @@ namespace PROCAS2.Services.App
         MemoryStream AskForRiskLetters();
         MemoryStream ScreeningFirstOffered();
         MemoryStream ScreeningWithin180Days();
+        MemoryStream NumberTechnicalRecalls();
+        MemoryStream NumberAssessmentRecalls();
+        MemoryStream NumberRoutineRecalls();
+        MemoryStream ChemoDisagreed();
+        MemoryStream ChemoNotApp();
+        MemoryStream ChemoNotFilled();
+        MemoryStream ChemoFilled();
+        MemoryStream SubsequentFamilyHistory();
+        MemoryStream SubsequentMoreFrequent();
+        MemoryStream BreastCancerDiagnoses();
     }
 }

@@ -688,6 +688,10 @@
     <Content Include="Views\Report\NoParameter.cshtml" />
     <Content Include="Views\Home\_Volpara.cshtml" />
     <Content Include="Views\Participant\UploadScreeningOutcomes.cshtml" />
+    <Content Include="Views\Report\NumberRecalls.cshtml" />
+    <Content Include="Views\Report\ScreeningAttendance.cshtml" />
+    <Content Include="Views\Report\Chemoprevention.cshtml" />
+    <Content Include="Views\Report\SubsequentConsultation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

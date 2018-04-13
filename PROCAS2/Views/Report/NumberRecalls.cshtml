@@ -1,0 +1,60 @@
+﻿@model PROCAS2.Models.ViewModels.Reports.NoParameterTypeChoiceViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+<script src="@Url.Content("~/js/reports.js")"></script>
+
+
+
+@using (Html.BeginForm(Model.ActionName, "Report", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>@Model.Title</h4>
+
+        <p>@Model.Summary </p>
+
+        <div class="form-group">
+            
+            <div class="col-md-3">
+                @ReportResources.NUMBER_TECHNICAL_RECALLS
+                @Html.RadioButtonFor(model => model.ReportType, "TECH", htmlAttributes: new { @class = "recallRadio" })
+
+            </div>
+
+
+            <div class="col-md-3">
+                @ReportResources.NUMBER_ASSESS_RECALLS
+                @Html.RadioButtonFor(model => model.ReportType, "ASSESS", htmlAttributes: new { @class = "recallRadio" })
+
+            </div>
+
+
+            <div class="col-md-4">
+                @ReportResources.NUMBER_ROUTINE_RECALLS
+                @Html.RadioButtonFor(model => model.ReportType, "ROUTINE", htmlAttributes: new { @class = "recallRadio" })
+
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="submit" value="Run Report" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+
+@Html.Partial("_ReportSpinner")

@@ -107,7 +107,7 @@ namespace PROCAS2.Controllers
         public ActionResult Histology(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.Histology(), "Histology", model);
+            return NoParameterReport(() => _reportService.Histology(), "Histology", "NoParameter", model);
 
            
 
@@ -130,7 +130,7 @@ namespace PROCAS2.Controllers
         public ActionResult YetToConsent(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.YetToConsent(), "YetToConsent", model);
+            return NoParameterReport(() => _reportService.YetToConsent(), "YetToConsent", "NoParameter", model);
            
         }
 
@@ -151,7 +151,7 @@ namespace PROCAS2.Controllers
         public ActionResult YetToGetFull(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.YetToGetFull(), "YetToGetFull", model);
+            return NoParameterReport(() => _reportService.YetToGetFull(), "YetToGetFull", "NoParameter", model);
 
             
         }
@@ -174,7 +174,7 @@ namespace PROCAS2.Controllers
         public ActionResult YetToAskForRisk(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.YetToAskForRisk(), "YetToAskForRisk", model);
+            return NoParameterReport(() => _reportService.YetToAskForRisk(), "YetToAskForRisk", "NoParameter", model);
 
         }
 
@@ -196,7 +196,7 @@ namespace PROCAS2.Controllers
         public ActionResult YetToReceiveLetter(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.YetToReceiveLetter(), "YetToReceiveLetter", model);
+            return NoParameterReport(() => _reportService.YetToReceiveLetter(), "YetToReceiveLetter", "NoParameter", model);
 
         }
 
@@ -217,7 +217,7 @@ namespace PROCAS2.Controllers
         public ActionResult AskForRiskLetters(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.AskForRiskLetters(), "AskForRiskLetters", model);
+            return NoParameterReport(() => _reportService.AskForRiskLetters(), "AskForRiskLetters", "NoParameter", model);
 
         }
 
@@ -238,7 +238,7 @@ namespace PROCAS2.Controllers
         public ActionResult YetToSendLetter(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.YetToSendLetter(), "YetToSendLetter", model);
+            return NoParameterReport(() => _reportService.YetToSendLetter(), "YetToSendLetter", "NoParameter", model);
 
         }
 
@@ -259,54 +259,194 @@ namespace PROCAS2.Controllers
         public ActionResult WaitingForVolpara(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.WaitingForVolpara(), "WaitingForVolpara", model);
+            return NoParameterReport(() => _reportService.WaitingForVolpara(), "WaitingForVolpara", "NoParameter", model);
 
         }
 
         [HttpGet]
-        public ActionResult ScreeningFirstOffered()
+        public ActionResult ScreeningAttendance()
+        {
+            NoParameterTypeChoiceViewModel model = new NoParameterTypeChoiceViewModel();
+
+            model.Title = ReportResources.SCREENING_ATTENDANCE;
+            model.Summary = ReportResources.SCREENING_ATTENDANCE_SUMMARY;
+            model.ActionName = "ScreeningAttendance";
+            model.ReportType = "FIRST";
+
+            return View("ScreeningAttendance", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ScreeningAttendance(NoParameterTypeChoiceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.ReportType == "FIRST")
+                {
+                    return NoParameterReport(() => _reportService.ScreeningFirstOffered(), "ScreeningFirstOffered", "ScreeningAttendance", model);
+                }
+                else
+                {
+                    return NoParameterReport(() => _reportService.ScreeningWithin180Days(), "ScreeningWithin180Days", "ScreeningAttendance", model);
+                }
+            }
+            else
+            {
+                return View("ScreeningAttendance", model);
+            }
+
+         
+
+        }
+
+        [HttpGet]
+        public ActionResult SubsequentConsultation()
+        {
+            NoParameterTypeChoiceViewModel model = new NoParameterTypeChoiceViewModel();
+
+            model.Title = ReportResources.SUBSEQUENT_CONSULTATION;
+            model.Summary = ReportResources.SUBSEQUENT_CONSULTATION_SUMMARY;
+            model.ActionName = "SubsequentConsultation";
+            model.ReportType = "FAMHIST";
+
+            return View("SubsequentConsultation", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SubsequentConsultation(NoParameterTypeChoiceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.ReportType == "FAMHIST")
+                {
+                    return NoParameterReport(() => _reportService.SubsequentFamilyHistory(), "SubsequentFamilyHistory", "SubsequentConsultation", model);
+                }
+                else
+                {
+                    return NoParameterReport(() => _reportService.SubsequentMoreFrequent(), "SubsequentMoreFrequent", "SubsequentConsultation", model);
+                }
+            }
+            else
+            {
+                return View("SubsequentConsultation", model);
+            }
+
+
+
+        }
+
+
+        [HttpGet]
+        public ActionResult Chemoprevention()
+        {
+            NoParameterTypeChoiceViewModel model = new NoParameterTypeChoiceViewModel();
+
+            model.Title = ReportResources.CHEMOPREVENTION;
+            model.Summary = ReportResources.CHEMOPREVENTION_SUMMARY;
+            model.ActionName = "Chemoprevention";
+            model.ReportType = "DISAGREED";
+
+            return View("Chemoprevention", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Chemoprevention(NoParameterTypeChoiceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.ReportType == "DISAGREED")
+                {
+                    return NoParameterReport(() => _reportService.ChemoDisagreed(), "ChemoDisagreed", "Chemoprevention", model);
+                }
+                else if (model.ReportType == "NOTAPP")
+                {
+                    return NoParameterReport(() => _reportService.ChemoNotApp(), "ChemoNotApp", "Chemoprevention", model);
+                }
+                else if (model.ReportType == "NOTFILLED")
+                {
+                    return NoParameterReport(() => _reportService.ChemoNotFilled(), "ChemoNotFilled", "Chemoprevention", model);
+                }
+                else
+                {
+                    return NoParameterReport(() => _reportService.ChemoFilled(), "ChemoFilled", "Chemoprevention", model);
+                }
+            }
+            else
+            {
+                return View("Chemoprevention", model);
+            }
+
+
+
+        }
+
+
+
+        [HttpGet]
+        public ActionResult NumberRecalls()
+        {
+            NoParameterTypeChoiceViewModel model = new NoParameterTypeChoiceViewModel();
+
+            model.Title = ReportResources.NUMBER_RECALLS;
+            model.Summary = ReportResources.NUMBER_RECALLS_SUMMARY;
+            model.ActionName = "NumberRecalls";
+            model.ReportType = "TECH";
+
+            return View("NumberRecalls", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NumberRecalls(NoParameterTypeChoiceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (model.ReportType == "TECH")
+                {
+                    return NoParameterReport(() => _reportService.NumberTechnicalRecalls(), "NumberTechnicalRecalls", "NumberRecalls", model);
+                }
+                else if (model.ReportType == "ASSESS")
+                {
+                    return NoParameterReport(() => _reportService.NumberAssessmentRecalls(), "NumberAssessmentRecalls", "NumberRecalls", model);
+                }
+                else
+                {
+                    return NoParameterReport(() => _reportService.NumberRoutineRecalls(), "NumberRoutineRecalls", "NumberRecalls", model);
+                }
+            }
+            else
+            {
+                return View("NumberRecalls", model);
+            }
+
+        }
+
+        [HttpGet]
+        public ActionResult BreastCancerDiagnoses()
         {
             NoParameterViewModel model = new NoParameterViewModel();
 
-            model.Title = ReportResources.SCREENING_FIRST_OFFERED;
-            model.Summary = ReportResources.SCREENING_FIRST_OFFERED_SUMMARY;
-            model.ActionName = "ScreeningFirstOffered";
+            model.Title = ReportResources.BC_DIAGNOSES;
+            model.Summary = ReportResources.BC_DIAGNOSES_SUMMARY;
+            model.ActionName = "BreastCancerDiagnoses";
 
             return View("NoParameter", model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult ScreeningFirstOffered(NoParameterViewModel model)
+        public ActionResult BreastCancerDiagnoses(NoParameterViewModel model)
         {
 
-            return NoParameterReport(() => _reportService.ScreeningFirstOffered(), "ScreeningFirstOffered", model);
+            return NoParameterReport(() => _reportService.BreastCancerDiagnoses(), "BreastCancerDiagnoses", "NoParameter", model);
+
 
         }
 
-        [HttpGet]
-        public ActionResult ScreeningWithin180Days()
-        {
-            NoParameterViewModel model = new NoParameterViewModel();
-
-            model.Title = ReportResources.SCREENING_WITHIN_180_DAYS;
-            model.Summary = ReportResources.SCREENING_WITHIN_180_DAYS_SUMMARY;
-            model.ActionName = "ScreeningWithin180Days";
-
-            return View("NoParameter", model);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult ScreeningWithin180Days(NoParameterViewModel model)
-        {
-
-            return NoParameterReport(() => _reportService.ScreeningWithin180Days(), "ScreeningWithin180Days", model);
-
-        }
-
-
-        private ActionResult NoParameterReport(Func<MemoryStream> reportFunction, string reportName, NoParameterViewModel model)
+        private ActionResult NoParameterReport(Func<MemoryStream> reportFunction, string reportName, string viewName, object model)
         {
             if (ModelState.IsValid == true)
             {
@@ -338,7 +478,7 @@ namespace PROCAS2.Controllers
 
             }
             else
-                return View("NoParameter", model);
+                return View(viewName, model);
 
         }
 
