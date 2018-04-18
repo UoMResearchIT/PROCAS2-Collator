@@ -21,7 +21,7 @@ namespace PROCAS2.Data.Entities
 
         public DateTime? DateOfBirth { get; set; }
 
-        [MaxLength(12)]
+        [MaxLength(20)]
         public string NHSNumber { get; set; }
 
         [MaxLength(50)]

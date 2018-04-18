@@ -133,7 +133,7 @@
     <value>Image Position</value>
   </data>
   <data name="CHEMO" xml:space="preserve">
-    <value>Chemo. Started?</value>
+    <value>Eligible for chemoprevention referral?</value>
   </data>
   <data name="CHEMOPREVENTION" xml:space="preserve">
     <value>Chemoprevention Details</value>

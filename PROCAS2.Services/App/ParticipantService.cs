@@ -576,7 +576,7 @@ namespace PROCAS2.Services.App
 
             string NHSNumber = lineBits[0];
 
-            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 12 chars to allow for expansion
+            if (lineBits[0].Length > AttributeHelpers.GetMaxLength<Participant>(x => x.NHSNumber)) // NHS numbers are in fact 10 characters long, but DB column was given 20 chars to allow for expansion and testing
             {
                
                 outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_NHS_NUMBER_TOO_LONG, NHSNumber), UploadResources.UPLOAD_FAIL);

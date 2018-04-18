@@ -106,7 +106,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chemo. Started?.
+        ///   Looks up a localized string similar to Eligible for chemoprevention referral?.
         /// </summary>
         public static string CHEMO {
             get {

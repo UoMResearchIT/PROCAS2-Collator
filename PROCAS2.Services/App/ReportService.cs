@@ -984,7 +984,7 @@ namespace PROCAS2.Services.App
                 int repIndex = 2;
 
                 // Add details
-                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true  && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == false ).ToList();
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true  && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.Chemoprevention == true && x.ChemoAgreedInClinic == false ).ToList();
                 foreach (Participant patient in patients)
                 {
 
@@ -1031,7 +1031,7 @@ namespace PROCAS2.Services.App
                 int repIndex = 2;
 
                 // Add details
-                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMONA").ToList();
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.Chemoprevention == true && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMONA").ToList();
                 foreach (Participant patient in patients)
                 {
 
@@ -1077,7 +1077,7 @@ namespace PROCAS2.Services.App
                 int repIndex = 2;
 
                 // Add details
-                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPNOT").ToList();
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.Chemoprevention == true && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPNOT").ToList();
                 foreach (Participant patient in patients)
                 {
 
@@ -1124,7 +1124,7 @@ namespace PROCAS2.Services.App
                 int repIndex = 2;
 
                 // Add details
-                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPFILL").ToList();
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.DateFirstAppointment != null && x.RiskLetters.Count > 0 && x.Chemoprevention == true && x.ChemoAgreedInClinic == true && x.ChemoPreventionDetails != null && x.ChemoPreventionDetails.LookupCode == "CHEMOAPPFILL").ToList();
                 foreach (Participant patient in patients)
                 {
 
