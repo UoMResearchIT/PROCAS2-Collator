@@ -89,6 +89,20 @@ namespace PROCAS2.Data.Entities
         [ForeignKey("FinalAssessmentOutcome")]
         public int? FinalAssessmentOutcomeId { get; set; }
 
+        public bool RiskConsultationEligible { get; set; }
+
+        public bool RiskConsultationBooked { get; set; }
+
+        public bool RiskConsultationCompleted { get; set; }
+
+        [ForeignKey("RiskConsultationType")]
+        public int? RiskConsultationTypeId { get; set; }
+
+        public bool RiskConsultationLetterSent { get; set; }
+
+        [MaxLength(5000)]
+        public string RiskConsultationComments { get; set; }
+
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }
 
@@ -105,6 +119,7 @@ namespace PROCAS2.Data.Entities
         public virtual ParticipantLookup FinalTechnicalOutcome { get; set; }
         public virtual ParticipantLookup FinalAssessmentOutcome { get; set; }
         public virtual ParticipantLookup ChemoPreventionDetails { get; set; }
+        public virtual ParticipantLookup RiskConsultationType { get; set; }
 
         public virtual GeneticRecord GeneticRecord { get; set; }
         public virtual ScreeningSite ScreeningSite { get; set; }

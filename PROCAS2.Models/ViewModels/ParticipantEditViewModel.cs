@@ -68,6 +68,11 @@ namespace PROCAS2.Models.ViewModels
             AskForRiskLetter = model.Participant.AskForRiskLetter;
             ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
             StudyNumber = model.Participant.StudyNumber;
+            RiskConsultationLetterSent = model.Participant.RiskConsultationLetterSent;
+            RiskConsultationEligible = model.Participant.RiskConsultationEligible;
+            RiskConsultationCompleted = model.Participant.RiskConsultationCompleted;
+            RiskConsultationComments = model.Participant.RiskConsultationComments;
+            RiskConsultationBooked = model.Participant.RiskConsultationBooked;
 
             if (model.Participant.ChemoPreventionDetails == null)
                 ChemoPreventionDetailsId = null;
@@ -88,6 +93,12 @@ namespace PROCAS2.Models.ViewModels
                 FinalAssessmentOutcomeId = null;
             else
                 FinalAssessmentOutcomeId = model.Participant.FinalAssessmentOutcome.Id;
+
+            if (model.Participant.RiskConsultationType == null)
+                RiskConsultationTypeId = null;
+            else
+                RiskConsultationTypeId = model.Participant.RiskConsultationType.Id;
+
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
             if (homeAddress != null)
@@ -276,6 +287,26 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "STUDY_NUMBER", ResourceType = typeof(ParticipantResources))]
         public int StudyNumber { get; set; }
 
+        [Display(Name = "RISK_CONS_ELIGIBLE", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationEligible { get; set; }
+
+        [Display(Name = "RISK_CONS_BOOKED", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationBooked { get; set; }
+
+        [Display(Name = "RISK_CONS_COMPLETED", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationCompleted { get; set; }
+
+        [Display(Name = "RISK_CONS_TYPE", ResourceType = typeof(ParticipantResources))]
+        public int? RiskConsultationTypeId { get; set; }
+
+        [Display(Name = "RISK_CONS_LETTER_SENT", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationLetterSent { get; set; }
+
+        [MaxLength(5000)]
+        [Display(Name = "RISK_CONS_COMMENT", ResourceType = typeof(ParticipantResources))]
+        public string RiskConsultationComments { get; set; }
+
+
         public string Reason { get; set; }
 
         public List<ScreeningSite> ScreeningSites { get; set; }
@@ -284,6 +315,7 @@ namespace PROCAS2.Models.ViewModels
         public List<ParticipantLookup> InitialScreeningOutcome { get; set; }
         public List<ParticipantLookup> FinalTechnicalScreeningOutcome { get; set; }
         public List<ParticipantLookup> FinalAssessmentScreeningOutcome { get; set; }
+        public List<ParticipantLookup> RiskConsultationTypes { get; set; }
     }
 
 }

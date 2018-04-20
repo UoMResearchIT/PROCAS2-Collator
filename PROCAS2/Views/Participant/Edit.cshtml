@@ -166,20 +166,20 @@
 
             @Html.LabelFor(model => model.AskForRiskLetter, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.AskForRiskLetter, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AskForRiskLetter)
 
             </div>
 
             @Html.LabelFor(model => model.SentRisk, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.SentRisk, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SentRisk)
 
             </div>
 
 
             @Html.LabelFor(model => model.MailingList, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.MailingList, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MailingList)
 
             </div>
 
@@ -199,13 +199,13 @@
 
             @Html.LabelFor(model => model.Consented, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.Consented, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Consented)
 
             </div>
 
             @Html.LabelFor(model => model.AttendedScreening, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.AttendedScreening, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.AttendedScreening)
 
             </div>
 
@@ -213,13 +213,13 @@
 
             @Html.LabelFor(model => model.Withdrawn, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.Withdrawn, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Withdrawn)
 
             </div>
 
             @Html.LabelFor(model => model.Deceased, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.Deceased, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Deceased)
 
             </div>
 
@@ -269,9 +269,16 @@
 
             <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.CHEMOPREVENTION</span></div>
 
+            @Html.LabelFor(model => model.Chemo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-1">
+                @Html.EditorFor(model => model.Chemo)
+
+            </div>
+
+
             @Html.LabelFor(model => model.ChemoAgreedInClinic, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.ChemoAgreedInClinic, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.ChemoAgreedInClinic)
 
             </div>
 
@@ -283,12 +290,7 @@
             </div>
             
 
-            @Html.LabelFor(model => model.Chemo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-1">
-                @Html.EditorFor(model => model.Chemo, new { htmlAttributes = new { @class = "form-control" } })
-
-            </div>
-
+         
 
             <div class="col-md-4">
                 &nbsp;
@@ -304,20 +306,20 @@
 
             @Html.LabelFor(model => model.Diagnosed, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.Diagnosed, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Diagnosed)
 
             </div>
 
 
             @Html.LabelFor(model => model.FHCReferral, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.FHCReferral, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.FHCReferral)
 
             </div>
 
             @Html.LabelFor(model => model.MoreFrequentScreening, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-1">
-                @Html.EditorFor(model => model.MoreFrequentScreening, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MoreFrequentScreening)
 
             </div>
 
@@ -329,6 +331,67 @@
 
         </div>
 
+
+        <div class="form-group  editSection">
+
+            <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.RISK_CONSULTATION</span></div>
+
+            <div class="row">
+                @Html.LabelFor(model => model.RiskConsultationEligible, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.RiskConsultationEligible)
+
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+
+                @Html.LabelFor(model => model.RiskConsultationBooked, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.RiskConsultationBooked)
+
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+
+
+                @Html.LabelFor(model => model.RiskConsultationCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.RiskConsultationCompleted)
+
+                </div>
+
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.RiskConsultationTypeId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.DropDownListFor(model => model.RiskConsultationTypeId, new SelectList(Model.RiskConsultationTypes, "Id", "LookupDescription"), "Please select", new { @class = "form-control" })
+
+                </div>
+
+                @Html.LabelFor(model => model.RiskConsultationLetterSent, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.EditorFor(model => model.RiskConsultationLetterSent)
+
+                </div>
+                <div class="col-md-1">
+                    &nbsp;
+                </div>
+
+                @Html.LabelFor(model => model.RiskConsultationComments, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.EditorFor(model => model.RiskConsultationComments, new { htmlAttributes = new { @class = "form-control" } })
+
+                </div>
+
+            </div>
+
+
+            </div>
        
         <div class="form-group editSection">
 

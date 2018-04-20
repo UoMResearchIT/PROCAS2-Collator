@@ -79,8 +79,15 @@
         setScreeningOutcome();
     });
 
+    // If the Risk Consultation Completed flag changes then toggle the drop-down box
+    $("#RiskConsultationCompleted").on("change", function () {
+        setRiskConsultation();
+    });
+
+
     setChemoBox();
     setScreeningOutcome();
+    setRiskConsultation();
 
 });
 
@@ -94,6 +101,21 @@ function setChemoBox()
     else {
         $("#ChemoPreventionDetailsId").prop("disabled", true);
         $("#ChemoPreventionDetailsId").val(null);
+    }
+}
+
+// Check the Risk Consultation Completed flag and enable or disable the risk consultation dropdown appropriately
+function setRiskConsultation() {
+    var checked = $("#RiskConsultationCompleted").prop("checked");
+    if (checked === true) {
+        $("#RiskConsultationTypeId").prop("disabled", false);
+        $("#RiskConsultationLetterSent").prop("disabled", false);
+    }
+    else {
+        $("#RiskConsultationTypeId").prop("disabled", true);
+        $("#RiskConsultationTypeId").val(null);
+        $("#RiskConsultationLetterSent").prop("disabled", true);
+        $("#RiskConsultationLetterSent").prop("checked", false);
     }
 }
 

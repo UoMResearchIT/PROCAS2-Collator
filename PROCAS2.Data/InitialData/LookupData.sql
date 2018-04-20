@@ -117,6 +117,8 @@ INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription],
 INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription], [LookupCode]) VALUES (13, N'RECALL', N'DNA appointment', N'RECALL_DNA')
 INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription], [LookupCode]) VALUES (14, N'RECALL', N'Breast cancer', N'RECALL_CANCER')
 INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription], [LookupCode]) VALUES (15, N'RECALL', N'Enhanced survelliance', N'RECALL_SURV')
+INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription], [LookupCode]) VALUES (16, N'RISKCONS', N'Face-to-face', N'RISK_FACE')
+INSERT INTO [dbo].[ParticipantLookups] ([Id], [LookupType], [LookupDescription], [LookupCode]) VALUES (17, N'RISKCONS', N'Telephone', N'RISK_TELE')
 SET IDENTITY_INSERT [dbo].[ParticipantLookups] OFF
 
 SET IDENTITY_INSERT [dbo].[Questions] ON

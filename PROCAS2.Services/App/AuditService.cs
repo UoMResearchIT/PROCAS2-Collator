@@ -63,7 +63,10 @@ namespace PROCAS2.Services.App
         {
             if (oldValue != newValue)
             {
-                AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_PROPERTY_UPDATED, String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue, newValue), reason);
+                // Limited to 10 chars to stop the audit table filling up with risk comment notes. Hopefully shouldn't be an issue...
+                string oldstr = (oldValue != null && oldValue.Length > 10) ? oldValue.Substring(0, 10) + "..." : oldValue;
+                string newstr = (newValue != null && newValue.Length > 10 )? newValue.Substring(0, 10) + "..." : newValue;
+                AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_PROPERTY_UPDATED, String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldstr, newstr), reason);
 
             }
 
@@ -78,11 +81,11 @@ namespace PROCAS2.Services.App
         /// <param name="oldValue">Old value</param>
         /// <param name="newValue">New value</param>
         /// <returns></returns>
-        public DateTime ChangeEventDate(Participant participant, string propertyName, DateTime oldValue, DateTime newValue, string reason)
+        public DateTime? ChangeEventDate(Participant participant, string propertyName, DateTime? oldValue, DateTime? newValue, string reason)
         {
             if (oldValue != newValue)
             {
-                AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_PROPERTY_UPDATED, String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.ToString("dd/MM/yyyy"), newValue.ToString("dd/MM/yyyy")), reason);
+                AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_PROPERTY_UPDATED, String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.HasValue?oldValue.Value.ToString("dd/MM/yyyy"):"", newValue.HasValue?newValue.Value.ToString("dd/MM/yyyy"):""), reason);
 
                
             }

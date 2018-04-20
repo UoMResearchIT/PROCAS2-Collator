@@ -236,6 +236,12 @@ namespace PROCAS2.Controllers
             model.Participant = _participantRepo.GetAll().Where(x => x.NHSNumber == participantId).FirstOrDefault();
             if (model.Participant != null)
             {
+                model.ScreeningSite = model.Participant.ScreeningSite.Code;
+                model.ChemoPreventionDetailsId = model.Participant.ChemoPreventionDetailsId;
+                model.InitialScreeningOutcomeId = model.Participant.InitialScreeningOutcomeId;
+                model.FinalAssessmentOutcomeId = model.Participant.FinalAssessmentOutcomeId;
+                model.FinalTechnicalOutcomeId = model.Participant.FinalTechnicalOutcomeId;
+                model.RiskConsultationTypeId = model.Participant.RiskConsultationTypeId;
                 FillEditLookups(ref model);
                 model.Reason = "";
                 return View("Edit", model);
@@ -290,15 +296,17 @@ namespace PROCAS2.Controllers
         private void FillEditLookups(ref ParticipantEditViewModel model)
         {
             model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
-            model.ScreeningSite = model.Participant.ScreeningSite.Code;
+            
             model.ChemoPreventionDetails = _participantService.GetLookups("CHEMO");
-            model.ChemoPreventionDetailsId = model.Participant.ChemoPreventionDetailsId;
+            
             model.InitialScreeningOutcome = _participantService.GetLookups("INITIAL");
-            model.InitialScreeningOutcomeId = model.Participant.InitialScreeningOutcomeId;
+            
             model.FinalAssessmentScreeningOutcome = _participantService.GetLookups("RECALL");
-            model.FinalAssessmentOutcomeId = model.Participant.FinalAssessmentOutcomeId;
+            
             model.FinalTechnicalScreeningOutcome = _participantService.GetLookups("TECH");
-            model.FinalTechnicalOutcomeId = model.Participant.FinalTechnicalOutcomeId;
+            
+            
+            model.RiskConsultationTypes = _participantService.GetLookups("RISKCONS");
         }
 
         // POST: Participant/Delete/NHS123

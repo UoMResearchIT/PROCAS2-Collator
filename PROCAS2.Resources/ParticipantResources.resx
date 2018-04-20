@@ -331,6 +331,27 @@
   <data name="RELATIONSHIP_GENDER" xml:space="preserve">
     <value>Gender</value>
   </data>
+  <data name="RISK_CONSULTATION" xml:space="preserve">
+    <value>Risk Consultation</value>
+  </data>
+  <data name="RISK_CONS_BOOKED" xml:space="preserve">
+    <value>Risk Consultation Booked</value>
+  </data>
+  <data name="RISK_CONS_COMMENT" xml:space="preserve">
+    <value>Risk Consultation Comments</value>
+  </data>
+  <data name="RISK_CONS_COMPLETED" xml:space="preserve">
+    <value>Risk Consultation Completed</value>
+  </data>
+  <data name="RISK_CONS_ELIGIBLE" xml:space="preserve">
+    <value>Eligible for Risk Consultation?</value>
+  </data>
+  <data name="RISK_CONS_LETTER_SENT" xml:space="preserve">
+    <value>Risk Consultation Letter Sent?</value>
+  </data>
+  <data name="RISK_CONS_TYPE" xml:space="preserve">
+    <value>Consultation Type</value>
+  </data>
   <data name="SCREENING_NUMBER" xml:space="preserve">
     <value>Screening No.</value>
   </data>

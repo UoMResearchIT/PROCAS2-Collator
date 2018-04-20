@@ -700,6 +700,69 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Risk Consultation Booked.
+        /// </summary>
+        public static string RISK_CONS_BOOKED {
+            get {
+                return ResourceManager.GetString("RISK_CONS_BOOKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Consultation Comments.
+        /// </summary>
+        public static string RISK_CONS_COMMENT {
+            get {
+                return ResourceManager.GetString("RISK_CONS_COMMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Consultation Completed.
+        /// </summary>
+        public static string RISK_CONS_COMPLETED {
+            get {
+                return ResourceManager.GetString("RISK_CONS_COMPLETED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Eligible for Risk Consultation?.
+        /// </summary>
+        public static string RISK_CONS_ELIGIBLE {
+            get {
+                return ResourceManager.GetString("RISK_CONS_ELIGIBLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Consultation Letter Sent?.
+        /// </summary>
+        public static string RISK_CONS_LETTER_SENT {
+            get {
+                return ResourceManager.GetString("RISK_CONS_LETTER_SENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Consultation Type.
+        /// </summary>
+        public static string RISK_CONS_TYPE {
+            get {
+                return ResourceManager.GetString("RISK_CONS_TYPE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Risk Consultation.
+        /// </summary>
+        public static string RISK_CONSULTATION {
+            get {
+                return ResourceManager.GetString("RISK_CONSULTATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Screening No..
         /// </summary>
         public static string SCREENING_NUMBER {

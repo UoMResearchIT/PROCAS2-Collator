@@ -23,7 +23,7 @@
 
     
 
-    <!-- Modal -->
+    <!-- GP Modal -->
     <div class="modal fade" id="modalGP" tabindex="-1" role="dialog" aria-labelledby="lblGP">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -95,6 +95,35 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="modalRiskComments" tabindex="-1" role="dialog" aria-labelledby="lblGP">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="lblGP">@ParticipantResources.RISK_CONS_COMMENT</h4>
+            </div>
+            <div class="modal-body gpModal">
+
+
+                <div class="row">
+                    @Html.LabelFor(model => model.RiskConsultationComments, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DisplayFor(model => model.RiskConsultationComments, new { htmlAttributes = new { @class = "form-control-static" } })
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+        </div>
+      
 </div>
 
 
@@ -342,6 +371,57 @@
   
 
 </div>
+
+<div class="row editSection">
+    
+        <div class="col-md-12"><span class="editSectionHeader">@ParticipantResources.RISK_CONSULTATION</span></div>
+     
+    <div class="clearfix">
+        @Html.LabelFor(model => model.RiskConsultationEligible, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.Participant.RiskConsultationEligible, new { htmlAttributes = new { @class = "form-control-static" } })
+
+        </div>
+
+
+        @Html.LabelFor(model => model.RiskConsultationBooked, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.RiskConsultationBooked, new { htmlAttributes = new { @class = "form-control-static" } })
+
+        </div>
+
+        @Html.LabelFor(model => model.RiskConsultationCompleted, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.RiskConsultationCompleted, new { htmlAttributes = new { @class = "form-control-static" } })
+
+        </div>
+    </div>
+            @Html.LabelFor(model => model.RiskConsultationType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.RiskConsultationType, new { htmlAttributes = new { @class = "form-control-static" } })
+
+            </div>
+
+            @Html.LabelFor(model => model.RiskConsultationLetterSent, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.DisplayFor(model => model.Participant.RiskConsultationLetterSent, new { htmlAttributes = new { @class = "form-control-static" } })
+
+            </div>
+
+
+
+
+            @Html.LabelFor(model => model.RiskConsultationCommentsShort, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+
+                @Html.DisplayFor(model => model.RiskConsultationCommentsShort, new { htmlAttributes = new { @class = "form-control-static" } })
+                <!-- link trigger modal -->
+                <a data-toggle="modal" data-target="#modalRiskComments">
+                    See More
+                </a>
+            </div>
+        </div>
+   
 
 <div class-"row">&nbsp</div>
 

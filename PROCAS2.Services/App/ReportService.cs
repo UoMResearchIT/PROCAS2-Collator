@@ -231,7 +231,7 @@ namespace PROCAS2.Services.App
                 // Add participant header
                 string mainSheetId = AddSheet(wbPart, "Main", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols: new List<string>() { "Site", "ChemoDetails", "InitialScreeningOutcome", "FinalAssessmentOutcome", "FinalTechnicalOutcome" });
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, afterCols: new List<string>() { "Site", "ChemoDetails", "InitialScreeningOutcome", "FinalAssessmentOutcome", "FinalTechnicalOutcome", "RiskConsultationType" });
 
                 // Add address header
                 string addressSheetId = AddSheet(wbPart, "Addresses", 2);
@@ -298,7 +298,8 @@ namespace PROCAS2.Services.App
                                                                                                                     participant.ChemoPreventionDetails==null?null:participant.ChemoPreventionDetails.LookupDescription,
                                                                                                                     participant.InitialScreeningOutcome==null?null:participant.InitialScreeningOutcome.LookupDescription,
                                                                                                                     participant.FinalAssessmentOutcome==null?null:participant.FinalAssessmentOutcome.LookupDescription,
-                                                                                                                    participant.FinalTechnicalOutcome == null?null:participant.FinalTechnicalOutcome.LookupDescription                                                    
+                                                                                                                    participant.FinalTechnicalOutcome == null?null:participant.FinalTechnicalOutcome.LookupDescription,
+                                                                                                                    participant.RiskConsultationType == null?null:participant.RiskConsultationType.LookupDescription                                                    
                     });
 
                     // Add address details

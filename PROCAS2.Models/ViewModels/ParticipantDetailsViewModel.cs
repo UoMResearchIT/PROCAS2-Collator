@@ -62,6 +62,18 @@ namespace PROCAS2.Models.ViewModels
             DateConsented = model.Participant.DateConsented.HasValue ? model.Participant.DateConsented.Value.ToString("dd/MM/yyyy") : "";
             ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
             StudyNumber = model.Participant.StudyNumber;
+            RiskConsultationLetterSent = model.Participant.RiskConsultationLetterSent;
+            RiskConsultationEligible = model.Participant.RiskConsultationEligible;
+            RiskConsultationCompleted = model.Participant.RiskConsultationCompleted;
+            RiskConsultationComments = model.Participant.RiskConsultationComments;
+
+            if (model.Participant.RiskConsultationComments != null && model.Participant.RiskConsultationComments.Length > 10)
+                RiskConsultationCommentsShort = model.Participant.RiskConsultationComments.Substring(0, 10) + "...";
+            else
+                RiskConsultationCommentsShort = model.Participant.RiskConsultationComments;
+
+
+            RiskConsultationBooked = model.Participant.RiskConsultationBooked;
 
             if (model.Participant.ChemoPreventionDetails == null)
                 ChemoPreventionDetails = null;
@@ -82,6 +94,11 @@ namespace PROCAS2.Models.ViewModels
                 FinalAssessmentOutcome = null;
             else
                 FinalAssessmentOutcome = model.Participant.FinalAssessmentOutcome.LookupDescription;
+
+            if (model.Participant.RiskConsultationType == null)
+                RiskConsultationType = null;
+            else
+                RiskConsultationType = model.Participant.RiskConsultationType.LookupDescription;
 
 
             Address homeAddress = model.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
@@ -207,6 +224,26 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "STUDY_NUMBER", ResourceType = typeof(ParticipantResources))]
         public int StudyNumber { get; set; }
 
+        [Display(Name = "RISK_CONS_ELIGIBLE", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationEligible { get; set; }
 
+        [Display(Name = "RISK_CONS_BOOKED", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationBooked { get; set; }
+
+        [Display(Name = "RISK_CONS_COMPLETED", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationCompleted { get; set; }
+
+        [Display(Name = "RISK_CONS_TYPE", ResourceType = typeof(ParticipantResources))]
+        public string RiskConsultationType { get; set; }
+
+        [Display(Name = "RISK_CONS_LETTER_SENT", ResourceType = typeof(ParticipantResources))]
+        public bool RiskConsultationLetterSent { get; set; }
+
+        
+        [Display(Name = "RISK_CONS_COMMENT", ResourceType = typeof(ParticipantResources))]
+        public string RiskConsultationComments { get; set; }
+
+        [Display(Name = "RISK_CONS_COMMENT", ResourceType = typeof(ParticipantResources))]
+        public string RiskConsultationCommentsShort { get; set; }
     }
 }

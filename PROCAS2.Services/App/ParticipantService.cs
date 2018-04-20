@@ -1064,9 +1064,9 @@ namespace PROCAS2.Services.App
                     participant.ChemoAgreedInClinic = _auditService.ChangeEventBool(participant, ParticipantResources.CHEMO_AGREED, participant.ChemoAgreedInClinic, model.ChemoAgreedInClinic, model.Reason);
 
                     participant.Consented = _auditService.ChangeEventBool(participant, ParticipantResources.CONSENTED, participant.Consented, model.Consented, model.Reason);
-                    participant.DateActualAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOAA, (DateTime)participant.DateActualAppointment, (DateTime)model.DOAA, model.Reason);
-                    participant.DateFirstAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOFA, (DateTime)participant.DateFirstAppointment, (DateTime)model.DOFA, model.Reason);
-                    participant.DateOfBirth = _auditService.ChangeEventDate(participant, ParticipantResources.DOB, (DateTime)participant.DateOfBirth, (DateTime)model.DOB, model.Reason);
+                    participant.DateActualAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOAA, participant.DateActualAppointment, model.DOAA, model.Reason);
+                    participant.DateFirstAppointment = _auditService.ChangeEventDate(participant, ParticipantResources.DOFA, participant.DateFirstAppointment, model.DOFA, model.Reason);
+                    participant.DateOfBirth = _auditService.ChangeEventDate(participant, ParticipantResources.DOB, participant.DateOfBirth, model.DOB, model.Reason);
                     participant.Deceased = _auditService.ChangeEventBool(participant, ParticipantResources.DECEASED, participant.Deceased, model.Deceased, model.Reason);
                     participant.Diagnosed = _auditService.ChangeEventBool(participant, ParticipantResources.DIAGNOSED, participant.Diagnosed, model.Diagnosed, model.Reason);
                     participant.FHCReferral = _auditService.ChangeEventBool(participant, ParticipantResources.FHC_REFERRAL, participant.FHCReferral, model.FHCReferral, model.Reason);
@@ -1086,7 +1086,33 @@ namespace PROCAS2.Services.App
                     participant.Withdrawn = _auditService.ChangeEventBool(participant, ParticipantResources.WITHDRAWN, participant.Withdrawn, model.Withdrawn, model.Reason);
                     participant.MailingList = _auditService.ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
                     participant.AskForRiskLetter = _auditService.ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
-                    participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, (DateTime)participant.DateConsented, (DateTime)model.DateConsented, model.Reason);
+
+                    // TODO: check for nulls here
+                    participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, participant.DateConsented, model.DateConsented, model.Reason);
+                    participant.RiskConsultationBooked = _auditService.ChangeEventBool(participant, ParticipantResources.RISK_CONS_BOOKED, participant.RiskConsultationBooked, model.RiskConsultationBooked, model.Reason);
+                    participant.RiskConsultationComments = _auditService.ChangeEventString(participant, ParticipantResources.RISK_CONS_COMMENT, participant.RiskConsultationComments, model.RiskConsultationComments, model.Reason);
+                    participant.RiskConsultationEligible = _auditService.ChangeEventBool(participant, ParticipantResources.RISK_CONS_ELIGIBLE, participant.RiskConsultationEligible, model.RiskConsultationEligible, model.Reason);
+                    participant.RiskConsultationCompleted = _auditService.ChangeEventBool(participant, ParticipantResources.RISK_CONS_COMPLETED, participant.RiskConsultationCompleted, model.RiskConsultationCompleted, model.Reason);
+                    participant.RiskConsultationLetterSent = _auditService.ChangeEventBool(participant, ParticipantResources.RISK_CONS_LETTER_SENT, participant.RiskConsultationLetterSent, model.RiskConsultationLetterSent, model.Reason);
+
+
+                    if (participant.RiskConsultationType != null && model.RiskConsultationTypeId == null)
+                    {
+                        _auditService.ChangeEventString(participant, ParticipantResources.RISK_CONS_TYPE, participant.RiskConsultationType.LookupDescription, "", model.Reason);
+                        participant.RiskConsultationType = null;
+                    }
+                    else if (participant.RiskConsultationType != null && model.RiskConsultationTypeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.RiskConsultationTypeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.RISK_CONS_TYPE, participant.RiskConsultationType.LookupDescription, lookup.LookupDescription, model.Reason);
+                        participant.RiskConsultationType = lookup;
+                    }
+                    else if (participant.RiskConsultationType == null && model.RiskConsultationTypeId != null)
+                    {
+                        ParticipantLookup lookup = _lookupRepo.GetAll().Where(x => x.Id == model.RiskConsultationTypeId).FirstOrDefault();
+                        _auditService.ChangeEventString(participant, ParticipantResources.RISK_CONS_TYPE, "", lookup.LookupDescription, model.Reason);
+                        participant.RiskConsultationType = lookup;
+                    }
 
                     if (participant.ChemoPreventionDetails != null && model.ChemoPreventionDetailsId == null)
                     {
@@ -1244,6 +1270,13 @@ namespace PROCAS2.Services.App
                     participant.Title = null;
                     participant.Withdrawn = false;
                     participant.AskForRiskLetter = false;
+                    participant.RiskConsultationType = null;
+                    participant.RiskConsultationBooked = false;
+                    participant.RiskConsultationComments = null;
+                    participant.RiskConsultationCompleted = false;
+                    participant.RiskConsultationEligible = false;
+                    participant.RiskConsultationLetterSent = false;
+                    
 
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
