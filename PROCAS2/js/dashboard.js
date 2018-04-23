@@ -1,9 +1,15 @@
 ﻿$(document).ready(function () {
 
+    var urlpath = "";
+
+    if (window.location.host.indexOf("webnet") > -1) {
+        urlpath = urlpath + "/PROCAS2";
+    }
+
     // Consent Panel
     //  Fetch data to show in the consent panel
     $.ajax({
-        url: "/Home/ConsentPanel",
+        url: urlpath + "/Home/ConsentPanel",
         beforeSend: function () {
             
             $("#pnlConsent").html("<h4>Consent</h4><p>Loading...</p>");
@@ -22,7 +28,7 @@
     // Site listing panel
     // Fetch data to show in the site listing panel
     $.ajax({
-        url: "/Home/SitePanel",
+        url: urlpath + "/Home/SitePanel",
         beforeSend: function () {
 
             $("#pnlSite").html("<h4>Site Listing</h4><p>Loading...</p>");
@@ -41,7 +47,7 @@
     // Risk letter info panel
     // Fetch data to show risk letter information
     $.ajax({
-        url: "/Home/RiskPanel",
+        url: urlpath + "/Home/RiskPanel",
         beforeSend: function () {
 
             $("#pnlRisk").html("<h4>Risk Letters</h4><p>Loading...</p>");
@@ -60,7 +66,7 @@
     // App News items info panel
     // Fetch data to show applicaiton news information
     $.ajax({
-        url: "/Home/AppNewsPanel",
+        url: urlpath + "/Home/AppNewsPanel",
         beforeSend: function () {
 
             $("#pnlAppNews").html("<h4>Application News</h4><p>Loading...</p>");
@@ -79,7 +85,7 @@
     // Tx errors info panel
     // Fetch data to show tranmission errors
     $.ajax({
-        url: "/Home/TxErrorsPanel",
+        url: urlpath + "/Home/TxErrorsPanel",
         beforeSend: function () {
 
             $("#pnlTxErrors").html("<h4>Transmission Errors</h4><p>Loading...</p>");
@@ -97,7 +103,7 @@
     // Volpara info panel
     // Fetch data to show Volpara info
     $.ajax({
-        url: "/Home/VolparaPanel",
+        url: urlpath + "/Home/VolparaPanel",
         beforeSend: function () {
 
             $("#pnlVolpara").html("<h4>Volpara</h4><p>Loading...</p>");

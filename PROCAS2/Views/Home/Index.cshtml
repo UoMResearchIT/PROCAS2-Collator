@@ -1,4 +1,6 @@
-﻿@{
+﻿@using PROCAS2.CustomHtmlHelpers
+
+@{
     ViewBag.Title = "Dashboard";
 }
 
@@ -6,11 +8,16 @@
 <script src="~/js/dashboard.js" type="text/javascript"></script>
 
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
 
         <h3>BC-PREDICT Dashboard</h3>
 
     </div>
+
+ @if (Html.IsTestBuild())
+ {
+    <span class="col-md-12 alert alert-danger">This is an insecure test server. Please only use dummy (fake) data on this version of the site.</span>
+ }   
 
 </div>
 

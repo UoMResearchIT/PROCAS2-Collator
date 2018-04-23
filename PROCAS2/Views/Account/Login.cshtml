@@ -1,17 +1,28 @@
 ﻿@using PROCAS2.Models
+@using PROCAS2.CustomHtmlHelpers
+
 @model LoginViewModel
 @{
     ViewBag.Title = "Please log in";
 }
 
 <h2>@ViewBag.Title</h2>
+
+@if (Html.IsTestBuild())
+{
+    <div class="row">
+        <span class="col-md-12 alert alert-danger">This is an insecure test server. Please do not use your normal password, and please only use dummy (fake) data on this version of the site.</span>
+    </div>
+
+}
+
 <div class="row">
     <div class="col-md-12">
         <section id="loginForm">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 @Html.AntiForgeryToken()
-                
+
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -44,14 +55,14 @@
                 <p>
                     @Html.ActionLink("Register as a new user", "Register")
                 </p>
-                
-                    <p>
-                        Forgot your password? Please contact the PROCAS2 Collator team to allow you to re-register.
-                    </p>
+
+                <p>
+                    Forgot your password? Please contact the PROCAS2 Collator team to allow you to re-register.
+                </p>
             }
         </section>
     </div>
-   
+
 </div>
 
 @section Scripts {

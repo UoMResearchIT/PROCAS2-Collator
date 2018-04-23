@@ -1,6 +1,7 @@
 
 Web.Debug.config
 Web.Release.config
+Web.Test.config
 Web.SpecialAppSettings.config
 
 App.SpecialAppSettings.config
