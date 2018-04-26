@@ -11,17 +11,17 @@ namespace PROCAS2.Models.ServiceBusMessages
     /// </summary>
     public class ConsentMessage
     {
-        public string MessageType { get; set; }
+        public string MessageType { get; set; } // should always be 'consent'
 
-        public string MessageTimeStamp { get; set; }
+        public string PatientId { get; set; } // hashed patient ID
 
-        public string PatientId { get; set; }
+        public string ConsentPDF { get; set; } // Base64 encoded consent PDF form
 
         public bool IsValid { get
             {
                 return !String.IsNullOrEmpty(MessageType) && 
-                        !String.IsNullOrEmpty(MessageTimeStamp) && 
                         !String.IsNullOrEmpty(PatientId) &&
+                        !String.IsNullOrEmpty(ConsentPDF) &&
                         MessageType == "consent";
             }
 

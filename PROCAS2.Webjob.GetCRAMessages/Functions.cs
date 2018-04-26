@@ -6,7 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
-
+using Microsoft.ServiceBus;
+using Microsoft.ServiceBus.Messaging;
 using PROCAS2.Services.Utility;
 
 namespace PROCAS2.Webjob.GetCRAMessages
@@ -23,27 +24,21 @@ namespace PROCAS2.Webjob.GetCRAMessages
         }
 
         // This function will get triggered/executed when a new message is written 
-        // on an Azure ServiceBus queue called cra-incoming.
-        public  void ProcessQueueMessage([ServiceBusTrigger("cra-incoming")] string message, TraceWriter log)
+        // on an Azure ServiceBus queue called cra-consent-incoming-test.
+        public  void ProcessConsentMessage([ServiceBusTrigger("cra-consent-incoming-test")] BrokeredMessage message, TraceWriter log)
         {
-            
-           
+
+            string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
+
             // There are two types of message on this queue. If this message is not a consent message then
             // assume that it is an HL7 message
-            if (_craService.IsConsentMessage(message) == false)
+            if (_craService.IsConsentMessage(messageStr) == true)
             {
-                List<string> messages = _craService.ProcessQuestionnaire(message);
-
-                //foreach (string mess in messages)
-                //{
-                //    log.Trace(new TraceEvent(System.Diagnostics.TraceLevel.Warning, mess));
-                //}
-            }
-            else
-            {
+                
+           
                 // This is a consent message
 
-                List<string> messages = _craService.ProcessConsent(message);
+                List<string> messages = _craService.ProcessConsent(messageStr);
 
                 //foreach (string mess in messages)
                 //{
@@ -54,6 +49,15 @@ namespace PROCAS2.Webjob.GetCRAMessages
            
         }
 
-       
+        // This function will get triggered/executed when a new message is written 
+        // on an Azure ServiceBus queue called cra-suvey-incoming-test.
+        public void ProcessSurveyMessage([ServiceBusTrigger("cra-survey-incoming-test")] BrokeredMessage message, TraceWriter log)
+        {
+            string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
+
+            List<string> messages = _craService.ProcessQuestionnaire(messageStr);
+        }
+
+
     }
 }

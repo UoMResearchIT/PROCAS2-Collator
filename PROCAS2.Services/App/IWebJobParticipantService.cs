@@ -14,5 +14,6 @@ namespace PROCAS2.Services.App
         bool DoesHashedNHSNumberExist(string hash);
         bool SetConsentFlag(string hashedNHSNumber);
         bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, List<string> letterParts);
+        string GetStudyNumber(string hashedNHSNumber);
     }
 }

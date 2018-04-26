@@ -79,6 +79,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem creating the outgoing consent message to Volpara..
+        /// </summary>
+        public static string CONSENT_OUTGOING_ERROR {
+            get {
+                return ResourceManager.GetString("CONSENT_OUTGOING_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The consent PDF is either not in the correct format or has another error..
+        /// </summary>
+        public static string CONSENT_PDF_ERROR {
+            get {
+                return ResourceManager.GetString("CONSENT_PDF_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error creating a family history record for patient {0}.
         /// </summary>
         public static string FAMILY_HISTORY_ERROR {

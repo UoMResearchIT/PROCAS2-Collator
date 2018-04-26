@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
-
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 
 using NHapi.Base;
@@ -82,8 +84,8 @@ namespace PROCAS2.Services.Utility
 
             
 
-            try
-            {
+           // try
+            //{
                 // Get the consent message
                 ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
                 if (consentObj != null && consentObj.IsValid)
@@ -95,20 +97,37 @@ namespace PROCAS2.Services.Utility
                         return retMessages;
                     }
 
+                    // Set the consent flag and date in the DB
                     if (_participantService.SetConsentFlag(consentObj.PatientId) == false)
                     {
                         retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, consentObj.PatientId), messageBody: consentMessage));
                     }
+
+                    // Move the PDF to storage
+                    DateTime now = DateTime.Now;
+                    string filename = _participantService.GetStudyNumber(consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
+                    if (ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
+                    {
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_PDF_ERROR, messageBody: consentMessage));
+                    }
+
+                    // Post message on Volpara outgoing queue - to inform them of consent
+                    string message = @"{ 'patientId' : '" + consentObj.PatientId + "'}";
+                    if (PostServiceBusMessage(message, "VolparaConsentQueue") == false)
+                    {
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_OUTGOING_ERROR, messageBody: consentMessage));
+                    }
+
                 }
                 else
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
                 }
-            }
-            catch
-            {
-                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
-            }
+           // }
+            //catch
+           // {
+            //    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
+           // }
 
             return retMessages;
         }
@@ -396,11 +415,43 @@ namespace PROCAS2.Services.Utility
 
 
         /// <summary>
+        /// Create and store the consent PDF in Azure storage
+        /// </summary>
+        /// <param name="PDF">Base 64 encoded PDF</param>
+        /// <param name="filename">File name to save the consent form as</param>
+        /// <returns>true if successful, else false</returns>
+        public bool ProcessConsentPDF(string PDF, string filename)
+        {
+            try
+            {
+                byte[] sPDFDecoded = Convert.FromBase64String(PDF);
+               
+                MemoryStream stream = new MemoryStream(sPDFDecoded);
+
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageConsentContainer"));
+
+                var blob = container.GetBlockBlobReference(filename);
+                blob.UploadFromStreamAsync(stream).Wait();
+                stream.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+
+        /// <summary>
         /// Post a message to the CRA servicebus. Used for testing mainly!
         /// </summary>
         /// <param name="message">The message</param>
         /// <returns>true if successfully posted, else false</returns>
-        public bool PostServiceBusMessage(string message)
+        public bool PostServiceBusMessage(string message, string queue)
         {
             try
             {
@@ -419,9 +470,10 @@ namespace PROCAS2.Services.Utility
 
                 // Create a queue client 
                 QueueClient queueClient =
-                    factory.CreateQueueClient(_configService.GetAppSetting("CRAQueue"));
+                    factory.CreateQueueClient(_configService.GetAppSetting(queue));
 
-                BrokeredMessage hl7Message = new BrokeredMessage(message);
+                // Post in Base64 encoded form (as seems to be common practice)
+                BrokeredMessage hl7Message = new BrokeredMessage(Encoding.UTF8.GetBytes(message));
 
                 // Send the message to the queue.
                 queueClient.Send(hl7Message);
@@ -437,7 +489,7 @@ namespace PROCAS2.Services.Utility
         }
 
 
-        public string GetServiceBusMessage()
+        public string GetServiceBusMessage(string queue)
         {
             string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
             string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
@@ -456,7 +508,7 @@ namespace PROCAS2.Services.Utility
 
             // Create a queue client
             QueueClient queueClient =
-                factory.CreateQueueClient(_configService.GetAppSetting("CRAQueue"));
+                factory.CreateQueueClient(_configService.GetAppSetting(queue));
 
             BrokeredMessage orderOutMsg = queueClient.Receive();
 
@@ -464,7 +516,6 @@ namespace PROCAS2.Services.Utility
 
             if (orderOutMsg != null)
             {
-                string type = orderOutMsg.ContentType;
                 message = System.Text.Encoding.UTF8.GetString(orderOutMsg.GetBody<byte[]>());
                 orderOutMsg.Complete();
             }

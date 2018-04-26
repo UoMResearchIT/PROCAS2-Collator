@@ -70,5 +70,18 @@ namespace PROCAS2.Services.Utility
 
         }
 
+        /// <summary>
+        /// Return connection string from the web.config. 
+        /// </summary>
+        /// <param name="key">name of the connection string</param>
+        /// <returns>value, or null if not found</returns>
+        public string GetConnectionString(string key)
+        {
+            string retVal = ConfigurationManager.ConnectionStrings[key].ConnectionString;
+
+            return retVal;
+        }
+
+
     }
 }

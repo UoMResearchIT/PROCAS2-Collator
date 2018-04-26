@@ -13,5 +13,7 @@ namespace PROCAS2.Services.Utility
         int? GetIntAppSetting(string key);
         
         DateTime? GetDateTimeAppSetting(string key);
+
+        string GetConnectionString(string key);
     }
 }

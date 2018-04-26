@@ -124,6 +124,12 @@
     <value>Error setting consent flag for patient {0}.</value>
     <comment>{0} = hashed NHS number</comment>
   </data>
+  <data name="CONSENT_OUTGOING_ERROR" xml:space="preserve">
+    <value>There was a problem creating the outgoing consent message to Volpara.</value>
+  </data>
+  <data name="CONSENT_PDF_ERROR" xml:space="preserve">
+    <value>The consent PDF is either not in the correct format or has another error.</value>
+  </data>
   <data name="FAMILY_HISTORY_ERROR" xml:space="preserve">
     <value>Error creating a family history record for patient {0}</value>
     <comment>{0} = hashed NHS number</comment>

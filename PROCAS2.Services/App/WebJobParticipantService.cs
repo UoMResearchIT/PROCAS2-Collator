@@ -22,7 +22,7 @@ namespace PROCAS2.Services.App
         private IUnitOfWork _unitOfWork;
         private IGenericRepository<AppUser> _appUserRepo;
         private IGenericRepository<RiskLetter> _riskLetterRepo;
-        private IAuditService _auditService;
+       
 
 
         public WebJobParticipantService(IGenericRepository<Participant> participantRepo,
@@ -30,8 +30,8 @@ namespace PROCAS2.Services.App
                                         IGenericRepository<EventType> eventTypeRepo,
                                         IUnitOfWork unitOfWork,
                                         IGenericRepository<AppUser> appUserRepo,
-                                        IGenericRepository<RiskLetter> riskLetterRepo,
-                                        IAuditService auditService)
+                                        IGenericRepository<RiskLetter> riskLetterRepo
+                                       )
         {
             _participantRepo = participantRepo;
             _eventRepo = eventRepo;
@@ -39,7 +39,7 @@ namespace PROCAS2.Services.App
             _unitOfWork = unitOfWork;
             _appUserRepo = appUserRepo;
             _riskLetterRepo = riskLetterRepo;
-            _auditService = auditService;
+            
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace PROCAS2.Services.App
                     _participantRepo.Update(participant);
                     _unitOfWork.Save();
 
-                    _auditService.AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), consentedDate, EventResources.EVENT_CONSENT, EventResources.EVENT_CONSENT_STR);
+                   AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), consentedDate, EventResources.EVENT_CONSENT, EventResources.EVENT_CONSENT_STR);
 
 
                 }
@@ -135,7 +135,7 @@ namespace PROCAS2.Services.App
                     _riskLetterRepo.Insert(letter);
                     _unitOfWork.Save();
 
-                    _auditService.AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), DateTime.Now, EventResources.EVENT_RISKLETTER, EventResources.EVENT_RISKLETTER_STR);
+                    AddEvent(participant, GetSystemUser(EventResources.CRA_AUTO_USER), DateTime.Now, EventResources.EVENT_RISKLETTER, EventResources.EVENT_RISKLETTER_STR);
  
                 }
                 else
@@ -151,5 +151,62 @@ namespace PROCAS2.Services.App
             return true;
         }
 
+
+        /// <summary>
+        /// Return the study number of the passed NHS hash
+        /// </summary>
+        /// <param name="hashedNHSNumber">hashed NHS number</param>
+        /// <returns>study number</returns>
+        public string GetStudyNumber(string hashedNHSNumber)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+            if (participant != null)
+            {
+                return participant.StudyNumber.ToString().PadLeft(5, '0');
+            }
+            else
+            {
+                return "Unknown";
+            }
+        }
+
+        /// <summary>
+        /// Add an event to the passed participant, with the passed information
+        /// NB: Copied from auditService - to prevent some Unity resolving issues for webjob
+        /// </summary>
+        /// <param name="participant">Participant object</param>
+        /// <param name="userName">user making the change</param>
+        /// <param name="eventDate">date and time of event</param>
+        /// <param name="eventCode">event code</param>
+        /// <param name="eventNotes">event text</param>
+        /// <returns>true if successful, else false</returns>
+        public bool AddEvent(Participant participant, AppUser user, DateTime eventDate, string eventCode, string eventNotes, string reason = null)
+        {
+            try
+            {
+                ParticipantEvent pEvent = new ParticipantEvent();
+                pEvent.AppUser = user;
+                pEvent.EventDate = eventDate;
+                pEvent.EventType = _eventTypeRepo.GetAll().Where(x => x.Code == eventCode).FirstOrDefault();
+                pEvent.Notes = eventNotes;
+                pEvent.Reason = reason;
+                pEvent.Participant = participant;
+
+                _eventRepo.Insert(pEvent);
+                _unitOfWork.Save();
+
+
+                participant.LastEvent = pEvent;
+                _participantRepo.Update(participant);
+
+                _unitOfWork.Save();
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }
