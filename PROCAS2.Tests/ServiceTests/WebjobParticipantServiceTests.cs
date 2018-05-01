@@ -36,7 +36,7 @@ namespace PROCAS2.Tests.ServiceTests
 
         private WebJobParticipantService CreateService()
         {
-            return new WebJobParticipantService(_participantRepo, _eventRepo, _eventTypeRepo, _unitOfWork, _appUserRepo, _riskLetterRepo, _auditService);
+            return new WebJobParticipantService(_participantRepo, _eventRepo, _eventTypeRepo, _unitOfWork, _appUserRepo, _riskLetterRepo);
         }
 
         [Test]

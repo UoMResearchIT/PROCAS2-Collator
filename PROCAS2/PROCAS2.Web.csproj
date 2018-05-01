@@ -49,10 +49,6 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Humanities.Web.HtmlHelpers, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Humanities.Web.HtmlHelpers.1.0.0\lib\net45\Humanities.Web.HtmlHelpers.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -230,6 +226,7 @@
     <Compile Include="CustomActionResults\SpreadsheetResult.cs" />
     <Compile Include="CustomActionResults\WordResult.cs" />
     <Compile Include="CustomAttributes\RedirectIfNotAuthorisedAttribute.cs" />
+    <Compile Include="CustomHtmlHelpers\FileUploadHelper.cs" />
     <Compile Include="CustomHtmlHelpers\PreprocessorHelpers.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
