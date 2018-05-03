@@ -20,6 +20,9 @@ namespace PROCAS2.Data.Entities
         [MaxLength(40)]
         public string RelationshipDescription { get; set; }
 
+        [MaxLength(3)]
+        public string RelationshipIdentifier { get; set; }
+
         [MaxLength(1)]
         public string Gender { get; set; }
 

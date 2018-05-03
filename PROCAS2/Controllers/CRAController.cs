@@ -1675,7 +1675,7 @@ OBX|28|NM|340^Lifetime Endometrial Cancer Risk Score^CRA|MMRPRO|1.82|%^Percent^I
 OBX|29|CE|400^Lifetime Breast Cancer Risk Category^CRA||HIGH||||||F
 OBX|30|CE|410^HBOC Risk Category^CRA||AVERAGE||||||F
 OBX|31|CE|420^HNPCC Risk Category^CRA||AVERAGE||||||F
-OBX|32|CE|500^Family History^CRA||SELF^self^F^51^&LCIS^~NMTH^mother^F^^&Breast Cancer^45~NFTH^father^M^^&Colon or Rectal Cancer^40~PGRFTH^paternal grandfather^M^^&Colon or Rectal Cancer^45~MCOUSN^maternal cousin^F^^&Breast Cancer^44~PAUNT^paternal aunt^F^^&Uterine Cancer^42~PUNCLE^paternal uncle^M^^&Brain Cancer||||||F
+OBX|35|CE|500^Family History^CRA||0^SELF&self^F^51^&LCIS^~1^NMTH&mother^F^^&Breast Cancer^45~2^NFTH&father^M^^&Colon or Rectal Cancer^40~3^PGRFTH&paternal grandfather^M^^&Colon or Rectal Cancer^45~10^MCOUSN&maternal cousin^F^^&Breast Cancer^44~8^PAUNT&paternal aunt^F^^&Uterine Cancer^42~9^PUNCLE&paternal uncle^M^^&Brain Cancer||||||F 
 OBX|33|ED|900^Risk Assessment Document^CRA|Survey Summary|^^PDF^base64^......||||||F
 OBX|34|TX|1000.consentYesNo^Do you agree to participate in this survey?||Yes||||||F
 OBX|35|TX|1000.surveyQuestion1^Survey Question 1?||Survey Answer 1||||||F

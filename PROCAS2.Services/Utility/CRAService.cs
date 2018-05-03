@@ -285,7 +285,7 @@ namespace PROCAS2.Services.Utility
                         // iterate through the family history and store each record
                         do
                         {
-                            string historyCode = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")");
+                            string historyCode = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-2-1");
                             
                             if (historyCode == null)
                             {
@@ -300,8 +300,9 @@ namespace PROCAS2.Services.Utility
                                 historyParts.Add(historyCode);
                                 FamilyHistoryItem historyItem = new FamilyHistoryItem();
                                 historyItem.RelationshipCode = historyCode;
-                                historyItem.RelationshipDescription = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-2");
+                                historyItem.RelationshipDescription = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-2-2");
                                 
+                                historyItem.RelationshipIdentifier = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-1");
                                 historyItem.Gender = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-3");
                                 
                                 string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-4");
