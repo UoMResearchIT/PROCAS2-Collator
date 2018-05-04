@@ -700,6 +700,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Person ID.
+        /// </summary>
+        public static string RELATIONSHIP_IDENTIFIER {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_IDENTIFIER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Risk Consultation Booked.
         /// </summary>
         public static string RISK_CONS_BOOKED {

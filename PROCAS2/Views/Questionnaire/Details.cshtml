@@ -62,6 +62,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    @ParticipantResources.RELATIONSHIP_IDENTIFIER
+                                </th>
+                                <th>
                                     @ParticipantResources.RELATIONSHIP_CODE
                                 </th>
                                 <th>
@@ -86,6 +89,9 @@
                             @for (int index = 0; index < Model.HistoryItems.Count; index++)
             {
                                 <tr>
+                                    <td>
+                                        @Model.HistoryItems[index].RelationshipIdentifier
+                                    </td>
                                     <td>
                                         @Model.HistoryItems[index].RelationshipCode
                                     </td>

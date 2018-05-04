@@ -331,6 +331,9 @@
   <data name="RELATIONSHIP_GENDER" xml:space="preserve">
     <value>Gender</value>
   </data>
+  <data name="RELATIONSHIP_IDENTIFIER" xml:space="preserve">
+    <value>Person ID</value>
+  </data>
   <data name="RISK_CONSULTATION" xml:space="preserve">
     <value>Risk Consultation</value>
   </data>

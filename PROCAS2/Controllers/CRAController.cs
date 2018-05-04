@@ -1691,8 +1691,8 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
         public void PostConsent()
         {
-            string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':'" + _PDFencoded + "'}";
-
+            //string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':'" + _PDFencoded + "'}";
+            string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':''}";
             _hl7Service.PostServiceBusMessage(message, "CRAConsentQueue");
         }
 
