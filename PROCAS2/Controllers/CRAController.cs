@@ -1676,6 +1676,7 @@ OBX|28|NM|340^Lifetime Endometrial Cancer Risk Score^CRA|MMRPRO|1.82|%^Percent^I
 OBX|29|CE|400^Lifetime Breast Cancer Risk Category^CRA||HIGH||||||F
 OBX|30|CE|410^HBOC Risk Category^CRA||AVERAGE||||||F
 OBX|31|CE|420^HNPCC Risk Category^CRA||AVERAGE||||||F
+OBX|34|CE|430^Genetic Testing Recommendation^CRA||NO||||||F
 OBX|35|CE|500^Family History^CRA||0^SELF&self^F^51^&LCIS^~1^NMTH&mother^F^^&Breast Cancer^45~2^NFTH&father^M^^&Colon or Rectal Cancer^40~3^PGRFTH&paternal grandfather^M^^&Colon or Rectal Cancer^45~10^MCOUSN&maternal cousin^F^^&Breast Cancer^44~8^PAUNT&paternal aunt^F^^&Uterine Cancer^42~9^PUNCLE&paternal uncle^M^^&Brain Cancer||||||F 
 OBX|36|CE|510^Reported Family Genetic Testing Results^CRA||0^SELF&self^F^51^&BRCA1^Pathogenic~1^NMTH&mother^F^^&BRCA1^Pathogenic~2^NFTH&father^M^^&BRCA1^Negative~8^PAUNT&paternal aunt^F^^&BRCA1^Unknown||||||F
 OBX|37|ED|900^Risk Assessment Document^CRA|Survey Summary|^^PDF^base64^......||||||F

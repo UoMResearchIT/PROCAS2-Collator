@@ -322,6 +322,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Genetic Testing Recommendation.
+        /// </summary>
+        public static string GENETIC_RECOMMENDATION {
+            get {
+                return ResourceManager.GetString("GENETIC_RECOMMENDATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Family Genetic Testing.
         /// </summary>
         public static string GENETIC_TESTING {

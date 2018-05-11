@@ -113,7 +113,7 @@ namespace PROCAS2.Services.App
         /// <param name="hashedNHSNumber">Hashed NHS Number</param>
         /// <param name="letterParts">List of paragraphs fofr the letter</param>
         /// <returns>true if successfully created, else false</returns>
-        public bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, List<string> letterParts)
+        public bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts)
         {
             try
             {
@@ -131,6 +131,7 @@ namespace PROCAS2.Services.App
                     letter.RiskLetterContent = builder.ToString();
                     letter.RiskCategory = riskCategory;
                     letter.RiskScore = Convert.ToDouble(riskScore);
+                    letter.GeneticTestingRecommendation = geneticTesting;
                     letter.Participant = participant;
                     _riskLetterRepo.Insert(letter);
                     _unitOfWork.Save();

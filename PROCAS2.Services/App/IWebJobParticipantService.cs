@@ -13,7 +13,7 @@ namespace PROCAS2.Services.App
         AppUser GetSystemUser(string userId);
         bool DoesHashedNHSNumberExist(string hash);
         bool SetConsentFlag(string hashedNHSNumber);
-        bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, List<string> letterParts);
+        bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts);
         string GetStudyNumber(string hashedNHSNumber);
     }
 }

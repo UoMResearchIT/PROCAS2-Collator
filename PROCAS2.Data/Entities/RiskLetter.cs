@@ -23,6 +23,9 @@ namespace PROCAS2.Data.Entities
         [MaxLength(20)]
         public string RiskCategory { get; set; }
 
+        [MaxLength(3)]
+        public string GeneticTestingRecommendation { get; set; }
+
         public int ParticipantId { get; set; }
         public virtual Participant Participant { get; set; }
 

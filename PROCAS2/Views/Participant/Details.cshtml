@@ -657,6 +657,9 @@
                                     @ParticipantResources.LETTER_SENTDATE
                                 </th>
                                 <th>
+                                    @ParticipantResources.GENETIC_RECOMMENDATION
+                                </th>
+                                <th>
 
                                 </th>
                             </tr>
@@ -676,6 +679,9 @@
                                     </td>
                                     <td>
                                         @letter.DateSent
+                                    </td>
+                                    <td>
+                                        @letter.GeneticTestingRecommendation
                                     </td>
                                     <td>
                                         @Html.ActionLink("View", "ViewLetter", "Export", new { letterId = letter.Id.ToString() }, new { @class = "btn btn-default pull-right" })

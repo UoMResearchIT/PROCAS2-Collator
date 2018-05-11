@@ -204,6 +204,9 @@
   <data name="FIRST_NAME" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="GENETIC_RECOMMENDATION" xml:space="preserve">
+    <value>Genetic Testing Recommendation</value>
+  </data>
   <data name="GENETIC_TESTING" xml:space="preserve">
     <value>Family Genetic Testing</value>
   </data>

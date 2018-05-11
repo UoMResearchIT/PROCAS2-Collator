@@ -206,6 +206,7 @@ namespace PROCAS2.Services.Utility
             List<string> geneticParts = new List<string>();
             string riskCategory = "";
             string riskScore = "";
+            string geneticTesting = "";
 
             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Processing the observation records"));
             // Cycle through the observation records, pulling out the ones of interest
@@ -276,6 +277,14 @@ namespace PROCAS2.Services.Utility
                     {
                         retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Risk Category"));
                         riskCategory = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                        continue;
+                    }
+
+                    // Is this observation a genetic test recommendation?
+                    if (observationType == _configService.GetAppSetting("HL7GeneticTestingRecommendationCode"))
+                    {
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Genetic Testing"));
+                        geneticTesting = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
                         continue;
                     }
 
@@ -441,7 +450,7 @@ namespace PROCAS2.Services.Utility
             // If there are any paragraphs in the letter then create a risk letter for the participant
             if (letterParts.Count > 0)
             {
-                if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, letterParts) == false)
+                if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, geneticTesting, letterParts) == false)
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.RISK_LETTER_NOT_CREATED, patientID), messageBody: hl7Message));
                 }
