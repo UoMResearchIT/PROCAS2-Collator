@@ -266,14 +266,20 @@ namespace PROCAS2.Services.App
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
 
+                // Add family genetic testing header
+                string familyGeneticSheetId = AddSheet(wbPart, "FamilyGenetic", 8);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(familyGeneticSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(FamilyGeneticTestingItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
+
+
                 // Add Histology header
-                string histologySheetId = AddSheet(wbPart, "Histology", 8);
+                string histologySheetId = AddSheet(wbPart, "Histology", 9);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
                                                                             afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
 
                 // Add Histology focus header
-                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 9);
+                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 10);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
                                                                             afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
@@ -285,6 +291,7 @@ namespace PROCAS2.Services.App
                 int surveyIndex = 2;
                 int surveyItemIndex = 2;
                 int familyHistoryIndex = 2;
+                int familyGeneticIndex = 2;
                 int histIndex = 2;
                 int histFocusIndex = 2;
 
@@ -359,6 +366,14 @@ namespace PROCAS2.Services.App
                             AddLineFromProperties(workingSheet, item, typeof(FamilyHistoryItem), familyHistoryIndex,
                                                 beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() });
                             familyHistoryIndex++;
+                        }
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(familyGeneticSheetId)).Worksheet;
+                        foreach (FamilyGeneticTestingItem item in response.FamilyGeneticTestingItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(FamilyGeneticTestingItem), familyGeneticIndex,
+                                                beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() });
+                            familyGeneticIndex++;
                         }
                     }
 

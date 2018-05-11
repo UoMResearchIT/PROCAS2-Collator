@@ -204,6 +204,9 @@
   <data name="FIRST_NAME" xml:space="preserve">
     <value>First Name</value>
   </data>
+  <data name="GENETIC_TESTING" xml:space="preserve">
+    <value>Family Genetic Testing</value>
+  </data>
   <data name="GP_ADD_1" xml:space="preserve">
     <value>GP Address Line 1</value>
   </data>
@@ -333,6 +336,12 @@
   </data>
   <data name="RELATIONSHIP_IDENTIFIER" xml:space="preserve">
     <value>Person ID</value>
+  </data>
+  <data name="RELATIONSHIP_SIGNIFICANCE" xml:space="preserve">
+    <value>Test Significance</value>
+  </data>
+  <data name="RELATIONSHIP_TEST" xml:space="preserve">
+    <value>Genetic Test</value>
   </data>
   <data name="RISK_CONSULTATION" xml:space="preserve">
     <value>Risk Consultation</value>

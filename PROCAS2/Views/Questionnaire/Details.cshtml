@@ -48,6 +48,7 @@
 
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation" class="active"><a href="#pnlHistory" aria-controls="pnlHistory" role="tab" data-toggle="tab">@ParticipantResources.FAMILY_HISTORY</a></li>
+        <li role="presentation"><a href="#pnlGenetic" aria-controls="pnlGenetic" role="tab" data-toggle="tab">@ParticipantResources.GENETIC_TESTING</a></li>
         <li role="presentation"><a href="#pnlResponses" aria-controls="pnlResponses" role="tab" data-toggle="tab">@ParticipantResources.QUESTIONNAIRE_RESPONSE</a></li>
 
     </ul>
@@ -119,46 +120,112 @@
             </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="pnlResponses">
-
-            <div class="panel panel-primary  questionnaireViewPanel">
-                <div class="panel-heading">@ParticipantResources.QUESTIONNAIRE_RESPONSE</div>
-                <div class="panel-body">
-                    <table id="tblResponses" class="table nowrap compact">
-                        <thead>
-                            <tr>
-                                <th>
-                                    @ParticipantResources.QUESTION_CODE
-                                </th>
-                                <th>
-                                    @ParticipantResources.QUESTION_QUESTION
-                                </th>
-                                <th>
-                                    @ParticipantResources.QUESTION_ANSWER
-                                </th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @for (int index = 0; index < Model.ResponseItems.Count; index++)
-            {
+       
+            <div role="tabpanel" class="tab-pane" id="pnlGenetic">
+                <div class="panel panel-primary questionnaireViewPanel">
+                    <div class="panel-heading">@ParticipantResources.GENETIC_TESTING</div>
+                    <div class="panel-body">
+                        <table id="tblGenetic" class="table nowrap compact">
+                            <thead>
                                 <tr>
-                                    <td>
-                                        @Model.ResponseItems[index].Question.Code
-                                    </td>
-                                    <td>
-                                        @Model.ResponseItems[index].Question.Text
-                                    </td>
-                                    <td>
-                                        @Model.ResponseItems[index].ResponseText
-                                    </td>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_IDENTIFIER
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_CODE
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_DESCRIPTION
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_GENDER
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_AGE
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_TEST
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.RELATIONSHIP_SIGNIFICANCE
+                                    </th>
+
                                 </tr>
-                            }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @for (int index = 0; index < Model.GeneticTestingItems.Count; index++)
+            {
+                                    <tr>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].RelationshipIdentifier
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].RelationshipCode
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].RelationshipDescription
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].Gender
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].Age
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].GeneticTest
+                                        </td>
+                                        <td>
+                                            @Model.GeneticTestingItems[index].TestSignificance
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="pnlResponses">
+
+                <div class="panel panel-primary  questionnaireViewPanel">
+                    <div class="panel-heading">@ParticipantResources.QUESTIONNAIRE_RESPONSE</div>
+                    <div class="panel-body">
+                        <table id="tblResponses" class="table nowrap compact">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @ParticipantResources.QUESTION_CODE
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.QUESTION_QUESTION
+                                    </th>
+                                    <th>
+                                        @ParticipantResources.QUESTION_ANSWER
+                                    </th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int index = 0; index < Model.ResponseItems.Count; index++)
+            {
+                                    <tr>
+                                        <td>
+                                            @Model.ResponseItems[index].Question.Code
+                                        </td>
+                                        <td>
+                                            @Model.ResponseItems[index].Question.Text
+                                        </td>
+                                        <td>
+                                            @Model.ResponseItems[index].ResponseText
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 

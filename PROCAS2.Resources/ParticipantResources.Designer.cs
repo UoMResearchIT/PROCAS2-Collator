@@ -322,6 +322,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Family Genetic Testing.
+        /// </summary>
+        public static string GENETIC_TESTING {
+            get {
+                return ResourceManager.GetString("GENETIC_TESTING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to GP Address Line 1.
         /// </summary>
         public static string GP_ADD_1 {
@@ -705,6 +714,24 @@ namespace PROCAS2.Resources {
         public static string RELATIONSHIP_IDENTIFIER {
             get {
                 return ResourceManager.GetString("RELATIONSHIP_IDENTIFIER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Test Significance.
+        /// </summary>
+        public static string RELATIONSHIP_SIGNIFICANCE {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_SIGNIFICANCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Genetic Test.
+        /// </summary>
+        public static string RELATIONSHIP_TEST {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_TEST", resourceCulture);
             }
         }
         

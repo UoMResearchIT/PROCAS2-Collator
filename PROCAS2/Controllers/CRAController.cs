@@ -1658,6 +1658,7 @@ OBX|11|NM|210^5-Year Breast Cancer Risk Score^CRA|TC7|3.51|%^Percent^ISO|||||F
 OBX|12|NM|210^5-Year Breast Cancer Risk Score^CRA|TC8|3.51|%^Percent^ISO|||||F
 OBX|13|NM|210^5-Year Breast Cancer Risk Score^CRA|Claus|2.08|%^Percent^ISO|||||F
 OBX|14|NM|210^5-Year Breast Cancer Risk Score^CRA|Gail|3.01|%^Percent^ISO|||||F
+OBX|16|NM|215^10-Year Breast Cancer Risk Score^CRA|TC8|7.62|%^Percent^ISO|||||F
 OBX|15|NM|220^Lifetime Breast Cancer Risk Score^CRA|BRCAPRO|10.48|%^Percent^ISO|||||F
 OBX|16|NM|220^Lifetime Breast Cancer Risk Score^CRA|TC6|27.67|%^Percent^ISO|||||F
 OBX|17|NM|220^Lifetime Breast Cancer Risk Score^CRA|TC7|35.44|%^Percent^ISO|||||F
@@ -1676,11 +1677,12 @@ OBX|29|CE|400^Lifetime Breast Cancer Risk Category^CRA||HIGH||||||F
 OBX|30|CE|410^HBOC Risk Category^CRA||AVERAGE||||||F
 OBX|31|CE|420^HNPCC Risk Category^CRA||AVERAGE||||||F
 OBX|35|CE|500^Family History^CRA||0^SELF&self^F^51^&LCIS^~1^NMTH&mother^F^^&Breast Cancer^45~2^NFTH&father^M^^&Colon or Rectal Cancer^40~3^PGRFTH&paternal grandfather^M^^&Colon or Rectal Cancer^45~10^MCOUSN&maternal cousin^F^^&Breast Cancer^44~8^PAUNT&paternal aunt^F^^&Uterine Cancer^42~9^PUNCLE&paternal uncle^M^^&Brain Cancer||||||F 
-OBX|33|ED|900^Risk Assessment Document^CRA|Survey Summary|^^PDF^base64^......||||||F
-OBX|34|TX|1000.consentYesNo^Do you agree to participate in this survey?||Yes||||||F
-OBX|35|TX|1000.surveyQuestion1^Survey Question 1?||Survey Answer 1||||||F
-OBX|36|TX|1000.surveyQuestion2^Survey Question 2?||Survey Answer 2||||||F
-OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
+OBX|36|CE|510^Reported Family Genetic Testing Results^CRA||0^SELF&self^F^51^&BRCA1^Pathogenic~1^NMTH&mother^F^^&BRCA1^Pathogenic~2^NFTH&father^M^^&BRCA1^Negative~8^PAUNT&paternal aunt^F^^&BRCA1^Unknown||||||F
+OBX|37|ED|900^Risk Assessment Document^CRA|Survey Summary|^^PDF^base64^......||||||F
+OBX|38|TX|1000.consentYesNo^Do you agree to participate in this survey?||Yes||||||F
+OBX|39|TX|1000.surveyQuestion1^Survey Question 1?||Survey Answer 1||||||F
+OBX|40|TX|1000.surveyQuestion2^Survey Question 2?||Survey Answer 2||||||F
+OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
           _exampleMessage =  _exampleMessage.Replace("PATIENTID", _patientID);
 

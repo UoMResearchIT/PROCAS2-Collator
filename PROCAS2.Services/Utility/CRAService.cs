@@ -203,6 +203,7 @@ namespace PROCAS2.Services.Utility
 
             List<string> letterParts = new List<string>();
             List<string> historyParts = new List<string>();
+            List<string> geneticParts = new List<string>();
             string riskCategory = "";
             string riskScore = "";
 
@@ -341,6 +342,62 @@ namespace PROCAS2.Services.Utility
                                 idxHistory++;
                             }
                         } while (historyStop == false);
+                    }
+
+                    // Is the observation a family genetic test type?
+                    if (observationType == _configService.GetAppSetting("HL7FamilyGeneticTestingCode"))
+                    {
+                        int idxGenetic = 0;
+                        bool geneticStop = false;
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Family Genetic Testing"));
+                        // iterate through the family genetic testing and store each record
+                        do
+                        {
+                            string geneticCode = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-2-1");
+
+                            if (geneticCode == null)
+                            {
+
+                               geneticStop = true;
+
+                            }
+                            else
+                            {
+                                // Pick out the family genetic testing record.
+
+                                geneticParts.Add(geneticCode);
+                                FamilyGeneticTestingItem geneticItem = new FamilyGeneticTestingItem();
+                                geneticItem.RelationshipCode = geneticCode;
+                                geneticItem.RelationshipDescription = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-2-2");
+
+                                geneticItem.RelationshipIdentifier = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-1");
+                                geneticItem.Gender = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-3");
+
+                                string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-4");
+
+                                if (String.IsNullOrEmpty(age))
+                                {
+                                    geneticItem.Age = null;
+                                }
+                                else
+                                {
+                                    geneticItem.Age = Convert.ToInt32(age);
+                                }
+
+                                geneticItem.GeneticTest = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-5-2");
+
+
+                                geneticItem.TestSignificance = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-6");
+                                
+                                // Create the record in the DB
+                                if (_responseService.CreateFamilyGeneticTestingItem(response, geneticItem) == false)
+                                {
+                                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.FAMILY_HISTORY_ERROR, patientID), messageBody: hl7Message));
+                                }
+
+                                idxGenetic++;
+                            }
+                        } while (geneticStop == false);
                     }
 
                     // Is the observation a consent type?

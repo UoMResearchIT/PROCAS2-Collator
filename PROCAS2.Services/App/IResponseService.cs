@@ -13,5 +13,6 @@ namespace PROCAS2.Services.App
         bool CreateQuestionnaireHeader(string patientId, string dateStarted, string dateFinished, out QuestionnaireResponse response);
         bool CreateResponseItem(QuestionnaireResponse response, string questionCode, string answerText);
         bool CreateFamilyHistoryItem(QuestionnaireResponse response, FamilyHistoryItem familyHistoryItem);
+        bool CreateFamilyGeneticTestingItem(QuestionnaireResponse response, FamilyGeneticTestingItem familyGeneticTestingItem);
     }
 }

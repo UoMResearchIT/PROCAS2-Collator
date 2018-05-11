@@ -24,6 +24,7 @@ namespace PROCAS2.Models.ViewModels
 
         public List<QuestionnaireResponseItem> ResponseItems { get; set; }
         public List<FamilyHistoryItem> HistoryItems { get; set; }
+        public List<FamilyGeneticTestingItem> GeneticTestingItems { get; set; }
 
     }
 }

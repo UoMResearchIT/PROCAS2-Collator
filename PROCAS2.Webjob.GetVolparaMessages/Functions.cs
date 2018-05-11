@@ -18,7 +18,7 @@ namespace PROCAS2.Webjob.GetVolparaMessages
     {
         // This function will get triggered/executed when a new message is written 
         // on an Azure Queue called queue.
-        public static void ProcessScreeningMessage([ServiceBusTrigger("volpara-consent-incoming-test")] BrokeredMessage message, TextWriter log)
+        public static void ProcessScreeningMessage([ServiceBusTrigger("volpara-screening-incoming-test")] BrokeredMessage message, TextWriter log)
         {
             string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
         }

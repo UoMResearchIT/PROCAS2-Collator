@@ -44,6 +44,7 @@ namespace PROCAS2.Data
         public DbSet<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
         public DbSet<QuestionnaireResponse> QuestionnaireResponses { get; set; }
         public DbSet<FamilyHistoryItem> FamilyHistoryItems { get; set; }
+        public DbSet<FamilyGeneticTestingItem> FamilyGeneticTestingItems { get; set; }
         public DbSet<AppNewsItem> AppNewsItems { get; set; }
         public DbSet<WebJobLog> WebJobLogs { get; set; }
 

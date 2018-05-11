@@ -19,6 +19,7 @@ namespace PROCAS2.Services.App
         private IGenericRepository<Question> _questionRepo;
         private IGenericRepository<QuestionnaireResponseItem> _responseItemRepo;
         private IGenericRepository<FamilyHistoryItem> _familyRepo;
+        private IGenericRepository<FamilyGeneticTestingItem> _familyGeneticRepo;
         private IUnitOfWork _unitOfWork;
 
         public ResponseService(IGenericRepository<QuestionnaireResponse> responseRepo,
@@ -26,6 +27,7 @@ namespace PROCAS2.Services.App
                                 IGenericRepository<Question> questionRepo,
                                 IGenericRepository<QuestionnaireResponseItem> responseItemRepo,
                                 IGenericRepository<FamilyHistoryItem> familyRepo,
+                                IGenericRepository<FamilyGeneticTestingItem> familyGeneticRepo,
                                 IUnitOfWork unitOfWork)
         {
             _responseRepo = responseRepo;
@@ -34,6 +36,7 @@ namespace PROCAS2.Services.App
             _questionRepo = questionRepo;
             _familyRepo = familyRepo;
             _unitOfWork = unitOfWork;
+            _familyGeneticRepo = familyGeneticRepo;
         }
 
         /// <summary>
@@ -127,6 +130,36 @@ namespace PROCAS2.Services.App
                 }
             }
             catch(Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Create a family genetic testing item in the database
+        /// </summary>
+        /// <param name="response">The questionnaire response this is associated with</param>
+        /// <param name="familyHistoryItem">The family genetic testing item</param>
+        /// <returns>true if created successfully, else false</returns>
+        public bool CreateFamilyGeneticTestingItem(QuestionnaireResponse response, FamilyGeneticTestingItem familyGeneticTestingItem)
+        {
+            try
+            {
+                if (familyGeneticTestingItem != null && response != null)
+                {
+                    familyGeneticTestingItem.QuestionnaireResponse = response;
+
+                    _familyGeneticRepo.Insert(familyGeneticTestingItem);
+                    _unitOfWork.Save();
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
             {
                 return false;
             }

@@ -41,7 +41,12 @@ namespace PROCAS2.Controllers
                     model.QuestionnaireStart = response.QuestionnaireStart;
                     model.ResponseItems = response.QuestionnaireResponseItems.OrderBy(x =>x.Question.Code).ToList();
                     model.HistoryItems = response.FamilyHistoryItems.ToList();
+                    model.GeneticTestingItems = response.FamilyGeneticTestingItems.ToList();
                 }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
 
             

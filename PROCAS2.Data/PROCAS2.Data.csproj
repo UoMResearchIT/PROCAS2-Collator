@@ -72,6 +72,7 @@
     <Compile Include="Entities\AppNewsItem.cs" />
     <Compile Include="Entities\AppUser.cs" />
     <Compile Include="Entities\EventType.cs" />
+    <Compile Include="Entities\FamilyGeneticTestingItem.cs" />
     <Compile Include="Entities\FamilyHistoryItem.cs" />
     <Compile Include="Entities\GeneticRecord.cs" />
     <Compile Include="Entities\GeneticRecordItem.cs" />
