@@ -53,18 +53,20 @@ namespace PROCAS2.Services.Utility
         private IResponseService _responseService;
         private IConfigService _configService;
         private IWebJobLogger _logger;
-
+        private IServiceBusService _serviceBusService;
 
 
         public CRAService(IWebJobParticipantService participantService,
                             IResponseService responseService,
                             IConfigService configService,
-                            IWebJobLogger logger)
+                            IWebJobLogger logger,
+                            IServiceBusService serviceBusService)
         {
             _participantService = participantService;
             _responseService = responseService;
             _configService = configService;
             _logger = logger;
+            _serviceBusService = serviceBusService;
         }
 
 
@@ -103,10 +105,11 @@ namespace PROCAS2.Services.Utility
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, consentObj.PatientId), messageBody: consentMessage));
                 }
 
+                DateTime now = DateTime.Now;
                 // Move the PDF to storage
                 if (!String.IsNullOrEmpty(consentObj.ConsentPDF)) // Might not initially get the PDF
                 {
-                    DateTime now = DateTime.Now;
+                    
                     string filename = _participantService.GetStudyNumber(consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
                     if (ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
                     {
@@ -114,8 +117,8 @@ namespace PROCAS2.Services.Utility
                     }
                 }
                 // Post message on Volpara outgoing queue - to inform them of consent
-                string message = @"{ 'patientId' : '" + consentObj.PatientId + "'}";
-                if (PostServiceBusMessage(message, "VolparaConsentQueue") == false)
+                string message = @"{ 'patientId' : '" + consentObj.PatientId + "', 'dateConsented':'" + now.ToString("yyyy-MM-dd")  + "'}";
+                if (_serviceBusService.PostServiceBusMessage(message, "VolparaConsentQueue") == false)
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_OUTGOING_ERROR, messageBody: consentMessage));
                 }
@@ -515,84 +518,7 @@ namespace PROCAS2.Services.Utility
         }
 
 
-        /// <summary>
-        /// Post a message to the CRA servicebus. Used for testing mainly!
-        /// </summary>
-        /// <param name="message">The message</param>
-        /// <returns>true if successfully posted, else false</returns>
-        public bool PostServiceBusMessage(string message, string queue)
-        {
-            try
-            {
-                string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
-                string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
-
-                TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
-
-                // Create a URI for the serivce bus.
-                Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
-                    ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
-
-                // Create a message factory for the service bus URI using the
-                // credentials
-                MessagingFactory factory = MessagingFactory.Create(serviceBusUri, credentials);
-
-                // Create a queue client 
-                QueueClient queueClient =
-                    factory.CreateQueueClient(_configService.GetAppSetting(queue));
-
-                // Post in Base64 encoded form (as seems to be common practice)
-                BrokeredMessage hl7Message = new BrokeredMessage(Encoding.UTF8.GetBytes(message));
-
-                // Send the message to the queue.
-                queueClient.Send(hl7Message);
-
-                factory.Close();
-
-                return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-        }
-
-
-        public string GetServiceBusMessage(string queue)
-        {
-            string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
-            string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
-
-            TokenProvider credentials =
-               TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
-
-            // Create a URI for the serivce bus.
-
-            Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
-                ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
-
-            // Create a message factory for the service bus URI using the
-            // credentials
-            MessagingFactory factory = MessagingFactory.Create(serviceBusUri, credentials);
-
-            // Create a queue client
-            QueueClient queueClient =
-                factory.CreateQueueClient(_configService.GetAppSetting(queue));
-
-            BrokeredMessage orderOutMsg = queueClient.Receive();
-
-            string message = "";
-
-            if (orderOutMsg != null)
-            {
-                message = System.Text.Encoding.UTF8.GetString(orderOutMsg.GetBody<byte[]>());
-                orderOutMsg.Complete();
-            }
-
-            factory.Close();
-            return message;
-
-        }
+        
 
     }
 }

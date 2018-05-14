@@ -21,11 +21,14 @@ namespace PROCAS2.Controllers
         private ICRAService _hl7Service;
         private IHashingService _hashingService;
         private IParticipantService _participantService;
-        public CRAController(ICRAService hl7Service, IHashingService hashingService, IParticipantService participantService)
+        private IServiceBusService _serviceBusService;
+        public CRAController(ICRAService hl7Service, IHashingService hashingService, IParticipantService participantService,
+                            IServiceBusService serviceBusService)
         {
             _hl7Service = hl7Service;
             _hashingService = hashingService;
             _participantService = participantService;
+            _serviceBusService = serviceBusService;
         }
 
 
@@ -1687,7 +1690,7 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
           _exampleMessage =  _exampleMessage.Replace("PATIENTID", _patientID);
 
-        _hl7Service.PostServiceBusMessage(_exampleMessage, "CRASurveyQueue");
+        _serviceBusService.PostServiceBusMessage(_exampleMessage, "CRASurveyQueue");
 
 
         }
@@ -1696,13 +1699,13 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         {
             //string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':'" + _PDFencoded + "'}";
             string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':''}";
-            _hl7Service.PostServiceBusMessage(message, "CRAConsentQueue");
+            _serviceBusService.PostServiceBusMessage(message, "CRAConsentQueue");
         }
 
 
         public void GetConsent()
         {
-            string message = _hl7Service.GetServiceBusMessage("CRAConsentQueue");
+            string message = _serviceBusService.GetServiceBusMessage("CRAConsentQueue");
 
             if (_hl7Service.IsConsentMessage(message) == true)
             {
@@ -1716,7 +1719,7 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
         public void GetServiceBus()
         {
-            string message = _hl7Service.GetServiceBusMessage("CRASurveyQueue");
+            string message = _serviceBusService.GetServiceBusMessage("CRASurveyQueue");
             _hl7Service.ProcessQuestionnaire(message);
         }
     

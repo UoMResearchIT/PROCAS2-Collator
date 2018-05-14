@@ -12,9 +12,9 @@ namespace PROCAS2.Data.Entities
     {
         public int Id { get; set; }
 
-        [MaxLength(20)]
+        [MaxLength(40)]
         public string Code { get; set; }
-        [MaxLength(200)]
+        [MaxLength(300)]
         public string Text { get; set; }
 
 

@@ -37,6 +37,7 @@ namespace PROCAS2.Webjob.GetVolparaMessages
             container.RegisterType<IWebJobParticipantService, WebJobParticipantService>();
             container.RegisterType<IWebJobLogger, WebJobLogger>();
             container.RegisterType<IAuditService, AuditService>();
+            container.RegisterType<IServiceBusService, ServiceBusService>();
 
 
             container.RegisterType<Functions>(); //Need to register WebJob class

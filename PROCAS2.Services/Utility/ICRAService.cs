@@ -17,8 +17,7 @@ namespace PROCAS2.Services.Utility
 
         bool IsConsentMessage(string message);
 
-        bool PostServiceBusMessage(string message, string queue);
-        string GetServiceBusMessage(string queue);
+       
         bool ProcessConsentPDF(string PDF, string filename);
 
     }
