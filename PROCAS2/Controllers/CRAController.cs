@@ -1690,7 +1690,7 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
           _exampleMessage =  _exampleMessage.Replace("PATIENTID", _patientID);
 
-        _serviceBusService.PostServiceBusMessage(_exampleMessage, "CRASurveyQueue");
+        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", _exampleMessage, "CRASurveyQueue");
 
 
         }
@@ -1699,13 +1699,13 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         {
             //string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':'" + _PDFencoded + "'}";
             string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':''}";
-            _serviceBusService.PostServiceBusMessage(message, "CRAConsentQueue");
+            _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "CRAConsentQueue");
         }
 
 
         public void GetConsent()
         {
-            string message = _serviceBusService.GetServiceBusMessage("CRAConsentQueue");
+            string message = _serviceBusService.GetServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", "CRAConsentQueue");
 
             if (_hl7Service.IsConsentMessage(message) == true)
             {
@@ -1719,7 +1719,7 @@ OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
         public void GetServiceBus()
         {
-            string message = _serviceBusService.GetServiceBusMessage("CRASurveyQueue");
+            string message = _serviceBusService.GetServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", "CRASurveyQueue");
             _hl7Service.ProcessQuestionnaire(message);
         }
     

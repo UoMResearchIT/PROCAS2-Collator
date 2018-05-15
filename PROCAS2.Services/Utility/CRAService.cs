@@ -118,7 +118,7 @@ namespace PROCAS2.Services.Utility
                 }
                 // Post message on Volpara outgoing queue - to inform them of consent
                 string message = @"{ 'patientId' : '" + consentObj.PatientId + "', 'dateConsented':'" + now.ToString("yyyy-MM-dd")  + "'}";
-                if (_serviceBusService.PostServiceBusMessage(message, "VolparaConsentQueue") == false)
+                if (_serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", message, "VolparaConsentQueue") == false)
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_OUTGOING_ERROR, messageBody: consentMessage));
                 }

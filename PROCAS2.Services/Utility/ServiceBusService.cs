@@ -25,7 +25,7 @@ namespace PROCAS2.Services.Utility
         /// </summary>
         /// <param name="message">The message</param>
         /// <returns>true if successfully posted, else false</returns>
-        public bool PostServiceBusMessage(string message, string queue)
+        public bool PostServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string message, string queueAppSetting)
         {
             try
             {
@@ -44,7 +44,7 @@ namespace PROCAS2.Services.Utility
 
                 // Create a queue client 
                 QueueClient queueClient =
-                    factory.CreateQueueClient(_configService.GetAppSetting(queue));
+                    factory.CreateQueueClient(_configService.GetAppSetting(queueAppSetting));
 
                 // Post in Base64 encoded form (as seems to be common practice)
                 BrokeredMessage hl7Message = new BrokeredMessage(Encoding.UTF8.GetBytes(message));
@@ -63,10 +63,10 @@ namespace PROCAS2.Services.Utility
         }
 
 
-        public string GetServiceBusMessage(string queue)
+        public string GetServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string queueAppSetting)
         {
-            string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
-            string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
+            string keyName = _configService.GetAppSetting(keyNameAppSetting);
+            string keyValue = _configService.GetAppSetting(keyValueAppSetting);
 
             TokenProvider credentials =
                TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
@@ -74,7 +74,7 @@ namespace PROCAS2.Services.Utility
             // Create a URI for the serivce bus.
 
             Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
-                ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
+                ("sb", _configService.GetAppSetting(baseURLAppSetting), string.Empty);
 
             // Create a message factory for the service bus URI using the
             // credentials
@@ -82,7 +82,7 @@ namespace PROCAS2.Services.Utility
 
             // Create a queue client
             QueueClient queueClient =
-                factory.CreateQueueClient(_configService.GetAppSetting(queue));
+                factory.CreateQueueClient(_configService.GetAppSetting(queueAppSetting));
 
             BrokeredMessage orderOutMsg = queueClient.Receive();
 

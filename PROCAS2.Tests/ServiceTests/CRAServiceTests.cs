@@ -33,7 +33,7 @@ namespace PROCAS2.Tests.ServiceTests
 
         private CRAService CreateService()
         {
-            return new CRAService(_participantService, _responseService, _configService, _logger);
+            return new CRAService(_participantService, _responseService, _configService, _logger, _serviceBusService);
         }
 
         [Test]
@@ -432,7 +432,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
             _responseService.Stub(x => x.CreateResponseItem(Arg<QuestionnaireResponse>.Matches(z => z.Id == 0), Arg<string>.Is.Equal("surveyQuestion1"), Arg<string>.Is.Equal("Survey Answer 1"))).Return(true);
 
-            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", new List<string>() {"Hello", "Test", "" })).Return(false);
+            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() {"Hello", "Test", "" })).Return(false);
 
 
             CRAService service = CreateService();
@@ -473,7 +473,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
             _responseService.Stub(x => x.CreateResponseItem(Arg<QuestionnaireResponse>.Matches(z => z.Id == 0), Arg<string>.Is.Equal("surveyQuestion1"), Arg<string>.Is.Equal("Survey Answer 1"))).Return(true);
 
-            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", new List<string>() { "Hello", "Test", "" })).Return(true);
+            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() { "Hello", "Test", "" })).Return(true);
 
 
             CRAService service = CreateService();

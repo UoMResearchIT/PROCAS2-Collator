@@ -24,6 +24,7 @@ namespace PROCAS2.Tests.ServiceTests
         protected IResponseService _responseService;
         protected IConfigService _configService;
         protected IAuditService _auditService;
+        protected IServiceBusService _serviceBusService;
 
         protected IGenericRepository<Participant> _participantRepo;
         protected IGenericRepository<AppUser> _appUserRepo;
@@ -42,6 +43,7 @@ namespace PROCAS2.Tests.ServiceTests
             _participantService = MockRepository.GenerateMock<IWebJobParticipantService>();
             _responseService = MockRepository.GenerateMock<IResponseService>();
             _auditService = MockRepository.GenerateMock<IAuditService>();
+            _serviceBusService = MockRepository.GenerateMock<IServiceBusService>();
 
             _participantRepo = MockRepository.GenerateMock<IGenericRepository<Participant>>();
             _appUserRepo = MockRepository.GenerateMock<IGenericRepository<AppUser>>();
@@ -132,6 +134,7 @@ namespace PROCAS2.Tests.ServiceTests
             _participantService = null;
             _responseService = null;
             _auditService = null;
+            _serviceBusService = null;
 
             _participantRepo = null;
             _appUserRepo = null;
