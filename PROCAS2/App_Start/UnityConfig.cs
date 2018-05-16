@@ -46,6 +46,7 @@ namespace PROCAS2
             container.RegisterType<IHistologyService, HistologyService>();
             container.RegisterType<IAuditService, AuditService>();
             container.RegisterType<IServiceBusService, ServiceBusService>();
+            container.RegisterType<IVolparaService, VolparaService>();
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
             

@@ -244,9 +244,11 @@
     <Compile Include="Utility\IPROCAS2UserManager.cs" />
     <Compile Include="App\IWebJobParticipantService.cs" />
     <Compile Include="Utility\IServiceBusService.cs" />
+    <Compile Include="Utility\IVolparaService.cs" />
     <Compile Include="Utility\IWebJobLogger.cs" />
     <Compile Include="Utility\PROCASUserManager.cs" />
     <Compile Include="Utility\ServiceBusService.cs" />
+    <Compile Include="Utility\VolparaService.cs" />
     <Compile Include="Utility\WebJobLogger.cs" />
   </ItemGroup>
   <ItemGroup>

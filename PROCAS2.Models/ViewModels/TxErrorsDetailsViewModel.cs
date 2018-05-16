@@ -58,6 +58,8 @@ namespace PROCAS2.Models.ViewModels
                 {
                     case 1:
                         return "CRA Consent";
+                    case 3:
+                        return "Volpara Screening";
                     default:
                         return "CRA Survey";
                 }

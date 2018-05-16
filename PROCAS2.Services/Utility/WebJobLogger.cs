@@ -21,7 +21,8 @@ namespace PROCAS2.Services.Utility
     public enum WebJobLogMessageType
     {
         CRA_Consent = 1,
-        CRA_Survey = 2
+        CRA_Survey = 2,
+        Volpara_Screening = 3
     }
 
     public class WebJobLogger : IWebJobLogger

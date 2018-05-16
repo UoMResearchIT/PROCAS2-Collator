@@ -68,6 +68,10 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
       <Private>True</Private>
@@ -112,6 +116,7 @@
     <Compile Include="Identity\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceBusMessages\ConsentMessage.cs" />
+    <Compile Include="ServiceBusMessages\ScreeningXlsMessage.cs" />
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\DashboardTxErrorsViewModel.cs" />
     <Compile Include="ViewModels\DashboardVolparaViewModel.cs" />
