@@ -436,9 +436,17 @@
     <Content Include="Content\bootstrap-datepicker.standalone.css.map" />
     <Content Include="Content\bootstrap-datepicker.min.css.map" />
     <Content Include="Content\bootstrap-datepicker.css.map" />
-    <Content Include="CodeTemplates\MvcView\VolparaView.cs.t4" />
+    <None Include="CodeTemplates\MvcView\VolparaView.cs.t4">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>VolparaView.cs.cshtml</LastGenOutput>
+    </None>
     <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
     <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
+    <Content Include="CodeTemplates\MvcView\VolparaView.cs.cshtml">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VolparaView.cs.t4</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PROCAS2-Collator - Web Deploy.pubxml" />
     <Content Include="js\histologyEdit.js" />
     <Content Include="js\histologyFocusEdit.js" />
@@ -667,7 +675,6 @@
     <Content Include="Views\Export\ExportResults.cshtml" />
     <Content Include="Views\Home\_RiskLetter.cshtml" />
     <Content Include="Views\Screening\ViewScreenV1_5_2.cshtml" />
-    <Content Include="Views\Screening\ViewScreenV1_5_4.cshtml" />
     <Content Include="Views\Site\Index.cshtml" />
     <Content Include="Views\Site\Edit.cshtml" />
     <Content Include="Views\Site\Create.cshtml" />
@@ -691,6 +698,7 @@
     <Content Include="Views\Report\ScreeningAttendance.cshtml" />
     <Content Include="Views\Report\Chemoprevention.cshtml" />
     <Content Include="Views\Report\SubsequentConsultation.cshtml" />
+    <Content Include="Views\Screening\ViewScreenV1_5_4.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -728,6 +736,9 @@
       <Project>{a71219b1-436f-4e17-988f-c784e17940e3}</Project>
       <Name>PROCAS2.Services</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

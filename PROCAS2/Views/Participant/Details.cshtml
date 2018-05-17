@@ -530,6 +530,9 @@
                                     @ParticipantResources.DATA_RECEIVED
                                 </th>
                                 <th>
+                                    @ParticipantResources.MAMMO_VIEW
+                                </th>
+                                <th>
                                     @ParticipantResources.BREAST_SIDE
                                 </th>
                                 <th>
@@ -549,13 +552,13 @@
                                         @String.Join(" ", new string[] { screen.DataDate.ToShortDateString(), " ", @screen.DataDate.ToShortTimeString() })
                                     </td>
                                     <td>
+                                        @screen.MammoView
+                                    </td>
+                                    <td>
                                         @screen.BreastSide
                                     </td>
                                     <td>
-                                        @if (screen.StudyDate.HasValue == true) {
-                                            @screen.StudyDate.Value.ToShortDateString() 
-                                        } else {
-                                            @ParticipantResources.UNKNOWN }
+                                        @screen.Timestamp
                                     </td>
                                     <td>
                                         @screen.VolparaVersion

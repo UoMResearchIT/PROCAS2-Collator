@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -18,12 +19,18 @@ namespace PROCAS2.Services.Utility
 
         private IWebJobLogger _logger;
         private IWebJobParticipantService _participantService;
+        private IScreeningService _screeningService;
+        private IAuditService _auditService;
 
         public VolparaService(IWebJobLogger logger,
-                                IWebJobParticipantService participantService)
+                                IWebJobParticipantService participantService,
+                                IScreeningService screeningService,
+                                IAuditService auditService)
         {
             _logger = logger;
             _participantService = participantService;
+            _screeningService = screeningService;
+            _auditService = auditService;
         }
 
         /// <summary>
@@ -106,6 +113,17 @@ namespace PROCAS2.Services.Utility
                     if (xlsData != null)
                     {
                         ScreeningXlsMessage xlsMessage = xlsData.ToObject<ScreeningXlsMessage>();
+
+                        StripOutMetaDataInFields(ref xlsMessage);
+
+                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage) == false)
+                        {
+                            // can't find the section with all the screening information!
+                            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_RECORD, messageBody: message));
+                            return retMessages;
+                        }
+
+                        
                     }
                     else
                     {
@@ -117,6 +135,29 @@ namespace PROCAS2.Services.Utility
             }
 
             return retMessages;
+        }
+
+
+        /// <summary>
+        /// Remove the metadata in square brackets. 
+        /// </summary>
+        /// <param name="xlsMessage"></param>
+        private void StripOutMetaDataInFields(ref ScreeningXlsMessage xlsMessage)
+        {
+            foreach (PropertyInfo pi in typeof(ScreeningXlsMessage).GetProperties())
+            {
+                if (pi.GetValue(xlsMessage) != null)
+                {
+                    string val = pi.GetValue(xlsMessage).ToString();
+                    int start = val.IndexOf('[');
+
+                    if (start >= 0)
+                    {
+                        string strippedVal = val.Remove(start).Trim();
+                        pi.SetValue(xlsMessage, strippedVal);
+                    }
+                }
+            }
         }
     }
 }

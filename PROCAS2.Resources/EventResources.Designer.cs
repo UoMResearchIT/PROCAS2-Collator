@@ -320,5 +320,32 @@ namespace PROCAS2.Resources {
                 return ResourceManager.GetString("EVENT_UPDATED_STR", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 015.
+        /// </summary>
+        public static string EVENT_VOLPARA {
+            get {
+                return ResourceManager.GetString("EVENT_VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volpara Screening received.
+        /// </summary>
+        public static string EVENT_VOLPARA_STR {
+            get {
+                return ResourceManager.GetString("EVENT_VOLPARA_STR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volpara_Automatic.
+        /// </summary>
+        public static string VOLPARA_AUTO_USER {
+            get {
+                return ResourceManager.GetString("VOLPARA_AUTO_USER", resourceCulture);
+            }
+        }
     }
 }

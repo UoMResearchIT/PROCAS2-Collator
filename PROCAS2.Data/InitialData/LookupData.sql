@@ -6,6 +6,7 @@ SET IDENTITY_INSERT [dbo].[AddressTypes] OFF
 SET IDENTITY_INSERT [dbo].[AppUsers] ON
 INSERT INTO [dbo].[AppUsers] ([Id], [UserCode], [Active], [SuperUser], [SystemUser]) VALUES (1, N'andrew.jerrison@manchester.ac.uk', 1, 1, 0)
 INSERT INTO [dbo].[AppUsers] ([Id], [UserCode], [Active], [SuperUser], [SystemUser]) VALUES (2, N'CRA_Automatic', 1, 0, 1)
+INSERT INTO [dbo].[AppUsers] ([Id], [UserCode], [Active], [SuperUser], [SystemUser]) VALUES (3, N'Volpara_Automatic', 1, 0, 1)
 SET IDENTITY_INSERT [dbo].[AppUsers] OFF
 
 INSERT INTO [dbo].[AspNetRoles] ([Id], [Name]) VALUES (N'60c25c47-f649-4450-b043-e43312058857', N'General')
@@ -26,6 +27,7 @@ INSERT INTO [dbo].[EventTypes] ([Id], [Name], [Code]) VALUES (11, N'Histology fo
 INSERT INTO [dbo].[EventTypes] ([Id], [Name], [Code]) VALUES (12, N'Screening Outcomes uploaded', N'012')
 INSERT INTO [dbo].[EventTypes] ([Id], [Name], [Code]) VALUES (13, N'Histology focus updated', N'013')
 INSERT INTO [dbo].[EventTypes] ([Id], [Name], [Code]) VALUES (14, N'Histology header updated', N'014')
+INSERT INTO [dbo].[EventTypes] ([Id], [Name], [Code]) VALUES (15, N'Volpara received', N'015')
 SET IDENTITY_INSERT [dbo].[EventTypes] OFF
 
 SET IDENTITY_INSERT [dbo].[HistologyLookups] ON

@@ -15,5 +15,6 @@ namespace PROCAS2.Services.App
         bool SetConsentFlag(string hashedNHSNumber);
         bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts);
         string GetStudyNumber(string hashedNHSNumber);
+        bool AddEvent(Participant participant, AppUser user, DateTime eventDate, string eventCode, string eventNotes, string reason = null);
     }
 }

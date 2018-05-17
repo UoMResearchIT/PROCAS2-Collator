@@ -4,7 +4,9 @@
 <#@ assembly name="C:\Work\VS\Projects\PROCAS2\PROCAS2\bin\PROCAS2.Data.dll" #>
 <#@ import namespace="PROCAS2.Data.Entities" #>
 
-model <#= ViewDataTypeName #>
+@model <#= ViewDataTypeName #>
+
+@using PROCAS2.Resources
 <#
 // The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
 if(IsPartialView) {
@@ -76,7 +78,7 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
                     </th>
                     @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                     {
-                    <th></th>
+                    <th class="volparaCol"></th>
                     }
                 </tr>
             </thead>
@@ -100,7 +102,7 @@ foreach (PropertyMetadata property  in ModelMetadata.Properties) {
                     </td>
 @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
 {
-                    <td>
+                    <td class="volparaCol">
                         @Html.DisplayFor(model => model.ScreeningRecords[index].<#= GetValueExpression(property) #>)
                     </td>
 }

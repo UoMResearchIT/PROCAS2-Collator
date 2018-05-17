@@ -8,7 +8,16 @@ $(document).ready(function () {
         scrollX:true,
         fixedColumns: true,
         paging: false,
-        info:false
+        info:false,
+
+        columnDefs: [
+        {
+            targets: 'volparaCol',
+            render: function (data, type, full, meta) {
+                return "<div class='text-wrap width-200'>" + data + "</div>";
+            }
+        }
+        ]
     });
 
 });

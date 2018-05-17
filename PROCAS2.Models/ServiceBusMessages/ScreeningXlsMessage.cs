@@ -132,8 +132,6 @@ namespace PROCAS2.Models.ServiceBusMessages
 
         // CC fields
         public string MedialSide { get; set; }
-        [JsonProperty(PropertyName = "Method2Results309.62152.784117.048")]
-        public string Method2Results309_62152_784117_048 { get; set; }
         public string NippleDistanceFromMedialEdgeInMm { get; set; }
         public string NippleCenterDistanceFromMedialEdgeInMm { get; set; }
         public string CCPosteriorNippleLineLengthInMm { get; set; }
@@ -151,8 +149,6 @@ namespace PROCAS2.Models.ServiceBusMessages
         // MLO fields
         public string PectoralAngleDegrees { get; set; }
         public string PectoralAngleConfidence { get; set; }
-        [JsonProperty(PropertyName = "Method2Results384.5151.482413.3891")]
-        public string Method2Results384_5151_482413_3891 { get; set; }
         public string NippleDistanceFromSuperiorEdgeInMm { get; set; }
         public string NippleCenterDistanceFromSuperiorEdgeInMm { get; set; }
         public string MLOPosteriorNippleLineLengthInMm { get; set; }

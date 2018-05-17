@@ -225,10 +225,12 @@
     <Compile Include="App\IParticipantService.cs" />
     <Compile Include="App\IReportService.cs" />
     <Compile Include="App\IResponseService.cs" />
+    <Compile Include="App\IScreeningService.cs" />
     <Compile Include="App\ISiteService.cs" />
     <Compile Include="App\ParticipantService.cs" />
     <Compile Include="App\ReportService.cs" />
     <Compile Include="App\ResponseService.cs" />
+    <Compile Include="App\ScreeningService.cs" />
     <Compile Include="App\SiteService.cs" />
     <Compile Include="App\WebJobParticipantService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

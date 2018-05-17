@@ -211,4 +211,13 @@
   <data name="EVENT_UPDATED_STR" xml:space="preserve">
     <value>Full details added.</value>
   </data>
+  <data name="EVENT_VOLPARA" xml:space="preserve">
+    <value>015</value>
+  </data>
+  <data name="EVENT_VOLPARA_STR" xml:space="preserve">
+    <value>Volpara Screening received</value>
+  </data>
+  <data name="VOLPARA_AUTO_USER" xml:space="preserve">
+    <value>Volpara_Automatic</value>
+  </data>
 </root>

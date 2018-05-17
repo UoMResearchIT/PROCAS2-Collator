@@ -14,408 +14,309 @@ namespace PROCAS2.Data.Entities
 
         public DateTime DataDate { get; set; }
 
+        // Fields common to both CC and MLO MammoViews
         [MaxLength(3)]
         public string MammoImageType { get; set; }
-
-        [MaxLength(100)]
-        public string RequestedProcedure { get; set; }
-
-
-        public DateTime? Timestamp { get; set; }
-
         [MaxLength(50)]
+        public string RequestedProcedure { get; set; }
+        public string Folder { get; set; }
+        [MaxLength(20)]
+        public string Timestamp { get; set; }
+        [MaxLength(100)]
         public string OSName { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(100)]
         public string OSVersion { get; set; }
-
-        [MaxLength(8)]
-        public string CurrentCulture { get; set; }
-
-        [MaxLength(8)]
-        public string InstalledUICulture { get; set; }
-
-        [MaxLength(3)] 
-        public string WriteOutDisplayImage { get; set; }
-
-        [MaxLength(30)]
-        public string VolparaVersion { get; set; }
-
-        [MaxLength(100)]
-        public string DICOMTAGManufacturer { get; set; }
-
-        [MaxLength(100)]
-        public string DICOMTagDeviceSerialNumber { get; set; }
-
-        [MaxLength(100)]
-        public string DICOMTagDetectorID { get; set; }
-
-        [MaxLength(20)]
-        public string MaxAllowedKVP { get; set; }
-
-        public int? BTSF { get; set; }
-
-        public int? BTSTF { get; set; }
-
-        [MaxLength(3)]
-        public string PartialView { get; set; }
-
-        
-        public double? CompressionPlateSlant { get; set; }
-
-        [MaxLength(30)] 
-        public string DetectorType { get; set; }
-
-        [MaxLength(3)] 
-        public string DoFlatFieldCorrection { get; set; }
-
-        
-        public double? DoFatFieldCorrection { get; set; }
-
-       
-        public double? Gain { get; set; }
-
-        
-        public double? NativePixelSize { get; set; }
-
-        
-        public double? Offset { get; set; }
-
-        
-        public double? SourceToDetector { get; set; }
-
-        
-        public double? SupportToDetector { get; set; }
-
-        [MaxLength(20)] 
-        public string TubeType { get; set; }
-
-        [MaxLength(3)] 
-        public string UseFatWedge { get; set; }
-
-        [MaxLength(5)] 
-        public string UseNewSlantAlgorithm { get; set; }
-
-        [MaxLength(3)] 
-        public string ValidToString { get; set; }
-
-      
-        public double? WAgDefaultFilterThickness { get; set; }
-
-      
-        public double? WRhDefaultFilterThickness { get; set; }
-
-        [MaxLength(5)]
-        public string BreastSide { get; set; }
-
-        [MaxLength(5)]
-        public string ChestPosition { get; set; }
-
         [MaxLength(10)]
+        public string CurrentCulture { get; set; }
+        [MaxLength(10)]
+        public string InstalledUICulture { get; set; }
+        [MaxLength(3)]
+        public string WriteOutDisplayImage { get; set; }
+        [MaxLength(50)]
+        public string VolparaVersion { get; set; }
+        [MaxLength(50)]
+        public string DICOMTAGManufacturer { get; set; }
+        [MaxLength(50)]
+        public string DICOMTAGDeviceSerialNumber { get; set; }
+        [MaxLength(50)]
+        public string DICOMTagDetector_ID { get; set; }
+        [MaxLength(50)] // Number
+        public string MaxAllowedKVP { get; set; }
+        [MaxLength(12)] // Number
+        public string BTSF { get; set; }
+        [MaxLength(12)] // Number
+        public string BTSTF { get; set; }
+        [MaxLength(50)]
+        public string DetectorType { get; set; }
+        [MaxLength(3)]
+        public string DoFlatFieldCorrection { get; set; }
+        [MaxLength(12)] // Number
+        public string FSensitivity { get; set; }
+        [MaxLength(12)] // Number
+        public string Gain { get; set; }
+        [MaxLength(12)] // Number
+        public string NativePixelSize { get; set; }
+        [MaxLength(12)] // Number
+        public string Offset { get; set; }
+        [MaxLength(3)]
+        public string ScalePixelSize { get; set; }
+        [MaxLength(12)] // Number
+        public string SourceToDetector { get; set; }
+        [MaxLength(12)] // Number
+        public string SupportToDetector { get; set; }
+        [MaxLength(50)] 
+        public string TubeType { get; set; }
+        [MaxLength(5)]
+        public string UseNewSlantAlgorithm { get; set; }
+        [MaxLength(3)]
+        public string ValidToProcess { get; set; }
+        [MaxLength(8)]
+        public string BreastSide { get; set; }
+        [MaxLength(8)]
+        public string ChestPosition { get; set; }
+        [MaxLength(8)]
         public string PectoralPosition { get; set; }
-
         [MaxLength(3)]
         public string MammoView { get; set; }
-
-        public DateTime? StudyDate { get; set; }
-
-        [MaxLength(50)]
+        [MaxLength(10)]
+        public string StudyDate { get; set; }
+        [MaxLength(100)]
         public string OperatorName { get; set; }
-
-        public DateTime? PatientDOB { get; set; }
-
-        public int? PatientAge { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(10)]
+        public string PatientDOB { get; set; }
+        [MaxLength(3)]
+        public string PatientAge { get; set; }
+        [MaxLength(10)]
         public string PatientID { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(50)]
         public string DetectorID { get; set; }
-
-        [MaxLength(20)]
-        public string XRaySystem { get; set; }
-
-        public double? TargetPixelSize { get; set; }
-
-        [MaxLength(20)]
-        public string NearestNeighbourResample { get; set; }
-
-        public double? ResizedPixelSizeMm { get; set; }
-
-        [MaxLength(8)]
+        [MaxLength(50)]
+        public string XraySystem { get; set; }
+        [MaxLength(12)] // Number
+        public string TargetPixelSizeMm { get; set; }
+        [MaxLength(50)]
+        public string NearestNeighborResample { get; set; }
+        [MaxLength(12)] // Number
+        public string ResizedPixelSizeMm { get; set; }
+        [MaxLength(10)]
         public string PectoralSide { get; set; }
-
-        [MaxLength(8)]
-        public string MedialSide { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(10)]
         public string PaddleType { get; set; }
-
-        public int? ExposureMas { get; set; }
-
-        public int? ExposureTimeMs { get; set; }
-
-        [MaxLength(10)]
+        [MaxLength(12)] // Number
+        public string ExposureMas { get; set; }
+        [MaxLength(12)] // Number
+        public string ExposureTimeMs { get; set; }
+        [MaxLength(20)]
         public string TargetMaterial { get; set; }
-
-        [MaxLength(10)]
+        [MaxLength(20)]
         public string FilterMaterial { get; set; }
-
-        public double? FilterThicknessMm { get; set; }
-
-        public int? TubeVoltageKvp { get; set; }
-
-        [MaxLength(1000)]
-        public string Special { get; set; }
-
-        public double? HVLMm { get; set; }
-
-        public int? CompressionForceN { get; set; }
-
-        public int? RecordedBreastThicknessMm { get; set; }
-
-        [MaxLength(200)]
+        [MaxLength(12)] // Number
+        public string FilterThicknessMm { get; set; }
+        [MaxLength(12)] // Number
+        public string TubeVoltageKvp { get; set; }
+        [MaxLength(12)] // Number
+        public string CompressionPlateSlant { get; set; }
+        [MaxLength(12)] // Number
+        public string HVL_Mm { get; set; }
+        [MaxLength(12)] // Number
+        public string CompressionForceN { get; set; }
+        [MaxLength(12)] // Number
+        public string RecordedBreastThicknessMm { get; set; }
+        [MaxLength(200)] 
         public string InnerBreastStatistics { get; set; }
-
-        public double? muFatPerMm { get; set; }
-
-        public double? MethodAllPlaneFit { get; set; }
-
+        [MaxLength(12)] // Number
+        public string muFatPerMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MethodAllPlaneFit { get; set; }
         [MaxLength(200)]
-        public string RejectingMethod1Because { get; set; }
-
-        public double? MethodFatPlaneFit { get; set; }
-
-        public double? CalculatedSigma { get; set; }
-
-        public double? ComputedSlantAngle { get; set; }
-
-        public double? ComputedSlantMm { get; set; }
-
-        public int? ComputedBreastThickness { get; set; }
-
-        public double? ScatterScaleFactor { get; set; }
-
-        [MaxLength(20)]
+        public string RejectingMethod1Reason { get; set; }
+        [MaxLength(12)] // Number
+        public string MethodFatPlaneFit { get; set; }
+        [MaxLength(12)] // Number
+        public string Calculated_Sigma { get; set; }
+        [MaxLength(12)] // Number
+        public string ComputedSlantAngle { get; set; }
+        [MaxLength(12)] // Number
+        public string ComputedSlantMm { get; set; }
+        [MaxLength(12)] // Number
+        public string ComputedBreastThickness { get; set; }
+        [MaxLength(12)] // Number
+        public string ScatterScaleFactor { get; set; }
+        [MaxLength(20)] 
         public string Scatter { get; set; }
-
-        public double? SegPhaseDE { get; set; }
-        public double? SegPhaseOD { get; set; }
-        public double? SegPhaseBE { get; set; }
-        public double? SegPhasePA { get; set; }
-        public double? SegPhaseOA { get; set; }
-        public double? SegPhaseUA { get; set; }
-        public double? SegPhasePD { get; set; }
-        public double? SegSphereDE { get; set; }
-        public double? SegSphereOD { get; set; }
-        public double? SegSphereBE { get; set; }
-        public double? SegSpherePA { get; set; }
-        public double? SegSphereOA { get; set; }
-        public double? SegSphereUA { get; set; }
-        public double? SegSpherePD { get; set; }
-
-        public double? ContactAreaMm2 { get; set; }
-
-        public double? CompressionPressureKPa { get; set; }
-
-        [MaxLength(200)]
-        public string SettingDTto89 { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(12)] // Number
+        public string SegPhaseDE { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhaseOD { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhaseBE { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhasePA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhaseBA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhaseOA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhaseUA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegPhasePD { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereDE { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereOD { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereBE { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSpherePA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereBA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereOA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSphereUA { get; set; }
+        [MaxLength(12)] // Number
+        public string SegSpherePD { get; set; }
+        [MaxLength(12)] // Number
+        public string ContactAreaMm2 { get; set; }
+        [MaxLength(12)] // Number
+        public string CompressionPressureKPa { get; set; }
+        [MaxLength(12)] // Number
         public string PFAT_Edge_Zone { get; set; }
-
-        [MaxLength(20)]
-        public string HintRejectlevel { get; set; }
-
-        [MaxLength(20)]
+        [MaxLength(12)] // Number
+        public string HintRejectLevel { get; set; }
+        [MaxLength(12)] // Number
         public string HintIgnoreLevel { get; set; }
-
-        public double? EntranceDoseInMgy { get; set; }
-
-        public double? EstimatedEntranceDoseInMgy { get; set; }
-
-        [MaxLength(1000)]
+        [MaxLength(12)] // Number
+        public string EntranceDoseInmGy { get; set; }
+        [MaxLength(12)] // Number
+        public string EstimatedEntranceDoseInmGy { get; set; }
         public string Warning { get; set; }
-
-        public double? GlandularityPercent { get; set; }
-
-        public double? VolparaMeanGlandularDoseInMgy { get; set; }
-
-        public double? FiftyPercentGlandularDoseInMgy { get; set; }
-
-        public double? OrganDose { get; set; }
-
-        public double? OrganDoseInMgy { get; set; }
-
-        [MaxLength(200)]
-        public string Method2Results { get; set; }
-
-        [MaxLength(200)]
+        [MaxLength(12)] // Number
+        public string GlandularityPercent { get; set; }
+        [MaxLength(12)] // Number
+        public string VolparaMeanGlandularDoseInmGy { get; set; }
+        [MaxLength(12)] // Number
+        public string FiftyPercentGlandularDoseInmGy { get; set; }
+        [MaxLength(12)] // Number
+        public string OrganDose { get; set; }
+        [MaxLength(12)] // Number
+        public string OrganDoseInmGy { get; set; }
+        [MaxLength(200)] 
         public string CorrectionComplete { get; set; }
-
-        public double? NippleConfidence { get; set; }
-
+        [MaxLength(12)] // Number
+        public string NippleConfidence { get; set; }
         [MaxLength(200)]
         public string NippleConfidenceMessage { get; set; }
-
         [MaxLength(3)]
         public string NippleInProfile { get; set; }
-
-        public double? NippleDistanceFromMedialEdgeInMm { get; set; }
-
-        public double? NippleDistanceFromPosteriorEdgeInMm { get; set; }
-
-        public double? NippleCenterDistanceFromMedialEdgeInMm { get; set; }
-
-        public double? NippleCenterDistanceFromPosteriorEdgeInMm { get; set; }
-
-        public double? CCPosteriorNippleLineLengthInMm { get; set; }
-
-        public double? NippleMedialLateralDistanceInMm { get; set; }
-
-        public double? NippleMedialLateralAngleInDegrees { get; set; }
-
-        public double? BreastEdgeDistanceToPosteriorMedialCornerInMm { get; set; }
-
-        public double? BreastEdgeDistanceToPosteriorLateralCornerInMm { get; set; }
-
-        [MaxLength(3)]
-        public string CleavageDetected { get; set; }
-
-        [MaxLength(3)]
-        public string ShoulderDetected { get; set; }
-
-        public double? MeanDenseThicknessInMm { get; set; }
-
-        public double? MaximumDenseThicknessInMm { get; set; }
-
-        public double? SDDenseThicknessInMm { get; set; }
-
-        public double? MaximumDenseThicknessDistanceFromMedialEdgeInMm { get; set;}
-
-        public double? MaximumDenseThicknessDistanceFromPosteriorEdgeInMm { get; set; }
-
-        public double? DensityMapAttenuatingPixelCount { get; set; }
-
-        public double? MaximumPercentDensityIn1Cm2Area { get; set; }
-
-        public double? MaximumDenseVolumeIn1Cm2AreaInCm3 { get; set; }
-
-        public double? MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm { get; set; }
-
-        public double? MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm { get; set; }
-
-        public double? DenseAreaPercent { get; set; }
-
-        public double? AreaGreaterThan10mmDenseMm2 { get; set; }
-
-        public double? HintVolumeCm3 { get; set; }
-
-        public double? BreastVolumeCm3 { get; set; }
-
-        public double? VolumetricBreastDensity { get; set; }
-
-        public double? Out_BreastVolume { get; set; }
-
-        public double? Out_FGTV { get; set; }
-
-        public double? Out_Density { get; set; }
-
-        [MaxLength(200)]
+        [MaxLength(12)] // Number
+        public string NippleDistanceFromPosteriorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleCenterDistanceFromPosteriorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MeanDenseThicknessInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDenseThicknessInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string SDDenseThicknessInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDenseThicknessDistanceFromPosteriorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string DensityMapAttenuatingPixelCount { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumPercentDensityIn1Cm2Area { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDenseVolumeIn1Cm2AreaInCm3 { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string DenseAreaPercent { get; set; }
+        [MaxLength(12)] // Number
+        public string AreaGreaterThan10mmDenseMm2 { get; set; }
+        [MaxLength(12)] // Number
+        public string HintVolumeCm3 { get; set; }
+        [MaxLength(12)] // Number
+        public string BreastVolumeCm3 { get; set; }
+        [MaxLength(12)] // Number
+        public string VolumetricBreastDensity { get; set; }
+        [MaxLength(12)] // Number
+        public string Out_BreastVolume { get; set; }
+        [MaxLength(12)] // Number
+        public string Out_FGTV { get; set; }
+        [MaxLength(12)] // Number
+        public string Out_Density { get; set; }
         public string Run_Information { get; set; }
-
-        [MaxLength(200)]
         public string VolparaOkay { get; set; }
 
-        //-----
+        // CC fields
+        [MaxLength(20)]
+        public string MedialSide { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleDistanceFromMedialEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleCenterDistanceFromMedialEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string CCPosteriorNippleLineLengthInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleMedialLateralDistanceInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleMedialLateralAngleInDegrees { get; set; }
+        [MaxLength(12)] // Number
+        public string BreastCenterToImageCenterDistanceInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string BreastCenterDistanceFromMedialEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string BreastEdgeDistanceToPosteriorMedialCornerInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string BreastEdgeDistanceToPosteriorLateralCornerInMm { get; set; }
+        [MaxLength(3)]
+        public string CleavageDetected { get; set; }
+        [MaxLength(3)]
+        public string ShoulderDetected { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDenseThicknessDistanceFromMedialEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm { get; set; }
 
-
-        //[MaxLength(10)]
-        //public string Detector { get; set; }
-
-        //[MaxLength(100)]
-        //public string ManufacturerModelName { get; set; }
-
-        //public DateTime? AccessionDate { get; set; }
-
-        //public DateTime? ContentDate { get; set; }
-
-        //[MaxLength(15)]
-        //public string AccessionNumber { get; set; }
-
-        //[MaxLength(40)]
-        //public string StudyInstanceUID { get; set; }
-
-        //[MaxLength(40)]
-        //public string SeriesInstanceUID { get; set; }
-
-        //public int? InstanceNumber { get; set; }
-
-        //public int? XRayTubeCurrent { get; set; }
-
-        //public double? DetectorTemperature { get; set; }
-
-        //public int? PectoralAngleDegrees { get; set; }
-
-        //public int? PositionerPrimaryAngle { get; set; }
-
-        //public double? DetectorPrimaryAngle { get; set; }
-
-        //public double? DetectorSecondaryAngle { get; set; }
-
-        //[MaxLength(100)]
-        //public string ReferringPhysicianName { get; set; }
-
-        //[MaxLength(1000)]
-        //public string VolparaError { get; set; }
-
-        //[MaxLength(100)]
-        //public string ImageQualityDiagnostics { get; set; }
-
-        //public double? NippleAreaInMm2 { get; set; }
-
-        //public double? PercentNippleAreaAnteriorToSkinBoundary { get; set; }
-
-        //[MaxLength(10)]
-        //public string NippleCenterLocationRelativeToSkinLine { get; set; }
-
-        //public double? NippleToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
-
-        //public double? PNLToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
-
-        //public double? MLOPosterierNippleLineLengthInMm { get; set; }
-
-        //public double? NippleLineLengthInMm { get; set; }
-
-        //[MaxLength(3)]
-        //public string InframammaryFoldVisible { get; set; }
-
-        //public double? InframammaryFoldAreaInMm2 { get; set; }
-
-        //public double? InframammaryFoldDistanceFromPosteriorEdgeInMm { get; set; }
-
-        //public double? InframammaryFoldDistanceFromSuperiorEdgeInMm { get; set; }
-
-        //public double? SuperiorPectoralWidthInMm { get; set; }
-
-        //public double? PosteriorPectoralLengthInMm { get; set; }
-
-        //[MaxLength(10)]
-        //public string PectoralShape { get; set; }
-
-        //public double? NippleDistanceFromSuperiorEdgeInMm { get; set; }
-
-        //public double? BreastCenterToImageCenterDistanceInMm { get; set; }
-
-        //public double? DoseCalibrationError { get; set; }
-
-        //public double? MeasuredHVLInMmAl { get; set; }
-
-        //public double? MeasuredEntranceDoseInMgy { get; set; }
-
-        //public DateTime? DoseCalibrationUsedDateTime { get; set; }
-
-        //public double? DoseCalculationBasis { get; set; }
+        // MLO fields
+        [MaxLength(12)] // Number
+        public string PectoralAngleDegrees { get; set; }
+        [MaxLength(12)] // Number
+        public string PectoralAngleConfidence { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleDistanceFromSuperiorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleCenterDistanceFromSuperiorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MLOPosteriorNippleLineLengthInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleLineLengthInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string PNLToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
+        [MaxLength(3)]
+        public string PectoralSkinFoldPresent { get; set; }
+        [MaxLength(12)] // Number
+        public string NippleToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string SuperiorPectoralWidthInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string PosteriorPectoralLengthInMm { get; set; }
+        [MaxLength(20)]
+        public string PectoralShape { get; set; }
+        [MaxLength(12)] // Number
+        public string ImfMaxDistanceMm { get; set; }
+        [MaxLength(3)]
+        public string InframammaryFoldVisible { get; set; }
+        [MaxLength(12)] // Number
+        public string InframammaryFoldAreaInMm2 { get; set; }
+        [MaxLength(12)] // Number
+        public string ImfAngleInDegrees { get; set; }
+        [MaxLength(3)]
+        public string ImfSkinFoldPresent { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDenseThicknessDistanceFromSuperiorEdgeInMm { get; set; }
+        [MaxLength(12)] // Number
+        public string MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm { get; set; }
 
         public virtual Image Image { get; set; }
 

@@ -538,6 +538,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mammo View.
+        /// </summary>
+        public static string MAMMO_VIEW {
+            get {
+                return ResourceManager.GetString("MAMMO_VIEW", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to More Frequent Screening?.
         /// </summary>
         public static string MORE_FREQUENT {
