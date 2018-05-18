@@ -4,6 +4,7 @@
 <#@ assembly name="C:\Work\VS\Projects\PROCAS2\PROCAS2\bin\PROCAS2.Data.dll" #>
 <#@ import namespace="PROCAS2.Data.Entities" #>
 
+
 @model <#= ViewDataTypeName #>
 
 @using PROCAS2.Resources
@@ -17,7 +18,7 @@ if(IsPartialView) {
 #>
 
 @{
-    ViewBag.Title = "<#= ViewName#>";
+    ViewBag.Title = "Volpara Information";
 <#
 if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
@@ -27,7 +28,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-<h2><#= ViewName#></h2>
 
 <#
 } else {

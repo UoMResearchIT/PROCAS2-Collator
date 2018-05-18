@@ -1,4 +1,5 @@
 ﻿
+
 @model PROCAS2.Models.ViewModels.ScreenV1_5_4DetailsViewModel
 
 @using PROCAS2.Resources
@@ -50,7 +51,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DataDate)
                             </td>
                         }
@@ -66,7 +67,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MammoImageType)
                             </td>
                         }
@@ -82,7 +83,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].RequestedProcedure)
                             </td>
                         }
@@ -98,7 +99,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Timestamp)
                             </td>
                         }
@@ -114,7 +115,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].OSName)
                             </td>
                         }
@@ -130,7 +131,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].OSVersion)
                             </td>
                         }
@@ -146,7 +147,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].CurrentCulture)
                             </td>
                         }
@@ -162,7 +163,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].InstalledUICulture)
                             </td>
                         }
@@ -178,7 +179,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].WriteOutDisplayImage)
                             </td>
                         }
@@ -194,7 +195,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].VolparaVersion)
                             </td>
                         }
@@ -210,7 +211,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DICOMTAGManufacturer)
                             </td>
                         }
@@ -226,7 +227,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DICOMTAGDeviceSerialNumber)
                             </td>
                         }
@@ -242,7 +243,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DICOMTagDetector_ID)
                             </td>
                         }
@@ -258,7 +259,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaxAllowedKVP)
                             </td>
                         }
@@ -274,7 +275,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].BTSF)
                             </td>
                         }
@@ -290,22 +291,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].BTSTF)
-                            </td>
-                        }
-                    </tr>
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CompressionPlateSlant)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].CompressionPlateSlant)
                             </td>
                         }
                     </tr>
@@ -320,7 +307,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DetectorType)
                             </td>
                         }
@@ -336,8 +323,24 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DoFlatFieldCorrection)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].FSensitivity)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].FSensitivity)
                             </td>
                         }
                     </tr>
@@ -352,7 +355,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Gain)
                             </td>
                         }
@@ -368,7 +371,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NativePixelSize)
                             </td>
                         }
@@ -384,8 +387,24 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Offset)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ScalePixelSize)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ScalePixelSize)
                             </td>
                         }
                     </tr>
@@ -400,7 +419,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SourceToDetector)
                             </td>
                         }
@@ -416,7 +435,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SupportToDetector)
                             </td>
                         }
@@ -432,11 +451,12 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].TubeType)
                             </td>
                         }
                     </tr>
+
 
 
 
@@ -447,11 +467,29 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].UseNewSlantAlgorithm)
                             </td>
                         }
                     </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ValidToProcess)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ValidToProcess)
+                            </td>
+                        }
+                    </tr>
+
+
 
 
 
@@ -461,7 +499,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].BreastSide)
                             </td>
                         }
@@ -477,7 +515,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ChestPosition)
                             </td>
                         }
@@ -493,7 +531,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralPosition)
                             </td>
                         }
@@ -509,7 +547,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MammoView)
                             </td>
                         }
@@ -525,7 +563,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].StudyDate)
                             </td>
                         }
@@ -541,7 +579,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].OperatorName)
                             </td>
                         }
@@ -557,7 +595,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PatientDOB)
                             </td>
                         }
@@ -573,7 +611,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PatientAge)
                             </td>
                         }
@@ -589,7 +627,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PatientID)
                             </td>
                         }
@@ -605,7 +643,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DetectorID)
                             </td>
                         }
@@ -621,7 +659,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].XraySystem)
                             </td>
                         }
@@ -637,7 +675,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].TargetPixelSizeMm)
                             </td>
                         }
@@ -653,7 +691,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NearestNeighborResample)
                             </td>
                         }
@@ -669,7 +707,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ResizedPixelSizeMm)
                             </td>
                         }
@@ -685,24 +723,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralSide)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MedialSide)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].MedialSide)
                             </td>
                         }
                     </tr>
@@ -717,7 +739,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PaddleType)
                             </td>
                         }
@@ -733,7 +755,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ExposureMas)
                             </td>
                         }
@@ -749,7 +771,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ExposureTimeMs)
                             </td>
                         }
@@ -765,7 +787,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].TargetMaterial)
                             </td>
                         }
@@ -781,7 +803,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].FilterMaterial)
                             </td>
                         }
@@ -797,7 +819,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].FilterThicknessMm)
                             </td>
                         }
@@ -813,11 +835,29 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].TubeVoltageKvp)
                             </td>
                         }
                     </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CompressionPlateSlant)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].CompressionPlateSlant)
+                            </td>
+                        }
+                    </tr>
+
+
 
 
 
@@ -827,7 +867,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].HVL_Mm)
                             </td>
                         }
@@ -843,7 +883,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].CompressionForceN)
                             </td>
                         }
@@ -859,7 +899,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].RecordedBreastThicknessMm)
                             </td>
                         }
@@ -875,7 +915,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].InnerBreastStatistics)
                             </td>
                         }
@@ -891,7 +931,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].muFatPerMm)
                             </td>
                         }
@@ -907,7 +947,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MethodAllPlaneFit)
                             </td>
                         }
@@ -923,7 +963,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].RejectingMethod1Reason)
                             </td>
                         }
@@ -939,7 +979,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MethodFatPlaneFit)
                             </td>
                         }
@@ -955,7 +995,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Calculated_Sigma)
                             </td>
                         }
@@ -971,7 +1011,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ComputedSlantAngle)
                             </td>
                         }
@@ -987,7 +1027,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ComputedSlantMm)
                             </td>
                         }
@@ -1003,7 +1043,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ComputedBreastThickness)
                             </td>
                         }
@@ -1019,7 +1059,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ScatterScaleFactor)
                             </td>
                         }
@@ -1035,7 +1075,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Scatter)
                             </td>
                         }
@@ -1051,7 +1091,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseDE)
                             </td>
                         }
@@ -1067,7 +1107,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseOD)
                             </td>
                         }
@@ -1083,7 +1123,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseBE)
                             </td>
                         }
@@ -1099,8 +1139,24 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhasePA)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].SegPhaseBA)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseBA)
                             </td>
                         }
                     </tr>
@@ -1115,7 +1171,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseOA)
                             </td>
                         }
@@ -1131,7 +1187,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhaseUA)
                             </td>
                         }
@@ -1147,7 +1203,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegPhasePD)
                             </td>
                         }
@@ -1163,7 +1219,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereDE)
                             </td>
                         }
@@ -1179,7 +1235,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereOD)
                             </td>
                         }
@@ -1195,7 +1251,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereBE)
                             </td>
                         }
@@ -1211,8 +1267,24 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSpherePA)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].SegSphereBA)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereBA)
                             </td>
                         }
                     </tr>
@@ -1227,7 +1299,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereOA)
                             </td>
                         }
@@ -1243,7 +1315,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSphereUA)
                             </td>
                         }
@@ -1259,7 +1331,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SegSpherePD)
                             </td>
                         }
@@ -1275,7 +1347,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].ContactAreaMm2)
                             </td>
                         }
@@ -1291,11 +1363,12 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].CompressionPressureKPa)
                             </td>
                         }
                     </tr>
+
 
 
 
@@ -1306,7 +1379,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].PFAT_Edge_Zone)
                             </td>
                         }
@@ -1322,7 +1395,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].HintRejectLevel)
                             </td>
                         }
@@ -1338,7 +1411,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].HintIgnoreLevel)
                             </td>
                         }
@@ -1354,7 +1427,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].EntranceDoseInmGy)
                             </td>
                         }
@@ -1370,7 +1443,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].EstimatedEntranceDoseInmGy)
                             </td>
                         }
@@ -1386,7 +1459,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Warning)
                             </td>
                         }
@@ -1402,7 +1475,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].GlandularityPercent)
                             </td>
                         }
@@ -1418,7 +1491,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].VolparaMeanGlandularDoseInmGy)
                             </td>
                         }
@@ -1434,7 +1507,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].FiftyPercentGlandularDoseInmGy)
                             </td>
                         }
@@ -1450,7 +1523,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].OrganDose)
                             </td>
                         }
@@ -1466,7 +1539,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].OrganDoseInmGy)
                             </td>
                         }
@@ -1476,16 +1549,13 @@
 
 
 
-             
-
-
                     <tr>
                         <td>
                             @Html.DisplayNameFor(model => model.ScreeningRecords[0].CorrectionComplete)
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].CorrectionComplete)
                             </td>
                         }
@@ -1501,7 +1571,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NippleConfidence)
                             </td>
                         }
@@ -1517,7 +1587,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NippleConfidenceMessage)
                             </td>
                         }
@@ -1533,24 +1603,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NippleInProfile)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleDistanceFromMedialEdgeInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleDistanceFromMedialEdgeInMm)
                             </td>
                         }
                     </tr>
@@ -1565,24 +1619,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NippleDistanceFromPosteriorEdgeInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleCenterDistanceFromMedialEdgeInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleCenterDistanceFromMedialEdgeInMm)
                             </td>
                         }
                     </tr>
@@ -1597,120 +1635,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].NippleCenterDistanceFromPosteriorEdgeInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CCPosteriorNippleLineLengthInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].CCPosteriorNippleLineLengthInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleMedialLateralDistanceInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleMedialLateralDistanceInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleMedialLateralAngleInDegrees)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleMedialLateralAngleInDegrees)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastEdgeDistanceToPosteriorMedialCornerInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastEdgeDistanceToPosteriorMedialCornerInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastEdgeDistanceToPosteriorLateralCornerInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastEdgeDistanceToPosteriorLateralCornerInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CleavageDetected)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].CleavageDetected)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ShoulderDetected)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].ShoulderDetected)
                             </td>
                         }
                     </tr>
@@ -1725,7 +1651,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MeanDenseThicknessInMm)
                             </td>
                         }
@@ -1741,7 +1667,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseThicknessInMm)
                             </td>
                         }
@@ -1757,24 +1683,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].SDDenseThicknessInMm)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDenseThicknessDistanceFromMedialEdgeInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseThicknessDistanceFromMedialEdgeInMm)
                             </td>
                         }
                     </tr>
@@ -1789,7 +1699,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseThicknessDistanceFromPosteriorEdgeInMm)
                             </td>
                         }
@@ -1805,7 +1715,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DensityMapAttenuatingPixelCount)
                             </td>
                         }
@@ -1821,7 +1731,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumPercentDensityIn1Cm2Area)
                             </td>
                         }
@@ -1837,24 +1747,8 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseVolumeIn1Cm2AreaInCm3)
-                            </td>
-                        }
-                    </tr>
-
-
-
-
-
-                    <tr>
-                        <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
-                        </td>
-                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
-                        {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
                             </td>
                         }
                     </tr>
@@ -1869,7 +1763,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm)
                             </td>
                         }
@@ -1885,7 +1779,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].DenseAreaPercent)
                             </td>
                         }
@@ -1901,7 +1795,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].AreaGreaterThan10mmDenseMm2)
                             </td>
                         }
@@ -1917,7 +1811,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].HintVolumeCm3)
                             </td>
                         }
@@ -1933,7 +1827,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].BreastVolumeCm3)
                             </td>
                         }
@@ -1949,7 +1843,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].VolumetricBreastDensity)
                             </td>
                         }
@@ -1965,7 +1859,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Out_BreastVolume)
                             </td>
                         }
@@ -1981,7 +1875,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Out_FGTV)
                             </td>
                         }
@@ -1997,7 +1891,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Out_Density)
                             </td>
                         }
@@ -2013,7 +1907,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].Run_Information)
                             </td>
                         }
@@ -2029,7 +1923,7 @@
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
+                            <td class="volparaCol">
                                 @Html.DisplayFor(model => model.ScreeningRecords[index].VolparaOkay)
                             </td>
                         }
@@ -2041,15 +1935,533 @@
 
                     <tr>
                         <td>
-                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ParticipantId)
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MedialSide)
                         </td>
                         @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
                         {
-                            <td>
-                                @Html.DisplayFor(model => model.ScreeningRecords[index].ParticipantId)
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MedialSide)
                             </td>
                         }
                     </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleDistanceFromMedialEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleDistanceFromMedialEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleCenterDistanceFromMedialEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleCenterDistanceFromMedialEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CCPosteriorNippleLineLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].CCPosteriorNippleLineLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleMedialLateralDistanceInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleMedialLateralDistanceInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleMedialLateralAngleInDegrees)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleMedialLateralAngleInDegrees)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastCenterToImageCenterDistanceInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastCenterToImageCenterDistanceInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastCenterDistanceFromMedialEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastCenterDistanceFromMedialEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastEdgeDistanceToPosteriorMedialCornerInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastEdgeDistanceToPosteriorMedialCornerInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].BreastEdgeDistanceToPosteriorLateralCornerInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].BreastEdgeDistanceToPosteriorLateralCornerInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].CleavageDetected)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].CleavageDetected)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ShoulderDetected)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ShoulderDetected)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDenseThicknessDistanceFromMedialEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseThicknessDistanceFromMedialEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PectoralAngleDegrees)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralAngleDegrees)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PectoralAngleConfidence)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralAngleConfidence)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleDistanceFromSuperiorEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleDistanceFromSuperiorEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleCenterDistanceFromSuperiorEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleCenterDistanceFromSuperiorEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MLOPosteriorNippleLineLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MLOPosteriorNippleLineLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleLineLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleLineLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PNLToInferiorPectoralMuscleVerticalLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PNLToInferiorPectoralMuscleVerticalLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PectoralSkinFoldPresent)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralSkinFoldPresent)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].NippleToInferiorPectoralMuscleVerticalLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].NippleToInferiorPectoralMuscleVerticalLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].SuperiorPectoralWidthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].SuperiorPectoralWidthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PosteriorPectoralLengthInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PosteriorPectoralLengthInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].PectoralShape)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].PectoralShape)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ImfMaxDistanceMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ImfMaxDistanceMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].InframammaryFoldVisible)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].InframammaryFoldVisible)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].InframammaryFoldAreaInMm2)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].InframammaryFoldAreaInMm2)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ImfAngleInDegrees)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ImfAngleInDegrees)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].ImfSkinFoldPresent)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].ImfSkinFoldPresent)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDenseThicknessDistanceFromSuperiorEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDenseThicknessDistanceFromSuperiorEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm)
+                            </td>
+                        }
+                    </tr>
+
+
+
+
+
+
 
 
                 </tbody>
