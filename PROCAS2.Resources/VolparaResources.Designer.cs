@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t create the image record.
+        /// </summary>
+        public static string CANNOT_CREATE_IMAGE {
+            get {
+                return ResourceManager.GetString("CANNOT_CREATE_IMAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot create Volpara record in the database..
         /// </summary>
         public static string CANNOT_CREATE_RECORD {

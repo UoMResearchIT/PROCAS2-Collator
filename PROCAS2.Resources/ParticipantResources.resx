@@ -255,6 +255,12 @@
   <data name="HOME_POSTCODE" xml:space="preserve">
     <value>Home Postcode</value>
   </data>
+  <data name="IMAGE_DATE" xml:space="preserve">
+    <value>Image Received</value>
+  </data>
+  <data name="IMAGE_NAME" xml:space="preserve">
+    <value>Image File Name</value>
+  </data>
   <data name="INITIAL_SCREENING" xml:space="preserve">
     <value>Initial Screening Outcome</value>
   </data>

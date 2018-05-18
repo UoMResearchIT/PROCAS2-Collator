@@ -56,10 +56,14 @@ namespace PROCAS2.Services.Utility
                 // Cycle round every image found (usually 4 but not necessarily)
                 foreach (JObject image in allImages)
                 {
+                    int imageId = 0; // to be hydrated when image record is created
+
                     JToken sourceImage = image.SelectToken("$.SourceImage");
 
                     if (sourceImage != null)
                     {
+                        
+
                         // Get the patient ID
                         JToken thisPatientIdToken = sourceImage.SelectToken("$.Hashes[:1].Value");
                         if (thisPatientIdToken != null)
@@ -85,7 +89,13 @@ namespace PROCAS2.Services.Utility
                             string imageFileName = imageFilenameToken.ToObject<string>();
                             if (!String.IsNullOrEmpty(imageFileName))
                             {
-                   
+                                // Create the Image record
+                                if (_screeningService.CreateImageRecord(patientId, imageFileName, out imageId) == false)
+                                {
+                                    // cannot create image record!
+                                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_IMAGE, messageBody: message));
+                                    return retMessages;
+                                }
                             }
                             else
                             {
@@ -116,9 +126,10 @@ namespace PROCAS2.Services.Utility
 
                         StripOutMetaDataInFields(ref xlsMessage);
 
-                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage) == false)
+                        // Create screening record
+                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage, imageId) == false)
                         {
-                            // can't find the section with all the screening information!
+                            // can't create the screening record
                             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_RECORD, messageBody: message));
                             return retMessages;
                         }

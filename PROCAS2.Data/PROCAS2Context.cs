@@ -64,12 +64,10 @@ namespace PROCAS2.Data
             .HasForeignKey(n => n.AppUserId)
             .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Image>()
-            .HasOptional(p => p.ScreeningRecordV1_5_4)
-            .WithOptionalPrincipal(o => o.Image)
-            .Map(x => x.MapKey("ImageId"));
+           
 
+        
         }
-    
+
     }
 }

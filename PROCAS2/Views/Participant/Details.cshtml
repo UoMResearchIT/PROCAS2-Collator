@@ -633,10 +633,40 @@
             </div>
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="pnlQuestionnaire">
+        <div role="tabpanel" class="tab-pane" id="pnlImages">
             <div class="panel panel-primary participantViewPanel">
                 <div class="panel-heading">Images</div>
-                <div class="panel-body"></div>
+                <div class="panel-body">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @ParticipantResources.IMAGE_NAME
+                                </th>
+                                
+                                <th>
+                                    @ParticipantResources.IMAGE_DATE
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (Image image  in Model.Participant.Images)
+                            {
+                                <tr>
+                                    <td>
+                                        @image.CurrentName 
+                                    </td>
+
+                                    <td>
+                                        @image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault().DataDate
+                                    </td>
+                                    
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
 

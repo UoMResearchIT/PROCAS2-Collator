@@ -18,17 +18,20 @@ namespace PROCAS2.Services.App
         IGenericRepository<Participant> _participantRepo;
         IUnitOfWork _unitOfWork;
         IGenericRepository<ScreeningRecordV1_5_4> _screeningRepo;
+        IGenericRepository<Image> _imageRepo;
         IWebJobParticipantService _participantService;
 
         public ScreeningService(IGenericRepository<Participant> participantRepo,
                                 IUnitOfWork unitOfWork,
                                 IGenericRepository<ScreeningRecordV1_5_4> screeningRepo,
+                                IGenericRepository<Image> imageRepo,
                                 IWebJobParticipantService participantService)
         {
             _participantRepo = participantRepo;
             _unitOfWork = unitOfWork;
             _screeningRepo = screeningRepo;
             _participantService = participantService;
+            _imageRepo = imageRepo;
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace PROCAS2.Services.App
         /// <param name="hashedPatientId">Hashed NHS number</param>
         /// <param name="xlsMessage">The message</param>
         /// <returns>true if created, else false</returns>
-        public bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage)
+        public bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId)
         {
             try
             {
@@ -45,10 +48,18 @@ namespace PROCAS2.Services.App
 
                 record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
                 record.DataDate = DateTime.Now;
+                
+
+                if(imageId != 0)
+                {
+                    record.Image = _imageRepo.GetAll().Where(x => x.Id == imageId).FirstOrDefault();
+                }
+
                 _screeningRepo.Insert(record);
                 _unitOfWork.Save();
 
-
+                
+                
                 // Created the screening record so record it in the audit trail
                 _participantService.AddEvent(record.Participant, _participantService.GetSystemUser(EventResources.VOLPARA_AUTO_USER), DateTime.Now, EventResources.EVENT_VOLPARA, EventResources.EVENT_VOLPARA_STR);
 
@@ -89,5 +100,34 @@ namespace PROCAS2.Services.App
         }
 
        
+        /// <summary>
+        /// Create the record that records where the patient's image is.
+        /// </summary>
+        /// <param name="hashedPatientId">hashed NHS number</param>
+        /// <param name="imageFileName">file name of the image in Azure</param>
+        /// <returns>true if record created successfully, else false</returns>
+        public bool CreateImageRecord(string hashedPatientId, string imageFileName, out int imageId)
+        {
+            try
+            {
+                Image image = new Image();
+                image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+
+                image.CurrentName = imageFileName;
+
+                _imageRepo.Insert(image);
+                _unitOfWork.Save();
+
+                imageId = image.Id;
+            }
+            catch(Exception ex)
+            {
+                imageId = 0;
+                return false;
+            }
+
+            
+            return true;
+        }
     }
 }

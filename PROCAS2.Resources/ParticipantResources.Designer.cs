@@ -475,6 +475,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Image Received.
+        /// </summary>
+        public static string IMAGE_DATE {
+            get {
+                return ResourceManager.GetString("IMAGE_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image File Name.
+        /// </summary>
+        public static string IMAGE_NAME {
+            get {
+                return ResourceManager.GetString("IMAGE_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Initial Screening Outcome.
         /// </summary>
         public static string INITIAL_SCREENING {

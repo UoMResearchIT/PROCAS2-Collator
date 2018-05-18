@@ -318,6 +318,7 @@ namespace PROCAS2.Data.Entities
         [MaxLength(12)] // Number
         public string MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm { get; set; }
 
+       public int? ImageId { get; set; }
         public virtual Image Image { get; set; }
 
         public int ParticipantId { get; set; }
