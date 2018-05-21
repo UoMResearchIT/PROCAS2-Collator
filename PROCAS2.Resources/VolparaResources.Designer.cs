@@ -79,6 +79,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot store the Volpara message for patient {0}.
+        /// </summary>
+        public static string CANNOT_STORE_VOLPARA {
+            get {
+                return ResourceManager.GetString("CANNOT_STORE_VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The filename has not been supplied for at least one of the images..
         /// </summary>
         public static string FILENAME_NOT_EXISTS {

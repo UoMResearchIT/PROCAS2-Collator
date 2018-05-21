@@ -123,6 +123,10 @@
   <data name="CANNOT_CREATE_RECORD" xml:space="preserve">
     <value>Cannot create Volpara record in the database.</value>
   </data>
+  <data name="CANNOT_STORE_VOLPARA" xml:space="preserve">
+    <value>Cannot store the Volpara message for patient {0}</value>
+    <comment>{0} = hashed NHS number</comment>
+  </data>
   <data name="FILENAME_NOT_EXISTS" xml:space="preserve">
     <value>The filename has not been supplied for at least one of the images.</value>
   </data>

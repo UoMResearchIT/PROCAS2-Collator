@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
+using System.IO;
+
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Auth;
+using Microsoft.WindowsAzure.Storage.Blob;
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,16 +26,19 @@ namespace PROCAS2.Services.Utility
         private IWebJobParticipantService _participantService;
         private IScreeningService _screeningService;
         private IAuditService _auditService;
+        private IConfigService _configService;
 
         public VolparaService(IWebJobLogger logger,
                                 IWebJobParticipantService participantService,
                                 IScreeningService screeningService,
-                                IAuditService auditService)
+                                IAuditService auditService,
+                                IConfigService configService)
         {
             _logger = logger;
             _participantService = participantService;
             _screeningService = screeningService;
             _auditService = auditService;
+            _configService = configService;
         }
 
         /// <summary>
@@ -81,6 +89,8 @@ namespace PROCAS2.Services.Utility
                             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, String.Format(VolparaResources.PATIENT_NOT_EXISTS, patientId), messageBody: message));
                             return retMessages;
                         }
+
+ 
 
                         // Get the image file name
                         JToken imageFilenameToken = sourceImage.SelectToken("$.DicomImageFilePath");
@@ -143,6 +153,14 @@ namespace PROCAS2.Services.Utility
                         return retMessages;
                     }
                 }
+
+                string fileName = _participantService.GetStudyNumber(patientId) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
+                if (StoreVolparaMessage(message, fileName))
+                {
+                    // Don't fail if can't store the message, just report it.
+                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Info, String.Format(VolparaResources.CANNOT_STORE_VOLPARA, patientId), messageBody: message));
+                }
+
             }
 
             return retMessages;
@@ -169,6 +187,38 @@ namespace PROCAS2.Services.Utility
                     }
                 }
             }
+        }
+
+
+        /// <summary>
+        /// Create and store the Volpara message in Azure storage
+        /// </summary>
+        /// <param name="message">JSON message</param>
+        /// <param name="filename">File name to save the message as</param>
+        /// <returns>true if successful, else false</returns>
+        private bool StoreVolparaMessage(string message, string filename)
+        {
+            try
+            {
+                byte[] sPDFDecoded = Encoding.ASCII.GetBytes(message);
+
+                MemoryStream stream = new MemoryStream(sPDFDecoded);
+
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageVolparaMessageContainer"));
+
+                var blob = container.GetBlockBlobReference(filename);
+                blob.UploadFromStreamAsync(stream).Wait();
+                stream.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
