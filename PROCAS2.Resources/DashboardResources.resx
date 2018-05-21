@@ -165,4 +165,7 @@
   <data name="SITE_NAME" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="VOLPARA_MESSAGE_ERRORS" xml:space="preserve">
+    <value>Volpara Screening:</value>
+  </data>
 </root>

@@ -17,5 +17,8 @@ namespace PROCAS2.Models.ViewModels
 
         [Display(Name = "CRA_SURVEY_ERRORS", ResourceType = typeof(DashboardResources))]
         public int CRASurveyErrors { get; set; }
+
+        [Display(Name = "VOLPARA_MESSAGE_ERRORS", ResourceType = typeof(DashboardResources))]
+        public int VolparaMessageErrors { get; set; }
     }
 }

@@ -109,6 +109,7 @@ namespace PROCAS2.Controllers
 
             model.CRAConsentErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning);
             model.CRASurveyErrors = _logger.GetLogCount(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning);
+            model.VolparaMessageErrors = _logger.GetLogCount(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning);
            
 
             if (Request.IsAjaxRequest())

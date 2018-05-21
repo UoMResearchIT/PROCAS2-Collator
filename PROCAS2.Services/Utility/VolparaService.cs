@@ -25,19 +25,19 @@ namespace PROCAS2.Services.Utility
         private IWebJobLogger _logger;
         private IWebJobParticipantService _participantService;
         private IScreeningService _screeningService;
-        private IAuditService _auditService;
+       
         private IConfigService _configService;
 
         public VolparaService(IWebJobLogger logger,
                                 IWebJobParticipantService participantService,
                                 IScreeningService screeningService,
-                                IAuditService auditService,
+                               
                                 IConfigService configService)
         {
             _logger = logger;
             _participantService = participantService;
             _screeningService = screeningService;
-            _auditService = auditService;
+            
             _configService = configService;
         }
 

@@ -203,5 +203,14 @@ namespace PROCAS2.Resources {
                 return ResourceManager.GetString("SITE_NAME", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Volpara Screening:.
+        /// </summary>
+        public static string VOLPARA_MESSAGE_ERRORS {
+            get {
+                return ResourceManager.GetString("VOLPARA_MESSAGE_ERRORS", resourceCulture);
+            }
+        }
     }
 }

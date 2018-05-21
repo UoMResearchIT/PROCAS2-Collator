@@ -3,6 +3,9 @@
   "WebJobs": [
     {
       "filePath": "../PROCAS2.Webjob.GetCRAMessages/PROCAS2.Webjob.GetCRAMessages.csproj"
+    },
+    {
+      "filePath": "../PROCAS2.Webjob.GetVolparaMessages/PROCAS2.Webjob.GetVolparaMessages.csproj"
     }
   ]
 }
