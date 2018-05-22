@@ -17,6 +17,7 @@ namespace PROCAS2.Data.Entities
         [MaxLength(300)]
         public string Text { get; set; }
 
+        public int QuestionNum { get; set; }
 
         //public virtual ICollection<QuestionAnswer> QuestionAnswers { get; set; }
     }

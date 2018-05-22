@@ -1683,13 +1683,157 @@ OBX|29|CE|400^Lifetime Breast Cancer Risk Category^CRA||HIGH||||||F
 OBX|30|CE|410^HBOC Risk Category^CRA||AVERAGE||||||F
 OBX|31|CE|420^HNPCC Risk Category^CRA||AVERAGE||||||F
 OBX|34|CE|430^Genetic Testing Recommendation^CRA||NO||||||F
-OBX|35|CE|500^Family History^CRA||0^SELF&self^F^51^&LCIS^~1^NMTH&mother^F^^&Breast Cancer^45~2^NFTH&father^M^^&Colon or Rectal Cancer^40~3^PGRFTH&paternal grandfather^M^^&Colon or Rectal Cancer^45~10^MCOUSN&maternal cousin^F^^&Breast Cancer^44~8^PAUNT&paternal aunt^F^^&Uterine Cancer^42~9^PUNCLE&paternal uncle^M^^&Brain Cancer||||||F 
-OBX|36|CE|510^Reported Family Genetic Testing Results^CRA||0^SELF&self^F^51^&BRCA1^Pathogenic~1^NMTH&mother^F^^&BRCA1^Pathogenic~2^NFTH&father^M^^&BRCA1^Negative~8^PAUNT&paternal aunt^F^^&BRCA1^Unknown||||||F
+OBX|35|CE|500^Family History^CRA||1^SELF&self^F^47^&Other^50~2^NMTH&mother^F^83^&Breast Cancer^60~2^NMTH&mother^F^83^&Breast Cancer^63~3^NFTH&father^M^83^&Other^80~4^MGRMTH&maternal grandmother^F^80^&Breast Cancer^70~5^MGRFTH&maternal grandfather^M^82^&Prostate Cancer^80~7^PGRFTH&paternal grandfather^M^49^&Other^48~13^MAUNT&maternal aunt^F^75^&Breast Cancer^75~14^MAUNT&maternal aunt^F^75^&Breast Cancer^65~17^MUNCLE&maternal uncle^M^74^&Unknown^74~19^PAUNT&paternal aunt^F^75^&Uterine Cancer^74~24^MCOUSN&maternal cousion^F^^&Breast Cancer^65~24^MCOUSN&maternal cousion^F^^&Breast Cancer^68||||||F
+OBX|46|CE|510^Reported Family Genetic Testing Results^CRA||1^SELF&self^F^47^&BRCA1^Pathogenic~2^NMTH&mother^F^83^&BRCA1^Pathogenic~4^MGRMTH&maternal grandmother^F^80^&BRCA1^Pathogenic~5^MGRFTH&maternal grandfather^M^82^&BRCA1^Negative~5^MGRFTH&maternal grandfather^M^82^&BRCA2^Negative~7^PGRFTH&paternal grandfather^M^49^&BRCA1^Unknown~7^PGRFTH&paternal grandfather^M^49^&BRCA2^Unknown~8^NSIS&sister^F^55^&BRCA1^Pathogenic~10^NBRO&brother^M^47^&BRCA1^Negative~10^NBRO&brother^M^47^&BRCA2^Negative~12^MAUNT&maternal aunt^F^78^&BRCA1^Pathogenic~13^MAUNT&maternal aunt^F^75^&BRCA1^Pathogenic~14^MAUNT&maternal aunt^F^75^&BRCA1^Pathogenic||||||F
 OBX|37|ED|900^Risk Assessment Document^CRA|Survey Summary|^^PDF^base64^......||||||F
 OBX|38|TX|1000.consentYesNo^Do you agree to participate in this survey?||Yes||||||F
-OBX|39|TX|1000.surveyQuestion1^Survey Question 1?||Survey Answer 1||||||F
-OBX|40|TX|1000.surveyQuestion2^Survey Question 2?||Survey Answer 2||||||F
-OBX|41|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
+OBX|5|TX|1000.AdditionalQuestions||Yes||||||F
+OBX|6|TX|1000.ageFirstChildBorn||25||||||F
+OBX|7|TX|1000.AlcoholHowMuch||5||||||F
+OBX|8|TX|1000.AlcoholYesNo||Yes||||||F
+OBX|9|TX|1000.apptID||200||||||F
+OBX|10|TX|1000.BiopsyIncreasedRisk||Yes||||||F
+OBX|11|TX|1000.BiopsyResult||LCIS||||||F
+OBX|12|TX|1000.birthControlContinuously||Yes||||||F
+OBX|13|TX|1000.birthControlUse||Yes, in the past||||||F
+OBX|14|TX|1000.birthControlYears||5||||||F
+OBX|15|TX|1000.BMI||2||||||F
+OBX|16|TX|1000.BMICategory||Severely underweight||||||F
+OBX|17|TX|1000.bothOvariesRemoved||No||||||F
+OBX|18|TX|1000.BRCATestingResult1||BRCA1||||||F
+OBX|19|TX|1000.BRCATestingResult10||Negative||||||F
+OBX|20|TX|1000.BRCATestingResult12||BRCA1||||||F
+OBX|21|TX|1000.BRCATestingResult13||BRCA1||||||F
+OBX|22|TX|1000.BRCATestingResult14||BRCA1||||||F
+OBX|23|TX|1000.BRCATestingResult2||BRCA1||||||F
+OBX|24|TX|1000.BRCATestingResult4||BRCA1||||||F
+OBX|25|TX|1000.BRCATestingResult5||Negative||||||F
+OBX|26|TX|1000.BRCATestingResult7||Unknown||||||F
+OBX|27|TX|1000.BRCATestingResult8||BRCA1||||||F
+OBX|28|TX|1000.BRCATestingResultSelf||BRCA1||||||F
+OBX|29|TX|1000.BRCATestingResultYour1stOf3MaternalAunts||BRCA1||||||F
+OBX|30|TX|1000.BRCATestingResultYour2ndOf3MaternalAunts||BRCA1||||||F
+OBX|31|TX|1000.BRCATestingResultYour3rdOf3MaternalAunts||BRCA1||||||F
+OBX|32|TX|1000.BRCATestingResultYourBrother||Negative||||||F
+OBX|33|TX|1000.BRCATestingResultYourGrandfatherOnYourFatherSSide||Unknown||||||F
+OBX|34|TX|1000.BRCATestingResultYourGrandfatherOnYourMotherSSide||Negative||||||F
+OBX|35|TX|1000.BRCATestingResultYourGrandmotherOnYourMotherSSide||BRCA1||||||F
+OBX|36|TX|1000.BRCATestingResultYourMother||BRCA1||||||F
+OBX|37|TX|1000.BRCATestingResultYourSister||BRCA1||||||F
+OBX|38|TX|1000.BreastCancer||Yes||||||F
+OBX|39|TX|1000.breastImplants||Yes||||||F
+OBX|40|TX|1000.breastImplantsSide||Both||||||F
+OBX|41|TX|1000.breastReduction||No||||||F
+OBX|42|TX|1000.ColonOrRectalCancer||No||||||F
+OBX|43|TX|1000.consentYesNo||Yes||||||F
+OBX|44|TX|1000.CreateBilateral2||No||||||F
+OBX|45|TX|1000.CreateBilateral24||No||||||F
+OBX|46|TX|1000.CurrentBilateral13||No||||||F
+OBX|47|TX|1000.CurrentBilateral14||Not sure||||||F
+OBX|48|TX|1000.CurrentBilateral2||Yes||||||F
+OBX|49|TX|1000.CurrentBilateral24||Yes||||||F
+OBX|50|TX|1000.CurrentBilateral4||No||||||F
+OBX|51|TX|1000.DoYouHaveOrHaveYouEverHadCancer||No||||||F
+OBX|52|TX|1000.emailAddress||test@hughesriskapps.com||||||F
+OBX|53|TX|1000.EverBreastFeed||Yes||||||F
+OBX|54|TX|1000.ExcerciseHrs||2||||||F
+OBX|55|TX|1000.ExcerciseMins||30||||||F
+OBX|56|TX|1000.ExcerciseYesNo||Yes||||||F
+OBX|57|TX|1000.hadBreastBiopsy||Yes||||||F
+OBX|58|TX|1000.HadGeneticTestingSelf||Yes||||||F
+OBX|59|TX|1000.HadGeneticTestingYour1stOf2PaternalUncles||No||||||F
+OBX|60|TX|1000.HadGeneticTestingYour1stOf3MaternalAunts||Yes||||||F
+OBX|61|TX|1000.HadGeneticTestingYour1stOf3PaternalAunts||No||||||F
+OBX|62|TX|1000.HadGeneticTestingYour1stOf4MaternalUncles||No||||||F
+OBX|63|TX|1000.HadGeneticTestingYour2ndOf2PaternalUncles||No||||||F
+OBX|64|TX|1000.HadGeneticTestingYour2ndOf3MaternalAunts||Yes||||||F
+OBX|65|TX|1000.HadGeneticTestingYour2ndOf3PaternalAunts||No||||||F
+OBX|66|TX|1000.HadGeneticTestingYour2ndOf4MaternalUncles||No||||||F
+OBX|67|TX|1000.HadGeneticTestingYour3rdOf3MaternalAunts||Yes||||||F
+OBX|68|TX|1000.HadGeneticTestingYour3rdOf3PaternalAunts||No||||||F
+OBX|69|TX|1000.HadGeneticTestingYour3rdOf4MaternalUncles||No||||||F
+OBX|70|TX|1000.HadGeneticTestingYour4thOf4MaternalUncles||No||||||F
+OBX|71|TX|1000.HadGeneticTestingYourBrother||Yes||||||F
+OBX|72|TX|1000.HadGeneticTestingYourFather||No||||||F
+OBX|73|TX|1000.HadGeneticTestingYourGrandfatherOnYourFatherSSide||Yes||||||F
+OBX|74|TX|1000.HadGeneticTestingYourGrandfatherOnYourMotherSSide||Yes||||||F
+OBX|75|TX|1000.HadGeneticTestingYourGrandmotherOnYourFatherSSide||No||||||F
+OBX|76|TX|1000.HadGeneticTestingYourGrandmotherOnYourMotherSSide||Yes||||||F
+OBX|77|TX|1000.HadGeneticTestingYourHalfSister||No||||||F
+OBX|78|TX|1000.HadGeneticTestingYourMother||Yes||||||F
+OBX|79|TX|1000.HadGeneticTestingYourSister||Yes||||||F
+OBX|80|TX|1000.hadHysterectomy||No||||||F
+OBX|81|TX|1000.HalfSibRelativeID9SameDad||Yes||||||F
+OBX|82|TX|1000.HalfSibRelativeID9SameMom||No||||||F
+OBX|83|TX|1000.HasDiabetes||Yes, Type II diabetes||||||F
+OBX|84|TX|1000.hasSmoked||Yes, in the past||||||F
+OBX|85|TX|1000.heightFeetInches||55-55||||||F
+OBX|86|TX|1000.heightInches||715||||||F
+OBX|87|TX|1000.HeightPreferredUnits||Standard||||||F
+OBX|88|TX|1000.hormoneUse||Yes, currently||||||F
+OBX|89|TX|1000.HRTHowLong||10||||||F
+OBX|90|TX|1000.HRTType||Combined oestrogen and progesterone (e.g. aaa, bbb, ccc, ddd, eee, fff, ggg, hhh?)||||||F
+OBX|91|TX|1000.isAshkenazi||Yes||||||F
+OBX|92|TX|1000.IUDWithHormones||No, never||||||F
+OBX|93|TX|1000.KnowFamilyHistory||Yes||||||F
+OBX|94|TX|1000.MaternalMaternalCousinFemale||Yes||||||F
+OBX|95|TX|1000.MenopausalStatus||Pre-menopausal||||||F
+OBX|96|TX|1000.MonthsBreastFedChild1||3||||||F
+OBX|97|TX|1000.MonthsBreastFedChild2||3||||||F
+OBX|98|TX|1000.Niece||No||||||F
+OBX|99|TX|1000.nipplePiercing||Yes||||||F
+OBX|100|TX|1000.nipplePiercingSide||Both||||||F
+OBX|101|TX|1000.NumCigarettes||4||||||F
+OBX|102|TX|1000.OCType||Combined pill (oestrogen and progesterone) e.g. Microgynon, Cilest, Marvelon||||||F
+OBX|103|TX|1000.Other||No||||||F
+OBX|104|TX|1000.OtherBreastSurgery||Yes||||||F
+OBX|105|TX|1000.otherBreastSurgeryYesNo||No||||||F
+OBX|106|TX|1000.OvarianCancer||No||||||F
+OBX|107|TX|1000.OvariesRemoved||No||||||F
+OBX|108|TX|1000.PancreaticCancer||No||||||F
+OBX|109|TX|1000.PaternalPaternalCousinFemale||No||||||F
+OBX|110|TX|1000.PolycysticOvaries||No||||||F
+OBX|111|TX|1000.ProstateCancer||No||||||F
+OBX|112|TX|1000.racialBackground||White||||||F
+OBX|113|TX|1000.RelativeCancer10||No||||||F
+OBX|114|TX|1000.RelativeCancer12||No||||||F
+OBX|115|TX|1000.RelativeCancer13||Yes||||||F
+OBX|116|TX|1000.RelativeCancer14||Yes||||||F
+OBX|117|TX|1000.RelativeCancer15||No||||||F
+OBX|118|TX|1000.RelativeCancer16||No||||||F
+OBX|119|TX|1000.RelativeCancer17||Yes||||||F
+OBX|120|TX|1000.RelativeCancer18||No||||||F
+OBX|121|TX|1000.RelativeCancer19||Yes||||||F
+OBX|122|TX|1000.RelativeCancer2||Yes||||||F
+OBX|123|TX|1000.RelativeCancer20||No||||||F
+OBX|124|TX|1000.RelativeCancer21||Not sure||||||F
+OBX|125|TX|1000.RelativeCancer22||No||||||F
+OBX|126|TX|1000.RelativeCancer23||Not sure||||||F
+OBX|127|TX|1000.RelativeCancer3||Yes||||||F
+OBX|128|TX|1000.RelativeCancer4||Yes||||||F
+OBX|129|TX|1000.RelativeCancer5||Yes||||||F
+OBX|130|TX|1000.RelativeCancer6||No||||||F
+OBX|131|TX|1000.RelativeCancer7||Yes||||||F
+OBX|132|TX|1000.RelativeCancer8||No||||||F
+OBX|133|TX|1000.RelativeCancer9||No||||||F
+OBX|134|TX|1000.RelativeHadGeneticTesting||Yes||||||F
+OBX|135|TX|1000.RelativeTwin||No||||||F
+OBX|136|TX|1000.RelativeTwin10||No||||||F
+OBX|137|TX|1000.RelativeTwin8||No||||||F
+OBX|138|TX|1000.Smoking||Yes, in the past||||||F
+OBX|139|TX|1000.SmokingHowLong||8||||||F
+OBX|140|TX|1000.startedMenstruating||11||||||F
+OBX|141|TX|1000.surveyEnd||20180514155234||||||F
+OBX|142|TX|1000.takenAromataseInhibitor||No, never||||||F
+OBX|143|TX|1000.takenRaloxifene||No, never||||||F
+OBX|144|TX|1000.takenTamoxifen||No, never||||||F
+OBX|145|TX|1000.timesPregnant||2||||||F
+OBX|146|TX|1000.UKClothingSize||8||||||F
+OBX|147|TX|1000.Unknown||No||||||F
+OBX|148|TX|1000.UterineCancer||No||||||F
+OBX|149|TX|1000.WeightAt20||1390||||||F
+OBX|150|TX|1000.weightPounds||1485||||||F
+OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
 
           _exampleMessage =  _exampleMessage.Replace("PATIENTID", _patientID);
 

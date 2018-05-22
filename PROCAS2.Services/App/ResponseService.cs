@@ -90,9 +90,20 @@ namespace PROCAS2.Services.App
         {
             try
             {
+                // Ignore some responses
+                if (OnIgnoreList(questionCode) == true)
+                {
+                    return true;
+                }
+
                 QuestionnaireResponseItem item = new QuestionnaireResponseItem();
                 item.ResponseText = answerText;
-                item.Question = _questionRepo.GetAll().Where(x => x.Code == questionCode).FirstOrDefault();
+                item.Question = _questionRepo.GetAll().Where(x => x.Code.ToLower() == questionCode.ToLower()).FirstOrDefault();
+                if (item.Question == null)
+                {
+                    item.Question = _questionRepo.GetAll().Where(x => x.Code == "Wibble").FirstOrDefault();
+                    item.ResponseText = "(" + questionCode + ") " + item.ResponseText;
+                }
                 item.QuestionnaireResponse = response;
 
                 _responseItemRepo.Insert(item);
@@ -104,6 +115,55 @@ namespace PROCAS2.Services.App
             }
 
             return true;
+        }
+
+        /// <summary>
+        /// Check to see if the questioncode is on the ignore list
+        /// </summary>
+        /// <param name="questionCode">true if it is on the list, else false</param>
+        private bool OnIgnoreList(string questionCode)
+        {
+            // The ignore list. Most of these are either recorded in the family history or family genetic testing record. Those that aren't 
+            // are metadata or superfluous (duplicates)
+            List<string> ignoreList = new List<string>()
+            {
+                "consentYesNo", "apptID",
+                "BRCATestingResult", "CreateBilateral",
+                "CurrentBilateral", "HadGeneticTesting",
+                "HalfSibRelativeID", "RelativeCancer",
+                "RelativeTwin", "WeightPreferredUnits",
+                "HeightPreferredUnits", "ProstateCancer",
+                "BreastCancer", "bothOvariesRemoved",
+                "nipplePiercing", "heightFeetInches",
+                "emailAddress", "ColonOrRectalCancer",
+                "BMI", "MaternalMaternal",
+                "PaternalPaternal", "surveyEnd",
+                "Smoking", "UterineCancer",
+                "OvarianCancer", "PancreaticCancer",
+                "Niece"
+            };
+
+            // Ignore the line if there is no question code (happened in testing!)
+            if (String.IsNullOrEmpty(questionCode))
+            {
+                return true;
+            }
+
+            // There is a question called 'Other'. We don't seem to need it...
+            if (questionCode == "Other" || questionCode == "Unknown")
+            {
+                return true;
+            }
+
+            // Check each item in the ignore list.
+            foreach (string item in ignoreList)
+            {
+                if (questionCode.StartsWith(item))    
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
 

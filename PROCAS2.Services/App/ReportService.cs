@@ -352,7 +352,7 @@ namespace PROCAS2.Services.App
                     foreach (QuestionnaireResponse response in participant.QuestionnaireResponses)
                     {
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
-                        foreach (QuestionnaireResponseItem item in response.QuestionnaireResponseItems)
+                        foreach (QuestionnaireResponseItem item in response.QuestionnaireResponseItems.OrderBy(x => x.Question.QuestionNum))
                         {
                             AddLineFromProperties(workingSheet, item, typeof(QuestionnaireResponseItem), surveyItemIndex,
                                                 beforeCols: new List<string>() { participant.NHSNumber, response.Id.ToString() },

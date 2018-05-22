@@ -413,21 +413,23 @@ namespace PROCAS2.Services.Utility
                     }
 
                     // Is the observation a consent type?
-                    if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
-                    {
-                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Consent"));
-                        string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                    // No longer get consent info from the survey message
 
-                        if (answerText.ToLower() == "yes")
-                        {
-                            if (_participantService.SetConsentFlag(patientID) == false)
-                            {
-                                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, patientID), messageBody: hl7Message));
-                            }
-                        }
+                    //if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
+                    //{
+                    //    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Consent"));
+                    //    string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
 
-                        continue;
-                    }
+                    //    if (answerText.ToLower() == "yes")
+                    //    {
+                    //        if (_participantService.SetConsentFlag(patientID) == false)
+                    //        {
+                    //            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, patientID), messageBody: hl7Message));
+                    //        }
+                    //    }
+
+                    //    continue;
+                    //}
 
                     // Is the observation a survey question type?
                     if (observationType.StartsWith(_configService.GetAppSetting("HL7SurveyQuestionCode")))
