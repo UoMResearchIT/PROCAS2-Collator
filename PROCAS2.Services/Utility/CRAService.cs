@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Auth;
-using Microsoft.WindowsAzure.Storage.Blob;
+
 
 
 using NHapi.Base;
@@ -54,19 +52,22 @@ namespace PROCAS2.Services.Utility
         private IConfigService _configService;
         private IWebJobLogger _logger;
         private IServiceBusService _serviceBusService;
+        private IStorageService _storageService;
 
 
         public CRAService(IWebJobParticipantService participantService,
                             IResponseService responseService,
                             IConfigService configService,
                             IWebJobLogger logger,
-                            IServiceBusService serviceBusService)
+                            IServiceBusService serviceBusService,
+                            IStorageService storageService)
         {
             _participantService = participantService;
             _responseService = responseService;
             _configService = configService;
             _logger = logger;
             _serviceBusService = serviceBusService;
+            _storageService = storageService;
         }
 
 
@@ -85,11 +86,18 @@ namespace PROCAS2.Services.Utility
             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "*** PROCESS CONSENT *** "));
 
 
+            ConsentMessage consentObj = null;
+            try
+            {
+                // Get the consent message
+                consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
+            }
+            catch(Exception ex)
+            {
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage));
+                return retMessages;
+            }
 
-            // try
-            //{
-            // Get the consent message
-            ConsentMessage consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
             if (consentObj != null && consentObj.IsValid)
             {
                 // Patient has to exist!
@@ -111,7 +119,7 @@ namespace PROCAS2.Services.Utility
                 {
                     
                     string filename = _participantService.GetStudyNumber(consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
-                    if (ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
+                    if (_storageService.ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
                     {
                         retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_PDF_ERROR, messageBody: consentMessage));
                     }
@@ -128,11 +136,7 @@ namespace PROCAS2.Services.Utility
             {
                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage));
             }
-            // }
-            //catch
-            // {
-            //    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage)); 
-            // }
+            
 
             return retMessages;
         }
@@ -461,8 +465,8 @@ namespace PROCAS2.Services.Utility
                 }
             }
 
-            string fileName = _participantService.GetStudyNumber(patientID) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
-            if (StoreCRAMessage(hl7Message, fileName))
+            string fileName = _participantService.GetStudyNumber(patientID) + "-" + dateFinished + ".txt";
+            if (_storageService.StoreCRAMessage(hl7Message, fileName))
             {
                 // Don't fail if can't store the message, just report it.
                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, String.Format(HL7Resources.CANNOT_STORE_MESSAGE, patientID), messageBody: hl7Message));
@@ -493,67 +497,7 @@ namespace PROCAS2.Services.Utility
         }
 
 
-        /// <summary>
-        /// Create and store the consent PDF in Azure storage
-        /// </summary>
-        /// <param name="PDF">Base 64 encoded PDF</param>
-        /// <param name="filename">File name to save the consent form as</param>
-        /// <returns>true if successful, else false</returns>
-        public bool ProcessConsentPDF(string PDF, string filename)
-        {
-            try
-            {
-                byte[] sPDFDecoded = Convert.FromBase64String(PDF);
-
-                MemoryStream stream = new MemoryStream(sPDFDecoded);
-
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageConsentContainer"));
-
-                var blob = container.GetBlockBlobReference(filename);
-                blob.UploadFromStreamAsync(stream).Wait();
-                stream.Dispose();
-
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-            return true;
-        }
-
-        /// <summary>
-        /// Create and store the CRA message in Azure storage
-        /// </summary>
-        /// <param name="message">HL7 message</param>
-        /// <param name="filename">File name to save the message as</param>
-        /// <returns>true if successful, else false</returns>
-        private bool StoreCRAMessage(string message, string filename)
-        {
-            try
-            {
-                byte[] sPDFDecoded = Encoding.ASCII.GetBytes(message);
-
-                MemoryStream stream = new MemoryStream(sPDFDecoded);
-
-                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
-                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
-                CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageCRAMessageContainer"));
-
-                var blob = container.GetBlockBlobReference(filename);
-                blob.UploadFromStreamAsync(stream).Wait();
-                stream.Dispose();
-
-            }
-            catch (Exception ex)
-            {
-                return false;
-            }
-
-            return true;
-        }
+        
 
 
     }

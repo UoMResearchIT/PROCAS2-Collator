@@ -42,6 +42,7 @@ namespace PROCAS2.Webjob.GetCRAMessages
             container.RegisterType<IWebJobLogger, WebJobLogger>();
             container.RegisterType<IAuditService, AuditService>();
             container.RegisterType<IServiceBusService, ServiceBusService>();
+            container.RegisterType<IStorageService, StorageService>();
 
 
             container.RegisterType<Functions>(); //Need to register WebJob class

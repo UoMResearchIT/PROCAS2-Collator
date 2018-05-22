@@ -48,6 +48,7 @@ namespace PROCAS2
             container.RegisterType<IServiceBusService, ServiceBusService>();
             container.RegisterType<IVolparaService, VolparaService>();
             container.RegisterType<IScreeningService, ScreeningService>();
+            container.RegisterType<IStorageService, StorageService>();
 
             container.RegisterType<DbContext, ApplicationDbContext>(new HierarchicalLifetimeManager());
             

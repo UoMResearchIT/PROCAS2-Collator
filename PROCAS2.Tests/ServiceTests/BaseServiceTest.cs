@@ -25,6 +25,7 @@ namespace PROCAS2.Tests.ServiceTests
         protected IConfigService _configService;
         protected IAuditService _auditService;
         protected IServiceBusService _serviceBusService;
+        protected IStorageService _storageService;
 
         protected IGenericRepository<Participant> _participantRepo;
         protected IGenericRepository<AppUser> _appUserRepo;
@@ -32,6 +33,7 @@ namespace PROCAS2.Tests.ServiceTests
         protected IGenericRepository<EventType> _eventTypeRepo;
         protected IGenericRepository<RiskLetter> _riskLetterRepo;
         protected IGenericRepository<WebJobLog> _logRepo;
+        
 
         protected void SetUpMocks()
         {
@@ -44,6 +46,7 @@ namespace PROCAS2.Tests.ServiceTests
             _responseService = MockRepository.GenerateMock<IResponseService>();
             _auditService = MockRepository.GenerateMock<IAuditService>();
             _serviceBusService = MockRepository.GenerateMock<IServiceBusService>();
+            _storageService = MockRepository.GenerateMock<IStorageService>();
 
             _participantRepo = MockRepository.GenerateMock<IGenericRepository<Participant>>();
             _appUserRepo = MockRepository.GenerateMock<IGenericRepository<AppUser>>();
@@ -135,6 +138,7 @@ namespace PROCAS2.Tests.ServiceTests
             _responseService = null;
             _auditService = null;
             _serviceBusService = null;
+            _storageService = null;
 
             _participantRepo = null;
             _appUserRepo = null;

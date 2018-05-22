@@ -16,9 +16,7 @@ namespace PROCAS2.Services.Utility
         List<string> ProcessConsent(string consentMessage);
 
         bool IsConsentMessage(string message);
-
-       
-        bool ProcessConsentPDF(string PDF, string filename);
+    
 
     }
 }
