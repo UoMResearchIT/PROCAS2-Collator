@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot store the survery message for patient {0}.
+        /// </summary>
+        public static string CANNOT_STORE_MESSAGE {
+            get {
+                return ResourceManager.GetString("CANNOT_STORE_MESSAGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Consent message is invalid format..
         /// </summary>
         public static string CONSENT_MESSAGE_FORMAT_INVALID {

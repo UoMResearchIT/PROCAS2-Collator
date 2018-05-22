@@ -461,7 +461,12 @@ namespace PROCAS2.Services.Utility
                 }
             }
 
-
+            string fileName = _participantService.GetStudyNumber(patientID) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
+            if (StoreCRAMessage(hl7Message, fileName))
+            {
+                // Don't fail if can't store the message, just report it.
+                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, String.Format(HL7Resources.CANNOT_STORE_MESSAGE, patientID), messageBody: hl7Message));
+            }
 
             return retMessages;
         }
@@ -519,8 +524,37 @@ namespace PROCAS2.Services.Utility
             return true;
         }
 
+        /// <summary>
+        /// Create and store the CRA message in Azure storage
+        /// </summary>
+        /// <param name="message">HL7 message</param>
+        /// <param name="filename">File name to save the message as</param>
+        /// <returns>true if successful, else false</returns>
+        private bool StoreCRAMessage(string message, string filename)
+        {
+            try
+            {
+                byte[] sPDFDecoded = Encoding.ASCII.GetBytes(message);
 
-        
+                MemoryStream stream = new MemoryStream(sPDFDecoded);
+
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+                CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+                CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageCRAMessageContainer"));
+
+                var blob = container.GetBlockBlobReference(filename);
+                blob.UploadFromStreamAsync(stream).Wait();
+                stream.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
 
     }
 }
