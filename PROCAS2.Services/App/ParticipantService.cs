@@ -159,8 +159,8 @@ namespace PROCAS2.Services.App
                             studyNumber = GetStudyNumber(hash);
                         }
 
-                        // First put in the NHSNumber.
-                        //csv.WriteField(lineBits[0]);
+                        // First the study number
+                        csv.WriteField(studyNumber.ToString().PadLeft(5, '0'));
 
                         // Then DOB
                         csv.WriteField(Convert.ToDateTime(lineBits[1]).ToString("yyyyMMdd"));
@@ -171,8 +171,7 @@ namespace PROCAS2.Services.App
                         // Then the hash
                         csv.WriteField(hash);
 
-                        // Then the study number
-                        csv.WriteField(studyNumber.ToString().PadLeft(5, '0'));
+                        
 
                         csv.NextRecord();
 
