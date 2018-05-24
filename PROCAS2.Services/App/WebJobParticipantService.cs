@@ -209,5 +209,46 @@ namespace PROCAS2.Services.App
 
             return true;
         }
+
+
+        /// <summary>
+        /// Set the patient's BMI
+        /// </summary>
+        /// <param name="hashedNHSNumber">Hashed NHS Number</param>
+        /// <param name="answerText">text containing the BMI</param>
+        /// <returns>true if set OK, else false</returns>
+        public bool SetBMI(string hashedNHSNumber, string answerText)
+        {
+            try
+            {
+
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+                    int bmi = 0;
+                    if (Int32.TryParse(answerText, out bmi) == false)
+                    {
+                        participant.BMI = null;
+                    }
+                    else
+                    {
+                        participant.BMI = bmi;
+                    }
+                    _participantRepo.Update(participant);
+                    _unitOfWork.Save();
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace PROCAS2.Services.App
         bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts);
         string GetStudyNumber(string hashedNHSNumber);
         bool AddEvent(Participant participant, AppUser user, DateTime eventDate, string eventCode, string eventNotes, string reason = null);
+        bool SetBMI(string hashedNHSNumber, string answerText);
     }
 }

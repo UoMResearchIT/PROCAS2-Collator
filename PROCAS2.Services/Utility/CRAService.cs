@@ -92,7 +92,7 @@ namespace PROCAS2.Services.Utility
                 // Get the consent message
                 consentObj = JsonConvert.DeserializeObject<ConsentMessage>(consentMessage);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage));
                 return retMessages;
@@ -117,7 +117,7 @@ namespace PROCAS2.Services.Utility
                 // Move the PDF to storage
                 if (!String.IsNullOrEmpty(consentObj.ConsentPDF)) // Might not initially get the PDF
                 {
-                    
+
                     string filename = _participantService.GetStudyNumber(consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
                     if (_storageService.ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
                     {
@@ -125,7 +125,7 @@ namespace PROCAS2.Services.Utility
                     }
                 }
                 // Post message on Volpara outgoing queue - to inform them of consent
-                string message = @"{ 'patientId' : '" + consentObj.PatientId + "', 'dateConsented':'" + now.ToString("yyyy-MM-dd")  + "'}";
+                string message = @"{ 'patientId' : '" + consentObj.PatientId + "', 'dateConsented':'" + now.ToString("yyyy-MM-dd") + "'}";
                 if (_serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", message, "VolparaConsentQueue") == false)
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_OUTGOING_ERROR, messageBody: consentMessage));
@@ -136,7 +136,7 @@ namespace PROCAS2.Services.Utility
             {
                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_MESSAGE_FORMAT_INVALID, messageBody: consentMessage));
             }
-            
+
 
             return retMessages;
         }
@@ -374,7 +374,7 @@ namespace PROCAS2.Services.Utility
                             if (geneticCode == null)
                             {
 
-                               geneticStop = true;
+                                geneticStop = true;
 
                             }
                             else
@@ -404,7 +404,7 @@ namespace PROCAS2.Services.Utility
 
 
                                 geneticItem.TestSignificance = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-6");
-                                
+
                                 // Create the record in the DB
                                 if (_responseService.CreateFamilyGeneticTestingItem(response, geneticItem) == false)
                                 {
@@ -416,24 +416,21 @@ namespace PROCAS2.Services.Utility
                         } while (geneticStop == false);
                     }
 
-                    // Is the observation a consent type?
-                    // No longer get consent info from the survey message
+                    //Is the observation a BMI type?
+                    if (observationType == _configService.GetAppSetting("HL7BMICode"))
+                    {
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "BMI"));
+                        string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
 
-                    //if (observationType == _configService.GetAppSetting("HL7ConsentCode"))
-                    //{
-                    //    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Info, "Consent"));
-                    //    string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5-1");
+                        // Set the BMI
+                        if (_participantService.SetBMI(patientID, answerText) == false)
+                        {
+                            // Having BMI is a nice-to-have, not a show-stopper, so don't report as error, just info
+                            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, String.Format(HL7Resources.BMI_NOT_SET, patientID), messageBody: hl7Message));
+                        }
 
-                    //    if (answerText.ToLower() == "yes")
-                    //    {
-                    //        if (_participantService.SetConsentFlag(patientID) == false)
-                    //        {
-                    //            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.CONSENT_NOT_SET, patientID), messageBody: hl7Message));
-                    //        }
-                    //    }
-
-                    //    continue;
-                    //}
+                        continue;
+                    }
 
                     // Is the observation a survey question type?
                     if (observationType.StartsWith(_configService.GetAppSetting("HL7SurveyQuestionCode")))
@@ -497,7 +494,7 @@ namespace PROCAS2.Services.Utility
         }
 
 
-        
+
 
 
     }

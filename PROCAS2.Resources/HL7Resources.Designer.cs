@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error setting the BMI value for patient {0}.
+        /// </summary>
+        public static string BMI_NOT_SET {
+            get {
+                return ResourceManager.GetString("BMI_NOT_SET", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cannot store the survery message for patient {0}.
         /// </summary>
         public static string CANNOT_STORE_MESSAGE {
