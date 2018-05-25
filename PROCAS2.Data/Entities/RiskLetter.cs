@@ -20,6 +20,8 @@ namespace PROCAS2.Data.Entities
 
         public string RiskLetterContent { get; set; }
 
+        public string GPLetterContent { get; set; }
+
         [MaxLength(20)]
         public string RiskCategory { get; set; }
 

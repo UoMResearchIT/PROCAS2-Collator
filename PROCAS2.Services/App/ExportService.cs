@@ -139,6 +139,43 @@ namespace PROCAS2.Services.App
 
             });
 
+            if (!String.IsNullOrEmpty(letter.GPLetterContent))
+            {
+                Address gpAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "GP").FirstOrDefault();
+                retModel.Letters.Add(new Letter()
+                {
+                    LetterText = letter.GPLetterContent,
+
+                    FromAddressLine1 = letter.Participant.ScreeningSite.AddressLine1,
+                    FromAddressLine2 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine2,
+                    FromAddressLine3 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine3,
+                    FromAddressLine4 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine4,
+                    FromPostCode = letter.Participant.ScreeningSite.PostCode,
+                    FromName = letter.Participant.ScreeningSite.LetterFrom,
+                    LogoHeaderRight = letter.Participant.ScreeningSite.LogoHeaderRight,
+                    LogoHeaderRightHeight = letter.Participant.ScreeningSite.LogoHeaderRightHeight,
+                    LogoHeaderRightWidth = letter.Participant.ScreeningSite.LogoHeaderRightWidth,
+                    LogoFooterLeft = letter.Participant.ScreeningSite.LogoFooterLeft,
+                    LogoFooterLeftHeight = letter.Participant.ScreeningSite.LogoFooterLeftHeight,
+                    LogoFooterLeftWidth = letter.Participant.ScreeningSite.LogoFooterLeftWidth,
+                    LogoFooterRight = letter.Participant.ScreeningSite.LogoFooterRight,
+                    LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
+                    LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
+                    Signature = letter.Participant.ScreeningSite.Signature,
+                    Telephone = letter.Participant.ScreeningSite.Telephone,
+                    NHSNumber = letter.Participant.NHSNumber,
+
+                    Name = letter.Participant.GPName,
+                    AddressLine1 = gpAddress.AddressLine1,
+                    AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine2,
+                    AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
+                    AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
+                    PostCode = gpAddress.PostCode,
+                    SentDate = DateTime.Now.ToLongDateString()
+
+                });
+            }
+
             return retModel;
         }
 

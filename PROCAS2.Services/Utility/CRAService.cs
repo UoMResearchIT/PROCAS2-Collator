@@ -209,6 +209,7 @@ namespace PROCAS2.Services.Utility
             }
 
             List<string> letterParts = new List<string>();
+            List<string> letterGPParts = new List<string>();
             List<string> historyParts = new List<string>();
             List<string> geneticParts = new List<string>();
             string riskCategory = "";
@@ -264,6 +265,43 @@ namespace PROCAS2.Services.Utility
                                 firstNull = true;
                                 letterParts.Add(answerText);
                                 idxLetter++;
+                            }
+                        } while (letterStop == false);
+
+
+                        continue;
+                    }
+
+                    // Is this observation a GP letter?
+                    if (observationType == _configService.GetAppSetting("HL7GPLetterCode"))
+                    {
+                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "GP Letter"));
+                        int idxGPLetter = 0;
+                        bool letterStop = false;
+                        bool firstNull = true;
+                        // iterate through the letter and store each paragraph
+                        do
+                        {
+                            string answerText = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGPLetter + ")");
+
+                            if (answerText == null)
+                            {
+                                if (firstNull == false) // Stop on second blank line in a row.
+                                {
+                                    letterStop = true;
+                                }
+                                else
+                                {
+                                    letterParts.Add("");
+                                    firstNull = false;
+                                    idxGPLetter++;
+                                }
+                            }
+                            else
+                            {
+                                firstNull = true;
+                                letterGPParts.Add(answerText);
+                                idxGPLetter++;
                             }
                         } while (letterStop == false);
 
@@ -456,7 +494,7 @@ namespace PROCAS2.Services.Utility
             // If there are any paragraphs in the letter then create a risk letter for the participant
             if (letterParts.Count > 0)
             {
-                if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, geneticTesting, letterParts) == false)
+                if (_participantService.CreateRiskLetter(patientID, riskScore, riskCategory, geneticTesting, letterParts, letterGPParts) == false)
                 {
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Warning, String.Format(HL7Resources.RISK_LETTER_NOT_CREATED, patientID), messageBody: hl7Message));
                 }

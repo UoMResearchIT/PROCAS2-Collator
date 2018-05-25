@@ -1643,7 +1643,6 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
             bool ret2 = _participantService.DoesHashedNHSNumberExist(hash);
         }
-
         public void PostServiceBus()
         {
             string _exampleMessage = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL

@@ -402,7 +402,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
             _responseService.Stub(x => x.CreateResponseItem(Arg<QuestionnaireResponse>.Matches(z => z.Id == 0), Arg<string>.Is.Equal("surveyQuestion1"), Arg<string>.Is.Equal("Survey Answer 1"))).Return(true);
 
-            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() {"Hello", "Test", "" })).Return(false);
+            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() {"Hello", "Test", "" }, new List<string>() { "Hello", "Test", "" })).Return(false);
 
 
             CRAService service = CreateService();
@@ -442,7 +442,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
 
             _responseService.Stub(x => x.CreateResponseItem(Arg<QuestionnaireResponse>.Matches(z => z.Id == 0), Arg<string>.Is.Equal("surveyQuestion1"), Arg<string>.Is.Equal("Survey Answer 1"))).Return(true);
 
-            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() { "Hello", "Test", "" })).Return(true);
+            _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() { "Hello", "Test", "" }, new List<string>() { "Hello", "Test", "" })).Return(true);
             _participantService.Stub(x => x.GetStudyNumber("PATIENTID")).Return("STUDY1");
             _storageService.Stub(x => x.StoreCRAMessage(message, "STUDY1-20170808080023.pdf")).Return(true);
 

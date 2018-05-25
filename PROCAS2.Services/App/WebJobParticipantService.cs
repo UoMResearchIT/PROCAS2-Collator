@@ -112,8 +112,9 @@ namespace PROCAS2.Services.App
         /// </summary>
         /// <param name="hashedNHSNumber">Hashed NHS Number</param>
         /// <param name="letterParts">List of paragraphs fofr the letter</param>
+        /// <param name="letterGPParts">List of paragraphs for GP letter</param>
         /// <returns>true if successfully created, else false</returns>
-        public bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts)
+        public bool CreateRiskLetter(string hashedNHSNumber, string riskScore, string riskCategory, string geneticTesting, List<string> letterParts, List<string> letterGPParts)
         {
             try
             {
@@ -128,7 +129,15 @@ namespace PROCAS2.Services.App
                     {
                         builder.AppendLine("<p>" + letterParts[i] + "</p><p>&nbsp;</p>");
                     }
+
+                    StringBuilder builderGP = new StringBuilder();
+                    for (int i = 0; i < letterGPParts.Count; i++)
+                    {
+                        builderGP.AppendLine("<p>" + letterGPParts[i] + "</p><p>&nbsp;</p>");
+                    }
+
                     letter.RiskLetterContent = builder.ToString();
+                    letter.GPLetterContent = builderGP.ToString();
                     letter.RiskCategory = riskCategory;
                     letter.RiskScore = Convert.ToDouble(riskScore);
                     letter.GeneticTestingRecommendation = geneticTesting;
