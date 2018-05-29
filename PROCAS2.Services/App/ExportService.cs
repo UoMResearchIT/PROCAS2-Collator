@@ -128,6 +128,7 @@ namespace PROCAS2.Services.App
                 Signature = letter.Participant.ScreeningSite.Signature,
                 Telephone = letter.Participant.ScreeningSite.Telephone,
                 NHSNumber = letter.Participant.NHSNumber,
+                StudyNumber = letter.Participant.StudyNumber.ToString().PadLeft(5, '0'),
 
                 Name = title + " " + letter.Participant.LastName,
                 AddressLine1 = homeAddress.AddressLine1,
@@ -164,12 +165,13 @@ namespace PROCAS2.Services.App
                     Signature = letter.Participant.ScreeningSite.Signature,
                     Telephone = letter.Participant.ScreeningSite.Telephone,
                     NHSNumber = letter.Participant.NHSNumber,
+                    StudyNumber = letter.Participant.StudyNumber.ToString().PadLeft(5, '0'),
 
                     Name = letter.Participant.GPName,
                     AddressLine1 = gpAddress.AddressLine1,
-                    AddressLine2 = String.IsNullOrEmpty(homeAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine2,
-                    AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
-                    AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
+                    AddressLine2 = String.IsNullOrEmpty(gpAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine2,
+                    AddressLine3 = String.IsNullOrEmpty(gpAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
+                    AddressLine4 = String.IsNullOrEmpty(gpAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
                     PostCode = gpAddress.PostCode,
                     SentDate = DateTime.Now.ToLongDateString()
 
@@ -229,6 +231,7 @@ namespace PROCAS2.Services.App
                     Signature = participant.ScreeningSite.Signature,
                     Telephone = participant.ScreeningSite.Telephone,
                     NHSNumber = participant.NHSNumber,
+                    StudyNumber = participant.StudyNumber.ToString().PadLeft(5, '0'),
 
                     Name = title + " " + participant.LastName,
                     AddressLine1 = homeAddress.AddressLine1,
@@ -239,6 +242,44 @@ namespace PROCAS2.Services.App
                     SentDate = DateTime.Now.ToLongDateString()
 
                 });
+
+                if (!String.IsNullOrEmpty(riskLetter.GPLetterContent))
+                {
+                    Address gpAddress = participant.Addresses.Where(x => x.AddressType.Name == "GP").FirstOrDefault();
+                    retModel.Letters.Add(new Letter()
+                    {
+                        LetterText = riskLetter.GPLetterContent,
+                        FromAddressLine1 = participant.ScreeningSite.AddressLine1,
+                        FromAddressLine2 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine2,
+                        FromAddressLine3 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine3,
+                        FromAddressLine4 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine4) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine4,
+                        FromPostCode = participant.ScreeningSite.PostCode,
+                        FromName = participant.ScreeningSite.LetterFrom,
+                        LogoHeaderRight = participant.ScreeningSite.LogoHeaderRight,
+                        LogoHeaderRightHeight = participant.ScreeningSite.LogoHeaderRightHeight,
+                        LogoHeaderRightWidth = participant.ScreeningSite.LogoHeaderRightWidth,
+                        LogoFooterLeft = participant.ScreeningSite.LogoFooterLeft,
+                        LogoFooterLeftHeight = participant.ScreeningSite.LogoFooterLeftHeight,
+                        LogoFooterLeftWidth = participant.ScreeningSite.LogoFooterLeftWidth,
+                        LogoFooterRight = participant.ScreeningSite.LogoFooterRight,
+                        LogoFooterRightHeight = participant.ScreeningSite.LogoFooterRightHeight,
+                        LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
+
+                        Signature = participant.ScreeningSite.Signature,
+                        Telephone = participant.ScreeningSite.Telephone,
+                        NHSNumber = participant.NHSNumber,
+                        StudyNumber = participant.StudyNumber.ToString().PadLeft(5, '0'),
+
+                        Name = participant.GPName,
+                        AddressLine1 = gpAddress.AddressLine1,
+                        AddressLine2 = String.IsNullOrEmpty(gpAddress.AddressLine2) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine2,
+                        AddressLine3 = String.IsNullOrEmpty(gpAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
+                        AddressLine4 = String.IsNullOrEmpty(gpAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
+                        PostCode = gpAddress.PostCode,
+                        SentDate = DateTime.Now.ToLongDateString()
+
+                    });
+                }
 
                 participant.SentRisk = true;
                 _participantRepo.Update(participant);

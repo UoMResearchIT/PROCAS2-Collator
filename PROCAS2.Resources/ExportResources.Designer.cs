@@ -268,7 +268,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 1.5.
+        ///   Looks up a localized string similar to 1.67.
         /// </summary>
         public static string PROCAS2_LOGO_HEIGHT_CM {
             get {
@@ -277,7 +277,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 5.
+        ///   Looks up a localized string similar to 4.5.
         /// </summary>
         public static string PROCAS2_LOGO_WIDTH_CM {
             get {
@@ -376,7 +376,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAMgAAABBCAYAAACU5+uOAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAT30lEQVR4Xu2dLbAdRRbHRyAQCAQCsVVL1ZKQ2kIgEAiqFoFAIBAIBAKBiEAgEBEIqhCICAQCgUAgEAgEAoFAIBAIBAKBiIhAIBARiIi75/f+97z+OjPTM3NDhXdH/JOZnp7u6e7z3afvGw6Hw44dO0YQFu7YsUMIC3fs2CGEhTt27BDCwh07/ukY/nt4bLh2eM7whuGD4frhc8MnhncNrwz/OzwSvVcjLFyNYXjd8NZCvGZ46Ygnw3Ydw/C0IWpjDt7+84bHwraXQO3Q7geGTw2fH/GhgfKnwvfWgDkZhjcN9PWxwfsCtw3M3+Phu0swDI8Y8jmr8Vz4Xi+G4VHDDcOrhncN [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to iVBORw0KGgoAAAANSUhEUgAAAKoAAAA/CAYAAABw3VNyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAZdEVYdFNvZnR3YXJlAHBhaW50Lm5ldCA0LjAuMjHxIGmVAAAQr0lEQVR4Xu2d/XNU1RnHdzeBWh0RiCICSggBZRw7dfyljmN/qB07YDtOnY6/tFbHTju2IqKtrQokJCSExLyhoK12alu1o31RQR1HxjrTqu3PnUKSTch7AmTzBvoHPP1+z9ljbu4+e3M3UF3C+eEzu/vc85a93/Oc57zcTUJEPJ6iRzV6PMWGavR4ig3V6PEUG6rR4yk2VKPHU2yoRo+n2FCNHk+xoRo9nmJDNXo8xYZq9HiKDdXo8RQbqtHjKTZUo+fCpnfrezKy+S0ZqTgow8ubZbisWUbWPysjWw5Lz7Z3kUTP9/9ENXouLAa2viVdmw5IT7JWRhK7ZRScSOyRU4kmySSa [rest of string was truncated]&quot;;.
         /// </summary>
         public static string UNI_LOGO {
             get {
