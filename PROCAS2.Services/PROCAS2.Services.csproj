@@ -237,6 +237,7 @@
     <Compile Include="Utility\AttributeHelpers.cs" />
     <Compile Include="Utility\ConfigService.cs" />
     <Compile Include="Utility\ContextService.cs" />
+    <Compile Include="Utility\GzipCompressor.cs" />
     <Compile Include="Utility\HashingService.cs" />
     <Compile Include="Utility\CRAService.cs" />
     <Compile Include="Utility\IConfigService.cs" />

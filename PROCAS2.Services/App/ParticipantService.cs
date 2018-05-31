@@ -178,7 +178,7 @@ namespace PROCAS2.Services.App
 #if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
 
                         string message = "{ 'patientId' : '" + hash + "'}";
-                        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "VolparaInvitationQueue");
+                        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "VolparaInvitationQueue", false);
 #endif
                     }
                 }

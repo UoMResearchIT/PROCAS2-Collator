@@ -25,7 +25,7 @@ namespace PROCAS2.Services.Utility
         /// </summary>
         /// <param name="message">The message</param>
         /// <returns>true if successfully posted, else false</returns>
-        public bool PostServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string message, string queueAppSetting)
+        public bool PostServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string message, string queueAppSetting, bool compress)
         {
             try
             {
@@ -47,11 +47,19 @@ namespace PROCAS2.Services.Utility
                     factory.CreateQueueClient(_configService.GetAppSetting(queueAppSetting));
 
                 // Post in Base64 encoded form (as seems to be common practice)
-                BrokeredMessage hl7Message = new BrokeredMessage(Encoding.UTF8.GetBytes(message));
-
-                // Send the message to the queue.
-                queueClient.Send(hl7Message);
-
+                if (compress == true)
+                {
+                    BrokeredMessage hl7Message = new BrokeredMessage(GzipCompressor.Compress(message));
+                    hl7Message.ContentType = "application/gzip";
+                    // Send the message to the queue.
+                    queueClient.Send(hl7Message);
+                }
+                else
+                {
+                    BrokeredMessage hl7Message = new BrokeredMessage(Encoding.UTF8.GetBytes(message));
+                    // Send the message to the queue.
+                    queueClient.Send(hl7Message);
+                }
                 factory.Close();
 
                 return true;
@@ -87,10 +95,23 @@ namespace PROCAS2.Services.Utility
             BrokeredMessage orderOutMsg = queueClient.Receive();
 
             string message = "";
-
+            var myInputBytes = orderOutMsg.GetBody<byte[]>();
             if (orderOutMsg != null)
             {
-                message = System.Text.Encoding.UTF8.GetString(orderOutMsg.GetBody<byte[]>());
+                switch (orderOutMsg.ContentType)
+                {
+                    case "application/gzip":
+                        message = GzipCompressor.Decompress(myInputBytes);
+                        break;
+                    case "application/json":
+                        message = Encoding.UTF8.GetString(myInputBytes);
+                        break;
+                    default:            
+                        message = Encoding.UTF8.GetString(myInputBytes);
+                        break;
+
+                }
+                
                 orderOutMsg.Complete();
             }
 

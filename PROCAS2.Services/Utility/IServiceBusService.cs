@@ -8,7 +8,7 @@ namespace PROCAS2.Services.Utility
 {
     public interface IServiceBusService
     {
-        bool PostServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string message, string queueAppSetting);
+        bool PostServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string message, string queueAppSetting, bool compress);
         string GetServiceBusMessage(string keyNameAppSetting, string keyValueAppSetting, string baseURLAppSetting, string queueAppSetting);
     }
 }

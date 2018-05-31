@@ -1836,7 +1836,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
 
           _exampleMessage =  _exampleMessage.Replace("PATIENTID", _patientID);
 
-        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", _exampleMessage, "CRASurveyQueue");
+        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", _exampleMessage, "CRASurveyQueue", false);
 
 
         }
@@ -1845,7 +1845,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         {
             string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':'" + _PDFencoded + "'}";
             //string message = @"{ 'messageType' : 'consent', 'patientId' : '" + _patientID + "', 'consentPdf':''}";
-            _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "CRAConsentQueue");
+            _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "CRAConsentQueue", false);
         }
 
 
@@ -7062,7 +7062,8 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
 
         public void PostVolpara()
         {
-            _serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", volparaMessage, "VolparaScreeningQueue");
+            
+            _serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", volparaMessage, "VolparaScreeningQueue", false);
         }
 
         public void GetVolpara()
