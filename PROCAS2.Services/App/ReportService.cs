@@ -12,6 +12,8 @@ using DocumentFormat.OpenXml;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 
+using CsvHelper;
+
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 
@@ -631,35 +633,41 @@ namespace PROCAS2.Services.App
         /// <returns>The report!</returns>
         public MemoryStream AskForRiskLetters()
         {
-            MemoryStream generatedDocument = new MemoryStream();
+            MemoryStream generatedDocument = new MemoryStream();           
 
-            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            StringWriter csvString = new StringWriter();
+
+            using (var csv = new CsvWriter(csvString))
             {
-                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
 
+                csv.Configuration.Delimiter = "|";
 
-
-                // Add header
-                string repSheetId = AddSheet(wbPart, "Main", 1);
-                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "HashedNHSNumber"});
-
-                int repIndex = 2;
 
                 // Add details
                 List<Participant> patients = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == true && x.SentRisk == false && x.RiskLetters.Count == 0).ToList();
                 foreach (Participant patient in patients)
                 {
-                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
-                                        onlyCols: new List<string>() { "HashedNHSNumber" });
-                    repIndex++;
+                    // First the study number
+                    csv.WriteField(patient.StudyNumber.ToString().PadLeft(5, '0'));
 
+                    // Then DOB
+                    csv.WriteField(patient.DateOfBirth.HasValue? patient.DateOfBirth.Value.ToString("yyyyMMdd"): "Unknown");
 
+                    // Then date of first appointment
+                    csv.WriteField(patient.DateFirstAppointment.HasValue ? patient.DateFirstAppointment.Value.ToString("yyyyMMdd") : "Unknown");
+
+                    // Then the hash
+                    csv.WriteField(patient.HashedNHSNumber);
+
+                    // Then a record indicating to release the results
+                    csv.WriteField("ReleaseResults");
+
+                    csv.NextRecord();
+                    
                 }
-
-                wbPart.Workbook.Save();
             }
+
+            generatedDocument = new MemoryStream(Encoding.UTF8.GetBytes(csvString.ToString()));
 
             return generatedDocument;
         }

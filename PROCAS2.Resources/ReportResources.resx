@@ -127,7 +127,7 @@
     <value>Ask For Outstanding Risk Letters</value>
   </data>
   <data name="ASK_FOR_RISK_LETTER_SUMMARY" xml:space="preserve">
-    <value>Produces a list of hashed NHS numbers of all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA.</value>
+    <value>Produces a text file containing a list of study number, DOB, date of first appointment and hashed NHS numbers. These are for all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA.</value>
   </data>
   <data name="BC_DIAGNOSES" xml:space="preserve">
     <value>Breast Cancer Diagnoses</value>

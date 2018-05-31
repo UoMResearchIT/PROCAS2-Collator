@@ -70,7 +70,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Produces a list of hashed NHS numbers of all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA..
+        ///   Looks up a localized string similar to Produces a text file containing a list of study number, DOB, date of first appointment and hashed NHS numbers. These are for all the participants that have been flagged as ready for risk letters and have not received one yet. This can then be uploaded to CRA..
         /// </summary>
         public static string ASK_FOR_RISK_LETTER_SUMMARY {
             get {

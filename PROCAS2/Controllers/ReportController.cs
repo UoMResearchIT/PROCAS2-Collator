@@ -216,9 +216,30 @@ namespace PROCAS2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult AskForRiskLetters(NoParameterViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                Response.Clear();
 
-            return NoParameterReport(() => _reportService.AskForRiskLetters(), "AskForRiskLetters", "NoParameter", model);
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
 
+                Response.Buffer = true;
+
+                MemoryStream askFile = _reportService.AskForRiskLetters();
+
+                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/AskForRiskLetters"));
+                HttpContext.Response.AppendHeader("Refresh", headerValue);
+
+                return new TextResult(askFile, "AskForRiskLetters.txt");
+                
+            }
+
+            return View("AskForRiskLetters", model);
         }
 
         [HttpGet]
