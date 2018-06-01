@@ -220,12 +220,14 @@
     <Compile Include="Controllers\ScreeningController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\TxErrorsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="CustomActionResults\TextResult.cs" />
     <Compile Include="CustomActionResults\SpreadsheetResult.cs" />
     <Compile Include="CustomActionResults\WordResult.cs" />
     <Compile Include="CustomAttributes\RedirectIfNotAuthorisedAttribute.cs" />
+    <Compile Include="CustomAttributes\RedirectIfNotTestAttribute.cs" />
     <Compile Include="CustomHtmlHelpers\FileUploadHelper.cs" />
     <Compile Include="CustomHtmlHelpers\PreprocessorHelpers.cs" />
     <Compile Include="Global.asax.cs">
@@ -699,6 +701,8 @@
     <Content Include="Views\Report\Chemoprevention.cshtml" />
     <Content Include="Views\Report\SubsequentConsultation.cshtml" />
     <Content Include="Views\Screening\ViewScreenV1_5_4.cshtml" />
+    <Content Include="Views\Test\ReceiveConsent.cshtml" />
+    <Content Include="Views\Test\ReceiveLetter.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

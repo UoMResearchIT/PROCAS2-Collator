@@ -91,6 +91,20 @@
 
                         <li>@Html.ActionLink("Reports", "Index", "Report")</li>
 
+                        @if (Html.IsTestBuild())
+                        {
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Test
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>@Html.ActionLink("Receive Consent", "ReceiveConsent", "Test")</li>
+                                    <li>@Html.ActionLink("Receive Letter and Survey Response", "ReceiveLetter", "Test")</li>
+                                </ul>
+                            </li>
+                        }
+
                     </ul>
 
                 }
