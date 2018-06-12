@@ -703,6 +703,7 @@
     <Content Include="Views\Screening\ViewScreenV1_5_4.cshtml" />
     <Content Include="Views\Test\ReceiveConsent.cshtml" />
     <Content Include="Views\Test\ReceiveLetter.cshtml" />
+    <Content Include="Views\Test\ReceiveVolpara.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

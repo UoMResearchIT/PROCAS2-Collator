@@ -119,6 +119,7 @@
     <Compile Include="ServiceBusMessages\ScreeningXlsMessage.cs" />
     <Compile Include="TestModels\ReceiveConsentViewModel.cs" />
     <Compile Include="TestModels\ReceiveLetterViewModel.cs" />
+    <Compile Include="TestModels\ReceiveVolparaViewModel.cs" />
     <Compile Include="ViewModels\DashboardAppNewsViewModel.cs" />
     <Compile Include="ViewModels\DashboardTxErrorsViewModel.cs" />
     <Compile Include="ViewModels\DashboardVolparaViewModel.cs" />

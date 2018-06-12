@@ -154,13 +154,15 @@ namespace PROCAS2.Services.Utility
                     }
                 }
 
+#if !TESTBUILD
                 string fileName = _participantService.GetStudyNumber(patientId) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
+
                 if (_storageService.StoreVolparaMessage(message, fileName))
                 {
                     // Don't fail if can't store the message, just report it.
                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Info, String.Format(VolparaResources.CANNOT_STORE_VOLPARA, patientId), messageBody: message));
                 }
-
+#endif
             }
 
             return retMessages;

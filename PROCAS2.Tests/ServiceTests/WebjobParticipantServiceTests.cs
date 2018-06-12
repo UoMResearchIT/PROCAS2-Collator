@@ -126,7 +126,7 @@ namespace PROCAS2.Tests.ServiceTests
         {
             WebJobParticipantService service = CreateService();
 
-            bool ret = service.CreateRiskLetter("HashNHS1234", "20", "HIGH", "Yes", new List<string>());
+            bool ret = service.CreateRiskLetter("HashNHS1234", "20", "HIGH", "Yes", new List<string>(), new List<string>());
 
             Assert.AreEqual(true, ret);
             
@@ -137,7 +137,7 @@ namespace PROCAS2.Tests.ServiceTests
         {
             WebJobParticipantService service = CreateService();
 
-            bool ret = service.CreateRiskLetter("Invalid!", "20", "HIGH", "Yes", new List<string>());
+            bool ret = service.CreateRiskLetter("Invalid!", "20", "HIGH", "Yes", new List<string>(), new List<string>());
 
             Assert.AreEqual(false, ret);
         }

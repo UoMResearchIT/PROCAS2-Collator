@@ -1395,8 +1395,13 @@ namespace PROCAS2.Services.App
         /// <returns>The zero-padded study number</returns>
         public int CreateNextStudyNumber()
         {
-            int currentHighest = _participantRepo.GetAll().Max(x => x.StudyNumber);
+            int currentHighest = 0;
 
+            if (_participantRepo.GetAll().Count() > 0)
+            {
+                currentHighest = _participantRepo.GetAll().Max(x => x.StudyNumber);
+            }
+            
             // At time of initial development MaxStudyNumber is 99999. Unlikely to have more than 100000 participants!
             // The fewer the number of digits the better, as they need to use this number for searching in CRA Health
             if (currentHighest == Convert.ToInt32(_configService.GetAppSetting("MaxStudyNumber")))
