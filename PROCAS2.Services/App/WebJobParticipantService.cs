@@ -127,13 +127,23 @@ namespace PROCAS2.Services.App
                     StringBuilder builder = new StringBuilder();
                     for (int i = 0; i < letterParts.Count; i++)
                     {
-                        builder.AppendLine("<p>" + letterParts[i] + "</p><p>&nbsp;</p>");
+                        //builder.AppendLine("<p>" + letterParts[i] + "</p><p>&nbsp;</p>");
+
+                        if (letterParts[i].EndsWith("</p>"))
+                        {
+                            builder.AppendLine(letterParts[i] + "<p>&nbsp;</p>");
+                        }
+                        else {
+                            builder.AppendLine(letterParts[i]);
+                        }
+                        
                     }
 
                     StringBuilder builderGP = new StringBuilder();
                     for (int i = 0; i < letterGPParts.Count; i++)
                     {
-                        builderGP.AppendLine("<p>" + letterGPParts[i] + "</p><p>&nbsp;</p>");
+                        //builderGP.AppendLine("<p>" + letterGPParts[i] + "</p><p>&nbsp;</p>");
+                        builderGP.AppendLine(letterGPParts[i]);
                     }
 
                     letter.RiskLetterContent = builder.ToString();

@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>Export Results</title>
 
+    
+
 </head>
 <body>
     @for (int index = 0; index < Model.Letters.Count; index++)
@@ -85,20 +87,7 @@
             </table>
 
             <p style="text-align:justify">@Html.Raw(@Model.Letters[index].LetterText)</p>
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><p>&nbsp;</p></td>
-                </tr>
-                <tr>
-                    <td  colspan="2"><p>@ExportResources.SIGN_OFF</p><p>&nbsp;</p></td>
-                </tr>
-                <tr>
-                    <td><img src="@ExportResources.SIGNATURE" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><p>&nbsp;</p><p>@Model.Letters[index].FromName</p></td>
-                </tr>
-            </table>
+  
 
 
         if (index < Model.Letters.Count - 1)
