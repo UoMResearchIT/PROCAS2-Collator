@@ -2,10 +2,13 @@
   "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
   "WebJobs": [
     {
-      "filePath": "../PROCAS2.Webjob.GetCRAMessages/PROCAS2.Webjob.GetCRAMessages.csproj"
+      "filePath": "../PROCAS2.Webjob.GetCRAMessages/PROCAS2.Webjob.GetCRAConsent.csproj"
     },
     {
       "filePath": "../PROCAS2.Webjob.GetVolparaMessages/PROCAS2.Webjob.GetVolparaMessages.csproj"
+    },
+    {
+      "filePath": "../PROCAS2.Webjob.GetCRASurvey/PROCAS2.Webjob.GetCRASurvey.csproj"
     }
   ]
 }

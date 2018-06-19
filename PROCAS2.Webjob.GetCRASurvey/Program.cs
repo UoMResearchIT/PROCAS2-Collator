@@ -16,8 +16,7 @@ using PROCAS2.Services.Utility;
 using PROCAS2.Services.App;
 using PROCAS2.Data;
 
-
-namespace PROCAS2.Webjob.GetCRAConsent
+namespace PROCAS2.Webjob.GetCRASurvey
 {
     // To learn more about Microsoft Azure WebJobs SDK, please see https://go.microsoft.com/fwlink/?LinkID=320976
     class Program
@@ -53,7 +52,7 @@ namespace PROCAS2.Webjob.GetCRAConsent
             };
 
             config.UseServiceBus();
-            
+
 
             if (config.IsDevelopment)
             {

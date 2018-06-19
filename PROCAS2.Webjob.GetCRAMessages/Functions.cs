@@ -10,7 +10,7 @@ using Microsoft.ServiceBus;
 using Microsoft.ServiceBus.Messaging;
 using PROCAS2.Services.Utility;
 
-namespace PROCAS2.Webjob.GetCRAMessages
+namespace PROCAS2.Webjob.GetCRAConsent
 {
     public class Functions
     {
@@ -25,7 +25,7 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
         // This function will get triggered/executed when a new message is written 
         // on an Azure ServiceBus queue called cra-consent-incoming-test.
-        public  void ProcessConsentMessage([ServiceBusTrigger("cra-consent-incoming-test")] BrokeredMessage message, TraceWriter log)
+        public  void ProcessConsentMessage([ServiceBusTrigger("craconsentqueue")] BrokeredMessage message, TraceWriter log)
         {
 
             string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
@@ -51,12 +51,12 @@ namespace PROCAS2.Webjob.GetCRAMessages
 
         // This function will get triggered/executed when a new message is written 
         // on an Azure ServiceBus queue called cra-suvey-incoming-test.
-        public void ProcessSurveyMessage([ServiceBusTrigger("cra-survey-incoming-test")] BrokeredMessage message, TraceWriter log)
-        {
-            string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
+        //public void ProcessSurveyMessage([ServiceBusTrigger("cra-survey-incoming-test")] BrokeredMessage message, TraceWriter log)
+        //{
+        //    string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());
 
-            List<string> messages = _craService.ProcessQuestionnaire(messageStr);
-        }
+        //    List<string> messages = _craService.ProcessQuestionnaire(messageStr);
+        //}
 
 
     }
