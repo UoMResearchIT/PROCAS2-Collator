@@ -709,6 +709,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        public static string RELATIONSHIP_AGESTATUS {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_AGESTATUS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code.
         /// </summary>
         public static string RELATIONSHIP_CODE {

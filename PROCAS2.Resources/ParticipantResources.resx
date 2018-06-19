@@ -334,6 +334,9 @@
   <data name="RELATIONSHIP_AGEOFDIAGNOSIS" xml:space="preserve">
     <value>Age of Diagnosis</value>
   </data>
+  <data name="RELATIONSHIP_AGESTATUS" xml:space="preserve">
+    <value>Status</value>
+  </data>
   <data name="RELATIONSHIP_CODE" xml:space="preserve">
     <value>Code</value>
   </data>

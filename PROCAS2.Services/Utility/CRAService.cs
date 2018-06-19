@@ -373,10 +373,12 @@ namespace PROCAS2.Services.Utility
                                     historyItem.Age = Convert.ToInt32(age);
                                 }
 
-                                historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5-2");
+                                historyItem.AgeStatus = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5");
+
+                                historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6-2");
 
 
-                                string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6");
+                                string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-7");
 
                                 if (String.IsNullOrEmpty(ageOfDiagnosis))
                                 {
