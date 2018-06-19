@@ -105,10 +105,14 @@ namespace PROCAS2.Services.App
 
             string title = String.IsNullOrEmpty(letter.Participant.Title) == true ? ExportResources.DEFAULT_TITLE : letter.Participant.Title;
 
+            string riskLetterContent = letter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone);
+            string gpLetterContent = letter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone);
+
+
             Address homeAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
             retModel.Letters.Add(new Letter()
             {
-                LetterText = letter.RiskLetterContent,
+                LetterText = riskLetterContent,
 
                 FromAddressLine1 = letter.Participant.ScreeningSite.AddressLine1,
                 FromAddressLine2 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine2,
@@ -145,7 +149,7 @@ namespace PROCAS2.Services.App
                 Address gpAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "GP").FirstOrDefault();
                 retModel.Letters.Add(new Letter()
                 {
-                    LetterText = letter.GPLetterContent,
+                    LetterText = gpLetterContent,
 
                     FromAddressLine1 = letter.Participant.ScreeningSite.AddressLine1,
                     FromAddressLine2 = String.IsNullOrEmpty(letter.Participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : letter.Participant.ScreeningSite.AddressLine2,
@@ -209,9 +213,13 @@ namespace PROCAS2.Services.App
                 RiskLetter riskLetter = participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault();
                 string title = String.IsNullOrEmpty(participant.Title) == true ? ExportResources.DEFAULT_TITLE : participant.Title;
 
+                string riskLetterContent = riskLetter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
+                string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
+
+
                 retModel.Letters.Add(new Letter()
                 {
-                    LetterText = riskLetter.RiskLetterContent,
+                    LetterText = riskLetterContent,
                     FromAddressLine1 = participant.ScreeningSite.AddressLine1,
                     FromAddressLine2 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine2,
                     FromAddressLine3 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine3,
@@ -248,7 +256,7 @@ namespace PROCAS2.Services.App
                     Address gpAddress = participant.Addresses.Where(x => x.AddressType.Name == "GP").FirstOrDefault();
                     retModel.Letters.Add(new Letter()
                     {
-                        LetterText = riskLetter.GPLetterContent,
+                        LetterText = gpLetterContent,
                         FromAddressLine1 = participant.ScreeningSite.AddressLine1,
                         FromAddressLine2 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine2) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine2,
                         FromAddressLine3 = String.IsNullOrEmpty(participant.ScreeningSite.AddressLine3) == true ? ExportResources.BLANK_LINE : participant.ScreeningSite.AddressLine3,

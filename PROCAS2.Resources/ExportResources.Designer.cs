@@ -295,6 +295,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [INSERT HOSPITAL].
+        /// </summary>
+        public static string REPLACE_HOSPITALNAME {
+            get {
+                return ResourceManager.GetString("REPLACE_HOSPITALNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [INSERT LOCAL SCREENING OFFICE NUMBER].
+        /// </summary>
+        public static string REPLACE_HOSPITALNUMBER {
+            get {
+                return ResourceManager.GetString("REPLACE_HOSPITALNUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dear.
         /// </summary>
         public static string SALUTATION {
