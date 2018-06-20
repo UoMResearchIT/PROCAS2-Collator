@@ -29,14 +29,14 @@ namespace PROCAS2.Services.Utility
         {
             try
             {
-                string keyName = _configService.GetAppSetting("CRA-ServiceBusKeyName");
-                string keyValue = _configService.GetAppSetting("CRA-ServiceBusKeyValue");
+                string keyName = _configService.GetAppSetting(keyNameAppSetting);
+                string keyValue = _configService.GetAppSetting(keyValueAppSetting);
 
                 TokenProvider credentials = TokenProvider.CreateSharedAccessSignatureTokenProvider(keyName, keyValue);
 
                 // Create a URI for the serivce bus.
                 Uri serviceBusUri = ServiceBusEnvironment.CreateServiceUri
-                    ("sb", _configService.GetAppSetting("CRA-ServiceBusBase"), string.Empty);
+                    ("sb", _configService.GetAppSetting(baseURLAppSetting), string.Empty);
 
                 // Create a message factory for the service bus URI using the
                 // credentials

@@ -178,7 +178,13 @@ namespace PROCAS2.Services.App
 #if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
 
                         string message = "{ 'patientId' : '" + hash + "'}";
-                        _serviceBusService.PostServiceBusMessage("CRA-ServiceBusKeyName", "CRA-ServiceBusKeyValue", "CRA-ServiceBusBase", message, "VolparaInvitationQueue", false);
+                        if(_serviceBusService.PostServiceBusMessage("VolparaInvite-ServiceBusKeyName", "VolparaInvite-ServiceBusKeyValue", "VolparaInvite-ServiceBusBase", message, "VolparaInvitationQueue", false) == false)
+                        {
+                            // Then the hash
+                            csv.WriteField("Error: Invite not sent to Volpara");
+
+                            csv.NextRecord();
+                        }
 #endif
                     }
                 }
