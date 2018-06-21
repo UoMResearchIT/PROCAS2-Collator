@@ -186,7 +186,7 @@ namespace PROCAS2.Services.Utility
 
 
             // Get and validate the patient ID.
-            string patientID = terse.Get("/.^PATIENT$/PID-3");
+            string patientID = terse.Get("/.^PATIENT$/PID-4");
             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, "Got patient ID "));
             if (String.IsNullOrEmpty(patientID) || _participantService.DoesHashedNHSNumberExist(patientID) == false)
             {

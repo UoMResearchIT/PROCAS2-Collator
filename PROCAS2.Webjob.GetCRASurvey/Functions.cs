@@ -25,6 +25,7 @@ namespace PROCAS2.Webjob.GetCRASurvey
 
         // This function will get triggered/executed when a new message is written 
         // on an Azure ServiceBus queue called cra-suvey-incoming-test.
+        [Singleton]
         public void ProcessSurveyMessage([ServiceBusTrigger("craresultqueue")] BrokeredMessage message, TraceWriter log)
         {
             string messageStr = System.Text.Encoding.UTF8.GetString(message.GetBody<byte[]>());

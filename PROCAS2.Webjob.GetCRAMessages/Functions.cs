@@ -25,6 +25,7 @@ namespace PROCAS2.Webjob.GetCRAConsent
 
         // This function will get triggered/executed when a new message is written 
         // on an Azure ServiceBus queue called cra-consent-incoming-test.
+        [Singleton]
         public  void ProcessConsentMessage([ServiceBusTrigger("craconsentqueue")] BrokeredMessage message, TraceWriter log)
         {
 
