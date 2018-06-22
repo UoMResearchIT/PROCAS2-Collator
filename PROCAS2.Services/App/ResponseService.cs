@@ -140,7 +140,10 @@ namespace PROCAS2.Services.App
                 "PaternalPaternal", "surveyEnd",
                 "Smoking", "UterineCancer",
                 "OvarianCancer", "PancreaticCancer",
-                "Niece"
+                "Niece", "CancerChoiceScreen",
+                "Consent", "HowMany",
+                "PatientName", "surveyStart",
+                "WeightAt20PreferredUnits", "riskFactorsConfirmed"
             };
 
             // Ignore the line if there is no question code (happened in testing!)
