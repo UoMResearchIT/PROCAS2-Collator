@@ -15,5 +15,7 @@ namespace PROCAS2.Services.Utility
         DateTime? GetDateTimeAppSetting(string key);
 
         string GetConnectionString(string key);
+
+        bool IsPhase1a();
     }
 }

@@ -132,6 +132,9 @@
   <data name="BREAST_SIDE" xml:space="preserve">
     <value>Image Position</value>
   </data>
+  <data name="CANNOT_DELETE" xml:space="preserve">
+    <value>An error occurred when trying to delete this participant</value>
+  </data>
   <data name="CHEMO" xml:space="preserve">
     <value>Eligible for chemoprevention referral?</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="DELETED" xml:space="preserve">
     <value>Deleted</value>
+  </data>
+  <data name="DELETE_PARTICIPANT" xml:space="preserve">
+    <value>Delete Participant</value>
   </data>
   <data name="DETAILS" xml:space="preserve">
     <value>Participant Details</value>

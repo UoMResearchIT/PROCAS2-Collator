@@ -11,6 +11,7 @@ using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
 using PROCAS2.Services.App;
 using PROCAS2.CustomActionResults;
+using PROCAS2.Resources;
 
 namespace PROCAS2.Controllers
 {
@@ -324,6 +325,30 @@ namespace PROCAS2.Controllers
             }
 
             return Json(new { deleted = del });
+        }
+
+        [HttpGet]
+        public ActionResult DeleteParticipant()
+        {
+            DeleteParticipantViewModel model = new DeleteParticipantViewModel();
+
+            return View("Delete", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteParticipant(DeleteParticipantViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (_participantService.DeleteParticipant(model.NHSNumber) == false)
+                {
+                    ModelState.AddModelError("NHSNumber", ParticipantResources.CANNOT_DELETE );
+                    return View("Delete", model);
+                }
+            }
+
+            return RedirectToAction("Index");
         }
 
         public string PrependSchemeAndAuthority(string url)

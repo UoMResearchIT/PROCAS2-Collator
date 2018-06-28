@@ -215,6 +215,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ParticipantController.cs" />
+    <Compile Include="Controllers\Phase1Controller.cs" />
     <Compile Include="Controllers\QuestionnaireController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\ScreeningController.cs" />
@@ -453,6 +454,7 @@
     <Content Include="js\histologyEdit.js" />
     <Content Include="js\histologyFocusEdit.js" />
     <Content Include="js\histologyList.js" />
+    <Content Include="js\participantDelete.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="js\uploadScreeningOutcomes.js" />
     <Content Include="Properties\webjobs-list.json" />
@@ -704,6 +706,9 @@
     <Content Include="Views\Test\ReceiveConsent.cshtml" />
     <Content Include="Views\Test\ReceiveLetter.cshtml" />
     <Content Include="Views\Test\ReceiveVolpara.cshtml" />
+    <Content Include="Views\Participant\Delete.cshtml" />
+    <Content Include="Views\Phase1\ReceiveConsent.cshtml" />
+    <Content Include="Views\Phase1\SendVolpara.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

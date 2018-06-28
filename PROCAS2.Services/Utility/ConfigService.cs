@@ -5,11 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 using System.Configuration;
+using PROCAS2.Data;
+using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Services.Utility
 {
     public class ConfigService:IConfigService
     {
+
+        private IGenericRepository<AppNewsItem> _appNewsRepo;
+
+        public ConfigService(IGenericRepository<AppNewsItem> appNewsRepo )
+        {
+            _appNewsRepo = appNewsRepo;
+        }
+
         /// <summary>
         /// Return app setting from the web.config. 
         /// </summary>
@@ -82,6 +92,22 @@ namespace PROCAS2.Services.Utility
             return retVal;
         }
 
+        /// <summary>
+        /// Check for the Phase a1 message.
+        /// </summary>
+        /// <returns>If the phase 1a message is there return true, else false</returns>
+        public bool IsPhase1a()
+        {
+            AppNewsItem item = _appNewsRepo.GetAll().Where(x => x.Message.Contains("*PILOT PHASE 1*")).FirstOrDefault();
+            if (item != null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
     }
 }

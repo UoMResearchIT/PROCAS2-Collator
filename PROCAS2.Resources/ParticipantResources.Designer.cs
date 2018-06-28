@@ -106,6 +106,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An error occurred when trying to delete this participant.
+        /// </summary>
+        public static string CANNOT_DELETE {
+            get {
+                return ResourceManager.GetString("CANNOT_DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eligible for chemoprevention referral?.
         /// </summary>
         public static string CHEMO {
@@ -192,6 +201,15 @@ namespace PROCAS2.Resources {
         public static string DELETE {
             get {
                 return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete Participant.
+        /// </summary>
+        public static string DELETE_PARTICIPANT {
+            get {
+                return ResourceManager.GetString("DELETE_PARTICIPANT", resourceCulture);
             }
         }
         
