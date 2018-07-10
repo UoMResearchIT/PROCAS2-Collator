@@ -114,6 +114,26 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Create a audit trail event if the value is changed. For double properties
+        /// </summary>
+        /// <param name="propertyName">Property name</param>
+        /// <param name="participant">Participant object</param>
+        /// <param name="oldValue">Old value</param>
+        /// <param name="newValue">New value</param>
+        /// <returns></returns>
+        public double? ChangeEventDouble(Participant participant, string propertyName, double? oldValue, double? newValue, string reason)
+        {
+            if (oldValue != newValue)
+            {
+                AddEvent(participant, _userManager.GetCurrentUser(), DateTime.Now, EventResources.EVENT_PROPERTY_UPDATED, String.Format(EventResources.EVENT_PROPERTY_UPDATED_STR, propertyName, oldValue.HasValue ? oldValue.ToString() : "NULL", newValue.HasValue ? newValue.ToString() : "NULL"), reason);
+
+
+            }
+
+            return newValue;
+        }
+
+        /// <summary>
         /// Add an event to the passed participant, with the passed information
         /// </summary>
         /// <param name="participant">Participant object</param>

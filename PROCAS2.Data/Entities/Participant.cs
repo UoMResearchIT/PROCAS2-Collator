@@ -39,7 +39,7 @@ namespace PROCAS2.Data.Entities
 
         public DateTime? DateActualAppointment { get; set; }
 
-        public int? BMI { get; set; }
+        public double? BMI { get; set; }
 
 
         [MaxLength(200)]

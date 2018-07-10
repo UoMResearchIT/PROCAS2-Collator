@@ -250,8 +250,8 @@ namespace PROCAS2.Services.App
                 Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
-                    int bmi = 0;
-                    if (Int32.TryParse(answerText, out bmi) == false)
+                    double bmi = 0;
+                    if (Double.TryParse(answerText, out bmi) == false)
                     {
                         participant.BMI = null;
                     }

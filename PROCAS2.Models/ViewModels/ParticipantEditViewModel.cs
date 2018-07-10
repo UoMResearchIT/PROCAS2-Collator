@@ -235,7 +235,7 @@ namespace PROCAS2.Models.ViewModels
         public DateTime? DOAA { get; set; }
 
         [Display(Name = "BMI", ResourceType = typeof(ParticipantResources))]
-        [Range(0, 40)]
+        [Range(0.00, 40.00)]
         public string BMI { get; set; }
 
         [Display(Name = "CHEMO", ResourceType = typeof(ParticipantResources))]

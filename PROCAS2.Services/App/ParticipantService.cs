@@ -1067,11 +1067,11 @@ namespace PROCAS2.Services.App
                 {
                     if (!String.IsNullOrEmpty(model.BMI))
                     {
-                        participant.BMI = _auditService.ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, Convert.ToInt32(model.BMI), model.Reason);
+                        participant.BMI = _auditService.ChangeEventDouble(participant, ParticipantResources.BMI, participant.BMI, Convert.ToDouble(model.BMI), model.Reason);
                     }
                     else
                     {
-                        participant.BMI = _auditService.ChangeEventInt(participant, ParticipantResources.BMI, participant.BMI, null, model.Reason);
+                        participant.BMI = _auditService.ChangeEventDouble(participant, ParticipantResources.BMI, participant.BMI, null, model.Reason);
 
                     }
                     participant.Chemoprevention = _auditService.ChangeEventBool(participant, ParticipantResources.CHEMO , participant.Chemoprevention, model.Chemo, model.Reason);
@@ -1257,7 +1257,7 @@ namespace PROCAS2.Services.App
                 {
                     // blank everything!
                     participant.AttendedScreening = false;
-                    participant.BMI = 0;
+                    participant.BMI = 0.00;
                     participant.Chemoprevention = false;
                     participant.ChemoPreventionDetails = null;
                     participant.InitialScreeningOutcome = null;

@@ -14,7 +14,7 @@ namespace PROCAS2.Services.App
         string ChangeEventString(Participant participant, string propertyName, string oldValue, string newValue, string reason);
         DateTime? ChangeEventDate(Participant participant, string propertyName, DateTime? oldValue, DateTime? newValue, string reason);
         int? ChangeEventInt(Participant participant, string propertyName, int? oldValue, int? newValue, string reason);
-
+        double? ChangeEventDouble(Participant participant, string propertyName, double? oldValue, double? newValue, string reason);
         bool AddEvent(Participant participant, AppUser user, DateTime eventDate, string eventCode, string eventNotes, string reason = null);
     }
 }
