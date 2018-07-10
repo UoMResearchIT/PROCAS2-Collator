@@ -105,9 +105,9 @@ namespace PROCAS2.Services.App
 
             string title = String.IsNullOrEmpty(letter.Participant.Title) == true ? ExportResources.DEFAULT_TITLE : letter.Participant.Title;
 
-            string riskLetterContent = letter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone);
-            string gpLetterContent = letter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone);
-
+            string riskLetterContent = letter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.FamilyHealthClinic).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone);
+            string gpLetterContent = letter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, letter.Participant.ScreeningSite.FamilyHealthClinic).Replace(ExportResources.REPLACE_HOSPITALNUMBER, letter.Participant.ScreeningSite.Telephone).Replace(ExportResources.REPLACE_PATIENTNAME, letter.Participant.Title + " " + letter.Participant.FirstName + " " + letter.Participant.LastName).Replace(ExportResources.REPLACE_NHS_NUMBER, letter.Participant.NHSNumber).Replace(ExportResources.REPLACE_CONSENT_DATE, letter.Participant.DateConsented.HasValue?letter.Participant.DateConsented.Value.ToString("dd/MM/yyyy"):"");
+           
 
             Address homeAddress = letter.Participant.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault();
             retModel.Letters.Add(new Letter()
@@ -214,7 +214,8 @@ namespace PROCAS2.Services.App
                 string title = String.IsNullOrEmpty(participant.Title) == true ? ExportResources.DEFAULT_TITLE : participant.Title;
 
                 string riskLetterContent = riskLetter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
-                string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
+                //string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
+                string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.FamilyHealthClinic).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone).Replace(ExportResources.REPLACE_PATIENTNAME, participant.Title + " " + participant.FirstName + " " + participant.LastName).Replace(ExportResources.REPLACE_NHS_NUMBER, participant.NHSNumber).Replace(ExportResources.REPLACE_CONSENT_DATE, participant.DateConsented.HasValue ? participant.DateConsented.Value.ToString("dd/MM/yyyy") : "");
 
 
                 retModel.Letters.Add(new Letter()

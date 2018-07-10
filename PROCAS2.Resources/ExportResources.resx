@@ -195,11 +195,20 @@
   <data name="REF" xml:space="preserve">
     <value>Ref:</value>
   </data>
+  <data name="REPLACE_CONSENT_DATE" xml:space="preserve">
+    <value>[INSERT CONSENT DATE]</value>
+  </data>
   <data name="REPLACE_HOSPITALNAME" xml:space="preserve">
     <value>[INSERT HOSPITAL]</value>
   </data>
   <data name="REPLACE_HOSPITALNUMBER" xml:space="preserve">
     <value>[INSERT LOCAL SCREENING OFFICE NUMBER]</value>
+  </data>
+  <data name="REPLACE_NHS_NUMBER" xml:space="preserve">
+    <value>[INSERT NHS NUMBER]</value>
+  </data>
+  <data name="REPLACE_PATIENTNAME" xml:space="preserve">
+    <value>[INSERT PATIENT NAME]</value>
   </data>
   <data name="SALUTATION" xml:space="preserve">
     <value>Dear</value>

@@ -85,6 +85,7 @@ namespace PROCAS2.Services.App
                 model.LogoHeaderRightHeight = String.IsNullOrEmpty(site.LogoHeaderRightHeight) ? 0 : Convert.ToDouble(site.LogoHeaderRightHeight);
                 model.LogoHeaderRightWidth = String.IsNullOrEmpty(site.LogoHeaderRightWidth) ? 0 : Convert.ToDouble(site.LogoHeaderRightWidth);
 
+                model.FamilyHistoryClinic = site.FamilyHealthClinic;
 
                 return model;
             }
@@ -131,6 +132,7 @@ namespace PROCAS2.Services.App
             site.LogoFooterRightWidth = model.LogoFooterRightWidth.ToString();
             site.LogoHeaderRightHeight = model.LogoHeaderRightHeight.ToString();
             site.LogoHeaderRightWidth = model.LogoHeaderRightWidth.ToString();
+            site.FamilyHealthClinic = model.FamilyHistoryClinic;
 
             if (create == true)
             {

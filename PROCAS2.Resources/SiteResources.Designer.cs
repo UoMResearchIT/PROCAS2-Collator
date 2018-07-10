@@ -97,6 +97,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Family History Clinic.
+        /// </summary>
+        public static string SITE_FAMILY_HISTORY_CLINIC {
+            get {
+                return ResourceManager.GetString("SITE_FAMILY_HISTORY_CLINIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Footer Left Image Resource Name.
         /// </summary>
         public static string SITE_IMAGEFOOTERLEFT {

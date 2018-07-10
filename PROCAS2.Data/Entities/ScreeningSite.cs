@@ -72,5 +72,8 @@ namespace PROCAS2.Data.Entities
         [MaxLength(20)]
         public string TrustCode { get; set; }
 
+        [MaxLength(200)]
+        public string FamilyHealthClinic { get; set; }
+
     }
 }

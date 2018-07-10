@@ -100,5 +100,10 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "SITE_IMAGEFOOTERLEFT_WIDTH", ResourceType = typeof(SiteResources))]
         public double LogoFooterLeftWidth { get; set; }
 
+        [Required]
+        [MaxLength(200)]
+        [Display(Name = "SITE_FAMILY_HISTORY_CLINIC", ResourceType = typeof(SiteResources))]
+        public string FamilyHistoryClinic { get; set; }
+
     }
 }

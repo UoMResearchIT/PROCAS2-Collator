@@ -295,6 +295,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to [INSERT CONSENT DATE].
+        /// </summary>
+        public static string REPLACE_CONSENT_DATE {
+            get {
+                return ResourceManager.GetString("REPLACE_CONSENT_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to [INSERT HOSPITAL].
         /// </summary>
         public static string REPLACE_HOSPITALNAME {
@@ -309,6 +318,24 @@ namespace PROCAS2.Resources {
         public static string REPLACE_HOSPITALNUMBER {
             get {
                 return ResourceManager.GetString("REPLACE_HOSPITALNUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [INSERT NHS NUMBER].
+        /// </summary>
+        public static string REPLACE_NHS_NUMBER {
+            get {
+                return ResourceManager.GetString("REPLACE_NHS_NUMBER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [INSERT PATIENT NAME].
+        /// </summary>
+        public static string REPLACE_PATIENTNAME {
+            get {
+                return ResourceManager.GetString("REPLACE_PATIENTNAME", resourceCulture);
             }
         }
         

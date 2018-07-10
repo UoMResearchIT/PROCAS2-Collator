@@ -129,6 +129,9 @@
   <data name="SITE_CODE" xml:space="preserve">
     <value>Code</value>
   </data>
+  <data name="SITE_FAMILY_HISTORY_CLINIC" xml:space="preserve">
+    <value>Family History Clinic</value>
+  </data>
   <data name="SITE_IMAGEFOOTERLEFT" xml:space="preserve">
     <value>Footer Left Image Resource Name</value>
   </data>
