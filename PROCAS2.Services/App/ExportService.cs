@@ -199,11 +199,11 @@ namespace PROCAS2.Services.App
             // Check if they want all those that are ready for export or just one NHS number
             if (model.AllReady == true)
             {
-                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetters.Count > 0 && x.ScreeningSite.TrustCode == model.SiteToProcess).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.FirstName != null && x.SentRisk == false && x.RiskLetters.Count > 0 && x.ScreeningSite.TrustCode == model.SiteToProcess && x.Withdrawn == false).ToList();
             }
             else
             {
-                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null && x.RiskLetters.Count > 0).ToList();
+                participants = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber && x.Consented == true && x.FirstName != null && x.RiskLetters.Count > 0 && x.Withdrawn == false).ToList();
             }
 
 
