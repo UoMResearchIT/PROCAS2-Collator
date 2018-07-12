@@ -367,31 +367,15 @@ namespace PROCAS2.Services.Utility
                                 historyItem.Gender = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-3");
 
                                 string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-4");
-
-                                if (String.IsNullOrEmpty(age))
-                                {
-                                    historyItem.Age = null;
-                                }
-                                else
-                                {
-                                    historyItem.Age = Convert.ToInt32(age);
-                                }
-
+                           
+                                historyItem.Age = age;                    
                                 historyItem.AgeStatus = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5");
-
                                 historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6-2");
 
 
                                 string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-7");
 
-                                if (String.IsNullOrEmpty(ageOfDiagnosis))
-                                {
-                                    historyItem.AgeOfDiagnosis = null;
-                                }
-                                else
-                                {
-                                    historyItem.AgeOfDiagnosis = Convert.ToInt32(ageOfDiagnosis);
-                                }
+                                historyItem.AgeOfDiagnosis = ageOfDiagnosis;
 
                                 // Create the record in the DB
                                 if (_responseService.CreateFamilyHistoryItem(response, historyItem) == false)
@@ -435,18 +419,8 @@ namespace PROCAS2.Services.Utility
 
                                 string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-4");
 
-                                if (String.IsNullOrEmpty(age))
-                                {
-                                    geneticItem.Age = null;
-                                }
-                                else
-                                {
-                                    geneticItem.Age = Convert.ToInt32(age);
-                                }
-
+                                geneticItem.Age = age;
                                 geneticItem.GeneticTest = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-5-2");
-
-
                                 geneticItem.TestSignificance = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxGenetic + ")-6");
 
                                 // Create the record in the DB

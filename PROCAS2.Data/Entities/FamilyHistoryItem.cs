@@ -26,12 +26,14 @@ namespace PROCAS2.Data.Entities
         [MaxLength(1)]
         public string Gender { get; set; }
 
-        public int? Age { get; set; }
+        [MaxLength(20)]
+        public string Age { get; set; }
 
         [MaxLength(100)]
         public string Disease { get; set; }
 
-        public int? AgeOfDiagnosis { get; set; }
+        [MaxLength(20)]
+        public string AgeOfDiagnosis { get; set; }
 
         [MaxLength(5)]
         public string AgeStatus { get; set; }

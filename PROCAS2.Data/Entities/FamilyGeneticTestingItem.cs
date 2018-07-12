@@ -29,7 +29,8 @@ namespace PROCAS2.Data.Entities
         [MaxLength(1)]
         public string Gender { get; set; }
 
-        public int? Age { get; set; }
+        [MaxLength(20)]
+        public string Age { get; set; }
 
         [MaxLength(10)]
         public string GeneticTest { get; set; }
