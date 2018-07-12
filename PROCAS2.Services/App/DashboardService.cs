@@ -26,7 +26,7 @@ namespace PROCAS2.Services.App
         /// <returns>Count of total number of participants</returns>
         public int GetTotalParticipantCount()
         {
-            return _participantRepo.GetAll().Count();
+            return _participantRepo.GetAll().Count(x => x.Deleted == false);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace PROCAS2.Services.App
         /// <returns>Count of total number of consented participants</returns>
         public int GetConsentedCount()
         {
-            return _participantRepo.GetAll().Count(x => x.Consented == true);
+            return _participantRepo.GetAll().Count(x => x.Consented == true && x.Deleted == false);
         }
 
 
@@ -45,7 +45,7 @@ namespace PROCAS2.Services.App
         /// <returns></returns>
         public int GetConsentedNoDetails()
         {
-            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName == null);
+            return _participantRepo.GetAll().Count(x => x.Consented == true && x.LastName == null && x.Deleted == false);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace PROCAS2.Services.App
         /// <returns>The count</returns>
         public int GetRiskLetterNotAskedFor()
         {
-            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count > 0);
+            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count > 0 && x.Deleted == false);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace PROCAS2.Services.App
         /// <returns>The count</returns>
         public int GetWaitingForVolpara()
         {
-            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0);
+            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0 && x.Deleted == false);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace PROCAS2.Services.App
         /// <returns>The count</returns>
         public int GetLetterNotSent()
         {
-            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null &&  x.SentRisk == false && x.RiskLetters.Count > 0);
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null &&  x.SentRisk == false && x.RiskLetters.Count > 0 && x.Deleted == false);
         }
 
 
@@ -83,7 +83,7 @@ namespace PROCAS2.Services.App
         public int GetWaitingForLetter()
         {
             //List<Participant> parts = _participantRepo.GetAll().Include(a => a.RiskLetters).Where(x => x.Consented == true && x.LastName != null && x.SentRisk == false && x.RiskLetters.Count == 0).ToList();
-            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == true && x.SentRisk == false && x.RiskLetters.Count == 0);
+            return _participantRepo.GetAll().Include(a => a.RiskLetters).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == true && x.SentRisk == false && x.RiskLetters.Count == 0 && x.Deleted == false);
         }
     }
 }
