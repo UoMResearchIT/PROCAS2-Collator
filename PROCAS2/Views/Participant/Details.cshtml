@@ -658,9 +658,13 @@
                                     </td>
 
                                     <td>
-                                        @image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault().DataDate
+                                        @if (image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault() != null)
+                                        {
+                                            <span>@image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault().DataDate</span>
+                                        }
                                     </td>
-                                    
+
+
 
                                 </tr>
                             }

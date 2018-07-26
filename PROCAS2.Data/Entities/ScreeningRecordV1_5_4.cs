@@ -86,7 +86,7 @@ namespace PROCAS2.Data.Entities
         public string PatientDOB { get; set; }
         [MaxLength(3)]
         public string PatientAge { get; set; }
-        [MaxLength(10)]
+        [MaxLength(50)]
         public string PatientID { get; set; }
         [MaxLength(50)]
         public string DetectorID { get; set; }

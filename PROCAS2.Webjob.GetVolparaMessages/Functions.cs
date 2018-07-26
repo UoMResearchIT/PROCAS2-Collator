@@ -16,7 +16,7 @@ namespace PROCAS2.Webjob.GetVolparaMessages
 {
     public class Functions
     {
-        
+
         private IVolparaService _volparaService;
 
         public Functions(IVolparaService volparaService)
@@ -31,32 +31,46 @@ namespace PROCAS2.Webjob.GetVolparaMessages
         public void ProcessScreeningMessage([ServiceBusTrigger("procasstudyresultfornhsqueue")] BrokeredMessage message, TextWriter log)
         {
 
-            string messageStr = "" ;
+            string messageStr = "";
 
-            var myInputBytes = message.GetBody<byte[]>();
             switch (message.ContentType)
             {
                 case "application/gzip":
-                    messageStr = GzipCompressor.Decompress(myInputBytes);
+                    using (var myStream = message.GetBody<Stream>())
+                    {
+                        using (var myMemoryStream = new MemoryStream())
+                        {
+                            myStream.CopyTo(myMemoryStream);
+                            messageStr = GzipCompressor.Decompress(myMemoryStream.ToArray());
+                        }
+                    }
                     break;
                 case "application/json":
                     // Use json deserialization
-                    messageStr = Encoding.UTF8.GetString(myInputBytes);
+                    using (var myStream = message.GetBody<Stream>())
+                    {
+                        var myReader = new StreamReader(myStream, Encoding.UTF8);
+                        messageStr = myReader.ReadToEnd();
+                    }
                     break;
                 default:
                     // Use json deserialization
-                    messageStr = Encoding.UTF8.GetString(myInputBytes);
+                    using (var myStream = message.GetBody<Stream>())
+                    {
+                        var myReader = new StreamReader(myStream, Encoding.UTF8);
+                        messageStr = myReader.ReadToEnd();
+                    }
                     break;
-                   
+
             }
 
-            List<string> messages =  _volparaService.ProcessScreeningMessage(messageStr);
+            List<string> messages = _volparaService.ProcessScreeningMessage(messageStr);
 
-                foreach (string mess in messages)
-                {
-                    log.WriteLine(mess);
-                }
-           
+            foreach (string mess in messages)
+            {
+                log.WriteLine(mess);
+            }
+
         }
     }
 }

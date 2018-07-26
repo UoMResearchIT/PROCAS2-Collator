@@ -1851,23 +1851,23 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
 
         string volparaMessage = @"{
   'FileDescriptor': 'VolparaEnterprise Study Result (4 images)',
-  'StudyResultCreationTimeUtc': '2018-04-26T05:22:18.1834989Z',
+  'StudyResultCreationTimeUtc': '2018-07-24T12:03:38.0262686Z',
   'JsonVersion': 1,
   'ScorecardResults': {
     'LeftBreastFindings': {
-      'FibroglandularTissueVolume': 49.4,
-      'BreastVolume': 380.0,
-      'VolumetricBreastDensity': 13.0,
+      'FibroglandularTissueVolume': 54.6,
+      'BreastVolume': 709.1,
+      'VolumetricBreastDensity': 7.7,
       'JsonVersion': 1
     },
     'RightBreastFindings': {
-      'FibroglandularTissueVolume': 48.8,
-      'BreastVolume': 325.3,
-      'VolumetricBreastDensity': 15.0,
+      'FibroglandularTissueVolume': 56.1,
+      'BreastVolume': 667.9,
+      'VolumetricBreastDensity': 8.4,
       'JsonVersion': 1
     },
-    'VolparaDensityPercentageUsingMaximumBreast': 14.0,
-    'VolparaDensityPercentageUsingBreastAverage': 14.0,
+    'VolparaDensityPercentageUsingMaximumBreast': 8.4,
+    'VolparaDensityPercentageUsingBreastAverage': 8.1,
     'VolparaDensityGrade4ThEdition': 3,
     'VolparaDensityGrade5ThEdition': 'c',
     'VolparaDensityGrade5ThEditionUsingBreastAverage': 'c',
@@ -1878,30 +1878,30 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       3
     ],
     'DensityOutliers': [],
-    'AverageBreastVolume': 352.7,
-    'AverageAppliedPressure': 12.9,
-    'AverageAppliedForce': 80.0,
-    'AverageManufacturerDosePerImage': 2.9,
-    'AverageVolparaDosePerImage': 3.2,
-    'LeftBreastTotalDose': 6.6,
-    'RightBreastTotalDose': 6.3,
+    'AverageBreastVolume': 688.5,
+    'AverageAppliedPressure': 12.4,
+    'AverageAppliedForce': 87.5,
+    'AverageManufacturerDosePerImage': 2.4,
+    'AverageVolparaDosePerImage': -1.0,
+    'LeftBreastTotalDose': null,
+    'RightBreastTotalDose': null,
     'JsonVersion': 1
   },
   'VolparaServerScorecardResults': {
     'LeftBreastFindings': {
-      'FibroglandularTissueVolume': 49.4,
-      'BreastVolume': 380.0,
-      'VolumetricBreastDensity': 13.0,
+      'FibroglandularTissueVolume': 54.6,
+      'BreastVolume': 709.1,
+      'VolumetricBreastDensity': 7.7,
       'JsonVersion': 1
     },
     'RightBreastFindings': {
-      'FibroglandularTissueVolume': 48.8,
-      'BreastVolume': 325.3,
-      'VolumetricBreastDensity': 15.0,
+      'FibroglandularTissueVolume': 56.1,
+      'BreastVolume': 667.9,
+      'VolumetricBreastDensity': 8.4,
       'JsonVersion': 1
     },
-    'VolparaDensityPercentageUsingMaximumBreast': 14.0,
-    'VolparaDensityPercentageUsingBreastAverage': 14.0,
+    'VolparaDensityPercentageUsingMaximumBreast': 8.4,
+    'VolparaDensityPercentageUsingBreastAverage': 8.1,
     'VolparaDensityGrade4ThEdition': 3,
     'VolparaDensityGrade5ThEdition': 'c',
     'VolparaDensityGrade5ThEditionUsingBreastAverage': 'c',
@@ -1912,11 +1912,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       3
     ],
     'DensityOutliers': [],
-    'AverageBreastVolume': 352.7,
-    'AverageAppliedPressure': 12.9,
-    'AverageAppliedForce': 80.0,
-    'AverageManufacturerDosePerImage': 2.9,
-    'AverageVolparaDosePerImage': 3.2,
+    'AverageBreastVolume': 688.5,
+    'AverageAppliedPressure': 12.4,
+    'AverageAppliedForce': 87.5,
+    'AverageManufacturerDosePerImage': 2.4,
+    'AverageVolparaDosePerImage': -1.0,
     'LeftBreastTotalDose': null,
     'RightBreastTotalDose': null,
     'JsonVersion': 1
@@ -1935,11 +1935,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
     {
       'JsonVersion': 1,
       'SourceImage': {
-        'DicomImageFilePath': '0001_GE_R_rc_20090122.dcm',
-        'TransferSyntaxName': 'Explicit VR Little Endian',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.1',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401604424181',
+        'DicomImageFilePath': '72C4735E203EC5941D5B9A5A768233_9AAF431C9B6CD78AE874760164C71B.dcm',
+        'TransferSyntaxName': 'RLE Lossless',
+        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468',
+        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.2627576446.2183449859398506770',
         'PixelSizeX': 0.094090909,
         'PixelSizeY': 0.094090909,
         'PixelRows': 2294,
@@ -1949,7 +1949,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'Hashes': [
           {
             'Key': 'Key1',
-            'Value': 'Uxg5xMV/FLeuWLB3kfb2Pwq2/7l8a051uB/r4t/bftaYl4xlix1/Oe9oU7v83QgxH+ZTVmIUB4xu2u5pLuWivqZNUYxjA0MkPebC32i9T3GiHySrk3rIZ6F4tMF1A+YbuM6ufp/FXd59EpXEmRZ0oGQ+G6RthKKKWc8WPOKpNWI='
+            'Value': 'PATIENTID'
+          },
+          {
+            'Key': 'Key2',
+            'Value': 'Warning: No hashed Key2 found - must be supplied by uploader'
           }
         ],
         'Encryptions': []
@@ -1957,13 +1961,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'MachineLearning': null,
       'PositioningInputs': null,
       'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 52.7841,
-        'BreastVolumeInCm3': 309.6208,
-        'VolumetricBreastDensityInPercent': 17.048,
-        'ManufacturerDoseInmGy': 2.713,
-        'VolparaDoseInmGy': 2.966001,
-        'AppliedPressureInkPa': 14.69,
-        'AppliedForceInN': 60.0,
+        'FibroglandularTissueVolumeInCm3': 47.4517,
+        'BreastVolumeInCm3': 616.1737,
+        'VolumetricBreastDensityInPercent': 7.701,
+        'ManufacturerDoseInmGy': 2.218,
+        'VolparaDoseInmGy': -1.0,
+        'AppliedPressureInkPa': 17.92,
+        'AppliedForceInN': 110.0,
         'JsonVersion': 1
       },
       'Calculations': null,
@@ -1980,8 +1984,8 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'XlsData': {
         'MammoImageType': '2D',
         'RequestedProcedure': 'Unknown',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636603168238658972_1',
-        'Timestamp': '2018/04/26_05:20:41',
+        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636680172003784795_3',
+        'Timestamp': '2018/07/24_12:01:59',
         'OSName': 'Unknown',
         'OSVersion': 'Unknown',
         'CurrentCulture': 'en-US',
@@ -1991,12 +1995,12 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'DICOMTAGManufacturer': 'GE',
         'DICOMTAGDeviceSerialNumber': 'SerialNo-1',
         'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 28 )',
+        'MaxAllowedKVP': '100 ( current 29 )',
         'BTSF': '1',
         'BTSTF': '0',
         'DetectorType': 'GE [ From Manufacturer ID ]',
         'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'FSensitivity': '0.011173 [ From File ]',
+        'FSensitivity': '0.0118257 [ From File ]',
         'Gain': '0.0100 [ From Manufacturer ID ]',
         'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
         'Offset': '0.0000 [ From Manufacturer ID ]',
@@ -2010,11 +2014,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ChestPosition': 'Right',
         'PectoralPosition': 'Top',
         'MammoView': 'CC',
-        'StudyDate': '20090122',
-        'OperatorName': 'Technologist-1',
-        'PatientDOB': '19600701',
-        'PatientAge': '49',
-        'PatientID': '0001',
+        'StudyDate': '20080113',
+        'OperatorName': 'Unknown',
+        'PatientDOB': 'Unknown',
+        'PatientAge': '-1',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
         'DetectorID': 'DetectorID-1',
         'XraySystem': 'GE',
         'TargetPixelSizeMm': '0.355',
@@ -2023,101 +2027,100 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'PectoralSide': 'Top',
         'MedialSide': 'Bottom',
         'PaddleType': 'None',
-        'ExposureMas': '139',
-        'ExposureTimeMs': '2233',
+        'ExposureMas': '120',
+        'ExposureTimeMs': '1940',
         'TargetMaterial': 'RHODIUM',
         'FilterMaterial': 'RHODIUM',
         'FilterThicknessMm': '0.025',
-        'TubeVoltageKvp': '28',
+        'TubeVoltageKvp': '29',
         'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.414365',
-        'CompressionForceN': '60',
-        'RecordedBreastThicknessMm': '48',
-        'InnerBreastStatistics': '( 0; 157; 166; 556; 41587; 87185389.000000; 186742553037.000000; 2096.457764; 308.661255 )',
+        'HVL_Mm': '0.430454',
+        'CompressionForceN': '110',
+        'RecordedBreastThicknessMm': '61',
+        'InnerBreastStatistics': '( 0; 188; 93; 584; 67809; 117883987.000000; 210402619351.000000; 1738.471069; 283.883453 )',
         'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.542165',
-        'RejectingMethod1Reason': '-6.65054 > 10 or -6.65054 < -2 or 0.542165 < 0.85',
-        'MethodFatPlaneFit': '1',
+        'MethodAllPlaneFit': '0.455353',
+        'RejectingMethod1Reason': '-6.16695 > 10 or -6.16695 < -2 or 0.455353 < 0.85',
+        'MethodFatPlaneFit': '0.99275',
         'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '3.28975',
-        'ComputedSlantMm': '11.0017',
-        'ComputedBreastThickness': '48',
+        'ComputedSlantAngle': '1.35635',
+        'ComputedSlantMm': '4.53183',
+        'ComputedBreastThickness': '61',
         'ScatterScaleFactor': '1.00',
         'Scatter': 'Weighted',
-        'SegPhaseDE': '35639.82',
+        'SegPhaseDE': '31016.07',
         'SegPhaseOD': '0.00',
-        'SegPhaseBE': '2511.81',
+        'SegPhaseBE': '3466.89',
         'SegPhasePA': '0.00',
-        'SegPhaseBA': '5774.67',
+        'SegPhaseBA': '9443.34',
         'SegPhaseOA': '0.00',
         'SegPhaseUA': '0.00',
         'SegPhasePD': '0.00',
-        'SegSphereDE': '35639.82',
+        'SegSphereDE': '31016.07',
         'SegSphereOD': '0.00',
-        'SegSphereBE': '4543.65',
+        'SegSphereBE': '6807.42',
         'SegSpherePA': '0.00',
-        'SegSphereBA': '3742.83',
+        'SegSphereBA': '6102.81',
         'SegSphereOA': '0.00',
         'SegSphereUA': '0.00',
         'SegSpherePD': '0.00',
-        'ContactAreaMm2': '4084.76',
-        'CompressionPressureKPa': '14.69',
+        'ContactAreaMm2': '6137.00',
+        'CompressionPressureKPa': '17.92',
         'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '48.00 mm',
-        'HintIgnoreLevel': '43.20 mm',
-        'EntranceDoseInmGy': '11.844',
-        'EstimatedEntranceDoseInmGy': '10.0747',
+        'HintRejectLevel': '61.00 mm',
+        'HintIgnoreLevel': '54.90 mm',
+        'EntranceDoseInmGy': '-1',
+        'EstimatedEntranceDoseInmGy': '9.43287',
         'Warning': 'No HVL - using estimate',
-        'GlandularityPercent': '35.47',
-        'VolparaMeanGlandularDoseInmGy': '2.966001',
-        'FiftyPercentGlandularDoseInmGy': '2.777193',
-        'OrganDose': '0.027130',
-        'OrganDoseInmGy': '2.713000',
-        'Method2Results309.62152.784117.048': 'APJ2',
+        'GlandularityPercent': '17.47',
+        'VolparaMeanGlandularDoseInmGy': '-1',
+        'FiftyPercentGlandularDoseInmGy': '-1',
+        'OrganDose': '0.022180',
+        'OrganDoseInmGy': '2.218000',
         'CorrectionComplete': null,
-        'NippleConfidence': '0.996806',
-        'NippleConfidenceMessage': '-1|OK||OK|',
-        'NippleInProfile': 'Yes',
-        'NippleDistanceFromMedialEdgeInMm': '103.299',
-        'NippleDistanceFromPosteriorEdgeInMm': '68.6822',
-        'NippleCenterDistanceFromMedialEdgeInMm': '103.35',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '68.1',
-        'CCPosteriorNippleLineLengthInMm': '68.6822',
-        'NippleMedialLateralDistanceInMm': '-5.00139',
-        'NippleMedialLateralAngleInDegrees': '-4.16489',
-        'BreastCenterToImageCenterDistanceInMm': '-6.45',
-        'BreastCenterDistanceFromMedialEdgeInMm': '108.3',
-        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
+        'NippleConfidence': '0.514493',
+        'NippleConfidenceMessage': '-1|OK||disagreed curvature and intensity nipples (> 10 mm)|',
+        'NippleInProfile': 'No',
+        'NippleDistanceFromMedialEdgeInMm': '112.118',
+        'NippleDistanceFromPosteriorEdgeInMm': '81.3005',
+        'NippleCenterDistanceFromMedialEdgeInMm': '111.628',
+        'NippleCenterDistanceFromPosteriorEdgeInMm': '79.0811',
+        'CCPosteriorNippleLineLengthInMm': '81.3005',
+        'NippleMedialLateralDistanceInMm': '10.7179',
+        'NippleMedialLateralAngleInDegrees': '7.51003',
+        'BreastCenterToImageCenterDistanceInMm': '-13.35',
+        'BreastCenterDistanceFromMedialEdgeInMm': '101.4',
+        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '22.5',
         'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
         'CleavageDetected': 'No',
         'ShoulderDetected': 'No',
-        'MeanDenseThicknessInMm': '12.5249',
-        'MaximumDenseThicknessInMm': '24.9225',
-        'SDDenseThicknessInMm': '4.91681',
-        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '139.8',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '10.5',
+        'MeanDenseThicknessInMm': '8.17226',
+        'MaximumDenseThicknessInMm': '31.795',
+        'SDDenseThicknessInMm': '5.89027',
+        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '99.3',
+        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '54.9',
         'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '40.6236',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.91113',
-        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '111',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '25.2',
-        'DenseAreaPercent': '92.7117',
-        'AreaGreaterThan10mmDenseMm2': '2671.38',
-        'HintVolumeCm3': '52.7841',
-        'BreastVolumeCm3': '309.6208',
-        'VolumetricBreastDensity': '17.0480',
-        'Out_BreastVolume': '309.6',
-        'Out_FGTV': '52.8',
-        'Out_Density': '17.0',
+        'MaximumPercentDensityIn1Cm2Area': '33.915',
+        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.02765',
+        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '114.6',
+        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '32.7',
+        'DenseAreaPercent': '58.4613',
+        'AreaGreaterThan10mmDenseMm2': '1917.63',
+        'HintVolumeCm3': '47.4517',
+        'BreastVolumeCm3': '616.1737',
+        'VolumetricBreastDensity': '7.7010',
+        'Out_BreastVolume': '616.2',
+        'Out_FGTV': '47.5',
+        'Out_Density': '7.7',
         'Run_Information': 'VolparaVersion = 1.5.4.0 | 9561 |',
         'VolparaOkay': null
       },
       'OtherData': {
         'Projectcompletedsuccessfully': null,
-        'PatientID': '0001',
-        'FibroglandularTissueVolume': '52.8 cm3',
-        'BreastVolume': '309.6 cm3',
-        'VolumetricBreastDensity': '17.0 %',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
+        'FibroglandularTissueVolume': '47.5 cm3',
+        'BreastVolume': '616.2 cm3',
+        'VolumetricBreastDensity': '7.7 %',
         'RunInformation': 'VolparaVersion = 1.5.4.0 | 9561 |'
       },
       'SpecialData': null,
@@ -2135,13 +2138,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020003': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401604424181'
+            '1.2.826.0.1.3680043.8.694.2627576446.2183449859398506770'
           ]
         },
         '00020010': {
           'vr': 'UI',
           'Value': [
-            '1.2.840.10008.1.2.1'
+            '1.2.840.10008.1.2.5'
           ]
         },
         '00020012': {
@@ -2153,13 +2156,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020013': {
           'vr': 'SH',
           'Value': [
-            'fo-dicom 3.1.0'
+            'fo-dicom 4.0.0'
           ]
         },
         '00020016': {
           'vr': 'AE',
           'Value': [
-            'RD0003FF85A0E1'
+            'RD00155D027AB7'
           ]
         }
       },
@@ -2187,62 +2190,59 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00080018': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401604424181'
+            '1.2.826.0.1.3680043.8.694.2627576446.2183449859398506770'
           ]
         },
         '00080020': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080021': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080022': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080023': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080030': {
           'vr': 'TM',
           'Value': [
-            '144815'
+            '133652.000000'
           ]
         },
         '00080031': {
           'vr': 'TM',
           'Value': [
-            '145022'
+            '133904'
           ]
         },
         '00080032': {
           'vr': 'TM',
           'Value': [
-            '145020'
+            '133902'
           ]
         },
         '00080033': {
           'vr': 'TM',
           'Value': [
-            '145024'
+            '133905'
           ]
         },
         '00080050': {
-          'vr': 'SH',
-          'Value': [
-            '12345'
-          ]
+          'vr': 'SH'
         },
         '00080060': {
           'vr': 'CS',
@@ -2269,12 +2269,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         },
         '00080090': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Physician-1'
-            }
-          ]
+          'vr': 'PN'
         },
         '00081010': {
           'vr': 'SH',
@@ -2294,18 +2289,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'B/L MLOS, B/L CCS'
           ]
         },
-        '00081070': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Technologist-1'
-            }
-          ]
-        },
         '00081090': {
           'vr': 'LO',
           'Value': [
-            'Senograph DS ADS_43.10.1'
+            'Senograph DS ADS_32.00'
           ]
         },
         '00082218': {
@@ -2333,24 +2320,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             }
           ]
         },
-        '00090010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_Ident_01'
-          ]
-        },
-        '00091001': {
-          'vr': 'SH',
-          'Value': [
-            '0001223861'
-          ]
-        },
-        '00091002': {
-          'vr': 'SH',
-          'Value': [
-            '01'
-          ]
-        },
         '00100010': {
           'vr': 'PN',
           'Value': [
@@ -2362,14 +2331,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00100020': {
           'vr': 'LO',
           'Value': [
-            '0001'
+            '72C4735E203EC5941D5B9A5A768233'
           ]
         },
         '00100030': {
-          'vr': 'DA',
-          'Value': [
-            '19600701'
-          ]
+          'vr': 'DA'
         },
         '00100040': {
           'vr': 'CS',
@@ -2377,10 +2343,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'F'
           ]
         },
-        '00101010': {
-          'vr': 'AS',
+        '001021B0': {
+          'vr': 'LT',
           'Value': [
-            '049Y'
+            'mbdTpVHAT3L3sUpOpcl3ISv3e3zUoEngMcS4hXEcierBZh/QRKWhNJG8147IKrfsF1BsHuntSYK/cU7iSPkUORMubQfYJ1vKHe9GqMliJIs1n2hBEx9Hfexb54LMjIVuWCe/aviXKuiiK5C54A0wsbccxHYt188ajWLeA4oibF0='
           ]
         },
         '00120062': {
@@ -2513,7 +2479,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00180060': {
           'vr': 'DS',
           'Value': [
-            28
+            29
           ]
         },
         '00181000': {
@@ -2525,13 +2491,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181020': {
           'vr': 'LO',
           'Value': [
-            'Ads Application Package VERSION ADS_43.10.1'
+            'Ads Application Package VERSION ADS_32.00'
           ]
         },
         '00181030': {
           'vr': 'LO',
           'Value': [
-            'ROUTINE'
+            'anonymous'
           ]
         },
         '00181110': {
@@ -2568,25 +2534,25 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181150': {
           'vr': 'IS',
           'Value': [
-            2233
+            1940
           ]
         },
         '00181151': {
           'vr': 'IS',
           'Value': [
-            61
+            62
           ]
         },
         '00181152': {
           'vr': 'IS',
           'Value': [
-            139
+            120
           ]
         },
         '00181153': {
           'vr': 'IS',
           'Value': [
-            138600
+            120400
           ]
         },
         '00181160': {
@@ -2624,19 +2590,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '001811A0': {
           'vr': 'DS',
           'Value': [
-            48
+            61
           ]
         },
         '001811A2': {
           'vr': 'DS',
           'Value': [
-            60
+            110
           ]
         },
         '00181405': {
           'vr': 'IS',
           'Value': [
-            11844
+            10973
           ]
         },
         '00181508': {
@@ -2672,7 +2638,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181704': {
           'vr': 'IS',
           'Value': [
-            1915
+            1913
           ]
         },
         '00181706': {
@@ -2684,7 +2650,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181708': {
           'vr': 'IS',
           'Value': [
-            2295
+            2293
           ]
         },
         '00185101': {
@@ -2696,7 +2662,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00186000': {
           'vr': 'DS',
           'Value': [
-            0.01117304
+            0.011825697
           ]
         },
         '00187000': {
@@ -2708,7 +2674,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187001': {
           'vr': 'DS',
           'Value': [
-            30.299999
+            30.1
           ]
         },
         '00187004': {
@@ -2726,19 +2692,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187006': {
           'vr': 'LT',
           'Value': [
-            'DETECTOR VERSION 1.0 MTFCOMP 1.0'
+            'DETECTOR VERSION 1.0 NOTMTFCOMP'
           ]
         },
         '0018700A': {
           'vr': 'SH',
           'Value': [
             'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20080717'
           ]
         },
         '0018701A': {
@@ -2809,7 +2769,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187062': {
           'vr': 'LT',
           'Value': [
-            'AOP contrast RECTANGLE 1032 mm 220 mm 180 mm 240 mm EXP DOSE 150236 nGy PRE-EXP DOSE 3412 nGy PRE-EXP THICK 48 mm PRE-EXP COMPO 70 % PRE-EXP KV 27 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 0 FLATFIELD no'
+            'AOP contrast RECTANGLE 972 mm 310 mm 180 mm 240 mm EXP DOSE 96666 nGy PRE-EXP DOSE 4738 nGy PRE-EXP THICK 57 mm PRE-EXP COMPO 52 % PRE-EXP KV 31 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE not detected FLATFIELD no'
           ]
         },
         '00187064': {
@@ -2837,13 +2797,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
               '00181020': {
                 'vr': 'LO',
                 'Value': [
-                  '1.0.108.0'
+                  '1.0.111.0'
                 ]
               },
               '0018A002': {
                 'vr': 'DT',
                 'Value': [
-                  '20151208'
+                  '20151224'
                 ]
               },
               '0018A003': {
@@ -2883,25 +2843,22 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '0020000D': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1'
+            '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468'
           ]
         },
         '0020000E': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733'
+            '2.25.19197153388876081107031261850941247447'
           ]
         },
         '00200010': {
-          'vr': 'SH',
-          'Value': [
-            'Study-1'
-          ]
+          'vr': 'SH'
         },
         '00200011': {
           'vr': 'IS',
           'Value': [
-            2
+            66598
           ]
         },
         '00200013': {
@@ -3031,39 +2988,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'US'
           ]
         },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
         '00282110': {
           'vr': 'CS',
           'Value': [
             '00'
-          ]
-        },
-        '00290010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_ImageInfo_01'
-          ]
-        },
-        '00291004': {
-          'vr': 'UN',
-          'InlineBinary': 'dmlld19zdGF0ZSB7CiAgICBmaTwwPgogICAgc2k8MD4KICAgIGlpPDA+Cn0KZGVmYXVsdF9waXBlCnBpcGVfc3RhdGVzCnBpcGVfb3ZlcmxheXMKY29sbGVjdGlvbjxXOmV3YmN3aXNlOjQ0MTYyMjQgMD4Kb3JkZXI8MTY6Mj4Kc29ydF9vcmRlcjxhc2NlbmRpbmc+CnNvcnRfb3BlcmF0aW9uPG5vbmU+CgAK'
-        },
-        '00400275': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00400007': {
-                'vr': 'LO',
-                'Value': [
-                  'B/L MLOS, B/L CCS'
-                ]
-              }
-            }
           ]
         },
         '00400302': {
@@ -3075,19 +3003,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00400306': {
           'vr': 'DS',
           'Value': [
-            612
+            599
           ]
         },
         '00400310': {
           'vr': 'ST',
           'Value': [
-            '69 %'
+            '52 %'
           ]
         },
         '00400316': {
           'vr': 'DS',
           'Value': [
-            0.02713
+            0.02218
           ]
         },
         '00400318': {
@@ -3095,82 +3023,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           'Value': [
             'BREAST'
           ]
-        },
-        '00400555': {
-          'vr': 'SQ'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            11.844
-          ]
-        },
-        '00450010': {
-          'vr': 'LO',
-          'Value': [
-            'GEMS_SENO_02'
-          ]
-        },
-        '00451006': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '0045101B': {
-          'vr': 'CS',
-          'Value': [
-            'RCC'
-          ]
-        },
-        '00451020': {
-          'vr': 'DS',
-          'Value': [
-            2076.0298
-          ]
-        },
-        '00451026': {
-          'vr': 'OB',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451029': {
-          'vr': 'DS',
-          'Value': [
-            1806,
-            5.5
-          ]
-        },
-        '0045102A': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '0045102B': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '00451049': {
-          'vr': 'UN',
-          'InlineBinary': 'NDg='
-        },
-        '00451050': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjE0OTkwOTAxMzAxNDUwMjQuNjQyAA=='
-        },
-        '00451051': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjIzMjUwMDkwMTMwMTQ1MDIyLjEwMDA0'
-        },
-        '00451071': {
-          'vr': 'UN',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451072': {
-          'vr': 'UN',
-          'InlineBinary': 'NVw1IA=='
         },
         '00540220': {
           'vr': 'SQ',
@@ -3207,35 +3059,40 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         }
       },
-      'ImageResultCreationTimeUtc': '2018-04-26T05:22:05.5533094Z'
+      'ImageResultCreationTimeUtc': '2018-07-24T12:03:22.9776095Z'
     },
     {
       'JsonVersion': 1,
       'SourceImage': {
-        'DicomImageFilePath': '0001_GE_R_lc_20090122.dcm',
-        'TransferSyntaxName': 'Explicit VR Little Endian',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.1',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.0',
+        'DicomImageFilePath': '72C4735E203EC5941D5B9A5A768233_5746F78DFA21DE6C7DAF806EC200ED.dcm',
+        'TransferSyntaxName': 'RLE Lossless',
+        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468',
+        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.4208740435.8415128563966114427',
         'PixelSizeX': 0.094090909,
         'PixelSizeY': 0.094090909,
         'PixelRows': 2294,
         'PixelColumns': 1914,
         'JsonVersion': 1,
         'CryptoVersion': 'H1E1',
-        'Hashes': [],
+        'Hashes': [
+          {
+            'Key': 'Key1',
+            'Value': 'PATIENTID'
+          }
+        ],
         'Encryptions': []
       },
       'MachineLearning': null,
       'PositioningInputs': null,
       'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 47.2902,
-        'BreastVolumeInCm3': 373.6459,
-        'VolumetricBreastDensityInPercent': 12.6564,
-        'ManufacturerDoseInmGy': 2.949,
-        'VolparaDoseInmGy': 3.248312,
-        'AppliedPressureInkPa': 11.11,
-        'AppliedForceInN': 50.0,
+        'FibroglandularTissueVolumeInCm3': 48.6589,
+        'BreastVolumeInCm3': 679.3678,
+        'VolumetricBreastDensityInPercent': 7.1624,
+        'ManufacturerDoseInmGy': 2.329,
+        'VolparaDoseInmGy': -1.0,
+        'AppliedPressureInkPa': 20.19,
+        'AppliedForceInN': 130.0,
         'JsonVersion': 1
       },
       'Calculations': null,
@@ -3252,8 +3109,8 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'XlsData': {
         'MammoImageType': '2D',
         'RequestedProcedure': 'Unknown',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636603168238658972_4',
-        'Timestamp': '2018/04/26_05:20:41',
+        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636680172003784795_2',
+        'Timestamp': '2018/07/24_12:01:59',
         'OSName': 'Unknown',
         'OSVersion': 'Unknown',
         'CurrentCulture': 'en-US',
@@ -3263,12 +3120,12 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'DICOMTAGManufacturer': 'GE',
         'DICOMTAGDeviceSerialNumber': 'SerialNo-1',
         'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 28 )',
+        'MaxAllowedKVP': '100 ( current 30 )',
         'BTSF': '1',
         'BTSTF': '0',
         'DetectorType': 'GE [ From Manufacturer ID ]',
         'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'FSensitivity': '0.011173 [ From File ]',
+        'FSensitivity': '0.0118257 [ From File ]',
         'Gain': '0.0100 [ From Manufacturer ID ]',
         'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
         'Offset': '0.0000 [ From Manufacturer ID ]',
@@ -3282,11 +3139,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ChestPosition': 'Left',
         'PectoralPosition': 'Top',
         'MammoView': 'CC',
-        'StudyDate': '20090122',
-        'OperatorName': 'Technologist-1',
-        'PatientDOB': '19600701',
-        'PatientAge': '49',
-        'PatientID': '0001',
+        'StudyDate': '20080113',
+        'OperatorName': 'Unknown',
+        'PatientDOB': 'Unknown',
+        'PatientAge': '-1',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
         'DetectorID': 'DetectorID-1',
         'XraySystem': 'GE',
         'TargetPixelSizeMm': '0.355',
@@ -3295,101 +3152,100 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'PectoralSide': 'Top',
         'MedialSide': 'Bottom',
         'PaddleType': 'None',
-        'ExposureMas': '155',
-        'ExposureTimeMs': '2495',
+        'ExposureMas': '114',
+        'ExposureTimeMs': '1834',
         'TargetMaterial': 'RHODIUM',
         'FilterMaterial': 'RHODIUM',
         'FilterThicknessMm': '0.025',
-        'TubeVoltageKvp': '28',
+        'TubeVoltageKvp': '30',
         'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.414365',
-        'CompressionForceN': '50',
-        'RecordedBreastThicknessMm': '51',
-        'InnerBreastStatistics': '( 0; 168; 164; 575; 46903; 102853078.000000; 232603699036.000000; 2192.889160; 387.926880 )',
+        'HVL_Mm': '0.445518',
+        'CompressionForceN': '130',
+        'RecordedBreastThicknessMm': '61',
+        'InnerBreastStatistics': '( 0; 207; 101; 595; 71670; 142303979.000000; 289996143683.000000; 1985.544556; 322.307922 )',
         'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.362066',
-        'RejectingMethod1Reason': '-6.60858 > 10 or -6.60858 < -2 or 0.362066 < 0.85',
-        'MethodFatPlaneFit': '0.997815',
+        'MethodAllPlaneFit': '0.510116',
+        'RejectingMethod1Reason': '-6.24581 > 10 or -6.24581 < -2 or 0.510116 < 0.85',
+        'MethodFatPlaneFit': '0.990951',
         'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '2.07312',
-        'ComputedSlantMm': '6.9284',
-        'ComputedBreastThickness': '51',
+        'ComputedSlantAngle': '1.48495',
+        'ComputedSlantMm': '4.96166',
+        'ComputedBreastThickness': '61',
         'ScatterScaleFactor': '1.00',
         'Scatter': 'Weighted',
-        'SegPhaseDE': '34506.36',
+        'SegPhaseDE': '29615.76',
         'SegPhaseOD': '0.00',
-        'SegPhaseBE': '2694.51',
+        'SegPhaseBE': '3799.17',
         'SegPhasePA': '0.00',
-        'SegPhaseBA': '6725.43',
+        'SegPhaseBA': '10511.37',
         'SegPhaseOA': '0.00',
         'SegPhaseUA': '0.00',
         'SegPhasePD': '0.00',
-        'SegSphereDE': '34506.36',
+        'SegSphereDE': '29615.76',
         'SegSphereOD': '0.00',
-        'SegSphereBE': '5198.67',
+        'SegSphereBE': '7860.24',
         'SegSpherePA': '0.00',
-        'SegSphereBA': '4221.27',
+        'SegSphereBA': '6450.30',
         'SegSphereOA': '0.00',
         'SegSphereUA': '0.00',
         'SegSpherePD': '0.00',
-        'ContactAreaMm2': '4500.82',
-        'CompressionPressureKPa': '11.11',
+        'ContactAreaMm2': '6439.18',
+        'CompressionPressureKPa': '20.19',
         'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '51.00 mm',
-        'HintIgnoreLevel': '45.90 mm',
-        'EntranceDoseInmGy': '13.358',
-        'EstimatedEntranceDoseInmGy': '11.3512',
+        'HintRejectLevel': '61.00 mm',
+        'HintIgnoreLevel': '54.90 mm',
+        'EntranceDoseInmGy': '-1',
+        'EstimatedEntranceDoseInmGy': '10.1112',
         'Warning': 'No HVL - using estimate',
-        'GlandularityPercent': '27.76',
-        'VolparaMeanGlandularDoseInmGy': '3.248312',
-        'FiftyPercentGlandularDoseInmGy': '2.933777',
-        'OrganDose': '0.029490',
-        'OrganDoseInmGy': '2.949000',
-        'Method2Results373.64647.290212.6564': null,
+        'GlandularityPercent': '15.83',
+        'VolparaMeanGlandularDoseInmGy': '-1',
+        'FiftyPercentGlandularDoseInmGy': '-1',
+        'OrganDose': '0.023290',
+        'OrganDoseInmGy': '2.329000',
         'CorrectionComplete': null,
-        'NippleConfidence': '0.973113',
-        'NippleConfidenceMessage': '-1|OK||OK|',
+        'NippleConfidence': '0.520137',
+        'NippleConfidenceMessage': '-1|OK||disagreed curvature and intensity nipples (> 10 mm)|',
         'NippleInProfile': 'No',
-        'NippleDistanceFromMedialEdgeInMm': '107.842',
-        'NippleDistanceFromPosteriorEdgeInMm': '73.7483',
-        'NippleCenterDistanceFromMedialEdgeInMm': '108.199',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '71.0521',
-        'CCPosteriorNippleLineLengthInMm': '73.7483',
-        'NippleMedialLateralDistanceInMm': '-2.85767',
-        'NippleMedialLateralAngleInDegrees': '-2.21904',
-        'BreastCenterToImageCenterDistanceInMm': '-4.05',
-        'BreastCenterDistanceFromMedialEdgeInMm': '110.7',
-        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
+        'NippleDistanceFromMedialEdgeInMm': '125.346',
+        'NippleDistanceFromPosteriorEdgeInMm': '88.0652',
+        'NippleCenterDistanceFromMedialEdgeInMm': '125.062',
+        'NippleCenterDistanceFromPosteriorEdgeInMm': '87.0504',
+        'CCPosteriorNippleLineLengthInMm': '88.0652',
+        'NippleMedialLateralDistanceInMm': '20.9457',
+        'NippleMedialLateralAngleInDegrees': '13.3788',
+        'BreastCenterToImageCenterDistanceInMm': '-10.35',
+        'BreastCenterDistanceFromMedialEdgeInMm': '104.4',
+        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '0',
         'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
-        'CleavageDetected': 'No',
+        'CleavageDetected': 'Yes',
         'ShoulderDetected': 'No',
-        'MeanDenseThicknessInMm': '10.5346',
-        'MaximumDenseThicknessInMm': '30.4352',
-        'SDDenseThicknessInMm': '5.71302',
-        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '127.2',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '25.2',
+        'MeanDenseThicknessInMm': '7.44084',
+        'MaximumDenseThicknessInMm': '27.965',
+        'SDDenseThicknessInMm': '6.14021',
+        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '116.7',
+        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '38.7',
         'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '37.6632',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.8826',
-        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '117',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '30',
-        'DenseAreaPercent': '80.5556',
-        'AreaGreaterThan10mmDenseMm2': '2344.32',
-        'HintVolumeCm3': '47.2902',
-        'BreastVolumeCm3': '373.6459',
-        'VolumetricBreastDensity': '12.6564',
-        'Out_BreastVolume': '373.6',
-        'Out_FGTV': '47.3',
-        'Out_Density': '12.7',
+        'MaximumPercentDensityIn1Cm2Area': '38.1458',
+        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.28059',
+        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '124.5',
+        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '39',
+        'DenseAreaPercent': '50.1046',
+        'AreaGreaterThan10mmDenseMm2': '1744.47',
+        'HintVolumeCm3': '48.6589',
+        'BreastVolumeCm3': '679.3678',
+        'VolumetricBreastDensity': '7.1624',
+        'Out_BreastVolume': '679.4',
+        'Out_FGTV': '48.7',
+        'Out_Density': '7.2',
         'Run_Information': 'VolparaVersion = 1.5.4.0 | 9561 |',
         'VolparaOkay': null
       },
       'OtherData': {
         'Projectcompletedsuccessfully': null,
-        'PatientID': '0001',
-        'FibroglandularTissueVolume': '47.3 cm3',
-        'BreastVolume': '373.6 cm3',
-        'VolumetricBreastDensity': '12.7 %',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
+        'FibroglandularTissueVolume': '48.7 cm3',
+        'BreastVolume': '679.4 cm3',
+        'VolumetricBreastDensity': '7.2 %',
         'RunInformation': 'VolparaVersion = 1.5.4.0 | 9561 |'
       },
       'SpecialData': null,
@@ -3407,13 +3263,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020003': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.0'
+            '1.2.826.0.1.3680043.8.694.4208740435.8415128563966114427'
           ]
         },
         '00020010': {
           'vr': 'UI',
           'Value': [
-            '1.2.840.10008.1.2.1'
+            '1.2.840.10008.1.2.5'
           ]
         },
         '00020012': {
@@ -3425,13 +3281,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020013': {
           'vr': 'SH',
           'Value': [
-            'fo-dicom 3.1.0'
+            'fo-dicom 4.0.0'
           ]
         },
         '00020016': {
           'vr': 'AE',
           'Value': [
-            'RD0003FF85A0E1'
+            'RD00155D027AB7'
           ]
         }
       },
@@ -3459,62 +3315,59 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00080018': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.0'
+            '1.2.826.0.1.3680043.8.694.4208740435.8415128563966114427'
           ]
         },
         '00080020': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080021': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080022': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080023': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080030': {
           'vr': 'TM',
           'Value': [
-            '144815'
+            '133652.000000'
           ]
         },
         '00080031': {
           'vr': 'TM',
           'Value': [
-            '145027'
+            '133908'
           ]
         },
         '00080032': {
           'vr': 'TM',
           'Value': [
-            '145059'
+            '133944'
           ]
         },
         '00080033': {
           'vr': 'TM',
           'Value': [
-            '145104'
+            '133947'
           ]
         },
         '00080050': {
-          'vr': 'SH',
-          'Value': [
-            '12345'
-          ]
+          'vr': 'SH'
         },
         '00080060': {
           'vr': 'CS',
@@ -3541,12 +3394,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         },
         '00080090': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Physician-1'
-            }
-          ]
+          'vr': 'PN'
         },
         '00081010': {
           'vr': 'SH',
@@ -3566,18 +3414,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'B/L MLOS, B/L CCS'
           ]
         },
-        '00081070': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Technologist-1'
-            }
-          ]
-        },
         '00081090': {
           'vr': 'LO',
           'Value': [
-            'Senograph DS ADS_43.10.1'
+            'Senograph DS ADS_32.00'
           ]
         },
         '00082218': {
@@ -3605,24 +3445,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             }
           ]
         },
-        '00090010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_Ident_01'
-          ]
-        },
-        '00091001': {
-          'vr': 'SH',
-          'Value': [
-            '0001223861'
-          ]
-        },
-        '00091002': {
-          'vr': 'SH',
-          'Value': [
-            '01'
-          ]
-        },
         '00100010': {
           'vr': 'PN',
           'Value': [
@@ -3634,14 +3456,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00100020': {
           'vr': 'LO',
           'Value': [
-            '0001'
+            '72C4735E203EC5941D5B9A5A768233'
           ]
         },
         '00100030': {
-          'vr': 'DA',
-          'Value': [
-            '19600701'
-          ]
+          'vr': 'DA'
         },
         '00100040': {
           'vr': 'CS',
@@ -3649,10 +3468,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'F'
           ]
         },
-        '00101010': {
-          'vr': 'AS',
+        '001021B0': {
+          'vr': 'LT',
           'Value': [
-            '049Y'
+            'mbdTpVHAT3L3sUpOpcl3ISv3e3zUoEngMcS4hXEcierBZh/QRKWhNJG8147IKrfsF1BsHuntSYK/cU7iSPkUORMubQfYJ1vKHe9GqMliJIs1n2hBEx9Hfexb54LMjIVuWCe/aviXKuiiK5C54A0wsbccxHYt188ajWLeA4oibF0='
           ]
         },
         '00120062': {
@@ -3785,7 +3604,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00180060': {
           'vr': 'DS',
           'Value': [
-            28
+            30
           ]
         },
         '00181000': {
@@ -3797,13 +3616,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181020': {
           'vr': 'LO',
           'Value': [
-            'Ads Application Package VERSION ADS_43.10.1'
+            'Ads Application Package VERSION ADS_32.00'
           ]
         },
         '00181030': {
           'vr': 'LO',
           'Value': [
-            'ROUTINE'
+            'anonymous'
           ]
         },
         '00181110': {
@@ -3840,7 +3659,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181150': {
           'vr': 'IS',
           'Value': [
-            2495
+            1834
           ]
         },
         '00181151': {
@@ -3852,13 +3671,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181152': {
           'vr': 'IS',
           'Value': [
-            155
+            114
           ]
         },
         '00181153': {
           'vr': 'IS',
           'Value': [
-            154800
+            113800
           ]
         },
         '00181160': {
@@ -3896,19 +3715,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '001811A0': {
           'vr': 'DS',
           'Value': [
-            51
+            61
           ]
         },
         '001811A2': {
           'vr': 'DS',
           'Value': [
-            50
+            130
           ]
         },
         '00181405': {
           'vr': 'IS',
           'Value': [
-            13358
+            11465
           ]
         },
         '00181508': {
@@ -3920,7 +3739,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181510': {
           'vr': 'DS',
           'Value': [
-            0
+            4
           ]
         },
         '00181531': {
@@ -3944,7 +3763,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181704': {
           'vr': 'IS',
           'Value': [
-            1915
+            1913
           ]
         },
         '00181706': {
@@ -3956,7 +3775,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181708': {
           'vr': 'IS',
           'Value': [
-            2295
+            2293
           ]
         },
         '00185101': {
@@ -3968,7 +3787,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00186000': {
           'vr': 'DS',
           'Value': [
-            0.01117304
+            0.011825697
           ]
         },
         '00187000': {
@@ -3980,7 +3799,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187001': {
           'vr': 'DS',
           'Value': [
-            30.299999
+            30.1
           ]
         },
         '00187004': {
@@ -3998,19 +3817,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187006': {
           'vr': 'LT',
           'Value': [
-            'DETECTOR VERSION 1.0 MTFCOMP 1.0'
+            'DETECTOR VERSION 1.0 NOTMTFCOMP'
           ]
         },
         '0018700A': {
           'vr': 'SH',
           'Value': [
             'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20080717'
           ]
         },
         '0018701A': {
@@ -4081,7 +3894,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187062': {
           'vr': 'LT',
           'Value': [
-            'AOP contrast RECTANGLE 1062 mm 280 mm 180 mm 240 mm EXP DOSE 150327 nGy PRE-EXP DOSE 3835 nGy PRE-EXP THICK 50 mm PRE-EXP COMPO 65 % PRE-EXP KV 28 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 0 FLATFIELD no'
+            'AOP contrast RECTANGLE 1032 mm 370 mm 180 mm 240 mm EXP DOSE 102245 nGy PRE-EXP DOSE 4266 nGy PRE-EXP THICK 59 mm PRE-EXP COMPO 60 % PRE-EXP KV 31 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE not detected FLATFIELD no'
           ]
         },
         '00187064': {
@@ -4109,13 +3922,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
               '00181020': {
                 'vr': 'LO',
                 'Value': [
-                  '1.0.108.0'
+                  '1.0.111.0'
                 ]
               },
               '0018A002': {
                 'vr': 'DT',
                 'Value': [
-                  '20151208'
+                  '20151224'
                 ]
               },
               '0018A003': {
@@ -4155,25 +3968,22 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '0020000D': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1'
+            '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468'
           ]
         },
         '0020000E': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733'
+            '2.25.19197153388876081107031261850941247447'
           ]
         },
         '00200010': {
-          'vr': 'SH',
-          'Value': [
-            'Study-1'
-          ]
+          'vr': 'SH'
         },
         '00200011': {
           'vr': 'IS',
           'Value': [
-            1
+            66598
           ]
         },
         '00200013': {
@@ -4303,39 +4113,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'US'
           ]
         },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
         '00282110': {
           'vr': 'CS',
           'Value': [
             '00'
-          ]
-        },
-        '00290010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_ImageInfo_01'
-          ]
-        },
-        '00291004': {
-          'vr': 'UN',
-          'InlineBinary': 'dmlld19zdGF0ZSB7CiAgICBmaTwwPgogICAgc2k8MD4KICAgIGlpPDA+Cn0KZGVmYXVsdF9waXBlCnBpcGVfc3RhdGVzCnBpcGVfb3ZlcmxheXMKY29sbGVjdGlvbjxXOmV3YmN3aXNlOjQ0MTYyMjIgMD4Kb3JkZXI8MTY6MT4Kc29ydF9vcmRlcjxhc2NlbmRpbmc+CnNvcnRfb3BlcmF0aW9uPG5vbmU+CgAK'
-        },
-        '00400275': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00400007': {
-                'vr': 'LO',
-                'Value': [
-                  'B/L MLOS, B/L CCS'
-                ]
-              }
-            }
           ]
         },
         '00400302': {
@@ -4347,19 +4128,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00400306': {
           'vr': 'DS',
           'Value': [
-            609
+            599
           ]
         },
         '00400310': {
           'vr': 'ST',
           'Value': [
-            '63 %'
+            '59 %'
           ]
         },
         '00400316': {
           'vr': 'DS',
           'Value': [
-            0.02949
+            0.02329
           ]
         },
         '00400318': {
@@ -4367,82 +4148,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           'Value': [
             'BREAST'
           ]
-        },
-        '00400555': {
-          'vr': 'SQ'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            13.358
-          ]
-        },
-        '00450010': {
-          'vr': 'LO',
-          'Value': [
-            'GEMS_SENO_02'
-          ]
-        },
-        '00451006': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '0045101B': {
-          'vr': 'CS',
-          'Value': [
-            'LCC'
-          ]
-        },
-        '00451020': {
-          'vr': 'DS',
-          'Value': [
-            2020.0503
-          ]
-        },
-        '00451026': {
-          'vr': 'OB',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451029': {
-          'vr': 'DS',
-          'Value': [
-            1757,
-            5.5
-          ]
-        },
-        '0045102A': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '0045102B': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '00451049': {
-          'vr': 'UN',
-          'InlineBinary': 'NTA='
-        },
-        '00451050': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjE0OTkwOTAxMzAxNDUxMDQuNjQ2AA=='
-        },
-        '00451051': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjIzMjUwMDkwMTMwMTQ1MDI3LjEwMDA2'
-        },
-        '00451071': {
-          'vr': 'UN',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451072': {
-          'vr': 'UN',
-          'InlineBinary': 'NVwxIA=='
         },
         '00540220': {
           'vr': 'SQ',
@@ -4479,35 +4184,40 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         }
       },
-      'ImageResultCreationTimeUtc': '2018-04-26T05:22:06.4293376Z'
+      'ImageResultCreationTimeUtc': '2018-07-24T12:03:23.1186279Z'
     },
     {
       'JsonVersion': 1,
       'SourceImage': {
-        'DicomImageFilePath': '0001_GE_R_lm_20090122.dcm',
-        'TransferSyntaxName': 'Explicit VR Little Endian',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.1',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401561177965',
+        'DicomImageFilePath': '72C4735E203EC5941D5B9A5A768233_FF287F41A2144792D162486C32658D36.dcm',
+        'TransferSyntaxName': 'RLE Lossless',
+        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468',
+        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.700198581.696360397693818062',
         'PixelSizeX': 0.094090909,
         'PixelSizeY': 0.094090909,
         'PixelRows': 2294,
         'PixelColumns': 1914,
         'JsonVersion': 1,
         'CryptoVersion': 'H1E1',
-        'Hashes': [],
+        'Hashes': [
+          {
+            'Key': 'Key1',
+            'Value': 'PATIENTID'
+          }
+        ],
         'Encryptions': []
       },
       'MachineLearning': null,
       'PositioningInputs': null,
       'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 51.4824,
-        'BreastVolumeInCm3': 384.5103,
-        'VolumetricBreastDensityInPercent': 13.3891,
-        'ManufacturerDoseInmGy': 3.076,
-        'VolparaDoseInmGy': 3.36867,
-        'AppliedPressureInkPa': 13.31,
-        'AppliedForceInN': 110.0,
+        'FibroglandularTissueVolumeInCm3': 60.5356,
+        'BreastVolumeInCm3': 731.2304,
+        'VolumetricBreastDensityInPercent': 8.2786,
+        'ManufacturerDoseInmGy': 2.096,
+        'VolparaDoseInmGy': -1.0,
+        'AppliedPressureInkPa': 6.83,
+        'AppliedForceInN': 70.0,
         'JsonVersion': 1
       },
       'Calculations': null,
@@ -4524,8 +4234,8 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'XlsData': {
         'MammoImageType': '2D',
         'RequestedProcedure': 'Unknown',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636603168238658972_3',
-        'Timestamp': '2018/04/26_05:20:41',
+        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636680172003784795_4',
+        'Timestamp': '2018/07/24_12:01:59',
         'OSName': 'Unknown',
         'OSVersion': 'Unknown',
         'CurrentCulture': 'en-US',
@@ -4535,12 +4245,12 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'DICOMTAGManufacturer': 'GE',
         'DICOMTAGDeviceSerialNumber': 'SerialNo-1',
         'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 28 )',
+        'MaxAllowedKVP': '100 ( current 29 )',
         'BTSF': '1',
         'BTSTF': '0',
         'DetectorType': 'GE [ From Manufacturer ID ]',
         'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'FSensitivity': '0.011173 [ From File ]',
+        'FSensitivity': '0.0118257 [ From File ]',
         'Gain': '0.0100 [ From Manufacturer ID ]',
         'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
         'Offset': '0.0000 [ From Manufacturer ID ]',
@@ -4554,11 +4264,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ChestPosition': 'Left',
         'PectoralPosition': 'Top',
         'MammoView': 'MLO',
-        'StudyDate': '20090122',
-        'OperatorName': 'Technologist-1',
-        'PatientDOB': '19600701',
-        'PatientAge': '49',
-        'PatientID': '0001',
+        'StudyDate': '20080113',
+        'OperatorName': 'Unknown',
+        'PatientDOB': 'Unknown',
+        'PatientAge': '-1',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
         'DetectorID': 'DetectorID-1',
         'XraySystem': 'GE',
         'TargetPixelSizeMm': '0.355',
@@ -4566,107 +4276,106 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ResizedPixelSizeMm': '0.3',
         'PectoralSide': 'Top',
         'PaddleType': 'None',
-        'ExposureMas': '166',
-        'ExposureTimeMs': '2684',
+        'ExposureMas': '110',
+        'ExposureTimeMs': '1778',
         'TargetMaterial': 'RHODIUM',
         'FilterMaterial': 'RHODIUM',
         'FilterThicknessMm': '0.025',
-        'TubeVoltageKvp': '28',
+        'TubeVoltageKvp': '29',
         'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.414365',
-        'CompressionForceN': '110',
-        'RecordedBreastThicknessMm': '52',
-        'PectoralAngleDegrees': '18.000',
+        'HVL_Mm': '0.430454',
+        'CompressionForceN': '70',
+        'RecordedBreastThicknessMm': '58',
+        'PectoralAngleDegrees': '19.500',
         'PectoralAngleConfidence': '1.000',
-        'InnerBreastStatistics': '( 6; 206; 34; 553; 41201; 93219625.000000; 218697102973.000000; 2262.557373; 434.611969 )',
+        'InnerBreastStatistics': '( 0; 244; 0; 604; 95516; 170130231.000000; 310590642951.000000; 1781.169922; 281.330383 )',
         'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.393551',
-        'RejectingMethod1Reason': '-2.25925 > 10 or -2.25925 < -2 or 0.393551 < 0.85',
-        'MethodFatPlaneFit': '0.981958',
+        'MethodAllPlaneFit': '0.557796',
+        'RejectingMethod1Reason': '-4.22895 > 10 or -4.22895 < -2 or 0.557796 < 0.85',
+        'MethodFatPlaneFit': '0.951773',
         'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '3.09252',
-        'ComputedSlantMm': '10.3408',
-        'ComputedBreastThickness': '52',
+        'ComputedSlantAngle': '2.61622',
+        'ComputedSlantMm': '8.74574',
+        'ComputedBreastThickness': '58',
         'ScatterScaleFactor': '1.00',
         'Scatter': 'Weighted',
-        'SegPhaseDE': '29428.38',
+        'SegPhaseDE': '25854.66',
         'SegPhaseOD': '0.00',
-        'SegPhaseBE': '3995.10',
-        'SegPhasePA': '4839.21',
-        'SegPhaseBA': '5663.61',
+        'SegPhaseBE': '4617.36',
+        'SegPhasePA': '2226.51',
+        'SegPhaseBA': '11227.77',
         'SegPhaseOA': '0.00',
         'SegPhaseUA': '0.00',
         'SegPhasePD': '0.00',
-        'SegSphereDE': '29428.38',
+        'SegSphereDE': '25854.66',
         'SegSphereOD': '0.00',
-        'SegSphereBE': '5950.62',
-        'SegSpherePA': '4839.21',
-        'SegSphereBA': '3708.09',
+        'SegSphereBE': '7248.69',
+        'SegSpherePA': '2226.51',
+        'SegSphereBA': '8596.44',
         'SegSphereOA': '0.00',
         'SegSphereUA': '0.00',
         'SegSpherePD': '0.00',
-        'ContactAreaMm2': '8262.73',
-        'CompressionPressureKPa': '13.31',
+        'ContactAreaMm2': '10241.64',
+        'CompressionPressureKPa': '6.83',
         'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '52.00 mm',
-        'HintIgnoreLevel': '46.80 mm',
-        'EntranceDoseInmGy': '14.388',
-        'EstimatedEntranceDoseInmGy': '12.1988',
+        'HintRejectLevel': '58.00 mm',
+        'HintIgnoreLevel': '52.20 mm',
+        'EntranceDoseInmGy': '-1',
+        'EstimatedEntranceDoseInmGy': '8.55664',
         'Warning': 'No HVL - using estimate',
-        'GlandularityPercent': '32.02',
-        'VolparaMeanGlandularDoseInmGy': '3.368670',
-        'FiftyPercentGlandularDoseInmGy': '3.098931',
-        'OrganDose': '0.030760',
-        'OrganDoseInmGy': '3.076000',
-        'Method2Results384.5151.482413.3891': null,
+        'GlandularityPercent': '17.23',
+        'VolparaMeanGlandularDoseInmGy': '-1',
+        'FiftyPercentGlandularDoseInmGy': '-1',
+        'OrganDose': '0.020960',
+        'OrganDoseInmGy': '2.096000',
         'CorrectionComplete': null,
-        'NippleConfidence': '0.992777',
-        'NippleConfidenceMessage': '|OK||OK||OK|',
+        'NippleConfidence': '0.884833',
+        'NippleConfidenceMessage': '|OK||OK||disagreed curvature and intensity nipples (> 10 mm)|',
         'NippleInProfile': 'No',
-        'NippleDistanceFromSuperiorEdgeInMm': '136.946',
-        'NippleDistanceFromPosteriorEdgeInMm': '84.5768',
-        'NippleCenterDistanceFromSuperiorEdgeInMm': '135.524',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '79.4874',
-        'MLOPosteriorNippleLineLengthInMm': '70.0348',
-        'NippleLineLengthInMm': '84.5768',
-        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-56.0645',
+        'NippleDistanceFromSuperiorEdgeInMm': '129.947',
+        'NippleDistanceFromPosteriorEdgeInMm': '98.4596',
+        'NippleCenterDistanceFromSuperiorEdgeInMm': '130.05',
+        'NippleCenterDistanceFromPosteriorEdgeInMm': '98.8982',
+        'MLOPosteriorNippleLineLengthInMm': '99.3849',
+        'NippleLineLengthInMm': '98.4596',
+        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-14.6131',
         'PectoralSkinFoldPresent': 'No',
-        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '-34.6536',
-        'SuperiorPectoralWidthInMm': '56.4',
-        'PosteriorPectoralLengthInMm': '171.6',
+        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '18.3468',
+        'SuperiorPectoralWidthInMm': '39.9',
+        'PosteriorPectoralLengthInMm': '111.6',
         'PectoralShape': 'CONCAVE',
-        'ImfMaxDistanceMm': '7.1115',
+        'ImfMaxDistanceMm': '13.5943',
         'InframammaryFoldVisible': 'Yes',
-        'InframammaryFoldAreaInMm2': '197.91',
-        'ImfAngleInDegrees': '142.853',
-        'ImfSkinFoldPresent': 'No',
-        'MeanDenseThicknessInMm': '12.6096',
-        'MaximumDenseThicknessInMm': '32.7111',
-        'SDDenseThicknessInMm': '5.65988',
-        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '117',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '43.8',
+        'InframammaryFoldAreaInMm2': '283.23',
+        'ImfAngleInDegrees': '112.189',
+        'ImfSkinFoldPresent': 'Yes',
+        'MeanDenseThicknessInMm': '7.91073',
+        'MaximumDenseThicknessInMm': '26.7003',
+        'SDDenseThicknessInMm': '5.4257',
+        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '110.4',
+        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '51',
         'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '43.0958',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.19639',
-        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '104.7',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '47.4',
-        'DenseAreaPercent': '88.8207',
-        'AreaGreaterThan10mmDenseMm2': '2567.97',
-        'HintVolumeCm3': '51.4824',
-        'BreastVolumeCm3': '384.5103',
-        'VolumetricBreastDensity': '13.3891',
-        'Out_BreastVolume': '384.5',
-        'Out_FGTV': '51.5',
-        'Out_Density': '13.4',
+        'MaximumPercentDensityIn1Cm2Area': '36.5753',
+        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.07915',
+        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '109.5',
+        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '51',
+        'DenseAreaPercent': '63.4679',
+        'AreaGreaterThan10mmDenseMm2': '2436.66',
+        'HintVolumeCm3': '60.5356',
+        'BreastVolumeCm3': '731.2304',
+        'VolumetricBreastDensity': '8.2786',
+        'Out_BreastVolume': '731.2',
+        'Out_FGTV': '60.5',
+        'Out_Density': '8.3',
         'Run_Information': 'VolparaVersion = 1.5.4.0 | 9561 |',
         'VolparaOkay': null
       },
       'OtherData': {
         'Projectcompletedsuccessfully': null,
-        'PatientID': '0001',
-        'FibroglandularTissueVolume': '51.5 cm3',
-        'BreastVolume': '384.5 cm3',
-        'VolumetricBreastDensity': '13.4 %',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
+        'FibroglandularTissueVolume': '60.5 cm3',
+        'BreastVolume': '731.2 cm3',
+        'VolumetricBreastDensity': '8.3 %',
         'RunInformation': 'VolparaVersion = 1.5.4.0 | 9561 |'
       },
       'SpecialData': null,
@@ -4684,13 +4393,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020003': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401561177965'
+            '1.2.826.0.1.3680043.8.694.700198581.696360397693818062'
           ]
         },
         '00020010': {
           'vr': 'UI',
           'Value': [
-            '1.2.840.10008.1.2.1'
+            '1.2.840.10008.1.2.5'
           ]
         },
         '00020012': {
@@ -4702,13 +4411,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020013': {
           'vr': 'SH',
           'Value': [
-            'fo-dicom 3.1.0'
+            'fo-dicom 4.0.0'
           ]
         },
         '00020016': {
           'vr': 'AE',
           'Value': [
-            'RD0003FF85A0E1'
+            'RD00155D027AB7'
           ]
         }
       },
@@ -4736,62 +4445,59 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00080018': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401561177965'
+            '1.2.826.0.1.3680043.8.694.700198581.696360397693818062'
           ]
         },
         '00080020': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080021': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080022': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080023': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080030': {
           'vr': 'TM',
           'Value': [
-            '144815'
+            '133652.000000'
           ]
         },
         '00080031': {
           'vr': 'TM',
           'Value': [
-            '145027'
+            '133908'
           ]
         },
         '00080032': {
           'vr': 'TM',
           'Value': [
-            '145148'
+            '134040'
           ]
         },
         '00080033': {
           'vr': 'TM',
           'Value': [
-            '145154'
+            '134042'
           ]
         },
         '00080050': {
-          'vr': 'SH',
-          'Value': [
-            '12345'
-          ]
+          'vr': 'SH'
         },
         '00080060': {
           'vr': 'CS',
@@ -4818,12 +4524,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         },
         '00080090': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Physician-1'
-            }
-          ]
+          'vr': 'PN'
         },
         '00081010': {
           'vr': 'SH',
@@ -4843,18 +4544,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'B/L MLOS, B/L CCS'
           ]
         },
-        '00081070': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Technologist-1'
-            }
-          ]
-        },
         '00081090': {
           'vr': 'LO',
           'Value': [
-            'Senograph DS ADS_43.10.1'
+            'Senograph DS ADS_32.00'
           ]
         },
         '00082218': {
@@ -4882,24 +4575,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             }
           ]
         },
-        '00090010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_Ident_01'
-          ]
-        },
-        '00091001': {
-          'vr': 'SH',
-          'Value': [
-            '0001223861'
-          ]
-        },
-        '00091002': {
-          'vr': 'SH',
-          'Value': [
-            '01'
-          ]
-        },
         '00100010': {
           'vr': 'PN',
           'Value': [
@@ -4911,14 +4586,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00100020': {
           'vr': 'LO',
           'Value': [
-            '0001'
+            '72C4735E203EC5941D5B9A5A768233'
           ]
         },
         '00100030': {
-          'vr': 'DA',
-          'Value': [
-            '19600701'
-          ]
+          'vr': 'DA'
         },
         '00100040': {
           'vr': 'CS',
@@ -4926,10 +4598,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'F'
           ]
         },
-        '00101010': {
-          'vr': 'AS',
+        '001021B0': {
+          'vr': 'LT',
           'Value': [
-            '049Y'
+            'mbdTpVHAT3L3sUpOpcl3ISv3e3zUoEngMcS4hXEcierBZh/QRKWhNJG8147IKrfsF1BsHuntSYK/cU7iSPkUORMubQfYJ1vKHe9GqMliJIs1n2hBEx9Hfexb54LMjIVuWCe/aviXKuiiK5C54A0wsbccxHYt188ajWLeA4oibF0='
           ]
         },
         '00120062': {
@@ -5062,7 +4734,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00180060': {
           'vr': 'DS',
           'Value': [
-            28
+            29
           ]
         },
         '00181000': {
@@ -5074,13 +4746,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181020': {
           'vr': 'LO',
           'Value': [
-            'Ads Application Package VERSION ADS_43.10.1'
+            'Ads Application Package VERSION ADS_32.00'
           ]
         },
         '00181030': {
           'vr': 'LO',
           'Value': [
-            'ROUTINE'
+            'anonymous'
           ]
         },
         '00181110': {
@@ -5117,25 +4789,25 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181150': {
           'vr': 'IS',
           'Value': [
-            2684
+            1778
           ]
         },
         '00181151': {
           'vr': 'IS',
           'Value': [
-            62
+            61
           ]
         },
         '00181152': {
           'vr': 'IS',
           'Value': [
-            166
+            110
           ]
         },
         '00181153': {
           'vr': 'IS',
           'Value': [
-            166500
+            110300
           ]
         },
         '00181160': {
@@ -5173,19 +4845,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '001811A0': {
           'vr': 'DS',
           'Value': [
-            52
+            58
           ]
         },
         '001811A2': {
           'vr': 'DS',
           'Value': [
-            110
+            70
           ]
         },
         '00181405': {
           'vr': 'IS',
           'Value': [
-            14388
+            9996
           ]
         },
         '00181508': {
@@ -5221,7 +4893,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181704': {
           'vr': 'IS',
           'Value': [
-            1915
+            1913
           ]
         },
         '00181706': {
@@ -5233,7 +4905,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181708': {
           'vr': 'IS',
           'Value': [
-            2295
+            2293
           ]
         },
         '00185101': {
@@ -5245,7 +4917,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00186000': {
           'vr': 'DS',
           'Value': [
-            0.01117304
+            0.011825697
           ]
         },
         '00187000': {
@@ -5257,7 +4929,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187001': {
           'vr': 'DS',
           'Value': [
-            30.299999
+            30.1
           ]
         },
         '00187004': {
@@ -5275,19 +4947,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187006': {
           'vr': 'LT',
           'Value': [
-            'DETECTOR VERSION 1.0 MTFCOMP 1.0'
+            'DETECTOR VERSION 1.0 NOTMTFCOMP'
           ]
         },
         '0018700A': {
           'vr': 'SH',
           'Value': [
             'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20080717'
           ]
         },
         '0018701A': {
@@ -5358,7 +5024,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187062': {
           'vr': 'LT',
           'Value': [
-            'AOP contrast RECTANGLE 1032 mm 430 mm 180 mm 240 mm EXP DOSE 146841 nGy PRE-EXP DOSE 3565 nGy PRE-EXP THICK 51 mm PRE-EXP COMPO 66 % PRE-EXP KV 28 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 0 FLATFIELD no'
+            'AOP contrast RECTANGLE 1062 mm 460 mm 180 mm 240 mm EXP DOSE 98074 nGy PRE-EXP DOSE 5154 nGy PRE-EXP THICK 56 mm PRE-EXP COMPO 58 % PRE-EXP KV 31 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE not detected FLATFIELD no'
           ]
         },
         '00187064': {
@@ -5386,13 +5052,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
               '00181020': {
                 'vr': 'LO',
                 'Value': [
-                  '1.0.108.0'
+                  '1.0.111.0'
                 ]
               },
               '0018A002': {
                 'vr': 'DT',
                 'Value': [
-                  '20151208'
+                  '20151224'
                 ]
               },
               '0018A003': {
@@ -5432,25 +5098,22 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '0020000D': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1'
+            '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468'
           ]
         },
         '0020000E': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733'
+            '2.25.19197153388876081107031261850941247447'
           ]
         },
         '00200010': {
-          'vr': 'SH',
-          'Value': [
-            'Study-1'
-          ]
+          'vr': 'SH'
         },
         '00200011': {
           'vr': 'IS',
           'Value': [
-            4
+            66598
           ]
         },
         '00200013': {
@@ -5580,39 +5243,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'US'
           ]
         },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
         '00282110': {
           'vr': 'CS',
           'Value': [
             '00'
-          ]
-        },
-        '00290010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_ImageInfo_01'
-          ]
-        },
-        '00291004': {
-          'vr': 'UN',
-          'InlineBinary': 'dmlld19zdGF0ZSB7CiAgICBmaTwwPgogICAgc2k8MD4KICAgIGlpPDA+Cn0KZGVmYXVsdF9waXBlCnBpcGVfc3RhdGVzCnBpcGVfb3ZlcmxheXMKY29sbGVjdGlvbjxXOmV3YmN3aXNlOjQ0MTYyMjkgMD4Kb3JkZXI8MTY6ND4Kc29ydF9vcmRlcjxhc2NlbmRpbmc+CnNvcnRfb3BlcmF0aW9uPG5vbmU+CgAK'
-        },
-        '00400275': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00400007': {
-                'vr': 'LO',
-                'Value': [
-                  'B/L MLOS, B/L CCS'
-                ]
-              }
-            }
           ]
         },
         '00400302': {
@@ -5624,19 +5258,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00400306': {
           'vr': 'DS',
           'Value': [
-            608
+            602
           ]
         },
         '00400310': {
           'vr': 'ST',
           'Value': [
-            '66 %'
+            '56 %'
           ]
         },
         '00400316': {
           'vr': 'DS',
           'Value': [
-            0.03076
+            0.02096
           ]
         },
         '00400318': {
@@ -5644,82 +5278,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           'Value': [
             'BREAST'
           ]
-        },
-        '00400555': {
-          'vr': 'SQ'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            14.388
-          ]
-        },
-        '00450010': {
-          'vr': 'LO',
-          'Value': [
-            'GEMS_SENO_02'
-          ]
-        },
-        '00451006': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '0045101B': {
-          'vr': 'CS',
-          'Value': [
-            'LMLO'
-          ]
-        },
-        '00451020': {
-          'vr': 'DS',
-          'Value': [
-            2073.0884
-          ]
-        },
-        '00451026': {
-          'vr': 'OB',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451029': {
-          'vr': 'DS',
-          'Value': [
-            1803,
-            5.5
-          ]
-        },
-        '0045102A': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '0045102B': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '00451049': {
-          'vr': 'UN',
-          'InlineBinary': 'NTE='
-        },
-        '00451050': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjE0OTkwOTAxMzAxNDUxNTQuNjUwAA=='
-        },
-        '00451051': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjIzMjUwMDkwMTMwMTQ1MDI3LjEwMDA2'
-        },
-        '00451071': {
-          'vr': 'UN',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451072': {
-          'vr': 'UN',
-          'InlineBinary': 'NVwxIA=='
         },
         '00540220': {
           'vr': 'SQ',
@@ -5756,35 +5314,40 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         }
       },
-      'ImageResultCreationTimeUtc': '2018-04-26T05:22:12.7589813Z'
+      'ImageResultCreationTimeUtc': '2018-07-24T12:03:28.9586168Z'
     },
     {
       'JsonVersion': 1,
       'SourceImage': {
-        'DicomImageFilePath': '0001_GE_R_rm_20090122.dcm',
-        'TransferSyntaxName': 'Explicit VR Little Endian',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.1',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.211979051425099.5028401647480257',
+        'DicomImageFilePath': '72C4735E203EC5941D5B9A5A768233_37CA429CB7686296E3E64EEC27AD9F.dcm',
+        'TransferSyntaxName': 'RLE Lossless',
+        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468',
+        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.1200238035.10752199689255471993',
         'PixelSizeX': 0.094090909,
         'PixelSizeY': 0.094090909,
         'PixelRows': 2294,
         'PixelColumns': 1914,
         'JsonVersion': 1,
         'CryptoVersion': 'H1E1',
-        'Hashes': [],
+        'Hashes': [
+          {
+            'Key': 'Key1',
+            'Value': 'PATIENTID'
+          }
+        ],
         'Encryptions': []
       },
       'MachineLearning': null,
       'PositioningInputs': null,
       'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 44.7979,
-        'BreastVolumeInCm3': 343.5815,
-        'VolumetricBreastDensityInPercent': 13.0385,
-        'ManufacturerDoseInmGy': 2.993,
-        'VolparaDoseInmGy': 3.3264,
-        'AppliedPressureInkPa': 12.45,
-        'AppliedForceInN': 100.0,
+        'FibroglandularTissueVolumeInCm3': 64.7758,
+        'BreastVolumeInCm3': 706.0432,
+        'VolumetricBreastDensityInPercent': 9.1745,
+        'ManufacturerDoseInmGy': 2.894,
+        'VolparaDoseInmGy': -1.0,
+        'AppliedPressureInkPa': 4.49,
+        'AppliedForceInN': 40.0,
         'JsonVersion': 1
       },
       'Calculations': null,
@@ -5801,8 +5364,8 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'XlsData': {
         'MammoImageType': '2D',
         'RequestedProcedure': 'Unknown',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636603168238658972_2',
-        'Timestamp': '2018/04/26_05:20:41',
+        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636680172003784795_1',
+        'Timestamp': '2018/07/24_12:01:59',
         'OSName': 'Unknown',
         'OSVersion': 'Unknown',
         'CurrentCulture': 'en-US',
@@ -5812,12 +5375,12 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'DICOMTAGManufacturer': 'GE',
         'DICOMTAGDeviceSerialNumber': 'SerialNo-1',
         'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 28 )',
+        'MaxAllowedKVP': '100 ( current 29 )',
         'BTSF': '1',
         'BTSTF': '0',
         'DetectorType': 'GE [ From Manufacturer ID ]',
         'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'FSensitivity': '0.011173 [ From File ]',
+        'FSensitivity': '0.0118257 [ From File ]',
         'Gain': '0.0100 [ From Manufacturer ID ]',
         'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
         'Offset': '0.0000 [ From Manufacturer ID ]',
@@ -5831,11 +5394,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ChestPosition': 'Right',
         'PectoralPosition': 'Top',
         'MammoView': 'MLO',
-        'StudyDate': '20090122',
-        'OperatorName': 'Technologist-1',
-        'PatientDOB': '19600701',
-        'PatientAge': '49',
-        'PatientID': '0001',
+        'StudyDate': '20080113',
+        'OperatorName': 'Unknown',
+        'PatientDOB': 'Unknown',
+        'PatientAge': '-1',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
         'DetectorID': 'DetectorID-1',
         'XraySystem': 'GE',
         'TargetPixelSizeMm': '0.355',
@@ -5843,107 +5406,103 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'ResizedPixelSizeMm': '0.3',
         'PectoralSide': 'Top',
         'PaddleType': 'None',
-        'ExposureMas': '161',
-        'ExposureTimeMs': '2590',
+        'ExposureMas': '160',
+        'ExposureTimeMs': '2578',
         'TargetMaterial': 'RHODIUM',
         'FilterMaterial': 'RHODIUM',
         'FilterThicknessMm': '0.025',
-        'TubeVoltageKvp': '28',
+        'TubeVoltageKvp': '29',
         'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.414365',
-        'CompressionForceN': '100',
-        'RecordedBreastThicknessMm': '50',
-        'PectoralAngleDegrees': '15.500',
+        'HVL_Mm': '0.430454',
+        'CompressionForceN': '40',
+        'RecordedBreastThicknessMm': '60',
+        'PectoralAngleDegrees': '20.000',
         'PectoralAngleConfidence': '1.000',
-        'InnerBreastStatistics': '( 22; 202; 51; 555; 36084; 78800482.000000; 177293300312.000000; 2183.806641; 379.917877 )',
+        'InnerBreastStatistics': '( 0; 210; 75; 665; 80474; 178694715.000000; 406436851695.000000; 2220.527344; 346.113678 )',
         'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.414584',
-        'RejectingMethod1Reason': '-0.680866 > 10 or -0.680866 < -2 or 0.414584 < 0.85',
-        'MethodFatPlaneFit': '0.881356',
+        'MethodAllPlaneFit': '0.576628',
+        'RejectingMethod1Reason': '-6.37427 > 10 or -6.37427 < -2 or 0.576628 < 0.85',
+        'MethodFatPlaneFit': '0.972866',
         'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '1.05646',
-        'ComputedSlantMm': '3.52956',
-        'ComputedBreastThickness': '50',
+        'ComputedSlantAngle': '4.85461',
+        'ComputedSlantMm': '16.256',
+        'ComputedBreastThickness': '60',
         'ScatterScaleFactor': '1.00',
         'Scatter': 'Weighted',
-        'SegPhaseDE': '29862.18',
+        'SegPhaseDE': '26879.58',
         'SegPhaseOD': '0.00',
-        'SegPhaseBE': '3794.40',
-        'SegPhasePA': '5033.97',
-        'SegPhaseBA': '5235.75',
+        'SegPhaseBE': '4691.07',
+        'SegPhasePA': '2043.45',
+        'SegPhaseBA': '10312.20',
         'SegPhaseOA': '0.00',
         'SegPhaseUA': '0.00',
         'SegPhasePD': '0.00',
-        'SegSphereDE': '29862.18',
+        'SegSphereDE': '26879.58',
         'SegSphereOD': '0.00',
-        'SegSphereBE': '5782.59',
-        'SegSpherePA': '5033.97',
-        'SegSphereBA': '3247.56',
+        'SegSphereBE': '7760.61',
+        'SegSpherePA': '2043.45',
+        'SegSphereBA': '7242.66',
         'SegSphereOA': '0.00',
         'SegSphereUA': '0.00',
         'SegSpherePD': '0.00',
-        'ContactAreaMm2': '8031.62',
-        'CompressionPressureKPa': '12.45',
+        'ContactAreaMm2': '8905.20',
+        'CompressionPressureKPa': '4.49',
         'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '50.00 mm',
-        'HintIgnoreLevel': '45.00 mm',
-        'EntranceDoseInmGy': '13.773',
-        'EstimatedEntranceDoseInmGy': '11.7499',
+        'HintRejectLevel': '60.00 mm',
+        'HintIgnoreLevel': '54.00 mm',
+        'EntranceDoseInmGy': '-1',
+        'EstimatedEntranceDoseInmGy': '12.5332',
         'Warning': 'No HVL - using estimate',
-        'GlandularityPercent': '33.58',
-        'VolparaMeanGlandularDoseInmGy': '3.326400',
-        'FiftyPercentGlandularDoseInmGy': '3.083375',
-        'OrganDose': '0.029930',
-        'OrganDoseInmGy': '2.993000',
-        'Method2Results343.58144.797913.0385': 'APJ',
+        'GlandularityPercent': '19.38',
+        'VolparaMeanGlandularDoseInmGy': '-1',
+        'FiftyPercentGlandularDoseInmGy': '-1',
+        'OrganDose': '0.028940',
+        'OrganDoseInmGy': '2.894000',
         'CorrectionComplete': null,
-        'NippleConfidence': '0.996799',
-        'NippleConfidenceMessage': '|OK||OK||OK|',
-        'NippleInProfile': 'Yes',
-        'NippleDistanceFromSuperiorEdgeInMm': '145.412',
-        'NippleDistanceFromPosteriorEdgeInMm': '78.9076',
-        'NippleCenterDistanceFromSuperiorEdgeInMm': '143.62',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '75.7714',
-        'MLOPosteriorNippleLineLengthInMm': '64.5619',
-        'NippleLineLengthInMm': '78.9076',
-        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-61.1571',
+        'NippleConfidence': '0.499578',
+        'NippleConfidenceMessage': '|OK||OK||disagreed curvature and intensity nipples (> 10 mm)|',
+        'NippleInProfile': 'No',
+        'NippleDistanceFromSuperiorEdgeInMm': '134.682',
+        'NippleDistanceFromPosteriorEdgeInMm': '91.6513',
+        'NippleCenterDistanceFromSuperiorEdgeInMm': '134.563',
+        'NippleCenterDistanceFromPosteriorEdgeInMm': '90.0188',
+        'MLOPosteriorNippleLineLengthInMm': '96.5526',
+        'NippleLineLengthInMm': '91.6513',
+        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-3.64534',
         'PectoralSkinFoldPresent': 'No',
-        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '-44.1883',
-        'SuperiorPectoralWidthInMm': '53.1',
-        'PosteriorPectoralLengthInMm': '189.6',
-        'PectoralShape': 'CONCAVE',
-        'ImfMaxDistanceMm': '17.5684',
-        'InframammaryFoldVisible': 'Yes',
-        'InframammaryFoldAreaInMm2': '744.57',
-        'ImfAngleInDegrees': '137.158',
-        'ImfSkinFoldPresent': 'No',
-        'MeanDenseThicknessInMm': '12.6108',
-        'MaximumDenseThicknessInMm': '25.5331',
-        'SDDenseThicknessInMm': '4.83861',
-        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '120.9',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '46.2',
+        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '29.0824',
+        'SuperiorPectoralWidthInMm': '38.7',
+        'PosteriorPectoralLengthInMm': '105.6',
+        'PectoralShape': 'FLAT',
+        'ImfMaxDistanceMm': '0.58739',
+        'InframammaryFoldVisible': 'No',
+        'MeanDenseThicknessInMm': '8.98219',
+        'MaximumDenseThicknessInMm': '31.5264',
+        'SDDenseThicknessInMm': '6.242',
+        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '114.6',
+        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '44.7',
         'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '40.2399',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.97196',
-        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '120',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '42',
-        'DenseAreaPercent': '94.2052',
-        'AreaGreaterThan10mmDenseMm2': '2206.53',
-        'HintVolumeCm3': '44.7979',
-        'BreastVolumeCm3': '343.5815',
-        'VolumetricBreastDensity': '13.0385',
-        'Out_BreastVolume': '343.6',
-        'Out_FGTV': '44.8',
-        'Out_Density': '13.0',
+        'MaximumPercentDensityIn1Cm2Area': '38.2019',
+        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.2465',
+        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '116.1',
+        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '42.3',
+        'DenseAreaPercent': '65.8374',
+        'AreaGreaterThan10mmDenseMm2': '2675.97',
+        'HintVolumeCm3': '64.7758',
+        'BreastVolumeCm3': '706.0432',
+        'VolumetricBreastDensity': '9.1745',
+        'Out_BreastVolume': '706.0',
+        'Out_FGTV': '64.8',
+        'Out_Density': '9.2',
         'Run_Information': 'VolparaVersion = 1.5.4.0 | 9561 |',
         'VolparaOkay': null
       },
       'OtherData': {
         'Projectcompletedsuccessfully': null,
-        'PatientID': '0001',
-        'FibroglandularTissueVolume': '44.8 cm3',
-        'BreastVolume': '343.6 cm3',
-        'VolumetricBreastDensity': '13.0 %',
+        'PatientID': '72C4735E203EC5941D5B9A5A768233',
+        'FibroglandularTissueVolume': '64.8 cm3',
+        'BreastVolume': '706.0 cm3',
+        'VolumetricBreastDensity': '9.2 %',
         'RunInformation': 'VolparaVersion = 1.5.4.0 | 9561 |'
       },
       'SpecialData': null,
@@ -5961,13 +5520,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020003': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401647480257'
+            '1.2.826.0.1.3680043.8.694.1200238035.10752199689255471993'
           ]
         },
         '00020010': {
           'vr': 'UI',
           'Value': [
-            '1.2.840.10008.1.2.1'
+            '1.2.840.10008.1.2.5'
           ]
         },
         '00020012': {
@@ -5979,13 +5538,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00020013': {
           'vr': 'SH',
           'Value': [
-            'fo-dicom 3.1.0'
+            'fo-dicom 4.0.0'
           ]
         },
         '00020016': {
           'vr': 'AE',
           'Value': [
-            'RD0003FF85A0E1'
+            'RD00155D027AB7'
           ]
         }
       },
@@ -6013,62 +5572,59 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00080018': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401647480257'
+            '1.2.826.0.1.3680043.8.694.1200238035.10752199689255471993'
           ]
         },
         '00080020': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080021': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080022': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080023': {
           'vr': 'DA',
           'Value': [
-            '20090122'
+            '20080113'
           ]
         },
         '00080030': {
           'vr': 'TM',
           'Value': [
-            '144815'
+            '133652.000000'
           ]
         },
         '00080031': {
           'vr': 'TM',
           'Value': [
-            '145027'
+            '133908'
           ]
         },
         '00080032': {
           'vr': 'TM',
           'Value': [
-            '145240'
+            '134138'
           ]
         },
         '00080033': {
           'vr': 'TM',
           'Value': [
-            '145245'
+            '134140'
           ]
         },
         '00080050': {
-          'vr': 'SH',
-          'Value': [
-            '12345'
-          ]
+          'vr': 'SH'
         },
         '00080060': {
           'vr': 'CS',
@@ -6095,12 +5651,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         },
         '00080090': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Physician-1'
-            }
-          ]
+          'vr': 'PN'
         },
         '00081010': {
           'vr': 'SH',
@@ -6120,18 +5671,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'B/L MLOS, B/L CCS'
           ]
         },
-        '00081070': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Technologist-1'
-            }
-          ]
-        },
         '00081090': {
           'vr': 'LO',
           'Value': [
-            'Senograph DS ADS_43.10.1'
+            'Senograph DS ADS_32.00'
           ]
         },
         '00082218': {
@@ -6159,24 +5702,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             }
           ]
         },
-        '00090010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_Ident_01'
-          ]
-        },
-        '00091001': {
-          'vr': 'SH',
-          'Value': [
-            '0001223861'
-          ]
-        },
-        '00091002': {
-          'vr': 'SH',
-          'Value': [
-            '01'
-          ]
-        },
         '00100010': {
           'vr': 'PN',
           'Value': [
@@ -6188,14 +5713,11 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00100020': {
           'vr': 'LO',
           'Value': [
-            '0001'
+            '72C4735E203EC5941D5B9A5A768233'
           ]
         },
         '00100030': {
-          'vr': 'DA',
-          'Value': [
-            '19600701'
-          ]
+          'vr': 'DA'
         },
         '00100040': {
           'vr': 'CS',
@@ -6203,10 +5725,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'F'
           ]
         },
-        '00101010': {
-          'vr': 'AS',
+        '001021B0': {
+          'vr': 'LT',
           'Value': [
-            '049Y'
+            'mbdTpVHAT3L3sUpOpcl3ISv3e3zUoEngMcS4hXEcierBZh/QRKWhNJG8147IKrfsF1BsHuntSYK/cU7iSPkUORMubQfYJ1vKHe9GqMliJIs1n2hBEx9Hfexb54LMjIVuWCe/aviXKuiiK5C54A0wsbccxHYt188ajWLeA4oibF0='
           ]
         },
         '00120062': {
@@ -6339,7 +5861,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00180060': {
           'vr': 'DS',
           'Value': [
-            28
+            29
           ]
         },
         '00181000': {
@@ -6351,13 +5873,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181020': {
           'vr': 'LO',
           'Value': [
-            'Ads Application Package VERSION ADS_43.10.1'
+            'Ads Application Package VERSION ADS_32.00'
           ]
         },
         '00181030': {
           'vr': 'LO',
           'Value': [
-            'ROUTINE'
+            'anonymous'
           ]
         },
         '00181110': {
@@ -6394,25 +5916,25 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181150': {
           'vr': 'IS',
           'Value': [
-            2590
+            2578
           ]
         },
         '00181151': {
           'vr': 'IS',
           'Value': [
-            62
+            61
           ]
         },
         '00181152': {
           'vr': 'IS',
           'Value': [
-            161
+            160
           ]
         },
         '00181153': {
           'vr': 'IS',
           'Value': [
-            160700
+            160000
           ]
         },
         '00181160': {
@@ -6450,19 +5972,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '001811A0': {
           'vr': 'DS',
           'Value': [
-            50
+            60
           ]
         },
         '001811A2': {
           'vr': 'DS',
           'Value': [
-            100
+            40
           ]
         },
         '00181405': {
           'vr': 'IS',
           'Value': [
-            13773
+            14388
           ]
         },
         '00181508': {
@@ -6498,7 +6020,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181704': {
           'vr': 'IS',
           'Value': [
-            1915
+            1913
           ]
         },
         '00181706': {
@@ -6510,7 +6032,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00181708': {
           'vr': 'IS',
           'Value': [
-            2295
+            2293
           ]
         },
         '00185101': {
@@ -6522,7 +6044,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00186000': {
           'vr': 'DS',
           'Value': [
-            0.01117304
+            0.011825697
           ]
         },
         '00187000': {
@@ -6534,7 +6056,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187001': {
           'vr': 'DS',
           'Value': [
-            30.299999
+            30.1
           ]
         },
         '00187004': {
@@ -6552,19 +6074,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187006': {
           'vr': 'LT',
           'Value': [
-            'DETECTOR VERSION 1.0 MTFCOMP 1.0'
+            'DETECTOR VERSION 1.0 NOTMTFCOMP'
           ]
         },
         '0018700A': {
           'vr': 'SH',
           'Value': [
             'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20080717'
           ]
         },
         '0018701A': {
@@ -6635,7 +6151,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00187062': {
           'vr': 'LT',
           'Value': [
-            'AOP contrast RECTANGLE 1032 mm 370 mm 180 mm 240 mm EXP DOSE 148983 nGy PRE-EXP DOSE 2935 nGy PRE-EXP THICK 51 mm PRE-EXP COMPO 73 % PRE-EXP KV 27 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 0 FLATFIELD no'
+            'AOP contrast RECTANGLE 1062 mm 400 mm 180 mm 240 mm EXP DOSE 125804 nGy PRE-EXP DOSE 4469 nGy PRE-EXP THICK 58 mm PRE-EXP COMPO 61 % PRE-EXP KV 31 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE not detected FLATFIELD no'
           ]
         },
         '00187064': {
@@ -6663,13 +6179,13 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
               '00181020': {
                 'vr': 'LO',
                 'Value': [
-                  '1.0.108.0'
+                  '1.0.111.0'
                 ]
               },
               '0018A002': {
                 'vr': 'DT',
                 'Value': [
-                  '20151208'
+                  '20151224'
                 ]
               },
               '0018A003': {
@@ -6709,25 +6225,22 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '0020000D': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733.1'
+            '1.2.826.0.1.3680043.8.694.937387715.16508741847822800468'
           ]
         },
         '0020000E': {
           'vr': 'UI',
           'Value': [
-            '1.2.826.0.1.3680043.8.694.211979051425099.5028401519171733'
+            '2.25.19197153388876081107031261850941247447'
           ]
         },
         '00200010': {
-          'vr': 'SH',
-          'Value': [
-            'Study-1'
-          ]
+          'vr': 'SH'
         },
         '00200011': {
           'vr': 'IS',
           'Value': [
-            3
+            66598
           ]
         },
         '00200013': {
@@ -6857,39 +6370,10 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
             'US'
           ]
         },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
         '00282110': {
           'vr': 'CS',
           'Value': [
             '00'
-          ]
-        },
-        '00290010': {
-          'vr': 'LO',
-          'Value': [
-            'SECTRA_ImageInfo_01'
-          ]
-        },
-        '00291004': {
-          'vr': 'UN',
-          'InlineBinary': 'dmlld19zdGF0ZSB7CiAgICBmaTwwPgogICAgc2k8MD4KICAgIGlpPDA+Cn0KZGVmYXVsdF9waXBlCnBpcGVfc3RhdGVzCnBpcGVfb3ZlcmxheXMKY29sbGVjdGlvbjxXOmV3YmN3aXNlOjQ0MTYyMjUgMD4Kb3JkZXI8MTY6Mz4Kc29ydF9vcmRlcjxhc2NlbmRpbmc+CnNvcnRfb3BlcmF0aW9uPG5vbmU+CgAK'
-        },
-        '00400275': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00400007': {
-                'vr': 'LO',
-                'Value': [
-                  'B/L MLOS, B/L CCS'
-                ]
-              }
-            }
           ]
         },
         '00400302': {
@@ -6901,19 +6385,19 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         '00400306': {
           'vr': 'DS',
           'Value': [
-            610
+            600
           ]
         },
         '00400310': {
           'vr': 'ST',
           'Value': [
-            '72 %'
+            '57 %'
           ]
         },
         '00400316': {
           'vr': 'DS',
           'Value': [
-            0.02993
+            0.02894
           ]
         },
         '00400318': {
@@ -6921,82 +6405,6 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           'Value': [
             'BREAST'
           ]
-        },
-        '00400555': {
-          'vr': 'SQ'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            13.773
-          ]
-        },
-        '00450010': {
-          'vr': 'LO',
-          'Value': [
-            'GEMS_SENO_02'
-          ]
-        },
-        '00451006': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '0045101B': {
-          'vr': 'CS',
-          'Value': [
-            'RMLO'
-          ]
-        },
-        '00451020': {
-          'vr': 'DS',
-          'Value': [
-            2161.1917
-          ]
-        },
-        '00451026': {
-          'vr': 'OB',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451029': {
-          'vr': 'DS',
-          'Value': [
-            1880,
-            5.5
-          ]
-        },
-        '0045102A': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '0045102B': {
-          'vr': 'IS',
-          'Value': [
-            -1
-          ]
-        },
-        '00451049': {
-          'vr': 'UN',
-          'InlineBinary': 'NTE='
-        },
-        '00451050': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjE0OTkwOTAxMzAxNDUyNDUuNjU0AA=='
-        },
-        '00451051': {
-          'vr': 'UN',
-          'InlineBinary': 'MS4yLjg0MC4xMTM2MTkuMi42Ni4yMjAzODE2MTg4LjIzMjUwMDkwMTMwMTQ1MDI3LjEwMDA2'
-        },
-        '00451071': {
-          'vr': 'UN',
-          'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
-        },
-        '00451072': {
-          'vr': 'UN',
-          'InlineBinary': 'NVw1IA=='
         },
         '00540220': {
           'vr': 'SQ',
@@ -7033,21 +6441,22 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
           ]
         }
       },
-      'ImageResultCreationTimeUtc': '2018-04-26T05:22:12.8964937Z'
+      'ImageResultCreationTimeUtc': '2018-07-24T12:03:26.7551031Z'
     }
   ]
-}";
+}
+";
         
 
         public void PostVolpara()
         {
-            
-            _serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", volparaMessage, "VolparaScreeningQueue", false);
+            volparaMessage = volparaMessage.Replace("PATIENTID", _patientID);
+            _serviceBusService.PostServiceBusMessage("Volpara-ScreeningKeyName", "Volpara-ScreeningKeyValue", "Volpara-ScreeningBase", volparaMessage, "VolparaScreeningQueue", false);
         }
 
         public void GetVolpara()
         {
-            string message = _serviceBusService.GetServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", "VolparaScreeningQueue");
+            string message = _serviceBusService.GetServiceBusMessage("Volpara-ScreeningKeyName", "Volpara-ScreeningKeyValue", "Volpara-ScreeningBase", "VolparaScreeningQueue");
             _volparaService.ProcessScreeningMessage(message);
         }
     }
