@@ -35,6 +35,7 @@ namespace PROCAS2.Services.App
         private IConfigService _configService;
         private IAuditService _auditService;
         private IServiceBusService _serviceBusService;
+        private IStorageService _storageService;
 
         private IHistologyService _histologyService;
        
@@ -64,7 +65,8 @@ namespace PROCAS2.Services.App
                                 IHistologyService histologyService,
                                 IAuditService auditService,
                                 IGenericRepository<ParticipantLookup> lookupRepo,
-                                IServiceBusService serviceBusService)
+                                IServiceBusService serviceBusService,
+                                IStorageService storageService)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -83,6 +85,7 @@ namespace PROCAS2.Services.App
             _auditService = auditService;
             _lookupRepo = lookupRepo;
             _serviceBusService = serviceBusService;
+            _storageService = storageService;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -171,20 +174,20 @@ namespace PROCAS2.Services.App
                         // Then the hash
                         csv.WriteField(hash);
 
-                        
-
                         csv.NextRecord();
-
-#if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
-
-                        string message = "{ 'patientId' : '" + hash + "'}";
-                        if(_serviceBusService.PostServiceBusMessage("VolparaInvite-ServiceBusKeyName", "VolparaInvite-ServiceBusKeyValue", "VolparaInvite-ServiceBusBase", message, "VolparaInvitationQueue", false) == false)
+                      
+                        if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), hash ) == false)
                         {
                             // Then the hash
                             csv.WriteField("Error: Invite not sent to Volpara");
 
                             csv.NextRecord();
                         }
+                      
+
+#if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
+
+                      
 #endif
                     }
                 }

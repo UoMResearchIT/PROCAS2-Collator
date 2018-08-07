@@ -8,6 +8,9 @@ using System.IO;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Auth;
 using Microsoft.WindowsAzure.Storage.Blob;
+using Microsoft.WindowsAzure.Storage.Table;
+
+using PROCAS2.Data.AzureTable;
 
 namespace PROCAS2.Services.Utility
 {
@@ -103,6 +106,55 @@ namespace PROCAS2.Services.Utility
                 var blob = container.GetBlockBlobReference(filename);
                 blob.UploadFromStreamAsync(stream).Wait();
                 stream.Dispose();
+
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Store the passed invite message in the Volpara invited Azure table.
+        /// </summary>
+        /// <param name="message">A JSON message containing the hashed ID</param>
+        /// <returns>true if successful at saving the message, else false</returns>
+        public bool StoreInviteMessage(string studyNumber, string hashedNHSNumber)
+        {
+            try
+            {
+                // Parse the connection string and return a reference to the storage account.
+                CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
+                    _configService.GetConnectionString("CollatorPrimaryStorage"));
+
+                // Create the table client.
+                CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
+                // Retrieve a reference to the table.
+                CloudTable table = tableClient.GetTableReference(_configService.GetAppSetting("VolparaInvitedTable"));
+
+                // Create the table if it doesn't exist.
+                table.CreateIfNotExists();
+
+                // Create a retrieve operation that takes a customer entity.
+                TableOperation retrieveOperation = TableOperation.Retrieve<Invited>("invited", studyNumber);
+
+                // Execute the retrieve operation.
+                TableResult retrievedResult = table.Execute(retrieveOperation);
+
+                // Print the phone number of the result.
+                if (retrievedResult.Result == null)
+                {
+                    Invited invited = new Invited(studyNumber, "invited");
+                    invited.HashedPatientId = hashedNHSNumber;
+
+                    // Create the TableOperation object that inserts the customer entity.
+                    TableOperation insertOperation = TableOperation.Insert(invited);
+
+                    // Execute the insert operation.
+                    table.Execute(insertOperation);
+                }
 
             }
             catch (Exception ex)
