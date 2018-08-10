@@ -115,6 +115,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cannot find the patient history..
+        /// </summary>
+        public static string CANNOT_FIND_HISTORY {
+            get {
+                return ResourceManager.GetString("CANNOT_FIND_HISTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Eligible for chemoprevention referral?.
         /// </summary>
         public static string CHEMO {
@@ -610,6 +619,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Query Participant History.
+        /// </summary>
+        public static string PARTICIPANT_HISTORY {
+            get {
+                return ResourceManager.GetString("PARTICIPANT_HISTORY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
         public static string PARTICIPANT_NAME {
@@ -718,11 +736,29 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Age Comment.
+        /// </summary>
+        public static string RELATIONSHIP_AGECOMMENT {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_AGECOMMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Age of Diagnosis.
         /// </summary>
         public static string RELATIONSHIP_AGEOFDIAGNOSIS {
             get {
                 return ResourceManager.GetString("RELATIONSHIP_AGEOFDIAGNOSIS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Age of Diagnosis Comment.
+        /// </summary>
+        public static string RELATIONSHIP_AGEOFDIAGNOSISCOMMENT {
+            get {
+                return ResourceManager.GetString("RELATIONSHIP_AGEOFDIAGNOSISCOMMENT", resourceCulture);
             }
         }
         

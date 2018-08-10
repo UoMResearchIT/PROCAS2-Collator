@@ -20,7 +20,17 @@
         <h4>@ReportResources.STATUS_REPORTS</h4>
 
     </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.INVITED, "Invited", "Report")
 
+    </div>
+    <div class="col-md-4 reportPanel">
+        <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.CONSENTED, "Consented", "Report")
+
+    </div>
+    <div class="col-md-4 reportPanel">
+        &nbsp;
+    </div>
     <div class="col-md-4 reportPanel">
         <span class="glyphicon glyphicon-arrow-right"></span>@Html.ActionLink(ReportResources.INVITED_YET_TO_CONSENT, "YetToConsent", "Report")
 

@@ -169,6 +169,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients who have consented.
+        /// </summary>
+        public static string CONSENTED {
+            get {
+                return ResourceManager.GetString("CONSENTED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB and date of first appointment of every person who has consented..
+        /// </summary>
+        public static string CONSENTED_SUMMARY {
+            get {
+                return ResourceManager.GetString("CONSENTED_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients consented but without full details yet.
         /// </summary>
         public static string CONSENTED_YET_TO_GET_FULL {
@@ -264,6 +282,24 @@ namespace PROCAS2.Resources {
         public static string INDEX_TITLE {
             get {
                 return ResourceManager.GetString("INDEX_TITLE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Patients who have been invited.
+        /// </summary>
+        public static string INVITED {
+            get {
+                return ResourceManager.GetString("INVITED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB and date of first appointment of every person who has been invited..
+        /// </summary>
+        public static string INVITED_SUMMARY {
+            get {
+                return ResourceManager.GetString("INVITED_SUMMARY", resourceCulture);
             }
         }
         

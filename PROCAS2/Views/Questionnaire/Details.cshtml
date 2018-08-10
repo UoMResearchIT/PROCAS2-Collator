@@ -78,6 +78,9 @@
                                     @ParticipantResources.RELATIONSHIP_AGE
                                 </th>
                                 <th>
+                                    @ParticipantResources.RELATIONSHIP_AGECOMMENT
+                                </th>
+                                <th>
                                     @ParticipantResources.RELATIONSHIP_AGESTATUS
                                 </th>
                                 <th>
@@ -85,6 +88,9 @@
                                 </th>
                                 <th>
                                     @ParticipantResources.RELATIONSHIP_AGEOFDIAGNOSIS
+                                </th>
+                                <th>
+                                    @ParticipantResources.RELATIONSHIP_AGEOFDIAGNOSISCOMMENT
                                 </th>
 
                             </tr>
@@ -109,6 +115,9 @@
                                         @Model.HistoryItems[index].Age
                                     </td>
                                     <td>
+                                        @Model.HistoryItems[index].AgeComment
+                                    </td>
+                                    <td>
                                         @Model.HistoryItems[index].AgeStatus
                                     </td>
                                     <td>
@@ -116,6 +125,9 @@
                                     </td>
                                     <td>
                                         @Model.HistoryItems[index].AgeOfDiagnosis
+                                    </td>
+                                    <td>
+                                        @Model.HistoryItems[index].AgeOfDiagnosisComment
                                     </td>
                                 </tr>
                             }

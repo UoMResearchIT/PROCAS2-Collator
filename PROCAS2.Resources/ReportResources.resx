@@ -153,6 +153,12 @@
   <data name="CHEMO_DISAGREED" xml:space="preserve">
     <value>Chemoprevention not agreed in clinic</value>
   </data>
+  <data name="CONSENTED" xml:space="preserve">
+    <value>Patients who have consented</value>
+  </data>
+  <data name="CONSENTED_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB and date of first appointment of every person who has consented.</value>
+  </data>
   <data name="CONSENTED_YET_TO_GET_FULL" xml:space="preserve">
     <value>Patients consented but without full details yet</value>
   </data>
@@ -185,6 +191,12 @@
   </data>
   <data name="INDEX_TITLE" xml:space="preserve">
     <value>Reports</value>
+  </data>
+  <data name="INVITED" xml:space="preserve">
+    <value>Patients who have been invited</value>
+  </data>
+  <data name="INVITED_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB and date of first appointment of every person who has been invited.</value>
   </data>
   <data name="INVITED_YET_TO_CONSENT" xml:space="preserve">
     <value>Patients invited but yet to consent</value>

@@ -135,6 +135,9 @@
   <data name="CANNOT_DELETE" xml:space="preserve">
     <value>An error occurred when trying to delete this participant</value>
   </data>
+  <data name="CANNOT_FIND_HISTORY" xml:space="preserve">
+    <value>Cannot find the patient history.</value>
+  </data>
   <data name="CHEMO" xml:space="preserve">
     <value>Eligible for chemoprevention referral?</value>
   </data>
@@ -300,6 +303,9 @@
   <data name="NO_VOLPARA_RECORDS" xml:space="preserve">
     <value>There are no Volpara records to display.</value>
   </data>
+  <data name="PARTICIPANT_HISTORY" xml:space="preserve">
+    <value>Query Participant History</value>
+  </data>
   <data name="PARTICIPANT_NAME" xml:space="preserve">
     <value>Name</value>
   </data>
@@ -337,8 +343,14 @@
   <data name="RELATIONSHIP_AGE" xml:space="preserve">
     <value>Age (or age at death)</value>
   </data>
+  <data name="RELATIONSHIP_AGECOMMENT" xml:space="preserve">
+    <value>Age Comment</value>
+  </data>
   <data name="RELATIONSHIP_AGEOFDIAGNOSIS" xml:space="preserve">
     <value>Age of Diagnosis</value>
+  </data>
+  <data name="RELATIONSHIP_AGEOFDIAGNOSISCOMMENT" xml:space="preserve">
+    <value>Age of Diagnosis Comment</value>
   </data>
   <data name="RELATIONSHIP_AGESTATUS" xml:space="preserve">
     <value>Status</value>

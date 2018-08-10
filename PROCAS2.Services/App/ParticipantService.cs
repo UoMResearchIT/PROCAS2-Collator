@@ -1420,5 +1420,57 @@ namespace PROCAS2.Services.App
             }
         }
 
+        /// <summary>
+        /// Get the participant history and put it in the view model
+        /// </summary>
+        /// <param name="NHSNumber">NHS number</param>
+        /// <param name="model">reference to the view model</param>
+        /// <returns>true if the patient is found, else false</returns>
+        public bool GetParticipantHistory(string NHSNumber, ref ParticipantHistoryDetailsViewModel model)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == NHSNumber).FirstOrDefault();
+            if (participant != null)
+            {
+                model.NHSNumber = NHSNumber;
+                model.StudyNumber = participant.StudyNumber;
+                model.Events = participant.ParticipantEvents.ToList();
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Set the patient's consented flag to true
+        /// </summary>
+        /// <param name="hashedNHSNumber">Hashed NHS Number</param>
+        /// <returns>true if set OK, else false</returns>
+        public bool SetConsentFlag(string hashedNHSNumber, DateTime dateOfConsent)
+        {
+            try
+            {
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                if (participant != null)
+                {
+                   
+                    participant.Consented = true;
+                    participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, participant.DateConsented, dateOfConsent, "");
+                    _participantRepo.Update(participant);
+                   
+                    _unitOfWork.Save();
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
     }
 }

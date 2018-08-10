@@ -455,6 +455,7 @@
     <Content Include="js\histologyFocusEdit.js" />
     <Content Include="js\histologyList.js" />
     <Content Include="js\participantDelete.js" />
+    <Content Include="js\phase1.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="js\uploadScreeningOutcomes.js" />
     <Content Include="Properties\webjobs-list.json" />
@@ -643,7 +644,9 @@
     <Content Include="Scripts\spin.js" />
     <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -709,6 +712,8 @@
     <Content Include="Views\Participant\Delete.cshtml" />
     <Content Include="Views\Phase1\ReceiveConsent.cshtml" />
     <Content Include="Views\Phase1\SendVolpara.cshtml" />
+    <Content Include="Views\Participant\ParticipantHistoryQuery.cshtml" />
+    <Content Include="Views\Participant\ParticipantHistoryDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

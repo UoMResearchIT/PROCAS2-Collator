@@ -368,14 +368,15 @@ namespace PROCAS2.Services.Utility
 
                                 string age = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-4");
                            
-                                historyItem.Age = age;                    
-                                historyItem.AgeStatus = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5");
-                                historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6-2");
+                                historyItem.Age = age;
+                                historyItem.AgeComment = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-5");                
+                                historyItem.AgeStatus = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-6");
+                                historyItem.Disease = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-7-2");
 
-
-                                string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-7");
+                                string ageOfDiagnosis = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-8");
 
                                 historyItem.AgeOfDiagnosis = ageOfDiagnosis;
+                                historyItem.AgeOfDiagnosisComment = terse.Get("/.^OBSERVATION$(" + idxOBX + ")/OBX-5(" + idxHistory + ")-9");
 
                                 // Create the record in the DB
                                 if (_responseService.CreateFamilyHistoryItem(response, historyItem) == false)

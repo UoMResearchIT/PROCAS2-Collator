@@ -1,0 +1,53 @@
+﻿@model PROCAS2.Models.ViewModels.ParticipantHistoryDetailsViewModel
+
+@using PROCAS2.Resources
+@using PROCAS2.Data.Entities
+
+@{
+    ViewBag.Title = "Patient History Details";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Participant Details - @Model.NHSNumber (@Model.StudyNumber.ToString().PadLeft(5, '0'))</h4>
+    </div>
+    
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-sm">
+            <thead>
+                <tr>
+                    <th>
+                        @ParticipantResources.EVENT_DATE
+                    </th>
+                    <th>
+                        @ParticipantResources.EVENT_NAME
+                    </th>
+                    <th>
+                        @ParticipantResources.EVENT_USER
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ParticipantEvent pEvent in Model.Events.OrderByDescending(x => x.EventDate))
+                {
+                    <tr>
+                        <td>
+                            @pEvent.EventDate.ToString()
+                        </td>
+                        <td>
+                            @pEvent.Notes
+                        </td>
+                        <td>
+                            @pEvent.AppUser.UserCode
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+
+
+    </div>
+</div>

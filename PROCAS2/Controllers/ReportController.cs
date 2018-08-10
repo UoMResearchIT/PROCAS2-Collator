@@ -114,6 +114,48 @@ namespace PROCAS2.Controllers
         }
 
         [HttpGet]
+        public ActionResult Invited()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.INVITED;
+            model.Summary = ReportResources.INVITED_SUMMARY;
+            model.ActionName = "Invited";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Invited(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.Invited(), "Invited", "NoParameter", model);
+
+        }
+
+        [HttpGet]
+        public ActionResult Consented()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.CONSENTED;
+            model.Summary = ReportResources.CONSENTED_SUMMARY;
+            model.ActionName = "Consented";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Consented(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.Consented(), "Consented", "NoParameter", model);
+
+        }
+
+        [HttpGet]
         public ActionResult YetToConsent()
         {
             NoParameterViewModel model = new NoParameterViewModel();

@@ -31,5 +31,7 @@ namespace PROCAS2.Services.App
         MemoryStream SubsequentFamilyHistory();
         MemoryStream SubsequentMoreFrequent();
         MemoryStream BreastCancerDiagnoses();
+        MemoryStream Consented();
+        MemoryStream Invited();
     }
 }

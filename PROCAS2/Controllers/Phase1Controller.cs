@@ -14,11 +14,11 @@ namespace PROCAS2.Controllers
 {
     public class Phase1Controller : Controller
     {
-        private IWebJobParticipantService _participantService;
+        private IParticipantService _participantService;
         private IGenericRepository<Participant> _participantRepo;
         private IServiceBusService _serviceBusService;
 
-        public Phase1Controller(IWebJobParticipantService participantService,
+        public Phase1Controller(ParticipantService participantService,
                                 IGenericRepository<Participant> participantRepo,
                                 IServiceBusService serviceBusService)
         {
@@ -32,6 +32,7 @@ namespace PROCAS2.Controllers
         public ActionResult ReceiveConsent()
         {
             ReceiveConsentViewModel model = new ReceiveConsentViewModel();
+            model.DateOfConsent = DateTime.Now;
             return View("ReceiveConsent", model);
         }
 
@@ -44,7 +45,8 @@ namespace PROCAS2.Controllers
                 Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
-                    if (_participantService.SetConsentFlag(participant.HashedNHSNumber) == false)
+                   
+                    if (_participantService.SetConsentFlag(participant.HashedNHSNumber, model.DateOfConsent) == false)
                     {
                         ModelState.AddModelError("NHSNumber", "Error setting consent");
                         return View("ReceiveConsent", model);
@@ -55,6 +57,10 @@ namespace PROCAS2.Controllers
                     ModelState.AddModelError("NHSNumber", "Participant does not exist");
                     return View("ReceiveConsent", model);
                 }
+            }
+            else
+            {
+                return View("ReceiveConsent", model);
             }
 
 

@@ -128,6 +128,8 @@
     <Compile Include="ViewModels\HistologyEditViewModel.cs" />
     <Compile Include="ViewModels\HistologyFocusViewModel.cs" />
     <Compile Include="ViewModels\HistologyListViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantHistoryDetailsViewModel.cs" />
+    <Compile Include="ViewModels\ParticipantHistoryQueryViewModel.cs" />
     <Compile Include="ViewModels\QuestionnaireDetailsViewModel.cs" />
     <Compile Include="ViewModels\Reports\NoParameterViewModel.cs" />
     <Compile Include="ViewModels\Reports\NoParameterTypeChoiceViewModel.cs" />

@@ -24,5 +24,7 @@ namespace PROCAS2.Services.App
         int CreateNextStudyNumber();
 
         List<ParticipantLookup> GetLookups(string lookupType);
+        bool GetParticipantHistory(string NHSNumber, ref ParticipantHistoryDetailsViewModel model);
+        bool SetConsentFlag(string hashedNHSNumber, DateTime dateOfConsent);
     }
 }

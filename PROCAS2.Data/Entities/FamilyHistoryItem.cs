@@ -38,6 +38,12 @@ namespace PROCAS2.Data.Entities
         [MaxLength(5)]
         public string AgeStatus { get; set; }
 
+        [MaxLength(30)]
+        public string AgeComment { get; set; }
+
+        [MaxLength(30)]
+        public string AgeOfDiagnosisComment { get; set; }
+
         public virtual QuestionnaireResponse QuestionnaireResponse { get; set; }
     }
 }

@@ -351,6 +351,36 @@ namespace PROCAS2.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult ParticipantHistory()
+        {
+            ParticipantHistoryQueryViewModel model = new ParticipantHistoryQueryViewModel();
+
+            return View("ParticipantHistoryQuery", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ParticipantHistory(ParticipantHistoryQueryViewModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                ParticipantHistoryDetailsViewModel detailModel = new ParticipantHistoryDetailsViewModel();
+                if (_participantService.GetParticipantHistory(model.NHSNumber, ref detailModel) == false)
+                {
+                    ModelState.AddModelError("NHSNumber", ParticipantResources.CANNOT_FIND_HISTORY);
+                    return View("ParticipantHistoryQuery", model);
+                }
+                else
+                {
+                    return View("ParticipantHistoryDetails", detailModel);
+                }
+            }
+
+            return View("ParticipantHistoryQuery", model);
+        }
+
         public string PrependSchemeAndAuthority(string url)
         {
             try
