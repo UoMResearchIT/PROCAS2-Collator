@@ -61,6 +61,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Can&apos;t create the density record..
+        /// </summary>
+        public static string CANNOT_CREATE_DENSITY_RECORD {
+            get {
+                return ResourceManager.GetString("CANNOT_CREATE_DENSITY_RECORD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Can&apos;t create the image record.
         /// </summary>
         public static string CANNOT_CREATE_IMAGE {

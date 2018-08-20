@@ -112,6 +112,7 @@ namespace PROCAS2.Data.Entities
         public virtual ICollection<Image> Images { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<ScreeningRecordV1_5_4> ScreeningRecordV1_5_4s { get; set; }
+        public virtual ICollection<VolparaDensity> VolparaDensities { get; set; }
         public virtual ICollection<QuestionnaireResponse> QuestionnaireResponses { get; set; }
         public virtual ICollection<Histology> Histologies { get; set; }
 

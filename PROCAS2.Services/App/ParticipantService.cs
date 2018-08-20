@@ -175,19 +175,19 @@ namespace PROCAS2.Services.App
                         csv.WriteField(hash);
 
                         csv.NextRecord();
-                      
-                        if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), hash ) == false)
+
+
+
+#if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
+
+                        if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), hash) == false)
                         {
                             // Then the hash
                             csv.WriteField("Error: Invite not sent to Volpara");
 
                             csv.NextRecord();
                         }
-                      
 
-#if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
-
-                      
 #endif
                     }
                 }

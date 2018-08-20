@@ -1,0 +1,223 @@
+﻿@model PROCAS2.Models.ViewModels.DensityViewModel
+
+@{
+    ViewBag.Title = "Density";
+}
+
+@if (Model.VolparaDensity != null)
+{
+<h4>Density Information for images arriving @Html.DisplayFor(model => model.VolparaDensity.DataDate) </h4>
+
+<div>
+    <hr />
+
+
+    <table>
+        <thead>
+            <tr>
+                <th>Field Name</th>
+                <th>Value</th>
+            </tr>
+
+        </thead>
+        <tbody>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.LeftBreastFibroglandularTissueVolume)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.LeftBreastFibroglandularTissueVolume)
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.LeftBreastVolume)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.LeftBreastVolume)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.LeftBreastVolumetricBreastDensity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.LeftBreastVolumetricBreastDensity)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.RightBreastFibroglandularTissueVolume)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.RightBreastFibroglandularTissueVolume)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.RightBreastVolume)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.RightBreastVolume)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.RightBreastVolumetricBreastDensity)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.RightBreastVolumetricBreastDensity)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.VolparaDensityPercentageUsingMaximumBreast)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityPercentageUsingMaximumBreast)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.VolparaDensityPercentageUsingBreastAverage)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityPercentageUsingBreastAverage)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.VolparaDensityGrade4ThEdition)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade4ThEdition)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.VolparaDensityGrade5ThEdition)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade5ThEdition)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.VolparaDensityGrade5ThEditionUsingBreastAverage)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade5ThEditionUsingBreastAverage)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.AverageBreastVolume)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.AverageBreastVolume)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.AverageAppliedPressure)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.AverageAppliedPressure)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.AverageAppliedForce)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.AverageAppliedForce)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.AverageManufacturerDosePerImage)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.AverageManufacturerDosePerImage)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.AverageVolparaDosePerImage)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.AverageVolparaDosePerImage)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.LeftBreastTotalDose)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.LeftBreastTotalDose)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.RightBreastTotalDose)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.RightBreastTotalDose)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.DensityOutliers)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.DensityOutliers)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.DensityImagesUsedForLccLmloRccRmlo)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.DensityImagesUsedForLccLmloRccRmlo)
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.DisplayNameFor(model => model.VolparaDensity.DataDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.DataDate)
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+}
+else
+{
+    <span>No density information exists for this ID</span>
+}

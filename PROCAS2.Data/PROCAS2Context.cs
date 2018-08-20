@@ -47,6 +47,7 @@ namespace PROCAS2.Data
         public DbSet<FamilyGeneticTestingItem> FamilyGeneticTestingItems { get; set; }
         public DbSet<AppNewsItem> AppNewsItems { get; set; }
         public DbSet<WebJobLog> WebJobLogs { get; set; }
+        public DbSet<VolparaDensity> VolparaDensities { get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

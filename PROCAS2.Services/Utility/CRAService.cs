@@ -482,7 +482,7 @@ namespace PROCAS2.Services.Utility
             }
 
             string fileName = _participantService.GetStudyNumber(patientID) + "-" + dateFinished + ".txt";
-            if (_storageService.StoreCRAMessage(hl7Message, fileName))
+            if (_storageService.StoreCRAMessage(hl7Message, fileName) == false)
             {
                 // Don't fail if can't store the message, just report it.
                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Survey, WebJobLogLevel.Info, String.Format(HL7Resources.CANNOT_STORE_MESSAGE, patientID), messageBody: hl7Message));

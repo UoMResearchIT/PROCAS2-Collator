@@ -323,5 +323,8 @@ namespace PROCAS2.Data.Entities
 
         public int ParticipantId { get; set; }
         public virtual Participant Participant { get; set; }
+
+        public int? VolparaDensityId { get; set; }
+        public virtual VolparaDensity VolparaDensity { get; set; }
     }
 }

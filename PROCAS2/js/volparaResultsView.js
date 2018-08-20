@@ -20,4 +20,8 @@ $(document).ready(function () {
         ]
     });
 
+    $('.density-button').on('click', function (e) {
+        e.stopPropagation();
+    });
+
 });

@@ -247,41 +247,46 @@ namespace PROCAS2.Services.App
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(volparaSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(ScreeningRecordV1_5_4), 1, beforeCols: new List<string>() { "NHSNumber" });
 
+                // Add Volpara density header
+                string densitySheetId = AddSheet(wbPart, "Density", 4);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(VolparaDensity), 1, beforeCols: new List<string>() { "NHSNumber" });
+
                 // Add Risk letter header
-                string riskSheetId = AddSheet(wbPart, "Risk", 4);
+                string riskSheetId = AddSheet(wbPart, "Risk", 5);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(riskSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(RiskLetter), 1, beforeCols: new List<string>() { "NHSNumber" });
 
                 // Add Survey header
-                string surveySheetId = AddSheet(wbPart, "SurveyHeader", 5);
+                string surveySheetId = AddSheet(wbPart, "SurveyHeader", 6);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponse), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
 
                 // Add Survey item header
-                string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 6);
+                string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 7);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponseItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" },
                                                                                             afterCols: new List<string>() { "QuestionText" });
 
                 // Add family history header
-                string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 7);
+                string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 8);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
 
                 // Add family genetic testing header
-                string familyGeneticSheetId = AddSheet(wbPart, "FamilyGenetic", 8);
+                string familyGeneticSheetId = AddSheet(wbPart, "FamilyGenetic", 9);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(familyGeneticSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(FamilyGeneticTestingItem), 1, beforeCols: new List<string>() { "NHSNumber", "ResponseId" });
 
 
                 // Add Histology header
-                string histologySheetId = AddSheet(wbPart, "Histology", 9);
+                string histologySheetId = AddSheet(wbPart, "Histology",10 );
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
                                                                             afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
 
                 // Add Histology focus header
-                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 10);
+                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 11);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
                 AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
                                                                             afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
@@ -289,6 +294,7 @@ namespace PROCAS2.Services.App
                 int parIndex = 2;
                 int addressIndex = 2;
                 int volparaIndex = 2;
+                int densityIndex = 2;
                 int riskIndex = 2;
                 int surveyIndex = 2;
                 int surveyItemIndex = 2;
@@ -334,6 +340,15 @@ namespace PROCAS2.Services.App
                         AddLineFromProperties(workingSheet, screening, typeof(ScreeningRecordV1_5_4), volparaIndex,
                                             beforeCols: new List<string>() { participant.NHSNumber });
                         volparaIndex++;
+                    }
+
+                    // Add Volpara density details
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                    foreach (VolparaDensity density in participant.VolparaDensities)
+                    {
+                        AddLineFromProperties(workingSheet, density, typeof(VolparaDensity), densityIndex,
+                                            beforeCols: new List<string>() { participant.NHSNumber });
+                        densityIndex++;
                     }
 
                     // Add Risk Letter details

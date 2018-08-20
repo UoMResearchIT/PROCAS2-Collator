@@ -18,13 +18,16 @@ namespace PROCAS2.Controllers
     {
         private IGenericRepository<ScreeningRecordV1_5_4> _screeningV1_5_4Repo;
         private IGenericRepository<Participant> _participantRepo;
+        private IGenericRepository<VolparaDensity> _densityRepo;
 
 
         public ScreeningController(IGenericRepository<ScreeningRecordV1_5_4> screeningV1_5_4Repo,
-                                    IGenericRepository<Participant> participantRepo)
+                                    IGenericRepository<Participant> participantRepo,
+                                    IGenericRepository<VolparaDensity> densityRepo)
         {
             _screeningV1_5_4Repo = screeningV1_5_4Repo;
             _participantRepo = participantRepo;
+            _densityRepo = densityRepo;
         }
 
         // GET: Screening
@@ -42,6 +45,25 @@ namespace PROCAS2.Controllers
             }
 
             return View("ViewScreenV1_5_4", model);
+        }
+
+        // GET: Screening
+        public ActionResult Density(int id)
+        {
+            DensityViewModel model = new DensityViewModel();
+
+            if (id != 0)
+            {
+
+                VolparaDensity density = _densityRepo.GetAll().Where(x => x.Id == id).FirstOrDefault();
+                if (density != null)
+                {
+                    model.VolparaDensity = density;
+                    return View("Density", model);
+                }
+            }
+
+            return View("Density", model);
         }
     }
 }

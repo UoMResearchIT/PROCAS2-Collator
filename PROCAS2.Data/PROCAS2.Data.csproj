@@ -120,6 +120,7 @@
     <Compile Include="Entities\ScreeningRecordV1_5_2.cs" />
     <Compile Include="Entities\ScreeningRecordV1_5_4.cs" />
     <Compile Include="Entities\ScreeningSite.cs" />
+    <Compile Include="Entities\VolparaDensity.cs" />
     <Compile Include="Entities\WebJobLog.cs" />
     <Compile Include="GenericRepository.cs" />
     <Compile Include="Identity\IdentityModels.cs" />
