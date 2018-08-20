@@ -11,5 +11,6 @@ namespace PROCAS2.Services.Utility
         bool ProcessConsentPDF(string PDF, string filename);
         bool StoreCRAMessage(string message, string filename);
         bool StoreVolparaMessage(string message, string filename);
+        bool StoreInviteMessage(string studyNumber, string hashedNHSNumber);
     }
 }
