@@ -10,6 +10,7 @@ using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
 using PROCAS2.Services.App;
+using PROCAS2.Services.Utility;
 using PROCAS2.CustomActionResults;
 using PROCAS2.Resources;
 
@@ -25,14 +26,17 @@ namespace PROCAS2.Controllers
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<ScreeningSite> _screeningSiteRepo;
         private IParticipantService _participantService;
+        private IStorageService _storageService;
 
         public ParticipantController(IGenericRepository<Participant> participantRepo,
                                     IParticipantService participantService,
-                                    IGenericRepository<ScreeningSite> screeningSiteRepo)
+                                    IGenericRepository<ScreeningSite> screeningSiteRepo,
+                                    IStorageService storageService)
         {
             _participantRepo = participantRepo;
             _participantService = participantService;
             _screeningSiteRepo = screeningSiteRepo;
+            _storageService = storageService;
         }
 
 
@@ -379,6 +383,28 @@ namespace PROCAS2.Controllers
             }
 
             return View("ParticipantHistoryQuery", model);
+        }
+
+
+        [HttpGet]
+        public ActionResult ConsentForm(int studyNumber)
+        {
+            
+            Participant participant = _participantRepo.GetAll().Where(x => x.StudyNumber == studyNumber).FirstOrDefault();
+            if (participant != null)
+            {
+                MemoryStream consentStream = _storageService.GetConsentForm(studyNumber);
+                if (consentStream != null)
+                {
+                    return new FileStreamResult(consentStream, "application/pdf");
+                }
+                else
+                {
+                    return View("NoConsent");
+                }
+            }
+
+            return View("NoConsent");
         }
 
         public string PrependSchemeAndAuthority(string url)

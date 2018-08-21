@@ -164,6 +164,38 @@ namespace PROCAS2.Services.Utility
 
             return true;
         }
+
+        /// <summary>
+        /// Gets the consent form from storage
+        /// </summary>
+        /// <param name="studyNumber">study number of the participant</param>
+        /// <returns>memorystream with the PDF</returns>
+        public MemoryStream GetConsentForm(int studyNumber)
+        {
+            MemoryStream consentStream = new MemoryStream();
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageConsentContainer"));
+
+            string paddedStudyNumber = studyNumber.ToString().PadLeft(5, '0');
+            // List all for this study number in descending file name order, which should correspond to descending date order.
+            foreach (IListBlobItem item in container.ListBlobs(paddedStudyNumber, false).OrderByDescending(x => x.Uri.AbsolutePath))
+            {
+                // Hopefully there is just one per person, however just in case we only return the first we find. It *should* be
+                // in descending date order, so this should be the latest.
+                if (item.Uri.Segments.Count() == 3)
+                {
+                    var blob = container.GetBlockBlobReference(item.Uri.Segments[2]);
+                    blob.DownloadToStream(consentStream);
+                    consentStream.Position = 0;
+                    break;
+                }
+            }
+
+            return consentStream;
+
+        }
+
     }
 
 }

@@ -715,6 +715,7 @@
     <Content Include="Views\Participant\ParticipantHistoryQuery.cshtml" />
     <Content Include="Views\Participant\ParticipantHistoryDetails.cshtml" />
     <Content Include="Views\Screening\Density.cshtml" />
+    <Content Include="Views\Participant\NoConsent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
