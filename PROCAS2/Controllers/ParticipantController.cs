@@ -396,7 +396,7 @@ namespace PROCAS2.Controllers
                 MemoryStream consentStream = _storageService.GetConsentForm(studyNumber);
                 if (consentStream != null)
                 {
-                    return new FileStreamResult(consentStream, "application/pdf");
+                    return new FileStreamResult(consentStream, "application/pdf") { FileDownloadName = "Consent-" + studyNumber.ToString().PadLeft(5, '0') + ".pdf"};
                 }
                 else
                 {
