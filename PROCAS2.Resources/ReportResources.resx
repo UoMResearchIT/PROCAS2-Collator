@@ -264,6 +264,12 @@
   <data name="SUBSEQUENT_MORE_FREQUENT" xml:space="preserve">
     <value>More Frequent Screening</value>
   </data>
+  <data name="VOLPARA" xml:space="preserve">
+    <value>Volpara</value>
+  </data>
+  <data name="VOLPARA_SUMMARY" xml:space="preserve">
+    <value>This report will show all the Volpara record in the database.</value>
+  </data>
   <data name="WAITING_FOR_VOLPARA" xml:space="preserve">
     <value>Patients who have consented but we've not received Volpara data yet.</value>
   </data>

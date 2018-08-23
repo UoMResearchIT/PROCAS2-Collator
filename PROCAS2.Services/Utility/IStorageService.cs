@@ -14,5 +14,6 @@ namespace PROCAS2.Services.Utility
         bool StoreVolparaMessage(string message, string filename);
         bool StoreInviteMessage(string studyNumber, string hashedNHSNumber);
         MemoryStream GetConsentForm(int studyNumber);
+        bool ConsentFormExists(int studyNumber);
     }
 }

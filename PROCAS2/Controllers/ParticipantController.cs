@@ -393,10 +393,17 @@ namespace PROCAS2.Controllers
             Participant participant = _participantRepo.GetAll().Where(x => x.StudyNumber == studyNumber).FirstOrDefault();
             if (participant != null)
             {
-                MemoryStream consentStream = _storageService.GetConsentForm(studyNumber);
-                if (consentStream != null)
+                if (_storageService.ConsentFormExists(studyNumber) == true)
                 {
-                    return new FileStreamResult(consentStream, "application/pdf") { FileDownloadName = "Consent-" + studyNumber.ToString().PadLeft(5, '0') + ".pdf"};
+                    MemoryStream consentStream = _storageService.GetConsentForm(studyNumber);
+                    if (consentStream != null)
+                    {
+                        return new FileStreamResult(consentStream, "application/pdf") { FileDownloadName = "Consent-" + studyNumber.ToString().PadLeft(5, '0') + ".pdf" };
+                    }
+                    else
+                    {
+                        return View("NoConsent");
+                    }
                 }
                 else
                 {

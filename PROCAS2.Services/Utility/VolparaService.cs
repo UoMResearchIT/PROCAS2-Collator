@@ -58,26 +58,12 @@ namespace PROCAS2.Services.Utility
 
            
             string patientId = null;
+            int densityId = 0;
+            bool createdDensity = false;
 
             if (allImages != null)
             {
-                int densityId = 0;
-                // Get the overall density records from the message.
-                JToken scoreCardResults = o.SelectToken("$.ScorecardResults");
-                if (scoreCardResults != null)
-                {
-                    VolparaDensityMessage densityMessage = scoreCardResults.ToObject<VolparaDensityMessage>();
-
-                   
-                    if (_screeningService.CreateDensityRecord(patientId, densityMessage, out densityId) == false)
-                    {
-                        // can't create the screening record
-                        retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_DENSITY_RECORD, messageBody: message));
-                        return retMessages;
-                    }
-                }
-
-
+               
 
                 // Cycle round every image found (usually 4 but not necessarily)
                 foreach (JObject image in allImages)
@@ -108,7 +94,24 @@ namespace PROCAS2.Services.Utility
                             return retMessages;
                         }
 
- 
+                        // Only need to create the density record once
+                        if (createdDensity == false)
+                        {
+                            // Get the overall density records from the message.
+                            JToken scoreCardResults = o.SelectToken("$.ScorecardResults");
+                            if (scoreCardResults != null)
+                            {
+                                VolparaDensityMessage densityMessage = scoreCardResults.ToObject<VolparaDensityMessage>();
+
+                                if (_screeningService.CreateDensityRecord(patientId, densityMessage, out densityId) == false)
+                                {
+                                    // can't create the density record
+                                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_DENSITY_RECORD, messageBody: message));
+                                    return retMessages;
+                                }
+                                createdDensity = true;
+                            }
+                        }
 
                         // Get the image file name
                         JToken imageFilenameToken = sourceImage.SelectToken("$.DicomImageFilePath");
@@ -172,7 +175,6 @@ namespace PROCAS2.Services.Utility
                     }
                 }
 
-              
 
                 string fileName = _participantService.GetStudyNumber(patientId) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
 

@@ -113,6 +113,28 @@ namespace PROCAS2.Controllers
 
         }
 
+
+        [HttpGet]
+        public ActionResult Volpara()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.VOLPARA;
+            model.Summary = ReportResources.VOLPARA_SUMMARY;
+            model.ActionName = "Volpara";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Volpara(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.Volpara(), "Volpara", "NoParameter", model);
+
+        }
+
         [HttpGet]
         public ActionResult Invited()
         {

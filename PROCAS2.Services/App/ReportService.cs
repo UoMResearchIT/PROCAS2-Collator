@@ -25,12 +25,15 @@ namespace PROCAS2.Services.App
 
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<Histology> _histologyRepo;
+        private IGenericRepository<VolparaDensity> _densityRepo;
 
         public ReportService(IGenericRepository<Participant> participantRepo,
-                IGenericRepository<Histology> histologyRepo)
+                IGenericRepository<Histology> histologyRepo,
+                IGenericRepository<VolparaDensity> densityRepo)
         {
             _participantRepo = participantRepo;
             _histologyRepo = histologyRepo;
+            _densityRepo = densityRepo;
         }
 
 
@@ -433,6 +436,60 @@ namespace PROCAS2.Services.App
             return generatedDocument;
 
         }
+
+        /// <summary>
+        /// Produce the Volpara report
+        /// </summary>
+        /// <returns>A stream containing the report</returns>
+        public MemoryStream Volpara()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add Density header
+                string densitySheetId = AddSheet(wbPart, "Density", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(VolparaDensity), 1, beforeCols: new List<string>() { "NHSNumber", "DensityId" });
+
+                // Add Screening record header
+                string screeningRecordSheetId = AddSheet(wbPart, "ScreeningRecord", 2);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(screeningRecordSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(ScreeningRecordV1_5_4), 1, beforeCols: new List<string>() { "NHSNumber", "DensityId" });
+
+                int densityIndex = 2;
+                int screeningRecordIndex = 2;
+
+                // Add Volpara details
+                List<VolparaDensity> densities = _densityRepo.GetAll().OrderByDescending(x => x.DataDate).ToList();
+                foreach (VolparaDensity density in densities)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, density, typeof(VolparaDensity), densityIndex,
+                                        beforeCols: new List<string>() { density.Participant.NHSNumber, density.Id.ToString() }
+                                        );
+                    densityIndex++;
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(screeningRecordSheetId)).Worksheet;
+                    foreach (ScreeningRecordV1_5_4 item in density.Participant.ScreeningRecordV1_5_4s.Where(x => x.VolparaDensityId == density.Id).OrderByDescending(x => x.DataDate))
+                    {
+                        AddLineFromProperties(workingSheet, item, typeof(ScreeningRecordV1_5_4), screeningRecordIndex,
+                                            beforeCols: new List<string>() { item.Participant.NHSNumber, density.Id.ToString() });
+                        screeningRecordIndex++;
+                    }
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+    
 
         /// <summary>
         /// Produce the histology report

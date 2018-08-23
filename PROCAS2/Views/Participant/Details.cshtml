@@ -9,11 +9,13 @@
 }
 
 <div class="row">
-    <div class="col-md-10">
+    <div class="col-md-9">
         <h4>Participant Details - @Model.NHSNumber (@Model.StudyNumber.ToString().PadLeft(5, '0'))</h4>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
         <!-- Button trigger modal -->
+        @Html.ActionLink("Consent Form", "ConsentForm", new { studyNumber = Model.Participant.StudyNumber }, new { @class = "btn btn-default " })
+        
         <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#modalGP">
             @ParticipantResources.GP_MODAL_TITLE
         </button>

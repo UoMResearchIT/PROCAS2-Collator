@@ -33,5 +33,6 @@ namespace PROCAS2.Services.App
         MemoryStream BreastCancerDiagnoses();
         MemoryStream Consented();
         MemoryStream Invited();
+        MemoryStream Volpara();
     }
 }

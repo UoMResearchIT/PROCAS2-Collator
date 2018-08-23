@@ -502,6 +502,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volpara.
+        /// </summary>
+        public static string VOLPARA {
+            get {
+                return ResourceManager.GetString("VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show all the Volpara record in the database..
+        /// </summary>
+        public static string VOLPARA_SUMMARY {
+            get {
+                return ResourceManager.GetString("VOLPARA_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Patients who have consented but we&apos;ve not received Volpara data yet..
         /// </summary>
         public static string WAITING_FOR_VOLPARA {
