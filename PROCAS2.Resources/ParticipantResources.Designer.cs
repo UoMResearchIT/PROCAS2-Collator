@@ -520,6 +520,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volpara&apos;s ID.
+        /// </summary>
+        public static string IMAGE_VOLPARAID {
+            get {
+                return ResourceManager.GetString("IMAGE_VOLPARAID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Initial Screening Outcome.
         /// </summary>
         public static string INITIAL_SCREENING {

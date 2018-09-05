@@ -60,6 +60,7 @@ namespace PROCAS2.Services.Utility
             string patientId = null;
             int densityId = 0;
             bool createdDensity = false;
+            int numImage = 0;
 
             if (allImages != null)
             {
@@ -121,12 +122,14 @@ namespace PROCAS2.Services.Utility
                             if (!String.IsNullOrEmpty(imageFileName))
                             {
                                 // Create the Image record
-                                if (_screeningService.CreateImageRecord(patientId, imageFileName, out imageId) == false)
+                                if (_screeningService.CreateImageRecord(patientId, imageFileName, numImage, out imageId) == false)
                                 {
                                     // cannot create image record!
                                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_IMAGE, messageBody: message));
                                     return retMessages;
                                 }
+
+                                numImage++;
                             }
                             else
                             {

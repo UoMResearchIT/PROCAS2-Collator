@@ -11,7 +11,7 @@ namespace PROCAS2.Services.App
     public interface IScreeningService
     {
         bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId, int densityId);
-        bool CreateImageRecord(string hashedPatientId, string imageFileName, out int imageId);
+        bool CreateImageRecord(string hashedPatientId, string imageFileName, int numImage, out int imageId);
         bool CreateDensityRecord(string hashedPatientId, VolparaDensityMessage densityMessage, out int densityId);
     }
 }

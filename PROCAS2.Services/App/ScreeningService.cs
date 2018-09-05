@@ -183,13 +183,13 @@ namespace PROCAS2.Services.App
         /// <param name="hashedPatientId">hashed NHS number</param>
         /// <param name="imageFileName">file name of the image in Azure</param>
         /// <returns>true if record created successfully, else false</returns>
-        public bool CreateImageRecord(string hashedPatientId, string imageFileName, out int imageId)
+        public bool CreateImageRecord(string hashedPatientId, string imageFileName, int numImage, out int imageId)
         {
             try
             {
                 Image image = new Image();
                 image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
-
+                image.OrigName = numImage.ToString();
                 image.CurrentName = imageFileName;
 
                 _imageRepo.Insert(image);

@@ -270,6 +270,9 @@
   <data name="IMAGE_NAME" xml:space="preserve">
     <value>Image File Name</value>
   </data>
+  <data name="IMAGE_VOLPARAID" xml:space="preserve">
+    <value>Volpara's ID</value>
+  </data>
   <data name="INITIAL_SCREENING" xml:space="preserve">
     <value>Initial Screening Outcome</value>
   </data>

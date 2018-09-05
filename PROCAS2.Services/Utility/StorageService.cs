@@ -225,6 +225,44 @@ namespace PROCAS2.Services.Utility
             return ret;
         }
 
+        /// <summary>
+        /// Gets the image from storage
+        /// </summary>
+        /// <param name="imageName">image file name</param>
+        /// <returns>memorystream with the DICOM file</returns>
+        public MemoryStream GetImage(string imageName)
+        {
+            MemoryStream imageStream = new MemoryStream();
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageImageContainer"));
+
+            var blob = container.GetBlockBlobReference(imageName);
+            blob.DownloadToStream(imageStream);
+            imageStream.Position = 0;
+
+            return imageStream;
+
+        }
+
+        /// <summary>
+        /// See if an image exists for the participant.
+        /// </summary>
+        /// <param name="imageName">image file name</param>
+        /// <returns>true if form exists, else false</returns>
+        public bool ImageExists(string imageName)
+        {
+            bool ret = false;
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(_configService.GetConnectionString("CollatorPrimaryStorage"));
+            CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
+            CloudBlobContainer container = blobClient.GetContainerReference(_configService.GetAppSetting("StorageImageContainer"));
+         
+            var blob = container.GetBlockBlobReference(imageName);
+            ret = blob.Exists();
+
+            return ret;
+        }
+
     }
 
 }

@@ -25,18 +25,21 @@ namespace PROCAS2.Controllers
 
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<ScreeningSite> _screeningSiteRepo;
+        private IGenericRepository<Image> _imageRepo;
         private IParticipantService _participantService;
         private IStorageService _storageService;
 
         public ParticipantController(IGenericRepository<Participant> participantRepo,
                                     IParticipantService participantService,
                                     IGenericRepository<ScreeningSite> screeningSiteRepo,
+                                    IGenericRepository<Image> imageRepo,
                                     IStorageService storageService)
         {
             _participantRepo = participantRepo;
             _participantService = participantService;
             _screeningSiteRepo = screeningSiteRepo;
             _storageService = storageService;
+            _imageRepo = imageRepo;
         }
 
 
@@ -412,6 +415,34 @@ namespace PROCAS2.Controllers
             }
 
             return View("NoConsent");
+        }
+
+        [HttpGet]
+        public ActionResult GetImage(string imageName)
+        {
+
+            Image image = _imageRepo.GetAll().Where(x => x.CurrentName == imageName).FirstOrDefault();
+            if (image != null)
+            {
+                if (_storageService.ImageExists(imageName) == true)
+                {
+                    MemoryStream imageStream = _storageService.GetImage(imageName);
+                    if (imageStream != null)
+                    {
+                        return new FileStreamResult(imageStream, "application/dicom") { FileDownloadName = imageName };
+                    }
+                    else
+                    {
+                        return View("NoImage");
+                    }
+                }
+                else
+                {
+                    return View("NoImage");
+                }
+            }
+
+            return View("NoImage");
         }
 
         public string PrependSchemeAndAuthority(string url)

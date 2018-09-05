@@ -645,9 +645,17 @@
                                 <th>
                                     @ParticipantResources.IMAGE_NAME
                                 </th>
+
+                                <th>
+                                    @ParticipantResources.IMAGE_VOLPARAID
+                                </th>
                                 
                                 <th>
                                     @ParticipantResources.IMAGE_DATE
+                                </th>
+
+                                <th>
+
                                 </th>
                             </tr>
                         </thead>
@@ -660,13 +668,21 @@
                                     </td>
 
                                     <td>
+                                        @image.OrigName
+                                    </td>
+
+                                    <td>
                                         @if (image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault() != null)
                                         {
                                             <span>@image.Participant.ScreeningRecordV1_5_4s.Where(x => x.Image != null && x.Image.Id == image.Id).FirstOrDefault().DataDate</span>
                                         }
                                     </td>
 
+                                    <td>
+                                        @Html.ActionLink("Image", "GetImage", new { imageName = image.CurrentName }, new { @class = "btn btn-default " })
 
+
+                                    </td>
 
                                 </tr>
                             }
