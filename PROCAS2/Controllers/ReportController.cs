@@ -348,6 +348,29 @@ namespace PROCAS2.Controllers
 
         }
 
+
+        [HttpGet]
+        public ActionResult WaitingForVolparaNear6Weeks()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.WAITING_FOR_VOLPARA_NEAR_6_WEEKS;
+            model.Summary = ReportResources.WAITING_FOR_VOLPARA_NEAR_6_WEEKS_SUMMARY;
+            model.ActionName = "WaitingForVolparaNear6Weeks";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult WaitingForVolparaNear6Weeks(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.WaitingForVolparaNear6Weeks(), "WaitingForVolparaNear6Weeks", "NoParameter", model);
+
+        }
+
+
         [HttpGet]
         public ActionResult ScreeningAttendance()
         {

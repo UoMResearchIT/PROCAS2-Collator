@@ -125,6 +125,7 @@ namespace PROCAS2.Controllers
 
             model.NumberLetterNotAskedFor = _dashboardService.GetRiskLetterNotAskedFor();
             model.NumberWaitingForVolpara = _dashboardService.GetWaitingForVolpara();
+            model.NumberWaitingForVolparaNear6Weeks = _dashboardService.GetWaitingForVolparaNear6Weeks();
 
             if (Request.IsAjaxRequest())
                 return PartialView("_Volpara", model);

@@ -141,6 +141,9 @@
   <data name="NUM_CONSENTED_NO_VOLPARA" xml:space="preserve">
     <value>Number of consented who have not received any Volpara data:</value>
   </data>
+  <data name="NUM_CONSENTED_NO_VOLPARA_NEAR_6WEEKS" xml:space="preserve">
+    <value>Number consented with no Volpara data, and within 2 weeks of deadline:</value>
+  </data>
   <data name="NUM_CONSENT_NO_DETAILS" xml:space="preserve">
     <value>Number consented but without full details yet:</value>
   </data>

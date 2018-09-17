@@ -8,16 +8,20 @@ using System.Data.Entity;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
+using PROCAS2.Services.Utility;
 
 namespace PROCAS2.Services.App
 {
     public class DashboardService:IDashboardService
     {
         private IGenericRepository<Participant> _participantRepo;
+        private IConfigService _configService;
 
-        public DashboardService(IGenericRepository<Participant> participantRepo)
+        public DashboardService(IGenericRepository<Participant> participantRepo,
+                                IConfigService configService)
         {
             _participantRepo = participantRepo;
+            _configService = configService;
         }
 
         /// <summary>
@@ -64,6 +68,16 @@ namespace PROCAS2.Services.App
         public int GetWaitingForVolpara()
         {
             return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0 && x.Deleted == false);
+        }
+
+        /// <summary>
+        /// Return the number of participants who have not received Volpara data but have consented, and are close to the 6 week deadline
+        /// </summary>
+        /// <returns>The count</returns>
+        public int GetWaitingForVolparaNear6Weeks()
+        {
+            int noVolparaWarningDays = _configService.GetIntAppSetting("NoVolparaWarningDays") ?? 0;
+            return _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Count(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0 && x.Deleted == false && x.DateFirstAppointment.HasValue &&  DbFunctions.DiffDays(x.DateFirstAppointment.Value, DateTime.Now) >= noVolparaWarningDays );
         }
 
         /// <summary>

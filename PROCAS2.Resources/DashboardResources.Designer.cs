@@ -142,6 +142,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number consented with no Volpara data, and within 2 weeks of deadline:.
+        /// </summary>
+        public static string NUM_CONSENTED_NO_VOLPARA_NEAR_6WEEKS {
+            get {
+                return ResourceManager.GetString("NUM_CONSENTED_NO_VOLPARA_NEAR_6WEEKS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of invitees:.
         /// </summary>
         public static string NUM_PARC {

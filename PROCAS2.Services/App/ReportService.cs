@@ -16,7 +16,7 @@ using CsvHelper;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
-
+using PROCAS2.Services.Utility;
 
 namespace PROCAS2.Services.App
 {
@@ -26,14 +26,17 @@ namespace PROCAS2.Services.App
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<Histology> _histologyRepo;
         private IGenericRepository<VolparaDensity> _densityRepo;
+        private IConfigService _configService;
 
         public ReportService(IGenericRepository<Participant> participantRepo,
                 IGenericRepository<Histology> histologyRepo,
-                IGenericRepository<VolparaDensity> densityRepo)
+                IGenericRepository<VolparaDensity> densityRepo,
+                IConfigService configService)
         {
             _participantRepo = participantRepo;
             _histologyRepo = histologyRepo;
             _densityRepo = densityRepo;
+            _configService = configService;
         }
 
 
@@ -894,6 +897,47 @@ namespace PROCAS2.Services.App
 
                 // Add details
                 List<Participant> patients = _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Where(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0 && x.Deleted == false).ToList();
+                foreach (Participant patient in patients)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented" });
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
+        /// <summary>
+        /// Produce a report of those who have consented but not received Volpara yet, and are within 2 weeks of 6 week deadline
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream WaitingForVolparaNear6Weeks()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented" });
+
+                int repIndex = 2;
+
+                int noVolparaWarningDays = _configService.GetIntAppSetting("NoVolparaWarningDays") ?? 0;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.ScreeningRecordV1_5_4s).Where(x => x.Consented == true && x.LastName != null && x.AskForRiskLetter == false && x.ScreeningRecordV1_5_4s.Count == 0 && x.Deleted == false && x.DateFirstAppointment.HasValue && DbFunctions.DiffDays(x.DateFirstAppointment.Value, DateTime.Now) >= noVolparaWarningDays).ToList();
                 foreach (Participant patient in patients)
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;

@@ -15,5 +15,6 @@ namespace PROCAS2.Services.App
         int GetWaitingForLetter();
         int GetRiskLetterNotAskedFor();
         int GetWaitingForVolpara();
+        int GetWaitingForVolparaNear6Weeks();
     }
 }

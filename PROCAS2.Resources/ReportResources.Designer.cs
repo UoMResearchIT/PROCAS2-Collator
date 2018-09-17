@@ -529,6 +529,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients who have consented but we&apos;ve not received Volpara data yet, and it is within 2 weeks of their 6 week deadline..
+        /// </summary>
+        public static string WAITING_FOR_VOLPARA_NEAR_6_WEEKS {
+            get {
+                return ResourceManager.GetString("WAITING_FOR_VOLPARA_NEAR_6_WEEKS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data and it is within 2 weeks of their deadline..
+        /// </summary>
+        public static string WAITING_FOR_VOLPARA_NEAR_6_WEEKS_SUMMARY {
+            get {
+                return ResourceManager.GetString("WAITING_FOR_VOLPARA_NEAR_6_WEEKS_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data..
         /// </summary>
         public static string WAITING_FOR_VOLPARA_SUMMARY {

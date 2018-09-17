@@ -273,6 +273,12 @@
   <data name="WAITING_FOR_VOLPARA" xml:space="preserve">
     <value>Patients who have consented but we've not received Volpara data yet.</value>
   </data>
+  <data name="WAITING_FOR_VOLPARA_NEAR_6_WEEKS" xml:space="preserve">
+    <value>Patients who have consented but we've not received Volpara data yet, and it is within 2 weeks of their 6 week deadline.</value>
+  </data>
+  <data name="WAITING_FOR_VOLPARA_NEAR_6_WEEKS_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data and it is within 2 weeks of their deadline.</value>
+  </data>
   <data name="WAITING_FOR_VOLPARA_SUMMARY" xml:space="preserve">
     <value>This report will show the NHS Number, DOB, date of first appointment and date consented for those who have consented to participate but we have yet to receive Volpara data.</value>
   </data>

@@ -16,5 +16,7 @@ namespace PROCAS2.Models.ViewModels
         public int NumberLetterNotAskedFor { get; set; }
         [Display(Name = "NUM_CONSENTED_NO_VOLPARA", ResourceType = typeof(DashboardResources))]
         public int NumberWaitingForVolpara { get; set; }
+        [Display(Name = "NUM_CONSENTED_NO_VOLPARA_NEAR_6WEEKS", ResourceType = typeof(DashboardResources))]
+        public int NumberWaitingForVolparaNear6Weeks { get; set; }
     }
 }

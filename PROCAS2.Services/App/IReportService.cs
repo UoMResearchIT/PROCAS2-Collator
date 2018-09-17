@@ -18,6 +18,7 @@ namespace PROCAS2.Services.App
         MemoryStream YetToReceiveLetter();
         MemoryStream YetToSendLetter();
         MemoryStream WaitingForVolpara();
+        MemoryStream WaitingForVolparaNear6Weeks();
         MemoryStream AskForRiskLetters();
         MemoryStream ScreeningFirstOffered();
         MemoryStream ScreeningWithin180Days();
