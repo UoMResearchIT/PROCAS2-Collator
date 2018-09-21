@@ -39,7 +39,11 @@
                         {
                             if (Model.ScreeningRecords[index].VolparaDensity != null)
                             {
-                                <th class="volparaCol">@Html.ActionLink("Density", "Density", new { id = Model.ScreeningRecords[index].VolparaDensity.Id }, new { @class = "btn btn-default density-button" })</th>
+                                <th class="volparaCol">
+                                    Image ID: @Model.ScreeningRecords[index].Image.OrigName <br />
+                                    Date: @Model.ScreeningRecords[index].DataDate.ToString("dd/MM/yyyy")<br />
+                                    @Html.ActionLink("Density", "Density", new { id = Model.ScreeningRecords[index].VolparaDensity.Id }, new { @class = "btn btn-default density-button" })
+                                </th>
                             }
                             else
                             {

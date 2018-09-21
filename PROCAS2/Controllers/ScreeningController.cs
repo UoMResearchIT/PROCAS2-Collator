@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
@@ -41,7 +42,7 @@ namespace PROCAS2.Controllers
             if (participant != null)
             {
 
-                model.ScreeningRecords = _screeningV1_5_4Repo.GetAll().Where(x => x.Participant.NHSNumber == id).OrderByDescending(x => x.DataDate).ThenBy(x => x.MammoView).ToList();
+                model.ScreeningRecords = _screeningV1_5_4Repo.GetAll().Include(x => x.Image).Where(x => x.Participant.NHSNumber == id).OrderByDescending(x => x.DataDate).ThenBy(x => x.MammoView).ToList();
             }
 
             return View("ViewScreenV1_5_4", model);

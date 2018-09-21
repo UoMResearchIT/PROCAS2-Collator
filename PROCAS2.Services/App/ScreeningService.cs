@@ -71,6 +71,7 @@ namespace PROCAS2.Services.App
             }
             catch (Exception ex)
             {
+                _unitOfWork.Reject();
                 return false;
             }
 
@@ -129,6 +130,7 @@ namespace PROCAS2.Services.App
             catch (Exception ex)
             {
                 densityId = 0;
+                _unitOfWork.Reject();
                 return false;
             }
 
@@ -200,6 +202,7 @@ namespace PROCAS2.Services.App
             catch(Exception ex)
             {
                 imageId = 0;
+                _unitOfWork.Reject();
                 return false;
             }
 

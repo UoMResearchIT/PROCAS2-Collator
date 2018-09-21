@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace PROCAS2.Data
 {
@@ -24,6 +25,36 @@ namespace PROCAS2.Data
         {
             _context.SaveChanges();
         }
+
+
+
+        public void Reject()
+        {
+            foreach (var entry in _context.ChangeTracker.Entries())
+            {
+                switch (entry.State)
+                {
+                    case EntityState.Modified:
+                        {
+                            entry.CurrentValues.SetValues(entry.OriginalValues);
+                            entry.State = EntityState.Unchanged;
+                            break;
+                        }
+                    case EntityState.Deleted:
+                        {
+                            entry.State = EntityState.Unchanged;
+                            break;
+                        }
+                    case EntityState.Added:
+                        {
+                            entry.State = EntityState.Detached;
+                            break;
+                        }
+                }
+            }
+        }
+
+
 
         private bool disposed = false;
 

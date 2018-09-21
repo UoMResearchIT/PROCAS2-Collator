@@ -100,7 +100,7 @@ namespace PROCAS2.Data.Entities
         public string ResizedPixelSizeMm { get; set; }
         [MaxLength(10)]
         public string PectoralSide { get; set; }
-        [MaxLength(10)]
+        [MaxLength(30)]
         public string PaddleType { get; set; }
         [MaxLength(12)] // Number
         public string ExposureMas { get; set; }

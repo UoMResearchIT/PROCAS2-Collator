@@ -9,5 +9,6 @@ namespace PROCAS2.Data
     public interface IUnitOfWork
     {
         void Save();
+        void Reject();
     }
 }
