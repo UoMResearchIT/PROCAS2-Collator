@@ -541,6 +541,9 @@
                                     @ParticipantResources.STUDY_DATE
                                 </th>
                                 <th>
+                                    @ParticipantResources.IMAGE_VOLPARAID
+                                </th>
+                                <th>
                                     @ParticipantResources.VOLPARA_VERSION
                                 </th>
                                 
@@ -561,6 +564,12 @@
                                     </td>
                                     <td>
                                         @screen.Timestamp
+                                    </td>
+                                    <td>
+                                        @if (screen.Image != null)
+                                        {
+                                            @screen.Image.OrigName
+                                        }
                                     </td>
                                     <td>
                                         @screen.VolparaVersion

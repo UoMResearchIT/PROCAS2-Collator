@@ -214,3 +214,11 @@ select
 .width-200{
     width:200px;
 }
+
+.volparaUsed{
+    color:green;
+}
+
+.volparaNotUsed{
+    color:red;
+}

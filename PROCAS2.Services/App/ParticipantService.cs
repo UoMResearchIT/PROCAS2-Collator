@@ -28,7 +28,12 @@ namespace PROCAS2.Services.App
         private IGenericRepository<ScreeningRecordV1_5_4> _screeningRepo;
         private IGenericRepository<Image> _imageRepo;
         private IGenericRepository<ParticipantLookup> _lookupRepo;
-        
+        private IGenericRepository<VolparaDensity> _densityRepo;
+        private IGenericRepository<QuestionnaireResponse> _questionnaireRepo;
+        private IGenericRepository<QuestionnaireResponseItem> _questionnaireItemRepo;
+        private IGenericRepository<FamilyGeneticTestingItem> _familyGeneticRepo;
+        private IGenericRepository<FamilyHistoryItem> _familyHistoryRepo;
+
         private IUnitOfWork _unitOfWork;
         private IPROCAS2UserManager _userManager;
         private IHashingService _hashingService;
@@ -66,7 +71,12 @@ namespace PROCAS2.Services.App
                                 IAuditService auditService,
                                 IGenericRepository<ParticipantLookup> lookupRepo,
                                 IServiceBusService serviceBusService,
-                                IStorageService storageService)
+                                IStorageService storageService,
+                                IGenericRepository<VolparaDensity> densityRepo,
+                                IGenericRepository<QuestionnaireResponse> questionnaireRepo,
+                                IGenericRepository<QuestionnaireResponseItem> questionnaireItemRepo,
+                                IGenericRepository<FamilyGeneticTestingItem> familyGeneticRepo,
+                                IGenericRepository<FamilyHistoryItem> familyHistoryRepo)
         {
             _unitOfWork = unitOfWork;
             _participantRepo = participantRepo;
@@ -86,6 +96,11 @@ namespace PROCAS2.Services.App
             _lookupRepo = lookupRepo;
             _serviceBusService = serviceBusService;
             _storageService = storageService;
+            _densityRepo = densityRepo;
+            _questionnaireRepo = questionnaireRepo;
+            _questionnaireItemRepo = questionnaireItemRepo;
+            _familyGeneticRepo = familyGeneticRepo;
+            _familyHistoryRepo = familyHistoryRepo;
 
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
@@ -1104,7 +1119,7 @@ namespace PROCAS2.Services.App
                     participant.MailingList = _auditService.ChangeEventBool(participant, ParticipantResources.MAILING_LIST, participant.MailingList, model.MailingList, model.Reason);
                     participant.AskForRiskLetter = _auditService.ChangeEventBool(participant, ParticipantResources.ASKFORRISK, participant.AskForRiskLetter, model.AskForRiskLetter, model.Reason);
 
-                    // TODO: check for nulls here
+                   
                     participant.DateConsented = _auditService.ChangeEventDate(participant, ParticipantResources.DATE_CONSENTED, participant.DateConsented, model.DateConsented, model.Reason);
                     participant.RiskConsultationBooked = _auditService.ChangeEventBool(participant, ParticipantResources.RISK_CONS_BOOKED, participant.RiskConsultationBooked, model.RiskConsultationBooked, model.Reason);
                     participant.RiskConsultationComments = _auditService.ChangeEventString(participant, ParticipantResources.RISK_CONS_COMMENT, participant.RiskConsultationComments, model.RiskConsultationComments, model.Reason);
@@ -1329,9 +1344,44 @@ namespace PROCAS2.Services.App
                         _unitOfWork.Save();
                     }
 
+                    List<VolparaDensity> densities = _densityRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach(VolparaDensity density in densities)
+                    {
+                        _densityRepo.Delete(density);
+                        _unitOfWork.Save();
+                    }
+
+                    List<QuestionnaireResponseItem> responseItems = _questionnaireItemRepo.GetAll().Where(x => x.QuestionnaireResponse.Participant.NHSNumber == id).ToList();
+                    foreach(QuestionnaireResponseItem responseItem in responseItems)
+                    {
+                        _questionnaireItemRepo.Delete(responseItem);
+                        _unitOfWork.Save();
+                    }
+
+                    List<FamilyGeneticTestingItem> familyGenItems = _familyGeneticRepo.GetAll().Where(x => x.QuestionnaireResponse.Participant.NHSNumber == id).ToList();
+                    foreach(FamilyGeneticTestingItem familyGenItem in familyGenItems)
+                    {
+                        _familyGeneticRepo.Delete(familyGenItem);
+                        _unitOfWork.Save();
+                    }
+
+                    List<FamilyHistoryItem> familyHistoryItems = _familyHistoryRepo.GetAll().Where(x => x.QuestionnaireResponse.Participant.NHSNumber == id).ToList();
+                    foreach(FamilyHistoryItem familyHistItem in familyHistoryItems)
+                    {
+                        _familyHistoryRepo.Delete(familyHistItem);
+                        _unitOfWork.Save();
+                    }
+
+                    List<QuestionnaireResponse> responses = _questionnaireRepo.GetAll().Where(x => x.Participant.NHSNumber == id).ToList();
+                    foreach (QuestionnaireResponse response in responses)
+                    {
+                        _questionnaireRepo.Delete(response);
+                        _unitOfWork.Save();
+                    }
+
                     _histologyService.DeleteHistology(id, 1);
                     _histologyService.DeleteHistology(id, 2);
-                    // TODO: delete other records too!
+                    
 
   
                 }

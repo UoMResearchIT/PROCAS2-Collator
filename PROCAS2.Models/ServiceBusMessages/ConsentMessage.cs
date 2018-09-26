@@ -17,7 +17,7 @@ namespace PROCAS2.Models.ServiceBusMessages
 
         public string ConsentPDF { get; set; } // Base64 encoded consent PDF form. For the moment we need to allow nulls here as the functionality won't be in place at launch.
 
-        // TODO: Check for null PDF (after CRA functionality in place!)
+       
         public bool IsValid { get
             {
                 return !String.IsNullOrEmpty(MessageType) && 

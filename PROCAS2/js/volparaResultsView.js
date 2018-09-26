@@ -5,7 +5,8 @@ $(document).ready(function () {
 
     $('#tblVolpara').DataTable({
         stateSave: true,
-        scrollX:true,
+        scrollX: true,
+        scrollY: '500px',
         fixedColumns: true,
         paging: false,
         info:false,
