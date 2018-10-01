@@ -1,0 +1,119 @@
+﻿@model PROCAS2.Models.ViewModels.Reports.QueryDatabaseViewModel
+
+@using PROCAS2.Resources
+
+@{
+    ViewBag.Title = "Query Database";
+}
+
+<script src="@Url.Content("~/Scripts/jquery-3.2.1.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")"></script>
+<script src="@Url.Content("~/Scripts/spin.min.js")"></script>
+<script src="@Url.Content("~/Scripts/jquery.spin.js")"></script>
+@Scripts.Render("~/bundles/bootstrap")
+
+<script src="~/js/queryDB.js" type="text/javascript"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>@ReportResources.QUERY_DATABASE</h4>
+
+        <p>@ReportResources.QDB_SUMMARY </p>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Anonymise, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.Anonymise)
+                    @Html.ValidationMessageFor(model => model.Anonymise, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncludeAddresses, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IncludeAddresses)
+                    @Html.ValidationMessageFor(model => model.IncludeAddresses, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IncludeHistology, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.IncludeHistology)
+                    @Html.ValidationMessageFor(model => model.IncludeHistology, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OnlyMostRecentQuestionnaire, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.OnlyMostRecentQuestionnaire)
+                    @Html.ValidationMessageFor(model => model.OnlyMostRecentQuestionnaire, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OnlyMostRecentRisk, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.OnlyMostRecentRisk)
+                    @Html.ValidationMessageFor(model => model.OnlyMostRecentRisk, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.OnlyMostRecentVolpara, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                <div class="checkbox">
+                    @Html.EditorFor(model => model.OnlyMostRecentVolpara)
+                    @Html.ValidationMessageFor(model => model.OnlyMostRecentVolpara, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConsentedFrom, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.TextBoxFor(model => model.ConsentedFrom, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.ConsentedFrom, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConsentedTo, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+               @Html.TextBoxFor(model => model.ConsentedTo, "{0:dd/MM/yyyy}", new { @class = "form-control datepicker" })
+                @Html.ValidationMessageFor(model => model.ConsentedTo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ScreeningSite, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-8">
+                @Html.DropDownListFor(model => model.ScreeningSite, new SelectList(Model.ScreeningSites, "Code", "Name"), new { @class = "form-control" })        
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Run Report" id="btnSubmit" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@Html.Partial("_ReportSpinner")

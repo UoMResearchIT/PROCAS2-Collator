@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using System.IO;
 
+using PROCAS2.Models.ViewModels.Reports;
+
 namespace PROCAS2.Services.App
 {
     public interface IReportService
@@ -35,5 +37,6 @@ namespace PROCAS2.Services.App
         MemoryStream Consented();
         MemoryStream Invited();
         MemoryStream Volpara();
+        MemoryStream QueryDB(QueryDatabaseViewModel model);
     }
 }

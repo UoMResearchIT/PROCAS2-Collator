@@ -456,6 +456,7 @@
     <Content Include="js\histologyList.js" />
     <Content Include="js\participantDelete.js" />
     <Content Include="js\phase1.js" />
+    <Content Include="js\queryDB.js" />
     <Content Include="js\txErrorsList.js" />
     <Content Include="js\uploadScreeningOutcomes.js" />
     <Content Include="Properties\webjobs-list.json" />
@@ -717,6 +718,7 @@
     <Content Include="Views\Screening\Density.cshtml" />
     <Content Include="Views\Participant\NoConsent.cshtml" />
     <Content Include="Views\Participant\NoImage.cshtml" />
+    <Content Include="Views\Report\QueryDatabase.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -231,6 +231,39 @@
   <data name="PATIENT_REPORTS" xml:space="preserve">
     <value>Patient Reports</value>
   </data>
+  <data name="QDB_ANONYMISE" xml:space="preserve">
+    <value>Anonymise?</value>
+  </data>
+  <data name="QDB_CONSENTED_FROM" xml:space="preserve">
+    <value>Date Consented From</value>
+  </data>
+  <data name="QDB_CONSENTED_TO" xml:space="preserve">
+    <value>Date Consented To</value>
+  </data>
+  <data name="QDB_INCLUDE_ADDRESSES" xml:space="preserve">
+    <value>Include Addresses?</value>
+  </data>
+  <data name="QDB_INCLUDE_HISTOLOGY" xml:space="preserve">
+    <value>Include Histology?</value>
+  </data>
+  <data name="QDB_MR_QUESTIONNAIRE" xml:space="preserve">
+    <value>Only Most Recent Questionnaire Responses?</value>
+  </data>
+  <data name="QDB_MR_RISK" xml:space="preserve">
+    <value>Only Most Recent Risk?</value>
+  </data>
+  <data name="QDB_MR_VOLPARA" xml:space="preserve">
+    <value>Only Most Recent Volpara Results?</value>
+  </data>
+  <data name="QDB_SCREENING_SITE" xml:space="preserve">
+    <value>Screening Site</value>
+  </data>
+  <data name="QDB_SUMMARY" xml:space="preserve">
+    <value>On this screen you can retrieve large datasets from the Collator database, for your own analysis. The larger the dataset the longer this will take to generate, and the more computer resources it will use. This means that some things have been left out, e.g. participant audit trail and risk letter contents, and some things are optional and by default ignored. You can only extract data for one screening site at a time. The data will be exported as an Excel spreadsheet, with many worksheets. </value>
+  </data>
+  <data name="QUERY_DATABASE" xml:space="preserve">
+    <value>Query the Collator Database</value>
+  </data>
   <data name="SCREENING_ATTENDANCE" xml:space="preserve">
     <value>Screening attendance</value>
   </data>

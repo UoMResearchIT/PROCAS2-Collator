@@ -17,6 +17,7 @@ using CsvHelper;
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Services.Utility;
+using PROCAS2.Models.ViewModels.Reports;
 
 namespace PROCAS2.Services.App
 {
@@ -124,10 +125,12 @@ namespace PROCAS2.Services.App
         /// <param name="beforeCols">Column headers to add before main list of properties (e.g. an ID etc)</param>
         /// <param name="afterCols">Column headers to add after main list of properties</param>
         /// <param name="onlyCols">Columns to include (will only have these columns if not null)</param>
+        /// <param name="excludeCols">Columns to exclude (will have all if not null)</param>
         private void AddHeaderFromProperties(Worksheet activeWorksheet, System.Type type, int rowindex,
                                             List<string> beforeCols = null,
                                             List<string> afterCols = null,
-                                            List<string> onlyCols = null)
+                                            List<string> onlyCols = null,
+                                            List<string> excludeCols = null)
         {
             Row headerRow = new Row();
             headerRow.RowIndex = (UInt32)rowindex;
@@ -142,15 +145,18 @@ namespace PROCAS2.Services.App
 
             foreach (PropertyInfo pi in type.GetProperties())
             {
-                if (onlyCols == null || (onlyCols != null && onlyCols.Contains(pi.Name)))
+                if (excludeCols == null || (excludeCols != null && !excludeCols.Contains(pi.Name)))
                 {
-                    if (pi.Name.EndsWith("Id") == false)
+                    if (onlyCols == null || (onlyCols != null && onlyCols.Contains(pi.Name)))
                     {
-                        if (pi.PropertyType == typeof(String) || pi.PropertyType == typeof(Int32) || pi.PropertyType == typeof(Boolean) ||
-                            pi.PropertyType == typeof(int?) || pi.PropertyType == typeof(DateTime?) || pi.PropertyType == typeof(DateTime) ||
-                            pi.PropertyType == typeof(double) || pi.PropertyType == typeof(double?))
+                        if (pi.Name.EndsWith("Id") == false)
                         {
-                            headerRow.AppendChild(AddCellWithText(pi.Name));
+                            if (pi.PropertyType == typeof(String) || pi.PropertyType == typeof(Int32) || pi.PropertyType == typeof(Boolean) ||
+                                pi.PropertyType == typeof(int?) || pi.PropertyType == typeof(DateTime?) || pi.PropertyType == typeof(DateTime) ||
+                                pi.PropertyType == typeof(double) || pi.PropertyType == typeof(double?))
+                            {
+                                headerRow.AppendChild(AddCellWithText(pi.Name));
+                            }
                         }
                     }
                 }
@@ -177,10 +183,12 @@ namespace PROCAS2.Services.App
         /// <param name="beforeCols">Column data to add before main list of properties (e.g. an ID etc)</param>
         /// <param name="afterCols">Column data to add after main list of properties</param>
         /// <param name="onlyCols">Columns to include (will only have these columns if not null)</param>
+        /// <param name="excludeCols">Columns to exclude (will have all if not null)</param>
         private void AddLineFromProperties(Worksheet activeWorksheet, object data, System.Type type, int rowindex,
                                             List<string> beforeCols = null,
                                             List<string> afterCols = null,
-                                            List<string> onlyCols = null)
+                                            List<string> onlyCols = null,
+                                            List<string> excludeCols = null)
         {
             Row lineRow = new Row();
             lineRow.RowIndex = (UInt32)rowindex;
@@ -195,15 +203,18 @@ namespace PROCAS2.Services.App
 
             foreach (PropertyInfo pi in type.GetProperties())
             {
-                if (onlyCols == null || (onlyCols != null && onlyCols.Contains(pi.Name)))
+                if (excludeCols == null || (excludeCols != null && !excludeCols.Contains(pi.Name)))
                 {
-                    if (pi.Name.EndsWith("Id") == false)
+                    if (onlyCols == null || (onlyCols != null && onlyCols.Contains(pi.Name)))
                     {
-                        if (pi.PropertyType == typeof(String) || pi.PropertyType == typeof(Int32) || pi.PropertyType == typeof(Boolean) ||
-                            pi.PropertyType == typeof(int?) || pi.PropertyType == typeof(DateTime?) || pi.PropertyType == typeof(DateTime) ||
-                            pi.PropertyType == typeof(double) || pi.PropertyType == typeof(double?))
+                        if (pi.Name.EndsWith("Id") == false)
                         {
-                            lineRow.AppendChild(AddCellWithText(pi.GetValue(data) == null ? "" : pi.GetValue(data).ToString()));
+                            if (pi.PropertyType == typeof(String) || pi.PropertyType == typeof(Int32) || pi.PropertyType == typeof(Boolean) ||
+                                pi.PropertyType == typeof(int?) || pi.PropertyType == typeof(DateTime?) || pi.PropertyType == typeof(DateTime) ||
+                                pi.PropertyType == typeof(double) || pi.PropertyType == typeof(double?))
+                            {
+                                lineRow.AppendChild(AddCellWithText(pi.GetValue(data) == null ? "" : pi.GetValue(data).ToString()));
+                            }
                         }
                     }
                 }
@@ -221,10 +232,282 @@ namespace PROCAS2.Services.App
             activeWorksheet.Where(x => x.LocalName == "sheetData").First().AppendChild(lineRow);
         }
 
-       
+
 
 
         #endregion
+
+
+        /// <summary>
+        /// Query the database using the passed parameters
+        /// </summary>
+        /// <param name="model">View model containing the parameters</param>
+        /// <returns>MemoryStream of generated document</returns>
+        public MemoryStream QueryDB(QueryDatabaseViewModel model)
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+                // Add participant header
+                string mainSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
+                List<string> exCols = new List<string>() { "HashedNHSNumber" };
+                if (model.Anonymise == true)
+                {
+                    exCols.Add("NHSNumber");
+                    exCols.Add("FirstName");
+                    exCols.Add("LastName");
+                    exCols.Add("Title");
+                    exCols.Add("GPName");
+                }
+
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, 
+                    afterCols: new List<string>() { "Site", "ChemoDetails", "InitialScreeningOutcome", "FinalAssessmentOutcome", "FinalTechnicalOutcome", "RiskConsultationType" },
+                    beforeCols: new List<string>() { "StudyNumber"},
+                    excludeCols: exCols);
+
+                string addressSheetId = "";
+                if (model.Anonymise == false && model.IncludeAddresses == true)
+                {
+                    // Add address header
+                    addressSheetId = AddSheet(wbPart, "Addresses", 2);
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
+                    AddHeaderFromProperties(workingSheet, typeof(Address), 1,
+                                                beforeCols: new List<string>() { "StudyNumber" },
+                                                afterCols: new List<string>() { "Type" });
+                }
+
+                // Add Volpara header
+                string volparaSheetId = AddSheet(wbPart, "Volpara", 3);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(volparaSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(ScreeningRecordV1_5_4), 1, beforeCols: new List<string>() { "StudyNumber" });
+
+                // Add Volpara density header
+                string densitySheetId = AddSheet(wbPart, "Density", 4);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(VolparaDensity), 1, beforeCols: new List<string>() { "StudyNumber" });
+
+                // Add Risk letter header
+                string riskSheetId = AddSheet(wbPart, "Risk", 5);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(riskSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(RiskLetter), 1, beforeCols: new List<string>() { "StudyNumber" });
+
+                // Add Survey header
+                string surveySheetId = AddSheet(wbPart, "SurveyHeader", 6);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponse), 1, beforeCols: new List<string>() { "StudyNumber", "ResponseId" });
+
+                // Add Survey item header
+                string surveyItemSheetId = AddSheet(wbPart, "SurveyItems", 7);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(QuestionnaireResponseItem), 1, beforeCols: new List<string>() { "StudyNumber", "ResponseId" },
+                                                                                            afterCols: new List<string>() { "QuestionText" });
+
+                // Add family history header
+                string familyHistorySheetId = AddSheet(wbPart, "FamilyHistory", 8);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(FamilyHistoryItem), 1, beforeCols: new List<string>() { "StudyNumber", "ResponseId" });
+
+                // Add family genetic testing header
+                string familyGeneticSheetId = AddSheet(wbPart, "FamilyGenetic", 9);
+                workingSheet = ((WorksheetPart)wbPart.GetPartById(familyGeneticSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(FamilyGeneticTestingItem), 1, beforeCols: new List<string>() { "StudyNumber", "ResponseId" });
+
+                string histologySheetId = "";
+                string histologyFocusSheetId = "";
+
+                if (model.IncludeHistology == true)
+                {
+                    // Add Histology header
+                    histologySheetId = AddSheet(wbPart, "Histology", 10);
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                    AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "StudyNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
+                                                                                afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
+
+                    // Add Histology focus header
+                    histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus", 11);
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                    AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "StudyNumber", "HistologyId" },
+                                                                                afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
+                }
+                int parIndex = 2;
+                int addressIndex = 2;
+                int volparaIndex = 2;
+                int densityIndex = 2;
+                int riskIndex = 2;
+                int surveyIndex = 2;
+                int surveyItemIndex = 2;
+                int familyHistoryIndex = 2;
+                int familyGeneticIndex = 2;
+                int histIndex = 2;
+                int histFocusIndex = 2;
+
+                DateTime dateFrom = model.ConsentedFrom.AddDays(-1);
+                DateTime dateTo = model.ConsentedTo.AddDays(1);
+                List<Participant> participants = _participantRepo.GetAll().Where(x => x.Consented == true && x.Deleted == false && x.DateConsented >= dateFrom && x.DateConsented <= dateTo && x.ScreeningSite.Code == model.ScreeningSite ).ToList();
+
+                foreach (Participant participant in participants)
+                {
+                    // Add participant details
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(mainSheetId)).Worksheet;
+                    exCols = new List<string>() { "HashedNHSNumber" };
+                    if (model.Anonymise == true)
+                    {
+                        exCols.Add("NHSNumber");
+                        exCols.Add("FirstName");
+                        exCols.Add("LastName");
+                        exCols.Add("Title");
+                        exCols.Add("GPName");
+                    }
+
+                    AddLineFromProperties(workingSheet, participant, typeof(Participant), parIndex, 
+                        afterCols: new List<string>() { participant.ScreeningSite.Name,
+                                   participant.ChemoPreventionDetails==null?null:participant.ChemoPreventionDetails.LookupDescription,
+                                   participant.InitialScreeningOutcome==null?null:participant.InitialScreeningOutcome.LookupDescription,
+                                   participant.FinalAssessmentOutcome==null?null:participant.FinalAssessmentOutcome.LookupDescription,
+                                   participant.FinalTechnicalOutcome == null?null:participant.FinalTechnicalOutcome.LookupDescription,
+                                   participant.RiskConsultationType == null?null:participant.RiskConsultationType.LookupDescription
+                                    },
+                        beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0' )},
+                        excludeCols: exCols
+                        );
+
+                    // Add address details
+                    if (model.Anonymise == false && model.IncludeAddresses == true)
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
+                        foreach (Address address in participant.Addresses)
+                        {
+                            AddLineFromProperties(workingSheet, address, typeof(Address), addressIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0') },
+                                                afterCols: new List<string>() { address.AddressType.Name });
+                            addressIndex++;
+                        }
+                    }
+
+                    
+                    foreach (VolparaDensity density in participant.VolparaDensities.OrderByDescending(x => x.DataDate))
+                    {
+                        // Add Volpara density details
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(densitySheetId)).Worksheet;
+                        AddLineFromProperties(workingSheet, density, typeof(VolparaDensity), densityIndex,
+                                            beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0') });
+                        densityIndex++;
+
+                        // Add Volpara details
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(volparaSheetId)).Worksheet;
+                        foreach (ScreeningRecordV1_5_4 screening in density.Participant.ScreeningRecordV1_5_4s.Where(x => x.VolparaDensity != null && x.VolparaDensity.Id == density.Id))
+                        {
+                            AddLineFromProperties(workingSheet, screening, typeof(ScreeningRecordV1_5_4), volparaIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0') });
+                            volparaIndex++;
+                        }
+
+                        if (model.OnlyMostRecentVolpara == true)
+                        {
+                            break;
+                        }
+                    }
+ 
+
+                    // Add Risk Letter details
+                    foreach (RiskLetter letter in participant.RiskLetters.OrderByDescending(x => x.DateReceived))
+                    {
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(riskSheetId)).Worksheet;
+                        AddLineFromProperties(workingSheet, letter, typeof(RiskLetter), riskIndex,
+                                            beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0') },
+                                            excludeCols: new List<string>() { "RiskLetterContent" });
+                        riskIndex++;
+
+                        if (model.OnlyMostRecentRisk == true)
+                        {
+                            break;
+                        }
+                    }
+
+
+                    
+                   
+
+                    // Add survey item and famnily history details
+
+                    foreach (QuestionnaireResponse response in participant.QuestionnaireResponses.OrderByDescending(x => x.DateReceived))
+                    {
+                        // Add survey header details
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(surveySheetId)).Worksheet;
+                        AddLineFromProperties(workingSheet, response, typeof(QuestionnaireResponse), surveyIndex,
+                                            beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), response.Id.ToString() });
+                        surveyIndex++;
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(surveyItemSheetId)).Worksheet;
+                        foreach (QuestionnaireResponseItem item in response.QuestionnaireResponseItems.OrderBy(x => x.Question.QuestionNum))
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(QuestionnaireResponseItem), surveyItemIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), response.Id.ToString() },
+                                                afterCols: new List<string>() { item.Question.Text });
+                            surveyItemIndex++;
+                        }
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(familyHistorySheetId)).Worksheet;
+                        foreach (FamilyHistoryItem item in response.FamilyHistoryItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(FamilyHistoryItem), familyHistoryIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), response.Id.ToString() });
+                            familyHistoryIndex++;
+                        }
+
+                        workingSheet = ((WorksheetPart)wbPart.GetPartById(familyGeneticSheetId)).Worksheet;
+                        foreach (FamilyGeneticTestingItem item in response.FamilyGeneticTestingItems)
+                        {
+                            AddLineFromProperties(workingSheet, item, typeof(FamilyGeneticTestingItem), familyGeneticIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), response.Id.ToString() });
+                            familyGeneticIndex++;
+                        }
+
+                        if (model.OnlyMostRecentQuestionnaire == true)
+                        {
+                            break;
+                        }
+                    }
+
+                    // Add histology details
+                    if (model.IncludeHistology == true)
+                    {
+                        foreach (Histology hist in participant.Histologies)
+                        {
+                            workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
+                            AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
+                                                beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), participant.DateOfBirth.ToString(), participant.BMI.ToString(), participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString(), hist.Id.ToString() },
+                                                afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
+                            histIndex++;
+
+                            workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
+                            foreach (HistologyFocus item in hist.HistologyFoci)
+                            {
+                                AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
+                                                    beforeCols: new List<string>() { participant.StudyNumber.ToString().PadLeft(5, '0'), hist.Id.ToString() },
+                                                    afterCols: new List<string>() { item.InvasiveTumourType.LookupDescription, item.InSituTumourType.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStageT.LookupDescription, item.TNMStageN.LookupDescription });
+                                histFocusIndex++;
+                            }
+
+                        }
+                    }
+
+
+                    parIndex++;
+                }
+
+
+                wbPart.Workbook.Save();
+            }
+
+
+
+            return generatedDocument;
+        }
 
         /// <summary>
         /// Generate the patient report
@@ -248,7 +531,7 @@ namespace PROCAS2.Services.App
                 // Add address header
                 string addressSheetId = AddSheet(wbPart, "Addresses", 2);
                 workingSheet = ((WorksheetPart)wbPart.GetPartById(addressSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Address), 1,
+                AddHeaderFromProperties(workingSheet, typeof(Address), 1, 
                                             beforeCols: new List<string>() { "NHSNumber" },
                                             afterCols: new List<string>() { "Type" });
 

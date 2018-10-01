@@ -10,6 +10,8 @@ using PROCAS2.Models.ViewModels.Reports;
 using PROCAS2.Services.App;
 using PROCAS2.CustomActionResults;
 using PROCAS2.Resources;
+using PROCAS2.Data;
+using PROCAS2.Data.Entities;
 
 namespace PROCAS2.Controllers
 {
@@ -23,11 +25,15 @@ namespace PROCAS2.Controllers
         private ReportService _reportService;
         private ParticipantService _participantService;
 
+        private IGenericRepository<ScreeningSite> _screeningSiteRepo;
+
         public ReportController(ReportService reportService,
-                                ParticipantService participantService)
+                                ParticipantService participantService,
+                                IGenericRepository<ScreeningSite> screeningSiteRepo)
         {
             _reportService = reportService;
             _participantService = participantService;
+            _screeningSiteRepo = screeningSiteRepo;
         }
 
         // GET: Report
@@ -588,6 +594,68 @@ namespace PROCAS2.Controllers
             else
                 return View(viewName, model);
 
+        }
+
+
+        [HttpGet]
+        public ActionResult QueryDatabase()
+        {
+            QueryDatabaseViewModel model = new QueryDatabaseViewModel();
+
+            model.Anonymise = true;
+            model.IncludeAddresses = false;
+            model.IncludeHistology = false;
+            model.OnlyMostRecentQuestionnaire = true;
+            model.OnlyMostRecentRisk = true;
+            model.OnlyMostRecentVolpara = true;
+            model.ConsentedFrom = Convert.ToDateTime("01/01/2018");
+            model.ConsentedTo = Convert.ToDateTime("01/01/2021");
+
+            model.ScreeningSite = _screeningSiteRepo.GetAll().FirstOrDefault().Code;
+            model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+
+            return View("QueryDatabase", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult QueryDatabase(QueryDatabaseViewModel model)
+        {
+
+            if (ModelState.IsValid == true)
+            {
+
+
+
+                Response.Clear();
+
+                var requestToken = Request.Cookies["fileDownloadToken"];
+                if (requestToken != null && long.Parse(requestToken.Value) > 0)
+                {
+                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                    Response.Cookies["fileDownloadToken"].Path = "/";
+                }
+
+                Response.Buffer = true;
+
+
+                MemoryStream mStream = _reportService.QueryDB(model);
+
+                string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Report/QueryDatabase"));
+                HttpContext.Response.AppendHeader("Refresh", headerValue);
+
+
+
+                return new SpreadsheetResult(mStream, "CollatorDB");
+
+
+            }
+            else
+            {
+                model.ScreeningSites = _screeningSiteRepo.GetAll().OrderBy(x => x.Name).ToList();
+                return View("QueryDatabase", model);
+            }
         }
 
 

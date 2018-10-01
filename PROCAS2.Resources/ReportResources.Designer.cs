@@ -403,6 +403,105 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Anonymise?.
+        /// </summary>
+        public static string QDB_ANONYMISE {
+            get {
+                return ResourceManager.GetString("QDB_ANONYMISE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Consented From.
+        /// </summary>
+        public static string QDB_CONSENTED_FROM {
+            get {
+                return ResourceManager.GetString("QDB_CONSENTED_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date Consented To.
+        /// </summary>
+        public static string QDB_CONSENTED_TO {
+            get {
+                return ResourceManager.GetString("QDB_CONSENTED_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Addresses?.
+        /// </summary>
+        public static string QDB_INCLUDE_ADDRESSES {
+            get {
+                return ResourceManager.GetString("QDB_INCLUDE_ADDRESSES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Include Histology?.
+        /// </summary>
+        public static string QDB_INCLUDE_HISTOLOGY {
+            get {
+                return ResourceManager.GetString("QDB_INCLUDE_HISTOLOGY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only Most Recent Questionnaire Responses?.
+        /// </summary>
+        public static string QDB_MR_QUESTIONNAIRE {
+            get {
+                return ResourceManager.GetString("QDB_MR_QUESTIONNAIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only Most Recent Risk?.
+        /// </summary>
+        public static string QDB_MR_RISK {
+            get {
+                return ResourceManager.GetString("QDB_MR_RISK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only Most Recent Volpara Results?.
+        /// </summary>
+        public static string QDB_MR_VOLPARA {
+            get {
+                return ResourceManager.GetString("QDB_MR_VOLPARA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Screening Site.
+        /// </summary>
+        public static string QDB_SCREENING_SITE {
+            get {
+                return ResourceManager.GetString("QDB_SCREENING_SITE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On this screen you can retrieve large datasets from the Collator database, for your own analysis. The larger the dataset the longer this will take to generate, and the more computer resources it will use. This means that some things have been left out, e.g. participant audit trail and risk letter contents, and some things are optional and by default ignored. You can only extract data for one screening site at a time. The data will be exported as an Excel spreadsheet, with many worksheets. .
+        /// </summary>
+        public static string QDB_SUMMARY {
+            get {
+                return ResourceManager.GetString("QDB_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Query the Collator Database.
+        /// </summary>
+        public static string QUERY_DATABASE {
+            get {
+                return ResourceManager.GetString("QUERY_DATABASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Screening attendance.
         /// </summary>
         public static string SCREENING_ATTENDANCE {
