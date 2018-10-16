@@ -6485,7 +6485,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
     'DensityOutliers': [
       3
     ],
-    'AverageBreastVolume': 414.2,
+    'AverageBreastVolume': 412.2,
     'AverageAppliedPressure': 10.6,
     'AverageAppliedForce': 60.5,
     'AverageManufacturerDosePerImage': 1.8,
@@ -6507,7 +6507,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
       'VolumetricBreastDensity': 7.0,
       'JsonVersion': 1
     },
-    'VolparaDensityPercentageUsingMaximumBreast': 7.6,
+    'VolparaDensityPercentageUsingMaximumBreast': 7.5,
     'VolparaDensityPercentageUsingBreastAverage': 7.3,
     'VolparaDensityGrade4ThEdition': 2,
     'VolparaDensityGrade5ThEdition': 'c',
@@ -6525,7 +6525,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
     'AverageAppliedPressure': 10.6,
     'AverageAppliedForce': 60.5,
     'AverageManufacturerDosePerImage': 1.8,
-    'AverageVolparaDosePerImage': 1.7,
+    'AverageVolparaDosePerImage': 1.3,
     'LeftBreastTotalDose': null,
     'RightBreastTotalDose': null,
     'JsonVersion': 1
@@ -6601,7 +6601,7 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
         'InstalledUICulture': 'en-US',
         'VolparaVersion': '1.5.5.0 | 13334 |',
         'DICOMTAGManufacturer': 'Hologic',
-        'PaddleType': '18cm x 24cm fast feringfierhngeriongeriopgniwergnerignweri',
+        'PaddleType': '18cm x 24cm fast',
         'DICOMTAGDeviceSerialNumber': 'Not Found',
         'DICOMTagDetector_ID': 'DetectorID-1',
         'MaxAllowedKVP': '100 ( current 31 )',

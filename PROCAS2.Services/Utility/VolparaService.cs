@@ -98,20 +98,32 @@ namespace PROCAS2.Services.Utility
                         // Only need to create the density record once
                         if (createdDensity == false)
                         {
+                            ScoreCardMessage scoreCardMessage = new ScoreCardMessage();
+                            ScoreCardMessage volparaServerScoreCardMessage = new ScoreCardMessage();
                             // Get the overall density records from the message.
                             JToken scoreCardResults = o.SelectToken("$.ScorecardResults");
                             if (scoreCardResults != null)
                             {
-                                VolparaDensityMessage densityMessage = scoreCardResults.ToObject<VolparaDensityMessage>();
-
-                                if (_screeningService.CreateDensityRecord(patientId, densityMessage, out densityId) == false)
-                                {
-                                    // can't create the density record
-                                    retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_DENSITY_RECORD, messageBody: message));
-                                    return retMessages;
-                                }
-                                createdDensity = true;
+                                scoreCardMessage = scoreCardResults.ToObject<ScoreCardMessage>();
                             }
+
+                            JToken volparaServerScoreCardResults = o.SelectToken("$.VolparaServerScorecardResults");
+                            if (volparaServerScoreCardResults != null)
+                            {
+                                volparaServerScoreCardMessage = volparaServerScoreCardResults.ToObject<ScoreCardMessage>();
+                            }
+
+                            VolparaDensityMessage densityMessage = new VolparaDensityMessage();
+                            densityMessage.ScoreCardResults = scoreCardMessage;
+                            densityMessage.VolparaServerScoreCardResults = volparaServerScoreCardMessage;
+
+                            if (_screeningService.CreateDensityRecord(patientId, densityMessage, out densityId) == false)
+                            {
+                                // can't create the density record
+                                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_DENSITY_RECORD, messageBody: message));
+                                return retMessages;
+                            }
+                            createdDensity = true;
                         }
 
                         // Get the image file name

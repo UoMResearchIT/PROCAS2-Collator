@@ -15,6 +15,7 @@ namespace PROCAS2.Data.Entities
         public int ParticipantId { get; set; }
         public virtual Participant Participant { get; set; }
 
+        // Start of ScorecardResults
         [MaxLength(12)]
         public string LeftBreastFibroglandularTissueVolume { get; set; }
 
@@ -74,6 +75,69 @@ namespace PROCAS2.Data.Entities
 
         [MaxLength(200)]
         public string DensityImagesUsedForLccLmloRccRmlo { get; set; }
+        // End of Scorecard results
+
+        // Start of Volpara server scorecard results
+        [MaxLength(12)]
+        public string ServerLeftBreastFibroglandularTissueVolume { get; set; }
+
+        [MaxLength(12)]
+        public string ServerLeftBreastVolume { get; set; }
+
+        [MaxLength(12)]
+        public string ServerLeftBreastVolumetricBreastDensity { get; set; }
+
+        [MaxLength(12)]
+        public string ServerRightBreastFibroglandularTissueVolume { get; set; }
+
+        [MaxLength(12)]
+        public string ServerRightBreastVolume { get; set; }
+
+        [MaxLength(12)]
+        public string ServerRightBreastVolumetricBreastDensity { get; set; }
+
+        [MaxLength(12)]
+        public string ServerVolparaDensityPercentageUsingMaximumBreast { get; set; }
+
+        [MaxLength(12)]
+        public string ServerVolparaDensityPercentageUsingBreastAverage { get; set; }
+
+        [MaxLength(12)]
+        public string ServerVolparaDensityGrade4ThEdition { get; set; }
+
+        [MaxLength(12)]
+        public string ServerVolparaDensityGrade5ThEdition { get; set; }
+
+        [MaxLength(12)]
+        public string ServerVolparaDensityGrade5ThEditionUsingBreastAverage { get; set; }
+
+        [MaxLength(12)]
+        public string ServerAverageBreastVolume { get; set; }
+
+        [MaxLength(12)]
+        public string ServerAverageAppliedPressure { get; set; }
+
+        [MaxLength(12)]
+        public string ServerAverageAppliedForce { get; set; }
+
+        [MaxLength(12)]
+        public string ServerAverageManufacturerDosePerImage { get; set; }
+
+        [MaxLength(12)]
+        public string ServerAverageVolparaDosePerImage { get; set; }
+
+        [MaxLength(12)]
+        public string ServerLeftBreastTotalDose { get; set; }
+
+        [MaxLength(12)]
+        public string ServerRightBreastTotalDose { get; set; }
+
+        [MaxLength(20)]
+        public string ServerDensityOutliers { get; set; }
+
+        [MaxLength(200)]
+        public string ServerDensityImagesUsedForLccLmloRccRmlo { get; set; }
+        // End of Volpara server scorecard results
 
         public DateTime DataDate { get; set; }
     }

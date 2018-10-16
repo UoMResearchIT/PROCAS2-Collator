@@ -42,11 +42,11 @@
                                 <th class="volparaCol">
                                     Image ID: @Model.ScreeningRecords[index].Image.OrigName <br />
                                     Date: @Model.ScreeningRecords[index].DataDate.ToString("dd/MM/yyyy")<br />
-                                    @if (Model.ScreeningRecords[index].VolparaDensity.DensityImagesUsedForLccLmloRccRmlo != null && Model.ScreeningRecords[index].VolparaDensity.DensityImagesUsedForLccLmloRccRmlo.Contains(Model.ScreeningRecords[index].Image.OrigName))
+                                    @if (Model.ScreeningRecords[index].VolparaDensity.ServerDensityImagesUsedForLccLmloRccRmlo != null && Model.ScreeningRecords[index].VolparaDensity.ServerDensityImagesUsedForLccLmloRccRmlo.Contains(Model.ScreeningRecords[index].Image.OrigName))
                                     {
                                         <span class="volparaUsed">Used in Calculation</span> <br />
                                     }
-                                    else if (Model.ScreeningRecords[index].VolparaDensity.DensityOutliers != null && Model.ScreeningRecords[index].VolparaDensity.DensityOutliers.Contains(Model.ScreeningRecords[index].Image.OrigName))
+                                    else if (Model.ScreeningRecords[index].VolparaDensity.ServerDensityOutliers != null && Model.ScreeningRecords[index].VolparaDensity.ServerDensityOutliers.Contains(Model.ScreeningRecords[index].Image.OrigName))
                                     {
                                         <span class="volparaNotUsed">Outlier</span> <br />
                                     }

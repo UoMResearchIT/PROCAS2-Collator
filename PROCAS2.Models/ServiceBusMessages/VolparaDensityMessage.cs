@@ -21,7 +21,7 @@ namespace PROCAS2.Models.ServiceBusMessages
         public string VolumetricBreastDensity { get; set; }
     }
 
-    public class VolparaDensityMessage
+    public class ScoreCardMessage
     {
 
         public LeftBreastFindings LeftBreastFindings { get; set; }
@@ -43,5 +43,11 @@ namespace PROCAS2.Models.ServiceBusMessages
 
         public List<string> DensityOutliers { get; set; }
         public List<string> DensityImagesUsedForLccLmloRccRmlo { get; set; }
+    }
+
+    public class VolparaDensityMessage
+    {
+        public ScoreCardMessage ScoreCardResults { get; set; }
+        public ScoreCardMessage VolparaServerScoreCardResults { get; set; }
     }
 }

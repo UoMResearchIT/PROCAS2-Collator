@@ -7,17 +7,20 @@
 @if (Model.VolparaDensity != null)
 {
 
-<h4>Density Information for images arriving @Html.DisplayFor(model => model.VolparaDensity.DataDate) </h4>
+<h4>Density Information for images arriving @Html.DisplayFor(model => model.VolparaDensity.DataDate) for @Model.VolparaDensity.Participant.NHSNumber</h4>
 
 <div>
     <hr />
 
 
-    <table>
+    <table style="width:100%">
         <thead>
+            
             <tr>
-                <th>Field Name</th>
-                <th>Value</th>
+                <th style="width:40%">Field Name</th>
+                <th style="width:30%">ScoreCardResults</th>
+                
+                <th style="width:30%">VolparaServerScoreCardResults</th>
             </tr>
 
         </thead>
@@ -31,6 +34,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.LeftBreastFibroglandularTissueVolume)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerLeftBreastFibroglandularTissueVolume)
+                </td>
             </tr>
 
             <tr>
@@ -41,6 +47,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.LeftBreastVolume)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerLeftBreastVolume)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -49,6 +58,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.LeftBreastVolumetricBreastDensity)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerLeftBreastVolumetricBreastDensity)
                 </td>
             </tr>
             <tr>
@@ -59,6 +71,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.RightBreastFibroglandularTissueVolume)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerRightBreastFibroglandularTissueVolume)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -67,6 +82,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.RightBreastVolume)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerRightBreastVolume)
                 </td>
             </tr>
             <tr>
@@ -77,6 +95,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.RightBreastVolumetricBreastDensity)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerRightBreastVolumetricBreastDensity)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -85,6 +106,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityPercentageUsingMaximumBreast)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerVolparaDensityPercentageUsingMaximumBreast)
                 </td>
             </tr>
             <tr>
@@ -95,6 +119,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityPercentageUsingBreastAverage)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerVolparaDensityPercentageUsingBreastAverage)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -103,6 +130,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade4ThEdition)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerVolparaDensityGrade4ThEdition)
                 </td>
             </tr>
             <tr>
@@ -113,6 +143,10 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade5ThEdition)
                 </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerVolparaDensityGrade5ThEdition)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -121,6 +155,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.VolparaDensityGrade5ThEditionUsingBreastAverage)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerVolparaDensityGrade5ThEditionUsingBreastAverage)
                 </td>
             </tr>
             <tr>
@@ -131,6 +168,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.AverageBreastVolume)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerAverageBreastVolume)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -139,6 +179,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.AverageAppliedPressure)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerAverageAppliedPressure)
                 </td>
             </tr>
             <tr>
@@ -149,6 +192,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.AverageAppliedForce)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerAverageAppliedForce)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -157,6 +203,10 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.AverageManufacturerDosePerImage)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerAverageManufacturerDosePerImage)
                 </td>
             </tr>
             <tr>
@@ -167,6 +217,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.AverageVolparaDosePerImage)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerAverageVolparaDosePerImage)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -175,6 +228,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.LeftBreastTotalDose)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerLeftBreastTotalDose)
                 </td>
             </tr>
             <tr>
@@ -185,6 +241,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.RightBreastTotalDose)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerRightBreastTotalDose)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -193,6 +252,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.DensityOutliers)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerDensityOutliers)
                 </td>
             </tr>
             <tr>
@@ -203,6 +265,9 @@
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.DensityImagesUsedForLccLmloRccRmlo)
                 </td>
+                <td>
+                    @Html.DisplayFor(model => model.VolparaDensity.ServerDensityImagesUsedForLccLmloRccRmlo)
+                </td>
             </tr>
             <tr>
                 <td>
@@ -211,6 +276,9 @@
 
                 <td>
                     @Html.DisplayFor(model => model.VolparaDensity.DataDate)
+                </td>
+                <td>
+
                 </td>
             </tr>
         </tbody>

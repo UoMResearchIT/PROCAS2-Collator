@@ -146,33 +146,64 @@ namespace PROCAS2.Services.App
         {
             VolparaDensity record = new VolparaDensity();
 
-            record.AverageAppliedForce = densityMessage.AverageAppliedForce;
-            record.AverageAppliedPressure = densityMessage.AverageAppliedPressure;
-            record.AverageBreastVolume = densityMessage.AverageBreastVolume;
-            record.AverageManufacturerDosePerImage = densityMessage.AverageManufacturerDosePerImage;
-            record.AverageVolparaDosePerImage = densityMessage.AverageVolparaDosePerImage;
-            record.DensityImagesUsedForLccLmloRccRmlo = string.Join(",", densityMessage.DensityImagesUsedForLccLmloRccRmlo);
-            record.VolparaDensityGrade4ThEdition = densityMessage.VolparaDensityGrade4ThEdition;
-            record.VolparaDensityGrade5ThEdition = densityMessage.VolparaDensityGrade5ThEdition;
-            record.VolparaDensityGrade5ThEditionUsingBreastAverage = densityMessage.VolparaDensityGrade5ThEditionUsingBreastAverage;
-            record.VolparaDensityPercentageUsingBreastAverage = densityMessage.VolparaDensityPercentageUsingBreastAverage;
-            record.VolparaDensityPercentageUsingMaximumBreast = densityMessage.VolparaDensityPercentageUsingMaximumBreast;
-            record.RightBreastTotalDose = densityMessage.RightBreastTotalDose;
-            record.LeftBreastTotalDose = densityMessage.LeftBreastTotalDose;
-            record.DensityOutliers = string.Join(",", densityMessage.DensityOutliers);
+            // Scorecard results
+            record.AverageAppliedForce = densityMessage.ScoreCardResults.AverageAppliedForce;
+            record.AverageAppliedPressure = densityMessage.ScoreCardResults.AverageAppliedPressure;
+            record.AverageBreastVolume = densityMessage.ScoreCardResults.AverageBreastVolume;
+            record.AverageManufacturerDosePerImage = densityMessage.ScoreCardResults.AverageManufacturerDosePerImage;
+            record.AverageVolparaDosePerImage = densityMessage.ScoreCardResults.AverageVolparaDosePerImage;
+            record.DensityImagesUsedForLccLmloRccRmlo = string.Join(",", densityMessage.ScoreCardResults.DensityImagesUsedForLccLmloRccRmlo);
+            record.VolparaDensityGrade4ThEdition = densityMessage.ScoreCardResults.VolparaDensityGrade4ThEdition;
+            record.VolparaDensityGrade5ThEdition = densityMessage.ScoreCardResults.VolparaDensityGrade5ThEdition;
+            record.VolparaDensityGrade5ThEditionUsingBreastAverage = densityMessage.ScoreCardResults.VolparaDensityGrade5ThEditionUsingBreastAverage;
+            record.VolparaDensityPercentageUsingBreastAverage = densityMessage.ScoreCardResults.VolparaDensityPercentageUsingBreastAverage;
+            record.VolparaDensityPercentageUsingMaximumBreast = densityMessage.ScoreCardResults.VolparaDensityPercentageUsingMaximumBreast;
+            record.RightBreastTotalDose = densityMessage.ScoreCardResults.RightBreastTotalDose;
+            record.LeftBreastTotalDose = densityMessage.ScoreCardResults.LeftBreastTotalDose;
+            record.DensityOutliers = string.Join(",", densityMessage.ScoreCardResults.DensityOutliers);
 
-            if (densityMessage.LeftBreastFindings != null)
+            if (densityMessage.ScoreCardResults.LeftBreastFindings != null)
             {
-                record.LeftBreastFibroglandularTissueVolume = densityMessage.LeftBreastFindings.FibroglandularTissueVolume;
-                record.LeftBreastVolume = densityMessage.LeftBreastFindings.BreastVolume;
-                record.LeftBreastVolumetricBreastDensity = densityMessage.LeftBreastFindings.VolumetricBreastDensity;
+                record.LeftBreastFibroglandularTissueVolume = densityMessage.ScoreCardResults.LeftBreastFindings.FibroglandularTissueVolume;
+                record.LeftBreastVolume = densityMessage.ScoreCardResults.LeftBreastFindings.BreastVolume;
+                record.LeftBreastVolumetricBreastDensity = densityMessage.ScoreCardResults.LeftBreastFindings.VolumetricBreastDensity;
             }
 
-            if (densityMessage.RightBreastFindings != null)
+            if (densityMessage.ScoreCardResults.RightBreastFindings != null)
             {
-                record.RightBreastFibroglandularTissueVolume = densityMessage.RightBreastFindings.FibroglandularTissueVolume;
-                record.RightBreastVolume = densityMessage.RightBreastFindings.BreastVolume;
-                record.RightBreastVolumetricBreastDensity = densityMessage.RightBreastFindings.VolumetricBreastDensity;
+                record.RightBreastFibroglandularTissueVolume = densityMessage.ScoreCardResults.RightBreastFindings.FibroglandularTissueVolume;
+                record.RightBreastVolume = densityMessage.ScoreCardResults.RightBreastFindings.BreastVolume;
+                record.RightBreastVolumetricBreastDensity = densityMessage.ScoreCardResults.RightBreastFindings.VolumetricBreastDensity;
+            }
+
+            // Volpara server scorecard results
+            record.ServerAverageAppliedForce = densityMessage.VolparaServerScoreCardResults.AverageAppliedForce;
+            record.ServerAverageAppliedPressure = densityMessage.VolparaServerScoreCardResults.AverageAppliedPressure;
+            record.ServerAverageBreastVolume = densityMessage.VolparaServerScoreCardResults.AverageBreastVolume;
+            record.ServerAverageManufacturerDosePerImage = densityMessage.VolparaServerScoreCardResults.AverageManufacturerDosePerImage;
+            record.ServerAverageVolparaDosePerImage = densityMessage.VolparaServerScoreCardResults.AverageVolparaDosePerImage;
+            record.ServerDensityImagesUsedForLccLmloRccRmlo = string.Join(",", densityMessage.VolparaServerScoreCardResults.DensityImagesUsedForLccLmloRccRmlo);
+            record.ServerVolparaDensityGrade4ThEdition = densityMessage.VolparaServerScoreCardResults.VolparaDensityGrade4ThEdition;
+            record.ServerVolparaDensityGrade5ThEdition = densityMessage.VolparaServerScoreCardResults.VolparaDensityGrade5ThEdition;
+            record.ServerVolparaDensityGrade5ThEditionUsingBreastAverage = densityMessage.VolparaServerScoreCardResults.VolparaDensityGrade5ThEditionUsingBreastAverage;
+            record.ServerVolparaDensityPercentageUsingBreastAverage = densityMessage.VolparaServerScoreCardResults.VolparaDensityPercentageUsingBreastAverage;
+            record.ServerVolparaDensityPercentageUsingMaximumBreast = densityMessage.VolparaServerScoreCardResults.VolparaDensityPercentageUsingMaximumBreast;
+            record.ServerRightBreastTotalDose = densityMessage.VolparaServerScoreCardResults.RightBreastTotalDose;
+            record.ServerLeftBreastTotalDose = densityMessage.VolparaServerScoreCardResults.LeftBreastTotalDose;
+            record.ServerDensityOutliers = string.Join(",", densityMessage.VolparaServerScoreCardResults.DensityOutliers);
+
+            if (densityMessage.VolparaServerScoreCardResults.LeftBreastFindings != null)
+            {
+                record.ServerLeftBreastFibroglandularTissueVolume = densityMessage.VolparaServerScoreCardResults.LeftBreastFindings.FibroglandularTissueVolume;
+                record.ServerLeftBreastVolume = densityMessage.VolparaServerScoreCardResults.LeftBreastFindings.BreastVolume;
+                record.ServerLeftBreastVolumetricBreastDensity = densityMessage.VolparaServerScoreCardResults.LeftBreastFindings.VolumetricBreastDensity;
+            }
+
+            if (densityMessage.VolparaServerScoreCardResults.RightBreastFindings != null)
+            {
+                record.ServerRightBreastFibroglandularTissueVolume = densityMessage.VolparaServerScoreCardResults.RightBreastFindings.FibroglandularTissueVolume;
+                record.ServerRightBreastVolume = densityMessage.VolparaServerScoreCardResults.RightBreastFindings.BreastVolume;
+                record.ServerRightBreastVolumetricBreastDensity = densityMessage.VolparaServerScoreCardResults.RightBreastFindings.VolumetricBreastDensity;
             }
 
             return record;
