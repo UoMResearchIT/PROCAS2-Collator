@@ -139,6 +139,7 @@ namespace PROCAS2.Data.Entities
         public string ServerDensityImagesUsedForLccLmloRccRmlo { get; set; }
         // End of Volpara server scorecard results
 
+        public bool UsingScoreCard { get; set; }
         public DateTime DataDate { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using System.Data.Entity;
 using PROCAS2.Data;
 using PROCAS2.Data.Entities;
 using PROCAS2.Models.ViewModels;
+using PROCAS2.Services.App;
 
 namespace PROCAS2.Controllers
 {
@@ -20,15 +21,18 @@ namespace PROCAS2.Controllers
         private IGenericRepository<ScreeningRecordV1_5_4> _screeningV1_5_4Repo;
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<VolparaDensity> _densityRepo;
+        private IScreeningService _screeningService;
 
 
         public ScreeningController(IGenericRepository<ScreeningRecordV1_5_4> screeningV1_5_4Repo,
                                     IGenericRepository<Participant> participantRepo,
-                                    IGenericRepository<VolparaDensity> densityRepo)
+                                    IGenericRepository<VolparaDensity> densityRepo,
+                                    IScreeningService screeningService)
         {
             _screeningV1_5_4Repo = screeningV1_5_4Repo;
             _participantRepo = participantRepo;
             _densityRepo = densityRepo;
+            _screeningService = screeningService;
         }
 
         // GET: Screening
@@ -49,6 +53,7 @@ namespace PROCAS2.Controllers
         }
 
         // GET: Screening
+        [HttpGet]
         public ActionResult Density(int id)
         {
             DensityViewModel model = new DensityViewModel();
@@ -61,6 +66,31 @@ namespace PROCAS2.Controllers
                 {
                     model.VolparaDensity = density;
                     return View("Density", model);
+                }
+            }
+
+            return View("Density", model);
+        }
+
+        // POST: Screening
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Density(DensityViewModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                if (model.VolparaDensity.Id != 0)
+                {
+
+                    if(_screeningService.ToggleUsingScoreCard(model.VolparaDensity.Id) == false)
+                    { 
+                        return View("Density", model);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Density", "Screening", new { id = model.VolparaDensity.Id });
+                    }
                 }
             }
 

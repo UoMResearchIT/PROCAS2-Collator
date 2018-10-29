@@ -240,5 +240,35 @@ namespace PROCAS2.Services.App
             
             return true;
         }
+
+        /// <summary>
+        /// Toggle the flag that indicates whether the ScoreCardResults or VolparaServerScoreCardResults are being used.
+        /// </summary>
+        /// <param name="id">ID of the density record</param>
+        /// <returns>true if successfully updated, else false</returns>
+        public bool ToggleUsingScoreCard(int id)
+        {
+            try
+            {
+                VolparaDensity density = _densityRepo.GetAll().Where(x => x.Id == id).FirstOrDefault();
+                if (density != null)
+                {
+                    if (density.UsingScoreCard == false)
+                        density.UsingScoreCard = true;
+                    else
+                        density.UsingScoreCard = false;
+
+                    _densityRepo.Update(density);
+                    _unitOfWork.Save();
+                    return true;
+                }
+                else
+                    return false;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

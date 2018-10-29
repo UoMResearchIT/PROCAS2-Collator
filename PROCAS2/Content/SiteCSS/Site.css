@@ -222,3 +222,11 @@ select
 .volparaNotUsed{
     color:red;
 }
+
+.volparaUsingScoreCard{
+    color:red;
+}
+
+.volparaUsingVolparaServer{
+    color:green;
+}
