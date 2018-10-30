@@ -29,6 +29,8 @@ namespace PROCAS2
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
+                SlidingExpiration = true,
+                ExpireTimeSpan = new System.TimeSpan(0, 0, 15, 0, 0),
                 Provider = new CookieAuthenticationProvider
                 {
                     // Enables the application to validate the security stamp when the user logs in.
