@@ -658,6 +658,28 @@ namespace PROCAS2.Controllers
             }
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult NipplePiercing(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.NipplePiercings(), "Piercing", "NoParameter", model);
+
+        }
+
+
+        [HttpGet]
+        public ActionResult NipplePiercing()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.NIPPLE_PIERCING;
+            model.Summary = ReportResources.NIPPLE_PIERCING_SUMMARY;
+            model.ActionName = "NipplePiercing";
+
+            return View("NoParameter", model);
+        }
+
 
         public string PrependSchemeAndAuthority(string url)
         {

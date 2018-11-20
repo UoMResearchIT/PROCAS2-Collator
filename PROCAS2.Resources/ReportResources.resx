@@ -210,6 +210,12 @@
   <data name="NHS_NUMBER_NOT_EXIST" xml:space="preserve">
     <value>This NHS Number does not exist in the database.</value>
   </data>
+  <data name="NIPPLE_PIERCING" xml:space="preserve">
+    <value>Patients who have said they have surgery or piercings </value>
+  </data>
+  <data name="NIPPLE_PIERCING_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number, DOB, date of first appointment and date consented for those who have told us that they've had breast surgery or nipple piercings.</value>
+  </data>
   <data name="NUMBER_ASSESS_RECALLS" xml:space="preserve">
     <value>Number of assessment recalls</value>
   </data>

@@ -130,7 +130,7 @@ namespace PROCAS2.Services.App
                 LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
                 LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
                 Signature = letter.Participant.ScreeningSite.Signature,
-                Telephone = letter.Participant.ScreeningSite.Telephone,
+                Telephone = ExportResources.BCPREDICT_PHONE,
                 NHSNumber = letter.Participant.NHSNumber,
                 StudyNumber = letter.Participant.StudyNumber.ToString().PadLeft(5, '0'),
 
@@ -167,7 +167,7 @@ namespace PROCAS2.Services.App
                     LogoFooterRightHeight = letter.Participant.ScreeningSite.LogoFooterRightHeight,
                     LogoFooterRightWidth = letter.Participant.ScreeningSite.LogoFooterRightWidth,
                     Signature = letter.Participant.ScreeningSite.Signature,
-                    Telephone = letter.Participant.ScreeningSite.Telephone,
+                    Telephone = ExportResources.BCPREDICT_PHONE,
                     NHSNumber = letter.Participant.NHSNumber,
                     StudyNumber = letter.Participant.StudyNumber.ToString().PadLeft(5, '0'),
 
@@ -238,7 +238,7 @@ namespace PROCAS2.Services.App
                     LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
 
                     Signature = participant.ScreeningSite.Signature,
-                    Telephone = participant.ScreeningSite.Telephone,
+                    Telephone = ExportResources.BCPREDICT_PHONE,
                     NHSNumber = participant.NHSNumber,
                     StudyNumber = participant.StudyNumber.ToString().PadLeft(5, '0'),
 
@@ -275,7 +275,7 @@ namespace PROCAS2.Services.App
                         LogoFooterRightWidth = participant.ScreeningSite.LogoFooterRightWidth,
 
                         Signature = participant.ScreeningSite.Signature,
-                        Telephone = participant.ScreeningSite.Telephone,
+                        Telephone = ExportResources.BCPREDICT_PHONE,
                         NHSNumber = participant.NHSNumber,
                         StudyNumber = participant.StudyNumber.ToString().PadLeft(5, '0'),
 

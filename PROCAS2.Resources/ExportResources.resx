@@ -120,6 +120,9 @@
   <data name="ALL_READY" xml:space="preserve">
     <value>Generate all that are ready</value>
   </data>
+  <data name="BCPREDICT_PHONE" xml:space="preserve">
+    <value>0161 291 4408</value>
+  </data>
   <data name="BLANK_LINE" xml:space="preserve">
     <value>&amp;nbsp;</value>
   </data>

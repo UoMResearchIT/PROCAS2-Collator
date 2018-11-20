@@ -1241,6 +1241,52 @@ namespace PROCAS2.Services.App
             return generatedDocument;
         }
 
+        /// <summary>
+        /// Produce a report of those who have said that they've had nipple piercings
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream NipplePiercings()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<Participant> patients = _participantRepo.GetAll().Include(a => a.QuestionnaireResponses).
+                                                                            Where(x => x.Consented == true && 
+                                                                            x.LastName != null && 
+                                                                            x.QuestionnaireResponses.Count > 0 && 
+                                                                            x.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code == "OtherBreastSurgeryImplantsReductionPiercing" && c.ResponseText == "Yes").Count() > 0 &&
+                                                                            x.Deleted == false && 
+                                                                            x.DateFirstAppointment.HasValue)
+                                                                       .OrderByDescending(x => x.DateFirstAppointment).ToList();
+                foreach (Participant patient in patients)
+                {
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+                                        onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" });
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
 
         /// <summary>
         /// Produce a report of those who attended screening on the day of the first offered appointment.

@@ -340,6 +340,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Patients who have said they have surgery or piercings .
+        /// </summary>
+        public static string NIPPLE_PIERCING {
+            get {
+                return ResourceManager.GetString("NIPPLE_PIERCING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number, DOB, date of first appointment and date consented for those who have told us that they&apos;ve had breast surgery or nipple piercings..
+        /// </summary>
+        public static string NIPPLE_PIERCING_SUMMARY {
+            get {
+                return ResourceManager.GetString("NIPPLE_PIERCING_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Number of assessment recalls.
         /// </summary>
         public static string NUMBER_ASSESS_RECALLS {

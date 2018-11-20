@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 0161 291 4408.
+        /// </summary>
+        public static string BCPREDICT_PHONE {
+            get {
+                return ResourceManager.GetString("BCPREDICT_PHONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;nbsp;.
         /// </summary>
         public static string BLANK_LINE {
