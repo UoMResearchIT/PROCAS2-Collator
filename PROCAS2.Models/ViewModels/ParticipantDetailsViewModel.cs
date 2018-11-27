@@ -59,6 +59,7 @@ namespace PROCAS2.Models.ViewModels
             Deleted = model.Participant.Deleted;
             AttendedScreening = model.Participant.AttendedScreening;
             AskForRiskLetter = model.Participant.AskForRiskLetter;
+            Diagnosed = model.Participant.Diagnosed;
             DateConsented = model.Participant.DateConsented.HasValue ? model.Participant.DateConsented.Value.ToString("dd/MM/yyyy") : "";
             ChemoAgreedInClinic = model.Participant.ChemoAgreedInClinic;
             StudyNumber = model.Participant.StudyNumber;
@@ -181,6 +182,9 @@ namespace PROCAS2.Models.ViewModels
         public string DOAA { get; set; }
         [Display(Name = "BMI", ResourceType = typeof(ParticipantResources))]
         public string BMI { get; set; }
+
+        [Display(Name = "DIAGNOSED", ResourceType = typeof(ParticipantResources))]
+        public bool Diagnosed { get; set; }
 
         [Display(Name = "CHEMO", ResourceType = typeof(ParticipantResources))]
         public bool Chemo { get; set; }

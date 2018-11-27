@@ -241,7 +241,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Diagnosed.
+        ///   Looks up a localized string similar to Diagnosed with breast cancer.
         /// </summary>
         public static string DIAGNOSED {
             get {
