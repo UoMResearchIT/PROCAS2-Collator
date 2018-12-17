@@ -793,22 +793,14 @@ namespace PROCAS2.Services.App
             {
                 WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
 
-
-
                 // Add Histology header
                 string histologySheetId = AddSheet(wbPart, "Histology", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "BMI", "RiskScore", "HistologyId" },
-                                                                            afterCols: new List<string>() { "DiagnosisType", "DiagnosisSide" });
-
-                // Add Histology focus header
-                string histologyFocusSheetId = AddSheet(wbPart, "HistologyFocus",2);
-                workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(HistologyFocus), 1, beforeCols: new List<string>() { "NHSNumber", "HistologyId" },
-                                                                            afterCols: new List<string>() { "InvasiveTumourType", "InSituTumourType", "Invasive", "DCISGrade", "VascularInvasion", "HER2Score", "TNMStageT", "TNMStageN" });
-
+                AddHeaderFromProperties(workingSheet, typeof(Histology), 1, beforeCols: new List<string>() { "NHSNumber", "DOB", "RiskScore" },
+                                                                            onlyCols: new List<string>() { "MammogramDate", "DiagnosisDate" },
+                                                                            afterCols: new List<string>() { "DiagnosisSide" });
+       
                 int histIndex = 2;
-                int histFocusIndex = 2;
 
                 // Add histology details
                 List<Histology> hists = _histologyRepo.GetAll().ToList();
@@ -816,19 +808,10 @@ namespace PROCAS2.Services.App
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(histologySheetId)).Worksheet;
                     AddLineFromProperties(workingSheet, hist, typeof(Histology), histIndex,
-                                        beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Participant.DateOfBirth.ToString(), hist.Participant.BMI.ToString(), hist.Participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString(), hist.Id.ToString() },
-                                        afterCols: new List<string>() { hist.DiagnosisType.LookupDescription, hist.DiagnosisSide.LookupDescription });
-                    histIndex++;
-
-                    workingSheet = ((WorksheetPart)wbPart.GetPartById(histologyFocusSheetId)).Worksheet;
-                    foreach (HistologyFocus item in hist.HistologyFoci)
-                    {
-                        AddLineFromProperties(workingSheet, item, typeof(HistologyFocus), histFocusIndex,
-                                            beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Id.ToString() },
-                                            afterCols: new List<string>() { item.InvasiveTumourType.LookupDescription, item.InSituTumourType.LookupDescription, item.Invasive.LookupDescription, item.DCISGrade.LookupDescription, item.VascularInvasion.LookupDescription, item.HER2Score.LookupDescription, item.TNMStageT.LookupDescription, item.TNMStageN.LookupDescription });
-                        histFocusIndex++;
-                    }
-
+                                        beforeCols: new List<string>() { hist.Participant.NHSNumber, hist.Participant.DateOfBirth.ToString(),  hist.Participant.RiskLetters.Count == 0? "Not found": hist.Participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString() },
+                                        onlyCols: new List<string>() { "MammogramDate", "DiagnosisDate" },
+                                        afterCols: new List<string>() {  hist.DiagnosisSide.LookupDescription });
+                    histIndex++;    
                 }
 
                 wbPart.Workbook.Save();
@@ -1258,7 +1241,8 @@ namespace PROCAS2.Services.App
                 // Add header
                 string repSheetId = AddSheet(wbPart, "Main", 1);
                 var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" });
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" },
+                                                                              afterCols: new List<string>() {"Implants", "ImplantsSide", "Reduction", "ReductionSide", "Piercings", "PiercingsSide", "Other", "OtherSide" });
 
                 int repIndex = 2;
 
@@ -1274,8 +1258,29 @@ namespace PROCAS2.Services.App
                 foreach (Participant patient in patients)
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+
+                    QuestionnaireResponseItem implants = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "breastImplants".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem implantsSide = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "breastImplantsSide".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem reduction = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "breastReduction".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem reductionSide = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "breastReductionSide".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem nipplePiercing = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "nipplePiercing".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem nipplePiercingSide = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "nipplePiercingSide".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem other = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "OtherBreastSurgeryYesNo".ToLower()).FirstOrDefault();
+                    QuestionnaireResponseItem otherSide = patient.QuestionnaireResponses.OrderByDescending(b => b.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(c => c.Question.Code.ToLower() == "OtherBreastSurgerySide".ToLower()).FirstOrDefault();
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
-                                        onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" });
+                                        onlyCols: new List<string>() { "DateCreated", "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateConsented", "SentRisk" },
+                                        afterCols: new List<string>()
+                                        {
+                                            implants == null? "": implants.ResponseText,
+                                            implantsSide == null? "": implantsSide.ResponseText,
+                                            reduction == null? "": reduction.ResponseText,
+                                            reductionSide == null? "": reductionSide.ResponseText,
+                                            nipplePiercing == null? "": nipplePiercing.ResponseText,
+                                            nipplePiercingSide == null? "": nipplePiercingSide.ResponseText,
+                                            other == null? "": other.ResponseText,
+                                            otherSide == null? "": otherSide.ResponseText,
+                                        });
                     repIndex++;
 
 

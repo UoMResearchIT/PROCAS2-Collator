@@ -134,7 +134,7 @@ namespace PROCAS2.Services.App
                 "RelativeTwin", "WeightPreferredUnits",
                 "HeightPreferredUnits", "ProstateCancer",
                 "BreastCancer", "bothOvariesRemoved",
-                "nipplePiercing", "heightFeetInches",
+                "heightFeetInches",
                 "emailAddress", "ColonOrRectalCancer",
                 "BMI", "MaternalMaternal",
                 "PaternalPaternal", "surveyEnd",
