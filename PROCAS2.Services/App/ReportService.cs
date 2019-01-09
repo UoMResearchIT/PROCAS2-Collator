@@ -1320,11 +1320,20 @@ namespace PROCAS2.Services.App
                 foreach (Participant patient in patients)
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1368,11 +1377,20 @@ namespace PROCAS2.Services.App
                     if ((patient.DateActualAppointment.Value - patient.DateFirstAppointment.Value).TotalDays <= 180)
                     {
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                       
+
+                        string ethnicity = "";
+                        if (patient.QuestionnaireResponses.Count > 0)
+                        {
+                            if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                            {
+                                ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                            }
+                        }
+
                         AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                             onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                             afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                         repIndex++;
@@ -1414,11 +1432,21 @@ namespace PROCAS2.Services.App
                 {
                    
                         workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                        
-                        AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
+
+                    AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                             onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                             afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                       ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                         repIndex++;
@@ -1460,11 +1488,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1506,11 +1543,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1553,11 +1599,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1600,11 +1655,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1646,11 +1710,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1693,11 +1766,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1739,11 +1821,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1787,11 +1878,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     repIndex++;
@@ -1853,11 +1953,20 @@ namespace PROCAS2.Services.App
                 {
 
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
-                    
+
+                    string ethnicity = "";
+                    if (patient.QuestionnaireResponses.Count > 0)
+                    {
+                        if (patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).Count() > 0)
+                        {
+                            ethnicity = patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText;
+                        }
+                    }
+
                     AddLineFromProperties(workingSheet, patient, typeof(Participant), repIndex,
                                         onlyCols: new List<string>() { "NHSNumber", "DateOfBirth", "DateFirstAppointment", "DateActualAppointment", "BMI" },
                                         afterCols: new List<string>() { WholeYearsDiff(patient.DateConsented.Value, patient.DateOfBirth.Value),
-                                                                        patient.QuestionnaireResponses.OrderByDescending(x => x.DateReceived).FirstOrDefault().QuestionnaireResponseItems.Where(x => x.Question.Code == racialBackgroundCode).FirstOrDefault().ResponseText,
+                                                                        ethnicity,
                                                                         patient.Addresses.Where(x => x.AddressType.Name == "HOME").FirstOrDefault().PostCode,
                                                                         patient.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault().RiskScore.ToString()});
                     
