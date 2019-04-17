@@ -539,6 +539,28 @@ namespace PROCAS2.Controllers
         }
 
         [HttpGet]
+        public ActionResult DeclinedMammogram()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.DECLINED_MAMMO;
+            model.Summary = ReportResources.DECLINED_MAMMO_SUMMARY;
+            model.ActionName = "DeclinedMammogram";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeclinedMammogram(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.DeclinedMammogram(), "DeclinedMammogram", "NoParameter", model);
+
+
+        }
+
+        [HttpGet]
         public ActionResult BreastCancerDiagnoses()
         {
             NoParameterViewModel model = new NoParameterViewModel();

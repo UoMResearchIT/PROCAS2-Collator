@@ -165,6 +165,12 @@
   <data name="CONSENTED_YET_TO_GET_FULL_SUMMARY" xml:space="preserve">
     <value>This report will show the NHS Number, DOB, date of first appointment and date consented of those who have consented to the study, but not had the full patient details uploaded into Collator yet.</value>
   </data>
+  <data name="DECLINED_MAMMO" xml:space="preserve">
+    <value>Declined Mammogram</value>
+  </data>
+  <data name="DECLINED_MAMMO_SUMMARY" xml:space="preserve">
+    <value>This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who declined their mammogram.</value>
+  </data>
   <data name="DETAILED_REPORTS" xml:space="preserve">
     <value>Full Detail Reports</value>
   </data>

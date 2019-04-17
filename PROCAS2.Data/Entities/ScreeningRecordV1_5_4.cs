@@ -15,7 +15,7 @@ namespace PROCAS2.Data.Entities
         public DateTime DataDate { get; set; }
 
         // Fields common to both CC and MLO MammoViews
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string MammoImageType { get; set; }
         [MaxLength(50)]
         public string RequestedProcedure { get; set; }
@@ -30,7 +30,7 @@ namespace PROCAS2.Data.Entities
         public string CurrentCulture { get; set; }
         [MaxLength(10)]
         public string InstalledUICulture { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string WriteOutDisplayImage { get; set; }
         [MaxLength(50)]
         public string VolparaVersion { get; set; }
@@ -48,7 +48,7 @@ namespace PROCAS2.Data.Entities
         public string BTSTF { get; set; }
         [MaxLength(50)]
         public string DetectorType { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string DoFlatFieldCorrection { get; set; }
         [MaxLength(12)] // Number
         public string FSensitivity { get; set; }
@@ -58,7 +58,7 @@ namespace PROCAS2.Data.Entities
         public string NativePixelSize { get; set; }
         [MaxLength(12)] // Number
         public string Offset { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string ScalePixelSize { get; set; }
         [MaxLength(12)] // Number
         public string SourceToDetector { get; set; }
@@ -66,9 +66,9 @@ namespace PROCAS2.Data.Entities
         public string SupportToDetector { get; set; }
         [MaxLength(50)] 
         public string TubeType { get; set; }
-        [MaxLength(5)]
+        [MaxLength(10)]
         public string UseNewSlantAlgorithm { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string ValidToProcess { get; set; }
         [MaxLength(8)]
         public string BreastSide { get; set; }
@@ -76,7 +76,7 @@ namespace PROCAS2.Data.Entities
         public string ChestPosition { get; set; }
         [MaxLength(8)]
         public string PectoralPosition { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string MammoView { get; set; }
         [MaxLength(10)]
         public string StudyDate { get; set; }
@@ -84,7 +84,7 @@ namespace PROCAS2.Data.Entities
         public string OperatorName { get; set; }
         [MaxLength(10)]
         public string PatientDOB { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string PatientAge { get; set; }
         [MaxLength(50)]
         public string PatientID { get; set; }
@@ -207,7 +207,7 @@ namespace PROCAS2.Data.Entities
         public string NippleConfidence { get; set; }
         [MaxLength(200)]
         public string NippleConfidenceMessage { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string NippleInProfile { get; set; }
         [MaxLength(12)] // Number
         public string NippleDistanceFromPosteriorEdgeInMm { get; set; }
@@ -269,9 +269,9 @@ namespace PROCAS2.Data.Entities
         public string BreastEdgeDistanceToPosteriorMedialCornerInMm { get; set; }
         [MaxLength(12)] // Number
         public string BreastEdgeDistanceToPosteriorLateralCornerInMm { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string CleavageDetected { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string ShoulderDetected { get; set; }
         [MaxLength(12)] // Number
         public string MaximumDenseThicknessDistanceFromMedialEdgeInMm { get; set; }
@@ -293,7 +293,7 @@ namespace PROCAS2.Data.Entities
         public string NippleLineLengthInMm { get; set; }
         [MaxLength(12)] // Number
         public string PNLToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string PectoralSkinFoldPresent { get; set; }
         [MaxLength(12)] // Number
         public string NippleToInferiorPectoralMuscleVerticalLengthInMm { get; set; }
@@ -305,18 +305,20 @@ namespace PROCAS2.Data.Entities
         public string PectoralShape { get; set; }
         [MaxLength(12)] // Number
         public string ImfMaxDistanceMm { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string InframammaryFoldVisible { get; set; }
         [MaxLength(12)] // Number
         public string InframammaryFoldAreaInMm2 { get; set; }
         [MaxLength(12)] // Number
         public string ImfAngleInDegrees { get; set; }
-        [MaxLength(3)]
+        [MaxLength(10)]
         public string ImfSkinFoldPresent { get; set; }
         [MaxLength(12)] // Number
         public string MaximumDenseThicknessDistanceFromSuperiorEdgeInMm { get; set; }
         [MaxLength(12)] // Number
         public string MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm { get; set; }
+        [MaxLength(20)]
+        public string AquisitionDate { get; set; }
 
        public int? ImageId { get; set; }
         public virtual Image Image { get; set; }

@@ -665,6 +665,14 @@ namespace PROCAS2.Services.App
                     return false;
                 }
             }
+            else
+            {
+                if (regenerate == true) // Patient not in DB so don't create a hash if on regenerate mode.
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_NHS_NUMBER_NOT_IN_DB, NHSNumber), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
 
             
             return true;

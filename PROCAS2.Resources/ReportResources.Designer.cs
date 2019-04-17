@@ -205,6 +205,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Declined Mammogram.
+        /// </summary>
+        public static string DECLINED_MAMMO {
+            get {
+                return ResourceManager.GetString("DECLINED_MAMMO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report shows the NHS Number, DOB, age, ethnicity, post code and risk score of every patient who declined their mammogram..
+        /// </summary>
+        public static string DECLINED_MAMMO_SUMMARY {
+            get {
+                return ResourceManager.GetString("DECLINED_MAMMO_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Full Detail Reports.
         /// </summary>
         public static string DETAILED_REPORTS {

@@ -39,5 +39,6 @@ namespace PROCAS2.Services.App
         MemoryStream Volpara();
         MemoryStream QueryDB(QueryDatabaseViewModel model);
         MemoryStream NipplePiercings();
+        MemoryStream DeclinedMammogram();
     }
 }

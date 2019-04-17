@@ -164,6 +164,34 @@ namespace PROCAS2.Services.Utility
                         return retMessages;
                     }
 
+                    string acquisitionDateTime = ""; // default to blank
+                    // We need to parse the DICOM header info to find the acquisition date.
+                    JToken dicomHeader = image.SelectToken("$.DicomHeaderInfo");
+                    if (dicomHeader != null)
+                    {
+                        // Get the acquisition date
+                        JToken thisAquisitionDateToken = dicomHeader.SelectToken("$.00080022.Value");
+                        if (thisAquisitionDateToken != null)
+                        {
+                            List<string> thisAquisitionDate = thisAquisitionDateToken.ToObject<List<string>>();
+                            if (thisAquisitionDate != null && !String.IsNullOrEmpty(thisAquisitionDate[0]))
+                            {
+                                acquisitionDateTime = thisAquisitionDate[0];                             }
+                        }
+
+                        // Get the acquisition date
+                        JToken thisAquisitionTimeToken = dicomHeader.SelectToken("$.00080032.Value");
+                        if (thisAquisitionTimeToken != null)
+                        {
+                            List<string> thisAquisitionTime = thisAquisitionTimeToken.ToObject<List<string>>();
+                            if (thisAquisitionTime != null && !String.IsNullOrEmpty(thisAquisitionTime[0]))
+                            {
+                                acquisitionDateTime = acquisitionDateTime + " " + thisAquisitionTime[0];
+                            }
+                        }
+
+                    }
+
                     // Get the main screening data section
                     JToken xlsData = image.SelectToken("$.XlsData");
                     if (xlsData != null)
@@ -173,7 +201,7 @@ namespace PROCAS2.Services.Utility
                         StripOutMetaDataInFields(ref xlsMessage);
 
                         // Create screening record
-                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage, imageId, densityId) == false)
+                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage, imageId, densityId, acquisitionDateTime) == false)
                         {
                             // can't create the screening record
                             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_RECORD, messageBody: message));

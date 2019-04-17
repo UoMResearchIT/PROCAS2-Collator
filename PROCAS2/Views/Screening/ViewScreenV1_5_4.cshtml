@@ -80,7 +80,17 @@
                         }
                     </tr>
 
-
+                    <tr>
+                        <td>
+                            @Html.DisplayNameFor(model => model.ScreeningRecords[0].AquisitionDate)
+                        </td>
+                        @for (int index = 0; index < Model.ScreeningRecords.Count; index++)
+                        {
+                            <td class="volparaCol">
+                                @Html.DisplayFor(model => model.ScreeningRecords[index].AquisitionDate)
+                            </td>
+                        }
+                    </tr>
 
 
 

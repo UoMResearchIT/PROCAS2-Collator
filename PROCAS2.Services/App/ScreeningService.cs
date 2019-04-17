@@ -43,7 +43,7 @@ namespace PROCAS2.Services.App
         /// <param name="hashedPatientId">Hashed NHS number</param>
         /// <param name="xlsMessage">The message</param>
         /// <returns>true if created, else false</returns>
-        public bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId, int densityId)
+        public bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId, int densityId, string acquisitionDateTime)
         {
             try
             {
@@ -51,6 +51,7 @@ namespace PROCAS2.Services.App
 
                 record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
                 record.DataDate = DateTime.Now;
+                record.AquisitionDate = acquisitionDateTime;
                
                 if(imageId != 0)
                 {
