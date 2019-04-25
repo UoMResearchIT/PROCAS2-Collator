@@ -6455,5227 +6455,4497 @@ OBX|151|TX|1000.WeightPreferredUnits||Standard||||||F";
 
         string volparaMessage = @"
 {
-  'FileDescriptor': 'VolparaEnterprise Study Result (4 images)',
-  'StudyResultCreationTimeUtc': '2018-09-20T07:28:14.7596625Z',
-  'JsonVersion': 1,
-  'ScorecardResults': {
-    'LeftBreastFindings': {
-      'FibroglandularTissueVolume': 28.0,
-      'BreastVolume': 368.4,
-      'VolumetricBreastDensity': 7.6,
-      'JsonVersion': 1
-    },
-    'RightBreastFindings': {
-      'FibroglandularTissueVolume': 32.2,
-      'BreastVolume': 460.0,
-      'VolumetricBreastDensity': 7.0,
-      'JsonVersion': 1
-    },
-    'VolparaDensityPercentageUsingMaximumBreast': 7.6,
-    'VolparaDensityPercentageUsingBreastAverage': 7.3,
-    'VolparaDensityGrade4ThEdition': 2,
-    'VolparaDensityGrade5ThEdition': 'c',
-    'VolparaDensityGrade5ThEditionUsingBreastAverage': 'b',
-    'DensityImagesUsedForLccLmloRccRmlo': [
-      1,
-      null,
-      0,
-      2
-    ],
-    'DensityOutliers': [
-      3
-    ],
-    'AverageBreastVolume': 412.2,
-    'AverageAppliedPressure': 10.6,
-    'AverageAppliedForce': 60.5,
-    'AverageManufacturerDosePerImage': 1.8,
-    'AverageVolparaDosePerImage': 1.7,
-    'LeftBreastTotalDose': 3.3,
-    'RightBreastTotalDose': 3.4,
-    'JsonVersion': 1
-  },
-  'VolparaServerScorecardResults': {
-    'LeftBreastFindings': {
-      'FibroglandularTissueVolume': 28.0,
-      'BreastVolume': 368.4,
-      'VolumetricBreastDensity': 7.6,
-      'JsonVersion': 1
-    },
-    'RightBreastFindings': {
-      'FibroglandularTissueVolume': 32.2,
-      'BreastVolume': 460.0,
-      'VolumetricBreastDensity': 7.0,
-      'JsonVersion': 1
-    },
-    'VolparaDensityPercentageUsingMaximumBreast': 7.5,
-    'VolparaDensityPercentageUsingBreastAverage': 7.3,
-    'VolparaDensityGrade4ThEdition': 2,
-    'VolparaDensityGrade5ThEdition': 'c',
-    'VolparaDensityGrade5ThEditionUsingBreastAverage': 'b',
-    'DensityImagesUsedForLccLmloRccRmlo': [
-      1,
-      null,
-      0,
-      2
-    ],
-    'DensityOutliers': [
-      3
-    ],
-    'AverageBreastVolume': 414.2,
-    'AverageAppliedPressure': 10.6,
-    'AverageAppliedForce': 60.5,
-    'AverageManufacturerDosePerImage': 1.8,
-    'AverageVolparaDosePerImage': 1.3,
-    'LeftBreastTotalDose': null,
-    'RightBreastTotalDose': null,
-    'JsonVersion': 1
-  },
-  'AnalyticsResults': null,
-  'VolparaPgmiResults': null,
-  'Configuration': {
-    'StudyImageProcessingMode': 'MixedPreferMammo',
-    'VolparaServerStudyImageProcessingMode': 'Mixed',
-    'AbDensityGradeBoundary': 3.5,
-    'BcDensityGradeBoundary': 7.5,
-    'CdDensityGradeBoundary': 15.5,
-    'JsonVersion': 1
-  },
-  'ImageResults': [
-    {
-      'JsonVersion': 1,
-      'SourceImage': {
-        'DicomImageFilePath': 'B58265F64F2A57227DC3D1706B9FA222_76E0A23D8D6F8B91996F12C931D8C32.dcm',
-        'TransferSyntaxName': 'RLE Lossless',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.3602855202.14297464463116263680',
-        'PixelSizeX': 0.07,
-        'PixelSizeY': 0.07,
-        'PixelRows': 3328,
-        'PixelColumns': 2560,
-        'JsonVersion': 1,
-        'CryptoVersion': 'H1E1',
-        'Hashes': [
-          {
-            'Key': 'Key1',
-            'Value': 'PATIENTID'
-          },
-          {
-            'Key': 'Key2',
-            'Value': 'Warning: No hashed Key2 found - must be supplied by uploader'
-          }
-        ],
-        'Encryptions': []
-      },
-      'MachineLearning': null,
-      'PositioningInputs': null,
-      'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 30.438,
-        'BreastVolumeInCm3': 390.0904,
-        'VolumetricBreastDensityInPercent': 7.8028,
-        'ManufacturerDoseInmGy': 1.87,
-        'VolparaDoseInmGy': 1.788833,
-        'AppliedPressureInkPa': 11.66,
-        'AppliedForceInN': 49.0002,
-        'JsonVersion': 1
-      },
-      'Calculations': null,
-      'Algorithm': {
-        'IsInputFileNotDicom': false,
-        'IsAlgorithmSuccessful': true,
-        'AlgorithmError': null,
-        'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'SourceDotOutFileName': null,
-        'AlgorithmVersion': '1.5.5.0',
-        'AlgorithmBuild': '13334',
-        'JsonVersion': 1
-      },
-      'XlsData': {
-        'MammoImageType': '2D',
-        'RequestedProcedure': 'Screening',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636729663058111095_4',
-        'Timestamp': '2018/09/20_07:27:19',
-        'OSName': 'Unknown',
-        'OSVersion': 'Unknown',
-        'CurrentCulture': 'en-US',
-        'InstalledUICulture': 'en-US',
-        'VolparaVersion': '1.5.5.0 | 13334 |',
-        'DICOMTAGManufacturer': 'Hologic',
-        'PaddleType': '18cm x 24cm fast',
-        'DICOMTAGDeviceSerialNumber': 'Not Found',
-        'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 31 )',
-        'BTSF': '1',
-        'BTSTF': '0',
-        'DICOMSmallPaddleDescription': 'SMALL [ From Manufacturer ID ]',
-        'DICOMSmartCurvePaddleDescription': 'CURV [ From Manufacturer ID ]',
-        'DefaultGridType': 'Hologic [ From Manufacturer ID ]',
-        'DetectorType': 'Hologic [ From Manufacturer ID ]',
-        'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'Gain': '0.0100 [ From Manufacturer ID ]',
-        'NativePixelSize': '0.0700 [ From Manufacturer ID ]',
-        'Offset': '60.0000 [ From Manufacturer ID ]',
-        'SlantMeasurePoint': 'DontChange [ From Manufacturer ID ]',
-        'SmallPaddleCropMethod': 'Average [ From Manufacturer ID ]',
-        'SmallPaddleCropSizeMm': '80.0 [ From Manufacturer ID ]',
-        'SourceToDetector': '660.0 [ From Manufacturer ID ]',
-        'SupportToDetector': '20.0 [ From Manufacturer ID ]',
-        'TubeType': 'Hologic [ From Manufacturer ID ]',
-        'ValidToProcess': 'yes [ From Manufacturer ID ]',
-        'WAgDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'WRhDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'BreastSide': 'Right',
-        'ChestPosition': 'Right',
-        'PectoralPosition': 'Top',
-        'MammoView': 'CC',
-        'StudyDate': '20100412',
-        'OperatorName': 'Unknown',
-        'PatientDOB': 'Unknown',
-        'PatientAge': '-1',
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'DetectorID': 'DetectorID-1',
-        'XraySystem': 'Hologic',
-        'TargetPixelSizeMm': '0.355',
-        'NearestNeighborResample': null,
-        'ResizedPixelSizeMm': '0.35',
-        'PectoralSide': 'Top',
-        'MedialSide': 'Bottom',
-        'TargetMaterial': 'MOLYBDENUM',
-        'FilterMaterial': 'MOLYBDENUM',
-        'FilterThicknessMm': '0.03',
-        'TubeVoltageKvp': '31',
-        'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.37662',
-        'CompressionForceN': '49.0002',
-        'RecordedBreastThicknessMm': '60',
-        'ExposureMas': '72',
-        'ExposureTimeMs': '723',
-        'EntranceDoseInmGy': '9.33',
-        'EstimatedEntranceDoseInmGy': '13.6539',
-        'FiftyPercentGlandularDoseInmGy': '1.520790',
-        'OrganDose': '0.018700',
-        'OrganDoseInmGy': '1.870000',
-        'InnerBreastStatistics': '( 0; 112; 120; 510; 31660; 18149032.000000; 10608558496.000000; 573.247986; 80.401321 )',
-        'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.4747',
-        'RejectingMethod1Reason': '-2.27639 > 10 or -2.27639 < -2 or 0.4747 < 0.85',
-        'MethodFatPlaneFit': '0.989662',
-        'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '4.74946',
-        'ComputedSlantMm': '14.8887',
-        'ComputedBreastThickness': '60',
-        'ScatterScaleFactor': '1.00',
-        'Scatter': 'Weighted',
-        'SegPhaseDE': '34025.85',
-        'SegPhaseOD': '0.00',
-        'SegPhaseBE': '2053.84',
-        'SegPhasePA': '0.00',
-        'SegPhaseBA': '5691.84',
-        'SegPhaseOA': '0.00',
-        'SegPhaseUA': '0.00',
-        'SegPhasePD': '0.00',
-        'SegSphereDE': '34025.85',
-        'SegSphereOD': '0.00',
-        'SegSphereBE': '3867.33',
-        'SegSpherePA': '0.00',
-        'SegSphereBA': '3878.35',
-        'SegSphereOA': '0.00',
-        'SegSphereUA': '0.00',
-        'SegSpherePD': '0.00',
-        'ContactAreaMm2': '4202.61',
-        'CompressionPressureKPa': '11.66',
-        'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '60.00 mm',
-        'HintIgnoreLevel': '54.00 mm',
-        'GlandularityPercent': '16.51',
-        'VolparaMeanGlandularDoseInmGy': '1.788833',
-        'CorrectionComplete': null,
-        'NippleConfidence': '0.889888',
-        'NippleConfidenceMessage': '-1|OK||disagreed curvature and intensity nipples (> 10 mm)|',
-        'NippleInProfile': 'No',
-        'NippleDistanceFromMedialEdgeInMm': '117.112',
-        'NippleDistanceFromPosteriorEdgeInMm': '57.069',
-        'NippleCenterDistanceFromMedialEdgeInMm': '116.683',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '53.9563',
-        'CCPosteriorNippleLineLengthInMm': '57.069',
-        'NippleMedialLateralDistanceInMm': '6.86208',
-        'NippleMedialLateralAngleInDegrees': '6.85643',
-        'BreastCenterToImageCenterDistanceInMm': '-6.3',
-        'BreastCenterDistanceFromMedialEdgeInMm': '110.25',
-        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
-        'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
-        'CleavageDetected': 'No',
-        'ShoulderDetected': 'No',
-        'CCAnteriorCutOffLengthInMm': '0',
-        'CCMedialCutOffLengthInMm': '0',
-        'CCLateralCutOffLengthInMm': '0',
-        'MeanDenseThicknessInMm': '7.567',
-        'MaximumDenseThicknessInMm': '25.874',
-        'SDDenseThicknessInMm': '5.56855',
-        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '121.45',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '35.7',
-        'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '35.6809',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.20556',
-        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '122.5',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '31.15',
-        'DenseAreaPercent': '55.8339',
-        'AreaGreaterThan10mmDenseMm2': '1041.5',
-        'HintVolumeCm3': '30.4380',
-        'BreastVolumeCm3': '390.0904',
-        'VolumetricBreastDensity': '7.8028',
-        'Out_BreastVolume': '390.1',
-        'Out_FGTV': '30.4',
-        'Out_Density': '7.8',
-        'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'VolparaOkay': null
-      },
-      'OtherData': {
-        'Projectcompletedsuccessfully': null,
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'FibroglandularTissueVolume': '30.4 cm3',
-        'BreastVolume': '390.1 cm3',
-        'VolumetricBreastDensity': '7.8 %',
-        'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
-      },
-      'SpecialData': null,
-      'DicomFileMetaInfo': {
-        '00020001': {
-          'vr': 'OB',
-          'InlineBinary': 'AAE='
-        },
-        '00020002': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00020003': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3602855202.14297464463116263680'
-          ]
-        },
-        '00020010': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.1.2.5'
-          ]
-        },
-        '00020012': {
-          'vr': 'UI',
-          'Value': [
-            '1.3.6.1.4.1.30071.8'
-          ]
-        },
-        '00020013': {
-          'vr': 'SH',
-          'Value': [
-            'fo-dicom 4.0.0'
-          ]
-        },
-        '00020016': {
-          'vr': 'AE',
-          'Value': [
-            'RD00155D028273'
-          ]
-        }
-      },
-      'DicomHeaderInfo': {
-        '00080005': {
-          'vr': 'CS',
-          'Value': [
-            'ISO_IR 100'
-          ]
-        },
-        '00080008': {
-          'vr': 'CS',
-          'Value': [
-            'ORIGINAL',
-            'PRIMARY'
-          ]
-        },
-        '00080016': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00080018': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3602855202.14297464463116263680'
-          ]
-        },
-        '00080020': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080021': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080022': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080023': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080030': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080031': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080032': {
-          'vr': 'TM',
-          'Value': [
-            '114224'
-          ]
-        },
-        '00080033': {
-          'vr': 'TM',
-          'Value': [
-            '114224'
-          ]
-        },
-        '00080050': {
-          'vr': 'SH'
-        },
-        '00080060': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080061': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080068': {
-          'vr': 'CS',
-          'Value': [
-            'FOR PROCESSING'
-          ]
-        },
-        '00080070': {
-          'vr': 'LO',
-          'Value': [
-            'HOLOGIC, Inc.'
-          ]
-        },
-        '00080090': {
-          'vr': 'PN'
-        },
-        '00081010': {
-          'vr': 'SH',
-          'Value': [
-            'Station-1'
-          ]
-        },
-        '00081030': {
-          'vr': 'LO'
-        },
-        '0008103E': {
-          'vr': 'LO'
-        },
-        '00081090': {
-          'vr': 'LO',
-          'Value': [
-            'Lorad Selenia'
-          ]
-        },
-        '00082111': {
-          'vr': 'ST',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00082218': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'T-04000'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Breast'
-                ]
-              }
-            }
-          ]
-        },
-        '00100010': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Anonymous'
-            }
-          ]
-        },
-        '00100020': {
-          'vr': 'LO',
-          'Value': [
-            'B58265F64F2A57227DC3D1706B9FA222'
-          ]
-        },
-        '00100030': {
-          'vr': 'DA'
-        },
-        '00100040': {
-          'vr': 'CS',
-          'Value': [
-            'F'
-          ]
-        },
-        '001021B0': {
-          'vr': 'LT',
-          'Value': [
-            'azjEMMbDcYsY7y6bGx8UC89ayXi3psdZVgXyDpsuXsd4GPipqt1o0Wiv+ad/wCP+Q9Y5WIMNQpu7KpjHncybCU0prsZhJ4Z5oJYcdVyJVsKKCA5EyYEvUNS4QEL3xoKKILE5BdxEsLXVjwXn5efeIusm2zgb3ZAEI1OgGyWDeTU='
-          ]
-        },
-        '00120062': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00120063': {
-          'vr': 'LO',
-          'Value': [
-            'Basic Application Confidentiality Profile',
-            'Clean Descriptors Option',
-            'Retain Longitudinal Temporal Information Modified Dates Option',
-            'Retain Patient Characteristics Option',
-            'Retain Safe Private Option'
-          ]
-        },
-        '00120064': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113100'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Basic Application Confidentiality Profile'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113105'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Clean Descriptors Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113107'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Longitudinal Temporal Information Modified Dates Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113108'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Patient Characteristics Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113111'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Safe Private Option'
-                ]
-              }
-            }
-          ]
-        },
-        '00180015': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00180060': {
-          'vr': 'DS',
-          'Value': [
-            31
-          ]
-        },
-        '00181000': {
-          'vr': 'LO'
-        },
-        '00181008': {
-          'vr': 'LO',
-          'Value': [
-            'GantryID-1'
-          ]
-        },
-        '00181020': {
-          'vr': 'LO',
-          'Value': [
-            'AWS:MAMMODROC_3_3_1_1',
-            'PXCM:1.3.3.0',
-            'ARR:1.6.3.0'
-          ]
-        },
-        '00181030': {
-          'vr': 'LO'
-        },
-        '00181110': {
-          'vr': 'DS',
-          'Value': [
-            660
-          ]
-        },
-        '00181111': {
-          'vr': 'DS',
-          'Value': [
-            640
-          ]
-        },
-        '00181114': {
-          'vr': 'DS',
-          'Value': [
-            1.069
-          ]
-        },
-        '00181147': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00181150': {
-          'vr': 'IS',
-          'Value': [
-            723
-          ]
-        },
-        '00181151': {
-          'vr': 'IS',
-          'Value': [
-            100
-          ]
-        },
-        '00181152': {
-          'vr': 'IS',
-          'Value': [
-            72
-          ]
-        },
-        '00181153': {
-          'vr': 'IS',
-          'Value': [
-            72300
-          ]
-        },
-        '00181164': {
-          'vr': 'DS',
-          'Value': [
-            0.070,
-            0.070
-          ]
-        },
-        '00181166': {
-          'vr': 'CS',
-          'Value': [
-            'HTC_IN'
-          ]
-        },
-        '00181190': {
-          'vr': 'DS',
-          'Value': [
-            0.3
-          ]
-        },
-        '00181191': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '001811A0': {
-          'vr': 'DS',
-          'Value': [
-            60.0
-          ]
-        },
-        '001811A2': {
-          'vr': 'DS',
-          'Value': [
-            49.000190
-          ]
-        },
-        '00181200': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '00181201': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00181400': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00181401': {
-          'vr': 'LO'
-        },
-        '00181405': {
-          'vr': 'IS',
-          'Value': [
-            538
-          ]
-        },
-        '00181508': {
-          'vr': 'CS',
-          'Value': [
-            'MAMMOGRAPHIC'
-          ]
-        },
-        '00181510': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00181511': {
-          'vr': 'DS'
-        },
-        '00185100': {
-          'vr': 'CS'
-        },
-        '00185101': {
-          'vr': 'CS',
-          'Value': [
-            'CC'
-          ]
-        },
-        '00186000': {
-          'vr': 'DS'
-        },
-        '00187000': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00187001': {
-          'vr': 'DS',
-          'Value': [
-            29.16
-          ]
-        },
-        '00187004': {
-          'vr': 'CS',
-          'Value': [
-            'DIRECT'
-          ]
-        },
-        '00187005': {
-          'vr': 'CS',
-          'Value': [
-            'AREA'
-          ]
-        },
-        '00187006': {
-          'vr': 'LT',
-          'Value': [
-            'Vendor: DRC; Product: BRICK/ARRAY; Version: v1.0'
-          ]
-        },
-        '0018700A': {
-          'vr': 'SH',
-          'Value': [
-            'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '0018700E': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00187024': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00187026': {
-          'vr': 'DS',
-          'Value': [
-            250,
-            286
-          ]
-        },
-        '00187030': {
-          'vr': 'DS',
-          'Value': [
-            377,
-            1024
-          ]
-        },
-        '00187032': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00187034': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00187048': {
-          'vr': 'DS'
-        },
-        '00187050': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '00187052': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187054': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187060': {
-          'vr': 'CS',
-          'Value': [
-            'AUTO_FILTER'
-          ]
-        },
-        '00187062': {
-          'vr': 'LT',
-          'Value': [
-            'LORAD AUTO AEC'
-          ]
-        },
-        '00187064': {
-          'vr': 'CS',
-          'Value': [
-            'NORMAL'
-          ]
-        },
-        '0018A001': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080070': {
-                'vr': 'LO',
-                'Value': [
-                  'Matakina Technology'
-                ]
-              },
-              '00081090': {
-                'vr': 'LO',
-                'Value': [
-                  'Volpara Data Manager'
-                ]
-              },
-              '00181020': {
-                'vr': 'LO',
-                'Value': [
-                  '1.0.108.0'
-                ]
-              },
-              '0018A002': {
-                'vr': 'DT',
-                'Value': [
-                  '20151207'
-                ]
-              },
-              '0018A003': {
-                'vr': 'ST',
-                'Value': [
-                  'De-identifying Equipment'
-                ]
-              },
-              '0040A170': {
-                'vr': 'SQ',
-                'Value': [
-                  {
-                    '00080100': {
-                      'vr': 'SH',
-                      'Value': [
-                        '109104'
-                      ]
-                    },
-                    '00080102': {
-                      'vr': 'SH',
-                      'Value': [
-                        'DCM'
-                      ]
-                    },
-                    '00080104': {
-                      'vr': 'LO',
-                      'Value': [
-                        'De-identifying Equipment'
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        '00191006': {
-          'vr': 'LO',
-          'Value': [
-            '019'
-          ]
-        },
-        '00191007': {
-          'vr': 'SH',
-          'Value': [
-            '0'
-          ]
-        },
-        '00191008': {
-          'vr': 'LO',
-          'Value': [
-            '001'
-          ]
-        },
-        '00191026': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm fast'
-          ]
-        },
-        '00191027': {
-          'vr': 'SH',
-          'Value': [
-            'C'
-          ]
-        },
-        '00191028': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm'
-          ]
-        },
-        '00191029': {
-          'vr': 'LO',
-          'Value': [
-            'AEC Density setting 0 factor 100'
-          ]
-        },
-        '00191030': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191031': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191033': {
-          'vr': 'US',
-          'Value': [
-            444
-          ]
-        },
-        '00191034': {
-          'vr': 'US',
-          'Value': [
-            388
-          ]
-        },
-        '00191035': {
-          'vr': 'US',
-          'Value': [
-            65535
-          ]
-        },
-        '00191050': {
-          'vr': 'DS'
-        },
-        '00191051': {
-          'vr': 'IS'
-        },
-        '00191052': {
-          'vr': 'IS'
-        },
-        '00191053': {
-          'vr': 'IS'
-        },
-        '0020000D': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567'
-          ]
-        },
-        '0020000E': {
-          'vr': 'UI',
-          'Value': [
-            '2.25.19158071779358852667376767288176202099'
-          ]
-        },
-        '00200010': {
-          'vr': 'SH'
-        },
-        '00200011': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00200012': {
-          'vr': 'IS'
-        },
-        '00200013': {
-          'vr': 'IS',
-          'Value': [
-            23
-          ]
-        },
-        '00200020': {
-          'vr': 'CS',
-          'Value': [
-            'P',
-            'L'
-          ]
-        },
-        '00200060': {
-          'vr': 'CS'
-        },
-        '00200062': {
-          'vr': 'CS',
-          'Value': [
-            'R'
-          ]
-        },
-        '00201002': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00201070': {
-          'vr': 'IS'
-        },
-        '00280002': {
-          'vr': 'US',
-          'Value': [
-            1
-          ]
-        },
-        '00280004': {
-          'vr': 'CS',
-          'Value': [
-            'MONOCHROME1'
-          ]
-        },
-        '00280008': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00280010': {
-          'vr': 'US',
-          'Value': [
-            3328
-          ]
-        },
-        '00280011': {
-          'vr': 'US',
-          'Value': [
-            2560
-          ]
-        },
-        '00280030': {
-          'vr': 'DS',
-          'Value': [
-            0.0655,
-            0.0655
-          ]
-        },
-        '00280034': {
-          'vr': 'IS',
-          'Value': [
-            180,
-            180
-          ]
-        },
-        '00280100': {
-          'vr': 'US',
-          'Value': [
-            16
-          ]
-        },
-        '00280101': {
-          'vr': 'US',
-          'Value': [
-            14
-          ]
-        },
-        '00280102': {
-          'vr': 'US',
-          'Value': [
-            13
-          ]
-        },
-        '00280103': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00280301': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00280303': {
-          'vr': 'CS',
-          'Value': [
-            'MODIFIED'
-          ]
-        },
-        '00281040': {
-          'vr': 'CS',
-          'Value': [
-            'LIN'
-          ]
-        },
-        '00281041': {
-          'vr': 'SS',
-          'Value': [
-            1
-          ]
-        },
-        '00281050': {
-          'vr': 'DS',
-          'Value': [
-            2047
-          ]
-        },
-        '00281051': {
-          'vr': 'DS',
-          'Value': [
-            4096
-          ]
-        },
-        '00281052': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00281053': {
-          'vr': 'DS',
-          'Value': [
-            1
-          ]
-        },
-        '00281054': {
-          'vr': 'LO',
-          'Value': [
-            'US'
-          ]
-        },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00281350': {
-          'vr': 'CS'
-        },
-        '00281351': {
-          'vr': 'ST',
-          'Value': [
-            null
-          ]
-        },
-        '00282110': {
-          'vr': 'CS',
-          'Value': [
-            '00'
-          ]
-        },
-        '0032000C': {
-          'vr': 'CS'
-        },
-        '00321000': {
-          'vr': 'DA'
-        },
-        '00321001': {
-          'vr': 'TM'
-        },
-        '00321030': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00321060': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00380016': {
-          'vr': 'LO'
-        },
-        '00400254': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00400302': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00400314': {
-          'vr': 'DS',
-          'Value': [
-            0.38
-          ]
-        },
-        '00400316': {
-          'vr': 'DS',
-          'Value': [
-            0.0187
-          ]
-        },
-        '00400318': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00401003': {
-          'vr': 'SH'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            9.33
-          ]
-        },
-        '00500004': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00540220': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'R-10242'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'cranio-caudal'
-                ]
-              }
-            }
-          ]
-        },
-        '20500020': {
-          'vr': 'CS',
-          'Value': [
-            'INVERSE'
-          ]
-        }
-      },
-      'ImageResultCreationTimeUtc': '2018-09-20T07:27:59.5841288Z'
-    },
-    {
-      'JsonVersion': 1,
-      'SourceImage': {
-        'DicomImageFilePath': 'B58265F64F2A57227DC3D1706B9FA222_C7D2FDB22263EF955B9D337CE8E87C.dcm',
-        'TransferSyntaxName': 'RLE Lossless',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.3106934409.16939043476232251825',
-        'PixelSizeX': 0.07,
-        'PixelSizeY': 0.07,
-        'PixelRows': 3328,
-        'PixelColumns': 2560,
-        'JsonVersion': 1,
-        'CryptoVersion': 'H1E1',
-        'Hashes': [
-          {
-            'Key': 'Key1',
-            'Value': 'PATIENTID'
-          }
-        ],
-        'Encryptions': []
-      },
-      'MachineLearning': null,
-      'PositioningInputs': null,
-      'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 28.0322,
-        'BreastVolumeInCm3': 366.6742,
-        'VolumetricBreastDensityInPercent': 7.645,
-        'ManufacturerDoseInmGy': 1.81,
-        'VolparaDoseInmGy': 1.702635,
-        'AppliedPressureInkPa': 12.14,
-        'AppliedForceInN': 46.0002,
-        'JsonVersion': 1
-      },
-      'Calculations': null,
-      'Algorithm': {
-        'IsInputFileNotDicom': false,
-        'IsAlgorithmSuccessful': true,
-        'AlgorithmError': null,
-        'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'SourceDotOutFileName': null,
-        'AlgorithmVersion': '1.5.5.0',
-        'AlgorithmBuild': '13334',
-        'JsonVersion': 1
-      },
-      'XlsData': {
-        'MammoImageType': '2D',
-        'RequestedProcedure': 'Screening',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636729663058111095_3',
-        'Timestamp': '2018/09/20_07:27:19',
-        'OSName': 'Unknown',
-        'OSVersion': 'Unknown',
-        'CurrentCulture': 'en-US',
-        'InstalledUICulture': 'en-US',
-        'VolparaVersion': '1.5.5.0 | 13334 |',
-        'DICOMTAGManufacturer': 'Hologic',
-        'PaddleType': '18cm x 24cm fast',
-        'DICOMTAGDeviceSerialNumber': 'Not Found',
-        'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 31 )',
-        'BTSF': '1',
-        'BTSTF': '0',
-        'DICOMSmallPaddleDescription': 'SMALL [ From Manufacturer ID ]',
-        'DICOMSmartCurvePaddleDescription': 'CURV [ From Manufacturer ID ]',
-        'DefaultGridType': 'Hologic [ From Manufacturer ID ]',
-        'DetectorType': 'Hologic [ From Manufacturer ID ]',
-        'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'Gain': '0.0100 [ From Manufacturer ID ]',
-        'NativePixelSize': '0.0700 [ From Manufacturer ID ]',
-        'Offset': '60.0000 [ From Manufacturer ID ]',
-        'SlantMeasurePoint': 'DontChange [ From Manufacturer ID ]',
-        'SmallPaddleCropMethod': 'Average [ From Manufacturer ID ]',
-        'SmallPaddleCropSizeMm': '80.0 [ From Manufacturer ID ]',
-        'SourceToDetector': '660.0 [ From Manufacturer ID ]',
-        'SupportToDetector': '20.0 [ From Manufacturer ID ]',
-        'TubeType': 'Hologic [ From Manufacturer ID ]',
-        'ValidToProcess': 'yes [ From Manufacturer ID ]',
-        'WAgDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'WRhDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'BreastSide': 'Left',
-        'ChestPosition': 'Left',
-        'PectoralPosition': 'Top',
-        'MammoView': 'CC',
-        'StudyDate': '20100412',
-        'OperatorName': 'Unknown',
-        'PatientDOB': 'Unknown',
-        'PatientAge': '-1',
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'DetectorID': 'DetectorID-1',
-        'XraySystem': 'Hologic',
-        'TargetPixelSizeMm': '0.355',
-        'NearestNeighborResample': null,
-        'ResizedPixelSizeMm': '0.35',
-        'PectoralSide': 'Top',
-        'MedialSide': 'Bottom',
-        'TargetMaterial': 'MOLYBDENUM',
-        'FilterMaterial': 'MOLYBDENUM',
-        'FilterThicknessMm': '0.03',
-        'TubeVoltageKvp': '31',
-        'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.37662',
-        'CompressionForceN': '46.0002',
-        'RecordedBreastThicknessMm': '64',
-        'ExposureMas': '72',
-        'ExposureTimeMs': '720',
-        'EntranceDoseInmGy': '9.42',
-        'EstimatedEntranceDoseInmGy': '13.8552',
-        'FiftyPercentGlandularDoseInmGy': '1.441260',
-        'OrganDose': '0.018100',
-        'OrganDoseInmGy': '1.810000',
-        'InnerBreastStatistics': '( 0; 108; 126; 489; 27782; 15575992.000000; 8905758066.000000; 560.650513; 78.927750 )',
-        'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.54251',
-        'RejectingMethod1Reason': '3.26496 > 10 or 3.26496 < -2 or 0.54251 < 0.85',
-        'MethodFatPlaneFit': '0.963759',
-        'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '6.6581',
-        'ComputedSlantMm': '20.9183',
-        'ComputedBreastThickness': '64',
-        'ScatterScaleFactor': '1.00',
-        'Scatter': 'Weighted',
-        'SegPhaseDE': '34941.90',
-        'SegPhaseOD': '0.00',
-        'SegPhaseBE': '1881.97',
-        'SegPhasePA': '0.00',
-        'SegPhaseBA': '4947.65',
-        'SegPhaseOA': '0.00',
-        'SegPhaseUA': '0.00',
-        'SegPhasePD': '0.00',
-        'SegSphereDE': '34941.90',
-        'SegSphereOD': '0.00',
-        'SegSphereBE': '3426.33',
-        'SegSpherePA': '0.00',
-        'SegSphereBA': '3403.30',
-        'SegSphereOA': '0.00',
-        'SegSphereUA': '0.00',
-        'SegSpherePD': '0.00',
-        'ContactAreaMm2': '3789.51',
-        'CompressionPressureKPa': '12.14',
-        'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '64.00 mm',
-        'HintIgnoreLevel': '57.60 mm',
-        'GlandularityPercent': '16.34',
-        'VolparaMeanGlandularDoseInmGy': '1.702635',
-        'CorrectionComplete': null,
-        'NippleConfidence': '0.913964',
-        'NippleConfidenceMessage': '-1|OK||OK|',
-        'NippleInProfile': 'Yes',
-        'NippleDistanceFromMedialEdgeInMm': '119.604',
-        'NippleDistanceFromPosteriorEdgeInMm': '53.6286',
-        'NippleCenterDistanceFromMedialEdgeInMm': '118.956',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '50.2109',
-        'CCPosteriorNippleLineLengthInMm': '53.6286',
-        'NippleMedialLateralDistanceInMm': '12.1539',
-        'NippleMedialLateralAngleInDegrees': '12.7693',
-        'BreastCenterToImageCenterDistanceInMm': '-9.1',
-        'BreastCenterDistanceFromMedialEdgeInMm': '107.45',
-        'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
-        'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
-        'CleavageDetected': 'No',
-        'ShoulderDetected': 'No',
-        'CCAnteriorCutOffLengthInMm': '0',
-        'CCMedialCutOffLengthInMm': '0',
-        'CCLateralCutOffLengthInMm': '0',
-        'MeanDenseThicknessInMm': '8.19984',
-        'MaximumDenseThicknessInMm': '28.4365',
-        'SDDenseThicknessInMm': '5.14452',
-        'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '127.75',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '21.7',
-        'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '32.0576',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.1137',
-        'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '128.45',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '24.5',
-        'DenseAreaPercent': '64.2322',
-        'AreaGreaterThan10mmDenseMm2': '992.373',
-        'HintVolumeCm3': '28.0322',
-        'BreastVolumeCm3': '366.6742',
-        'VolumetricBreastDensity': '7.6450',
-        'Out_BreastVolume': '366.7',
-        'Out_FGTV': '28.0',
-        'Out_Density': '7.6',
-        'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'VolparaOkay': null
-      },
-      'OtherData': {
-        'Projectcompletedsuccessfully': null,
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'FibroglandularTissueVolume': '28.0 cm3',
-        'BreastVolume': '366.7 cm3',
-        'VolumetricBreastDensity': '7.6 %',
-        'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
-      },
-      'SpecialData': null,
-      'DicomFileMetaInfo': {
-        '00020001': {
-          'vr': 'OB',
-          'InlineBinary': 'AAE='
-        },
-        '00020002': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00020003': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3106934409.16939043476232251825'
-          ]
-        },
-        '00020010': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.1.2.5'
-          ]
-        },
-        '00020012': {
-          'vr': 'UI',
-          'Value': [
-            '1.3.6.1.4.1.30071.8'
-          ]
-        },
-        '00020013': {
-          'vr': 'SH',
-          'Value': [
-            'fo-dicom 4.0.0'
-          ]
-        },
-        '00020016': {
-          'vr': 'AE',
-          'Value': [
-            'RD00155D028273'
-          ]
-        }
-      },
-      'DicomHeaderInfo': {
-        '00080005': {
-          'vr': 'CS',
-          'Value': [
-            'ISO_IR 100'
-          ]
-        },
-        '00080008': {
-          'vr': 'CS',
-          'Value': [
-            'ORIGINAL',
-            'PRIMARY'
-          ]
-        },
-        '00080016': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00080018': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3106934409.16939043476232251825'
-          ]
-        },
-        '00080020': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080021': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080022': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080023': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080030': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080031': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080032': {
-          'vr': 'TM',
-          'Value': [
-            '114318'
-          ]
-        },
-        '00080033': {
-          'vr': 'TM',
-          'Value': [
-            '114318'
-          ]
-        },
-        '00080050': {
-          'vr': 'SH'
-        },
-        '00080060': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080061': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080068': {
-          'vr': 'CS',
-          'Value': [
-            'FOR PROCESSING'
-          ]
-        },
-        '00080070': {
-          'vr': 'LO',
-          'Value': [
-            'HOLOGIC, Inc.'
-          ]
-        },
-        '00080090': {
-          'vr': 'PN'
-        },
-        '00081010': {
-          'vr': 'SH',
-          'Value': [
-            'Station-1'
-          ]
-        },
-        '00081030': {
-          'vr': 'LO'
-        },
-        '0008103E': {
-          'vr': 'LO'
-        },
-        '00081090': {
-          'vr': 'LO',
-          'Value': [
-            'Lorad Selenia'
-          ]
-        },
-        '00082111': {
-          'vr': 'ST',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00082218': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'T-04000'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Breast'
-                ]
-              }
-            }
-          ]
-        },
-        '00100010': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Anonymous'
-            }
-          ]
-        },
-        '00100020': {
-          'vr': 'LO',
-          'Value': [
-            'B58265F64F2A57227DC3D1706B9FA222'
-          ]
-        },
-        '00100030': {
-          'vr': 'DA'
-        },
-        '00100040': {
-          'vr': 'CS',
-          'Value': [
-            'F'
-          ]
-        },
-        '001021B0': {
-          'vr': 'LT',
-          'Value': [
-            'azjEMMbDcYsY7y6bGx8UC89ayXi3psdZVgXyDpsuXsd4GPipqt1o0Wiv+ad/wCP+Q9Y5WIMNQpu7KpjHncybCU0prsZhJ4Z5oJYcdVyJVsKKCA5EyYEvUNS4QEL3xoKKILE5BdxEsLXVjwXn5efeIusm2zgb3ZAEI1OgGyWDeTU='
-          ]
-        },
-        '00120062': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00120063': {
-          'vr': 'LO',
-          'Value': [
-            'Basic Application Confidentiality Profile',
-            'Clean Descriptors Option',
-            'Retain Longitudinal Temporal Information Modified Dates Option',
-            'Retain Patient Characteristics Option',
-            'Retain Safe Private Option'
-          ]
-        },
-        '00120064': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113100'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Basic Application Confidentiality Profile'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113105'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Clean Descriptors Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113107'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Longitudinal Temporal Information Modified Dates Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113108'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Patient Characteristics Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113111'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Safe Private Option'
-                ]
-              }
-            }
-          ]
-        },
-        '00180015': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00180060': {
-          'vr': 'DS',
-          'Value': [
-            31
-          ]
-        },
-        '00181000': {
-          'vr': 'LO'
-        },
-        '00181008': {
-          'vr': 'LO',
-          'Value': [
-            'GantryID-1'
-          ]
-        },
-        '00181020': {
-          'vr': 'LO',
-          'Value': [
-            'AWS:MAMMODROC_3_3_1_1',
-            'PXCM:1.3.3.0',
-            'ARR:1.6.3.0'
-          ]
-        },
-        '00181030': {
-          'vr': 'LO'
-        },
-        '00181110': {
-          'vr': 'DS',
-          'Value': [
-            660
-          ]
-        },
-        '00181111': {
-          'vr': 'DS',
-          'Value': [
-            640
-          ]
-        },
-        '00181114': {
-          'vr': 'DS',
-          'Value': [
-            1.069
-          ]
-        },
-        '00181147': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00181150': {
-          'vr': 'IS',
-          'Value': [
-            720
-          ]
-        },
-        '00181151': {
-          'vr': 'IS',
-          'Value': [
-            100
-          ]
-        },
-        '00181152': {
-          'vr': 'IS',
-          'Value': [
-            72
-          ]
-        },
-        '00181153': {
-          'vr': 'IS',
-          'Value': [
-            72000
-          ]
-        },
-        '00181164': {
-          'vr': 'DS',
-          'Value': [
-            0.070,
-            0.070
-          ]
-        },
-        '00181166': {
-          'vr': 'CS',
-          'Value': [
-            'HTC_IN'
-          ]
-        },
-        '00181190': {
-          'vr': 'DS',
-          'Value': [
-            0.3
-          ]
-        },
-        '00181191': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '001811A0': {
-          'vr': 'DS',
-          'Value': [
-            64.0
-          ]
-        },
-        '001811A2': {
-          'vr': 'DS',
-          'Value': [
-            46.000190
-          ]
-        },
-        '00181200': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '00181201': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00181400': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00181401': {
-          'vr': 'LO'
-        },
-        '00181405': {
-          'vr': 'IS',
-          'Value': [
-            476
-          ]
-        },
-        '00181508': {
-          'vr': 'CS',
-          'Value': [
-            'MAMMOGRAPHIC'
-          ]
-        },
-        '00181510': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00181511': {
-          'vr': 'DS'
-        },
-        '00185100': {
-          'vr': 'CS'
-        },
-        '00185101': {
-          'vr': 'CS',
-          'Value': [
-            'CC'
-          ]
-        },
-        '00186000': {
-          'vr': 'DS'
-        },
-        '00187000': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00187001': {
-          'vr': 'DS',
-          'Value': [
-            29.16
-          ]
-        },
-        '00187004': {
-          'vr': 'CS',
-          'Value': [
-            'DIRECT'
-          ]
-        },
-        '00187005': {
-          'vr': 'CS',
-          'Value': [
-            'AREA'
-          ]
-        },
-        '00187006': {
-          'vr': 'LT',
-          'Value': [
-            'Vendor: DRC; Product: BRICK/ARRAY; Version: v1.0'
-          ]
-        },
-        '0018700A': {
-          'vr': 'SH',
-          'Value': [
-            'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '0018700E': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00187024': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00187026': {
-          'vr': 'DS',
-          'Value': [
-            250,
-            286
-          ]
-        },
-        '00187030': {
-          'vr': 'DS',
-          'Value': [
-            377,
-            1024
-          ]
-        },
-        '00187032': {
-          'vr': 'DS',
-          'Value': [
-            180
-          ]
-        },
-        '00187034': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00187048': {
-          'vr': 'DS'
-        },
-        '00187050': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '00187052': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187054': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187060': {
-          'vr': 'CS',
-          'Value': [
-            'AUTO_FILTER'
-          ]
-        },
-        '00187062': {
-          'vr': 'LT',
-          'Value': [
-            'LORAD AUTO AEC'
-          ]
-        },
-        '00187064': {
-          'vr': 'CS',
-          'Value': [
-            'NORMAL'
-          ]
-        },
-        '0018A001': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080070': {
-                'vr': 'LO',
-                'Value': [
-                  'Matakina Technology'
-                ]
-              },
-              '00081090': {
-                'vr': 'LO',
-                'Value': [
-                  'Volpara Data Manager'
-                ]
-              },
-              '00181020': {
-                'vr': 'LO',
-                'Value': [
-                  '1.0.108.0'
-                ]
-              },
-              '0018A002': {
-                'vr': 'DT',
-                'Value': [
-                  '20151207'
-                ]
-              },
-              '0018A003': {
-                'vr': 'ST',
-                'Value': [
-                  'De-identifying Equipment'
-                ]
-              },
-              '0040A170': {
-                'vr': 'SQ',
-                'Value': [
-                  {
-                    '00080100': {
-                      'vr': 'SH',
-                      'Value': [
-                        '109104'
-                      ]
-                    },
-                    '00080102': {
-                      'vr': 'SH',
-                      'Value': [
-                        'DCM'
-                      ]
-                    },
-                    '00080104': {
-                      'vr': 'LO',
-                      'Value': [
-                        'De-identifying Equipment'
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        '00191006': {
-          'vr': 'LO',
-          'Value': [
-            '019'
-          ]
-        },
-        '00191007': {
-          'vr': 'SH',
-          'Value': [
-            '0'
-          ]
-        },
-        '00191008': {
-          'vr': 'LO',
-          'Value': [
-            '001'
-          ]
-        },
-        '00191026': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm fast'
-          ]
-        },
-        '00191027': {
-          'vr': 'SH',
-          'Value': [
-            'C'
-          ]
-        },
-        '00191028': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm'
-          ]
-        },
-        '00191029': {
-          'vr': 'LO',
-          'Value': [
-            'AEC Density setting 0 factor 100'
-          ]
-        },
-        '00191030': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191031': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191033': {
-          'vr': 'US',
-          'Value': [
-            501
-          ]
-        },
-        '00191034': {
-          'vr': 'US',
-          'Value': [
-            418
-          ]
-        },
-        '00191035': {
-          'vr': 'US',
-          'Value': [
-            65535
-          ]
-        },
-        '00191050': {
-          'vr': 'DS'
-        },
-        '00191051': {
-          'vr': 'IS'
-        },
-        '00191052': {
-          'vr': 'IS'
-        },
-        '00191053': {
-          'vr': 'IS'
-        },
-        '0020000D': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567'
-          ]
-        },
-        '0020000E': {
-          'vr': 'UI',
-          'Value': [
-            '2.25.12075772425878324968029827279448125573'
-          ]
-        },
-        '00200010': {
-          'vr': 'SH'
-        },
-        '00200011': {
-          'vr': 'IS',
-          'Value': [
-            2
-          ]
-        },
-        '00200012': {
-          'vr': 'IS'
-        },
-        '00200013': {
-          'vr': 'IS',
-          'Value': [
-            24
-          ]
-        },
-        '00200020': {
-          'vr': 'CS',
-          'Value': [
-            'A',
-            'R'
-          ]
-        },
-        '00200060': {
-          'vr': 'CS'
-        },
-        '00200062': {
-          'vr': 'CS',
-          'Value': [
-            'L'
-          ]
-        },
-        '00201002': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00201070': {
-          'vr': 'IS'
-        },
-        '00280002': {
-          'vr': 'US',
-          'Value': [
-            1
-          ]
-        },
-        '00280004': {
-          'vr': 'CS',
-          'Value': [
-            'MONOCHROME1'
-          ]
-        },
-        '00280008': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00280010': {
-          'vr': 'US',
-          'Value': [
-            3328
-          ]
-        },
-        '00280011': {
-          'vr': 'US',
-          'Value': [
-            2560
-          ]
-        },
-        '00280030': {
-          'vr': 'DS',
-          'Value': [
-            0.0655,
-            0.0655
-          ]
-        },
-        '00280034': {
-          'vr': 'IS',
-          'Value': [
-            180,
-            180
-          ]
-        },
-        '00280100': {
-          'vr': 'US',
-          'Value': [
-            16
-          ]
-        },
-        '00280101': {
-          'vr': 'US',
-          'Value': [
-            14
-          ]
-        },
-        '00280102': {
-          'vr': 'US',
-          'Value': [
-            13
-          ]
-        },
-        '00280103': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00280301': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00280303': {
-          'vr': 'CS',
-          'Value': [
-            'MODIFIED'
-          ]
-        },
-        '00281040': {
-          'vr': 'CS',
-          'Value': [
-            'LIN'
-          ]
-        },
-        '00281041': {
-          'vr': 'SS',
-          'Value': [
-            1
-          ]
-        },
-        '00281050': {
-          'vr': 'DS',
-          'Value': [
-            2047
-          ]
-        },
-        '00281051': {
-          'vr': 'DS',
-          'Value': [
-            4096
-          ]
-        },
-        '00281052': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00281053': {
-          'vr': 'DS',
-          'Value': [
-            1
-          ]
-        },
-        '00281054': {
-          'vr': 'LO',
-          'Value': [
-            'US'
-          ]
-        },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00281350': {
-          'vr': 'CS'
-        },
-        '00281351': {
-          'vr': 'ST',
-          'Value': [
-            null
-          ]
-        },
-        '00282110': {
-          'vr': 'CS',
-          'Value': [
-            '00'
-          ]
-        },
-        '0032000C': {
-          'vr': 'CS'
-        },
-        '00321000': {
-          'vr': 'DA'
-        },
-        '00321001': {
-          'vr': 'TM'
-        },
-        '00321030': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00321060': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00380016': {
-          'vr': 'LO'
-        },
-        '00400254': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00400302': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00400314': {
-          'vr': 'DS',
-          'Value': [
-            0.38
-          ]
-        },
-        '00400316': {
-          'vr': 'DS',
-          'Value': [
-            0.0181
-          ]
-        },
-        '00400318': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00401003': {
-          'vr': 'SH'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            9.42
-          ]
-        },
-        '00500004': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00540220': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'R-10242'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'cranio-caudal'
-                ]
-              }
-            }
-          ]
-        },
-        '20500020': {
-          'vr': 'CS',
-          'Value': [
-            'INVERSE'
-          ]
-        }
-      },
-      'ImageResultCreationTimeUtc': '2018-09-20T07:28:02.3469226Z'
-    },
-    {
-      'JsonVersion': 1,
-      'SourceImage': {
-        'DicomImageFilePath': 'B58265F64F2A57227DC3D1706B9FA222_5F47AB438FF27D3A54A6EE45D58E9F66.dcm',
-        'TransferSyntaxName': 'RLE Lossless',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.1129012464.4532196999344256367',
-        'PixelSizeX': 0.07,
-        'PixelSizeY': 0.07,
-        'PixelRows': 3328,
-        'PixelColumns': 2560,
-        'JsonVersion': 1,
-        'CryptoVersion': 'H1E1',
-        'Hashes': [
-          {
-            'Key': 'Key1',
-            'Value': 'PATIENTID'
-          }
-        ],
-        'Encryptions': []
-      },
-      'MachineLearning': null,
-      'PositioningInputs': null,
-      'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 33.8869,
-        'BreastVolumeInCm3': 553.4889,
-        'VolumetricBreastDensityInPercent': 6.1224,
-        'ManufacturerDoseInmGy': 1.66,
-        'VolparaDoseInmGy': 1.632867,
-        'AppliedPressureInkPa': 7.7,
-        'AppliedForceInN': 68.0002,
-        'JsonVersion': 1
-      },
-      'Calculations': null,
-      'Algorithm': {
-        'IsInputFileNotDicom': false,
-        'IsAlgorithmSuccessful': true,
-        'AlgorithmError': null,
-        'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'SourceDotOutFileName': null,
-        'AlgorithmVersion': '1.5.5.0',
-        'AlgorithmBuild': '13334',
-        'JsonVersion': 1
-      },
-      'XlsData': {
-        'MammoImageType': '2D',
-        'RequestedProcedure': 'Screening',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636729663058111095_1',
-        'Timestamp': '2018/09/20_07:27:19',
-        'OSName': 'Unknown',
-        'OSVersion': 'Unknown',
-        'CurrentCulture': 'en-US',
-        'InstalledUICulture': 'en-US',
-        'VolparaVersion': '1.5.5.0 | 13334 |',
-        'DICOMTAGManufacturer': 'Hologic',
-        'PaddleType': '18cm x 24cm fast',
-        'DICOMTAGDeviceSerialNumber': 'Not Found',
-        'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 30 )',
-        'BTSF': '1',
-        'BTSTF': '0',
-        'DICOMSmallPaddleDescription': 'SMALL [ From Manufacturer ID ]',
-        'DICOMSmartCurvePaddleDescription': 'CURV [ From Manufacturer ID ]',
-        'DefaultGridType': 'Hologic [ From Manufacturer ID ]',
-        'DetectorType': 'Hologic [ From Manufacturer ID ]',
-        'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'Gain': '0.0100 [ From Manufacturer ID ]',
-        'NativePixelSize': '0.0700 [ From Manufacturer ID ]',
-        'Offset': '60.0000 [ From Manufacturer ID ]',
-        'SlantMeasurePoint': 'DontChange [ From Manufacturer ID ]',
-        'SmallPaddleCropMethod': 'Average [ From Manufacturer ID ]',
-        'SmallPaddleCropSizeMm': '80.0 [ From Manufacturer ID ]',
-        'SourceToDetector': '660.0 [ From Manufacturer ID ]',
-        'SupportToDetector': '20.0 [ From Manufacturer ID ]',
-        'TubeType': 'Hologic [ From Manufacturer ID ]',
-        'ValidToProcess': 'yes [ From Manufacturer ID ]',
-        'WAgDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'WRhDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'BreastSide': 'Right',
-        'ChestPosition': 'Right',
-        'PectoralPosition': 'Top',
-        'MammoView': 'MLO',
-        'StudyDate': '20100412',
-        'OperatorName': 'Unknown',
-        'PatientDOB': 'Unknown',
-        'PatientAge': '-1',
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'DetectorID': 'DetectorID-1',
-        'XraySystem': 'Hologic',
-        'TargetPixelSizeMm': '0.355',
-        'NearestNeighborResample': null,
-        'ResizedPixelSizeMm': '0.35',
-        'PectoralSide': 'Top',
-        'TargetMaterial': 'MOLYBDENUM',
-        'FilterMaterial': 'MOLYBDENUM',
-        'FilterThicknessMm': '0.03',
-        'TubeVoltageKvp': '30',
-        'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.368891',
-        'CompressionForceN': '68.0002',
-        'RecordedBreastThicknessMm': '57',
-        'ExposureMas': '69',
-        'ExposureTimeMs': '692',
-        'EntranceDoseInmGy': '8.06',
-        'EstimatedEntranceDoseInmGy': '11.3382',
-        'FiftyPercentGlandularDoseInmGy': '1.354080',
-        'OrganDose': '0.016600',
-        'OrganDoseInmGy': '1.660000',
-        'IMF-X': '0',
-        'IMF-Y': '657',
-        'Corner-X': '192',
-        'Corner-Y': '200',
-        'DefaultPecAtBottom': '1',
-        'DefaultPecAtTop': '1',
-        'CorrectIndex': '0',
-        'PectoralAngleDegrees': '26.000',
-        'PectoralAngleConfidence': '1.000',
-        'InnerBreastStatistics': '( 0; 150; 102; 591; 43672; 22760289.000000; 12015330849.000000; 521.164368; 59.282185 )',
-        'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.604667',
-        'RejectingMethod1Reason': '-0.551287 > 10 or -0.551287 < -2 or 0.604667 < 0.85',
-        'MethodFatPlaneFit': '0.991293',
-        'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '5.11959',
-        'ComputedSlantMm': '16.0549',
-        'ComputedBreastThickness': '57',
-        'ScatterScaleFactor': '1.00',
-        'Scatter': 'Weighted',
-        'PectoralRatio': '1.603',
-        'SegPhaseDE': '26233.13',
-        'SegPhaseOD': '0.00',
-        'SegPhaseBE': '3547.97',
-        'SegPhasePA': '3848.58',
-        'SegPhaseBA': '8141.84',
-        'SegPhaseOA': '0.00',
-        'SegPhaseUA': '0.00',
-        'SegPhasePD': '0.00',
-        'SegSphereDE': '26233.13',
-        'SegSphereOD': '0.00',
-        'SegSphereBE': '6339.99',
-        'SegSpherePA': '3848.58',
-        'SegSphereBA': '5349.82',
-        'SegSphereOA': '0.00',
-        'SegSphereUA': '0.00',
-        'SegSpherePD': '0.00',
-        'ContactAreaMm2': '8828.93',
-        'CompressionPressureKPa': '7.70',
-        'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '57.00 mm',
-        'HintIgnoreLevel': '51.30 mm',
-        'GlandularityPercent': '12.84',
-        'VolparaMeanGlandularDoseInmGy': '1.632867',
-        'CorrectionComplete': null,
-        'NippleConfidence': '0.634318',
-        'NippleConfidenceMessage': '|OK||OK||disagreed curvature and intensity nipples (> 10 mm)|',
-        'MLOInferiorNippleAngleAtPosteriorEdge': '73.664',
-        'NippleInProfile': 'No',
-        'NippleDistanceFromSuperiorEdgeInMm': '165.444',
-        'NippleDistanceFromPosteriorEdgeInMm': '73.0061',
-        'NippleCenterDistanceFromSuperiorEdgeInMm': '165.383',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '72.8',
-        'MLOPosteriorNippleLineLengthInMm': '81.392',
-        'NippleLineLengthInMm': '73.0061',
-        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '4.86096',
-        'PectoralSkinFoldPresent': 'No',
-        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '40.4938',
-        'SuperiorPectoralWidthInMm': '61.6',
-        'PosteriorPectoralLengthInMm': '124.95',
-        'PectoralShape': 'FLAT',
-        'ImfMaxDistanceMm': '0.667515',
-        'InframammaryFoldVisible': 'No',
-        'MLOPosteriorLengthInMm': '230.3',
-        'MLOInferiorCutOffLengthInMm': '0',
-        'MLOAnteriorCutOffLengthInMm': '0',
-        'MeanDenseThicknessInMm': '5.54172',
-        'MaximumDenseThicknessInMm': '25.8314',
-        'SDDenseThicknessInMm': '4.35163',
-        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '141.05',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '50.05',
-        'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '29.5061',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.73268',
-        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '145.6',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '46.2',
-        'DenseAreaPercent': '40.1172',
-        'AreaGreaterThan10mmDenseMm2': '997.763',
-        'HintVolumeCm3': '33.8869',
-        'BreastVolumeCm3': '553.4889',
-        'VolumetricBreastDensity': '6.1224',
-        'Out_BreastVolume': '553.5',
-        'Out_FGTV': '33.9',
-        'Out_Density': '6.1',
-        'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'VolparaOkay': null
-      },
-      'OtherData': {
-        'Projectcompletedsuccessfully': null,
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'FibroglandularTissueVolume': '33.9 cm3',
-        'BreastVolume': '553.5 cm3',
-        'VolumetricBreastDensity': '6.1 %',
-        'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
-      },
-      'SpecialData': null,
-      'DicomFileMetaInfo': {
-        '00020001': {
-          'vr': 'OB',
-          'InlineBinary': 'AAE='
-        },
-        '00020002': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00020003': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.1129012464.4532196999344256367'
-          ]
-        },
-        '00020010': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.1.2.5'
-          ]
-        },
-        '00020012': {
-          'vr': 'UI',
-          'Value': [
-            '1.3.6.1.4.1.30071.8'
-          ]
-        },
-        '00020013': {
-          'vr': 'SH',
-          'Value': [
-            'fo-dicom 4.0.0'
-          ]
-        },
-        '00020016': {
-          'vr': 'AE',
-          'Value': [
-            'RD00155D028273'
-          ]
-        }
-      },
-      'DicomHeaderInfo': {
-        '00080005': {
-          'vr': 'CS',
-          'Value': [
-            'ISO_IR 100'
-          ]
-        },
-        '00080008': {
-          'vr': 'CS',
-          'Value': [
-            'ORIGINAL',
-            'PRIMARY'
-          ]
-        },
-        '00080016': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00080018': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.1129012464.4532196999344256367'
-          ]
-        },
-        '00080020': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080021': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080022': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080023': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080030': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080031': {
-          'vr': 'TM',
-          'Value': [
-            '114040'
-          ]
-        },
-        '00080032': {
-          'vr': 'TM',
-          'Value': [
-            '114458'
-          ]
-        },
-        '00080033': {
-          'vr': 'TM',
-          'Value': [
-            '114458'
-          ]
-        },
-        '00080050': {
-          'vr': 'SH'
-        },
-        '00080060': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080061': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080068': {
-          'vr': 'CS',
-          'Value': [
-            'FOR PROCESSING'
-          ]
-        },
-        '00080070': {
-          'vr': 'LO',
-          'Value': [
-            'HOLOGIC, Inc.'
-          ]
-        },
-        '00080090': {
-          'vr': 'PN'
-        },
-        '00081010': {
-          'vr': 'SH',
-          'Value': [
-            'Station-1'
-          ]
-        },
-        '00081030': {
-          'vr': 'LO'
-        },
-        '0008103E': {
-          'vr': 'LO'
-        },
-        '00081090': {
-          'vr': 'LO',
-          'Value': [
-            'Lorad Selenia'
-          ]
-        },
-        '00082111': {
-          'vr': 'ST',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00082218': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'T-04000'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Breast'
-                ]
-              }
-            }
-          ]
-        },
-        '00100010': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Anonymous'
-            }
-          ]
-        },
-        '00100020': {
-          'vr': 'LO',
-          'Value': [
-            'B58265F64F2A57227DC3D1706B9FA222'
-          ]
-        },
-        '00100030': {
-          'vr': 'DA'
-        },
-        '00100040': {
-          'vr': 'CS',
-          'Value': [
-            'F'
-          ]
-        },
-        '001021B0': {
-          'vr': 'LT',
-          'Value': [
-            'azjEMMbDcYsY7y6bGx8UC89ayXi3psdZVgXyDpsuXsd4GPipqt1o0Wiv+ad/wCP+Q9Y5WIMNQpu7KpjHncybCU0prsZhJ4Z5oJYcdVyJVsKKCA5EyYEvUNS4QEL3xoKKILE5BdxEsLXVjwXn5efeIusm2zgb3ZAEI1OgGyWDeTU='
-          ]
-        },
-        '00120062': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00120063': {
-          'vr': 'LO',
-          'Value': [
-            'Basic Application Confidentiality Profile',
-            'Clean Descriptors Option',
-            'Retain Longitudinal Temporal Information Modified Dates Option',
-            'Retain Patient Characteristics Option',
-            'Retain Safe Private Option'
-          ]
-        },
-        '00120064': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113100'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Basic Application Confidentiality Profile'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113105'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Clean Descriptors Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113107'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Longitudinal Temporal Information Modified Dates Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113108'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Patient Characteristics Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113111'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Safe Private Option'
-                ]
-              }
-            }
-          ]
-        },
-        '00180015': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00180060': {
-          'vr': 'DS',
-          'Value': [
-            30
-          ]
-        },
-        '00181000': {
-          'vr': 'LO'
-        },
-        '00181008': {
-          'vr': 'LO',
-          'Value': [
-            'GantryID-1'
-          ]
-        },
-        '00181020': {
-          'vr': 'LO',
-          'Value': [
-            'AWS:MAMMODROC_3_3_1_1',
-            'PXCM:1.3.3.0',
-            'ARR:1.6.3.0'
-          ]
-        },
-        '00181030': {
-          'vr': 'LO'
-        },
-        '00181110': {
-          'vr': 'DS',
-          'Value': [
-            660
-          ]
-        },
-        '00181111': {
-          'vr': 'DS',
-          'Value': [
-            640
-          ]
-        },
-        '00181114': {
-          'vr': 'DS',
-          'Value': [
-            1.069
-          ]
-        },
-        '00181147': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00181150': {
-          'vr': 'IS',
-          'Value': [
-            692
-          ]
-        },
-        '00181151': {
-          'vr': 'IS',
-          'Value': [
-            100
-          ]
-        },
-        '00181152': {
-          'vr': 'IS',
-          'Value': [
-            69
-          ]
-        },
-        '00181153': {
-          'vr': 'IS',
-          'Value': [
-            69200
-          ]
-        },
-        '00181164': {
-          'vr': 'DS',
-          'Value': [
-            0.070,
-            0.070
-          ]
-        },
-        '00181166': {
-          'vr': 'CS',
-          'Value': [
-            'HTC_IN'
-          ]
-        },
-        '00181190': {
-          'vr': 'DS',
-          'Value': [
-            0.3
-          ]
-        },
-        '00181191': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '001811A0': {
-          'vr': 'DS',
-          'Value': [
-            57.0
-          ]
-        },
-        '001811A2': {
-          'vr': 'DS',
-          'Value': [
-            68.000191
-          ]
-        },
-        '00181200': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '00181201': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00181400': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00181401': {
-          'vr': 'LO'
-        },
-        '00181405': {
-          'vr': 'IS',
-          'Value': [
-            504
-          ]
-        },
-        '00181508': {
-          'vr': 'CS',
-          'Value': [
-            'MAMMOGRAPHIC'
-          ]
-        },
-        '00181510': {
-          'vr': 'DS',
-          'Value': [
-            -49
-          ]
-        },
-        '00181511': {
-          'vr': 'DS'
-        },
-        '00185100': {
-          'vr': 'CS'
-        },
-        '00185101': {
-          'vr': 'CS',
-          'Value': [
-            'MLO'
-          ]
-        },
-        '00186000': {
-          'vr': 'DS'
-        },
-        '00187000': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00187001': {
-          'vr': 'DS',
-          'Value': [
-            29.08
-          ]
-        },
-        '00187004': {
-          'vr': 'CS',
-          'Value': [
-            'DIRECT'
-          ]
-        },
-        '00187005': {
-          'vr': 'CS',
-          'Value': [
-            'AREA'
-          ]
-        },
-        '00187006': {
-          'vr': 'LT',
-          'Value': [
-            'Vendor: DRC; Product: BRICK/ARRAY; Version: v1.0'
-          ]
-        },
-        '0018700A': {
-          'vr': 'SH',
-          'Value': [
-            'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '0018700E': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00187024': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00187026': {
-          'vr': 'DS',
-          'Value': [
-            250,
-            286
-          ]
-        },
-        '00187030': {
-          'vr': 'DS',
-          'Value': [
-            0,
-            1024
-          ]
-        },
-        '00187032': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00187034': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00187048': {
-          'vr': 'DS'
-        },
-        '00187050': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '00187052': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187054': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187060': {
-          'vr': 'CS',
-          'Value': [
-            'AUTO_FILTER'
-          ]
-        },
-        '00187062': {
-          'vr': 'LT',
-          'Value': [
-            'LORAD AUTO AEC'
-          ]
-        },
-        '00187064': {
-          'vr': 'CS',
-          'Value': [
-            'NORMAL'
-          ]
-        },
-        '0018A001': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080070': {
-                'vr': 'LO',
-                'Value': [
-                  'Matakina Technology'
-                ]
-              },
-              '00081090': {
-                'vr': 'LO',
-                'Value': [
-                  'Volpara Data Manager'
-                ]
-              },
-              '00181020': {
-                'vr': 'LO',
-                'Value': [
-                  '1.0.108.0'
-                ]
-              },
-              '0018A002': {
-                'vr': 'DT',
-                'Value': [
-                  '20151207'
-                ]
-              },
-              '0018A003': {
-                'vr': 'ST',
-                'Value': [
-                  'De-identifying Equipment'
-                ]
-              },
-              '0040A170': {
-                'vr': 'SQ',
-                'Value': [
-                  {
-                    '00080100': {
-                      'vr': 'SH',
-                      'Value': [
-                        '109104'
-                      ]
-                    },
-                    '00080102': {
-                      'vr': 'SH',
-                      'Value': [
-                        'DCM'
-                      ]
-                    },
-                    '00080104': {
-                      'vr': 'LO',
-                      'Value': [
-                        'De-identifying Equipment'
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        '00191006': {
-          'vr': 'LO',
-          'Value': [
-            '019'
-          ]
-        },
-        '00191007': {
-          'vr': 'SH',
-          'Value': [
-            '1'
-          ]
-        },
-        '00191008': {
-          'vr': 'LO',
-          'Value': [
-            '001'
-          ]
-        },
-        '00191026': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm fast'
-          ]
-        },
-        '00191027': {
-          'vr': 'SH',
-          'Value': [
-            'R'
-          ]
-        },
-        '00191028': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm'
-          ]
-        },
-        '00191029': {
-          'vr': 'LO',
-          'Value': [
-            'AEC Density setting 0 factor 100'
-          ]
-        },
-        '00191030': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191031': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191033': {
-          'vr': 'US',
-          'Value': [
-            306
-          ]
-        },
-        '00191034': {
-          'vr': 'US',
-          'Value': [
-            390
-          ]
-        },
-        '00191035': {
-          'vr': 'US',
-          'Value': [
-            65535
-          ]
-        },
-        '00191050': {
-          'vr': 'DS'
-        },
-        '00191051': {
-          'vr': 'IS'
-        },
-        '00191052': {
-          'vr': 'IS'
-        },
-        '00191053': {
-          'vr': 'IS'
-        },
-        '0020000D': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567'
-          ]
-        },
-        '0020000E': {
-          'vr': 'UI',
-          'Value': [
-            '2.25.147947654900803847338087502023295280160'
-          ]
-        },
-        '00200010': {
-          'vr': 'SH'
-        },
-        '00200011': {
-          'vr': 'IS',
-          'Value': [
-            4
-          ]
-        },
-        '00200012': {
-          'vr': 'IS'
-        },
-        '00200013': {
-          'vr': 'IS',
-          'Value': [
-            25
-          ]
-        },
-        '00200020': {
-          'vr': 'CS',
-          'Value': [
-            'P',
-            'F'
-          ]
-        },
-        '00200060': {
-          'vr': 'CS'
-        },
-        '00200062': {
-          'vr': 'CS',
-          'Value': [
-            'R'
-          ]
-        },
-        '00201002': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00201070': {
-          'vr': 'IS'
-        },
-        '00280002': {
-          'vr': 'US',
-          'Value': [
-            1
-          ]
-        },
-        '00280004': {
-          'vr': 'CS',
-          'Value': [
-            'MONOCHROME1'
-          ]
-        },
-        '00280008': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00280010': {
-          'vr': 'US',
-          'Value': [
-            3328
-          ]
-        },
-        '00280011': {
-          'vr': 'US',
-          'Value': [
-            2560
-          ]
-        },
-        '00280030': {
-          'vr': 'DS',
-          'Value': [
-            0.0655,
-            0.0655
-          ]
-        },
-        '00280034': {
-          'vr': 'IS',
-          'Value': [
-            180,
-            180
-          ]
-        },
-        '00280100': {
-          'vr': 'US',
-          'Value': [
-            16
-          ]
-        },
-        '00280101': {
-          'vr': 'US',
-          'Value': [
-            14
-          ]
-        },
-        '00280102': {
-          'vr': 'US',
-          'Value': [
-            13
-          ]
-        },
-        '00280103': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00280301': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00280303': {
-          'vr': 'CS',
-          'Value': [
-            'MODIFIED'
-          ]
-        },
-        '00281040': {
-          'vr': 'CS',
-          'Value': [
-            'LIN'
-          ]
-        },
-        '00281041': {
-          'vr': 'SS',
-          'Value': [
-            1
-          ]
-        },
-        '00281050': {
-          'vr': 'DS',
-          'Value': [
-            2047
-          ]
-        },
-        '00281051': {
-          'vr': 'DS',
-          'Value': [
-            4096
-          ]
-        },
-        '00281052': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00281053': {
-          'vr': 'DS',
-          'Value': [
-            1
-          ]
-        },
-        '00281054': {
-          'vr': 'LO',
-          'Value': [
-            'US'
-          ]
-        },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00281350': {
-          'vr': 'CS'
-        },
-        '00281351': {
-          'vr': 'ST',
-          'Value': [
-            null
-          ]
-        },
-        '00282110': {
-          'vr': 'CS',
-          'Value': [
-            '00'
-          ]
-        },
-        '0032000C': {
-          'vr': 'CS'
-        },
-        '00321000': {
-          'vr': 'DA'
-        },
-        '00321001': {
-          'vr': 'TM'
-        },
-        '00321030': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00321060': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00380016': {
-          'vr': 'LO'
-        },
-        '00400254': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00400302': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00400314': {
-          'vr': 'DS',
-          'Value': [
-            0.373
-          ]
-        },
-        '00400316': {
-          'vr': 'DS',
-          'Value': [
-            0.0166
-          ]
-        },
-        '00400318': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00401003': {
-          'vr': 'SH'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            8.06
-          ]
-        },
-        '00500004': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00540220': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'R-10226'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'medio-lateral oblique'
-                ]
-              }
-            }
-          ]
-        },
-        '20500020': {
-          'vr': 'CS',
-          'Value': [
-            'INVERSE'
-          ]
-        }
-      },
-      'ImageResultCreationTimeUtc': '2018-09-20T07:28:12.5803688Z'
-    },
-    {
-      'JsonVersion': 1,
-      'SourceImage': {
-        'DicomImageFilePath': 'B58265F64F2A57227DC3D1706B9FA222_C412DC562A5ACCFA6FBDF7544B5DB0D7.dcm',
-        'TransferSyntaxName': 'RLE Lossless',
-        'TransferSyntaxUid': '1.2.840.10008.1.2.5',
-        'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567',
-        'SopInstanceUid': '1.2.826.0.1.3680043.8.694.3842359474.4828423216238524106',
-        'PixelSizeX': 0.07,
-        'PixelSizeY': 0.07,
-        'PixelRows': 3328,
-        'PixelColumns': 2560,
-        'JsonVersion': 1,
-        'CryptoVersion': 'H1E1',
-        'Hashes': [
-          {
-            'Key': 'Key1',
-            'Value': 'PATIENTID'
-          }
-        ],
-        'Encryptions': []
-      },
-      'MachineLearning': null,
-      'PositioningInputs': null,
-      'Scorecard': {
-        'FibroglandularTissueVolumeInCm3': 66.5565,
-        'BreastVolumeInCm3': 499.0494,
-        'VolumetricBreastDensityInPercent': 13.3367,
-        'ManufacturerDoseInmGy': 1.76,
-        'VolparaDoseInmGy': 1.592382,
-        'AppliedPressureInkPa': 10.71,
-        'AppliedForceInN': 79.0002,
-        'JsonVersion': 1
-      },
-      'Calculations': null,
-      'Algorithm': {
-        'IsInputFileNotDicom': false,
-        'IsAlgorithmSuccessful': true,
-        'AlgorithmError': null,
-        'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'SourceDotOutFileName': null,
-        'AlgorithmVersion': '1.5.5.0',
-        'AlgorithmBuild': '13334',
-        'JsonVersion': 1
-      },
-      'XlsData': {
-        'MammoImageType': '2D',
-        'RequestedProcedure': 'Screening',
-        'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636729663058111095_2',
-        'Timestamp': '2018/09/20_07:27:19',
-        'OSName': 'Unknown',
-        'OSVersion': 'Unknown',
-        'CurrentCulture': 'en-US',
-        'InstalledUICulture': 'en-US',
-        'VolparaVersion': '1.5.5.0 | 13334 |',
-        'DICOMTAGManufacturer': 'Hologic',
-        'PaddleType': '18cm x 24cm fast',
-        'DICOMTAGDeviceSerialNumber': 'Not Found',
-        'DICOMTagDetector_ID': 'DetectorID-1',
-        'MaxAllowedKVP': '100 ( current 31 )',
-        'BTSF': '1',
-        'BTSTF': '0',
-        'DICOMSmallPaddleDescription': 'SMALL [ From Manufacturer ID ]',
-        'DICOMSmartCurvePaddleDescription': 'CURV [ From Manufacturer ID ]',
-        'DefaultGridType': 'Hologic [ From Manufacturer ID ]',
-        'DetectorType': 'Hologic [ From Manufacturer ID ]',
-        'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
-        'Gain': '0.0100 [ From Manufacturer ID ]',
-        'NativePixelSize': '0.0700 [ From Manufacturer ID ]',
-        'Offset': '60.0000 [ From Manufacturer ID ]',
-        'SlantMeasurePoint': 'DontChange [ From Manufacturer ID ]',
-        'SmallPaddleCropMethod': 'Average [ From Manufacturer ID ]',
-        'SmallPaddleCropSizeMm': '80.0 [ From Manufacturer ID ]',
-        'SourceToDetector': '660.0 [ From Manufacturer ID ]',
-        'SupportToDetector': '20.0 [ From Manufacturer ID ]',
-        'TubeType': 'Hologic [ From Manufacturer ID ]',
-        'ValidToProcess': 'yes [ From Manufacturer ID ]',
-        'WAgDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'WRhDefaultFilterThickness': '0.060 [ From Manufacturer ID ]',
-        'BreastSide': 'Left',
-        'ChestPosition': 'Left',
-        'PectoralPosition': 'Top',
-        'MammoView': 'MLO',
-        'StudyDate': '20100412',
-        'OperatorName': 'Unknown',
-        'PatientDOB': 'Unknown',
-        'PatientAge': '-1',
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'DetectorID': 'DetectorID-1',
-        'XraySystem': 'Hologic',
-        'TargetPixelSizeMm': '0.355',
-        'NearestNeighborResample': null,
-        'ResizedPixelSizeMm': '0.35',
-        'PectoralSide': 'Top',
-        'TargetMaterial': 'MOLYBDENUM',
-        'FilterMaterial': 'MOLYBDENUM',
-        'FilterThicknessMm': '0.03',
-        'TubeVoltageKvp': '31',
-        'CompressionPlateSlant': '5',
-        'HVL_Mm': '0.37662',
-        'CompressionForceN': '79.0002',
-        'RecordedBreastThicknessMm': '60',
-        'ExposureMas': '68',
-        'ExposureTimeMs': '681',
-        'EntranceDoseInmGy': '8.79',
-        'EstimatedEntranceDoseInmGy': '12.8953',
-        'FiftyPercentGlandularDoseInmGy': '1.432770',
-        'OrganDose': '0.017600',
-        'OrganDoseInmGy': '1.760000',
-        'IMF-X': '0',
-        'IMF-Y': '593',
-        'Corner-X': '177',
-        'Corner-Y': '148',
-        'DefaultPecAtBottom': '1',
-        'DefaultPecAtTop': '1',
-        'CorrectIndex': '0',
-        'PectoralAngleDegrees': '34.500',
-        'PectoralAngleConfidence': '1.000',
-        'InnerBreastStatistics': '( 0; 152; 32; 528; 39248; 21853676.000000; 12711472624.000000; 556.809937; 117.636658 )',
-        'muFatPerMm': '0.045',
-        'MethodAllPlaneFit': '0.627719',
-        'RejectingMethod1Reason': '7.78526 > 10 or 7.78526 < -2 or 0.627719 < 0.85',
-        'MethodFatPlaneFit': '0.530226',
-        'Rejectingmethod2because:14.2632>10or14.2632<-2or0.530226<0.85': null,
-        'Calculated_Sigma': '5',
-        'ComputedSlantAngle': '1.59824',
-        'ComputedSlantMm': '5',
-        'ComputedBreastThickness': '60',
-        'ScatterScaleFactor': '1.00',
-        'Scatter': 'Weighted',
-        'PectoralRatio': '1.317',
-        'SegPhaseDE': '29097.55',
-        'SegPhaseOD': '0.00',
-        'SegPhaseBE': '3290.60',
-        'SegPhasePA': '2722.69',
-        'SegPhaseBA': '6660.69',
-        'SegPhaseOA': '0.00',
-        'SegPhaseUA': '0.00',
-        'SegPhasePD': '0.00',
-        'SegSphereDE': '29097.55',
-        'SegSphereOD': '0.00',
-        'SegSphereBE': '5143.41',
-        'SegSpherePA': '2722.69',
-        'SegSphereBA': '4807.88',
-        'SegSphereOA': '0.00',
-        'SegSphereUA': '0.00',
-        'SegSpherePD': '0.00',
-        'ContactAreaMm2': '7378.58',
-        'CompressionPressureKPa': '10.71',
-        'PFAT_Edge_Zone': '0 0',
-        'HintRejectLevel': '60.00 mm',
-        'HintIgnoreLevel': '54.00 mm',
-        'GlandularityPercent': '27.72',
-        'VolparaMeanGlandularDoseInmGy': '1.592382',
-        'Method3Results499.04966.556513.3367': null,
-        'CorrectionComplete': null,
-        'NippleConfidence': '0.485584',
-        'NippleConfidenceMessage': '|OK||OK||disagreed curvature and intensity nipples (> 10 mm)|',
-        'MLOInferiorNippleAngleAtPosteriorEdge': '69.7751',
-        'NippleInProfile': 'Yes',
-        'NippleDistanceFromSuperiorEdgeInMm': '149.471',
-        'NippleDistanceFromPosteriorEdgeInMm': '62.4396',
-        'NippleCenterDistanceFromSuperiorEdgeInMm': '149.357',
-        'NippleCenterDistanceFromPosteriorEdgeInMm': '62.131',
-        'MLOPosteriorNippleLineLengthInMm': '75.8735',
-        'NippleLineLengthInMm': '62.4396',
-        'PNLToInferiorPectoralMuscleVerticalLengthInMm': '17.8156',
-        'PectoralSkinFoldPresent': 'Yes',
-        'NippleToInferiorPectoralMuscleVerticalLengthInMm': '60.5711',
-        'SuperiorPectoralWidthInMm': '61.25',
-        'PosteriorPectoralLengthInMm': '88.9',
-        'PectoralShape': 'FLAT',
-        'ImfMaxDistanceMm': '0.673068',
-        'InframammaryFoldVisible': 'No',
-        'MLOPosteriorLengthInMm': '207.9',
-        'MLOInferiorCutOffLengthInMm': '0',
-        'MLOAnteriorCutOffLengthInMm': '0',
-        'MeanDenseThicknessInMm': '13.489',
-        'MaximumDenseThicknessInMm': '30.6207',
-        'SDDenseThicknessInMm': '4.39862',
-        'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '140.7',
-        'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '33.25',
-        'DensityMapAttenuatingPixelCount': '0',
-        'MaximumPercentDensityIn1Cm2Area': '37.6462',
-        'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.32704',
-        'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '142.1',
-        'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '32.9',
-        'DenseAreaPercent': '90.1575',
-        'AreaGreaterThan10mmDenseMm2': '3811.59',
-        'HintVolumeCm3': '66.5565',
-        'BreastVolumeCm3': '499.0494',
-        'VolumetricBreastDensity': '13.3367',
-        'Out_BreastVolume': '499.0',
-        'Out_FGTV': '66.6',
-        'Out_Density': '13.3',
-        'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
-        'VolparaOkay': null
-      },
-      'OtherData': {
-        'Projectcompletedsuccessfully': null,
-        'PatientID': 'B58265F64F2A57227DC3D1706B9FA222',
-        'FibroglandularTissueVolume': '66.6 cm3',
-        'BreastVolume': '499.0 cm3',
-        'VolumetricBreastDensity': '13.3 %',
-        'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
-      },
-      'SpecialData': null,
-      'DicomFileMetaInfo': {
-        '00020001': {
-          'vr': 'OB',
-          'InlineBinary': 'AAE='
-        },
-        '00020002': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00020003': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3842359474.4828423216238524106'
-          ]
-        },
-        '00020010': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.1.2.5'
-          ]
-        },
-        '00020012': {
-          'vr': 'UI',
-          'Value': [
-            '1.3.6.1.4.1.30071.8'
-          ]
-        },
-        '00020013': {
-          'vr': 'SH',
-          'Value': [
-            'fo-dicom 4.0.0'
-          ]
-        },
-        '00020016': {
-          'vr': 'AE',
-          'Value': [
-            'RD00155D028273'
-          ]
-        }
-      },
-      'DicomHeaderInfo': {
-        '00080005': {
-          'vr': 'CS',
-          'Value': [
-            'ISO_IR 100'
-          ]
-        },
-        '00080008': {
-          'vr': 'CS',
-          'Value': [
-            'ORIGINAL',
-            'PRIMARY'
-          ]
-        },
-        '00080016': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.840.10008.5.1.4.1.1.1.2.1'
-          ]
-        },
-        '00080018': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3842359474.4828423216238524106'
-          ]
-        },
-        '00080020': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080021': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080022': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080023': {
-          'vr': 'DA',
-          'Value': [
-            '20100412'
-          ]
-        },
-        '00080030': {
-          'vr': 'TM',
-          'Value': [
-            '114039'
-          ]
-        },
-        '00080031': {
-          'vr': 'TM',
-          'Value': [
-            '114040'
-          ]
-        },
-        '00080032': {
-          'vr': 'TM',
-          'Value': [
-            '114641'
-          ]
-        },
-        '00080033': {
-          'vr': 'TM',
-          'Value': [
-            '114641'
-          ]
-        },
-        '00080050': {
-          'vr': 'SH'
-        },
-        '00080060': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080061': {
-          'vr': 'CS',
-          'Value': [
-            'MG'
-          ]
-        },
-        '00080068': {
-          'vr': 'CS',
-          'Value': [
-            'FOR PROCESSING'
-          ]
-        },
-        '00080070': {
-          'vr': 'LO',
-          'Value': [
-            'HOLOGIC, Inc.'
-          ]
-        },
-        '00080090': {
-          'vr': 'PN'
-        },
-        '00081010': {
-          'vr': 'SH',
-          'Value': [
-            'Station-1'
-          ]
-        },
-        '00081030': {
-          'vr': 'LO'
-        },
-        '0008103E': {
-          'vr': 'LO'
-        },
-        '00081090': {
-          'vr': 'LO',
-          'Value': [
-            'Lorad Selenia'
-          ]
-        },
-        '00082111': {
-          'vr': 'ST',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00082218': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'T-04000'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Breast'
-                ]
-              }
-            }
-          ]
-        },
-        '00100010': {
-          'vr': 'PN',
-          'Value': [
-            {
-              'Alphabetic': 'Anonymous'
-            }
-          ]
-        },
-        '00100020': {
-          'vr': 'LO',
-          'Value': [
-            'B58265F64F2A57227DC3D1706B9FA222'
-          ]
-        },
-        '00100030': {
-          'vr': 'DA'
-        },
-        '00100040': {
-          'vr': 'CS',
-          'Value': [
-            'F'
-          ]
-        },
-        '001021B0': {
-          'vr': 'LT',
-          'Value': [
-            'azjEMMbDcYsY7y6bGx8UC89ayXi3psdZVgXyDpsuXsd4GPipqt1o0Wiv+ad/wCP+Q9Y5WIMNQpu7KpjHncybCU0prsZhJ4Z5oJYcdVyJVsKKCA5EyYEvUNS4QEL3xoKKILE5BdxEsLXVjwXn5efeIusm2zgb3ZAEI1OgGyWDeTU='
-          ]
-        },
-        '00120062': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00120063': {
-          'vr': 'LO',
-          'Value': [
-            'Basic Application Confidentiality Profile',
-            'Clean Descriptors Option',
-            'Retain Longitudinal Temporal Information Modified Dates Option',
-            'Retain Patient Characteristics Option',
-            'Retain Safe Private Option'
-          ]
-        },
-        '00120064': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113100'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Basic Application Confidentiality Profile'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113105'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Clean Descriptors Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113107'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Longitudinal Temporal Information Modified Dates Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113108'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Patient Characteristics Option'
-                ]
-              }
-            },
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  '113111'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'DCM'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'Retain Safe Private Option'
-                ]
-              }
-            }
-          ]
-        },
-        '00180015': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00180060': {
-          'vr': 'DS',
-          'Value': [
-            31
-          ]
-        },
-        '00181000': {
-          'vr': 'LO'
-        },
-        '00181008': {
-          'vr': 'LO',
-          'Value': [
-            'GantryID-1'
-          ]
-        },
-        '00181020': {
-          'vr': 'LO',
-          'Value': [
-            'AWS:MAMMODROC_3_3_1_1',
-            'PXCM:1.3.3.0',
-            'ARR:1.6.3.0'
-          ]
-        },
-        '00181030': {
-          'vr': 'LO'
-        },
-        '00181110': {
-          'vr': 'DS',
-          'Value': [
-            660
-          ]
-        },
-        '00181111': {
-          'vr': 'DS',
-          'Value': [
-            640
-          ]
-        },
-        '00181114': {
-          'vr': 'DS',
-          'Value': [
-            1.069
-          ]
-        },
-        '00181147': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00181150': {
-          'vr': 'IS',
-          'Value': [
-            681
-          ]
-        },
-        '00181151': {
-          'vr': 'IS',
-          'Value': [
-            100
-          ]
-        },
-        '00181152': {
-          'vr': 'IS',
-          'Value': [
-            68
-          ]
-        },
-        '00181153': {
-          'vr': 'IS',
-          'Value': [
-            68100
-          ]
-        },
-        '00181164': {
-          'vr': 'DS',
-          'Value': [
-            0.070,
-            0.070
-          ]
-        },
-        '00181166': {
-          'vr': 'CS',
-          'Value': [
-            'HTC_IN'
-          ]
-        },
-        '00181190': {
-          'vr': 'DS',
-          'Value': [
-            0.3
-          ]
-        },
-        '00181191': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '001811A0': {
-          'vr': 'DS',
-          'Value': [
-            60.0
-          ]
-        },
-        '001811A2': {
-          'vr': 'DS',
-          'Value': [
-            79.000192
-          ]
-        },
-        '00181200': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '00181201': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00181400': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00181401': {
-          'vr': 'LO'
-        },
-        '00181405': {
-          'vr': 'IS',
-          'Value': [
-            477
-          ]
-        },
-        '00181508': {
-          'vr': 'CS',
-          'Value': [
-            'MAMMOGRAPHIC'
-          ]
-        },
-        '00181510': {
-          'vr': 'DS',
-          'Value': [
-            49
-          ]
-        },
-        '00181511': {
-          'vr': 'DS'
-        },
-        '00185100': {
-          'vr': 'CS'
-        },
-        '00185101': {
-          'vr': 'CS',
-          'Value': [
-            'MLO'
-          ]
-        },
-        '00186000': {
-          'vr': 'DS'
-        },
-        '00187000': {
-          'vr': 'CS',
-          'Value': [
-            'YES'
-          ]
-        },
-        '00187001': {
-          'vr': 'DS',
-          'Value': [
-            29.18
-          ]
-        },
-        '00187004': {
-          'vr': 'CS',
-          'Value': [
-            'DIRECT'
-          ]
-        },
-        '00187005': {
-          'vr': 'CS',
-          'Value': [
-            'AREA'
-          ]
-        },
-        '00187006': {
-          'vr': 'LT',
-          'Value': [
-            'Vendor: DRC; Product: BRICK/ARRAY; Version: v1.0'
-          ]
-        },
-        '0018700A': {
-          'vr': 'SH',
-          'Value': [
-            'DetectorID-1'
-          ]
-        },
-        '0018700C': {
-          'vr': 'DA',
-          'Value': [
-            '20100420'
-          ]
-        },
-        '0018700E': {
-          'vr': 'TM',
-          'Value': [
-            '122907'
-          ]
-        },
-        '00187024': {
-          'vr': 'CS',
-          'Value': [
-            'RECTANGLE'
-          ]
-        },
-        '00187026': {
-          'vr': 'DS',
-          'Value': [
-            250,
-            286
-          ]
-        },
-        '00187030': {
-          'vr': 'DS',
-          'Value': [
-            768,
-            1024
-          ]
-        },
-        '00187032': {
-          'vr': 'DS',
-          'Value': [
-            180
-          ]
-        },
-        '00187034': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00187048': {
-          'vr': 'DS'
-        },
-        '00187050': {
-          'vr': 'CS',
-          'Value': [
-            'MOLYBDENUM'
-          ]
-        },
-        '00187052': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187054': {
-          'vr': 'DS',
-          'Value': [
-            0.03
-          ]
-        },
-        '00187060': {
-          'vr': 'CS',
-          'Value': [
-            'AUTO_FILTER'
-          ]
-        },
-        '00187062': {
-          'vr': 'LT',
-          'Value': [
-            'LORAD AUTO AEC'
-          ]
-        },
-        '00187064': {
-          'vr': 'CS',
-          'Value': [
-            'NORMAL'
-          ]
-        },
-        '0018A001': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080070': {
-                'vr': 'LO',
-                'Value': [
-                  'Matakina Technology'
-                ]
-              },
-              '00081090': {
-                'vr': 'LO',
-                'Value': [
-                  'Volpara Data Manager'
-                ]
-              },
-              '00181020': {
-                'vr': 'LO',
-                'Value': [
-                  '1.0.108.0'
-                ]
-              },
-              '0018A002': {
-                'vr': 'DT',
-                'Value': [
-                  '20151207'
-                ]
-              },
-              '0018A003': {
-                'vr': 'ST',
-                'Value': [
-                  'De-identifying Equipment'
-                ]
-              },
-              '0040A170': {
-                'vr': 'SQ',
-                'Value': [
-                  {
-                    '00080100': {
-                      'vr': 'SH',
-                      'Value': [
-                        '109104'
-                      ]
-                    },
-                    '00080102': {
-                      'vr': 'SH',
-                      'Value': [
-                        'DCM'
-                      ]
-                    },
-                    '00080104': {
-                      'vr': 'LO',
-                      'Value': [
-                        'De-identifying Equipment'
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        '00191006': {
-          'vr': 'LO',
-          'Value': [
-            '019'
-          ]
-        },
-        '00191007': {
-          'vr': 'SH',
-          'Value': [
-            '2'
-          ]
-        },
-        '00191008': {
-          'vr': 'LO',
-          'Value': [
-            '001'
-          ]
-        },
-        '00191026': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm fast'
-          ]
-        },
-        '00191027': {
-          'vr': 'SH',
-          'Value': [
-            'L'
-          ]
-        },
-        '00191028': {
-          'vr': 'LO',
-          'Value': [
-            '18cm x 24cm'
-          ]
-        },
-        '00191029': {
-          'vr': 'LO',
-          'Value': [
-            'AEC Density setting 0 factor 100'
-          ]
-        },
-        '00191030': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191031': {
-          'vr': 'US',
-          'Value': [
-            100
-          ]
-        },
-        '00191033': {
-          'vr': 'US',
-          'Value': [
-            472
-          ]
-        },
-        '00191034': {
-          'vr': 'US',
-          'Value': [
-            530
-          ]
-        },
-        '00191035': {
-          'vr': 'US',
-          'Value': [
-            65535
-          ]
-        },
-        '00191050': {
-          'vr': 'DS'
-        },
-        '00191051': {
-          'vr': 'IS'
-        },
-        '00191052': {
-          'vr': 'IS'
-        },
-        '00191053': {
-          'vr': 'IS'
-        },
-        '0020000D': {
-          'vr': 'UI',
-          'Value': [
-            '1.2.826.0.1.3680043.8.694.3026830750.6589568711913383567'
-          ]
-        },
-        '0020000E': {
-          'vr': 'UI',
-          'Value': [
-            '2.25.34783780723475671696119083708605680245'
-          ]
-        },
-        '00200010': {
-          'vr': 'SH'
-        },
-        '00200011': {
-          'vr': 'IS',
-          'Value': [
-            3
-          ]
-        },
-        '00200012': {
-          'vr': 'IS'
-        },
-        '00200013': {
-          'vr': 'IS',
-          'Value': [
-            26
-          ]
-        },
-        '00200020': {
-          'vr': 'CS',
-          'Value': [
-            'A',
-            'F'
-          ]
-        },
-        '00200060': {
-          'vr': 'CS'
-        },
-        '00200062': {
-          'vr': 'CS',
-          'Value': [
-            'L'
-          ]
-        },
-        '00201002': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00201070': {
-          'vr': 'IS'
-        },
-        '00280002': {
-          'vr': 'US',
-          'Value': [
-            1
-          ]
-        },
-        '00280004': {
-          'vr': 'CS',
-          'Value': [
-            'MONOCHROME1'
-          ]
-        },
-        '00280008': {
-          'vr': 'IS',
-          'Value': [
-            1
-          ]
-        },
-        '00280010': {
-          'vr': 'US',
-          'Value': [
-            3328
-          ]
-        },
-        '00280011': {
-          'vr': 'US',
-          'Value': [
-            2560
-          ]
-        },
-        '00280030': {
-          'vr': 'DS',
-          'Value': [
-            0.0655,
-            0.0655
-          ]
-        },
-        '00280034': {
-          'vr': 'IS',
-          'Value': [
-            180,
-            180
-          ]
-        },
-        '00280100': {
-          'vr': 'US',
-          'Value': [
-            16
-          ]
-        },
-        '00280101': {
-          'vr': 'US',
-          'Value': [
-            14
-          ]
-        },
-        '00280102': {
-          'vr': 'US',
-          'Value': [
-            13
-          ]
-        },
-        '00280103': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00280301': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00280303': {
-          'vr': 'CS',
-          'Value': [
-            'MODIFIED'
-          ]
-        },
-        '00281040': {
-          'vr': 'CS',
-          'Value': [
-            'LIN'
-          ]
-        },
-        '00281041': {
-          'vr': 'SS',
-          'Value': [
-            1
-          ]
-        },
-        '00281050': {
-          'vr': 'DS',
-          'Value': [
-            2047
-          ]
-        },
-        '00281051': {
-          'vr': 'DS',
-          'Value': [
-            4096
-          ]
-        },
-        '00281052': {
-          'vr': 'DS',
-          'Value': [
-            0
-          ]
-        },
-        '00281053': {
-          'vr': 'DS',
-          'Value': [
-            1
-          ]
-        },
-        '00281054': {
-          'vr': 'LO',
-          'Value': [
-            'US'
-          ]
-        },
-        '00281300': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00281350': {
-          'vr': 'CS'
-        },
-        '00281351': {
-          'vr': 'ST',
-          'Value': [
-            null
-          ]
-        },
-        '00282110': {
-          'vr': 'CS',
-          'Value': [
-            '00'
-          ]
-        },
-        '0032000C': {
-          'vr': 'CS'
-        },
-        '00321000': {
-          'vr': 'DA'
-        },
-        '00321001': {
-          'vr': 'TM'
-        },
-        '00321030': {
-          'vr': 'LO',
-          'Value': [
-            'ANONYMOUS'
-          ]
-        },
-        '00321060': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00380016': {
-          'vr': 'LO'
-        },
-        '00400254': {
-          'vr': 'LO',
-          'Value': [
-            'Screening-Bilateral Mammography'
-          ]
-        },
-        '00400302': {
-          'vr': 'US',
-          'Value': [
-            0
-          ]
-        },
-        '00400314': {
-          'vr': 'DS',
-          'Value': [
-            0.38
-          ]
-        },
-        '00400316': {
-          'vr': 'DS',
-          'Value': [
-            0.0176
-          ]
-        },
-        '00400318': {
-          'vr': 'CS',
-          'Value': [
-            'BREAST'
-          ]
-        },
-        '00401003': {
-          'vr': 'SH'
-        },
-        '00408302': {
-          'vr': 'DS',
-          'Value': [
-            8.79
-          ]
-        },
-        '00500004': {
-          'vr': 'CS',
-          'Value': [
-            'NO'
-          ]
-        },
-        '00540220': {
-          'vr': 'SQ',
-          'Value': [
-            {
-              '00080100': {
-                'vr': 'SH',
-                'Value': [
-                  'R-10226'
-                ]
-              },
-              '00080102': {
-                'vr': 'SH',
-                'Value': [
-                  'SNM3'
-                ]
-              },
-              '00080104': {
-                'vr': 'LO',
-                'Value': [
-                  'medio-lateral oblique'
-                ]
-              }
-            }
-          ]
-        },
-        '20500020': {
-          'vr': 'CS',
-          'Value': [
-            'INVERSE'
-          ]
-        }
-      },
-      'ImageResultCreationTimeUtc': '2018-09-20T07:28:12.6272451Z'
-    }
-  ]
+	'FileDescriptor': 'VolparaEnterprise Study Result (4 images)',
+	'StudyResultCreationTimeUtc': '2019-04-24T08:50:43.9041761Z',
+	'JsonVersion': 1,
+	'ScorecardResults': {
+		'LeftBreastFindings': {
+			'FibroglandularTissueVolume': 69.6,
+			'BreastVolume': 535.4,
+			'VolumetricBreastDensity': 13.0,
+			'JsonVersion': 1
+		},
+		'RightBreastFindings': {
+			'FibroglandularTissueVolume': 71.6,
+			'BreastVolume': 591.7,
+			'VolumetricBreastDensity': 12.1,
+			'JsonVersion': 1
+		},
+		'VolparaDensityPercentageUsingMaximumBreast': 13.0,
+		'VolparaDensityPercentageUsingBreastAverage': 12.6,
+		'VolparaDensityGrade4ThEdition': 3,
+		'VolparaDensityGrade5ThEdition': 'c',
+		'VolparaDensityGrade5ThEditionUsingBreastAverage': 'c',
+		'DensityImagesUsedForLccLmloRccRmlo': [
+			1,
+			3,
+			0,
+			2
+		],
+		'DensityOutliers': [],
+		'AverageBreastVolume': 563.6,
+		'AverageAppliedPressure': 12.5,
+		'AverageAppliedForce': 95.0,
+		'AverageManufacturerDosePerImage': 1.3,
+		'AverageVolparaDosePerImage': 1.3,
+		'LeftBreastTotalDose': 2.5,
+		'RightBreastTotalDose': 2.6,
+		'JsonVersion': 1
+	},
+	'VolparaServerScorecardResults': {
+		'LeftBreastFindings': {
+			'FibroglandularTissueVolume': 69.6,
+			'BreastVolume': 535.4,
+			'VolumetricBreastDensity': 13.0,
+			'JsonVersion': 1
+		},
+		'RightBreastFindings': {
+			'FibroglandularTissueVolume': 71.6,
+			'BreastVolume': 591.7,
+			'VolumetricBreastDensity': 12.1,
+			'JsonVersion': 1
+		},
+		'VolparaDensityPercentageUsingMaximumBreast': 13.0,
+		'VolparaDensityPercentageUsingBreastAverage': 12.6,
+		'VolparaDensityGrade4ThEdition': 3,
+		'VolparaDensityGrade5ThEdition': 'c',
+		'VolparaDensityGrade5ThEditionUsingBreastAverage': 'c',
+		'DensityImagesUsedForLccLmloRccRmlo': [
+			1,
+			3,
+			0,
+			2
+		],
+		'DensityOutliers': [],
+		'AverageBreastVolume': 563.6,
+		'AverageAppliedPressure': 12.5,
+		'AverageAppliedForce': 95.0,
+		'AverageManufacturerDosePerImage': 1.3,
+		'AverageVolparaDosePerImage': 1.3,
+		'LeftBreastTotalDose': null,
+		'RightBreastTotalDose': null,
+		'JsonVersion': 1
+	},
+	'AnalyticsResults': null,
+	'VolparaPgmiResults': null,
+	'Configuration': {
+		'StudyImageProcessingMode': 'MixedPreferMammo',
+		'VolparaServerStudyImageProcessingMode': 'Mixed',
+		'AbDensityGradeBoundary': 3.5,
+		'BcDensityGradeBoundary': 7.5,
+		'CdDensityGradeBoundary': 15.5,
+		'JsonVersion': 1
+	},
+	'ImageResults': [
+		{
+			'JsonVersion': 1,
+			'SourceImage': {
+				'DicomImageFilePath': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84_5E9DA31A2C662EAAEE95B7C8955D86E.dcm',
+				'TransferSyntaxName': 'RLE Lossless',
+				'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+				'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540',
+				'SopInstanceUid': '1.2.826.0.1.3680043.8.694.4063851000.7178265960297693469',
+				'PixelSizeX': 0.1,
+				'PixelSizeY': 0.1,
+				'PixelRows': 2294,
+				'PixelColumns': 1914,
+				'JsonVersion': 1,
+				'CryptoVersion': 'H1E1',
+				'Hashes': [
+					{
+						'Key': 'Key1',
+						'Value': 'PATIENTID'					},
+					{
+						'Key': 'Key2',
+						'Value': 'No hashed Key2 found - must be supplied by uploader'
+					}
+				],
+				'Encryptions': []
+			},
+			'MachineLearning': null,
+			'PositioningInputs': null,
+			'Scorecard': {
+				'FibroglandularTissueVolumeInCm3': 79.7625,
+				'BreastVolumeInCm3': 585.7713,
+				'VolumetricBreastDensityInPercent': 13.6167,
+				'ManufacturerDoseInmGy': 1.214,
+				'VolparaDoseInmGy': 1.240994,
+				'AppliedPressureInkPa': 14.51,
+				'AppliedForceInN': 100.0,
+				'JsonVersion': 1
+			},
+			'Calculations': {
+				'ImagingTechnology': 'TwoDimensional',
+				'SummarizedViewPosition': 'Cc',
+				'ImageLaterality': 'Right',
+				'StudyPurpose': 'Screening',
+				'MammographyImageType': 'Ge2DMammo',
+				'VolparaEquipmentIdentifier': '2733211316',
+				'CalculatedHalfValueLayer': 0.430454,
+				'PositionerAngleInDegrees': 0.0,
+				'QualityControlImageType': 'Patient',
+				'ImplantStatus': 'Absent',
+				'JsonVersion': 1
+			},
+			'Algorithm': {
+				'IsInputFileNotDicom': false,
+				'IsAlgorithmSuccessful': true,
+				'AlgorithmError': null,
+				'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'SourceDotOutFileName': null,
+				'AlgorithmVersion': '1.5.5.0',
+				'AlgorithmBuild': '13334',
+				'JsonVersion': 1
+			},
+			'XlsData': {
+				'MammoImageType': '2D',
+				'RequestedProcedure': 'Screening',
+				'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636916917498091606_2',
+				'Timestamp': '2019/04/24_08:49:14',
+				'OSName': 'Unknown',
+				'OSVersion': 'Unknown',
+				'CurrentCulture': 'en-US',
+				'InstalledUICulture': 'en-US',
+				'VolparaVersion': '1.5.5.0 | 13334 |',
+				'DICOMTAGManufacturer': 'GE',
+				'ProcedureCodeSequenceCodeValue': 'BS',
+				'DICOMTAGDeviceSerialNumber': '2733211316',
+				'DICOMTagDetector_ID': 'NVL0037_03',
+				'MaxAllowedKVP': '100 ( current 29 )',
+				'BTSF': '1',
+				'BTSTF': '0',
+				'DetectorType': 'GE [ From Manufacturer ID ]',
+				'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
+				'FSensitivity': '0.00953552 [ From File ]',
+				'Gain': '0.0100 [ From Manufacturer ID ]',
+				'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
+				'Offset': '0.0000 [ From Manufacturer ID ]',
+				'ScalePixelSize': 'yes [ From Manufacturer ID ]',
+				'SourceToDetector': '660.0 [ From Manufacturer ID ]',
+				'SupportToDetector': '40.0 [ From Manufacturer ID ]',
+				'TubeType': 'GE [ From Manufacturer ID ]',
+				'UseNewSlantAlgorithm': 'False [ From Calculations ]',
+				'ValidToProcess': 'yes [ From Manufacturer ID ]',
+				'BreastSide': 'Right',
+				'ChestPosition': 'Right',
+				'PectoralPosition': 'Top',
+				'MammoView': 'CC',
+				'StudyDate': '20190412',
+				'OperatorName': 'Unknown',
+				'PatientDOB': 'Unknown',
+				'PatientAge': '-1',
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'DetectorID': 'NVL0037_03',
+				'XraySystem': 'GE',
+				'TargetPixelSizeMm': '0.355',
+				'NearestNeighborResample': null,
+				'ResizedPixelSizeMm': '0.3',
+				'PectoralSide': 'Top',
+				'MedialSide': 'Bottom',
+				'PaddleType': 'None',
+				'TargetMaterial': 'RHODIUM',
+				'FilterMaterial': 'RHODIUM',
+				'FilterThicknessMm': '0.025',
+				'TubeVoltageKvp': '29',
+				'CompressionPlateSlant': '5',
+				'HVL_Mm': '0.430454',
+				'CompressionForceN': '100',
+				'RecordedBreastThicknessMm': '54',
+				'ExposureMas': '54',
+				'ExposureTimeMs': '877',
+				'EntranceDoseInmGy': '5.042',
+				'EstimatedEntranceDoseInmGy': '4.77985',
+				'Warning': 'No HVL - using estimate',
+				'FiftyPercentGlandularDoseInmGy': '1.091311',
+				'OrganDose': '0.012140',
+				'OrganDoseInmGy': '1.214000',
+				'InnerBreastStatistics': '( 0; 235; 115; 530; 77441; 74153125.000000; 72720570877.000000; 957.543457; 148.846588 )',
+				'muFatPerMm': '0.045',
+				'MethodAllPlaneFit': '0.466833',
+				'RejectingMethod1Reason': '3.96549 > 10 or 3.96549 < -2 or 0.466833 < 0.85',
+				'MethodFatPlaneFit': '0.959309',
+				'Calculated_Sigma': '5',
+				'ComputedSlantAngle': '1.76058',
+				'ComputedSlantMm': '5.88318',
+				'ComputedBreastThickness': '54',
+				'ScatterScaleFactor': '1.00',
+				'Scatter': 'Weighted',
+				'SegPhaseDE': '30176.01',
+				'SegPhaseOD': '0.00',
+				'SegPhaseBE': '2955.69',
+				'SegPhasePA': '0.00',
+				'SegPhaseBA': '10794.60',
+				'SegPhaseOA': '0.00',
+				'SegPhaseUA': '0.00',
+				'SegPhasePD': '0.00',
+				'SegSphereDE': '30176.01',
+				'SegSphereOD': '0.00',
+				'SegSphereBE': '6780.60',
+				'SegSpherePA': '0.00',
+				'SegSphereBA': '6969.69',
+				'SegSphereOA': '0.00',
+				'SegSphereUA': '0.00',
+				'SegSpherePD': '0.00',
+				'ContactAreaMm2': '6890.84',
+				'CompressionPressureKPa': '14.51',
+				'PFAT_Edge_Zone': '0 0',
+				'HintRejectLevel': '54.00 mm',
+				'HintIgnoreLevel': '48.60 mm',
+				'GlandularityPercent': '21.68',
+				'VolparaMeanGlandularDoseInmGy': '1.240994',
+				'CorrectionComplete': null,
+				'NippleConfidence': '0.997545',
+				'NippleConfidenceMessage': '-1|OK||OK|',
+				'NippleInProfile': 'Yes',
+				'NippleDistanceFromMedialEdgeInMm': '103.009',
+				'NippleDistanceFromPosteriorEdgeInMm': '95.0294',
+				'NippleCenterDistanceFromMedialEdgeInMm': '103.5',
+				'NippleCenterDistanceFromPosteriorEdgeInMm': '98.0647',
+				'CCPosteriorNippleLineLengthInMm': '95.0294',
+				'NippleMedialLateralDistanceInMm': '6.40898',
+				'NippleMedialLateralAngleInDegrees': '3.8583',
+				'BreastCenterToImageCenterDistanceInMm': '-18.15',
+				'BreastCenterDistanceFromMedialEdgeInMm': '96.6',
+				'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
+				'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
+				'CleavageDetected': 'No',
+				'ShoulderDetected': 'No',
+				'CCAnteriorCutOffLengthInMm': '0',
+				'CCMedialCutOffLengthInMm': '0',
+				'CCLateralCutOffLengthInMm': '0',
+				'MeanDenseThicknessInMm': '8.83556',
+				'MaximumDenseThicknessInMm': '23.5881',
+				'SDDenseThicknessInMm': '4.57261',
+				'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '129.9',
+				'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '12',
+				'DensityMapAttenuatingPixelCount': '0',
+				'MaximumPercentDensityIn1Cm2Area': '37.4795',
+				'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.98362',
+				'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '127.2',
+				'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '10.8',
+				'DenseAreaPercent': '79.5354',
+				'AreaGreaterThan10mmDenseMm2': '2776.95',
+				'HintVolumeCm3': '79.7625',
+				'BreastVolumeCm3': '585.7713',
+				'VolumetricBreastDensity': '13.6167',
+				'Out_BreastVolume': '585.8',
+				'Out_FGTV': '79.8',
+				'Out_Density': '13.6',
+				'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'VolparaOkay': null
+			},
+			'OtherData': {
+				'Projectcompletedsuccessfully': null,
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'FibroglandularTissueVolume': '79.8 cm3',
+				'BreastVolume': '585.8 cm3',
+				'VolumetricBreastDensity': '13.6 %',
+				'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
+			},
+			'SpecialData': null,
+			'DicomFileMetaInfo': {
+				'00020001': {
+					'vr': 'OB',
+					'InlineBinary': 'AAE='
+				},
+				'00020002': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00020003': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.4063851000.7178265960297693469'
+					]
+				},
+				'00020010': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.1.2.5'
+					]
+				},
+				'00020012': {
+					'vr': 'UI',
+					'Value': [
+						'1.3.6.1.4.1.30071.8'
+					]
+				},
+				'00020013': {
+					'vr': 'SH',
+					'Value': [
+						'fo-dicom 4.0.0'
+					]
+				},
+				'00020016': {
+					'vr': 'AE',
+					'Value': [
+						'RD00155D028A62'
+					]
+				}
+			},
+			'DicomHeaderInfo': {
+				'00080005': {
+					'vr': 'CS',
+					'Value': [
+						'ISO_IR 100'
+					]
+				},
+				'00080008': {
+					'vr': 'CS',
+					'Value': [
+						'ORIGINAL',
+						'PRIMARY',
+						null
+					]
+				},
+				'00080016': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00080018': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.4063851000.7178265960297693469'
+					]
+				},
+				'00080020': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080021': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080022': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080023': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080030': {
+					'vr': 'TM',
+					'Value': [
+						'112251.000000'
+					]
+				},
+				'00080031': {
+					'vr': 'TM',
+					'Value': [
+						'112428.000000'
+					]
+				},
+				'00080032': {
+					'vr': 'TM',
+					'Value': [
+						'112424.000000'
+					]
+				},
+				'00080033': {
+					'vr': 'TM',
+					'Value': [
+						'112428.000000'
+					]
+				},
+				'00080050': {
+					'vr': 'SH'
+				},
+				'00080060': {
+					'vr': 'CS',
+					'Value': [
+						'MG'
+					]
+				},
+				'00080064': {
+					'vr': 'CS',
+					'Value': [
+						'WSD'
+					]
+				},
+				'00080068': {
+					'vr': 'CS',
+					'Value': [
+						'FOR PROCESSING'
+					]
+				},
+				'00080070': {
+					'vr': 'LO',
+					'Value': [
+						'GE MEDICAL SYSTEMS'
+					]
+				},
+				'00080090': {
+					'vr': 'PN'
+				},
+				'00081010': {
+					'vr': 'SH',
+					'Value': [
+						'FISCHER'
+					]
+				},
+				'00081030': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081032': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'BS'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							}
+						}
+					]
+				},
+				'0008103E': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081090': {
+					'vr': 'LO',
+					'Value': [
+						'Senographe Essential VERSION ADS_54.10'
+					]
+				},
+				'00082218': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'T-04000'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'BREAST'
+								]
+							}
+						}
+					]
+				},
+				'00100010': {
+					'vr': 'PN',
+					'Value': [
+						{
+							'Alphabetic': 'Anonymous'
+						}
+					]
+				},
+				'00100020': {
+					'vr': 'LO',
+					'Value': [
+						'E8DC5AB9EF4B4CFA5C583AF77EE38F84'
+					]
+				},
+				'00100030': {
+					'vr': 'DA'
+				},
+				'00100040': {
+					'vr': 'CS',
+					'Value': [
+						'F'
+					]
+				},
+				'001021B0': {
+					'vr': 'LT',
+					'Value': [
+						'xExppbenTtoyrzwPekjqc2n6z4xqL1diEBd7N521iFfYLDZQewU/am84XXrfNsUIB7/7oEUxEEP2cUdmmlRnip69dDdlXzA4c0jB+MIAMoZMEzX1H2oc89xUZNz9MOwtzuSNl+CeJoQWpatpkjtQ4eXfIQXvyCUD3h/BSP6iyw0='
+					]
+				},
+				'00120062': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00180015': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00180060': {
+					'vr': 'DS',
+					'Value': [
+						29
+					]
+				},
+				'00181000': {
+					'vr': 'LO',
+					'Value': [
+						'2733211316'
+					]
+				},
+				'00181020': {
+					'vr': 'LO',
+					'Value': [
+						'Ads Application Package VERSION ADS_54.10'
+					]
+				},
+				'00181030': {
+					'vr': 'LO',
+					'Value': [
+						'ROUTINE'
+					]
+				},
+				'00181110': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181111': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181114': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00181147': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00181149': {
+					'vr': 'IS',
+					'Value': [
+						229,
+						191
+					]
+				},
+				'00181150': {
+					'vr': 'IS',
+					'Value': [
+						877
+					]
+				},
+				'00181151': {
+					'vr': 'IS',
+					'Value': [
+						62
+					]
+				},
+				'00181152': {
+					'vr': 'IS',
+					'Value': [
+						54
+					]
+				},
+				'00181153': {
+					'vr': 'IS',
+					'Value': [
+						54500
+					]
+				},
+				'00181160': {
+					'vr': 'SH',
+					'Value': [
+						'STRIP'
+					]
+				},
+				'00181164': {
+					'vr': 'DS',
+					'Value': [
+						0.09409090909091,
+						0.09409090909091
+					]
+				},
+				'00181166': {
+					'vr': 'CS',
+					'Value': [
+						'RECIPROCATING',
+						'FOCUSED'
+					]
+				},
+				'00181190': {
+					'vr': 'DS',
+					'Value': [
+						0.3
+					]
+				},
+				'00181191': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'001811A0': {
+					'vr': 'DS',
+					'Value': [
+						54
+					]
+				},
+				'001811A2': {
+					'vr': 'DS',
+					'Value': [
+						100
+					]
+				},
+				'00181405': {
+					'vr': 'IS',
+					'Value': [
+						5042
+					]
+				},
+				'00181508': {
+					'vr': 'CS',
+					'Value': [
+						'MAMMOGRAPHIC'
+					]
+				},
+				'00181510': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181531': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181700': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGULAR'
+					]
+				},
+				'00181702': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181704': {
+					'vr': 'IS',
+					'Value': [
+						1915
+					]
+				},
+				'00181706': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181708': {
+					'vr': 'IS',
+					'Value': [
+						2295
+					]
+				},
+				'00185101': {
+					'vr': 'CS',
+					'Value': [
+						'CC'
+					]
+				},
+				'00186000': {
+					'vr': 'DS',
+					'Value': [
+						0.0095355194062
+					]
+				},
+				'00187000': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00187001': {
+					'vr': 'DS',
+					'Value': [
+						32.265216827393
+					]
+				},
+				'00187004': {
+					'vr': 'CS',
+					'Value': [
+						'SCINTILLATOR'
+					]
+				},
+				'00187005': {
+					'vr': 'CS',
+					'Value': [
+						'AREA'
+					]
+				},
+				'00187006': {
+					'vr': 'LT',
+					'Value': [
+						'DETECTOR VERSION 2.0 MTFCOMP 2.1'
+					]
+				},
+				'0018700A': {
+					'vr': 'SH',
+					'Value': [
+						'NVL0037_03'
+					]
+				},
+				'0018700C': {
+					'vr': 'DA',
+					'Value': [
+						'20170213'
+					]
+				},
+				'0018701A': {
+					'vr': 'DS',
+					'Value': [
+						1,
+						1
+					]
+				},
+				'00187020': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187022': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187024': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00187026': {
+					'vr': 'DS',
+					'Value': [
+						307.2,
+						240
+					]
+				},
+				'00187030': {
+					'vr': 'DS',
+					'Value': [
+						389,
+						1
+					]
+				},
+				'00187032': {
+					'vr': 'DS',
+					'Value': [
+						180
+					]
+				},
+				'00187034': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00187050': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'00187060': {
+					'vr': 'CS',
+					'Value': [
+						'AUTOMATIC'
+					]
+				},
+				'00187062': {
+					'vr': 'LT',
+					'Value': [
+						'AOP standard RECTANGLE 580 mm 1453 mm 180 mm 240 mm EXP DOSE 69953 nGy PRE-EXP DOSE 4232 nGy PRE-EXP THICK 47 mm PRE-EXP COMPO 50 % PRE-EXP KV 28 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 16 FLATFIELD no'
+					]
+				},
+				'00187064': {
+					'vr': 'CS',
+					'Value': [
+						'NORMAL'
+					]
+				},
+				'0020000D': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540'
+					]
+				},
+				'0020000E': {
+					'vr': 'UI',
+					'Value': [
+						'2.25.168533196262386281423748022403528232356'
+					]
+				},
+				'00200010': {
+					'vr': 'SH'
+				},
+				'00200011': {
+					'vr': 'IS',
+					'Value': [
+						2968
+					]
+				},
+				'00200013': {
+					'vr': 'IS',
+					'Value': [
+						1
+					]
+				},
+				'00200020': {
+					'vr': 'CS',
+					'Value': [
+						'P',
+						'L'
+					]
+				},
+				'00200062': {
+					'vr': 'CS',
+					'Value': [
+						'R'
+					]
+				},
+				'00280002': {
+					'vr': 'US',
+					'Value': [
+						1
+					]
+				},
+				'00280004': {
+					'vr': 'CS',
+					'Value': [
+						'MONOCHROME1'
+					]
+				},
+				'00280008': {
+					'vr': 'IS',
+					'Value': [
+						1
+					]
+				},
+				'00280010': {
+					'vr': 'US',
+					'Value': [
+						2294
+					]
+				},
+				'00280011': {
+					'vr': 'US',
+					'Value': [
+						1914
+					]
+				},
+				'00280100': {
+					'vr': 'US',
+					'Value': [
+						16
+					]
+				},
+				'00280101': {
+					'vr': 'US',
+					'Value': [
+						14
+					]
+				},
+				'00280102': {
+					'vr': 'US',
+					'Value': [
+						13
+					]
+				},
+				'00280103': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00280300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00280301': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00281040': {
+					'vr': 'CS',
+					'Value': [
+						'LIN'
+					]
+				},
+				'00281041': {
+					'vr': 'SS',
+					'Value': [
+						1
+					]
+				},
+				'00281052': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00281053': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00281054': {
+					'vr': 'LO',
+					'Value': [
+						'US'
+					]
+				},
+				'00281300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00282110': {
+					'vr': 'CS',
+					'Value': [
+						'00'
+					]
+				},
+				'00400275': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00400007': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							},
+							'00400008': {
+								'vr': 'SQ',
+								'Value': [
+									{
+										'00080100': {
+											'vr': 'SH',
+											'Value': [
+												'BS'
+											]
+										},
+										'00080104': {
+											'vr': 'LO',
+											'Value': [
+												'Breast Screening'
+											]
+										}
+									}
+								]
+							},
+							'00400009': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							},
+							'00401001': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							}
+						}
+					]
+				},
+				'00400302': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00400306': {
+					'vr': 'DS',
+					'Value': [
+						607
+					]
+				},
+				'00400310': {
+					'vr': 'ST',
+					'Value': [
+						'50 %'
+					]
+				},
+				'00400316': {
+					'vr': 'DS',
+					'Value': [
+						0.01214
+					]
+				},
+				'00400318': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00408302': {
+					'vr': 'DS',
+					'Value': [
+						5.042
+					]
+				},
+				'00451006': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'0045101B': {
+					'vr': 'CS',
+					'Value': [
+						'RCC'
+					]
+				},
+				'00451020': {
+					'vr': 'DS',
+					'Value': [
+						1044.6787109375
+					]
+				},
+				'00451026': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451029': {
+					'vr': 'DS',
+					'Value': [
+						971,
+						4.4000000953674
+					]
+				},
+				'0045102A': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'0045102B': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'00451049': {
+					'vr': 'DS',
+					'Value': [
+						47
+					]
+				},
+				'00451071': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451072': {
+					'vr': 'DS',
+					'Value': [
+						389,
+						485
+					]
+				},
+				'00540220': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'R-10242'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'cranio-caudal'
+								]
+							},
+							'00540222': {
+								'vr': 'SQ'
+							}
+						}
+					]
+				},
+				'20500020': {
+					'vr': 'CS',
+					'Value': [
+						'INVERSE'
+					]
+				}
+			},
+			'ImageResultCreationTimeUtc': '2019-04-24T08:50:32.5857168Z'
+		},
+		{
+			'JsonVersion': 1,
+			'SourceImage': {
+				'DicomImageFilePath': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84_A5AE21D9168BF6EA2D99820CEE24C1.dcm',
+				'TransferSyntaxName': 'RLE Lossless',
+				'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+				'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540',
+				'SopInstanceUid': '1.2.826.0.1.3680043.8.694.555931501.6090465896920452086',
+				'PixelSizeX': 0.1,
+				'PixelSizeY': 0.1,
+				'PixelRows': 2294,
+				'PixelColumns': 1914,
+				'JsonVersion': 1,
+				'CryptoVersion': 'H1E1',
+				'Hashes': [
+					{
+						'Key': 'Key1',
+						'Value': 'PATIENTID'
+					},
+					{
+						'Key': 'Key2',
+						'Value': 'No hashed Key2 found - must be supplied by uploader'
+					}
+				],
+				'Encryptions': []
+			},
+			'MachineLearning': null,
+			'PositioningInputs': null,
+			'Scorecard': {
+				'FibroglandularTissueVolumeInCm3': 72.0375,
+				'BreastVolumeInCm3': 530.6264,
+				'VolumetricBreastDensityInPercent': 13.5759,
+				'ManufacturerDoseInmGy': 1.071,
+				'VolparaDoseInmGy': 1.086212,
+				'AppliedPressureInkPa': 13.73,
+				'AppliedForceInN': 90.0,
+				'JsonVersion': 1
+			},
+			'Calculations': {
+				'ImagingTechnology': 'TwoDimensional',
+				'SummarizedViewPosition': 'Cc',
+				'ImageLaterality': 'Left',
+				'StudyPurpose': 'Screening',
+				'MammographyImageType': 'Ge2DMammo',
+				'VolparaEquipmentIdentifier': '2733211316',
+				'CalculatedHalfValueLayer': 0.430454,
+				'PositionerAngleInDegrees': 0.0,
+				'QualityControlImageType': 'Patient',
+				'ImplantStatus': 'Absent',
+				'JsonVersion': 1
+			},
+			'Algorithm': {
+				'IsInputFileNotDicom': false,
+				'IsAlgorithmSuccessful': true,
+				'AlgorithmError': null,
+				'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'SourceDotOutFileName': null,
+				'AlgorithmVersion': '1.5.5.0',
+				'AlgorithmBuild': '13334',
+				'JsonVersion': 1
+			},
+			'XlsData': {
+				'MammoImageType': '2D',
+				'RequestedProcedure': 'Screening',
+				'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636916917498091606_4',
+				'Timestamp': '2019/04/24_08:49:14',
+				'OSName': 'Unknown',
+				'OSVersion': 'Unknown',
+				'CurrentCulture': 'en-US',
+				'InstalledUICulture': 'en-US',
+				'VolparaVersion': '1.5.5.0 | 13334 |',
+				'DICOMTAGManufacturer': 'GE',
+				'ProcedureCodeSequenceCodeValue': 'BS',
+				'DICOMTAGDeviceSerialNumber': '2733211316',
+				'DICOMTagDetector_ID': 'NVL0037_03',
+				'MaxAllowedKVP': '100 ( current 29 )',
+				'BTSF': '1',
+				'BTSTF': '0',
+				'DetectorType': 'GE [ From Manufacturer ID ]',
+				'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
+				'FSensitivity': '0.00953552 [ From File ]',
+				'Gain': '0.0100 [ From Manufacturer ID ]',
+				'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
+				'Offset': '0.0000 [ From Manufacturer ID ]',
+				'ScalePixelSize': 'yes [ From Manufacturer ID ]',
+				'SourceToDetector': '660.0 [ From Manufacturer ID ]',
+				'SupportToDetector': '40.0 [ From Manufacturer ID ]',
+				'TubeType': 'GE [ From Manufacturer ID ]',
+				'UseNewSlantAlgorithm': 'False [ From Calculations ]',
+				'ValidToProcess': 'yes [ From Manufacturer ID ]',
+				'BreastSide': 'Left',
+				'ChestPosition': 'Left',
+				'PectoralPosition': 'Top',
+				'MammoView': 'CC',
+				'StudyDate': '20190412',
+				'OperatorName': 'Unknown',
+				'PatientDOB': 'Unknown',
+				'PatientAge': '-1',
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'DetectorID': 'NVL0037_03',
+				'XraySystem': 'GE',
+				'TargetPixelSizeMm': '0.355',
+				'NearestNeighborResample': null,
+				'ResizedPixelSizeMm': '0.3',
+				'PectoralSide': 'Top',
+				'MedialSide': 'Bottom',
+				'PaddleType': 'None',
+				'TargetMaterial': 'RHODIUM',
+				'FilterMaterial': 'RHODIUM',
+				'FilterThicknessMm': '0.025',
+				'TubeVoltageKvp': '29',
+				'CompressionPlateSlant': '5',
+				'HVL_Mm': '0.430454',
+				'CompressionForceN': '90',
+				'RecordedBreastThicknessMm': '52',
+				'ExposureMas': '46',
+				'ExposureTimeMs': '739',
+				'EntranceDoseInmGy': '4.291',
+				'EstimatedEntranceDoseInmGy': '3.50453',
+				'Warning': 'No HVL - using estimate',
+				'FiftyPercentGlandularDoseInmGy': '0.965183',
+				'OrganDose': '0.010710',
+				'OrganDoseInmGy': '1.071000',
+				'InnerBreastStatistics': '( 0; 222; 153; 582; 73174; 60062068.000000; 50766241746.000000; 820.811584; 141.572006 )',
+				'muFatPerMm': '0.045',
+				'MethodAllPlaneFit': '0.465876',
+				'RejectingMethod1Reason': '3.98622 > 10 or 3.98622 < -2 or 0.465876 < 0.85',
+				'MethodFatPlaneFit': '0.957053',
+				'Calculated_Sigma': '5',
+				'ComputedSlantAngle': '1.27575',
+				'ComputedSlantMm': '4.26242',
+				'ComputedBreastThickness': '52',
+				'ScatterScaleFactor': '1.00',
+				'Scatter': 'Weighted',
+				'SegPhaseDE': '30999.42',
+				'SegPhaseOD': '0.00',
+				'SegPhaseBE': '2971.89',
+				'SegPhasePA': '0.00',
+				'SegPhaseBA': '9954.99',
+				'SegPhaseOA': '0.00',
+				'SegPhaseUA': '0.00',
+				'SegPhasePD': '0.00',
+				'SegSphereDE': '30999.42',
+				'SegSphereOD': '0.00',
+				'SegSphereBE': '6341.22',
+				'SegSpherePA': '0.00',
+				'SegSphereBA': '6585.66',
+				'SegSphereOA': '0.00',
+				'SegSphereUA': '0.00',
+				'SegSpherePD': '0.00',
+				'ContactAreaMm2': '6556.89',
+				'CompressionPressureKPa': '13.73',
+				'PFAT_Edge_Zone': '0 0',
+				'HintRejectLevel': '52.00 mm',
+				'HintIgnoreLevel': '46.80 mm',
+				'GlandularityPercent': '23.44',
+				'VolparaMeanGlandularDoseInmGy': '1.086212',
+				'CorrectionComplete': null,
+				'NippleConfidence': '0.997879',
+				'NippleConfidenceMessage': '-1|OK||OK|',
+				'NippleInProfile': 'Yes',
+				'NippleDistanceFromMedialEdgeInMm': '106.639',
+				'NippleDistanceFromPosteriorEdgeInMm': '90.9161',
+				'NippleCenterDistanceFromMedialEdgeInMm': '106.966',
+				'NippleCenterDistanceFromPosteriorEdgeInMm': '94.1805',
+				'CCPosteriorNippleLineLengthInMm': '90.9161',
+				'NippleMedialLateralDistanceInMm': '-3.46086',
+				'NippleMedialLateralAngleInDegrees': '-2.18',
+				'BreastCenterToImageCenterDistanceInMm': '-4.65',
+				'BreastCenterDistanceFromMedialEdgeInMm': '110.1',
+				'BreastEdgeDistanceToPosteriorMedialCornerInMm': '-1',
+				'BreastEdgeDistanceToPosteriorLateralCornerInMm': '-1',
+				'CleavageDetected': 'No',
+				'ShoulderDetected': 'No',
+				'CCAnteriorCutOffLengthInMm': '0',
+				'CCMedialCutOffLengthInMm': '0',
+				'CCLateralCutOffLengthInMm': '0',
+				'MeanDenseThicknessInMm': '9.18597',
+				'MaximumDenseThicknessInMm': '45.9668',
+				'SDDenseThicknessInMm': '5.24834',
+				'MaximumDenseThicknessDistanceFromMedialEdgeInMm': '158.4',
+				'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '12.9',
+				'DensityMapAttenuatingPixelCount': '0',
+				'MaximumPercentDensityIn1Cm2Area': '41.1685',
+				'MaximumDenseVolumeIn1Cm2AreaInCm3': '2.09816',
+				'MaximumDensity1Cm2AreaDistanceFromMedialEdgeInMm': '167.4',
+				'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '6.3',
+				'DenseAreaPercent': '79.4599',
+				'AreaGreaterThan10mmDenseMm2': '2647.62',
+				'HintVolumeCm3': '72.0375',
+				'BreastVolumeCm3': '530.6264',
+				'VolumetricBreastDensity': '13.5759',
+				'Out_BreastVolume': '530.6',
+				'Out_FGTV': '72.0',
+				'Out_Density': '13.6',
+				'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'VolparaOkay': null
+			},
+			'OtherData': {
+				'Projectcompletedsuccessfully': null,
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'FibroglandularTissueVolume': '72.0 cm3',
+				'BreastVolume': '530.6 cm3',
+				'VolumetricBreastDensity': '13.6 %',
+				'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
+			},
+			'SpecialData': null,
+			'DicomFileMetaInfo': {
+				'00020001': {
+					'vr': 'OB',
+					'InlineBinary': 'AAE='
+				},
+				'00020002': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00020003': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.555931501.6090465896920452086'
+					]
+				},
+				'00020010': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.1.2.5'
+					]
+				},
+				'00020012': {
+					'vr': 'UI',
+					'Value': [
+						'1.3.6.1.4.1.30071.8'
+					]
+				},
+				'00020013': {
+					'vr': 'SH',
+					'Value': [
+						'fo-dicom 4.0.0'
+					]
+				},
+				'00020016': {
+					'vr': 'AE',
+					'Value': [
+						'RD00155D028A62'
+					]
+				}
+			},
+			'DicomHeaderInfo': {
+				'00080005': {
+					'vr': 'CS',
+					'Value': [
+						'ISO_IR 100'
+					]
+				},
+				'00080008': {
+					'vr': 'CS',
+					'Value': [
+						'ORIGINAL',
+						'PRIMARY',
+						null
+					]
+				},
+				'00080016': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00080018': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.555931501.6090465896920452086'
+					]
+				},
+				'00080020': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080021': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080022': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080023': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080030': {
+					'vr': 'TM',
+					'Value': [
+						'112251.000000'
+					]
+				},
+				'00080031': {
+					'vr': 'TM',
+					'Value': [
+						'112428.000000'
+					]
+				},
+				'00080032': {
+					'vr': 'TM',
+					'Value': [
+						'112516.000000'
+					]
+				},
+				'00080033': {
+					'vr': 'TM',
+					'Value': [
+						'112520.000000'
+					]
+				},
+				'00080050': {
+					'vr': 'SH'
+				},
+				'00080060': {
+					'vr': 'CS',
+					'Value': [
+						'MG'
+					]
+				},
+				'00080064': {
+					'vr': 'CS',
+					'Value': [
+						'WSD'
+					]
+				},
+				'00080068': {
+					'vr': 'CS',
+					'Value': [
+						'FOR PROCESSING'
+					]
+				},
+				'00080070': {
+					'vr': 'LO',
+					'Value': [
+						'GE MEDICAL SYSTEMS'
+					]
+				},
+				'00080090': {
+					'vr': 'PN'
+				},
+				'00081010': {
+					'vr': 'SH',
+					'Value': [
+						'FISCHER'
+					]
+				},
+				'00081030': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081032': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'BS'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							}
+						}
+					]
+				},
+				'0008103E': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081090': {
+					'vr': 'LO',
+					'Value': [
+						'Senographe Essential VERSION ADS_54.10'
+					]
+				},
+				'00082218': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'T-04000'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'BREAST'
+								]
+							}
+						}
+					]
+				},
+				'00100010': {
+					'vr': 'PN',
+					'Value': [
+						{
+							'Alphabetic': 'Anonymous'
+						}
+					]
+				},
+				'00100020': {
+					'vr': 'LO',
+					'Value': [
+						'E8DC5AB9EF4B4CFA5C583AF77EE38F84'
+					]
+				},
+				'00100030': {
+					'vr': 'DA'
+				},
+				'00100040': {
+					'vr': 'CS',
+					'Value': [
+						'F'
+					]
+				},
+				'001021B0': {
+					'vr': 'LT',
+					'Value': [
+						'xExppbenTtoyrzwPekjqc2n6z4xqL1diEBd7N521iFfYLDZQewU/am84XXrfNsUIB7/7oEUxEEP2cUdmmlRnip69dDdlXzA4c0jB+MIAMoZMEzX1H2oc89xUZNz9MOwtzuSNl+CeJoQWpatpkjtQ4eXfIQXvyCUD3h/BSP6iyw0='
+					]
+				},
+				'00120062': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00180015': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00180060': {
+					'vr': 'DS',
+					'Value': [
+						29
+					]
+				},
+				'00181000': {
+					'vr': 'LO',
+					'Value': [
+						'2733211316'
+					]
+				},
+				'00181020': {
+					'vr': 'LO',
+					'Value': [
+						'Ads Application Package VERSION ADS_54.10'
+					]
+				},
+				'00181030': {
+					'vr': 'LO',
+					'Value': [
+						'ROUTINE'
+					]
+				},
+				'00181110': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181111': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181114': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00181147': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00181149': {
+					'vr': 'IS',
+					'Value': [
+						229,
+						191
+					]
+				},
+				'00181150': {
+					'vr': 'IS',
+					'Value': [
+						739
+					]
+				},
+				'00181151': {
+					'vr': 'IS',
+					'Value': [
+						62
+					]
+				},
+				'00181152': {
+					'vr': 'IS',
+					'Value': [
+						46
+					]
+				},
+				'00181153': {
+					'vr': 'IS',
+					'Value': [
+						46000
+					]
+				},
+				'00181160': {
+					'vr': 'SH',
+					'Value': [
+						'STRIP'
+					]
+				},
+				'00181164': {
+					'vr': 'DS',
+					'Value': [
+						0.09409090909091,
+						0.09409090909091
+					]
+				},
+				'00181166': {
+					'vr': 'CS',
+					'Value': [
+						'RECIPROCATING',
+						'FOCUSED'
+					]
+				},
+				'00181190': {
+					'vr': 'DS',
+					'Value': [
+						0.3
+					]
+				},
+				'00181191': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'001811A0': {
+					'vr': 'DS',
+					'Value': [
+						52
+					]
+				},
+				'001811A2': {
+					'vr': 'DS',
+					'Value': [
+						90
+					]
+				},
+				'00181405': {
+					'vr': 'IS',
+					'Value': [
+						4291
+					]
+				},
+				'00181508': {
+					'vr': 'CS',
+					'Value': [
+						'MAMMOGRAPHIC'
+					]
+				},
+				'00181510': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181531': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181700': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGULAR'
+					]
+				},
+				'00181702': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181704': {
+					'vr': 'IS',
+					'Value': [
+						1915
+					]
+				},
+				'00181706': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181708': {
+					'vr': 'IS',
+					'Value': [
+						2295
+					]
+				},
+				'00185101': {
+					'vr': 'CS',
+					'Value': [
+						'CC'
+					]
+				},
+				'00186000': {
+					'vr': 'DS',
+					'Value': [
+						0.0095355194062
+					]
+				},
+				'00187000': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00187001': {
+					'vr': 'DS',
+					'Value': [
+						32.265216827393
+					]
+				},
+				'00187004': {
+					'vr': 'CS',
+					'Value': [
+						'SCINTILLATOR'
+					]
+				},
+				'00187005': {
+					'vr': 'CS',
+					'Value': [
+						'AREA'
+					]
+				},
+				'00187006': {
+					'vr': 'LT',
+					'Value': [
+						'DETECTOR VERSION 2.0 MTFCOMP 2.1'
+					]
+				},
+				'0018700A': {
+					'vr': 'SH',
+					'Value': [
+						'NVL0037_03'
+					]
+				},
+				'0018700C': {
+					'vr': 'DA',
+					'Value': [
+						'20170213'
+					]
+				},
+				'0018701A': {
+					'vr': 'DS',
+					'Value': [
+						1,
+						1
+					]
+				},
+				'00187020': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187022': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187024': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00187026': {
+					'vr': 'DS',
+					'Value': [
+						307.2,
+						240
+					]
+				},
+				'00187030': {
+					'vr': 'DS',
+					'Value': [
+						389,
+						1
+					]
+				},
+				'00187032': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00187034': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00187050': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'00187060': {
+					'vr': 'CS',
+					'Value': [
+						'AUTOMATIC'
+					]
+				},
+				'00187062': {
+					'vr': 'LT',
+					'Value': [
+						'AOP standard RECTANGLE 610 mm 1379 mm 180 mm 240 mm EXP DOSE 53784 nGy PRE-EXP DOSE 5965 nGy PRE-EXP THICK 41 mm PRE-EXP COMPO 50 % PRE-EXP KV 28 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 16 FLATFIELD no'
+					]
+				},
+				'00187064': {
+					'vr': 'CS',
+					'Value': [
+						'NORMAL'
+					]
+				},
+				'0020000D': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540'
+					]
+				},
+				'0020000E': {
+					'vr': 'UI',
+					'Value': [
+						'2.25.168533196262386281423748022403528232356'
+					]
+				},
+				'00200010': {
+					'vr': 'SH'
+				},
+				'00200011': {
+					'vr': 'IS',
+					'Value': [
+						2968
+					]
+				},
+				'00200013': {
+					'vr': 'IS',
+					'Value': [
+						2
+					]
+				},
+				'00200020': {
+					'vr': 'CS',
+					'Value': [
+						'A',
+						'R'
+					]
+				},
+				'00200062': {
+					'vr': 'CS',
+					'Value': [
+						'L'
+					]
+				},
+				'00280002': {
+					'vr': 'US',
+					'Value': [
+						1
+					]
+				},
+				'00280004': {
+					'vr': 'CS',
+					'Value': [
+						'MONOCHROME1'
+					]
+				},
+				'00280008': {
+					'vr': 'IS',
+					'Value': [
+						1
+					]
+				},
+				'00280010': {
+					'vr': 'US',
+					'Value': [
+						2294
+					]
+				},
+				'00280011': {
+					'vr': 'US',
+					'Value': [
+						1914
+					]
+				},
+				'00280100': {
+					'vr': 'US',
+					'Value': [
+						16
+					]
+				},
+				'00280101': {
+					'vr': 'US',
+					'Value': [
+						14
+					]
+				},
+				'00280102': {
+					'vr': 'US',
+					'Value': [
+						13
+					]
+				},
+				'00280103': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00280300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00280301': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00281040': {
+					'vr': 'CS',
+					'Value': [
+						'LIN'
+					]
+				},
+				'00281041': {
+					'vr': 'SS',
+					'Value': [
+						1
+					]
+				},
+				'00281052': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00281053': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00281054': {
+					'vr': 'LO',
+					'Value': [
+						'US'
+					]
+				},
+				'00281300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00282110': {
+					'vr': 'CS',
+					'Value': [
+						'00'
+					]
+				},
+				'00400275': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00400007': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							},
+							'00400008': {
+								'vr': 'SQ',
+								'Value': [
+									{
+										'00080100': {
+											'vr': 'SH',
+											'Value': [
+												'BS'
+											]
+										},
+										'00080104': {
+											'vr': 'LO',
+											'Value': [
+												'Breast Screening'
+											]
+										}
+									}
+								]
+							},
+							'00400009': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							},
+							'00401001': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							}
+						}
+					]
+				},
+				'00400302': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00400306': {
+					'vr': 'DS',
+					'Value': [
+						608
+					]
+				},
+				'00400310': {
+					'vr': 'ST',
+					'Value': [
+						'50 %'
+					]
+				},
+				'00400316': {
+					'vr': 'DS',
+					'Value': [
+						0.01071
+					]
+				},
+				'00400318': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00408302': {
+					'vr': 'DS',
+					'Value': [
+						4.291
+					]
+				},
+				'00451006': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'0045101B': {
+					'vr': 'CS',
+					'Value': [
+						'LCC'
+					]
+				},
+				'00451020': {
+					'vr': 'DS',
+					'Value': [
+						903.80328369141
+					]
+				},
+				'00451026': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451029': {
+					'vr': 'DS',
+					'Value': [
+						840,
+						4.4000000953674
+					]
+				},
+				'0045102A': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'0045102B': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'00451049': {
+					'vr': 'DS',
+					'Value': [
+						48
+					]
+				},
+				'00451071': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451072': {
+					'vr': 'DS',
+					'Value': [
+						389,
+						1
+					]
+				},
+				'00540220': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'R-10242'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'cranio-caudal'
+								]
+							},
+							'00540222': {
+								'vr': 'SQ'
+							}
+						}
+					]
+				},
+				'20500020': {
+					'vr': 'CS',
+					'Value': [
+						'INVERSE'
+					]
+				}
+			},
+			'ImageResultCreationTimeUtc': '2019-04-24T08:50:35.6595818Z'
+		},
+		{
+			'JsonVersion': 1,
+			'SourceImage': {
+				'DicomImageFilePath': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84_327D1F571E8978538967E54898499CBD.dcm',
+				'TransferSyntaxName': 'RLE Lossless',
+				'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+				'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540',
+				'SopInstanceUid': '1.2.826.0.1.3680043.8.694.4111835669.12263636611175035535',
+				'PixelSizeX': 0.1,
+				'PixelSizeY': 0.1,
+				'PixelRows': 2294,
+				'PixelColumns': 1914,
+				'JsonVersion': 1,
+				'CryptoVersion': 'H1E1',
+				'Hashes': [
+					{
+						'Key': 'Key1',
+						'Value': 'PATIENTID'
+					},
+					{
+						'Key': 'Key2',
+						'Value': 'No hashed Key2 found - must be supplied by uploader'
+					}
+				],
+				'Encryptions': []
+			},
+			'MachineLearning': null,
+			'PositioningInputs': null,
+			'Scorecard': {
+				'FibroglandularTissueVolumeInCm3': 63.5296,
+				'BreastVolumeInCm3': 601.109,
+				'VolumetricBreastDensityInPercent': 10.5687,
+				'ManufacturerDoseInmGy': 1.353,
+				'VolparaDoseInmGy': 1.392623,
+				'AppliedPressureInkPa': 10.31,
+				'AppliedForceInN': 90.0,
+				'JsonVersion': 1
+			},
+			'Calculations': {
+				'ImagingTechnology': 'TwoDimensional',
+				'SummarizedViewPosition': 'Mlo',
+				'ImageLaterality': 'Right',
+				'StudyPurpose': 'Screening',
+				'MammographyImageType': 'Ge2DMammo',
+				'VolparaEquipmentIdentifier': '2733211316',
+				'CalculatedHalfValueLayer': 0.430454,
+				'PositionerAngleInDegrees': 53.0,
+				'QualityControlImageType': 'Patient',
+				'ImplantStatus': 'Absent',
+				'JsonVersion': 1
+			},
+			'Algorithm': {
+				'IsInputFileNotDicom': false,
+				'IsAlgorithmSuccessful': true,
+				'AlgorithmError': null,
+				'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'SourceDotOutFileName': null,
+				'AlgorithmVersion': '1.5.5.0',
+				'AlgorithmBuild': '13334',
+				'JsonVersion': 1
+			},
+			'XlsData': {
+				'MammoImageType': '2D',
+				'RequestedProcedure': 'Screening',
+				'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636916917498091606_3',
+				'Timestamp': '2019/04/24_08:49:14',
+				'OSName': 'Unknown',
+				'OSVersion': 'Unknown',
+				'CurrentCulture': 'en-US',
+				'InstalledUICulture': 'en-US',
+				'VolparaVersion': '1.5.5.0 | 13334 |',
+				'DICOMTAGManufacturer': 'GE',
+				'ProcedureCodeSequenceCodeValue': 'BS',
+				'DICOMTAGDeviceSerialNumber': '2733211316',
+				'DICOMTagDetector_ID': 'NVL0037_03',
+				'MaxAllowedKVP': '100 ( current 29 )',
+				'BTSF': '1',
+				'BTSTF': '0',
+				'DetectorType': 'GE [ From Manufacturer ID ]',
+				'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
+				'FSensitivity': '0.00953552 [ From File ]',
+				'Gain': '0.0100 [ From Manufacturer ID ]',
+				'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
+				'Offset': '0.0000 [ From Manufacturer ID ]',
+				'ScalePixelSize': 'yes [ From Manufacturer ID ]',
+				'SourceToDetector': '660.0 [ From Manufacturer ID ]',
+				'SupportToDetector': '40.0 [ From Manufacturer ID ]',
+				'TubeType': 'GE [ From Manufacturer ID ]',
+				'UseNewSlantAlgorithm': 'False [ From Calculations ]',
+				'ValidToProcess': 'yes [ From Manufacturer ID ]',
+				'BreastSide': 'Right',
+				'ChestPosition': 'Right',
+				'PectoralPosition': 'Top',
+				'MammoView': 'MLO',
+				'StudyDate': '20190412',
+				'OperatorName': 'Unknown',
+				'PatientDOB': 'Unknown',
+				'PatientAge': '-1',
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'DetectorID': 'NVL0037_03',
+				'XraySystem': 'GE',
+				'TargetPixelSizeMm': '0.355',
+				'NearestNeighborResample': null,
+				'ResizedPixelSizeMm': '0.3',
+				'PectoralSide': 'Top',
+				'PaddleType': 'None',
+				'TargetMaterial': 'RHODIUM',
+				'FilterMaterial': 'RHODIUM',
+				'FilterThicknessMm': '0.025',
+				'TubeVoltageKvp': '29',
+				'CompressionPlateSlant': '5',
+				'HVL_Mm': '0.430454',
+				'CompressionForceN': '90',
+				'RecordedBreastThicknessMm': '58',
+				'ExposureMas': '63',
+				'ExposureTimeMs': '1019',
+				'EntranceDoseInmGy': '6.013',
+				'EstimatedEntranceDoseInmGy': '4.90062',
+				'Warning': 'No HVL - using estimate',
+				'FiftyPercentGlandularDoseInmGy': '1.212161',
+				'OrganDose': '0.013530',
+				'OrganDoseInmGy': '1.353000',
+				'IMF-X': '1',
+				'IMF-Y': '618',
+				'Corner-X': '211',
+				'Corner-Y': '67',
+				'DefaultPecAtBottom': '1',
+				'DefaultPecAtTop': '1',
+				'CorrectIndex': '0',
+				'PectoralAngleDegrees': '14.000',
+				'PectoralAngleConfidence': '1.000',
+				'InnerBreastStatistics': '( 1; 231; 75; 572; 65977; 57840873.000000; 51698917501.000000; 876.682373; 122.548012 )',
+				'muFatPerMm': '0.045',
+				'MethodAllPlaneFit': '0.570692',
+				'RejectingMethod1Reason': '-1.65554 > 10 or -1.65554 < -2 or 0.570692 < 0.85',
+				'MethodFatPlaneFit': '0.83778',
+				'Rejectingmethod2because:3.63599>10or3.63599<-2or0.83778<0.85': null,
+				'Calculated_Sigma': '5',
+				'ComputedSlantAngle': '1.49641',
+				'ComputedSlantMm': '5',
+				'ComputedBreastThickness': '58',
+				'ScatterScaleFactor': '1.00',
+				'Scatter': 'Weighted',
+				'PectoralRatio': '1.129',
+				'SegPhaseDE': '27443.34',
+				'SegPhaseOD': '0.00',
+				'SegPhaseBE': '3796.65',
+				'SegPhasePA': '3148.29',
+				'SegPhaseBA': '9538.02',
+				'SegPhaseOA': '0.00',
+				'SegPhaseUA': '0.00',
+				'SegPhasePD': '0.00',
+				'SegSphereDE': '27443.34',
+				'SegSphereOD': '0.00',
+				'SegSphereBE': '7396.74',
+				'SegSpherePA': '3148.29',
+				'SegSphereBA': '5937.93',
+				'SegSphereOA': '0.00',
+				'SegSphereUA': '0.00',
+				'SegSpherePD': '0.00',
+				'ContactAreaMm2': '8731.38',
+				'CompressionPressureKPa': '10.31',
+				'PFAT_Edge_Zone': '0 0',
+				'HintRejectLevel': '58.00 mm',
+				'HintIgnoreLevel': '52.20 mm',
+				'GlandularityPercent': '20.39',
+				'VolparaMeanGlandularDoseInmGy': '1.392623',
+				'Method3Results601.10963.529610.5687': null,
+				'CorrectionComplete': null,
+				'NippleConfidence': '0.998234',
+				'NippleConfidenceMessage': '|OK||OK||OK|',
+				'MLOInferiorNippleAngleAtPosteriorEdge': '79.992',
+				'NippleInProfile': 'Yes',
+				'NippleDistanceFromSuperiorEdgeInMm': '140.98',
+				'NippleDistanceFromPosteriorEdgeInMm': '96.0036',
+				'NippleCenterDistanceFromSuperiorEdgeInMm': '140.894',
+				'NippleCenterDistanceFromPosteriorEdgeInMm': '95.5185',
+				'MLOPosteriorNippleLineLengthInMm': '89.4271',
+				'NippleLineLengthInMm': '96.0036',
+				'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-38.2698',
+				'PectoralSkinFoldPresent': 'No',
+				'NippleToInferiorPectoralMuscleVerticalLengthInMm': '-16.8202',
+				'SuperiorPectoralWidthInMm': '39.9',
+				'PosteriorPectoralLengthInMm': '157.8',
+				'PectoralShape': 'CONCAVE',
+				'ImfMaxDistanceMm': '2.05278',
+				'InframammaryFoldVisible': 'Yes',
+				'InframammaryFoldAreaInMm2': '43.47',
+				'ImfAngleInDegrees': '162.364',
+				'ImfSkinFoldPresent': 'No',
+				'MLOPosteriorLengthInMm': '187.5',
+				'MLOInferiorCutOffLengthInMm': '0',
+				'MLOAnteriorCutOffLengthInMm': '0',
+				'MeanDenseThicknessInMm': '9.22333',
+				'MaximumDenseThicknessInMm': '23.9351',
+				'SDDenseThicknessInMm': '4.05314',
+				'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '78',
+				'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '51',
+				'DensityMapAttenuatingPixelCount': '0',
+				'MaximumPercentDensityIn1Cm2Area': '32.6323',
+				'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.85501',
+				'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '75',
+				'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '51.3',
+				'DenseAreaPercent': '84.5128',
+				'AreaGreaterThan10mmDenseMm2': '2357.55',
+				'HintVolumeCm3': '63.5296',
+				'BreastVolumeCm3': '601.1090',
+				'VolumetricBreastDensity': '10.5687',
+				'Out_BreastVolume': '601.1',
+				'Out_FGTV': '63.5',
+				'Out_Density': '10.6',
+				'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'VolparaOkay': null
+			},
+			'OtherData': {
+				'Projectcompletedsuccessfully': null,
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'FibroglandularTissueVolume': '63.5 cm3',
+				'BreastVolume': '601.1 cm3',
+				'VolumetricBreastDensity': '10.6 %',
+				'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
+			},
+			'SpecialData': null,
+			'DicomFileMetaInfo': {
+				'00020001': {
+					'vr': 'OB',
+					'InlineBinary': 'AAE='
+				},
+				'00020002': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00020003': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.4111835669.12263636611175035535'
+					]
+				},
+				'00020010': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.1.2.5'
+					]
+				},
+				'00020012': {
+					'vr': 'UI',
+					'Value': [
+						'1.3.6.1.4.1.30071.8'
+					]
+				},
+				'00020013': {
+					'vr': 'SH',
+					'Value': [
+						'fo-dicom 4.0.0'
+					]
+				},
+				'00020016': {
+					'vr': 'AE',
+					'Value': [
+						'RD00155D028A62'
+					]
+				}
+			},
+			'DicomHeaderInfo': {
+				'00080005': {
+					'vr': 'CS',
+					'Value': [
+						'ISO_IR 100'
+					]
+				},
+				'00080008': {
+					'vr': 'CS',
+					'Value': [
+						'ORIGINAL',
+						'PRIMARY',
+						null
+					]
+				},
+				'00080016': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00080018': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.4111835669.12263636611175035535'
+					]
+				},
+				'00080020': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080021': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080022': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080023': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080030': {
+					'vr': 'TM',
+					'Value': [
+						'112251.000000'
+					]
+				},
+				'00080031': {
+					'vr': 'TM',
+					'Value': [
+						'112428.000000'
+					]
+				},
+				'00080032': {
+					'vr': 'TM',
+					'Value': [
+						'112713.000000'
+					]
+				},
+				'00080033': {
+					'vr': 'TM',
+					'Value': [
+						'112716.000000'
+					]
+				},
+				'00080050': {
+					'vr': 'SH'
+				},
+				'00080060': {
+					'vr': 'CS',
+					'Value': [
+						'MG'
+					]
+				},
+				'00080064': {
+					'vr': 'CS',
+					'Value': [
+						'WSD'
+					]
+				},
+				'00080068': {
+					'vr': 'CS',
+					'Value': [
+						'FOR PROCESSING'
+					]
+				},
+				'00080070': {
+					'vr': 'LO',
+					'Value': [
+						'GE MEDICAL SYSTEMS'
+					]
+				},
+				'00080090': {
+					'vr': 'PN'
+				},
+				'00081010': {
+					'vr': 'SH',
+					'Value': [
+						'FISCHER'
+					]
+				},
+				'00081030': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081032': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'BS'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							}
+						}
+					]
+				},
+				'0008103E': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081090': {
+					'vr': 'LO',
+					'Value': [
+						'Senographe Essential VERSION ADS_54.10'
+					]
+				},
+				'00082218': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'T-04000'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'BREAST'
+								]
+							}
+						}
+					]
+				},
+				'00100010': {
+					'vr': 'PN',
+					'Value': [
+						{
+							'Alphabetic': 'Anonymous'
+						}
+					]
+				},
+				'00100020': {
+					'vr': 'LO',
+					'Value': [
+						'E8DC5AB9EF4B4CFA5C583AF77EE38F84'
+					]
+				},
+				'00100030': {
+					'vr': 'DA'
+				},
+				'00100040': {
+					'vr': 'CS',
+					'Value': [
+						'F'
+					]
+				},
+				'001021B0': {
+					'vr': 'LT',
+					'Value': [
+						'xExppbenTtoyrzwPekjqc2n6z4xqL1diEBd7N521iFfYLDZQewU/am84XXrfNsUIB7/7oEUxEEP2cUdmmlRnip69dDdlXzA4c0jB+MIAMoZMEzX1H2oc89xUZNz9MOwtzuSNl+CeJoQWpatpkjtQ4eXfIQXvyCUD3h/BSP6iyw0='
+					]
+				},
+				'00120062': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00180015': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00180060': {
+					'vr': 'DS',
+					'Value': [
+						29
+					]
+				},
+				'00181000': {
+					'vr': 'LO',
+					'Value': [
+						'2733211316'
+					]
+				},
+				'00181020': {
+					'vr': 'LO',
+					'Value': [
+						'Ads Application Package VERSION ADS_54.10'
+					]
+				},
+				'00181030': {
+					'vr': 'LO',
+					'Value': [
+						'ROUTINE'
+					]
+				},
+				'00181110': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181111': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181114': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00181147': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00181149': {
+					'vr': 'IS',
+					'Value': [
+						229,
+						191
+					]
+				},
+				'00181150': {
+					'vr': 'IS',
+					'Value': [
+						1019
+					]
+				},
+				'00181151': {
+					'vr': 'IS',
+					'Value': [
+						62
+					]
+				},
+				'00181152': {
+					'vr': 'IS',
+					'Value': [
+						63
+					]
+				},
+				'00181153': {
+					'vr': 'IS',
+					'Value': [
+						63300
+					]
+				},
+				'00181160': {
+					'vr': 'SH',
+					'Value': [
+						'STRIP'
+					]
+				},
+				'00181164': {
+					'vr': 'DS',
+					'Value': [
+						0.09409090909091,
+						0.09409090909091
+					]
+				},
+				'00181166': {
+					'vr': 'CS',
+					'Value': [
+						'RECIPROCATING',
+						'FOCUSED'
+					]
+				},
+				'00181190': {
+					'vr': 'DS',
+					'Value': [
+						0.3
+					]
+				},
+				'00181191': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'001811A0': {
+					'vr': 'DS',
+					'Value': [
+						58
+					]
+				},
+				'001811A2': {
+					'vr': 'DS',
+					'Value': [
+						90
+					]
+				},
+				'00181405': {
+					'vr': 'IS',
+					'Value': [
+						6013
+					]
+				},
+				'00181508': {
+					'vr': 'CS',
+					'Value': [
+						'MAMMOGRAPHIC'
+					]
+				},
+				'00181510': {
+					'vr': 'DS',
+					'Value': [
+						53
+					]
+				},
+				'00181531': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181700': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGULAR'
+					]
+				},
+				'00181702': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181704': {
+					'vr': 'IS',
+					'Value': [
+						1915
+					]
+				},
+				'00181706': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181708': {
+					'vr': 'IS',
+					'Value': [
+						2295
+					]
+				},
+				'00185101': {
+					'vr': 'CS',
+					'Value': [
+						'MLO'
+					]
+				},
+				'00186000': {
+					'vr': 'DS',
+					'Value': [
+						0.0095355194062
+					]
+				},
+				'00187000': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00187001': {
+					'vr': 'DS',
+					'Value': [
+						32.265216827393
+					]
+				},
+				'00187004': {
+					'vr': 'CS',
+					'Value': [
+						'SCINTILLATOR'
+					]
+				},
+				'00187005': {
+					'vr': 'CS',
+					'Value': [
+						'AREA'
+					]
+				},
+				'00187006': {
+					'vr': 'LT',
+					'Value': [
+						'DETECTOR VERSION 2.0 MTFCOMP 2.1'
+					]
+				},
+				'0018700A': {
+					'vr': 'SH',
+					'Value': [
+						'NVL0037_03'
+					]
+				},
+				'0018700C': {
+					'vr': 'DA',
+					'Value': [
+						'20170213'
+					]
+				},
+				'0018701A': {
+					'vr': 'DS',
+					'Value': [
+						1,
+						1
+					]
+				},
+				'00187020': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187022': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187024': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00187026': {
+					'vr': 'DS',
+					'Value': [
+						307.2,
+						240
+					]
+				},
+				'00187030': {
+					'vr': 'DS',
+					'Value': [
+						5,
+						1
+					]
+				},
+				'00187032': {
+					'vr': 'DS',
+					'Value': [
+						180
+					]
+				},
+				'00187034': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00187050': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'00187060': {
+					'vr': 'CS',
+					'Value': [
+						'AUTOMATIC'
+					]
+				},
+				'00187062': {
+					'vr': 'LT',
+					'Value': [
+						'AOP standard RECTANGLE 490 mm 2095 mm 180 mm 240 mm EXP DOSE 67692 nGy PRE-EXP DOSE 6549 nGy PRE-EXP THICK 49 mm PRE-EXP COMPO 50 % PRE-EXP KV 31 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 16 FLATFIELD no'
+					]
+				},
+				'00187064': {
+					'vr': 'CS',
+					'Value': [
+						'NORMAL'
+					]
+				},
+				'0020000D': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540'
+					]
+				},
+				'0020000E': {
+					'vr': 'UI',
+					'Value': [
+						'2.25.168533196262386281423748022403528232356'
+					]
+				},
+				'00200010': {
+					'vr': 'SH'
+				},
+				'00200011': {
+					'vr': 'IS',
+					'Value': [
+						2968
+					]
+				},
+				'00200013': {
+					'vr': 'IS',
+					'Value': [
+						3
+					]
+				},
+				'00200020': {
+					'vr': 'CS',
+					'Value': [
+						'P',
+						'FL'
+					]
+				},
+				'00200062': {
+					'vr': 'CS',
+					'Value': [
+						'R'
+					]
+				},
+				'00280002': {
+					'vr': 'US',
+					'Value': [
+						1
+					]
+				},
+				'00280004': {
+					'vr': 'CS',
+					'Value': [
+						'MONOCHROME1'
+					]
+				},
+				'00280008': {
+					'vr': 'IS',
+					'Value': [
+						1
+					]
+				},
+				'00280010': {
+					'vr': 'US',
+					'Value': [
+						2294
+					]
+				},
+				'00280011': {
+					'vr': 'US',
+					'Value': [
+						1914
+					]
+				},
+				'00280100': {
+					'vr': 'US',
+					'Value': [
+						16
+					]
+				},
+				'00280101': {
+					'vr': 'US',
+					'Value': [
+						14
+					]
+				},
+				'00280102': {
+					'vr': 'US',
+					'Value': [
+						13
+					]
+				},
+				'00280103': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00280300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00280301': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00281040': {
+					'vr': 'CS',
+					'Value': [
+						'LIN'
+					]
+				},
+				'00281041': {
+					'vr': 'SS',
+					'Value': [
+						1
+					]
+				},
+				'00281052': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00281053': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00281054': {
+					'vr': 'LO',
+					'Value': [
+						'US'
+					]
+				},
+				'00281300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00282110': {
+					'vr': 'CS',
+					'Value': [
+						'00'
+					]
+				},
+				'00400275': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00400007': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							},
+							'00400008': {
+								'vr': 'SQ',
+								'Value': [
+									{
+										'00080100': {
+											'vr': 'SH',
+											'Value': [
+												'BS'
+											]
+										},
+										'00080104': {
+											'vr': 'LO',
+											'Value': [
+												'Breast Screening'
+											]
+										}
+									}
+								]
+							},
+							'00400009': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							},
+							'00401001': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							}
+						}
+					]
+				},
+				'00400302': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00400306': {
+					'vr': 'DS',
+					'Value': [
+						602
+					]
+				},
+				'00400310': {
+					'vr': 'ST',
+					'Value': [
+						'50 %'
+					]
+				},
+				'00400316': {
+					'vr': 'DS',
+					'Value': [
+						0.01353
+					]
+				},
+				'00400318': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00408302': {
+					'vr': 'DS',
+					'Value': [
+						6.013
+					]
+				},
+				'00451006': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'0045101B': {
+					'vr': 'CS',
+					'Value': [
+						'RMLO'
+					]
+				},
+				'00451020': {
+					'vr': 'DS',
+					'Value': [
+						949.89331054688
+					]
+				},
+				'00451026': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451029': {
+					'vr': 'DS',
+					'Value': [
+						883,
+						4.4000000953674
+					]
+				},
+				'0045102A': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'0045102B': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'00451049': {
+					'vr': 'DS',
+					'Value': [
+						50
+					]
+				},
+				'00451071': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451072': {
+					'vr': 'DS',
+					'Value': [
+						5,
+						485
+					]
+				},
+				'00540220': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'R-10226'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'medio-lateral oblique'
+								]
+							},
+							'00540222': {
+								'vr': 'SQ'
+							}
+						}
+					]
+				},
+				'20500020': {
+					'vr': 'CS',
+					'Value': [
+						'INVERSE'
+					]
+				}
+			},
+			'ImageResultCreationTimeUtc': '2019-04-24T08:50:41.6439935Z'
+		},
+		{
+			'JsonVersion': 1,
+			'SourceImage': {
+				'DicomImageFilePath': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84_531FA12DCB6FC1AFECCD4752E336D70.dcm',
+				'TransferSyntaxName': 'RLE Lossless',
+				'TransferSyntaxUid': '1.2.840.10008.1.2.5',
+				'StudyInstanceUid': '1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540',
+				'SopInstanceUid': '1.2.826.0.1.3680043.8.694.3764512211.9105916690883416577',
+				'PixelSizeX': 0.1,
+				'PixelSizeY': 0.1,
+				'PixelRows': 2294,
+				'PixelColumns': 1914,
+				'JsonVersion': 1,
+				'CryptoVersion': 'H1E1',
+				'Hashes': [
+					{
+						'Key': 'Key1',
+						'Value': 'PATIENTID'
+					},
+					{
+						'Key': 'Key2',
+						'Value': 'No hashed Key2 found - must be supplied by uploader'
+					}
+				],
+				'Encryptions': []
+			},
+			'MachineLearning': null,
+			'PositioningInputs': null,
+			'Scorecard': {
+				'FibroglandularTissueVolumeInCm3': 67.1438,
+				'BreastVolumeInCm3': 542.1028,
+				'VolumetricBreastDensityInPercent': 12.3858,
+				'ManufacturerDoseInmGy': 1.363,
+				'VolparaDoseInmGy': 1.386413,
+				'AppliedPressureInkPa': 11.51,
+				'AppliedForceInN': 100.0,
+				'JsonVersion': 1
+			},
+			'Calculations': {
+				'ImagingTechnology': 'TwoDimensional',
+				'SummarizedViewPosition': 'Mlo',
+				'ImageLaterality': 'Left',
+				'StudyPurpose': 'Screening',
+				'MammographyImageType': 'Ge2DMammo',
+				'VolparaEquipmentIdentifier': '2733211316',
+				'CalculatedHalfValueLayer': 0.430454,
+				'PositionerAngleInDegrees': 54.0,
+				'QualityControlImageType': 'Patient',
+				'ImplantStatus': 'Absent',
+				'JsonVersion': 1
+			},
+			'Algorithm': {
+				'IsInputFileNotDicom': false,
+				'IsAlgorithmSuccessful': true,
+				'AlgorithmError': null,
+				'AlgorithmRunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'SourceDotOutFileName': null,
+				'AlgorithmVersion': '1.5.5.0',
+				'AlgorithmBuild': '13334',
+				'JsonVersion': 1
+			},
+			'XlsData': {
+				'MammoImageType': '2D',
+				'RequestedProcedure': 'Screening',
+				'Folder': 'D:\\local\\Temp\\AlgorithmProcess\\imagecalc_636916917498091606_1',
+				'Timestamp': '2019/04/24_08:49:14',
+				'OSName': 'Unknown',
+				'OSVersion': 'Unknown',
+				'CurrentCulture': 'en-US',
+				'InstalledUICulture': 'en-US',
+				'VolparaVersion': '1.5.5.0 | 13334 |',
+				'DICOMTAGManufacturer': 'GE',
+				'ProcedureCodeSequenceCodeValue': 'BS',
+				'DICOMTAGDeviceSerialNumber': '2733211316',
+				'DICOMTagDetector_ID': 'NVL0037_03',
+				'MaxAllowedKVP': '100 ( current 29 )',
+				'BTSF': '1',
+				'BTSTF': '0',
+				'DetectorType': 'GE [ From Manufacturer ID ]',
+				'DoFlatFieldCorrection': 'no [ From Manufacturer ID ]',
+				'FSensitivity': '0.00953552 [ From File ]',
+				'Gain': '0.0100 [ From Manufacturer ID ]',
+				'NativePixelSize': '0.1000 [ From Manufacturer ID ]',
+				'Offset': '0.0000 [ From Manufacturer ID ]',
+				'ScalePixelSize': 'yes [ From Manufacturer ID ]',
+				'SourceToDetector': '660.0 [ From Manufacturer ID ]',
+				'SupportToDetector': '40.0 [ From Manufacturer ID ]',
+				'TubeType': 'GE [ From Manufacturer ID ]',
+				'UseNewSlantAlgorithm': 'False [ From Calculations ]',
+				'ValidToProcess': 'yes [ From Manufacturer ID ]',
+				'BreastSide': 'Left',
+				'ChestPosition': 'Left',
+				'PectoralPosition': 'Top',
+				'MammoView': 'MLO',
+				'StudyDate': '20190412',
+				'OperatorName': 'Unknown',
+				'PatientDOB': 'Unknown',
+				'PatientAge': '-1',
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'DetectorID': 'NVL0037_03',
+				'XraySystem': 'GE',
+				'TargetPixelSizeMm': '0.355',
+				'NearestNeighborResample': null,
+				'ResizedPixelSizeMm': '0.3',
+				'PectoralSide': 'Top',
+				'PaddleType': 'None',
+				'TargetMaterial': 'RHODIUM',
+				'FilterMaterial': 'RHODIUM',
+				'FilterThicknessMm': '0.025',
+				'TubeVoltageKvp': '29',
+				'CompressionPlateSlant': '5',
+				'HVL_Mm': '0.430454',
+				'CompressionForceN': '100',
+				'RecordedBreastThicknessMm': '56',
+				'ExposureMas': '64',
+				'ExposureTimeMs': '1022',
+				'EntranceDoseInmGy': '5.879',
+				'EstimatedEntranceDoseInmGy': '4.94388',
+				'Warning': 'No HVL - using estimate',
+				'FiftyPercentGlandularDoseInmGy': '1.228811',
+				'OrganDose': '0.013630',
+				'OrganDoseInmGy': '1.363000',
+				'IMF-X': '1',
+				'IMF-Y': '571',
+				'Corner-X': '248',
+				'Corner-Y': '44',
+				'DefaultPecAtBottom': '1',
+				'DefaultPecAtTop': '1',
+				'CorrectIndex': '0',
+				'PectoralAngleDegrees': '18.000',
+				'PectoralAngleConfidence': '1.000',
+				'InnerBreastStatistics': '( 1; 233; 22; 523; 63393; 59567520.000000; 57474643490.000000; 939.654541; 153.914169 )',
+				'muFatPerMm': '0.045',
+				'MethodAllPlaneFit': '0.520699',
+				'RejectingMethod1Reason': '1.1809 > 10 or 1.1809 < -2 or 0.520699 < 0.85',
+				'MethodFatPlaneFit': '0.781662',
+				'Rejectingmethod2because:5.30576>10or5.30576<-2or0.781662<0.85': null,
+				'Calculated_Sigma': '5',
+				'ComputedSlantAngle': '1.49641',
+				'ComputedSlantMm': '5',
+				'ComputedBreastThickness': '56',
+				'ScatterScaleFactor': '1.00',
+				'Scatter': 'Weighted',
+				'PectoralRatio': '1.200',
+				'SegPhaseDE': '28180.08',
+				'SegPhaseOD': '0.00',
+				'SegPhaseBE': '3835.26',
+				'SegPhasePA': '3334.59',
+				'SegPhaseBA': '8576.37',
+				'SegPhaseOA': '0.00',
+				'SegPhaseUA': '0.00',
+				'SegPhasePD': '0.00',
+				'SegSphereDE': '28180.08',
+				'SegSphereOD': '0.00',
+				'SegSphereBE': '6706.26',
+				'SegSpherePA': '3334.59',
+				'SegSphereBA': '5705.37',
+				'SegSphereOA': '0.00',
+				'SegSphereUA': '0.00',
+				'SegSpherePD': '0.00',
+				'ContactAreaMm2': '8691.15',
+				'CompressionPressureKPa': '11.51',
+				'PFAT_Edge_Zone': '0 0',
+				'HintRejectLevel': '56.00 mm',
+				'HintIgnoreLevel': '50.40 mm',
+				'GlandularityPercent': '23.69',
+				'VolparaMeanGlandularDoseInmGy': '1.386413',
+				'Method3Results542.10367.143812.3858': null,
+				'CorrectionComplete': null,
+				'NippleConfidence': '0.996374',
+				'NippleConfidenceMessage': '|OK||OK||OK|',
+				'MLOInferiorNippleAngleAtPosteriorEdge': '66.1247',
+				'NippleInProfile': 'Yes',
+				'NippleDistanceFromSuperiorEdgeInMm': '142.199',
+				'NippleDistanceFromPosteriorEdgeInMm': '90.1826',
+				'NippleCenterDistanceFromSuperiorEdgeInMm': '143.338',
+				'NippleCenterDistanceFromPosteriorEdgeInMm': '92.7571',
+				'MLOPosteriorNippleLineLengthInMm': '86.0791',
+				'NippleLineLengthInMm': '90.1826',
+				'PNLToInferiorPectoralMuscleVerticalLengthInMm': '-26.6821',
+				'PectoralSkinFoldPresent': 'No',
+				'NippleToInferiorPectoralMuscleVerticalLengthInMm': '-0.301453',
+				'SuperiorPectoralWidthInMm': '46.8',
+				'PosteriorPectoralLengthInMm': '142.5',
+				'PectoralShape': 'FLAT',
+				'ImfMaxDistanceMm': '4.28908',
+				'InframammaryFoldVisible': 'Yes',
+				'InframammaryFoldAreaInMm2': '82.89',
+				'ImfAngleInDegrees': '144.541',
+				'ImfSkinFoldPresent': 'No',
+				'MLOPosteriorLengthInMm': '170.4',
+				'MLOInferiorCutOffLengthInMm': '0',
+				'MLOAnteriorCutOffLengthInMm': '0',
+				'MeanDenseThicknessInMm': '10.4468',
+				'MaximumDenseThicknessInMm': '44.2155',
+				'SDDenseThicknessInMm': '4.40318',
+				'MaximumDenseThicknessDistanceFromSuperiorEdgeInMm': '69',
+				'MaximumDenseThicknessDistanceFromPosteriorEdgeInMm': '35.1',
+				'DensityMapAttenuatingPixelCount': '0',
+				'MaximumPercentDensityIn1Cm2Area': '35.3834',
+				'MaximumDenseVolumeIn1Cm2AreaInCm3': '1.94204',
+				'MaximumDensity1Cm2AreaDistanceFromSuperiorEdgeInMm': '68.4',
+				'MaximumDensity1Cm2AreaDistanceFromPosteriorEdgeInMm': '60.3',
+				'DenseAreaPercent': '89.9942',
+				'AreaGreaterThan10mmDenseMm2': '2786.49',
+				'HintVolumeCm3': '67.1438',
+				'BreastVolumeCm3': '542.1028',
+				'VolumetricBreastDensity': '12.3858',
+				'Out_BreastVolume': '542.1',
+				'Out_FGTV': '67.1',
+				'Out_Density': '12.4',
+				'Run_Information': 'VolparaVersion = 1.5.5.0 | 13334 |',
+				'VolparaOkay': null
+			},
+			'OtherData': {
+				'Projectcompletedsuccessfully': null,
+				'PatientID': 'E8DC5AB9EF4B4CFA5C583AF77EE38F84',
+				'FibroglandularTissueVolume': '67.1 cm3',
+				'BreastVolume': '542.1 cm3',
+				'VolumetricBreastDensity': '12.4 %',
+				'RunInformation': 'VolparaVersion = 1.5.5.0 | 13334 |'
+			},
+			'SpecialData': null,
+			'DicomFileMetaInfo': {
+				'00020001': {
+					'vr': 'OB',
+					'InlineBinary': 'AAE='
+				},
+				'00020002': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00020003': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.3764512211.9105916690883416577'
+					]
+				},
+				'00020010': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.1.2.5'
+					]
+				},
+				'00020012': {
+					'vr': 'UI',
+					'Value': [
+						'1.3.6.1.4.1.30071.8'
+					]
+				},
+				'00020013': {
+					'vr': 'SH',
+					'Value': [
+						'fo-dicom 4.0.0'
+					]
+				},
+				'00020016': {
+					'vr': 'AE',
+					'Value': [
+						'RD00155D028A62'
+					]
+				}
+			},
+			'DicomHeaderInfo': {
+				'00080005': {
+					'vr': 'CS',
+					'Value': [
+						'ISO_IR 100'
+					]
+				},
+				'00080008': {
+					'vr': 'CS',
+					'Value': [
+						'ORIGINAL',
+						'PRIMARY',
+						null
+					]
+				},
+				'00080016': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.840.10008.5.1.4.1.1.1.2.1'
+					]
+				},
+				'00080018': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.3764512211.9105916690883416577'
+					]
+				},
+				'00080020': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080021': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080022': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080023': {
+					'vr': 'DA',
+					'Value': [
+						'20190412'
+					]
+				},
+				'00080030': {
+					'vr': 'TM',
+					'Value': [
+						'112251.000000'
+					]
+				},
+				'00080031': {
+					'vr': 'TM',
+					'Value': [
+						'112428.000000'
+					]
+				},
+				'00080032': {
+					'vr': 'TM',
+					'Value': [
+						'112852.000000'
+					]
+				},
+				'00080033': {
+					'vr': 'TM',
+					'Value': [
+						'112856.000000'
+					]
+				},
+				'00080050': {
+					'vr': 'SH'
+				},
+				'00080060': {
+					'vr': 'CS',
+					'Value': [
+						'MG'
+					]
+				},
+				'00080064': {
+					'vr': 'CS',
+					'Value': [
+						'WSD'
+					]
+				},
+				'00080068': {
+					'vr': 'CS',
+					'Value': [
+						'FOR PROCESSING'
+					]
+				},
+				'00080070': {
+					'vr': 'LO',
+					'Value': [
+						'GE MEDICAL SYSTEMS'
+					]
+				},
+				'00080090': {
+					'vr': 'PN'
+				},
+				'00081010': {
+					'vr': 'SH',
+					'Value': [
+						'FISCHER'
+					]
+				},
+				'00081030': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081032': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'BS'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							}
+						}
+					]
+				},
+				'0008103E': {
+					'vr': 'LO',
+					'Value': [
+						'Breast Screening'
+					]
+				},
+				'00081090': {
+					'vr': 'LO',
+					'Value': [
+						'Senographe Essential VERSION ADS_54.10'
+					]
+				},
+				'00082218': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'T-04000'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'BREAST'
+								]
+							}
+						}
+					]
+				},
+				'00100010': {
+					'vr': 'PN',
+					'Value': [
+						{
+							'Alphabetic': 'Anonymous'
+						}
+					]
+				},
+				'00100020': {
+					'vr': 'LO',
+					'Value': [
+						'E8DC5AB9EF4B4CFA5C583AF77EE38F84'
+					]
+				},
+				'00100030': {
+					'vr': 'DA'
+				},
+				'00100040': {
+					'vr': 'CS',
+					'Value': [
+						'F'
+					]
+				},
+				'001021B0': {
+					'vr': 'LT',
+					'Value': [
+						'xExppbenTtoyrzwPekjqc2n6z4xqL1diEBd7N521iFfYLDZQewU/am84XXrfNsUIB7/7oEUxEEP2cUdmmlRnip69dDdlXzA4c0jB+MIAMoZMEzX1H2oc89xUZNz9MOwtzuSNl+CeJoQWpatpkjtQ4eXfIQXvyCUD3h/BSP6iyw0='
+					]
+				},
+				'00120062': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00180015': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00180060': {
+					'vr': 'DS',
+					'Value': [
+						29
+					]
+				},
+				'00181000': {
+					'vr': 'LO',
+					'Value': [
+						'2733211316'
+					]
+				},
+				'00181020': {
+					'vr': 'LO',
+					'Value': [
+						'Ads Application Package VERSION ADS_54.10'
+					]
+				},
+				'00181030': {
+					'vr': 'LO',
+					'Value': [
+						'ROUTINE'
+					]
+				},
+				'00181110': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181111': {
+					'vr': 'DS',
+					'Value': [
+						660
+					]
+				},
+				'00181114': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00181147': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00181149': {
+					'vr': 'IS',
+					'Value': [
+						229,
+						191
+					]
+				},
+				'00181150': {
+					'vr': 'IS',
+					'Value': [
+						1022
+					]
+				},
+				'00181151': {
+					'vr': 'IS',
+					'Value': [
+						62
+					]
+				},
+				'00181152': {
+					'vr': 'IS',
+					'Value': [
+						64
+					]
+				},
+				'00181153': {
+					'vr': 'IS',
+					'Value': [
+						63500
+					]
+				},
+				'00181160': {
+					'vr': 'SH',
+					'Value': [
+						'STRIP'
+					]
+				},
+				'00181164': {
+					'vr': 'DS',
+					'Value': [
+						0.09409090909091,
+						0.09409090909091
+					]
+				},
+				'00181166': {
+					'vr': 'CS',
+					'Value': [
+						'RECIPROCATING',
+						'FOCUSED'
+					]
+				},
+				'00181190': {
+					'vr': 'DS',
+					'Value': [
+						0.3
+					]
+				},
+				'00181191': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'001811A0': {
+					'vr': 'DS',
+					'Value': [
+						56
+					]
+				},
+				'001811A2': {
+					'vr': 'DS',
+					'Value': [
+						100
+					]
+				},
+				'00181405': {
+					'vr': 'IS',
+					'Value': [
+						5879
+					]
+				},
+				'00181508': {
+					'vr': 'CS',
+					'Value': [
+						'MAMMOGRAPHIC'
+					]
+				},
+				'00181510': {
+					'vr': 'DS',
+					'Value': [
+						-54
+					]
+				},
+				'00181531': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00181700': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGULAR'
+					]
+				},
+				'00181702': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181704': {
+					'vr': 'IS',
+					'Value': [
+						1915
+					]
+				},
+				'00181706': {
+					'vr': 'IS',
+					'Value': [
+						0
+					]
+				},
+				'00181708': {
+					'vr': 'IS',
+					'Value': [
+						2295
+					]
+				},
+				'00185101': {
+					'vr': 'CS',
+					'Value': [
+						'MLO'
+					]
+				},
+				'00186000': {
+					'vr': 'DS',
+					'Value': [
+						0.0095355194062
+					]
+				},
+				'00187000': {
+					'vr': 'CS',
+					'Value': [
+						'YES'
+					]
+				},
+				'00187001': {
+					'vr': 'DS',
+					'Value': [
+						32.265216827393
+					]
+				},
+				'00187004': {
+					'vr': 'CS',
+					'Value': [
+						'SCINTILLATOR'
+					]
+				},
+				'00187005': {
+					'vr': 'CS',
+					'Value': [
+						'AREA'
+					]
+				},
+				'00187006': {
+					'vr': 'LT',
+					'Value': [
+						'DETECTOR VERSION 2.0 MTFCOMP 2.1'
+					]
+				},
+				'0018700A': {
+					'vr': 'SH',
+					'Value': [
+						'NVL0037_03'
+					]
+				},
+				'0018700C': {
+					'vr': 'DA',
+					'Value': [
+						'20170213'
+					]
+				},
+				'0018701A': {
+					'vr': 'DS',
+					'Value': [
+						1,
+						1
+					]
+				},
+				'00187020': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187022': {
+					'vr': 'DS',
+					'Value': [
+						0.1,
+						0.1
+					]
+				},
+				'00187024': {
+					'vr': 'CS',
+					'Value': [
+						'RECTANGLE'
+					]
+				},
+				'00187026': {
+					'vr': 'DS',
+					'Value': [
+						307.2,
+						240
+					]
+				},
+				'00187030': {
+					'vr': 'DS',
+					'Value': [
+						5,
+						1
+					]
+				},
+				'00187032': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00187034': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00187050': {
+					'vr': 'CS',
+					'Value': [
+						'RHODIUM'
+					]
+				},
+				'00187060': {
+					'vr': 'CS',
+					'Value': [
+						'AUTOMATIC'
+					]
+				},
+				'00187062': {
+					'vr': 'LT',
+					'Value': [
+						'AOP standard RECTANGLE 580 mm 626 mm 180 mm 240 mm EXP DOSE 68646 nGy PRE-EXP DOSE 3622 nGy PRE-EXP THICK 49 mm PRE-EXP COMPO 50 % PRE-EXP KV 28 PRE-EXP TRACK Rh PRE-EXP FILTER Rh PADDLE 16 FLATFIELD no'
+					]
+				},
+				'00187064': {
+					'vr': 'CS',
+					'Value': [
+						'NORMAL'
+					]
+				},
+				'0020000D': {
+					'vr': 'UI',
+					'Value': [
+						'1.2.826.0.1.3680043.8.694.2445297323.8407691689238746540'
+					]
+				},
+				'0020000E': {
+					'vr': 'UI',
+					'Value': [
+						'2.25.168533196262386281423748022403528232356'
+					]
+				},
+				'00200010': {
+					'vr': 'SH'
+				},
+				'00200011': {
+					'vr': 'IS',
+					'Value': [
+						2968
+					]
+				},
+				'00200013': {
+					'vr': 'IS',
+					'Value': [
+						4
+					]
+				},
+				'00200020': {
+					'vr': 'CS',
+					'Value': [
+						'A',
+						'FR'
+					]
+				},
+				'00200062': {
+					'vr': 'CS',
+					'Value': [
+						'L'
+					]
+				},
+				'00280002': {
+					'vr': 'US',
+					'Value': [
+						1
+					]
+				},
+				'00280004': {
+					'vr': 'CS',
+					'Value': [
+						'MONOCHROME1'
+					]
+				},
+				'00280008': {
+					'vr': 'IS',
+					'Value': [
+						1
+					]
+				},
+				'00280010': {
+					'vr': 'US',
+					'Value': [
+						2294
+					]
+				},
+				'00280011': {
+					'vr': 'US',
+					'Value': [
+						1914
+					]
+				},
+				'00280100': {
+					'vr': 'US',
+					'Value': [
+						16
+					]
+				},
+				'00280101': {
+					'vr': 'US',
+					'Value': [
+						14
+					]
+				},
+				'00280102': {
+					'vr': 'US',
+					'Value': [
+						13
+					]
+				},
+				'00280103': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00280300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00280301': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00281040': {
+					'vr': 'CS',
+					'Value': [
+						'LIN'
+					]
+				},
+				'00281041': {
+					'vr': 'SS',
+					'Value': [
+						1
+					]
+				},
+				'00281052': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'00281053': {
+					'vr': 'DS',
+					'Value': [
+						1
+					]
+				},
+				'00281054': {
+					'vr': 'LO',
+					'Value': [
+						'US'
+					]
+				},
+				'00281300': {
+					'vr': 'CS',
+					'Value': [
+						'NO'
+					]
+				},
+				'00282110': {
+					'vr': 'CS',
+					'Value': [
+						'00'
+					]
+				},
+				'00400275': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00400007': {
+								'vr': 'LO',
+								'Value': [
+									'Breast Screening'
+								]
+							},
+							'00400008': {
+								'vr': 'SQ',
+								'Value': [
+									{
+										'00080100': {
+											'vr': 'SH',
+											'Value': [
+												'BS'
+											]
+										},
+										'00080104': {
+											'vr': 'LO',
+											'Value': [
+												'Breast Screening'
+											]
+										}
+									}
+								]
+							},
+							'00400009': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							},
+							'00401001': {
+								'vr': 'SH',
+								'Value': [
+									'0'
+								]
+							}
+						}
+					]
+				},
+				'00400302': {
+					'vr': 'US',
+					'Value': [
+						0
+					]
+				},
+				'00400306': {
+					'vr': 'DS',
+					'Value': [
+						604
+					]
+				},
+				'00400310': {
+					'vr': 'ST',
+					'Value': [
+						'50 %'
+					]
+				},
+				'00400316': {
+					'vr': 'DS',
+					'Value': [
+						0.01363
+					]
+				},
+				'00400318': {
+					'vr': 'CS',
+					'Value': [
+						'BREAST'
+					]
+				},
+				'00408302': {
+					'vr': 'DS',
+					'Value': [
+						5.879
+					]
+				},
+				'00451006': {
+					'vr': 'DS',
+					'Value': [
+						0
+					]
+				},
+				'0045101B': {
+					'vr': 'CS',
+					'Value': [
+						'LMLO'
+					]
+				},
+				'00451020': {
+					'vr': 'DS',
+					'Value': [
+						1008.6584472656
+					]
+				},
+				'00451026': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451029': {
+					'vr': 'DS',
+					'Value': [
+						938,
+						4.4000000953674
+					]
+				},
+				'0045102A': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'0045102B': {
+					'vr': 'IS',
+					'Value': [
+						-1
+					]
+				},
+				'00451049': {
+					'vr': 'DS',
+					'Value': [
+						50
+					]
+				},
+				'00451071': {
+					'vr': 'OB',
+					'InlineBinary': 'ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgAA=='
+				},
+				'00451072': {
+					'vr': 'DS',
+					'Value': [
+						5,
+						1
+					]
+				},
+				'00540220': {
+					'vr': 'SQ',
+					'Value': [
+						{
+							'00080100': {
+								'vr': 'SH',
+								'Value': [
+									'R-10226'
+								]
+							},
+							'00080102': {
+								'vr': 'SH',
+								'Value': [
+									'SNM3'
+								]
+							},
+							'00080104': {
+								'vr': 'LO',
+								'Value': [
+									'medio-lateral oblique'
+								]
+							},
+							'00540222': {
+								'vr': 'SQ'
+							}
+						}
+					]
+				},
+				'20500020': {
+					'vr': 'CS',
+					'Value': [
+						'INVERSE'
+					]
+				}
+			},
+			'ImageResultCreationTimeUtc': '2019-04-24T08:50:41.7689953Z'
+		}
+	]
 }
-
 ";
         public void PostVolpara()
         {
