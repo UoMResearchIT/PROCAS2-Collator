@@ -213,7 +213,7 @@ namespace PROCAS2.Services.App
                 RiskLetter riskLetter = participant.RiskLetters.OrderByDescending(x => x.DateReceived).FirstOrDefault();
                 string title = String.IsNullOrEmpty(participant.Title) == true ? ExportResources.DEFAULT_TITLE : participant.Title;
 
-                string riskLetterContent = riskLetter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
+                string riskLetterContent = riskLetter.RiskLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.FamilyHealthClinic).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
                 //string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.Name).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone);
                 string gpLetterContent = riskLetter.GPLetterContent.Replace(ExportResources.REPLACE_HOSPITALNAME, participant.ScreeningSite.FamilyHealthClinic).Replace(ExportResources.REPLACE_HOSPITALNUMBER, participant.ScreeningSite.Telephone).Replace(ExportResources.REPLACE_PATIENTNAME, participant.Title + " " + participant.FirstName + " " + participant.LastName).Replace(ExportResources.REPLACE_NHS_NUMBER, participant.NHSNumber).Replace(ExportResources.REPLACE_CONSENT_DATE, participant.DateConsented.HasValue ? participant.DateConsented.Value.ToString("dd/MM/yyyy") : "");
 
