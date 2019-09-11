@@ -40,5 +40,6 @@ namespace PROCAS2.Services.App
         MemoryStream QueryDB(QueryDatabaseViewModel model);
         MemoryStream NipplePiercings();
         MemoryStream DeclinedMammogram();
+        MemoryStream UnfinishedQuestionnaire();
     }
 }

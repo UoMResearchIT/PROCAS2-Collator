@@ -309,6 +309,12 @@
   <data name="SUBSEQUENT_MORE_FREQUENT" xml:space="preserve">
     <value>More Frequent Screening</value>
   </data>
+  <data name="UNFINISHED_QUESTIONNAIRE" xml:space="preserve">
+    <value>Questionnaires received but possibly not finished</value>
+  </data>
+  <data name="UNFINISHED_QUESTIONNAIRE_SUMMARY" xml:space="preserve">
+    <value>This report will show the NHS Number for those patients for who it appears we have received an unfinished questionnaire response.</value>
+  </data>
   <data name="VOLPARA" xml:space="preserve">
     <value>Volpara</value>
   </data>

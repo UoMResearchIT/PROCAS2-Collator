@@ -27,6 +27,7 @@ namespace PROCAS2.Services.App
         private IGenericRepository<Participant> _participantRepo;
         private IGenericRepository<Histology> _histologyRepo;
         private IGenericRepository<VolparaDensity> _densityRepo;
+        private IGenericRepository<QuestionnaireResponse> _responseRepo;
         private IConfigService _configService;
 
         private string racialBackgroundCode = "racialBackground"; // default - can be overridden in web.config
@@ -34,11 +35,13 @@ namespace PROCAS2.Services.App
         public ReportService(IGenericRepository<Participant> participantRepo,
                 IGenericRepository<Histology> histologyRepo,
                 IGenericRepository<VolparaDensity> densityRepo,
+                IGenericRepository<QuestionnaireResponse> responseRepo,
                 IConfigService configService)
         {
             _participantRepo = participantRepo;
             _histologyRepo = histologyRepo;
             _densityRepo = densityRepo;
+            _responseRepo = responseRepo;
             _configService = configService;
 
             racialBackgroundCode = _configService.GetAppSetting("RacialBackgroundCode");
@@ -1625,6 +1628,51 @@ namespace PROCAS2.Services.App
 
             return generatedDocument;
         }
+
+        /// <summary>
+        /// Produce a report of those patients for who we have possibly received an unfinished questionnaire
+        /// </summary>
+        /// <returns>The report!</returns>
+        public MemoryStream UnfinishedQuestionnaire()
+        {
+            MemoryStream generatedDocument = new MemoryStream();
+
+            using (SpreadsheetDocument spreadDoc = SpreadsheetDocument.Create(generatedDocument, SpreadsheetDocumentType.Workbook))
+            {
+                WorkbookPart wbPart = AddWorkbookPart(spreadDoc);
+
+
+
+                // Add header
+                string repSheetId = AddSheet(wbPart, "Main", 1);
+                var workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+                AddHeaderFromProperties(workingSheet, typeof(Participant), 1, onlyCols: new List<string>() { "DateReceived" },
+                                                                               beforeCols: new List<string>() {"NHSNumber" });
+
+                int repIndex = 2;
+
+                // Add details
+                List<QuestionnaireResponse> responses = _responseRepo.GetAll().Where(x => x.QuestionnaireEnd == null).ToList();
+                foreach (QuestionnaireResponse response in responses.OrderByDescending(x => x.DateReceived))
+                {
+
+                    workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;
+
+
+                    AddLineFromProperties(workingSheet, response, typeof(QuestionnaireResponse), repIndex,
+                                        onlyCols: new List<string>() { "DateReceived"},
+                                        beforeCols: new List<string>() {response.Participant.NHSNumber});
+                    repIndex++;
+
+
+                }
+
+                wbPart.Workbook.Save();
+            }
+
+            return generatedDocument;
+        }
+
 
         /// <summary>
         /// Produce a report of those who had chemo appointment but treatment was disagreed in clinic 

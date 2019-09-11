@@ -561,6 +561,28 @@ namespace PROCAS2.Controllers
         }
 
         [HttpGet]
+        public ActionResult UnfinishedQuestionnaire()
+        {
+            NoParameterViewModel model = new NoParameterViewModel();
+
+            model.Title = ReportResources.UNFINISHED_QUESTIONNAIRE;
+            model.Summary = ReportResources.UNFINISHED_QUESTIONNAIRE_SUMMARY;
+            model.ActionName = "UnfinishedQuestionnaire";
+
+            return View("NoParameter", model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UnfinishedQuestionnaire(NoParameterViewModel model)
+        {
+
+            return NoParameterReport(() => _reportService.UnfinishedQuestionnaire(), "UnfinishedQuestionnaire", "NoParameter", model);
+
+
+        }
+
+        [HttpGet]
         public ActionResult BreastCancerDiagnoses()
         {
             NoParameterViewModel model = new NoParameterViewModel();

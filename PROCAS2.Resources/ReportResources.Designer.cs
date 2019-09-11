@@ -637,6 +637,24 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Questionnaires received but possibly not finished.
+        /// </summary>
+        public static string UNFINISHED_QUESTIONNAIRE {
+            get {
+                return ResourceManager.GetString("UNFINISHED_QUESTIONNAIRE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This report will show the NHS Number for those patients for who it appears we have received an unfinished questionnaire response..
+        /// </summary>
+        public static string UNFINISHED_QUESTIONNAIRE_SUMMARY {
+            get {
+                return ResourceManager.GetString("UNFINISHED_QUESTIONNAIRE_SUMMARY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Volpara.
         /// </summary>
         public static string VOLPARA {
