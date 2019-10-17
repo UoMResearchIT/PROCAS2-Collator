@@ -18,10 +18,11 @@ namespace PROCAS2.Services.App
         void UploadAskRisk(UploadAskRiskViewModel model, out UploadResultsViewModel outModel);
         void UploadScreeningOutcomes(UploadScreeningOutcomesViewModel model, out UploadResultsViewModel outModel);
         List<string> UpdateParticipantFromUI(ParticipantEditViewModel model);
-        bool DeleteParticipant(string id);
+        bool DeleteParticipant(string id, bool removeNHSNumber);
         bool DoesNHSNumberExist(string NHSNumber);
         bool DoesHashedNHSNumberExist(string hash);
         int CreateNextStudyNumber();
+        bool DeleteOldParticipants();
 
         List<ParticipantLookup> GetLookups(string lookupType);
         bool GetParticipantHistory(string NHSNumber, ref ParticipantHistoryDetailsViewModel model);

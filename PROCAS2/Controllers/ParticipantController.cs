@@ -325,7 +325,7 @@ namespace PROCAS2.Controllers
             bool del = false;
             if (String.IsNullOrEmpty(id) == false)
             {
-                if (_participantService.DeleteParticipant(id) == true)
+                if (_participantService.DeleteParticipant(id, false) == true)
                 {
                     del = true;
                 }
@@ -348,7 +348,7 @@ namespace PROCAS2.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (_participantService.DeleteParticipant(model.NHSNumber) == false)
+                if (_participantService.DeleteParticipant(model.NHSNumber, false) == false)
                 {
                     ModelState.AddModelError("NHSNumber", ParticipantResources.CANNOT_DELETE );
                     return View("Delete", model);

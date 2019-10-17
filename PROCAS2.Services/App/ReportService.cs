@@ -845,7 +845,8 @@ namespace PROCAS2.Services.App
                 int repIndex = 2;
 
                 // Add details
-                List<Participant> patients = _participantRepo.GetAll().Where(x => x.Deleted == false).ToList();
+                DateTime invitedSince = DateTime.Now.AddMonths(-2);
+                List<Participant> patients = _participantRepo.GetAll().Where(x => x.Deleted == false && x.DateCreated.HasValue && x.DateCreated > invitedSince).ToList();
                 foreach (Participant patient in patients)
                 {
                     workingSheet = ((WorksheetPart)wbPart.GetPartById(repSheetId)).Worksheet;

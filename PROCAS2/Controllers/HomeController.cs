@@ -52,7 +52,6 @@ namespace PROCAS2.Controllers
 
             model.NumberConsented = _dashboardService.GetConsentedCount();
             model.NumberParticipants = _dashboardService.GetTotalParticipantCount() ;
-            model.NumberYetToConsent = model.NumberParticipants - model.NumberConsented;
             model.NumberConsentedNoDetails = _dashboardService.GetConsentedNoDetails();
 
             if (Request.IsAjaxRequest())

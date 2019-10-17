@@ -115,7 +115,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number consented:.
+        ///   Looks up a localized string similar to Total number consented:.
         /// </summary>
         public static string NUM_CONSENT {
             get {
@@ -151,7 +151,7 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Number of invitees:.
+        ///   Looks up a localized string similar to Number of invitees within last 2 months:.
         /// </summary>
         public static string NUM_PARC {
             get {

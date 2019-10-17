@@ -208,6 +208,8 @@ namespace PROCAS2.Services.App
                 }
 
                 hashFile = new MemoryStream(Encoding.UTF8.GetBytes(csvString.ToString()));
+
+                DeleteOldParticipants(); // Delete any that are 'expired' i.e. invited more than 2 months ago and haven't consented.
                 return true;
             }
             else
@@ -1270,11 +1272,41 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Delete anyone who has not consented to join the study within 2 omnths of being invited.
+        /// </summary>
+        /// <returns>true if the delete has worked, else false</returns>
+        public bool DeleteOldParticipants()
+        {
+            try
+            {
+                DateTime invitedSince = DateTime.Now.AddMonths(-2);
+
+                List<Participant> participants = _participantRepo.GetAll().Where(x => x.Deleted == false && x.Consented == false && x.DateCreated.HasValue && x.DateCreated < invitedSince).ToList();
+                foreach(Participant participant in participants)
+                {
+                    bool ret = DeleteParticipant(participant.NHSNumber, true);
+                    if (ret == false)
+                    {
+                        return false;
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Blank out the participant details and leave their record as simply an NHS number and deleted flag
         /// </summary>
         /// <param name="id">NHS number</param>
+        /// <param name="removeNHSNumber">true - study number replaces NHS number, false - NHS number remains in place.</param>
         /// <returns>true if successfully deleted, else false</returns>
-        public bool DeleteParticipant(string id)
+        public bool DeleteParticipant(string id, bool removeNHSNumber)
         {
             try
             {
@@ -1286,7 +1318,9 @@ namespace PROCAS2.Services.App
                     participant.BMI = 0.00;
                     participant.Chemoprevention = false;
                     participant.ChemoPreventionDetails = null;
+                    participant.ChemoPreventionDetailsId = null;
                     participant.InitialScreeningOutcome = null;
+                    participant.InitialScreeningOutcomeId = null;
                     participant.FinalTechnicalOutcome = null;
                     participant.FinalAssessmentOutcome = null;
                     participant.ChemoAgreedInClinic = false;
@@ -1316,6 +1350,15 @@ namespace PROCAS2.Services.App
                     participant.RiskConsultationCompleted = false;
                     participant.RiskConsultationEligible = false;
                     participant.RiskConsultationLetterSent = false;
+                    participant.FinalAssessmentOutcomeId = null;
+                    participant.FinalTechnicalOutcomeId = null;
+                    participant.RiskConsultationTypeId = null;
+
+                    if (removeNHSNumber == true)
+                    {
+                        participant.NHSNumber = participant.StudyNumber.ToString().PadLeft(5, '0');
+                    }
+
                     
 
                     _participantRepo.Update(participant);

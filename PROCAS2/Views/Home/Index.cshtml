@@ -16,7 +16,7 @@
 
  @if (Html.IsTestBuild())
  {
-    <span class="col-md-12 alert alert-danger">This is an insecure test server. Please only use dummy (fake) data on this version of the site.</span>
+    <span class="col-md-12 alert alert-danger">This is an insecure test server. Please only use dummy (fake) data on this version of the site. @DateTime.Now.AddMonths(-2).ToLongDateString() @DateTime.Now.AddMonths(-2).ToLongTimeString()</span>
  }   
 
 </div>

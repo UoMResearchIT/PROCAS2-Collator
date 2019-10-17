@@ -30,7 +30,9 @@ namespace PROCAS2.Services.App
         /// <returns>Count of total number of participants</returns>
         public int GetTotalParticipantCount()
         {
-            return _participantRepo.GetAll().Count(x => x.Deleted == false);
+            DateTime invitedSince = DateTime.Now.AddMonths(-2);
+          
+            return _participantRepo.GetAll().Count(x => x.Deleted == false && x.DateCreated.HasValue && x.DateCreated > invitedSince);
         }
 
         /// <summary>
