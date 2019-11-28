@@ -97,6 +97,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email Address.
+        /// </summary>
+        public static string SITE_EMAILADDRESS {
+            get {
+                return ResourceManager.GetString("SITE_EMAILADDRESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Family History Clinic.
         /// </summary>
         public static string SITE_FAMILY_HISTORY_CLINIC {

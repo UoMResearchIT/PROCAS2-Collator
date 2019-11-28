@@ -124,6 +124,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to , or email:.
+        /// </summary>
+        public static string EMAIL_TEXT {
+            get {
+                return ResourceManager.GetString("EMAIL_TEXT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Or.
         /// </summary>
         public static string EXPORT_OR {
@@ -309,6 +318,15 @@ namespace PROCAS2.Resources {
         public static string REPLACE_CONSENT_DATE {
             get {
                 return ResourceManager.GetString("REPLACE_CONSENT_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [INSERT LOCAL SCREENING OFFICE EMAIL].
+        /// </summary>
+        public static string REPLACE_HOSPITALEMAIL {
+            get {
+                return ResourceManager.GetString("REPLACE_HOSPITALEMAIL", resourceCulture);
             }
         }
         

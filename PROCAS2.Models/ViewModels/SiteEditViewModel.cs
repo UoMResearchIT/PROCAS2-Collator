@@ -45,7 +45,10 @@ namespace PROCAS2.Models.ViewModels
         [Display(Name = "SITE_TELEPHONE", ResourceType = typeof(SiteResources))]
         public string Telephone { get; set; }
 
-
+        [MaxLength(200)]
+        [EmailAddress]
+        [Display(Name = "SITE_EMAILADDRESS", ResourceType = typeof(SiteResources))]
+        public string EmailAddress { get; set; }
 
         [MaxLength(200)]
         [Required]

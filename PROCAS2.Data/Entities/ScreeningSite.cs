@@ -75,5 +75,8 @@ namespace PROCAS2.Data.Entities
         [MaxLength(200)]
         public string FamilyHealthClinic { get; set; }
 
+        [MaxLength(200)]
+        public string EmailAddress { get; set; }
+
     }
 }
