@@ -583,6 +583,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Screening number is mandatory..
+        /// </summary>
+        public static string UPLOAD_SCREENING_EMPTY {
+            get {
+                return ResourceManager.GetString("UPLOAD_SCREENING_EMPTY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The site code is mandatory..
         /// </summary>
         public static string UPLOAD_SITE_CODE_EMPTY {

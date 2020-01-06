@@ -46,6 +46,7 @@ namespace PROCAS2.Services.App
        
 
         private int _UPLOADNEWCOLUMNS;
+        private int _UPLOADNEWCOLUMNSEC;
         private int _UPLOADUPDATECOLUMNS;
         private int _UPLOADASKRISKCOLUMNS;
         private int _UPLOADOUTCOMECOLUMNS;
@@ -105,6 +106,7 @@ namespace PROCAS2.Services.App
             // Get the config settings for the uploading. Defaults are deliberately set to be stupid values, to make
             // sure that you set them in the config!
             _UPLOADNEWCOLUMNS = _configService.GetIntAppSetting("UploadNewColumns") ?? 0;
+            _UPLOADNEWCOLUMNSEC = _configService.GetIntAppSetting("UploadNewColumnsEC") ?? 0;
             _UPLOADUPDATECOLUMNS = _configService.GetIntAppSetting("UploadUpdateColumns") ?? 0;
             _UPLOADASKRISKCOLUMNS = _configService.GetIntAppSetting("UploadAskRiskColumns") ?? 0;
             _UPLOADOUTCOMECOLUMNS = _configService.GetIntAppSetting("UploadOutcomeColumns") ?? 0;
@@ -114,14 +116,25 @@ namespace PROCAS2.Services.App
             _LATESTDOFA = _configService.GetDateTimeAppSetting("LatestDOFA") ?? DateTime.Now;
         }
 
+        public bool UploadNewParticipants(UploadNewParticipantsViewModel model, out UploadResultsViewModel outModel, out MemoryStream hashFile)
+        {
+            return UploadNew(false, model, out  outModel, out hashFile);
+        }
+
+        public bool UploadNewParticipantsEC(UploadNewParticipantsViewModel model, out UploadResultsViewModel outModel, out MemoryStream hashFile)
+        {
+            return UploadNew(true, model, out outModel, out hashFile);
+        }
+
         /// <summary>
         /// Upload a CSV file of new NHS numbers, to create a new placeholder participant record (ready for consent)
         /// </summary>
+        /// <param name="EC">true = for East Cheshire, false = not</param>
         /// <param name="model">View model containing the CSV file</param>
         /// <param name="outModel">New view model with any error messages</param>
         /// <param name="hashFile">Memory stream containing the hashes of the NHS numbers.</param>
         /// <returns>true if all the entries in the CSV file are uploaded, else false</returns>
-        public bool UploadNewParticipants( UploadNewParticipantsViewModel model,  out UploadResultsViewModel outModel, out MemoryStream hashFile)
+        private bool UploadNew(bool EC, UploadNewParticipantsViewModel model,  out UploadResultsViewModel outModel, out MemoryStream hashFile)
         {
             outModel = new UploadResultsViewModel();
 
@@ -135,7 +148,7 @@ namespace PROCAS2.Services.App
             {
                 string line = reader.ReadLine();
 
-                valid = ValidateNewParticipantLine(model.Regenerate, line, lineCount, ref outModel);
+                valid = ValidateNewParticipantLine(EC, model.Regenerate, line, lineCount, ref outModel);
                 if (valid == false)
                 {
                     errors = true;
@@ -166,15 +179,20 @@ namespace PROCAS2.Services.App
 
                         string hash = "";
                         int studyNumber;
+                        string hashScreen = "";
 
                         if (model.Regenerate == false)
                         {
-                            hash = CreateNewParticipantRecord(lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]), out studyNumber);
+                            hash = CreateNewParticipantRecord(EC, lineBits[0], Convert.ToDateTime(lineBits[1]), Convert.ToDateTime(lineBits[2]), EC? lineBits[3]: "", out studyNumber, out hashScreen);
                         }
                         else
                         {
                             hash = _hashingService.CreateNHSHash(lineBits[0]);
                             studyNumber = GetStudyNumber(hash);
+                            if (EC)
+                            {     
+                                hashScreen = _hashingService.CreateScreenHash(lineBits[3]);   
+                            }
                         }
 
                         // First the study number
@@ -195,7 +213,7 @@ namespace PROCAS2.Services.App
 
 #if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
 
-                        if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), hash) == false)
+                        if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), EC? hashScreen: hash) == false)
                         {
                             // Then the hash
                             csv.WriteField("Error: Invite not sent to Volpara");
@@ -561,12 +579,14 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Create a new participant record
         /// </summary>
+        /// <param name="EC">true = for East Cheshire</param>
         /// <param name="NHSNumber">NHS number</param>
         /// <param name="DOB">Date of birth</param>
         /// <param name="DOFA">Date of first appointment</param>
+        /// <param name="screeningNumber">Screening number (only for East Cheshire)</param>
         /// <param name="studyNumber">study number returned</param>
         /// <returns>Hashed NHS number</returns>
-        private string CreateNewParticipantRecord(string NHSNumber, DateTime DOB, DateTime DOFA, out int studyNumber)
+        private string CreateNewParticipantRecord(bool EC, string NHSNumber, DateTime DOB, DateTime DOFA, string screeningNumber, out int studyNumber, out string hashScreen)
         {
             DateTime dateCreated = DateTime.Now;
 
@@ -574,6 +594,17 @@ namespace PROCAS2.Services.App
             participant.NHSNumber = NHSNumber;
             string hash = _hashingService.CreateNHSHash(NHSNumber);
             participant.HashedNHSNumber = hash;
+            hashScreen = "";
+            if (EC) {
+                hashScreen = _hashingService.CreateScreenHash(screeningNumber);
+                participant.HashedScreeningNumber = hashScreen;
+                participant.UseScreeningNumber = true;
+            }
+            else
+            {
+                participant.UseScreeningNumber = false;
+            }
+
             participant.DateCreated = dateCreated;
             participant.DateOfBirth = DOB;
             participant.DateFirstAppointment = DOFA;
@@ -592,20 +623,32 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Check the the passed line is valid
         /// </summary
+        /// <param name="EC">true = for East Cheshire</param>
         /// <param name="regenerate">True = regenerating the hash file, false = initial upload</param>
         /// <param name="line">The line string</param>
         /// <param name="lineCount">Line number</param>
         /// <param name="outModel">View model to add result messages to</param>
         /// <returns>true if valid, else false</returns>
-        private bool ValidateNewParticipantLine(bool regenerate, string line, int lineCount, ref UploadResultsViewModel outModel)
+        private bool ValidateNewParticipantLine(bool EC, bool regenerate, string line, int lineCount, ref UploadResultsViewModel outModel)
         {
             
             string[] lineBits = line.Split(',');
-            if (lineBits.Count() != _UPLOADNEWCOLUMNS) // Should only be 3 columns
+
+            if (EC)
             {
-                
-                outModel.AddMessage(lineCount , string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 3), UploadResources.UPLOAD_FAIL);
-                return false;
+                if (lineBits.Count() != _UPLOADNEWCOLUMNSEC) // Should only be 4 columns
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 4), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
+            }
+            else
+            {
+                if (lineBits.Count() != _UPLOADNEWCOLUMNS) // Should only be 3 columns
+                {
+                    outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_INCORRECT_COLUMNS, 3), UploadResources.UPLOAD_FAIL);
+                    return false;
+                }
             }
 
             string NHSNumber = lineBits[0];
@@ -654,6 +697,13 @@ namespace PROCAS2.Services.App
             if (DOFA < _EARLIESTDOFA || DOFA > _LATESTDOFA)
             {
                 outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_DOFA_OUT_OF_RANGE), UploadResources.UPLOAD_FAIL);
+                return false;
+            }
+
+            // Screening number (required for East Cheshire)
+            if (EC && String.IsNullOrEmpty(lineBits[3]) == true) // screening number is mandatory
+            {
+                outModel.AddMessage(lineCount, string.Format(UploadResources.UPLOAD_SCREENING_EMPTY), UploadResources.UPLOAD_FAIL);
                 return false;
             }
 

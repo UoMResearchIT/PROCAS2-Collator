@@ -69,17 +69,7 @@ namespace PROCAS2.Controllers
                 MemoryStream hashFile;
                 UploadResultsViewModel outModel;
 
-                Response.Clear();
-
-                var requestToken = Request.Cookies["fileDownloadToken"];
-                if (requestToken != null && long.Parse(requestToken.Value) > 0)
-                {
-                    var responseTokenValue = long.Parse(requestToken.Value) * (-1);
-                    Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
-                    Response.Cookies["fileDownloadToken"].Path = "/";
-                }
-
-                Response.Buffer = true;
+                SetDownloadCookie();
 
                 if (_participantService.UploadNewParticipants(model, out outModel, out hashFile) == false)
                 {
@@ -92,14 +82,69 @@ namespace PROCAS2.Controllers
                     // If there is no problem then return a spreadsheet with the hash codes.
                     string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Participant/UploadNew"));
                     HttpContext.Response.AppendHeader("Refresh", headerValue);
-
-                    
-
+                
                     return new TextResult(hashFile, "Hashes.txt");
                 }
             }
 
             return View("UploadNew", model);
+        }
+
+        // GET: Participant/UploadNewEC
+        public ActionResult UploadNewEC()
+        {
+            UploadNewParticipantsViewModel model = new UploadNewParticipantsViewModel();
+            return View("UploadNewEC", model);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadNewEC(UploadNewParticipantsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                MemoryStream hashFile;
+                UploadResultsViewModel outModel;
+
+                SetDownloadCookie();
+              
+                if (_participantService.UploadNewParticipantsEC(model, out outModel, out hashFile) == false)
+                {
+                    // if there is a problem uploading the participants say so.
+                    return View("UploadResults", outModel);
+
+                }
+                else
+                {
+                    // If there is no problem then return a spreadsheet with the hash codes.
+                    string headerValue = string.Concat(1, ";Url=", PrependSchemeAndAuthority("Participant/UploadNewEC"));
+                    HttpContext.Response.AppendHeader("Refresh", headerValue);
+
+                    return new TextResult(hashFile, "Hashes.txt");
+                }
+            }
+
+            return View("UploadNewEC", model);
+        }
+
+        /// <summary>
+        /// Set the cookie for the download/upload progress screen.
+        /// </summary>
+        private void SetDownloadCookie()
+        {
+            Response.Clear();
+
+            var requestToken = Request.Cookies["fileDownloadToken"];
+            if (requestToken != null && long.Parse(requestToken.Value) > 0)
+            {
+                var responseTokenValue = long.Parse(requestToken.Value) * (-1);
+                Response.Cookies["fileDownloadToken"].Value = responseTokenValue.ToString();
+                Response.Cookies["fileDownloadToken"].Path = "/";
+            }
+
+            Response.Buffer = true;
+
         }
 
         // GET: Participant/Upload

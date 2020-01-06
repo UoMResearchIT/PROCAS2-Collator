@@ -294,6 +294,9 @@
   <data name="UPLOAD_POSTCODE_TOO_LONG" xml:space="preserve">
     <value>Postcode is too long.</value>
   </data>
+  <data name="UPLOAD_SCREENING_EMPTY" xml:space="preserve">
+    <value>Screening number is mandatory.</value>
+  </data>
   <data name="UPLOAD_SCREEN_NUMBER_EMPTY" xml:space="preserve">
     <value>Screening Number is mandatory.</value>
   </data>

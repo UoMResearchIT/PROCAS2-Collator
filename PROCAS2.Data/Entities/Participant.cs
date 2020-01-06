@@ -106,6 +106,10 @@ namespace PROCAS2.Data.Entities
         [ForeignKey("LastEvent")]
         public int? LastEventId { get; set; }
 
+        [MaxLength(400)]
+        public string HashedScreeningNumber { get; set; }
+
+        public bool UseScreeningNumber { get; set; }
 
         public virtual ICollection<RiskLetter> RiskLetters { get; set; }
         public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }

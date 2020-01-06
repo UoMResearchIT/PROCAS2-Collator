@@ -13,5 +13,7 @@ namespace PROCAS2.Services.Utility
 
         string CreateNHSHash(string NHSNumber);
         bool ValidateNHSNumber(string NHSNumber, string goodHash);
+
+        string CreateScreenHash(string screeningNumber);
     }
 }

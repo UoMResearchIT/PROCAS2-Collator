@@ -63,6 +63,20 @@ namespace PROCAS2.Services.Utility
         }
 
         /// <summary>
+        /// Creates a salted PBKDF2 hash of the Screening number using the secret salt
+        /// </summary>
+        /// <param name="screenNumber">Screening number</param>
+        /// <returns>The hash (not including the salt)</returns>
+        public string CreateScreenHash(string screeningNumber)
+        {
+            int iterations = Convert.ToInt32(_configService.GetAppSetting("NHSHashingIterations"));
+            string saltString = _configService.GetAppSetting("NHSHashingSalt");
+            byte[] salt = Convert.FromBase64String(saltString);
+            byte[] hash = PBKDF2(screeningNumber, salt, iterations, HASH_BYTES);
+            return Convert.ToBase64String(hash);
+        }
+
+        /// <summary>
         /// Validates an NHS number given a hash of the correct one.
         /// </summary>
         /// <param name="NHSNumber">The NHS number to check</param>

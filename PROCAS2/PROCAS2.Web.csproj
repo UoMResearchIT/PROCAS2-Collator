@@ -719,6 +719,7 @@
     <Content Include="Views\Participant\NoConsent.cshtml" />
     <Content Include="Views\Participant\NoImage.cshtml" />
     <Content Include="Views\Report\QueryDatabase.cshtml" />
+    <Content Include="Views\Participant\UploadNewEC.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
