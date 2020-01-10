@@ -84,7 +84,14 @@ namespace PROCAS2.Controllers
                 Participant participant = _participantRepo.GetAll().Where(x => x.NHSNumber == model.NHSNumber).FirstOrDefault();
                 if (participant != null)
                 {
-                    string message = @"{ 'HashedPatientId' : '" + participant.HashedNHSNumber + "', 'DateOfConsent':'" + DateTime.Now.ToString("yyyy-MM-dd") + "'}";
+                    string hashedPatientID = participant.HashedNHSNumber;
+                    // Use the screening number to send to Volpara if the patient is flagged to do so.
+                    if (participant.UseScreeningNumber == true)
+                    {
+                        hashedPatientID = participant.HashedScreeningNumber;
+                    }
+
+                    string message = @"{ 'HashedPatientId' : '" + hashedPatientID + "', 'DateOfConsent':'" + DateTime.Now.ToString("yyyy-MM-dd") + "'}";
                     if (_serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", message, "VolparaConsentQueue", false) == false)
                     {
                         ModelState.AddModelError("NHSNumber", "Error setting consent");

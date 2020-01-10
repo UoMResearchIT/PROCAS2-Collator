@@ -599,6 +599,7 @@ namespace PROCAS2.Services.App
                 hashScreen = _hashingService.CreateScreenHash(screeningNumber);
                 participant.HashedScreeningNumber = hashScreen;
                 participant.UseScreeningNumber = true;
+                participant.ScreeningNumber = screeningNumber;
             }
             else
             {

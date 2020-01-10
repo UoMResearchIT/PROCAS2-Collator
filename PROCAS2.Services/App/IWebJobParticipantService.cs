@@ -17,5 +17,6 @@ namespace PROCAS2.Services.App
         string GetStudyNumber(string hashedNHSNumber);
         bool AddEvent(Participant participant, AppUser user, DateTime eventDate, string eventCode, string eventNotes, string reason = null);
         bool SetBMI(string hashedNHSNumber, string answerText);
+        string GetHashedPatientId(string hashedPatientID);
     }
 }

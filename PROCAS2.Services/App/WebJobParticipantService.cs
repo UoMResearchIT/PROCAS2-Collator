@@ -73,6 +73,31 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// If this patient needs to use the hashed screening number instead of the NHS ID then the hashed screening number gets returned, else just return hashed NHS number.
+        /// </summary>
+        /// <param name="hashedPatientID">Hashed NHS number</param>
+        /// <returns>Hashed ID for use by Volpara</returns>
+        public string GetHashedPatientId(string hashedPatientID)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientID).FirstOrDefault();
+            if (participant != null)
+            {
+                if (participant.UseScreeningNumber == true) // Volpara uses the hashed screening number to identify the patient
+                {
+                    return participant.HashedScreeningNumber;
+                }
+                else // Volpara use the NHS number
+                {
+                    return participant.HashedNHSNumber;
+                }
+            }
+            else
+            {
+                return hashedPatientID;
+            }
+        }
+
+        /// <summary>
         /// Set the patient's consented flag to true
         /// </summary>
         /// <param name="hashedNHSNumber">Hashed NHS Number</param>

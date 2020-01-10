@@ -125,10 +125,14 @@ namespace PROCAS2.Services.Utility
                     }
                 }
 
+                // Check which ID to use for sending message to Volpara (i.e. NHS or screening number)
+                string hashedPatientId = consentObj.PatientId;
+                hashedPatientId = _participantService.GetHashedPatientId(consentObj.PatientId);
+
                 // Post message on Volpara outgoing queue - to inform them of consent
                 if (!_configService.IsPhase1a()) // But not in phase 1a
                 {
-                    string message = @"{ 'HashedPatientId' : '" + consentObj.PatientId + "', 'DateOfConsent':'" + now.ToString("yyyy-MM-dd") + "'}";
+                    string message = @"{ 'HashedPatientId' : '" + hashedPatientId + "', 'DateOfConsent':'" + now.ToString("yyyy-MM-dd") + "'}";
                     if (_serviceBusService.PostServiceBusMessage("Volpara-ServiceBusKeyName", "Volpara-ServiceBusKeyValue", "Volpara-ServiceBusBase", message, "VolparaConsentQueue", false) == false)
                     {
                         retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_OUTGOING_ERROR, messageBody: consentMessage));
