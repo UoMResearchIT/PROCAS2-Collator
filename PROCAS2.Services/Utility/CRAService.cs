@@ -118,7 +118,7 @@ namespace PROCAS2.Services.Utility
                 if (!String.IsNullOrEmpty(consentObj.ConsentPDF)) // Might not initially get the PDF
                 {
 
-                    string filename = _participantService.GetStudyNumber(consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
+                    string filename = _participantService.GetStudyNumber(false, consentObj.PatientId) + "-" + now.ToString("yyyy-MM-dd-hh-mm-ss") + ".pdf";
                     if (_storageService.ProcessConsentPDF(consentObj.ConsentPDF, filename) == false)
                     {
                         retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.CRA_Consent, WebJobLogLevel.Warning, HL7Resources.CONSENT_PDF_ERROR, messageBody: consentMessage));
@@ -485,7 +485,7 @@ namespace PROCAS2.Services.Utility
                 }
             }
 
-            string fileName = _participantService.GetStudyNumber(patientID) + "-" + dateFinished + ".txt";
+            string fileName = _participantService.GetStudyNumber(false, patientID) + "-" + dateFinished + ".txt";
             if (_storageService.StoreCRAMessage(hl7Message, fileName) == false)
             {
                 // Don't fail if can't store the message, just report it.

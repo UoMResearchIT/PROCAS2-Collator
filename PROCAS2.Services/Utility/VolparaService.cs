@@ -58,6 +58,7 @@ namespace PROCAS2.Services.Utility
 
            
             string patientId = null;
+            bool useScreeningNumber = false;
             int densityId = 0;
             bool createdDensity = false;
             int numImage = 0;
@@ -76,7 +77,6 @@ namespace PROCAS2.Services.Utility
                     if (sourceImage != null)
                     {
                         
-
                         // Get the patient ID
                         JToken thisPatientIdToken = sourceImage.SelectToken("$.Hashes[:1].Value");
                         if (thisPatientIdToken != null)
@@ -87,12 +87,20 @@ namespace PROCAS2.Services.Utility
                                 patientId = thisPatientId; // should be the same patientID for all images in the message, but may only appear for first 1!
                             }
                         }
-
-                        // Patient has to exist!
+         
+                        // Patient has to exist, first check for NHS number.
                         if (_participantService.DoesHashedNHSNumberExist(patientId) == false)
                         {
-                            retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, String.Format(VolparaResources.PATIENT_NOT_EXISTS, patientId), messageBody: message));
-                            return retMessages;
+                            // Then check for screening number.
+                            if (_participantService.DoesHashedScreeningNumberExist(patientId) == false)
+                            {
+                                retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, String.Format(VolparaResources.PATIENT_NOT_EXISTS, patientId), messageBody: message));
+                                return retMessages;
+                            }
+                            else
+                            {
+                                useScreeningNumber = true;
+                            }
                         }
 
                         // Only need to create the density record once
@@ -117,7 +125,7 @@ namespace PROCAS2.Services.Utility
                             densityMessage.ScoreCardResults = scoreCardMessage;
                             densityMessage.VolparaServerScoreCardResults = volparaServerScoreCardMessage;
 
-                            if (_screeningService.CreateDensityRecord(patientId, densityMessage, out densityId) == false)
+                            if (_screeningService.CreateDensityRecord(useScreeningNumber, patientId, densityMessage, out densityId) == false)
                             {
                                 // can't create the density record
                                 retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_DENSITY_RECORD, messageBody: message));
@@ -134,7 +142,7 @@ namespace PROCAS2.Services.Utility
                             if (!String.IsNullOrEmpty(imageFileName))
                             {
                                 // Create the Image record
-                                if (_screeningService.CreateImageRecord(patientId, imageFileName, numImage, out imageId) == false)
+                                if (_screeningService.CreateImageRecord(useScreeningNumber, patientId, imageFileName, numImage, out imageId) == false)
                                 {
                                     // cannot create image record!
                                     retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_IMAGE, messageBody: message));
@@ -201,7 +209,7 @@ namespace PROCAS2.Services.Utility
                         StripOutMetaDataInFields(ref xlsMessage);
 
                         // Create screening record
-                        if (_screeningService.CreateScreeningRecord(patientId, xlsMessage, imageId, densityId, acquisitionDateTime) == false)
+                        if (_screeningService.CreateScreeningRecord(useScreeningNumber, patientId, xlsMessage, imageId, densityId, acquisitionDateTime) == false)
                         {
                             // can't create the screening record
                             retMessages.AddIfNotNull(_logger.Log(WebJobLogMessageType.Volpara_Screening, WebJobLogLevel.Warning, VolparaResources.CANNOT_CREATE_RECORD, messageBody: message));
@@ -219,7 +227,7 @@ namespace PROCAS2.Services.Utility
                 }
 
 
-                string fileName = _participantService.GetStudyNumber(patientId) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
+                string fileName = _participantService.GetStudyNumber(useScreeningNumber, patientId) + "-" + DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss") + ".txt";
 
                 if (_storageService.StoreVolparaMessage(message, fileName) == false)
                 {

@@ -40,16 +40,25 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Create the screening record from the service bus message
         /// </summary>
+        /// <param name="useScreeningNumber">true = find patient by screening number, false = find patient by NHS</param>
         /// <param name="hashedPatientId">Hashed NHS number</param>
         /// <param name="xlsMessage">The message</param>
         /// <returns>true if created, else false</returns>
-        public bool CreateScreeningRecord(string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId, int densityId, string acquisitionDateTime)
+        public bool CreateScreeningRecord(bool useScreeningNumber, string hashedPatientId, ScreeningXlsMessage xlsMessage, int imageId, int densityId, string acquisitionDateTime)
         {
             try
             {
                 ScreeningRecordV1_5_4 record = HydrateScreeningRecordFromViewModel(xlsMessage);
 
-                record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                if (useScreeningNumber == true)
+                {
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                }
+                else
+                {
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                }
+
                 record.DataDate = DateTime.Now;
                 record.AquisitionDate = acquisitionDateTime;
                
@@ -110,16 +119,25 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Create the overall density record for the patient.
         /// </summary>
+        /// <param name="useScreeningNumber">true = find patient by screening number, false = find patient by NHS</param>
         /// <param name="hashedPatientId">hashed NHS number</param>
         /// <param name="densityMessage">object containing the incoming density message</param>
         /// <returns>true is record created successfully, else false</returns>
-        public bool CreateDensityRecord(string hashedPatientId, VolparaDensityMessage densityMessage, out int densityId)
+        public bool CreateDensityRecord(bool useScreeningNumber, string hashedPatientId, VolparaDensityMessage densityMessage, out int densityId)
         {
             try
             {
                 VolparaDensity record = HydrateDensityRecordFromViewModel(densityMessage);
 
-                record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                if (useScreeningNumber == true)
+                {
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                }
+                else
+                {
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                }
+
                 record.DataDate = DateTime.Now;
 
                 _densityRepo.Insert(record);
@@ -214,15 +232,24 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Create the record that records where the patient's image is.
         /// </summary>
+        /// <param name="useScreeningNumber">true = find patient by screening number, false = find patient by NHS</param>
         /// <param name="hashedPatientId">hashed NHS number</param>
         /// <param name="imageFileName">file name of the image in Azure</param>
         /// <returns>true if record created successfully, else false</returns>
-        public bool CreateImageRecord(string hashedPatientId, string imageFileName, int numImage, out int imageId)
+        public bool CreateImageRecord(bool useScreeningNumber, string hashedPatientId, string imageFileName, int numImage, out int imageId)
         {
             try
             {
                 Image image = new Image();
-                image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                if (useScreeningNumber == true)
+                {
+                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                }
+                else
+                {
+                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                }
+
                 image.OrigName = numImage.ToString();
                 image.CurrentName = imageFileName;
 

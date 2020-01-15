@@ -73,6 +73,24 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Does the passed hashed screening number match a participant in the database?
+        /// </summary>
+        /// <param name="hash">Hashed screening Number</param>
+        /// <returns>true if exists, else false</returns>
+        public bool DoesHashedScreeningNumberExist(string hash)
+        {
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hash).FirstOrDefault();
+            if (participant == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        /// <summary>
         /// If this patient needs to use the hashed screening number instead of the NHS ID then the hashed screening number gets returned, else just return hashed NHS number.
         /// </summary>
         /// <param name="hashedPatientID">Hashed NHS number</param>
@@ -206,11 +224,21 @@ namespace PROCAS2.Services.App
         /// <summary>
         /// Return the study number of the passed NHS hash
         /// </summary>
+        /// <param name="useScreeningNumber">true = use the screening number, false = use the NHS number</param>
         /// <param name="hashedNHSNumber">hashed NHS number</param>
         /// <returns>study number</returns>
-        public string GetStudyNumber(string hashedNHSNumber)
+        public string GetStudyNumber(bool useScreeningNumber, string hashedNHSNumber)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+            Participant participant = new Participant();
+            if (useScreeningNumber == true)
+            {
+                participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedNHSNumber).FirstOrDefault();
+            }
+            else
+            {
+                participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+            }
+
             if (participant != null)
             {
                 return participant.StudyNumber.ToString().PadLeft(5, '0');
