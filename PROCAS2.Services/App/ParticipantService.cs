@@ -750,7 +750,12 @@ namespace PROCAS2.Services.App
                     DateTime DOFA = Convert.ToDateTime(lineBits[3]);
                     DateTime DOB = Convert.ToDateTime(lineBits[2]);
 
-                    participant.ScreeningNumber = lineBits[1];
+                    // If the participant already has a screening number don't overwrite it, as it is used as the identifier
+                    if (participant.UseScreeningNumber == false) // We are not using it as an identifier
+                    {
+                        participant.ScreeningNumber = lineBits[1];
+                    }
+
                     participant.DateFirstAppointment = DOFA;
                     participant.DateActualAppointment = DOFA; // Initially the 'actual' appointment date will be the same as the first
                     participant.DateOfBirth = DOB;

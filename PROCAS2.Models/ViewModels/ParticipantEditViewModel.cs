@@ -212,6 +212,8 @@ namespace PROCAS2.Models.ViewModels
 
         public string NHSNumber { get; set; }
 
+        public bool UseScreeningNumber { get; set;}
+
         [Display(Name = "SCREENING_NUMBER", ResourceType = typeof(ParticipantResources))]
         [MaxLength(20)]
         [Required]

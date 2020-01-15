@@ -295,6 +295,7 @@ namespace PROCAS2.Controllers
                 model.FinalAssessmentOutcomeId = model.Participant.FinalAssessmentOutcomeId;
                 model.FinalTechnicalOutcomeId = model.Participant.FinalTechnicalOutcomeId;
                 model.RiskConsultationTypeId = model.Participant.RiskConsultationTypeId;
+                model.UseScreeningNumber = model.Participant.UseScreeningNumber;
                 FillEditLookups(ref model);
                 model.Reason = "";
                 return View("Edit", model);
