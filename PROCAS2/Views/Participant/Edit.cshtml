@@ -70,16 +70,18 @@
             <div class="col-md-2">
                 @if (Model.UseScreeningNumber == true)
                 {
-                    @Html.DisplayFor(model => model.ScreeningNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ScreeningNumber, new { htmlAttributes = new { @class = "form-control", @readonly = true } })
                 }
                 else
                 {
+
                     @Html.EditorFor(model => model.ScreeningNumber, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.ScreeningNumber, "", new { @class = "text-danger" })
-                }
 
-                
+                }
             </div>
+
+                   
 
 
 

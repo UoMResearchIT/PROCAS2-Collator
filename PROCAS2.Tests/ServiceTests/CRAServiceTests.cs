@@ -164,7 +164,7 @@ namespace PROCAS2.Tests.ServiceTests
         public void ProcessQuestionnaire_HL7_Not_ORUR01_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORC^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -191,7 +191,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_No_PatientID_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -244,7 +244,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_Invalid_PatientID_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -271,7 +271,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_Cannot_Create_Questionnaire_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -303,7 +303,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_Cannot_Create_FamilyHistory_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -338,7 +338,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_Cannot_Create_Response_Item_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Thank you for taking time during your visit to complete the Breast Cancer Risk Assessment Questionnaire.Through this assessment, we strive to help identify women at higher than average risk of developing breast cancer.All information gathered during the assessment is strictly confidential and is never shared with any third party without your prior consent.Key criteria for increased risk are: ~-Personal or family history of breast and / or ovarian cancer~-History of abnormal breast pathology~-Personal history of chest radiation~-Family member with a known genetic mutation~~You provided the following information regarding your personal and family history:~-Mother: Breast Cancer age 65~-Sister: Breast Cancer age 55~~Our goal is to empower, educate, care for and support patients by providing them the most current and relevant information available.~||||||F
@@ -376,7 +376,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_Cannot_Create_Risk_Letter_Returns_Error()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Hello~Test~||||||F
@@ -417,7 +417,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
         public void ProcessQuestionnaire_HL7_No_Problems_Returns_Nowt()
         {
             string message = @"MSH|^~\&|CRA||||20171030215008||ORU^R01|99900000001|P|2.3||||AL
-PID|1||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
+PID|1|||PATIENTID||TestSuperShortBreast^Stephanie||19700923|F
 PV1|1|O|||||123^Walker^Jane||||||||||||99912345
 OBR|1||99923456|100^Risk Assessment^CRA|||20170808080023|20170808080023||||||||123^Walker^Jane|||||||||F
 OBX|2|TX|110^Screening Mammography Patient Letter^CRA||Hello~Test~||||||F
@@ -443,7 +443,7 @@ OBX|37|TX|1000.surveyQuestion3^Survey Question 3?||Survey Answer 3||||||F";
             _responseService.Stub(x => x.CreateResponseItem(Arg<QuestionnaireResponse>.Matches(z => z.Id == 0), Arg<string>.Is.Equal("surveyQuestion1"), Arg<string>.Is.Equal("Survey Answer 1"))).Return(true);
 
             _participantService.Stub(x => x.CreateRiskLetter("PATIENTID", "29.01", "HIGH", "NO", new List<string>() { "Hello", "Test", "" }, new List<string>() { "Hello", "Test", "" })).Return(true);
-            _participantService.Stub(x => x.GetStudyNumber("PATIENTID")).Return("STUDY1");
+            _participantService.Stub(x => x.GetStudyNumber(false,"PATIENTID")).Return("STUDY1");
             _storageService.Stub(x => x.StoreCRAMessage(message, "STUDY1-20170808080023.pdf")).Return(true);
 
 
