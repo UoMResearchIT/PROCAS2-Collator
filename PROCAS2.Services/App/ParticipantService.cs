@@ -211,7 +211,7 @@ namespace PROCAS2.Services.App
 
 
 
-#if !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
+#if !DEBUG && !TESTBUILD // We don't want to start posting messages to the queues if this is just the webnet test version!
 
                         if (_storageService.StoreInviteMessage(studyNumber.ToString().PadLeft(5, '0'), EC? hashScreen: hash) == false)
                         {
@@ -565,7 +565,7 @@ namespace PROCAS2.Services.App
         /// <returns>study number</returns>
         public int GetStudyNumber(string hash)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash && x.Deleted == false).FirstOrDefault();
             if (participant != null)
             {
                 return participant.StudyNumber;
@@ -1529,7 +1529,7 @@ namespace PROCAS2.Services.App
         /// <returns>true if exists, else false</returns>
         public bool DoesHashedNHSNumberExist(string hash)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash && x.Deleted == false).FirstOrDefault();
             if (participant == null)
             {
                 return false;
@@ -1608,7 +1608,7 @@ namespace PROCAS2.Services.App
         {
             try
             {
-                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
                 if (participant != null)
                 {
                    

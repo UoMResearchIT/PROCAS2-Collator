@@ -64,7 +64,7 @@ namespace PROCAS2.Services.App
                     response.QuestionnaireEnd = DateTime.ParseExact(dateFinished, formatString, CultureInfo.InvariantCulture);
                 }
 
-                response.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == patientId).FirstOrDefault();
+                response.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == patientId && x.Deleted == false).FirstOrDefault();
 
                 _responseRepo.Insert(response);
                 _unitOfWork.Save();

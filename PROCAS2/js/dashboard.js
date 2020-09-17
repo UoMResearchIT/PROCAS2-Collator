@@ -2,7 +2,7 @@
 
     var urlpath = "";
 
-    if (window.location.host.indexOf("webnet") > -1) {
+    if (window.location.host.indexOf("vm-humdevnett01") > -1) {
         urlpath = urlpath + "/PROCAS2";
     }
 

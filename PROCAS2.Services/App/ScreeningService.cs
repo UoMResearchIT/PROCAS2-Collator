@@ -52,11 +52,11 @@ namespace PROCAS2.Services.App
 
                 if (useScreeningNumber == true)
                 {
-                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
                 else
                 {
-                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
 
                 record.DataDate = DateTime.Now;
@@ -131,11 +131,11 @@ namespace PROCAS2.Services.App
 
                 if (useScreeningNumber == true)
                 {
-                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
                 else
                 {
-                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                    record.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
 
                 record.DataDate = DateTime.Now;
@@ -243,11 +243,11 @@ namespace PROCAS2.Services.App
                 Image image = new Image();
                 if (useScreeningNumber == true)
                 {
-                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId).FirstOrDefault();
+                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
                 else
                 {
-                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId).FirstOrDefault();
+                    image.Participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientId && x.Deleted == false).FirstOrDefault();
                 }
 
                 image.OrigName = numImage.ToString();

@@ -61,7 +61,7 @@ namespace PROCAS2.Services.App
         /// <returns>true if exists, else false</returns>
         public bool DoesHashedNHSNumberExist(string hash)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash).FirstOrDefault();
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hash && x.Deleted == false).FirstOrDefault();
             if (participant == null)
             {
                 return false;
@@ -79,7 +79,7 @@ namespace PROCAS2.Services.App
         /// <returns>true if exists, else false</returns>
         public bool DoesHashedScreeningNumberExist(string hash)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hash).FirstOrDefault();
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hash && x.Deleted == false).FirstOrDefault();
             if (participant == null)
             {
                 return false;
@@ -97,7 +97,7 @@ namespace PROCAS2.Services.App
         /// <returns>Hashed ID for use by Volpara</returns>
         public string GetHashedPatientId(string hashedPatientID)
         {
-            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientID).FirstOrDefault();
+            Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedPatientID && x.Deleted == false).FirstOrDefault();
             if (participant != null)
             {
                 if (participant.UseScreeningNumber == true) // Volpara uses the hashed screening number to identify the patient
@@ -124,7 +124,7 @@ namespace PROCAS2.Services.App
         {
             try
             {
-                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
                 if (participant != null)
                 {
                     DateTime consentedDate = DateTime.Now;
@@ -161,7 +161,7 @@ namespace PROCAS2.Services.App
         {
             try
             {
-                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
                 if (participant != null)
                 {
 
@@ -232,11 +232,11 @@ namespace PROCAS2.Services.App
             Participant participant = new Participant();
             if (useScreeningNumber == true)
             {
-                participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedNHSNumber).FirstOrDefault();
+                participant = _participantRepo.GetAll().Where(x => x.HashedScreeningNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
             }
             else
             {
-                participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
             }
 
             if (participant != null)
@@ -300,7 +300,7 @@ namespace PROCAS2.Services.App
             try
             {
 
-                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber).FirstOrDefault();
+                Participant participant = _participantRepo.GetAll().Where(x => x.HashedNHSNumber == hashedNHSNumber && x.Deleted == false).FirstOrDefault();
                 if (participant != null)
                 {
                     double bmi = 0;
