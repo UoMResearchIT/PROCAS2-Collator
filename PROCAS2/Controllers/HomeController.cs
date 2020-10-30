@@ -42,7 +42,7 @@ namespace PROCAS2.Controllers
 
         public ActionResult Index()
         {
-           
+
             return View();
         }
 
