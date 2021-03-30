@@ -83,6 +83,27 @@ namespace PROCAS2.Services.App
         }
 
         /// <summary>
+        /// Is the passed risk category low?
+        /// </summary>
+        /// <param name="riskCategory">risk category</param>
+        /// <returns>true if low, else false</returns>
+        private bool IsRiskLow(string riskCategory)
+        {
+            if (String.IsNullOrEmpty(riskCategory))
+            {
+                return false; // Don't know so return false to be on the safe side.
+            }
+
+            if (riskCategory.ToUpper() == "HIGH" || riskCategory.ToUpper() == "MODERATE" ||
+                riskCategory.ToUpper() == "AVERAGE")
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
         ///  Generate the letters for viewing
         /// </summary>
         /// <param name="letterId">Id of letter</param>
@@ -146,7 +167,8 @@ namespace PROCAS2.Services.App
                 AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
                 AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                 PostCode = homeAddress.PostCode,
-                SentDate = DateTime.Now.ToLongDateString()
+                SentDate = DateTime.Now.ToLongDateString(),
+                BCPredictEmail = IsRiskLow(letter.RiskCategory)?"":ExportResources.BCPREDICT_EMAIL
 
             });
 
@@ -183,7 +205,8 @@ namespace PROCAS2.Services.App
                     AddressLine3 = String.IsNullOrEmpty(gpAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
                     AddressLine4 = String.IsNullOrEmpty(gpAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
                     PostCode = gpAddress.PostCode,
-                    SentDate = DateTime.Now.ToLongDateString()
+                    SentDate = DateTime.Now.ToLongDateString(),
+                    BCPredictEmail = IsRiskLow(letter.RiskCategory) ? "" : ExportResources.BCPREDICT_EMAIL
 
                 });
             }
@@ -261,7 +284,8 @@ namespace PROCAS2.Services.App
                     AddressLine3 = String.IsNullOrEmpty(homeAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine3,
                     AddressLine4 = String.IsNullOrEmpty(homeAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : homeAddress.AddressLine4,
                     PostCode = homeAddress.PostCode,
-                    SentDate = DateTime.Now.ToLongDateString()
+                    SentDate = DateTime.Now.ToLongDateString(),
+                    BCPredictEmail = IsRiskLow(riskLetter.RiskCategory) ? "" : ExportResources.BCPREDICT_EMAIL
 
                 });
 
@@ -298,7 +322,8 @@ namespace PROCAS2.Services.App
                         AddressLine3 = String.IsNullOrEmpty(gpAddress.AddressLine3) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine3,
                         AddressLine4 = String.IsNullOrEmpty(gpAddress.AddressLine4) == true ? ExportResources.BLANK_LINE : gpAddress.AddressLine4,
                         PostCode = gpAddress.PostCode,
-                        SentDate = DateTime.Now.ToLongDateString()
+                        SentDate = DateTime.Now.ToLongDateString(),
+                        BCPredictEmail = IsRiskLow(riskLetter.RiskCategory) ? "" : ExportResources.BCPREDICT_EMAIL
 
                     });
                 }

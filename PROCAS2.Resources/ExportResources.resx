@@ -120,6 +120,9 @@
   <data name="ALL_READY" xml:space="preserve">
     <value>Generate all that are ready</value>
   </data>
+  <data name="BCPREDICT_EMAIL" xml:space="preserve">
+    <value>Email: BCPredict@mft.nhs.uk</value>
+  </data>
   <data name="BCPREDICT_PHONE" xml:space="preserve">
     <value>0161 291 4408</value>
   </data>

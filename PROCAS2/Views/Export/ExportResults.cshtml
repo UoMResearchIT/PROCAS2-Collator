@@ -75,7 +75,15 @@
             </tr>
             
             <tr>
-                <td><p>&nbsp;</p></td><td><p>&nbsp;</p></td>
+                <td><p>&nbsp;</p></td>
+                @if (String.IsNullOrEmpty(@Model.Letters[index].BCPredictEmail))
+                {
+                    <td><p>&nbsp;</p></td>
+                }
+                else
+                {
+                    <td align="right" valign="top"><p>@Model.Letters[index].BCPredictEmail</p></td>
+                }
             </tr>
             <tr>
                 <td colspan="2"><p>@ExportResources.SALUTATION @Model.Letters[index].Name,</p></td>

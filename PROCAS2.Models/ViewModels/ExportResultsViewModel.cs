@@ -41,6 +41,7 @@ namespace PROCAS2.Models.ViewModels
         public string FromAddressLine4 { get; set; }
         public string FromPostCode { get; set; }
         public string Telephone { get; set; }
+        public string BCPredictEmail { get; set; }
 
         public string FromName { get; set; }
         public string LogoHeaderRight { get; set; }

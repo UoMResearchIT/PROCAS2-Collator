@@ -70,6 +70,15 @@ namespace PROCAS2.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email: BCPredict@mft.nhs.uk.
+        /// </summary>
+        public static string BCPREDICT_EMAIL {
+            get {
+                return ResourceManager.GetString("BCPREDICT_EMAIL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 0161 291 4408.
         /// </summary>
         public static string BCPREDICT_PHONE {
